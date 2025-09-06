@@ -15,6 +15,10 @@ portainer-templates/
 runtipi-apps/
 cosmos-apps/
 
+# Generated report files
+*-conversion-report.json
+*-report.json
+
 .claude
 ai-dev-tasks
 scripts
