@@ -1,3 +1,0 @@
-# Syncthing
-
-Syncthing is a continuous file synchronization program. It synchronizes files between two or more computers. We strive to fulfill the goals below. The goals are listed in order of importance, the most important one being the first.

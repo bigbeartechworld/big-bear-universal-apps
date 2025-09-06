@@ -1,3 +1,0 @@
-# Gotify
-
-a simple server for sending and receiving messages

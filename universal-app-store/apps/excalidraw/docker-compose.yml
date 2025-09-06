@@ -1,8 +1,0 @@
-name: big-bear-excalidraw
-services:
-  app:
-    container_name: big-bear-excalidraw
-    image: excalidraw/excalidraw:latest
-    restart: unless-stopped
-    ports:
-      - '8000:80'

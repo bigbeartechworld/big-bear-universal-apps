@@ -1,9 +1,0 @@
-name: big-bear-myspeed
-services:
-  app:
-    image: germannewsmaker/myspeed:1.0.9
-    ports:
-      - '5216:5216'
-    volumes:
-      - /DATA/AppData/$AppID/data:/myspeed/data
-    restart: unless-stopped

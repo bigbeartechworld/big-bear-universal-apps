@@ -1,3 +1,0 @@
-# Audiobookshelf
-
-Audiobookshelf is a self-hosted audiobook server for managing and playing your audiobooks. Audiobookshelf has a clean, accessible design that's loaded with features but not overly complicated.

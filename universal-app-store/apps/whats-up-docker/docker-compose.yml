@@ -1,9 +1,0 @@
-name: big-bear-wud
-services:
-  app:
-    image: fmartinou/whats-up-docker:6.6.1
-    container_name: wud
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    ports:
-      - '3000:3000'

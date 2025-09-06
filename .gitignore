@@ -6,6 +6,14 @@ github.secrets
 .vscode/
 run.py
 
+# Generated/output directories
+universal-app-store/
+dockge-stacks/
+test-output/
+casaos-apps/
+portainer-templates/
+runtipi-apps/
+cosmos-apps/
 
 .claude
 ai-dev-tasks

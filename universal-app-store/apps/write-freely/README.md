@@ -1,3 +1,0 @@
-# Write Freely
-
-WriteFreely is a clean, minimalist publishing platform made for writers. Start a blog, share knowledge within your organization, or build a community around the shared act of writing.

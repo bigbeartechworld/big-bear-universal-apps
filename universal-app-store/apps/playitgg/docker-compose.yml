@@ -1,8 +1,0 @@
-name: big-bear-playitgg
-services:
-  app:
-    container_name: playitgg
-    image: dysta/playitgg:1.1.0
-    restart: unless-stopped
-    volumes:
-      - /DATA/AppData/$AppID/secrets:/secrets
