@@ -19,6 +19,11 @@ cosmos-apps/
 *-conversion-report.json
 *-report.json
 
+# Conversion scripts (generated/temporary)
+convert-to-*.js
+deploy.js
+standardize-apps.js
+
 .claude
 ai-dev-tasks
 scripts
