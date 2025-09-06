@@ -1,0 +1,68 @@
+{
+  "id": "bookstack",
+  "name": "bookstack",
+  "description": "BookStack is a simple, self-hosted, easy-to-use platform for organising and storing information. Default login admin@admin.com password password",
+  "tagline": "BookStack",
+  "version": "25.07.20250804",
+  "image": "lscr.io/linuxserver/bookstack",
+  "developer": "Dan Brown",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/bookstack.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-bookstack",
+  "port_map": "8080",
+  "tips": {
+    "before_install": {
+      "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-bookstack-to-bigbearcasaos/1262#p-2263-documentation-3\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-bookstack": {
+      "volumes": [
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Container Path: /config"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "80",
+          "description": {
+            "en_us": "Container Port: 80"
+          }
+        }
+      ]
+    },
+    "big-bear-bookstack-db": {
+      "volumes": [
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Container Path: /config"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3306",
+          "description": {
+            "en_us": "Container Port: 3306"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/_jW4RjJm-6A",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "playitgg",
+  "name": "playit.gg",
+  "description": "playit.gg is a global proxy that allows anyone to host a server without port forwarding. We use tunneling. Only the server needs to run the program, not every player!",
+  "tagline": "playit.gg is a global proxy that allows anyone to host a server without port forwarding. We use tunneling. Only the server needs to run the program, not every player!",
+  "version": "1.1.0",
+  "image": "dysta/playitgg",
+  "developer": "Dysta",
+  "author": "BigBearCommunity",
+  "icon": "https://media.forgecdn.net/avatars/848/399/638248438568793075.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64"
+  ],
+  "main_service": "app",
+  "port_map": "",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "volumes": [
+        {
+          "container": "/secrets",
+          "description": {
+            "en_us": "Container Path: /secrets"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

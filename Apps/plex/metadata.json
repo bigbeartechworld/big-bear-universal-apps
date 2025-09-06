@@ -1,0 +1,50 @@
+{
+  "id": "plex",
+  "name": "Plex",
+  "description": "Stream Movies & TV Shows",
+  "tagline": "Stream Movies & TV Shows",
+  "version": "1.42.1",
+  "image": "linuxserver/plex",
+  "developer": "plexinc",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/plex.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-plex",
+  "port_map": "32400",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-plex": {
+      "volumes": [
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Configuration files"
+          }
+        },
+        {
+          "container": "/tv",
+          "description": {
+            "en_us": "TV Shows"
+          }
+        },
+        {
+          "container": "/movies",
+          "description": {
+            "en_us": "Movies"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

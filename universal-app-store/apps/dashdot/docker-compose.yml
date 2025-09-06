@@ -1,0 +1,11 @@
+name: big-bear-dashdot
+services:
+  app:
+    image: mauricenino/dashdot:6.2.0
+    ports:
+      - '3001:3001'
+    volumes:
+      - >-
+        /DATA/AppData/$AppID:/mnt/host# Mounting the local dashdot directory to
+        /mnt/host inside the container
+    privileged: true

@@ -1,0 +1,52 @@
+{
+  "id": "linkstack",
+  "name": "LinkStack",
+  "description": "LinkStack is a link-in-bio tool that allows you to create a personalized and easily customizable page that houses all the important links you want to share with your audience.",
+  "tagline": "Your all-in-one link sharing solution",
+  "version": "V4",
+  "image": "linkstackorg/linkstack",
+  "developer": "LinkStackOrg",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/linkstack.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-linkstack",
+  "port_map": "10443",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-linkstack": {
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data - LinkStack data directory"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "80",
+          "description": {
+            "en_us": "Container Port: 80 - HTTP"
+          }
+        },
+        {
+          "container": "443",
+          "description": {
+            "en_us": "Container Port: 443 - HTTPS"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/1KgFlCsItro",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

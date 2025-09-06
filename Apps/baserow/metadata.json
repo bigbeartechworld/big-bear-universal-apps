@@ -1,0 +1,60 @@
+{
+  "id": "baserow",
+  "name": "Baserow",
+  "description": "Create your own online database without technical experience. Our user-friendly no-code tool gives you the powers of a developer without leaving your browser.",
+  "tagline": "Baserow",
+  "version": "1.35.1",
+  "image": "baserow/baserow",
+  "developer": "",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/baserow.png",
+  "thumbnail": "https://github.com/bram2w/baserow/raw/master/docs/assets/screenshot.png",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "7350",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "envs": [
+        {
+          "container": "BASEROW_PUBLIC_URL",
+          "description": {
+            "en_us": "Baserow Public URL"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/baserow/data",
+          "description": {
+            "en_us": "Container Path: /baserow/data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "80",
+          "description": {
+            "en_us": "Container Port: 80"
+          }
+        },
+        {
+          "container": "443",
+          "description": {
+            "en_us": "Container Port: 443"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/Xej7sH5bNFs",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "uisp",
+  "name": "UISP",
+  "description": "All-in-one docker image for Ubiquiti UISP (formerly UNMS). Supports x86_64 and ARM (Raspberry Pi).",
+  "tagline": "UISP",
+  "version": "2.4.155.1",
+  "image": "nico640/docker-unms",
+  "developer": "nico640",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-icons/Apps/uisp/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-uisp",
+  "port_map": "10443",
+  "tips": {
+    "before_install": {
+      "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-uisp-to-bigbearcasaos/2582#p-4674-documentation-3\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-uisp": {
+      "envs": [
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Container Timezone"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Container Path: /config"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "80",
+          "description": {
+            "en_us": "Container Port: 80"
+          }
+        },
+        {
+          "container": "443",
+          "description": {
+            "en_us": "Container Port: 443"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

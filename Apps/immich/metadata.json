@@ -1,0 +1,174 @@
+{
+  "id": "immich",
+  "name": "Immich",
+  "description": "Self-hosted photo and video storage.",
+  "tagline": "Immich",
+  "version": "1.140.1",
+  "image": "ghcr.io/immich-app/immich-server",
+  "developer": "",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/immich.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "immich-server",
+  "port_map": "2283",
+  "tips": {},
+  "services_metadata": {
+    "immich-server": {
+      "envs": [
+        {
+          "container": "DB_HOSTNAME",
+          "description": {
+            "en_us": "Database Hostname"
+          }
+        },
+        {
+          "container": "DB_USERNAME",
+          "description": {
+            "en_us": "Database Username"
+          }
+        },
+        {
+          "container": "DB_PASSWORD",
+          "description": {
+            "en_us": "Database Password"
+          }
+        },
+        {
+          "container": "DB_DATABASE_NAME",
+          "description": {
+            "en_us": "Database Name"
+          }
+        },
+        {
+          "container": "DB_PORT",
+          "description": {
+            "en_us": "Database Port"
+          }
+        },
+        {
+          "container": "REDIS_HOSTNAME",
+          "description": {
+            "en_us": "Redis Hostname"
+          }
+        },
+        {
+          "container": "IMMICH_MACHINE_LEARNING_URL",
+          "description": {
+            "en_us": "Immich Machine Learning URL"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/usr/src/app/upload",
+          "description": {
+            "en_us": "Container Path: /usr/src/app/upload"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "2283",
+          "description": {
+            "en_us": "Container Port: 2283"
+          }
+        }
+      ]
+    },
+    "immich-machine-learning": {
+      "envs": [
+        {
+          "container": "DB_HOSTNAME",
+          "description": {
+            "en_us": "Database Hostname"
+          }
+        },
+        {
+          "container": "DB_USERNAME",
+          "description": {
+            "en_us": "Database Username"
+          }
+        },
+        {
+          "container": "DB_PASSWORD",
+          "description": {
+            "en_us": "Database Password"
+          }
+        },
+        {
+          "container": "DB_DATABASE_NAME",
+          "description": {
+            "en_us": "Database Name"
+          }
+        },
+        {
+          "container": "DB_PORT",
+          "description": {
+            "en_us": "Database Port"
+          }
+        },
+        {
+          "container": "REDIS_HOSTNAME",
+          "description": {
+            "en_us": "Redis Hostname"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/cache",
+          "description": {
+            "en_us": "Container Path: /cache"
+          }
+        }
+      ]
+    },
+    "database": {
+      "envs": [
+        {
+          "container": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Database Password"
+          }
+        },
+        {
+          "container": "POSTGRES_USER",
+          "description": {
+            "en_us": "Database Username"
+          }
+        },
+        {
+          "container": "POSTGRES_DB",
+          "description": {
+            "en_us": "Database Name"
+          }
+        },
+        {
+          "container": "PG_DATA",
+          "description": {
+            "en_us": "Container Path: /var/lib/postgresql/data"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data",
+          "description": {
+            "en_us": "Container Path: /var/lib/postgresql/data"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/ZIx2jDHYjjE",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

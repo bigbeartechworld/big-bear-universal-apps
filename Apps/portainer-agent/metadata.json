@@ -1,0 +1,56 @@
+{
+  "id": "portainer-agent",
+  "name": "Portainer Agent",
+  "description": "Portainer uses the Portainer Agent container to communicate with the Portainer Server instance and provide access to the node's resources. This document will outline how to install the Portainer Agent on your node and how to connect to it from your Portainer Server instance. If you do not have a working Portainer Server instance yet, please refer to the Portainer Server installation guide first.",
+  "tagline": "Portainer Agent",
+  "version": "2.33.1",
+  "image": "portainer/agent",
+  "developer": "portainer",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/portainer.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "",
+  "tips": {
+    "before_install": {
+      "en_us": "The Portainer Agent is reachable on port 9001. You will need Portainer Server running to connect to the Portainer Agent.\n"
+    }
+  },
+  "services_metadata": {
+    "app": {
+      "ports": [
+        {
+          "container": "9001",
+          "description": {
+            "en_us": "The Portainer Agent Port"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/run/docker.sock",
+          "description": {
+            "en_us": "Access to Docker socket"
+          }
+        },
+        {
+          "container": "/var/lib/docker/volumes",
+          "description": {
+            "en_us": "Access to Docker volumes"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

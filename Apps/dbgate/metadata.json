@@ -1,0 +1,46 @@
+{
+  "id": "dbgate",
+  "name": "DBGate",
+  "description": "Web based UI for managing and exploring SQL database data",
+  "tagline": "DBGate",
+  "version": "6.6.3-alpine",
+  "image": "dbgate/dbgate",
+  "developer": "dbgate",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/dbgate/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-dbgate",
+  "port_map": "3000",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-dbgate": {
+      "volumes": [
+        {
+          "container": "/root/.dbgate",
+          "description": {
+            "en_us": "Container Path: /root/.dbgate"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3000",
+          "description": {
+            "en_us": "Container Port: 3000"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

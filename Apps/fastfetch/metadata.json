@@ -1,0 +1,68 @@
+{
+  "id": "fastfetch",
+  "name": "Fastfetch",
+  "description": "Fastfetch is a neofetch-like tool for fetching system information and displaying it prettily. It is written mainly in C, with performance and customizability in mind. Currently, Linux, Android, FreeBSD, macOS, SunOS and Windows 7+ are supported. https://github.com/fastfetch-cli/fastfetch",
+  "tagline": "Fastfetch is a neofetch-like tool.",
+  "version": "0.0.3",
+  "image": "bigbeartechworld/big-bear-fastfetch",
+  "developer": "bigbeartechworld",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/fastfetch/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-fastfetch",
+  "port_map": "7681",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-fastfetch-to-bigbearcasaos/1579?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-fastfetch": {
+      "volumes": [
+        {
+          "container": "/proc",
+          "description": {
+            "en_us": "Container Path: /proc"
+          }
+        },
+        {
+          "container": "/sys",
+          "description": {
+            "en_us": "Container Path: /sys"
+          }
+        },
+        {
+          "container": "/dev",
+          "description": {
+            "en_us": "Container Path: /dev"
+          }
+        },
+        {
+          "container": "/etc/localtime",
+          "description": {
+            "en_us": "Container Path: /etc/localtime"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "7681",
+          "description": {
+            "en_us": "Container Port: 7681"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/pVBMvIMzfpw",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

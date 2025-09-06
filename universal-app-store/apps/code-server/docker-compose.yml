@@ -1,0 +1,18 @@
+name: big-bear-code-server
+services:
+  app:
+    image: linuxserver/code-server:4.103.2
+    container_name: code-server
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - PASSWORD=my_password
+      - SUDO_PASSWORD=sudo_my_password
+      - DEFAULT_WORKSPACE=/config/workspace
+    volumes:
+      - /DATA/AppData/$AppID/config:/config
+      - /DATA/AppData/$AppID/projects:/projects
+    ports:
+      - '8080:8443'
+    restart: always

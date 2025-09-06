@@ -1,0 +1,64 @@
+{
+  "id": "goaway",
+  "name": "GoAway",
+  "description": "GoAway is a lightweight DNS sinkhole that blocks ads, trackers, and malicious domains at the network level. It provides a web-based admin dashboard for management and supports customizable blocking rules with real-time statistics tracking.",
+  "tagline": "Lightweight DNS sinkhole for blocking ads and trackers",
+  "version": "0.61.0",
+  "image": "pommee/goaway",
+  "developer": "pommee",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/goaway.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-goaway",
+  "port_map": "8080",
+  "tips": {
+    "before_install": {
+      "en_us": "Visit the community post for setup instructions and community support:\nhttps://community.bigbeartechworld.com/t/added-goaway-to-bigbearcasaos/4085\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-goaway": {
+      "volumes": [
+        {
+          "container": "/app/config",
+          "description": {
+            "en_us": "Container Path: /app/config"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "53",
+          "description": {
+            "en_us": "Container Port: 53 (DNS)"
+          },
+          "protocol": "udp"
+        },
+        {
+          "container": "53",
+          "description": {
+            "en_us": "Container Port: 53 (DNS)"
+          },
+          "protocol": "tcp"
+        },
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080 (Web Dashboard)"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "https://community.bigbeartechworld.com/t/added-goaway-to-bigbearcasaos/4085",
+    "big_bear_cosmos_youtube": ""
+  }
+}

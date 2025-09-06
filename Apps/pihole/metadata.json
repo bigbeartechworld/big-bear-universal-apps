@@ -1,0 +1,70 @@
+{
+  "id": "pihole",
+  "name": "Pi-hole",
+  "description": "The Pi-hole® is a DNS sinkhole that protects your devices from unwanted content without installing any client-side software.",
+  "tagline": "A black hole for Internet advertisements",
+  "version": "2025.08.0",
+  "image": "pihole/pihole",
+  "developer": "pi-hole.net",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/pi-hole.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "8080",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "volumes": [
+        {
+          "container": "/etc/pihole",
+          "description": {
+            "en_us": "Container Path: /etc/pihole"
+          }
+        },
+        {
+          "container": "/etc/dnsmasq.d",
+          "description": {
+            "en_us": "Container Path: /etc/dnsmasq.d"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "53",
+          "description": {
+            "en_us": "Container Port: 53"
+          }
+        },
+        {
+          "container": "67",
+          "description": {
+            "en_us": "Container Port: 67"
+          }
+        },
+        {
+          "container": "80",
+          "description": {
+            "en_us": "Container Port: 80"
+          }
+        },
+        {
+          "container": "443",
+          "description": {
+            "en_us": "Container Port: 443"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/FcMF1sYacqk",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

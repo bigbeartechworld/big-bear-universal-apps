@@ -1,0 +1,67 @@
+{
+  "id": "docker-cron-restart-notifier",
+  "name": "Docker Cron Restart Notifier",
+  "description": "This Docker image is designed to automatically restart specified Docker containers and send notifications to a Discord channel upon each restart. It's particularly useful for maintaining long-running services, ensuring they're periodically refreshed and stakeholders are informed of these actions.",
+  "tagline": "Automatically restart specified Docker containers and send notifications to a Discord channel",
+  "version": "restart-notifier-latest",
+  "image": "deduard/tools",
+  "developer": "activecs",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/docker-cron-restart-notifier/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64"
+  ],
+  "main_service": "app",
+  "port_map": "",
+  "tips": {
+    "before_install": {
+      "en_us": "You must add a Discord webhook URL to the `DISCORD_WEBHOOK_URL` environment variable.\n"
+    }
+  },
+  "services_metadata": {
+    "app": {
+      "envs": [
+        {
+          "container": "DISCORD_WEBHOOK_URL",
+          "description": {
+            "en_us": "Discord Webhook URL"
+          }
+        },
+        {
+          "container": "RESTART_CONTAINERS",
+          "description": {
+            "en_us": "Restart Containers"
+          }
+        },
+        {
+          "container": "RUN_ON_STARTUP",
+          "description": {
+            "en_us": "Run on Startup"
+          }
+        },
+        {
+          "container": "CRON_SCHEDULE",
+          "description": {
+            "en_us": "Cron Schedule"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/run/docker.sock",
+          "description": {
+            "en_us": "Container Path: /var/run/docker.sock"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

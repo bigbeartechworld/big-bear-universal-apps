@@ -1,0 +1,196 @@
+{
+  "id": "unifi-network-application-mongo-4",
+  "name": "Unifi Network Application",
+  "description": "Supports Zimaboards and PI's. The Unifi-network-application software is a powerful, enterprise wireless software engine ideal for high-density client deployments requiring low latency and high uptime performance.",
+  "tagline": "The Unifi-network-application MongoDB 4",
+  "version": "4.4.28",
+  "image": "linuxserver/unifi-network-application",
+  "developer": "Ubiquiti",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ubiquiti-unifi.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "8443",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-unifi-network-application-to-bigbearcasaos/487\n"
+    }
+  },
+  "services_metadata": {
+    "unifi-db": {
+      "volumes": [
+        {
+          "container": "/data/db",
+          "description": {
+            "en_us": "Container Path: /data/db"
+          }
+        },
+        {
+          "container": "/docker-entrypoint-initdb.d/init-mongo.js",
+          "description": {
+            "en_us": "Container Path: /docker-entrypoint-initdb.d/init-mongo.js"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "27017",
+          "description": {
+            "en_us": "Container Port: 27017"
+          }
+        }
+      ]
+    },
+    "app": {
+      "envs": [
+        {
+          "container": "PUID",
+          "description": {
+            "en_us": "User ID"
+          }
+        },
+        {
+          "container": "PGID",
+          "description": {
+            "en_us": "Group ID"
+          }
+        },
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Timezone"
+          }
+        },
+        {
+          "container": "MONGO_HOST",
+          "description": {
+            "en_us": "MongoDB host"
+          }
+        },
+        {
+          "container": "MONGO_USER",
+          "description": {
+            "en_us": "MongoDB username"
+          }
+        },
+        {
+          "container": "MONGO_PASS",
+          "description": {
+            "en_us": "MongoDB password"
+          }
+        },
+        {
+          "container": "MONGO_PORT",
+          "description": {
+            "en_us": "MongoDB port"
+          }
+        },
+        {
+          "container": "MONGO_DBNAME",
+          "description": {
+            "en_us": "MongoDB database name"
+          }
+        },
+        {
+          "container": "MEM_LIMIT",
+          "description": {
+            "en_us": "Memory limit for the container"
+          }
+        },
+        {
+          "container": "MEM_STARTUP",
+          "description": {
+            "en_us": "Memory to allocate on container startup"
+          }
+        },
+        {
+          "container": "MONGO_TLS",
+          "description": {
+            "en_us": "MongoDB TLS setting"
+          }
+        },
+        {
+          "container": "MONGO_AUTHSOURCE",
+          "description": {
+            "en_us": "MongoDB authentication source"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Container Path: /config"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8443",
+          "description": {
+            "en_us": "Container Port: 8443"
+          }
+        },
+        {
+          "container": "3478/udp",
+          "description": {
+            "en_us": "Container Port: 3478/udp"
+          }
+        },
+        {
+          "container": "10001/udp",
+          "description": {
+            "en_us": "Container Port: 10001/udp"
+          }
+        },
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        },
+        {
+          "container": "1900/udp",
+          "description": {
+            "en_us": "Container Port: 1900/udp"
+          }
+        },
+        {
+          "container": "8843",
+          "description": {
+            "en_us": "Container Port: 8843"
+          }
+        },
+        {
+          "container": "8880",
+          "description": {
+            "en_us": "Container Port: 8880"
+          }
+        },
+        {
+          "container": "6789",
+          "description": {
+            "en_us": "Container Port: 6789"
+          }
+        },
+        {
+          "container": "5514/udp",
+          "description": {
+            "en_us": "Container Port: 5514/udp"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/JCe-r_SHCe8",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "id": "wallabag",
+  "name": "Wallabag",
+  "description": "Wallabag is a self-hosted application for saving web pages. Unlike other services, Wallabag is free and open source.",
+  "tagline": "Save and classify articles. Read them later. Freely.",
+  "version": "2.6.13",
+  "image": "wallabag/wallabag",
+  "developer": "wallabag",
+  "author": "Wallabag Team",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/wallabag.png",
+  "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wallabag/thumbnail.png",
+  "screenshots": [
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wallabag/screenshot-1.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wallabag/screenshot-2.png"
+  ],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-wallabag",
+  "port_map": "8080",
+  "tips": {
+    "before_install": {
+      "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-wallabag-to-bigbearcasaos/3544#p-6005-documentation-4\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-wallabag": {
+      "envs": [
+        {
+          "container": "MYSQL_ROOT_PASSWORD",
+          "description": {
+            "en_us": "MySQL root password"
+          }
+        },
+        {
+          "container": "SYMFONY__ENV__DATABASE_DRIVER",
+          "description": {
+            "en_us": "Database driver for Symfony"
+          }
+        },
+        {
+          "container": "SYMFONY__ENV__DATABASE_HOST",
+          "description": {
+            "en_us": "Database host"
+          }
+        },
+        {
+          "container": "SYMFONY__ENV__DATABASE_PORT",
+          "description": {
+            "en_us": "Database port"
+          }
+        },
+        {
+          "container": "SYMFONY__ENV__DATABASE_NAME",
+          "description": {
+            "en_us": "Database name"
+          }
+        },
+        {
+          "container": "SYMFONY__ENV__DATABASE_USER",
+          "description": {
+            "en_us": "Database user"
+          }
+        },
+        {
+          "container": "SYMFONY__ENV__DATABASE_PASSWORD",
+          "description": {
+            "en_us": "Database password"
+          }
+        },
+        {
+          "container": "SYMFONY__ENV__DATABASE_CHARSET",
+          "description": {
+            "en_us": "Database charset"
+          }
+        },
+        {
+          "container": "SYMFONY__ENV__DATABASE_TABLE_PREFIX",
+          "description": {
+            "en_us": "Database table prefix"
+          }
+        },
+        {
+          "container": "SYMFONY__ENV__MAILER_DSN",
+          "description": {
+            "en_us": "Mailer DSN configuration"
+          }
+        },
+        {
+          "container": "SYMFONY__ENV__FROM_EMAIL",
+          "description": {
+            "en_us": "From email address"
+          }
+        },
+        {
+          "container": "SYMFONY__ENV__DOMAIN_NAME",
+          "description": {
+            "en_us": "Domain name for Wallabag instance"
+          }
+        },
+        {
+          "container": "SYMFONY__ENV__SERVER_NAME",
+          "description": {
+            "en_us": "Server name for Wallabag instance"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/www/wallabag/web/assets/images",
+          "description": {
+            "en_us": "Container Path: /var/www/wallabag/web/assets/images"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "80",
+          "description": {
+            "en_us": "Container Port: 80"
+          }
+        }
+      ]
+    },
+    "big-bear-wallabag-db": {
+      "envs": [
+        {
+          "container": "MYSQL_ROOT_PASSWORD",
+          "description": {
+            "en_us": "MySQL root password"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/mysql",
+          "description": {
+            "en_us": "Container Path: /var/lib/mysql"
+          }
+        }
+      ]
+    },
+    "big-bear-wallabag-redis": {
+      "envs": [
+        {
+          "container": "REDIS_PASSWORD",
+          "description": {
+            "en_us": "Redis password"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

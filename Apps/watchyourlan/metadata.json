@@ -1,0 +1,52 @@
+{
+  "id": "watchyourlan",
+  "name": "WatchYourLAN",
+  "description": "Lightweight network IP scanner. Can be used to notify about new hosts and monitor host online/offline history",
+  "tagline": "WatchYourLAN",
+  "version": "2.1.3",
+  "image": "aceberg/watchyourlan",
+  "developer": "ajnart",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/watchyourlan.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-watchyourlan",
+  "port_map": "8840",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-watchyourlan": {
+      "env": [
+        {
+          "container": "IFACES",
+          "description": {
+            "en_us": "Interfaces to monitor"
+          }
+        },
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Timezone"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/data/WatchYourLAN",
+          "description": {
+            "en_us": "Container Path: /data/WatchYourLAN"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/LaYZjvUJ9U8",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

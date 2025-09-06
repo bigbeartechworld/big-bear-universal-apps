@@ -1,0 +1,55 @@
+{
+  "id": "rocket-chat",
+  "name": "Rocket.Chat",
+  "description": "Rocket.Chat is an open-source fully customizable communications platform [...]",
+  "tagline": "The communications platform that puts data protection first.",
+  "version": "6.13.1",
+  "image": "rocket.chat",
+  "developer": "rocket.chat",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/rocket-chat.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64"
+  ],
+  "main_service": "app",
+  "port_map": "3000",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "envs": [
+        {
+          "container": "MONGO_OPLOG_URL",
+          "description": {
+            "en_us": "Database URL: mongodb://db:27017/local"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3000",
+          "description": {
+            "en_us": "Container Port: 3000"
+          }
+        }
+      ]
+    },
+    "db": {
+      "volumes": [
+        {
+          "container": "/data/db",
+          "description": {
+            "en_us": "Container Path: /data/db"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

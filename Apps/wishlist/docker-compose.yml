@@ -1,0 +1,16 @@
+name: big-bear-wishlist
+services:
+  big-bear-wishlist:
+    container_name: big-bear-wishlist
+    image: ghcr.io/cmintey/wishlist:v0.50.0
+    restart: unless-stopped
+    environment:
+      ORIGIN: ''
+      TOKEN_TIME: '72'
+      DEFAULT_CURRENCY: USD
+      LOG_LEVEL: info
+    volumes:
+      - /DATA/AppData/$AppID/uploads:/usr/src/app/uploads
+      - /DATA/AppData/$AppID/data:/usr/src/app/data
+    ports:
+      - '3280:3280'

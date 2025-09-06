@@ -1,0 +1,64 @@
+{
+  "id": "phpmyadmin",
+  "name": "phpMyAdmin",
+  "description": "phpMyAdmin - A web interface for MySQL and MariaDB.",
+  "tagline": "phpMyAdmin",
+  "version": "5.2.2",
+  "image": "phpmyadmin/phpmyadmin",
+  "developer": "phpMyAdmin",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/phpmyadmin.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "phpmyadmin",
+  "port_map": "8080",
+  "tips": {},
+  "services_metadata": {
+    "phpmyadmin": {
+      "envs": [
+        {
+          "container": "PMA_HOST",
+          "description": {
+            "en_us": "Host of the database server"
+          }
+        },
+        {
+          "container": "PMA_PORT",
+          "description": {
+            "en_us": "Port of the database server"
+          }
+        },
+        {
+          "container": "PMA_USER",
+          "description": {
+            "en_us": "Username to connect to the database"
+          }
+        },
+        {
+          "container": "PMA_PASSWORD",
+          "description": {
+            "en_us": "Password to connect to the database"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "80",
+          "description": {
+            "en_us": "Container Port: 80"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

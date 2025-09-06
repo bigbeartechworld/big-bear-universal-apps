@@ -1,0 +1,70 @@
+{
+  "id": "genmon",
+  "name": "Genmon",
+  "description": "Generac (and other models) Generator Monitoring using a Raspberry Pi and WiFi",
+  "tagline": "Genmon",
+  "version": "1.19.05",
+  "image": "bigbeartechworld/big-bear-genmon",
+  "developer": "bigbeartechworld",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/genmon/logo.jpeg",
+  "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/genmon/screenshot1.png",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-genmon",
+  "port_map": "8000",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-genmon": {
+      "volumes": [
+        {
+          "container": "/git/genmon",
+          "description": {
+            "en_us": "Container Path: /git/genmon"
+          }
+        },
+        {
+          "container": "/etc/genmon",
+          "description": {
+            "en_us": "Container Path: /etc/genmon"
+          }
+        },
+        {
+          "container": "/var/log",
+          "description": {
+            "en_us": "Container Path: /var/log"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "22",
+          "description": {
+            "en_us": "Container Port: 22"
+          }
+        },
+        {
+          "container": "443",
+          "description": {
+            "en_us": "Container Port: 443"
+          }
+        },
+        {
+          "container": "8000",
+          "description": {
+            "en_us": "Container Port: 8000"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/b0_zuVVeIP4",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

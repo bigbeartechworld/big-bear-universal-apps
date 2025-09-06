@@ -1,0 +1,174 @@
+{
+  "id": "nextcloud-with-smbclient",
+  "name": "Nextcloud with SMB (Legacy)",
+  "description": "This is legacy and you should use the BigBearCasaOS Nextcloud instead. Nextcloud puts your data at your fingertips, under your control. Store your documents, calendar, contacts and photos on a server at home, at one of our providers or in a data center you trust.",
+  "tagline": "The productivity platform that keeps you in control",
+  "version": "0.0.10",
+  "image": "bigbeartechworld/big-bear-nextcloud-with-smbclient",
+  "developer": "nextcloud",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nextcloud.png",
+  "thumbnail": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/thumbnail.jpg",
+  "screenshots": [
+    "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-1.png",
+    "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-2.png",
+    "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-3.png"
+  ],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-nextcloud-smb",
+  "port_map": "7580",
+  "tips": {
+    "before_install": {
+      "en_us": "Read the [Nextcloud installation guide](https://community.bigbeartechworld.com/t/added-nextcloud-to-bigbearcasaos/455?u=dragonfire1119)\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-nextcloud-smb": {
+      "volumes": [
+        {
+          "container": "/var/www/html",
+          "description": {
+            "en_us": "Container Path: /var/www/html"
+          }
+        }
+      ],
+      "envs": [
+        {
+          "container": "POSTGRES_HOST",
+          "description": {
+            "en_us": "Database host"
+          }
+        },
+        {
+          "container": "REDIS_HOST",
+          "description": {
+            "en_us": "Redis host"
+          }
+        },
+        {
+          "container": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Database password"
+          }
+        },
+        {
+          "container": "POSTGRES_USER",
+          "description": {
+            "en_us": "Database user"
+          }
+        },
+        {
+          "container": "POSTGRES_DB",
+          "description": {
+            "en_us": "Database type"
+          }
+        },
+        {
+          "container": "NEXTCLOUD_ADMIN_USER",
+          "description": {
+            "en_us": "Nextcloud admin user"
+          }
+        },
+        {
+          "container": "NEXTCLOUD_ADMIN_PASSWORD",
+          "description": {
+            "en_us": "Nextcloud admin password"
+          }
+        },
+        {
+          "container": "TRUSTED_PROXIES",
+          "description": {
+            "en_us": "Trusted proxies"
+          }
+        },
+        {
+          "container": "OVERWRITEPROTOCOL",
+          "description": {
+            "en_us": "Overwrite protocol"
+          }
+        },
+        {
+          "container": "PHP_UPLOAD_LIMIT",
+          "description": {
+            "en_us": "PHP upload limit"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "7580",
+          "description": {
+            "en_us": "Container Port: 7580"
+          }
+        }
+      ]
+    },
+    "big-bear-nextcloud-smb-db": {
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data",
+          "description": {
+            "en_us": "Container Path: /var/lib/postgresql/data"
+          }
+        }
+      ],
+      "envs": [
+        {
+          "container": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Database password"
+          }
+        },
+        {
+          "container": "POSTGRES_USER",
+          "description": {
+            "en_us": "Database user"
+          }
+        },
+        {
+          "container": "POSTGRES_DB",
+          "description": {
+            "en_us": "Database type"
+          }
+        }
+      ]
+    },
+    "big-bear-nextcloud-smb-redis": {
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "6379",
+          "description": {
+            "en_us": "Container Port: 6379"
+          }
+        }
+      ]
+    },
+    "big-bear-nextcloud-smb-cron": {
+      "volumes": [
+        {
+          "container": "/var/www/html",
+          "description": {
+            "en_us": "Container Path: /var/www/html"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

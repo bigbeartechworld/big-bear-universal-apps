@@ -1,0 +1,28 @@
+name: big-bear-guacamole
+services:
+  guacd:
+    image: guacamole/guacd:1.6.0
+    restart: always
+  app:
+    image: guacamole/guacamole:1.6.0
+    restart: always
+    links:
+      - guacd
+    environment:
+      - GUACD_HOSTNAME=guacd
+      - MYSQL_HOSTNAME=mysql
+      - MYSQL_DATABASE=guacamole_db
+      - MYSQL_USER=guacamole_user
+      - MYSQL_PASSWORD=some_password
+    ports:
+      - '8090:8080'
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=my-secret-pw
+      - MYSQL_DATABASE=guacamole_db
+      - MYSQL_USER=guacamole_user
+      - MYSQL_PASSWORD=some_password
+    volumes:
+      - /DATA/AppData/$AppID/mysql:/var/lib/mysql

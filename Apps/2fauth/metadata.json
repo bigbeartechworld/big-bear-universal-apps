@@ -1,0 +1,54 @@
+{
+  "id": "2fauth",
+  "name": "2FAuth",
+  "description": "A Web app to manage your Two-Factor Authentication (2FA) accounts and generate their security codes",
+  "tagline": "A Web app to manage your Two-Factor Authentication (2FA) accounts and generate their security codes",
+  "version": "5.6.0",
+  "image": "2fauth/2fauth",
+  "developer": "bubka",
+  "author": "BigBearTechWorld",
+  "icon": "https://user-images.githubusercontent.com/1289128/276442834-bdb528d0-78fa-4155-ba15-7165d88b9836.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "8000",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "envs": [
+        {
+          "name": "APP_URL",
+          "description": {
+            "en_us": "Application URL"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/2fauth",
+          "description": {
+            "en_us": "Container Path: /2fauth"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8000",
+          "description": {
+            "en_us": "Container Port: 8000"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/yCnjxSryD_U",
+    "docs": "",
+    "big_bear_cosmos_youtube": "https://youtu.be/B5Cb5DXT9-o"
+  }
+}

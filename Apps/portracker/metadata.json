@@ -1,0 +1,105 @@
+{
+  "id": "portracker",
+  "name": "Portracker",
+  "description": "A self-hosted, real-time port monitoring and discovery tool that automatically discovers and maps network services across systems.",
+  "tagline": "Real-time Port Monitoring Tool",
+  "version": "1.1",
+  "image": "mostafawahied/portracker",
+  "developer": "Mostafa-Wahied",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/portracker.png",
+  "thumbnail": "",
+  "screenshots": [
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/portracker/screenshot-1.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/portracker/screenshot-2.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/portracker/screenshot-3.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/portracker/screenshot-4.png"
+  ],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-portracker",
+  "port_map": "4999",
+  "tips": {
+    "before_install": {
+      "en_us": "Portracker is a self-hosted port monitoring tool that automatically discovers network services.\n                \nRead this before installing: https://community.bigbeartechworld.com/t/added-portracker-to-bigbearcasaos/5003?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-portracker": {
+      "envs": [
+        {
+          "container": "PORT",
+          "description": {
+            "en_us": "Web application port"
+          }
+        },
+        {
+          "container": "DATABASE_PATH",
+          "description": {
+            "en_us": "SQLite database file path"
+          }
+        },
+        {
+          "container": "TRUSTED_LOCAL_EMAIL",
+          "description": {
+            "en_us": "Trusted local email for authentication"
+          }
+        },
+        {
+          "container": "CACHE_TIMEOUT_MS",
+          "description": {
+            "en_us": "Cache timeout in milliseconds"
+          }
+        },
+        {
+          "container": "DISABLE_CACHE",
+          "description": {
+            "en_us": "Disable caching (true/false)"
+          }
+        },
+        {
+          "container": "INCLUDE_UDP",
+          "description": {
+            "en_us": "Include UDP ports in scanning (true/false)"
+          }
+        },
+        {
+          "container": "DEBUG",
+          "description": {
+            "en_us": "Enable debug logging (true/false)"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Portracker Data Directory"
+          }
+        },
+        {
+          "container": "/var/run/docker.sock",
+          "description": {
+            "en_us": "Docker Socket for Container Discovery"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "4999",
+          "description": {
+            "en_us": "Container Port: 4999"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

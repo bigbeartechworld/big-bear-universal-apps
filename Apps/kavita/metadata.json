@@ -1,0 +1,64 @@
+{
+  "id": "kavita",
+  "name": "Kavita",
+  "description": "Kavita is a fast, feature rich, cross platform reading server",
+  "tagline": "Kavita",
+  "version": "0.8.7",
+  "image": "jvmilazz0/kavita",
+  "developer": "jvmilazz0",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/kavita.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-kavita",
+  "port_map": "5000",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-kavita": {
+      "volumes": [
+        {
+          "container": "/kavita/config",
+          "description": {
+            "en_us": "Container Path: /kavita/config"
+          }
+        },
+        {
+          "container": "/books",
+          "description": {
+            "en_us": "Container Path: /books"
+          }
+        },
+        {
+          "container": "/comics",
+          "description": {
+            "en_us": "Container Path: /comics"
+          }
+        },
+        {
+          "container": "/manga",
+          "description": {
+            "en_us": "Container Path: /manga"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "5000",
+          "description": {
+            "en_us": "Container Port: 5000"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

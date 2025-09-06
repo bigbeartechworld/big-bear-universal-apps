@@ -1,0 +1,104 @@
+{
+  "id": "warracker",
+  "name": "Warracker",
+  "description": "A self-hosted warranty tracker",
+  "tagline": "A self-hosted warranty tracker",
+  "version": "9.9.3",
+  "image": "ghcr.io/sassanix/warracker/main",
+  "developer": "sassanix",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/warracker.png",
+  "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/warracker/thumbnail.png",
+  "screenshots": [
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/warracker/screenshot-1.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/warracker/screenshot-2.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/warracker/screenshot-3.png"
+  ],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-warracker",
+  "port_map": "8005",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-warracker-to-bigbearcasaos/3346?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-warracker": {
+      "envs": [
+        {
+          "container": "DB_HOST",
+          "description": {
+            "en_us": "Sets the database host"
+          }
+        },
+        {
+          "container": "DB_NAME",
+          "description": {
+            "en_us": "Sets the database name"
+          }
+        },
+        {
+          "container": "DB_USER",
+          "description": {
+            "en_us": "Sets the database user"
+          }
+        },
+        {
+          "container": "DB_PASSWORD",
+          "description": {
+            "en_us": "Sets the database password"
+          }
+        },
+        {
+          "container": "SMTP_HOST",
+          "description": {
+            "en_us": "Sets the SMTP host"
+          }
+        },
+        {
+          "container": "SMTP_PORT",
+          "description": {
+            "en_us": "Sets the SMTP port"
+          }
+        },
+        {
+          "container": "SMTP_USERNAME",
+          "description": {
+            "en_us": "Sets the SMTP username"
+          }
+        },
+        {
+          "container": "SMTP_PASSWORD",
+          "description": {
+            "en_us": "Sets the SMTP password"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/DATA/AppData/$AppID/uploads",
+          "description": {
+            "en_us": "Container Path: /DATA/AppData/$AppID/uploads"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "80",
+          "description": {
+            "en_us": "Container Port: 80"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

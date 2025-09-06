@@ -1,0 +1,166 @@
+{
+  "id": "ghostfolio",
+  "name": "Ghostfolio",
+  "description": "Open Source Wealth Management Software. Angular + NestJS + Prisma + Nx + TypeScript 🤍",
+  "tagline": "Ghostfolio",
+  "version": "2.195.0",
+  "image": "ghostfolio/ghostfolio",
+  "developer": "ghostfolio",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ghostfolio.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-ghostfolio",
+  "port_map": "3333",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-ghostfolio": {
+      "envs": [
+        {
+          "container": "NODE_ENV",
+          "description": {
+            "en_us": "Environment: production"
+          }
+        },
+        {
+          "container": "HOST",
+          "description": {
+            "en_us": "Container Interface: 0.0.0.0"
+          }
+        },
+        {
+          "container": "PORT",
+          "description": {
+            "en_us": "Container Port: 3333"
+          }
+        },
+        {
+          "container": "ACCESS_TOKEN_SALT",
+          "description": {
+            "en_us": "Access Token Salt: 5a7f9e0d-0e64-4c19-8279-bbe8b4c590f4"
+          }
+        },
+        {
+          "container": "DATABASE_URL",
+          "description": {
+            "en_us": "Database URL: postgresql://ghostfolio:casaospassword@big-bear-ghostfolio-db:5432/ghostfolio?sslmode=prefer"
+          }
+        },
+        {
+          "container": "JWT_SECRET_KEY",
+          "description": {
+            "en_us": "JWT Secret Key: 534e820d-da30-4dd3-baf9-0511847c478a"
+          }
+        },
+        {
+          "container": "POSTGRES_DB",
+          "description": {
+            "en_us": "Database Type: ghostfolio"
+          }
+        },
+        {
+          "container": "POSTGRES_USER",
+          "description": {
+            "en_us": "Database User: ghostfolio"
+          }
+        },
+        {
+          "container": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Database Password: casaospassword"
+          }
+        },
+        {
+          "container": "REDIS_HOST",
+          "description": {
+            "en_us": "Redis Host: big-bear-ghostfolio-redis"
+          }
+        },
+        {
+          "container": "REDIS_PASSWORD",
+          "description": {
+            "en_us": "Redis Password: casaosredispassword"
+          }
+        },
+        {
+          "container": "REDIS_PORT",
+          "description": {
+            "en_us": "Redis Port: 6379"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3333",
+          "description": {
+            "en_us": "Container Port: 3333"
+          }
+        }
+      ]
+    },
+    "big-bear-ghostfolio-db": {
+      "envs": [
+        {
+          "container": "POSTGRES_DB",
+          "description": {
+            "en_us": "Database type"
+          }
+        },
+        {
+          "container": "POSTGRES_USER",
+          "description": {
+            "en_us": "Database user"
+          }
+        },
+        {
+          "container": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Database password"
+          }
+        },
+        {
+          "container": "PGDATA",
+          "description": {
+            "en_us": "Container Path: /var/lib/postgresql/data"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data",
+          "description": {
+            "en_us": "Container Path: /var/lib/postgresql/data"
+          }
+        }
+      ]
+    },
+    "big-bear-ghostfolio-redis": {
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "6379",
+          "description": {
+            "en_us": "Container Port: 6379"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/CNe4-8Vyhos",
+    "docs": "",
+    "big_bear_cosmos_youtube": "https://youtu.be/BWPRbiWr4is"
+  }
+}

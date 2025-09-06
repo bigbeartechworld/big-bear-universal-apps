@@ -1,0 +1,88 @@
+{
+  "id": "stalwart-mail",
+  "name": "Stalwart Mail",
+  "description": "Stalwart Mail Server is an open-source mail server solution with JMAP, IMAP4, POP3, and SMTP support and a wide range of modern features. It is written in Rust and designed to be secure, fast, robust and scalable.",
+  "tagline": "Secure & Modern All-in-One Mail Server (IMAP, JMAP, POP3, SMTP) 🛡️",
+  "version": "0.13.2",
+  "image": "stalwartlabs/stalwart",
+  "developer": "stalwartlabs",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/stalwart.png",
+  "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/big-bear-stalwart-mail/thumbnail.gif",
+  "screenshots": [
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/big-bear-stalwart-mail/thumbnail.gif"
+  ],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-stalwart-mail",
+  "port_map": "8080",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-stalwart-to-bigbearcasaos/3342#p-5723-documentation-3\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-stalwart-mail": {
+      "volumes": [
+        {
+          "container": "/opt/stalwart-mail",
+          "description": {
+            "en_us": "Container Path: /opt/stalwart-mail"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        },
+        {
+          "container": "25",
+          "description": {
+            "en_us": "Container Port: 25"
+          }
+        },
+        {
+          "container": "143",
+          "description": {
+            "en_us": "Container Port: 143"
+          }
+        },
+        {
+          "container": "465",
+          "description": {
+            "en_us": "Container Port: 465"
+          }
+        },
+        {
+          "container": "587",
+          "description": {
+            "en_us": "Container Port: 587"
+          }
+        },
+        {
+          "container": "993",
+          "description": {
+            "en_us": "Container Port: 993"
+          }
+        },
+        {
+          "container": "4190",
+          "description": {
+            "en_us": "Container Port: 4190"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

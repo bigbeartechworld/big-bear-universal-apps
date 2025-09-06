@@ -1,0 +1,70 @@
+name: big-bear-paperless-ngx
+services:
+  big-bear-paperless-ngx:
+    container_name: big-bear-paperless-ngx
+    image: ghcr.io/paperless-ngx/paperless-ngx:2.18.3
+    restart: unless-stopped
+    environment:
+      PAPERLESS_REDIS: redis://big-bear-paperless-ngx-broker:6379
+      PAPERLESS_DBHOST: big-bear-paperless-ngx-db
+      PAPERLESS_DBUSER: bigbear
+      PAPERLESS_DBPASS: c6e74adb-3fce-4318-b657-4bdc0858fcac
+      PAPERLESS_ADMIN_USER: bigbear
+      PAPERLESS_ADMIN_PASSWORD: c22e92a6-2a3d-4edf-a98e-4044834daea6
+      PAPERLESS_TIKA_ENABLED: 'true'
+      PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://big-bear-paperless-ngx-gotenberg:3000
+      PAPERLESS_TIKA_ENDPOINT: http://big-bear-paperless-ngx-tika:9998
+      PAPERLESS_URL: http://[YOUR_IP]:8000
+      COMPOSE_PROJECT_NAME: big-bear-paperless-ngx
+      PAPERLESS_CSRF_TRUSTED_ORIGINS: http://[YOUR_IP]:8000
+    volumes:
+      - /DATA/AppData/$AppID/paperless_data:/usr/src/paperless/data
+      - /DATA/AppData/$AppID/paperless_media:/usr/src/paperless/media
+      - /DATA/AppData/$AppID/paperless_export:/usr/src/paperless/export
+      - /DATA/AppData/$AppID/paperless_consume:/usr/src/paperless/consume
+    ports:
+      - '8000:8000'
+    depends_on:
+      - big-bear-paperless-ngx-db
+      - big-bear-paperless-ngx-broker
+    networks:
+      - big-bear-paperless-ngx-network
+  big-bear-paperless-ngx-broker:
+    container_name: big-bear-paperless-ngx-broker
+    image: docker.io/library/redis:8
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID/redis:/data
+    networks:
+      - big-bear-paperless-ngx-network
+  big-bear-paperless-ngx-db:
+    container_name: big-bear-paperless-ngx-db
+    image: library/postgres:16
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: paperless
+      POSTGRES_USER: bigbear
+      POSTGRES_PASSWORD: c6e74adb-3fce-4318-b657-4bdc0858fcac
+    networks:
+      - big-bear-paperless-ngx-network
+  big-bear-paperless-ngx-gotenberg:
+    container_name: big-bear-paperless-ngx-gotenberg
+    image: gotenberg/gotenberg:8.23
+    restart: unless-stopped
+    command:
+      - gotenberg
+      - '--chromium-disable-javascript=true'
+      - '--chromium-allow-list=file:///tmp/.*'
+    networks:
+      - big-bear-paperless-ngx-network
+  big-bear-paperless-ngx-tika:
+    container_name: big-bear-paperless-ngx-tika
+    image: ghcr.io/paperless-ngx/tika:2.9.1-minimal
+    restart: unless-stopped
+    networks:
+      - big-bear-paperless-ngx-network
+networks:
+  big-bear-paperless-ngx-network:
+    driver: bridge

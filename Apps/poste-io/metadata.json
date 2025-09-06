@@ -1,0 +1,54 @@
+{
+  "id": "poste-io",
+  "name": "Poste.io",
+  "description": "Full stack mail server solution with SSL TLS support. POP3s, SMTP(s), IMAPs, RSPAMD, Clamav, Roundcube(HTTPS), SPF, DKIM with easy installation and web administration.",
+  "tagline": "Free version of full mail server solution. POP3, SMTP, IMAP, Spamassassin, WebMail, WebAdmin",
+  "version": "2.5.6",
+  "image": "analogic/poste.io",
+  "developer": "analogic",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/poste.png",
+  "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/poste-io/thumbnail.png",
+  "screenshots": [
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/poste-io/screenshot-1.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/poste-io/screenshot-2.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/poste-io/screenshot-3.png"
+  ],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-poste-io",
+  "port_map": "80",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-poste-io-to-bigbearcasaos/3344\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-poste-io": {
+      "envs": [
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Timezone: UTC"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

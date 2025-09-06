@@ -1,0 +1,13 @@
+name: big-bear-ejbca-ce
+services:
+  big-bear-ejbca-ce:
+    container_name: big-bear-ejbca-ce
+    image: keyfactor/ejbca-ce:9.1.1
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID/persistent:/mnt/persistent
+    ports:
+      - '8080:8080'
+      - '8443:8443'
+    environment:
+      - TLS_SETUP_ENABLED=simple

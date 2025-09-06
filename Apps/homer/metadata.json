@@ -1,0 +1,54 @@
+{
+  "id": "homer",
+  "name": "Homer",
+  "description": "A dead simple static HOMepage for your servER to keep your services on hand, from a simple yaml configuration file.",
+  "tagline": "Homer",
+  "version": "25.08.1",
+  "image": "b4bz/homer",
+  "developer": "bastienwirtz",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/homer.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "8080",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "envs": [
+        {
+          "container": "INIT_ASSETS",
+          "description": {
+            "en_us": "Initialize assets"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/www/assets",
+          "description": {
+            "en_us": "Container Path: /www/assets"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

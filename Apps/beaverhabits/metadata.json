@@ -1,0 +1,80 @@
+{
+  "id": "beaverhabits",
+  "name": "Beaver Habit Tracker",
+  "description": "A self-hosted habit tracking app without \"Goals\"",
+  "tagline": "A self-hosted habit tracking app without \"Goals\"",
+  "version": "0.7.1",
+  "image": "daya0576/beaverhabits",
+  "developer": "daya0576",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/beaver-habit-tracker.png",
+  "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/beaverhabits/thumbnail.png",
+  "screenshots": [
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/beaverhabits/screenshot-1.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/beaverhabits/screenshot-2.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/beaverhabits/screenshot-3.png"
+  ],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-beaverhabits",
+  "port_map": "8080",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-beaverhabits-to-bigbearcasaos/3345?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-beaverhabits": {
+      "envs": [
+        {
+          "container": "HABITS_STORAGE",
+          "description": {
+            "en_us": "Sets the storage type for habits"
+          }
+        },
+        {
+          "container": "TRUSTED_LOCAL_EMAIL",
+          "description": {
+            "en_us": "Sets the trusted local email"
+          }
+        },
+        {
+          "container": "INDEX_HABIT_DATE_COLUMNS",
+          "description": {
+            "en_us": "Specifies the number of date columns for the index page"
+          }
+        },
+        {
+          "container": "ENABLE_IOS_STANDALONE",
+          "description": {
+            "en_us": "Enables iOS standalone mode"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/app/.user/",
+          "description": {
+            "en_us": "Container Path: /app/.user/"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

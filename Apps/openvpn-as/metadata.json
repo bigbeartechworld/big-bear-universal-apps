@@ -1,0 +1,59 @@
+{
+  "id": "openvpn-as",
+  "name": "OpenVPN",
+  "description": "OpenVPN is an open-source commercial software that implements virtual private network (VPN) techniques to create secure point-to-point or site-to-site connections in routed or bridged configurations and remote access facilities.",
+  "tagline": "OpenVPN is an open-source commercial software that implements virtual private network (VPN).",
+  "version": "2.13.1-d8cdeb9c-Ubuntu22",
+  "image": "openvpn/openvpn-as",
+  "developer": "openvpn",
+  "author": "BigBearCommunity",
+  "icon": "https://static-00.iconduck.com/assets.00/openvpn-icon-512x512-nmf6geqm.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64"
+  ],
+  "main_service": "big-bear-openvpn-as",
+  "port_map": "943",
+  "tips": {
+    "custom": "Username: `openvpn`\nPassword: `You can find you first time password in the log of the container`"
+  },
+  "services_metadata": {
+    "big-bear-openvpn-as": {
+      "ports": [
+        {
+          "container": "943",
+          "description": {
+            "en_us": "Container Port: 943"
+          }
+        },
+        {
+          "container": "443",
+          "description": {
+            "en_us": "Container Port: 443"
+          }
+        },
+        {
+          "container": "1194",
+          "description": {
+            "en_us": "Container Port: 1194"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/openvpn",
+          "description": {
+            "en_us": "Container Path: /openvpn"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

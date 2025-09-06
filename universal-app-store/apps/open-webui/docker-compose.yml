@@ -1,0 +1,13 @@
+name: big-bear-open-webui
+services:
+  big-bear-open-webui:
+    container_name: big-bear-open-webui
+    image: ghcr.io/open-webui/open-webui:git-33e54a9
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID/data:/app/backend/data
+    environment:
+      - OLLAMA_BASE_URL=
+      - OPENAI_API_KEY=
+    ports:
+      - '8080:8080'

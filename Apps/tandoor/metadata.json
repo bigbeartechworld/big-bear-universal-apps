@@ -1,0 +1,52 @@
+{
+  "id": "tandoor",
+  "name": "Tandoor",
+  "description": "Drop your collection of links and notes. Get Tandoor and never look back onto a time without recipe management, storage, sharing and collaborative cooking!",
+  "tagline": "Recipe collection manager.",
+  "version": "2.1.0",
+  "image": "ghcr.io/tandoorrecipes/recipes",
+  "developer": "tandoorrecipes",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/tandoor-recipes.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-tandoor",
+  "port_map": "8080",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-tandoor": {
+      "volumes": [
+        {
+          "container": "/opt/recipes/staticfiles",
+          "description": {
+            "en_us": "Container Path: /opt/recipes/staticfiles"
+          }
+        },
+        {
+          "container": "/opt/recipes/mediafiles",
+          "description": {
+            "en_us": "Container Path: /opt/recipes/mediafiles"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/f4-op1UOaWc",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

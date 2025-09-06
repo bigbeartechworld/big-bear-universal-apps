@@ -1,0 +1,94 @@
+{
+  "id": "n8n",
+  "name": "n8n",
+  "description": "Free and open fair-code licensed node based Workflow Automation Tool.",
+  "tagline": "Workflow automation tool",
+  "version": "1.110.0",
+  "image": "n8nio/n8n",
+  "developer": "n8n",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/n8n.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "5678",
+  "tips": {
+    "before_install": {
+      "en_us": "Run this script:\n\n```\nbash -c \"$(wget -qLO - https://raw.githubusercontent.com/bigbeartechworld/big-bear-scripts/master/generate-n8n-init-data/run.sh)\"\n```\n"
+    }
+  },
+  "services_metadata": {
+    "app": {
+      "envs": [
+        {
+          "container": "DB_TYPE",
+          "description": {
+            "en_us": "Database type: postgresdb"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/home/node/.n8n",
+          "description": {
+            "en_us": "Container Path: /home/node/.n8n"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "5678",
+          "description": {
+            "en_us": "Container Port: 5678"
+          }
+        }
+      ]
+    },
+    "db-n8n": {
+      "envs": [
+        {
+          "container": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Database password: bigbearcasaos"
+          }
+        },
+        {
+          "container": "POSTGRES_USER",
+          "description": {
+            "en_us": "Database user: bigbearcasaos"
+          }
+        },
+        {
+          "container": "POSTGRES_DB",
+          "description": {
+            "en_us": "Database type: postgresdb"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data",
+          "description": {
+            "en_us": "Container Path: /var/lib/postgresql/data"
+          }
+        },
+        {
+          "container": "/docker-entrypoint-initdb.d/init-data.sh",
+          "description": {
+            "en_us": "Container Path: /docker-entrypoint-initdb.d/init-data.sh"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

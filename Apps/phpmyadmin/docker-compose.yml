@@ -1,0 +1,12 @@
+name: big-bear-phpmyadmin
+services:
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.2.2
+    container_name: big-bear-phpmyadmin
+    environment:
+      PMA_HOST: '[YOUR-CASAOS-IP]'
+      PMA_PORT: '3306'
+      PMA_USER: bigbear
+      PMA_PASSWORD: password
+    ports:
+      - '8080:80'

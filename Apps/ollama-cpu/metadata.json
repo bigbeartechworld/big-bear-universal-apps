@@ -1,0 +1,46 @@
+{
+  "id": "ollama-cpu",
+  "name": "Ollama - CPU",
+  "description": "Get up and running with Llama 3, Mistral, Gemma, and other large language models.",
+  "tagline": "LLMs inference server with OpenAI compatible API",
+  "version": "0.11.8",
+  "image": "ollama/ollama",
+  "developer": "ollama",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ollama.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-ollama-cpu",
+  "port_map": "11434",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-ollama-cpu": {
+      "volumes": [
+        {
+          "container": "/root/.ollama",
+          "description": {
+            "en_us": "Container Path: /root/.ollama"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "11434",
+          "description": {
+            "en_us": "Container Port: 11434"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

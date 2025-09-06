@@ -1,0 +1,13 @@
+name: big-bear-chromium
+services:
+  chromium:
+    container_name: big-bear-chromium
+    image: kasmweb/chromium:1.15.0-rolling
+    ports:
+      - '6902:6901'
+    environment:
+      - VNC_PW=casaos
+      - LAUNCH_URL=https://community.bigbeartechworld.com/
+    shm_size: 512m
+    volumes:
+      - /DATA/AppData/$AppID/Downloads:/home/kasm-user/Downloads

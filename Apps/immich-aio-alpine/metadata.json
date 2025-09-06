@@ -1,0 +1,174 @@
+{
+  "id": "immich-aio-alpine",
+  "name": "Immich AIO Alpine",
+  "description": "AIO Alpine. Self-hosted photo and video storage.",
+  "tagline": "Immich All In One Alpine",
+  "version": "1.131.3-alpine",
+  "image": "ghcr.io/imagegenius/immich",
+  "developer": "imagegenius",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/immich.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-immich-aio-alpine",
+  "port_map": "2283",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-immich-aio-alpine": {
+      "envs": [
+        {
+          "container": "PUID",
+          "description": {
+            "en_us": "Process UID"
+          }
+        },
+        {
+          "container": "PGID",
+          "description": {
+            "en_us": "Process GID"
+          }
+        },
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Timezone"
+          }
+        },
+        {
+          "container": "DB_HOSTNAME",
+          "description": {
+            "en_us": "Database Hostname"
+          }
+        },
+        {
+          "container": "DB_USERNAME",
+          "description": {
+            "en_us": "Database Username"
+          }
+        },
+        {
+          "container": "DB_PASSWORD",
+          "description": {
+            "en_us": "Database Password"
+          }
+        },
+        {
+          "container": "DB_DATABASE_NAME",
+          "description": {
+            "en_us": "Database Name"
+          }
+        },
+        {
+          "container": "DB_PORT",
+          "description": {
+            "en_us": "Database Port"
+          }
+        },
+        {
+          "container": "REDIS_HOSTNAME",
+          "description": {
+            "en_us": "Redis Hostname"
+          }
+        },
+        {
+          "container": "REDIS_PORT",
+          "description": {
+            "en_us": "Redis Port"
+          }
+        },
+        {
+          "container": "REDIS_PASSWORD",
+          "description": {
+            "en_us": "Redis Password"
+          }
+        },
+        {
+          "container": "MACHINE_LEARNING_GPU_ACCELERATION",
+          "description": {
+            "en_us": "Machine Learning GPU Acceleration"
+          }
+        },
+        {
+          "container": "MACHINE_LEARNING_WORKERS",
+          "description": {
+            "en_us": "Machine Learning Workers"
+          }
+        },
+        {
+          "container": "MACHINE_LEARNING_WORKER_TIMEOUT",
+          "description": {
+            "en_us": "Machine Learning Worker Timeout"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Container Path: /config"
+          }
+        },
+        {
+          "container": "/photos",
+          "description": {
+            "en_us": "Container Path: /photos"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3001",
+          "description": {
+            "en_us": "Container Port: 3001"
+          }
+        }
+      ]
+    },
+    "big-bear-immich-db": {
+      "envs": [
+        {
+          "container": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Database Password"
+          }
+        },
+        {
+          "container": "POSTGRES_USER",
+          "description": {
+            "en_us": "Database Username"
+          }
+        },
+        {
+          "container": "POSTGRES_DB",
+          "description": {
+            "en_us": "Database Name"
+          }
+        },
+        {
+          "container": "PG_DATA",
+          "description": {
+            "en_us": "Container Path: /var/lib/postgresql/data"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data",
+          "description": {
+            "en_us": "Container Path: /var/lib/postgresql/data"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

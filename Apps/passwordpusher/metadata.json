@@ -1,0 +1,106 @@
+{
+  "id": "passwordpusher",
+  "name": "Password Pusher",
+  "description": "Password Pusher is an open source application to communicate passwords over the web. Links to passwords expire after a certain number of views and/or time has passed.",
+  "tagline": "Give your users the tools to be secure by default.",
+  "version": "1.60.2",
+  "image": "pglombardo/pwpush",
+  "developer": "pglombardo",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/password-pusher.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-pwpush",
+  "port_map": "5100",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-password-pusher-to-bigbearcasaos/1508?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-pwpush": {
+      "envs": [
+        {
+          "container": "PWP__PW__EXPIRE_AFTER_DAYS_DEFAULT",
+          "description": {
+            "en_us": "Password Expire After Days Default"
+          }
+        },
+        {
+          "container": "PWP__PW__EXPIRE_AFTER_VIEWS_MIN",
+          "description": {
+            "en_us": "Password Expire After Views Min"
+          }
+        },
+        {
+          "container": "PWP__PW__RETRIEVAL_STEP_DEFAULT",
+          "description": {
+            "en_us": "Password Retrieval Step Default"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/opt/PasswordPusher/storage",
+          "description": {
+            "en_us": "Container Path: /opt/PasswordPusher/storage"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "5100",
+          "description": {
+            "en_us": "Container Port: 5100"
+          }
+        }
+      ]
+    },
+    "big-bear-pwpush-db": {
+      "envs": [
+        {
+          "container": "MARIADB_USER",
+          "description": {
+            "en_us": "Database user"
+          }
+        },
+        {
+          "container": "MARIADB_PASSWORD",
+          "description": {
+            "en_us": "Database password"
+          }
+        },
+        {
+          "container": "MARIADB_DATABASE",
+          "description": {
+            "en_us": "Database name"
+          }
+        },
+        {
+          "container": "MARIADB_RANDOM_ROOT_PASSWORD",
+          "description": {
+            "en_us": "Database root password"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/mysql",
+          "description": {
+            "en_us": "Container Path: /var/lib/mysql"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/U17LWqXfOmU",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

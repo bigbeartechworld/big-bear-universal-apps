@@ -1,0 +1,92 @@
+{
+  "id": "gladys",
+  "name": "Gladys Assistant",
+  "description": "Gladys Assistant is a modern, privacy-first & open-source home automation software that runs anywhere.",
+  "tagline": "A privacy-first, open-source home assistant.",
+  "version": "4.61.1",
+  "image": "gladysassistant/gladys",
+  "developer": "GladysAssistant",
+  "author": "BigBearTechWorld",
+  "icon": "https://gladysassistant.com/img/external/github-gladys-logo.png",
+  "thumbnail": "https://gladysassistant.com/img/home/main_screenshot/main_screenshot_en_j5czyj_c_scale,w_2526.png",
+  "screenshots": [
+    "https://gladysassistant.com/img/home/main_screenshot/main_screenshot_en_j5czyj_c_scale,w_2526.png"
+  ],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "1080",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "envs": [
+        {
+          "name": "NODE_ENV",
+          "description": {
+            "en_us": "Node environment"
+          }
+        },
+        {
+          "name": "SQLITE_FILE_PATH",
+          "description": {
+            "en_us": "Path to SQLite database file"
+          }
+        },
+        {
+          "name": "TZ",
+          "description": {
+            "en_us": "Timezone"
+          }
+        },
+        {
+          "name": "SERVER_PORT",
+          "description": {
+            "en_us": "Exposed port for the server"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/run/docker.sock",
+          "description": {
+            "en_us": "Docker socket"
+          }
+        },
+        {
+          "container": "/var/lib/gladysassistant",
+          "description": {
+            "en_us": "Gladys Assistant data"
+          }
+        },
+        {
+          "container": "/dev",
+          "description": {
+            "en_us": "Device access"
+          }
+        },
+        {
+          "container": "/run/udev",
+          "description": {
+            "en_us": "Device access"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "1080",
+          "description": {
+            "en_us": "HTTP port"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/l4GPomJMIT0",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

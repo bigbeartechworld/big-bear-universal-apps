@@ -1,0 +1,86 @@
+{
+  "id": "wishlist",
+  "name": "Wishlist",
+  "description": "Wishlist is a self-hosted wishlist application that you can share with your friends and family. You no longer have to wonder what to get your family for the holidays, simply check their wishlist and claim any available item!",
+  "tagline": "Wishlist is a self-hosted wishlist application that you can share with your friends and family.",
+  "version": "0.50.0",
+  "image": "ghcr.io/cmintey/wishlist",
+  "developer": "cmintey",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wishlist/logo.png",
+  "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wishlist/thumbnail.png",
+  "screenshots": [
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wishlist/screenshot-1.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wishlist/screenshot-2.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wishlist/screenshot-3.png"
+  ],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-wishlist",
+  "port_map": "3280",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-wishlist-to-bigbearcasaos/3555?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-wishlist": {
+      "envs": [
+        {
+          "container": "ORIGIN",
+          "description": {
+            "en_us": "If behind a reverse proxy, set this to your domain"
+          }
+        },
+        {
+          "container": "TOKEN_TIME",
+          "description": {
+            "en_us": "Hours until signup and password reset tokens expire"
+          }
+        },
+        {
+          "container": "DEFAULT_CURRENCY",
+          "description": {
+            "en_us": "The currency to use when a product search does not return a currency"
+          }
+        },
+        {
+          "container": "LOG_LEVEL",
+          "description": {
+            "en_us": "Set the logging level: trace | debug | info | warn | error | fatal | silent"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/usr/src/app/uploads",
+          "description": {
+            "en_us": "Container Path: /usr/src/app/uploads"
+          }
+        },
+        {
+          "container": "/usr/src/app/data",
+          "description": {
+            "en_us": "Container Path: /usr/src/app/data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3280",
+          "description": {
+            "en_us": "Container Port: 3280"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

@@ -1,0 +1,37 @@
+name: big-bear-send-visee
+services:
+  big-bear-send-visee:
+    container_name: big-bear-send-visee
+    image: registry.gitlab.com/timvisee/send:v3.4.27
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - BASE_URL=http://${APP_DOMAIN}
+      - REDIS_HOST=big-bear-send-visee-redis
+      - MAX_FILE_SIZE=2147483648
+      - FILE_DIR=/uploads
+    volumes:
+      - /DATA/AppData/$AppID/uploads:/uploads
+    ports:
+      - '1443:1443'
+    networks:
+      - big_bear_send_visee_network
+  big-bear-send-visee-redis:
+    container_name: big-bear-send-visee-redis
+    image: redis:alpine
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID/redis:/data
+    healthcheck:
+      test:
+        - CMD
+        - redis-cli
+        - ping
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    networks:
+      - big_bear_send_visee_network
+networks:
+  big_bear_send_visee_network:
+    driver: bridge

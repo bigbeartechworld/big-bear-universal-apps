@@ -1,0 +1,74 @@
+{
+  "id": "ncdu",
+  "name": "Ncdu",
+  "description": "Ncdu is a disk usage analyzer with an ncurses interface. It is designed to find space hogs on a remote server where you don’t have an entire graphical setup available, but it is a useful tool even on regular desktop systems. Ncdu aims to be fast, simple and easy to use, and should be able to run in any minimal POSIX-like environment with ncurses installed. Software made by Yorhel at https://dev.yorhel.nl/ncdu",
+  "tagline": "Ncdu is a disk usage analyzer with an ncurses interface.",
+  "version": "0.0.2",
+  "image": "bigbeartechworld/big-bear-ncdu",
+  "developer": "bigbeartechworld",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/ncdu/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-ncdu",
+  "port_map": "7681",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-ncdu-to-bigbearcasaos/1240?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-ncdu": {
+      "volumes": [
+        {
+          "container": "/proc",
+          "description": {
+            "en_us": "Container Path: /proc"
+          }
+        },
+        {
+          "container": "/sys",
+          "description": {
+            "en_us": "Container Path: /sys"
+          }
+        },
+        {
+          "container": "/dev",
+          "description": {
+            "en_us": "Container Path: /dev"
+          }
+        },
+        {
+          "container": "/etc/localtime",
+          "description": {
+            "en_us": "Container Path: /etc/localtime"
+          }
+        },
+        {
+          "container": "/casaos",
+          "description": {
+            "en_us": "Container Path: /casaos"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "7681",
+          "description": {
+            "en_us": "Container Port: 7681"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/5RCTglGRXss",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

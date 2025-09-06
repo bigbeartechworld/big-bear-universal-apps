@@ -1,0 +1,47 @@
+{
+  "id": "whats-up-docker",
+  "name": "What's Up Docker",
+  "description": "Gets you notified when new versions of your Docker containers are available and lets you react the way you want.",
+  "tagline": "What's Up Docker",
+  "version": "6.6.1",
+  "image": "fmartinou/whats-up-docker",
+  "developer": "fmartinou",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/whats-up-docker.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "3000",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "volumes": [
+        {
+          "container": "/var/run/docker.sock",
+          "description": {
+            "en_us": "Container Path: /var/run/docker.sock"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3000",
+          "description": {
+            "en_us": "Container Port: 3000"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

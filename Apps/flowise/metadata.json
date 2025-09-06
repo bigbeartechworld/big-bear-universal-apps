@@ -1,0 +1,130 @@
+{
+  "id": "flowise",
+  "name": "Flowise AI",
+  "description": "Flowise AI is an Open source UI visual tool to build your customized LLM orchestration flow & AI agents. Developing LLM apps takeslength iterations. With low code approach, Flowise AI enable quick iterations to go from testing to production.",
+  "tagline": "Build LLM Apps Easily",
+  "version": "3.0.5",
+  "image": "flowiseai/flowise",
+  "developer": "bigbeartechworld",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/flowise/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-flowise",
+  "port_map": "8009",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-flowise-to-bigbearcasaos/1989?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-flowise": {
+      "envs": [
+        {
+          "container": "PORT",
+          "description": {
+            "en_us": "Container Port: 8009"
+          }
+        },
+        {
+          "container": "FLOWISE_USERNAME",
+          "description": {
+            "en_us": "Username: bigbear"
+          }
+        },
+        {
+          "container": "FLOWISE_PASSWORD",
+          "description": {
+            "en_us": "Password: b0f91e4c-9d4b-4375-bc9b-9b57667ce7ab"
+          }
+        },
+        {
+          "container": "FLOWISE_SECRETKEY_OVERWRITE",
+          "description": {
+            "en_us": "Secretkey Overwrite: true"
+          }
+        },
+        {
+          "container": "LANGCHAIN_ENDPOINT",
+          "description": {
+            "en_us": "Langchain Endpoint: "
+          }
+        },
+        {
+          "container": "LANGCHAIN_API_KEY",
+          "description": {
+            "en_us": "Langchain API Key: "
+          }
+        },
+        {
+          "container": "LANGCHAIN_PROJECT",
+          "description": {
+            "en_us": "Langchain Project: "
+          }
+        },
+        {
+          "container": "LANGCHAIN_TRACING_V2",
+          "description": {
+            "en_us": "Langchain Tracing V2: "
+          }
+        },
+        {
+          "container": "DISABLE_FLOWISE_TELEMETRY",
+          "description": {
+            "en_us": "Disable Flowise Telemetry: true"
+          }
+        },
+        {
+          "container": "DATABASE_PATH",
+          "description": {
+            "en_us": "Database Path: /root/.flowise"
+          }
+        },
+        {
+          "container": "APIKEY_PATH",
+          "description": {
+            "en_us": "Apikey Path: /root/.flowise"
+          }
+        },
+        {
+          "container": "SECRETKEY_PATH",
+          "description": {
+            "en_us": "Secretkey Path: /root/.flowise/logs"
+          }
+        },
+        {
+          "container": "LOG_PATH",
+          "description": {
+            "en_us": "Log Path: /root/.flowise"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/root/.flowise",
+          "description": {
+            "en_us": "Container Path: /root/.flowise"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8009",
+          "description": {
+            "en_us": "Container Port: 8009"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

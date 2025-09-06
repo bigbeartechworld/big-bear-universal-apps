@@ -1,0 +1,10 @@
+name: big-bear-retroarch-web
+services:
+  big-bear-retroarch-web:
+    container_name: big-bear-retroarch-web
+    image: inglebard/retroarch-web:latest
+    restart: unless-stopped
+    environment:
+      - ROOT_WWW_PATH="/var/www/html"
+    ports:
+      - '8080:80'

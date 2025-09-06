@@ -1,0 +1,11 @@
+name: big-bear-focalboard
+services:
+  app:
+    container_name: big-bear-focalboard
+    image: mattermost/focalboard:7.11.4
+    restart: unless-stopped
+    ports:
+      - '8000:8000'
+    network_mode: bridge
+    volumes:
+      - /DATA/AppData/$AppID/data:/opt/focalboard/data

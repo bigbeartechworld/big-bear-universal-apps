@@ -1,0 +1,24 @@
+name: big-bear-openvpn-as
+services:
+  big-bear-openvpn-as:
+    container_name: big-bear-openvpn-as
+    image: openvpn/openvpn-as:2.13.1-d8cdeb9c-Ubuntu22
+    restart: unless-stopped
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=Europe/Rome
+    hostname: OpenVPN
+    labels:
+      icon: >-
+        https://static-00.iconduck.com/assets.00/openvpn-icon-512x512-nmf6geqm.png
+    ports:
+      - 943:943/tcp
+      - 443:443/tcp
+      - 1194:1194/udp
+    volumes:
+      - /DATA/AppData/$AppID/data:/openvpn
+    network_mode: bridge

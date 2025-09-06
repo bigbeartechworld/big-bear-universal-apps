@@ -1,0 +1,377 @@
+name: Validate Apps
+
+on:
+  pull_request:
+    paths:
+      - 'universal-app-store/apps/**'
+      - 'Apps/**'
+      - 'scripts/**'
+      - '*.js'
+  workflow_dispatch:
+    inputs:
+      apps:
+        description: 'Specific apps to validate (comma-separated, leave empty for all)'
+        required: false
+        default: ''
+        type: string
+
+jobs:
+  validate-structure:
+    runs-on: ubuntu-latest
+    outputs:
+      apps-to-validate: ${{ steps.detect-apps.outputs.apps }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: |
+          npm install js-yaml ajv
+          
+      - name: Detect apps to validate
+        id: detect-apps
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ inputs.apps }}" ]; then
+            echo "apps=${{ inputs.apps }}" >> $GITHUB_OUTPUT
+          else
+            # Detect changed apps from git diff in PR
+            if [ "${{ github.event_name }}" = "pull_request" ]; then
+              changed_files=$(git diff --name-only origin/${{ github.base_ref }}...HEAD -- Apps/ universal-app-store/apps/ 2>/dev/null || echo "")
+            else
+              changed_files=$(git diff --name-only HEAD~1 HEAD -- Apps/ universal-app-store/apps/ 2>/dev/null || echo "")
+            fi
+            
+            if [ -n "$changed_files" ]; then
+              apps=$(echo "$changed_files" | grep -E "^(Apps|universal-app-store/apps)/" | cut -d'/' -f2 | sort -u | tr '\n' ',' | sed 's/,$//')
+              echo "apps=$apps" >> $GITHUB_OUTPUT
+              echo "Detected changed apps: $apps"
+            else
+              echo "apps=" >> $GITHUB_OUTPUT
+              echo "No app changes detected"
+            fi
+          fi
+          
+      - name: Validate universal app structure  
+        if: steps.detect-apps.outputs.apps != ''
+        run: |
+          echo "🔍 Validating universal app structure..."
+          
+          # Create validation script
+          cat > validate-structure.js << 'EOF'
+          const fs = require('fs');
+          const path = require('path');
+          const yaml = require('js-yaml');
+          
+          function validateApp(appId) {
+            console.log(`\n🔍 Validating app: ${appId}`);
+            const appPath = `Apps/${appId}`;
+            const universalPath = `universal-app-store/apps/${appId}`;
+            
+            // Check which structure exists
+            let basePath = '';
+            if (fs.existsSync(appPath)) {
+              basePath = appPath;
+            } else if (fs.existsSync(universalPath)) {
+              basePath = universalPath;
+            } else {
+              console.error(`❌ App directory not found: ${appId}`);
+              return false;
+            }
+            
+            let valid = true;
+            
+            // Check required files
+            const requiredFiles = ['config.json', 'docker-compose.yml'];
+            for (const file of requiredFiles) {
+              const filePath = path.join(basePath, file);
+              if (!fs.existsSync(filePath)) {
+                console.error(`❌ Missing required file: ${file}`);
+                valid = false;
+              }
+            }
+            
+            // Validate config.json
+            try {
+              const configPath = path.join(basePath, 'config.json');
+              if (fs.existsSync(configPath)) {
+                const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+                
+                if (!config.name) {
+                  console.error('❌ config.json missing "name" field');
+                  valid = false;
+                }
+                if (!config.version) {
+                  console.error('❌ config.json missing "version" field');
+                  valid = false;
+                }
+                console.log('✅ config.json is valid JSON');
+              }
+            } catch (error) {
+              console.error(`❌ Invalid JSON in config.json: ${error.message}`);
+              valid = false;
+            }
+            
+            // Validate docker-compose.yml
+            try {
+              const composePath = path.join(basePath, 'docker-compose.yml');
+              if (fs.existsSync(composePath)) {
+                const compose = yaml.load(fs.readFileSync(composePath, 'utf8'));
+                
+                if (!compose.services) {
+                  console.error('❌ docker-compose.yml missing "services" section');
+                  valid = false;
+                } else {
+                  console.log(`✅ docker-compose.yml has ${Object.keys(compose.services).length} service(s)`);
+                }
+              }
+            } catch (error) {
+              console.error(`❌ Invalid YAML in docker-compose.yml: ${error.message}`);
+              valid = false;
+            }
+            
+            if (valid) {
+              console.log(`✅ ${appId} validation passed`);
+            }
+            
+            return valid;
+          }
+          
+          // Main execution
+          const apps = process.argv[2];
+          if (!apps) {
+            console.log('No apps specified for validation');
+            process.exit(0);
+          }
+          
+          const appList = apps.split(',').filter(app => app.trim());
+          let allValid = true;
+          
+          for (const app of appList) {
+            const isValid = validateApp(app.trim());
+            if (!isValid) {
+              allValid = false;
+            }
+          }
+          
+          if (allValid) {
+            console.log('\n🎉 All apps passed validation!');
+            process.exit(0);
+          } else {
+            console.log('\n❌ Some apps failed validation');
+            process.exit(1);
+          }
+          EOF
+          
+          node validate-structure.js "${{ steps.detect-apps.outputs.apps }}"
+
+  test-conversions:
+    needs: validate-structure
+    if: needs.validate-structure.outputs.apps-to-validate != ''
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: ['casaos', 'portainer', 'dockge', 'runtipi', 'cosmos']
+      fail-fast: false
+      
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: npm install js-yaml
+        
+      - name: Create universal-app-store structure if needed
+        run: |
+          if [ ! -d "universal-app-store" ] && [ -d "Apps" ]; then
+            echo "📦 Creating universal-app-store structure for testing"
+            node standardize-apps.js || true
+          fi
+          
+      - name: Test ${{ matrix.platform }} conversion
+        run: |
+          echo "🧪 Testing ${{ matrix.platform }} conversion..."
+          
+          # Add dry-run flag to prevent actual file creation during testing
+          if [ -f "convert-to-${{ matrix.platform }}.js" ]; then
+            # Create a test version that doesn't write files
+            sed 's/fs\.writeFileSync/console.log("Would write:", arguments[0]); \/\/ fs.writeFileSync/g' \
+                "convert-to-${{ matrix.platform }}.js" > "test-convert-to-${{ matrix.platform }}.js"
+            
+            echo "Running test conversion..."
+            timeout 300 node "test-convert-to-${{ matrix.platform }}.js" || {
+              echo "❌ Conversion test failed or timed out"
+              exit 1
+            }
+            
+            echo "✅ ${{ matrix.platform }} conversion test passed"
+          else
+            echo "⚠️ Converter script not found: convert-to-${{ matrix.platform }}.js"
+            exit 1
+          fi
+
+  validate-metadata:
+    needs: validate-structure
+    if: needs.validate-structure.outputs.apps-to-validate != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: npm install js-yaml
+        
+      - name: Validate app metadata consistency
+        run: |
+          echo "🔍 Validating metadata consistency..."
+          
+          cat > validate-metadata.js << 'EOF'
+          const fs = require('fs');
+          const path = require('path');
+          const yaml = require('js-yaml');
+          
+          function validateMetadata(appId) {
+            console.log(`\n📋 Validating metadata for: ${appId}`);
+            
+            const appPath = fs.existsSync(`Apps/${appId}`) ? `Apps/${appId}` : `universal-app-store/apps/${appId}`;
+            if (!fs.existsSync(appPath)) {
+              console.error(`❌ App directory not found: ${appId}`);
+              return false;
+            }
+            
+            let valid = true;
+            
+            try {
+              // Load config.json
+              const config = JSON.parse(fs.readFileSync(path.join(appPath, 'config.json'), 'utf8'));
+              
+              // Load docker-compose.yml  
+              const compose = yaml.load(fs.readFileSync(path.join(appPath, 'docker-compose.yml'), 'utf8'));
+              
+              // Validate consistency between files
+              if (config.name && compose.name && config.name.toLowerCase() !== compose.name.toLowerCase()) {
+                console.warn(`⚠️ Name mismatch: config.json="${config.name}" vs compose.name="${compose.name}"`);
+              }
+              
+              // Check for required metadata
+              const requiredFields = ['name', 'version'];
+              for (const field of requiredFields) {
+                if (!config[field]) {
+                  console.error(`❌ Missing required field in config.json: ${field}`);
+                  valid = false;
+                }
+              }
+              
+              // Validate services exist
+              if (!compose.services || Object.keys(compose.services).length === 0) {
+                console.error('❌ No services defined in docker-compose.yml');
+                valid = false;
+              }
+              
+              // Check for port mappings
+              let hasWebInterface = false;
+              Object.values(compose.services).forEach(service => {
+                if (service.ports && service.ports.length > 0) {
+                  hasWebInterface = true;
+                }
+              });
+              
+              if (!hasWebInterface) {
+                console.warn('⚠️ No web interface detected (no port mappings)');
+              }
+              
+              console.log('✅ Metadata validation passed');
+              
+            } catch (error) {
+              console.error(`❌ Error validating metadata: ${error.message}`);
+              valid = false;
+            }
+            
+            return valid;
+          }
+          
+          // Main execution
+          const apps = process.argv[2];
+          if (!apps) {
+            console.log('No apps specified for metadata validation');
+            process.exit(0);
+          }
+          
+          const appList = apps.split(',').filter(app => app.trim());
+          let allValid = true;
+          
+          for (const app of appList) {
+            const isValid = validateMetadata(app.trim());
+            if (!isValid) {
+              allValid = false;
+            }
+          }
+          
+          if (allValid) {
+            console.log('\n🎉 All app metadata is valid!');
+            process.exit(0);
+          } else {
+            console.log('\n❌ Some metadata validation failed');
+            process.exit(1);
+          }
+          EOF
+          
+          node validate-metadata.js "${{ needs.validate-structure.outputs.apps-to-validate }}"
+
+  validation-summary:
+    needs: [validate-structure, test-conversions, validate-metadata]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate validation summary
+        run: |
+          echo "🧪 **App Validation Summary**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Validation Results" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ needs.validate-structure.result }}" = "success" ]; then
+            echo "✅ **Structure Validation**: Passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ **Structure Validation**: Failed" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          if [ "${{ needs.test-conversions.result }}" = "success" ]; then
+            echo "✅ **Conversion Tests**: Passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ **Conversion Tests**: Failed" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          if [ "${{ needs.validate-metadata.result }}" = "success" ]; then
+            echo "✅ **Metadata Validation**: Passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ **Metadata Validation**: Failed" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Details" >> $GITHUB_STEP_SUMMARY
+          echo "- **Apps Validated**: \`${{ needs.validate-structure.outputs.apps-to-validate }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Platforms Tested**: casaos, portainer, dockge, runtipi, cosmos" >> $GITHUB_STEP_SUMMARY
+          
+          # Overall status
+          if [ "${{ needs.validate-structure.result }}" = "success" ] && \
+             [ "${{ needs.test-conversions.result }}" = "success" ] && \
+             [ "${{ needs.validate-metadata.result }}" = "success" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "🎉 **Overall Status**: All validations passed! Ready for deployment." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "⚠️ **Overall Status**: Some validations failed. Please review the logs above." >> $GITHUB_STEP_SUMMARY
+          fi

@@ -1,0 +1,10 @@
+name: big-bear-nexterm
+services:
+  big-bear-nexterm:
+    container_name: big-bear-nexterm
+    image: germannewsmaker/nexterm:1.0.5-OPEN-PREVIEW
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID/data:/app/data
+    ports:
+      - '6989:6989'

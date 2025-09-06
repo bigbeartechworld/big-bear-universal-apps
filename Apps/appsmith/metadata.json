@@ -1,0 +1,52 @@
+{
+  "id": "appsmith",
+  "name": "Appsmith",
+  "description": "Low code project to build admin panels, internal tools, and dashboards, integrating 15+ databases.",
+  "tagline": "Appsmith",
+  "version": "1.73.1",
+  "image": "appsmith/appsmith-ee",
+  "developer": "appsmithorg",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/appsmithorg/appsmith/static/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "1080",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "volumes": [
+        {
+          "container": "/appsmith-stacks",
+          "description": {
+            "en_us": "Container Path: /appsmith-stacks"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "1080",
+          "description": {
+            "en_us": "Container Port: 1080"
+          }
+        },
+        {
+          "container": "10443",
+          "description": {
+            "en_us": "Container Port: 10443"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "ntfysh",
+  "name": "Ntfy.sh",
+  "description": "ntfy (pronounced notify) is a simple HTTP-based pub-sub notification service. It allows you to send notifications to your phone or desktop via scripts from any computer, and/or using a REST API. It's infinitely flexible, and 100% free software.",
+  "tagline": "A simple HTTP-based pub-sub notification service",
+  "version": "2.14.0",
+  "image": "binwiederhier/ntfy",
+  "developer": "",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ntfy.png",
+  "thumbnail": "https://ntfy.sh/_next/static/media/screenshot-web-3.de6f19af.png",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "7200",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "envs": [
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Timezone"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/cache/ntfy",
+          "description": {
+            "en_us": "Container Path: /var/cache/ntfy"
+          }
+        },
+        {
+          "container": "/etc/ntfy",
+          "description": {
+            "en_us": "Container Path: /etc/ntfy"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "80",
+          "description": {
+            "en_us": "Container Port: 80"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/wSWhtSNwTd8",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

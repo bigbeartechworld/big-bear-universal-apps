@@ -1,0 +1,106 @@
+{
+  "id": "stirling-pdf",
+  "name": "Stirling-PDF",
+  "description": "Stirling PDF - Local hosted web based PDF editor",
+  "tagline": "Stirling PDF - Local hosted web based PDF editor",
+  "version": "1.2.0",
+  "image": "stirlingpdf/stirlingpdf",
+  "developer": "stirlingtools",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/stirling-pdf/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-stirling-pdf",
+  "port_map": "8080",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-stirling-pdf-to-bigbearcasaos/2265#p-4248-documentation-3\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-stirling-pdf": {
+      "envs": [
+        {
+          "container": "DOCKER_ENABLE_SECURITY",
+          "description": {
+            "en_us": "Enable Security Jar for Authentication"
+          }
+        },
+        {
+          "container": "SECURITY_ENABLE_LOGIN",
+          "description": {
+            "en_us": "Enable Login for Authentication"
+          }
+        },
+        {
+          "container": "SECURITY_INITIALLOGIN_USERNAME",
+          "description": {
+            "en_us": "Initial admin username"
+          }
+        },
+        {
+          "container": "SECURITY_INITIALLOGIN_PASSWORD",
+          "description": {
+            "en_us": "Initial admin password"
+          }
+        },
+        {
+          "container": "CSRF_DISABLED",
+          "description": {
+            "en_us": "Disable CSRF Protection"
+          }
+        },
+        {
+          "container": "DEFAULT_LOCALE",
+          "description": {
+            "en_us": "Set Default Locale"
+          }
+        },
+        {
+          "container": "INSTALL_BOOK_AND_ADVANCED_HTML_OPS",
+          "description": {
+            "en_us": "Install Book and Advanced HTML Ops"
+          }
+        },
+        {
+          "container": "LANGS",
+          "description": {
+            "en_us": "Languages"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/usr/share/tessdata",
+          "description": {
+            "en_us": "Container Path: /usr/share/tessdata"
+          }
+        },
+        {
+          "container": "/configs",
+          "description": {
+            "en_us": "Configuration Files Path: /configs"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/ZoPSPDvOPdo",
+    "docs": "https://community.bigbeartechworld.com/t/added-stirling-pdf-to-bigbearcasaos/2265#p-4248-documentation-3",
+    "big_bear_cosmos_youtube": ""
+  }
+}

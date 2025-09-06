@@ -1,0 +1,10 @@
+name: big-bear-beszel
+services:
+  big-bear-beszel:
+    container_name: big-bear-beszel
+    image: henrygd/beszel:0.12.6
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID/data:/beszel_data
+    ports:
+      - '8090:8090'

@@ -1,0 +1,79 @@
+{
+  "id": "peppermint",
+  "name": "Peppermint",
+  "description": "Peppermint is a central hub for your help desk. A powerfully easy system for tracking, prioritising, and solving customer support tickets.",
+  "tagline": "peppermint",
+  "version": "latest",
+  "image": "pepperlabs/peppermint",
+  "developer": "Pepperlabs",
+  "author": "BigBearCommunity",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/peppermint/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64"
+  ],
+  "main_service": "app",
+  "port_map": "3000",
+  "tips": {
+    "before_install": {
+      "en_us": "### Additional Instructions:\nAfter finished installing, open the `app settings` and update the `API_URL` to point it to your Home Server's IP Address.\ne.g:\n``` http://192.168.31.31:5003\n```\n### Default credentials:\nUsername: `admin@admin.com` Password: `1234`\n"
+    }
+  },
+  "services_metadata": {
+    "db": {
+      "envs": [
+        {
+          "container": "PUID",
+          "description": {
+            "en_us": "for UserID"
+          }
+        },
+        {
+          "container": "PGID",
+          "description": {
+            "en_us": "for GroupID"
+          }
+        },
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "specify a timezone to use, see this list."
+          }
+        },
+        {
+          "container": "POSTGRES_DB",
+          "description": {
+            "en_us": "Specify the name of a database to be created on image startup."
+          }
+        },
+        {
+          "container": "POSTGRES_USER",
+          "description": {
+            "en_us": "Postgres server username"
+          }
+        },
+        {
+          "container": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Postgres server password"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data",
+          "description": {
+            "en_us": "Directory where Postgres database data is stored"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

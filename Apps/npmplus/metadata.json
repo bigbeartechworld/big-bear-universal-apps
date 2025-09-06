@@ -1,0 +1,46 @@
+{
+  "id": "npmplus",
+  "name": "NPMPlus",
+  "description": "Docker container for managing Nginx proxy hosts with a simple, powerful interface",
+  "tagline": "NPMPlus",
+  "version": "449",
+  "image": "zoeyvid/npmplus",
+  "developer": "zoeyvid",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nginx-proxy-manager.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-npmplus",
+  "port_map": "81",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-npmplus": {
+      "envs": [
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Timezone"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

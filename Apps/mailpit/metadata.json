@@ -1,0 +1,54 @@
+{
+  "id": "mailpit",
+  "name": "Mailpit",
+  "description": "Mailpit is a multi-platform email testing tool & API for developers.",
+  "tagline": "Mailpit",
+  "version": "1.27",
+  "image": "axllent/mailpit",
+  "developer": "axllent",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/mailpit/logo.png",
+  "thumbnail": "https://github.com/axllent/mailpit/blob/develop/docs/screenshot.png",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "8025",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "envs": [
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Timezone"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8025",
+          "description": {
+            "en_us": "Container Port: 8025"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/2MY3S6csrVw",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

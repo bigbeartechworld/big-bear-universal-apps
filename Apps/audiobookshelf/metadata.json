@@ -1,0 +1,64 @@
+{
+  "id": "audiobookshelf",
+  "name": "Audiobookshelf",
+  "description": "Audiobookshelf is a self-hosted audiobook server for managing and playing your audiobooks. Audiobookshelf has a clean, accessible design that's loaded with features but not overly complicated.",
+  "tagline": "Audiobookshelf is a self-hosted audiobook and podcast server.",
+  "version": "2.29.0",
+  "image": "ghcr.io/advplyr/audiobookshelf",
+  "developer": "ajnart",
+  "author": "advplyr",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/audiobookshelf.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-audiobookshelf",
+  "port_map": "8080",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-audiobookshelf": {
+      "volumes": [
+        {
+          "container": "audiobooks",
+          "description": {
+            "en_us": "Audiobooks"
+          }
+        },
+        {
+          "container": "podcasts",
+          "description": {
+            "en_us": "Podcasts"
+          }
+        },
+        {
+          "container": "config",
+          "description": {
+            "en_us": "Configuration"
+          }
+        },
+        {
+          "container": "metadata",
+          "description": {
+            "en_us": "Metadata"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "description": {
+            "en_us": "Web Interface"
+          },
+          "port": 80
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

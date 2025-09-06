@@ -1,0 +1,15 @@
+name: big-bear-write-freely
+services:
+  big-bear-write-freely:
+    container_name: big-bear-write-freely
+    image: nephatrine/write-freely:0.15
+    restart: unless-stopped
+    environment:
+      TZ: UTC
+      PUID: 1000
+      PGID: 1000
+    volumes:
+      - /DATA/AppData/$AppID/data/config:/mnt/config
+    ports:
+      - 70:70/tcp
+      - 8080:8080/tcp

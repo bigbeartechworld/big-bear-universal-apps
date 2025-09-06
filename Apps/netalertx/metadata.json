@@ -1,0 +1,52 @@
+{
+  "id": "netalertx",
+  "name": "NetAlertX",
+  "description": "WIFI / LAN intruder detector. Scans for devices connected to your network and alerts you if new and unknown devices are found.",
+  "tagline": "NetAlertX",
+  "version": "25.8.6",
+  "image": "jokobsk/netalertx",
+  "developer": "jokobsk",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/pi-alert.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-netalertx",
+  "port_map": "8080",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-netalertx": {
+      "volumes": [
+        {
+          "container": "/app/config",
+          "description": {
+            "en_us": "Container Path: /app/config"
+          }
+        },
+        {
+          "container": "/app/db",
+          "description": {
+            "en_us": "Container Path: /app/db"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

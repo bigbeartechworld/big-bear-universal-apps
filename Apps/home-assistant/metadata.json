@@ -1,0 +1,50 @@
+{
+  "id": "home-assistant",
+  "name": "Home Assistant",
+  "description": "Open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts. Perfect to run on a Raspberry Pi or a local server.",
+  "tagline": "Home Automation",
+  "version": "2025.9.1",
+  "image": "ghcr.io/home-assistant/home-assistant",
+  "developer": "home-assistant",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/home-assistant.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "8123",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "volumes": [
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Container Path: /config"
+          }
+        },
+        {
+          "container": "/etc/localtime",
+          "description": {
+            "en_us": "Container Path: /etc/localtime"
+          }
+        },
+        {
+          "container": "/run/dbus",
+          "description": {
+            "en_us": "Container Path: /run/dbus"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/YnCpj5sND_A",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

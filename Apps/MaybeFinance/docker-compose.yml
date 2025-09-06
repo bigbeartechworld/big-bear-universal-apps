@@ -1,0 +1,68 @@
+name: big-bear-maybe-finance
+services:
+  big-bear-maybe-finance:
+    container_name: big-bear-maybe-finance
+    image: ghcr.io/maybe-finance/maybe:sha-347c0a790693031fdd3b32792b5b6792693d1805
+    restart: unless-stopped
+    privileged: false
+    networks:
+      - big_bear_maybe_finance_network
+    volumes:
+      - /DATA/AppData/$AppID/app-storage:/rails/storage
+    ports:
+      - '4000:3000'
+    environment:
+      SELF_HOSTED: 'true'
+      RAILS_FORCE_SSL: 'false'
+      RAILS_ASSUME_SSL: 'false'
+      GOOD_JOB_EXECUTION_MODE: async
+      SECRET_KEY_BASE: SECRET_KEY_BASE
+      DB_HOST: big-bear-maybe-finance-postgres
+      POSTGRES_DB: maybe_production
+      POSTGRES_USER: maybe_user
+      POSTGRES_PASSWORD: casaos
+      REDIS_URL: redis://big-bear-maybe-finance-redis:6379/1
+    depends_on:
+      big-bear-maybe-finance-postgres:
+        condition: service_healthy
+      big-bear-maybe-finance-redis:
+        condition: service_healthy
+  big-bear-maybe-finance-postgres:
+    container_name: big-bear-maybe-finance-postgres
+    image: postgres:16
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID/postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: maybe_production
+      POSTGRES_USER: maybe_user
+      POSTGRES_PASSWORD: casaos
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U maybe_user -d maybe_production
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - big_bear_maybe_finance_network
+  big-bear-maybe-finance-redis:
+    container_name: big-bear-maybe-finance-redis
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID/redis-data:/data
+    healthcheck:
+      test:
+        - CMD
+        - sh
+        - '-c'
+        - '[ "$(redis-cli ping)" = "PONG" ]'
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - big_bear_maybe_finance_network
+networks:
+  big_bear_maybe_finance_network:
+    name: big_bear_maybe_finance_network

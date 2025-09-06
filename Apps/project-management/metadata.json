@@ -1,0 +1,76 @@
+{
+  "id": "project-management",
+  "name": "Project Management",
+  "description": "An open source Project management tool based on Laravel and Filament",
+  "tagline": "Project Management",
+  "version": "1.2.3",
+  "image": "eloufirhatim/helper",
+  "developer": "eloufirhatim",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/project-management/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-project-management",
+  "port_map": "8000",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-project-management": {
+      "volumes": [
+        {
+          "container": "/app/data/configs",
+          "description": {
+            "en_us": "Container Path: /app/data/configs"
+          }
+        },
+        {
+          "container": "/app/public/icons",
+          "description": {
+            "en_us": "Container Path: /app/public/icons"
+          }
+        },
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "7575",
+          "description": {
+            "en_us": "Container Port: 7575"
+          }
+        }
+      ]
+    },
+    "big-bear-project-management-db": {
+      "volumes": [
+        {
+          "container": "/var/lib/mysql",
+          "description": {
+            "en_us": "Container Path: /var/lib/mysql"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3306",
+          "description": {
+            "en_us": "Container Port: 3306"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

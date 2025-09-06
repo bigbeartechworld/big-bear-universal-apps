@@ -1,0 +1,328 @@
+name: Deploy to Platform Repositories
+
+on:
+  push:
+    branches: [ main, master ]
+    paths: 
+      - 'universal-app-store/apps/**'
+      - 'Apps/**'
+  workflow_dispatch:
+    inputs:
+      platforms:
+        description: 'Platforms to deploy (comma-separated: casaos,portainer,dockge,runtipi,cosmos or "all")'
+        required: false
+        default: 'all'
+        type: string
+      apps:
+        description: 'Specific apps to deploy (comma-separated, leave empty for all changed apps)'
+        required: false
+        default: ''
+        type: string
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      changed-apps: ${{ steps.changes.outputs.apps }}
+      platforms: ${{ steps.platforms.outputs.matrix }}
+      has-changes: ${{ steps.changes.outputs.has-changes }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      
+      - name: Detect changed apps
+        id: changes
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ inputs.apps }}" ]; then
+            echo "apps=${{ inputs.apps }}" >> $GITHUB_OUTPUT
+            echo "has-changes=true" >> $GITHUB_OUTPUT
+          else
+            # Detect changed apps from git diff
+            changed_files=$(git diff --name-only HEAD~1 HEAD -- Apps/ universal-app-store/apps/ 2>/dev/null || echo "")
+            if [ -n "$changed_files" ]; then
+              # Extract app names from changed files
+              apps=$(echo "$changed_files" | grep -E "^(Apps|universal-app-store/apps)/" | cut -d'/' -f2 | sort -u | tr '\n' ',' | sed 's/,$//')
+              echo "apps=$apps" >> $GITHUB_OUTPUT
+              echo "has-changes=true" >> $GITHUB_OUTPUT
+              echo "Detected changed apps: $apps"
+            else
+              echo "apps=" >> $GITHUB_OUTPUT
+              echo "has-changes=false" >> $GITHUB_OUTPUT
+              echo "No app changes detected"
+            fi
+          fi
+      
+      - name: Determine target platforms
+        id: platforms
+        run: |
+          if [ "${{ inputs.platforms }}" = "all" ] || [ -z "${{ inputs.platforms }}" ]; then
+            platforms='["casaos","portainer","dockge","runtipi","cosmos"]'
+          else
+            # Convert comma-separated string to JSON array
+            IFS=',' read -ra ADDR <<< "${{ inputs.platforms }}"
+            platforms="["
+            for i in "${ADDR[@]}"; do
+              platforms="$platforms\"$(echo $i | xargs)\","
+            done
+            platforms="${platforms%,}]"
+          fi
+          echo "matrix=$platforms" >> $GITHUB_OUTPUT
+          echo "Target platforms: $platforms"
+
+  deploy-to-platforms:
+    needs: detect-changes  
+    if: needs.detect-changes.outputs.has-changes == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: ${{ fromJson(needs.detect-changes.outputs.platforms) }}
+      fail-fast: false
+      
+    steps:
+      - name: Checkout universal repo
+        uses: actions/checkout@v4
+        with:
+          path: universal-repo
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: |
+          cd universal-repo
+          npm install js-yaml
+          
+      - name: Load platform config
+        id: config
+        run: |
+          cd universal-repo
+          platform="${{ matrix.platform }}"
+          
+          if [ ! -f "config/platforms.json" ]; then
+            echo "❌ Platform configuration file not found!"
+            exit 1
+          fi
+          
+          repo=$(jq -r ".platforms.${platform}.repo" config/platforms.json)
+          branch=$(jq -r ".platforms.${platform}.branch" config/platforms.json)  
+          base_path=$(jq -r ".platforms.${platform}.base_path" config/platforms.json)
+          converter=$(jq -r ".platforms.${platform}.converter_script" config/platforms.json)
+          output_dir=$(jq -r ".platforms.${platform}.output_dir" config/platforms.json)
+          
+          if [ "$repo" = "null" ] || [ "$branch" = "null" ] || [ "$converter" = "null" ]; then
+            echo "❌ Invalid platform configuration for: $platform"
+            exit 1
+          fi
+          
+          echo "repo=$repo" >> $GITHUB_OUTPUT
+          echo "branch=$branch" >> $GITHUB_OUTPUT
+          echo "base_path=$base_path" >> $GITHUB_OUTPUT
+          echo "converter=$converter" >> $GITHUB_OUTPUT
+          echo "output_dir=$output_dir" >> $GITHUB_OUTPUT
+          
+          echo "✅ Platform config loaded:"
+          echo "  Repository: $repo"
+          echo "  Branch: $branch"
+          echo "  Base path: $base_path"
+          echo "  Converter: $converter"
+          
+      - name: Checkout target platform repo
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ steps.config.outputs.repo }}
+          ref: ${{ steps.config.outputs.branch }}
+          path: platform-repo
+          token: ${{ secrets.PAT_CROSS_REPO_TOKEN }}
+          
+      - name: Create or update universal-app-store structure
+        run: |
+          cd universal-repo
+          
+          # Ensure we have the universal app store structure
+          if [ ! -d "universal-app-store" ] && [ -d "Apps" ]; then
+            echo "📦 Creating universal-app-store structure from Apps directory"
+            mkdir -p universal-app-store
+            
+            # Run standardization if needed
+            if [ -f "standardize-apps.js" ]; then
+              echo "🔄 Running app standardization..."
+              node standardize-apps.js
+            else
+              # Simple copy if no standardization script
+              cp -r Apps universal-app-store/apps
+            fi
+          fi
+          
+      - name: Run conversion for platform
+        run: |
+          cd universal-repo
+          
+          if [ ! -f "${{ steps.config.outputs.converter }}" ]; then
+            echo "❌ Converter script not found: ${{ steps.config.outputs.converter }}"
+            exit 1
+          fi
+          
+          echo "🔄 Running conversion for ${{ matrix.platform }}..."
+          node ${{ steps.config.outputs.converter }}
+          
+          if [ $? -eq 0 ]; then
+            echo "✅ Conversion completed successfully"
+          else
+            echo "❌ Conversion failed"
+            exit 1
+          fi
+          
+      - name: Copy converted files to platform repo
+        run: |
+          cd universal-repo
+          platform="${{ matrix.platform }}"
+          output_dir="${{ steps.config.outputs.output_dir }}"
+          base_path="${{ steps.config.outputs.base_path }}"
+          
+          if [ ! -d "$output_dir" ]; then
+            echo "❌ Output directory not found: $output_dir"
+            exit 1
+          fi
+          
+          echo "📁 Copying files from $output_dir to ../platform-repo/$base_path/"
+          
+          # Ensure target directory exists
+          mkdir -p "../platform-repo/$base_path"
+          
+          # Copy files based on platform type
+          case $platform in
+            "portainer") 
+              # For Portainer, copy the master templates.json file
+              if [ -f "$output_dir/templates.json" ]; then
+                cp "$output_dir/templates.json" "../platform-repo/$base_path/"
+                echo "✅ Copied templates.json"
+              fi
+              # Also copy individual template files if they exist
+              if [ -d "$output_dir" ] && [ "$(ls -A $output_dir)" ]; then
+                find "$output_dir" -name "*.json" -not -name "templates.json" -exec cp {} "../platform-repo/$base_path/" \;
+              fi
+              ;;
+            *)
+              # For other platforms, copy all contents
+              if [ "$(ls -A $output_dir 2>/dev/null)" ]; then
+                cp -r "$output_dir"/* "../platform-repo/$base_path/"
+                echo "✅ Copied all $platform files"
+              else
+                echo "⚠️ No files to copy for $platform"
+              fi
+              ;;
+          esac
+          
+      - name: Check for changes in platform repo
+        id: check-changes
+        run: |
+          cd platform-repo
+          
+          # Configure git (required for git operations)
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions"
+          
+          # Check if there are any changes
+          git add .
+          if git diff --staged --quiet; then
+            echo "has-changes=false" >> $GITHUB_OUTPUT
+            echo "ℹ️ No changes detected in platform repository"
+          else
+            echo "has-changes=true" >> $GITHUB_OUTPUT
+            echo "✅ Changes detected in platform repository"
+            
+            # Show what changed
+            echo "📋 Changed files:"
+            git diff --staged --name-only | head -20
+          fi
+          
+      - name: Create Pull Request
+        if: steps.check-changes.outputs.has-changes == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.PAT_CROSS_REPO_TOKEN }}
+          path: platform-repo
+          branch: auto-update-apps-${{ github.run_number }}-${{ matrix.platform }}
+          title: "🤖 Auto-update apps for ${{ matrix.platform }} platform"
+          body: |
+            ## Automated App Update - ${{ matrix.platform }} Platform
+            
+            This pull request was automatically generated from the Universal App Store Repository.
+            
+            ### Changes
+            - **Changed Apps**: `${{ needs.detect-changes.outputs.changed-apps }}`
+            - **Platform**: `${{ matrix.platform }}`  
+            - **Source Commit**: [${{ github.sha }}](${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }})
+            - **Workflow Run**: [${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            
+            ### Converted Apps
+            Apps have been converted from universal format to ${{ matrix.platform }}-specific format using `${{ steps.config.outputs.converter }}`.
+            
+            ### Platform Details  
+            - **Repository**: `${{ steps.config.outputs.repo }}`
+            - **Target Branch**: `${{ steps.config.outputs.branch }}`
+            - **Base Path**: `${{ steps.config.outputs.base_path }}`
+            
+            ### Verification Checklist
+            - [ ] All apps deploy successfully 
+            - [ ] App metadata is correct
+            - [ ] Docker compose files are valid
+            - [ ] No breaking changes introduced
+            - [ ] Port mappings are correct
+            - [ ] Volume mounts work as expected
+            
+            ### Automated Tests
+            This deployment was automatically tested during conversion to ensure:
+            - ✅ YAML/JSON syntax validation
+            - ✅ Required fields present
+            - ✅ No duplicate app IDs
+            
+            ---
+            🤖 *This PR was created automatically by GitHub Actions*
+          commit-message: |
+            chore: auto-update apps from universal repository
+            
+            - Updated apps: ${{ needs.detect-changes.outputs.changed-apps }}
+            - Platform: ${{ matrix.platform }}
+            - Source: ${{ github.repository }}@${{ github.sha }}
+            
+            Automatically generated by GitHub Actions workflow.
+          delete-branch: true
+          reviewers: bigbeartech
+          
+      - name: Log deployment summary
+        run: |
+          echo "📊 Deployment Summary for ${{ matrix.platform }}:"
+          echo "   Repository: ${{ steps.config.outputs.repo }}"
+          echo "   Branch: ${{ steps.config.outputs.branch }}"
+          echo "   Changed Apps: ${{ needs.detect-changes.outputs.changed-apps }}"
+          echo "   Has Changes: ${{ steps.check-changes.outputs.has-changes }}"
+          echo "   Converter: ${{ steps.config.outputs.converter }}"
+          
+  deployment-summary:
+    needs: [detect-changes, deploy-to-platforms]
+    if: always() && needs.detect-changes.outputs.has-changes == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate deployment summary
+        run: |
+          echo "🚀 **Universal App Store Deployment Complete**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Trigger**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Changed Apps**: \`${{ needs.detect-changes.outputs.changed-apps }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Target Platforms**: ${{ needs.detect-changes.outputs.platforms }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Source Commit**: [${{ github.sha }}](${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }})" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Platform Status" >> $GITHUB_STEP_SUMMARY
+          
+          # Note: Individual platform success/failure would need to be collected from the matrix job
+          # This is a simplified summary
+          if [ "${{ needs.deploy-to-platforms.result }}" = "success" ]; then
+            echo "✅ All platform deployments completed successfully" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ Some platform deployments may have failed - check individual job logs" >> $GITHUB_STEP_SUMMARY
+          fi

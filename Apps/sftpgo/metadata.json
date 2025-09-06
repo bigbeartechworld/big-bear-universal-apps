@@ -1,0 +1,70 @@
+{
+  "id": "sftpgo",
+  "name": "SFTPGO",
+  "description": "Full-featured and highly configurable SFTP, HTTP/S, FTP/S and WebDAV server - S3, Google Cloud Storage, Azure Blob",
+  "tagline": "SFTPGO",
+  "version": "v2.6",
+  "image": "drakkan/sftpgo",
+  "developer": "drakkan",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/sftpgo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-sftpgo",
+  "port_map": "8080",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-sftpgo": {
+      "volumes": [
+        {
+          "container": "/DATA/AppData/$AppID/srv",
+          "description": {
+            "en_us": "Container Path: /DATA/AppData/$AppID/srv"
+          }
+        },
+        {
+          "container": "/DATA/AppData/$AppID/data",
+          "description": {
+            "en_us": "Container Path: /DATA/AppData/$AppID/data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        },
+        {
+          "container": "2022",
+          "description": {
+            "en_us": "Container Port: 2022"
+          }
+        },
+        {
+          "container": "2121",
+          "description": {
+            "en_us": "Container Port: 2121"
+          }
+        },
+        {
+          "container": "10080",
+          "description": {
+            "en_us": "Container Port: 10080"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

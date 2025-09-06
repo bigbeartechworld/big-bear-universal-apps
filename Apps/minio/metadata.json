@@ -1,0 +1,61 @@
+{
+  "id": "minio",
+  "name": "Minio",
+  "description": "A distributed object storage server built for cloud applications and devops. Default credentials 'minioadmin:minioadmin', we recommend that you change these values with 'MINIO_ROOT_USER' and 'MINIO_ROOT_PASSWORD' environment variables.",
+  "tagline": "An open-source S3 alternative",
+  "version": "RELEASE.2024-02-24T17-11-14Z",
+  "image": "minio/minio",
+  "developer": "minio",
+  "author": "BigBearCommunity",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/minio.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "9011",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "envs": [
+        {
+          "container": "MINIO_ROOT_USER",
+          "description": {
+            "en_us": "Minio Console User"
+          }
+        },
+        {
+          "container": "MINIO_ROOT_PASSWORD",
+          "description": {
+            "en_us": "Minio Console Password"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "9002",
+          "description": {
+            "en_us": "Container Port: 9002"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

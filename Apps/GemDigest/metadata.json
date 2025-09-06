@@ -1,0 +1,48 @@
+{
+  "id": "GemDigest",
+  "name": "GemDigest Bot",
+  "description": "Simplify your reads, amplify your time! 📚✨ GemDigest is a Telegram bot that summarizes articles from any website into bite-sized nuggets, saving you time and energy for what matters most. 📱👋",
+  "tagline": "Your personal article summarizer",
+  "version": "1.0",
+  "image": "piero24/gemdigest",
+  "developer": "Armaggheddon",
+  "author": "BigBearCommunity",
+  "icon": "https://cdn.jsdelivr.net/gh/Piero24/GemDigest/.github/images/casOS_logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-gem-digest-bot",
+  "port_map": "3333",
+  "tips": {
+    "custom": "Add you `TELEGRAM-API-KEY` and `GEMINI-API-KEY` in settings and the users `ID` that are considered as admin separated by a \";\" if thereare more then one. for more info visit [GemDigest](https://github.com/Armaggheddon/GemDigest)"
+  },
+  "services_metadata": {
+    "big-bear-gem-digest-bot": {
+      "volumes": [
+        {
+          "container": "/gem_digest_bot/extra_configs",
+          "description": {
+            "en_us": "Container Path: /gem_digest_bot/extra_configs"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

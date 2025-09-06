@@ -1,0 +1,64 @@
+{
+  "id": "wallos",
+  "name": "Wallos",
+  "description": "Wallos: Open-Source Personal Subscription Tracker",
+  "tagline": "Wallos",
+  "version": "4.1.1",
+  "image": "bellamy/wallos",
+  "developer": "bellamy",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/wallos.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-wallos",
+  "port_map": "8282",
+  "tips": {
+    "before_install": {
+      "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-wallos-to-bigbearcasaos/2139?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-wallos": {
+      "envs": [
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Container Environment Variable: TZ"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/www/html/db",
+          "description": {
+            "en_us": "Container Path: /var/www/html/db"
+          }
+        },
+        {
+          "container": "/var/www/html/images/uploads/logos",
+          "description": {
+            "en_us": "Container Path: /var/www/html/images/uploads/logos"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "80",
+          "description": {
+            "en_us": "Container Port: 80"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/feYTW02YDb8",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

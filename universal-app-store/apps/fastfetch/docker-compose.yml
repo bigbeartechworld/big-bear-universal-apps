@@ -1,0 +1,14 @@
+name: big-bear-fastfetch
+services:
+  big-bear-fastfetch:
+    container_name: big-bear-fastfetch
+    image: bigbeartechworld/big-bear-fastfetch:0.0.3
+    restart: unless-stopped
+    privileged: true
+    volumes:
+      - /proc:/proc
+      - /sys:/sys
+      - /dev:/dev
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - '7681:7681'

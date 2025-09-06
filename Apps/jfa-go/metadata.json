@@ -1,0 +1,67 @@
+{
+  "id": "jfa-go",
+  "name": "jfa-go",
+  "description": "jfa-go is a user management app for Jellyfin (and Emby as 2nd class) that provides invite-based account creation as well as other features that make one's instance much easier to manage.",
+  "tagline": "Manage users in Jellyfin",
+  "version": "latest",
+  "image": "hrfee/jfa-go",
+  "developer": "hrfee",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/jellyfin.png",
+  "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/jfa-go/thumbnail.png",
+  "screenshots": [
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/jfa-go/screenshot-1.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/jfa-go/screenshot-2.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/jfa-go/screenshot-3.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/jfa-go/screenshot-4.png"
+  ],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-jfa-go",
+  "port_map": "8056",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-jfa-go-to-bigbearcasaos/3364?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-jfa-go": {
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        },
+        {
+          "container": "/jf",
+          "description": {
+            "en_us": "Container Path: /jf"
+          }
+        },
+        {
+          "container": "/etc/localtime",
+          "description": {
+            "en_us": "Container Path: /etc/localtime"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8056",
+          "description": {
+            "en_us": "Container Port: 8056"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "id": "nocodb",
+  "name": "NocoDB",
+  "description": "NocoDB allows building no-code database solutions with ease of spreadsheets. Bring your own database or choose ours! Millions of rows? Not a problem. Your Data. Your rules. You are in control.",
+  "tagline": "🔥 🔥 🔥 Open Source Airtable Alternative",
+  "version": "0.264.6",
+  "image": "nocodb/nocodb",
+  "developer": "nocodb",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nocodb.png",
+  "thumbnail": "https://user-images.githubusercontent.com/86527202/277104231-e2fad786-f211-4dcb-9bd3-aaece83a6783.gif",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-nocodb",
+  "port_map": "8080",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-nocodb": {
+      "volumes": [
+        {
+          "container": "/usr/src/app/data",
+          "description": {
+            "en_us": "Container Path: /usr/src/app/data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        }
+      ]
+    },
+    "big-bear-nocodb-db": {
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data",
+          "description": {
+            "en_us": "Container Path: /var/lib/postgresql/data"
+          }
+        }
+      ]
+    },
+    "big-bear-nocodb-redis": {
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/mO2YzWpBu4o",
+    "docs": "https://community.bigbeartechworld.com/t/added-nocodb-to-big-bear-casaos/177",
+    "big_bear_cosmos_youtube": ""
+  }
+}

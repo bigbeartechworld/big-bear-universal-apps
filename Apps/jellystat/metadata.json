@@ -1,0 +1,76 @@
+{
+  "id": "jellystat",
+  "name": "Jellystat",
+  "description": "Jellystat is a free and open source Statistics App for Jellyfin! (This project is still in development - expect some weirdness)",
+  "tagline": "Jellystat",
+  "version": "1.1.6",
+  "image": "cyfershepard/jellystat",
+  "developer": "cyfershepard",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/jellystat.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-jellystat",
+  "port_map": "3000",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-jellystat": {
+      "volumes": [
+        {
+          "container": "/DATA/AppData/$AppID/postgres-data",
+          "description": {
+            "en_us": "Container Path: /DATA/AppData/$AppID/postgres-data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3000",
+          "description": {
+            "en_us": "Container Port: 3000"
+          }
+        }
+      ]
+    },
+    "big-bear-jellystat-db": {
+      "envs": [
+        {
+          "container": "POSTGRES_DB",
+          "description": {
+            "en_us": "Container Environment Variable: POSTGRES_DB"
+          }
+        },
+        {
+          "container": "POSTGRES_USER",
+          "description": {
+            "en_us": "Container Environment Variable: POSTGRES_USER"
+          }
+        },
+        {
+          "container": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Container Environment Variable: POSTGRES_PASSWORD"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/DATA/AppData/$AppID/postgres-data",
+          "description": {
+            "en_us": "Container Path: /DATA/AppData/$AppID/postgres-data"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

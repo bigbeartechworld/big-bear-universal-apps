@@ -1,0 +1,82 @@
+{
+  "id": "pocketid",
+  "name": "Pocket ID",
+  "description": "Simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to your services.",
+  "tagline": "Passkey-based OIDC authentication",
+  "version": "1.10",
+  "image": "ghcr.io/pocket-id/pocket-id",
+  "developer": "pocket-id",
+  "author": "techieanant",
+  "icon": "https://pocket-id.org/img/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-pocketid",
+  "port_map": "1411",
+  "tips": {
+    "before_install": {
+      "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-pocket-id-to-bigbearcasaos/3552#p-6013-documentation-4\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-pocketid": {
+      "envs": [
+        {
+          "container": "APP_URL",
+          "description": {
+            "en_us": "Application URL for pocket-id"
+          }
+        },
+        {
+          "container": "TRUST_PROXY",
+          "description": {
+            "en_us": "Whether to trust proxy headers"
+          }
+        },
+        {
+          "container": "MAXMIND_LICENSE_KEY",
+          "description": {
+            "en_us": "MaxMind license key for geolocation (optional)"
+          }
+        },
+        {
+          "container": "PUID",
+          "description": {
+            "en_us": "User ID for file permissions"
+          }
+        },
+        {
+          "container": "PGID",
+          "description": {
+            "en_us": "Group ID for file permissions"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/app/data",
+          "description": {
+            "en_us": "Container Path: /app/data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "1411",
+          "description": {
+            "en_us": "Container Port: 1411"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "https://pocket-id.org/docs/introduction",
+    "big_bear_cosmos_youtube": ""
+  }
+}

@@ -1,0 +1,14 @@
+name: big-bear-obsidian-livesync
+services:
+  app:
+    container_name: obsidian-livesync
+    image: couchdb:3.5.0
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID/data/couchdb:/opt/couchdb/data
+      - /DATA/AppData/$AppID/data/local.ini:/opt/couchdb/etc/local.ini
+    environment:
+      - COUCHDB_USER=casaos
+      - COUCHDB_PASSWORD=casaos
+    ports:
+      - '5984:5984'

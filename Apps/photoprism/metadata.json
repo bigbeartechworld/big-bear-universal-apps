@@ -1,0 +1,210 @@
+{
+  "id": "photoprism",
+  "name": "Photoprism",
+  "description": "PhotoPrism® is an AI-Powered Photos App for the Decentralized Web. It makes use of the latest technologies to tag and find pictures automatically without getting in your way. You can run it at home, on a private server, or in the cloud.",
+  "tagline": "AI-Powered Photos App",
+  "version": "240915",
+  "image": "photoprism/photoprism",
+  "developer": "photoprism.app",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/photoprism.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "2342",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "envs": [
+        {
+          "container": "PHOTOPRISM_ADMIN_PASSWORD",
+          "description": {
+            "en_us": "Photoprism admin password: casaos"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_SITE_URL",
+          "description": {
+            "en_us": "Photoprism site url: http://locahost/"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_ORIGINALS_LIMIT",
+          "description": {
+            "en_us": "Photoprism originals limit: 5000"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_HTTP_COMPRESSION",
+          "description": {
+            "en_us": "Photoprism http compression: gzip"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_LOG_LEVEL",
+          "description": {
+            "en_us": "Photoprism log level: info"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_PUBLIC",
+          "description": {
+            "en_us": "Photoprism public: false"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_READONLY",
+          "description": {
+            "en_us": "Photoprism readonly: false"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_EXPERIMENTAL",
+          "description": {
+            "en_us": "Photoprism experimental: false"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_DISABLE_CHOWN",
+          "description": {
+            "en_us": "Photoprism disable chown: false"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_DISABLE_WEBDAV",
+          "description": {
+            "en_us": "Photoprism disable webdav: false"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_DISABLE_SETTINGS",
+          "description": {
+            "en_us": "Photoprism disable settings: false"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_DISABLE_TENSORFLOW",
+          "description": {
+            "en_us": "Photoprism disable tensorflow: false"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_DISABLE_FACES",
+          "description": {
+            "en_us": "Photoprism disable faces: false"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_DISABLE_CLASSIFICATION",
+          "description": {
+            "en_us": "Photoprism disable classification: false"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_DISABLE_RAW",
+          "description": {
+            "en_us": "Photoprism disable raw: false"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_RAW_PRESETS",
+          "description": {
+            "en_us": "Photoprism raw presets: false"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_JPEG_QUALITY",
+          "description": {
+            "en_us": "Photoprism jpeg quality: 85"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_DETECT_NSFW",
+          "description": {
+            "en_us": "Photoprism detect nsfw: false"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_UPLOAD_NSFW",
+          "description": {
+            "en_us": "Photoprism upload nsfw: true"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_DATABASE_DRIVER",
+          "description": {
+            "en_us": "Photoprism database driver: mysql"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_DATABASE_SERVER",
+          "description": {
+            "en_us": "Photoprism database server: photoprism-db:3306"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_DATABASE_NAME",
+          "description": {
+            "en_us": "Photoprism database name: photoprism"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_DATABASE_USER",
+          "description": {
+            "en_us": "Photoprism database user: photoprism"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_DATABASE_PASSWORD",
+          "description": {
+            "en_us": "Photoprism database password: casaos"
+          }
+        },
+        {
+          "container": "PHOTOPRISM_SITE_CAPTION",
+          "description": {
+            "en_us": "Photoprism site caption: AI-Powered Photos App"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/app/data/configs",
+          "description": {
+            "en_us": "Container Path: /app/data/configs"
+          }
+        },
+        {
+          "container": "/app/public/icons",
+          "description": {
+            "en_us": "Container Path: /app/public/icons"
+          }
+        },
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "7575",
+          "description": {
+            "en_us": "Container Port: 7575"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

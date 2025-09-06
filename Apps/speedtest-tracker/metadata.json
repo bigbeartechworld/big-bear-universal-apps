@@ -1,0 +1,161 @@
+{
+  "id": "speedtest-tracker",
+  "name": "Speedtest Tracker",
+  "description": "A Docker image to check your internet speed using Ookla's Speedtest service. Build using Laravel and the Speedtest CLI.",
+  "tagline": "Speedtest Tracker",
+  "version": "1.6.6",
+  "image": "linuxserver/speedtest-tracker",
+  "developer": "alexjustesen",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/alexjustesen/speedtest-tracker/public/img/speedtest-tracker-icon.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm",
+    "arm64"
+  ],
+  "main_service": "big-bear-speedtest-tracker",
+  "port_map": "8080",
+  "tips": {
+    "before_install": {
+      "en_us": "Default Credentials - Username: admin@example.com and Password: password\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-speedtest-tracker": {
+      "envs": [
+        {
+          "container": "PUID",
+          "description": {
+            "en_us": "Process UID"
+          }
+        },
+        {
+          "container": "PGID",
+          "description": {
+            "en_us": "Process GID"
+          }
+        },
+        {
+          "container": "DB_CONNECTION",
+          "description": {
+            "en_us": "Database connection"
+          }
+        },
+        {
+          "container": "DB_HOST",
+          "description": {
+            "en_us": "Database host"
+          }
+        },
+        {
+          "container": "DB_PORT",
+          "description": {
+            "en_us": "Database port"
+          }
+        },
+        {
+          "container": "DB_DATABASE",
+          "description": {
+            "en_us": "Database name"
+          }
+        },
+        {
+          "container": "DB_USERNAME",
+          "description": {
+            "en_us": "Database user"
+          }
+        },
+        {
+          "container": "DB_PASSWORD",
+          "description": {
+            "en_us": "Database password"
+          }
+        },
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Timezone"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/etc/localtime",
+          "description": {
+            "en_us": "Container Path: /etc/localtime"
+          }
+        },
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Container Path: /config"
+          }
+        },
+        {
+          "container": "/etc/ssl/web",
+          "description": {
+            "en_us": "Container Path: /etc/ssl/web"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "80",
+          "description": {
+            "en_us": "Container Port: 80"
+          }
+        },
+        {
+          "container": "443",
+          "description": {
+            "en_us": "Container Port: 443"
+          }
+        }
+      ]
+    },
+    "big-bear-speedtest-tracker-db": {
+      "envs": [
+        {
+          "container": "MARIADB_DATABASE",
+          "description": {
+            "en_us": "Database name"
+          }
+        },
+        {
+          "container": "MARIADB_USER",
+          "description": {
+            "en_us": "Database user"
+          }
+        },
+        {
+          "container": "MARIADB_PASSWORD",
+          "description": {
+            "en_us": "Database password"
+          }
+        },
+        {
+          "container": "MARIADB_RANDOM_ROOT_PASSWORD",
+          "description": {
+            "en_us": "Database root password"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/mysql",
+          "description": {
+            "en_us": "Container Path: /var/lib/mysql"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/TLjS8xNNwis",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

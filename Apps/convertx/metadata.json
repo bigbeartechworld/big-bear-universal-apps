@@ -1,0 +1,58 @@
+{
+  "id": "convertx",
+  "name": "ConvertX",
+  "description": "A self-hosted online file converter. Supports over a thousand different formats. Written with TypeScript, Bun and Elysia.",
+  "tagline": "💾 Self-hosted online file converter. Supports 1000+ formats ⚙️",
+  "version": "0.14.1",
+  "image": "ghcr.io/c4illin/convertx",
+  "developer": "C4illin",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/convertx/logo.png",
+  "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/convertx/thumbnail.png",
+  "screenshots": [
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/convertx/screenshot-1.png"
+  ],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-convertx",
+  "port_map": "3000",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/add-convertx-to-bigbearcasaos/3232#p-5599-documentation-5\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-convertx": {
+      "envs": [
+        {
+          "container": "JWT_SECRET",
+          "description": {
+            "en_us": "JWT Secret"
+          }
+        },
+        {
+          "container": "HTTP_ALLOWED",
+          "description": {
+            "en_us": "HTTP Allowed"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/app/data",
+          "description": {
+            "en_us": "Container Path: /app/data"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

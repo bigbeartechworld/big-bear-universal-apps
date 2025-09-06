@@ -1,0 +1,114 @@
+{
+  "id": "tailscale",
+  "name": "Tailscale",
+  "description": "Zero config VPN. Installs on any device in minutes, manages firewall rules for you, and works from anywhere.",
+  "tagline": "The easiest, most secure way to use WireGuard and 2FA.",
+  "version": "1.86.5",
+  "image": "tailscale/tailscale",
+  "developer": "tailscale",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/tailscale.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-tailscale",
+  "port_map": "",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-tailscale": {
+      "envs": [
+        {
+          "name": "TS_SERVE_CONFIG",
+          "description": {
+            "en_us": "Tailscale Config"
+          }
+        },
+        {
+          "name": "TS_ACCEPT_DNS",
+          "description": {
+            "en_us": "Accept DNS"
+          }
+        },
+        {
+          "name": "TS_AUTH_ONCE",
+          "description": {
+            "en_us": "Auth Once"
+          }
+        },
+        {
+          "name": "TS_AUTHKEY",
+          "description": {
+            "en_us": "Auth Key"
+          }
+        },
+        {
+          "name": "TS_HOSTNAME",
+          "description": {
+            "en_us": "Tailscale Hostname"
+          }
+        },
+        {
+          "name": "TS_ROUTES",
+          "description": {
+            "en_us": "Routes"
+          }
+        },
+        {
+          "name": "TS_EXTRA_ARGS",
+          "description": {
+            "en_us": "Tailscale Extra Args"
+          }
+        },
+        {
+          "name": "TS_USERSPACE",
+          "description": {
+            "en_us": "Tailscale User Space"
+          }
+        },
+        {
+          "name": "TS_STATE_DIR",
+          "description": {
+            "en_us": "Tailscale State Dir"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/tailscale",
+          "description": {
+            "en_us": "Container Path: /var/lib/tailscale"
+          }
+        },
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Container Path: /config"
+          }
+        },
+        {
+          "container": "/dev/net/tun",
+          "description": {
+            "en_us": "Container Path: /dev/net/tun"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "7575",
+          "description": {
+            "en_us": "Container Port: 7575"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

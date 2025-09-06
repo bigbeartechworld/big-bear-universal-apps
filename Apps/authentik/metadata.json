@@ -1,0 +1,124 @@
+{
+  "id": "authentik",
+  "name": "Authentik",
+  "description": "Authentik is a self-hosted identity and access management platform that provides a secure and scalable solution for managing user accounts, authentication, and authorization. It offers a range of features, including user management, role-based access control, and multi-factor authentication. Authentik is designed to be easy to use and integrate with your existing systems, making it a great choice for organizations looking to improve their security and compliance.",
+  "tagline": "Authentik",
+  "version": "2025.8.1",
+  "image": "ghcr.io/goauthentik/server",
+  "developer": "authentik",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/authentik.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-authentik",
+  "port_map": "9443",
+  "tips": {
+    "before_install": {
+      "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-authentik-to-bigbearcasaos/1196#instructions-3\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-authentik": {
+      "volumes": [
+        {
+          "container": "/app/data/configs",
+          "description": {
+            "en_us": "Container Path: /app/data/configs"
+          }
+        },
+        {
+          "container": "/app/public/icons",
+          "description": {
+            "en_us": "Container Path: /app/public/icons"
+          }
+        },
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "7575",
+          "description": {
+            "en_us": "Container Port: 7575"
+          }
+        }
+      ]
+    },
+    "big-bear-authentik-worker": {
+      "volumes": [
+        {
+          "container": "/media",
+          "description": {
+            "en_us": "Container Path: /media"
+          }
+        },
+        {
+          "container": "/certs",
+          "description": {
+            "en_us": "Container Path: /certs"
+          }
+        },
+        {
+          "container": "/templates",
+          "description": {
+            "en_us": "Container Path: /templates"
+          }
+        }
+      ]
+    },
+    "big-bear-authentik-db": {
+      "envs": [
+        {
+          "container": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Database password"
+          }
+        },
+        {
+          "container": "POSTGRES_USER",
+          "description": {
+            "en_us": "Database user"
+          }
+        },
+        {
+          "container": "POSTGRES_DB",
+          "description": {
+            "en_us": "Database type"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data",
+          "description": {
+            "en_us": "Container Path: /var/lib/postgresql/data"
+          }
+        }
+      ]
+    },
+    "big-bear-authentik-redis": {
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

@@ -1,0 +1,11 @@
+name: big-bear-appsmith
+services:
+  app:
+    image: appsmith/appsmith-ce:v1.73.1
+    container_name: appsmith
+    ports:
+      - '1080:80'
+      - '10443:443'
+    volumes:
+      - /DATA/AppData/$AppID/stacks:/appsmith-stacks
+    restart: unless-stopped

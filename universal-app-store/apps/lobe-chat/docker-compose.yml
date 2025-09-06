@@ -1,0 +1,13 @@
+name: big-bear-lobe-chat
+services:
+  big-bear-lobe-chat:
+    container_name: big-bear-lobe-chat
+    image: lobehub/lobe-chat:1.120.7
+    restart: unless-stopped
+    environment:
+      - OPENAI_API_KEY=""
+      - OPENAI_PROXY_URL=""
+      - CUSTOM_MODELS=""
+      - ACCESS_CODE=""
+    ports:
+      - '3210:3210'

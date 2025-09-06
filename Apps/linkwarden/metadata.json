@@ -1,0 +1,76 @@
+{
+  "id": "linkwarden",
+  "name": "Linkwarden",
+  "description": "⚡️⚡️⚡️Self-hosted collaborative bookmark manager to collect, organize, and preserve webpages and articles.",
+  "tagline": "Linkwarden",
+  "version": "2.12.2",
+  "image": "ghcr.io/linkwarden/linkwarden",
+  "developer": "linkwarden",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/linkwarden.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "linkwarden",
+  "port_map": "3000",
+  "tips": {},
+  "services_metadata": {
+    "linkwarden": {
+      "volumes": [
+        {
+          "container": "/data/data",
+          "description": {
+            "en_us": "Container Path: /data/data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3000",
+          "description": {
+            "en_us": "Container Port: 3000"
+          }
+        }
+      ]
+    },
+    "linkwarden-db": {
+      "envs": [
+        {
+          "container": "POSTGRES_USER",
+          "description": {
+            "en_us": "Database user"
+          }
+        },
+        {
+          "container": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Database password"
+          }
+        },
+        {
+          "container": "POSTGRES_DB",
+          "description": {
+            "en_us": "Database type"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data",
+          "description": {
+            "en_us": "Container Path: /var/lib/postgresql/data"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/KZXZAi9Vjs4",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

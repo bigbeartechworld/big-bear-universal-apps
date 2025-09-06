@@ -1,0 +1,304 @@
+{
+  "id": "financial-freedom",
+  "name": "Financial Freedom",
+  "description": "Keep investors and their buyers out of your financial data. Own 100% of your data and start building financial wealth.",
+  "tagline": "Financial Freedom",
+  "version": "v0.2.0-alpha1",
+  "image": "serversideup/financial-freedom",
+  "developer": "serversideup",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/financial-freedom/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "8443",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-financial-freedom-to-bigbearcasaos/542\n"
+    }
+  },
+  "services_metadata": {
+    "app": {
+      "envs": [
+        {
+          "container": "APP_NAME",
+          "description": {
+            "en_us": "App Name"
+          }
+        },
+        {
+          "container": "APP_ENV",
+          "description": {
+            "en_us": "App Environment"
+          }
+        },
+        {
+          "container": "APP_DEBUG",
+          "description": {
+            "en_us": "App Debug"
+          }
+        },
+        {
+          "container": "APP_URL",
+          "description": {
+            "en_us": "App URL"
+          }
+        },
+        {
+          "container": "APP_KEY",
+          "description": {
+            "en_us": "App Key"
+          }
+        },
+        {
+          "container": "DB_ROOT_PASSWORD",
+          "description": {
+            "en_us": "Database Root Password"
+          }
+        },
+        {
+          "container": "DB_DATABASE",
+          "description": {
+            "en_us": "Database Name"
+          }
+        },
+        {
+          "container": "DB_USERNAME",
+          "description": {
+            "en_us": "Database Username"
+          }
+        },
+        {
+          "container": "DB_PASSWORD",
+          "description": {
+            "en_us": "Database Password"
+          }
+        },
+        {
+          "container": "MAIL_MAILER",
+          "description": {
+            "en_us": "Mail Mailer"
+          }
+        },
+        {
+          "container": "MAIL_HOST",
+          "description": {
+            "en_us": "Mail Host"
+          }
+        },
+        {
+          "container": "MAIL_PORT",
+          "description": {
+            "en_us": "Mail Port"
+          }
+        },
+        {
+          "container": "MAIL_USERNAME",
+          "description": {
+            "en_us": "Mail Username"
+          }
+        },
+        {
+          "container": "MAIL_PASSWORD",
+          "description": {
+            "en_us": "Mail Password"
+          }
+        },
+        {
+          "container": "MAIL_ENCRYPTION",
+          "description": {
+            "en_us": "Mail Encryption"
+          }
+        },
+        {
+          "container": "MAIL_FROM_ADDRESS",
+          "description": {
+            "en_us": "Mail From Address"
+          }
+        },
+        {
+          "container": "MAIL_FROM_NAME",
+          "description": {
+            "en_us": "Mail From Name"
+          }
+        },
+        {
+          "container": "SSL_MODE",
+          "description": {
+            "en_us": "SSL Mode"
+          }
+        },
+        {
+          "container": "AUTORUN_ENABLED",
+          "description": {
+            "en_us": "Autorun Enabled"
+          }
+        },
+        {
+          "container": "FINANCIAL_FREEDOM_ALLOW_REGISTRATION",
+          "description": {
+            "en_us": "Financial Freedom Allow Registration"
+          }
+        },
+        {
+          "container": "LOG_CHANNEL",
+          "description": {
+            "en_us": "Log Channel"
+          }
+        },
+        {
+          "container": "BROADCAST_DRIVER",
+          "description": {
+            "en_us": "Broadcast Driver"
+          }
+        },
+        {
+          "container": "CACHE_DRIVER",
+          "description": {
+            "en_us": "Cache Driver"
+          }
+        },
+        {
+          "container": "QUEUE_CONNECTION",
+          "description": {
+            "en_us": "Queue Connection"
+          }
+        },
+        {
+          "container": "SESSION_LIFETIME",
+          "description": {
+            "en_us": "Session Lifetime"
+          }
+        },
+        {
+          "container": "SESSION_DRIVER",
+          "description": {
+            "en_us": "Session Driver"
+          }
+        },
+        {
+          "container": "MYSQL_ROOT_PASSWORD",
+          "description": {
+            "en_us": "MySQL Root Password"
+          }
+        },
+        {
+          "container": "MYSQL_DATABASE",
+          "description": {
+            "en_us": "MySQL Database"
+          }
+        },
+        {
+          "container": "MYSQL_USER",
+          "description": {
+            "en_us": "MySQL User"
+          }
+        },
+        {
+          "container": "MYSQL_PASSWORD",
+          "description": {
+            "en_us": "MySQL Password"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": null,
+          "description": {
+            "en_us": "Container Path: /app/data/configs"
+          }
+        },
+        {
+          "container": "/app/public/icons",
+          "description": {
+            "en_us": "Container Path: /app/public/icons"
+          }
+        },
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "7575",
+          "description": {
+            "en_us": "Container Port: 7575"
+          }
+        }
+      ]
+    },
+    "mariadb": {
+      "envs": [
+        {
+          "container": "PUID",
+          "description": {
+            "en_us": "User ID"
+          }
+        },
+        {
+          "container": "PGID",
+          "description": {
+            "en_us": "Group ID"
+          }
+        },
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Time Zone"
+          }
+        },
+        {
+          "container": "MYSQL_ROOT_PASSWORD",
+          "description": {
+            "en_us": "MySQL Root Password"
+          }
+        },
+        {
+          "container": "MYSQL_DATABASE",
+          "description": {
+            "en_us": "MySQL Database"
+          }
+        },
+        {
+          "container": "MYSQL_USER",
+          "description": {
+            "en_us": "MySQL User"
+          }
+        },
+        {
+          "container": "MYSQL_PASSWORD",
+          "description": {
+            "en_us": "MySQL Password"
+          }
+        },
+        {
+          "container": "REMOTE_SQL",
+          "description": {
+            "en_us": "Remote SQL"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/mysql",
+          "description": {
+            "en_us": "Container Path: /var/lib/mysql"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

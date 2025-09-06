@@ -1,0 +1,16 @@
+name: big-bear-zigbee2mqtt
+services:
+  big-bear-zigbee2mqtt:
+    container_name: big-bear-zigbee2mqtt
+    image: koenkk/zigbee2mqtt:2.6.1
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID/data:/app/data
+      - /run/udev:/run/udev:ro
+    ports:
+      - '8080:8080'
+    environment:
+      - TZ=UTC
+    devices:
+      - >-
+        /dev/serial/by-id/usb-Texas_Instruments_TI_CC2531_USB_CDC___0X00124B0018ED3DDF-if00:/dev/ttyACM0

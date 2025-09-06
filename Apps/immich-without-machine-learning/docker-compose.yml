@@ -1,0 +1,36 @@
+name: big-bear-immich-without-machine-learning
+services:
+  immich-server:
+    container_name: immich-server
+    image: ghcr.io/immich-app/immich-server:v1.140.1
+    ports:
+      - '2283:2283'
+    volumes:
+      - /DATA/AppData/big-bear-immich/upload:/usr/src/app/upload
+    environment:
+      DB_HOSTNAME: immich-postgres
+      DB_USERNAME: casaos
+      DB_PASSWORD: casaos
+      DB_DATABASE_NAME: immich
+      DB_PORT: '5432'
+      REDIS_HOSTNAME: immich-redis
+    depends_on:
+      - redis
+      - database
+    restart: unless-stopped
+  redis:
+    container_name: immich-redis
+    image: >-
+      redis:6.2-alpine@sha256:70a7a5b641117670beae0d80658430853896b5ef269ccf00d1827427e3263fa3
+    restart: always
+  database:
+    container_name: immich-postgres
+    image: ghcr.io/immich-app/postgres:14-vectorchord0.3.0-pgvectors0.2.0
+    environment:
+      POSTGRES_PASSWORD: casaos
+      POSTGRES_USER: casaos
+      POSTGRES_DB: immich
+      PG_DATA: /var/lib/postgresql/data
+    volumes:
+      - /DATA/AppData/big-bear-immich/pgdata:/var/lib/postgresql/data
+    restart: always

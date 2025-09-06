@@ -1,0 +1,10 @@
+name: big-bear-pingvin-share
+services:
+  app:
+    image: stonith404/pingvin-share:v1.13.0
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    volumes:
+      - /DATA/AppData/pingvin-share/data:/opt/app/backend/data
+      - /DATA/AppData/pingvin-share/images:/opt/app/frontend/public/img

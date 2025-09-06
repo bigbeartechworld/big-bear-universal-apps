@@ -1,0 +1,61 @@
+{
+  "id": "flame",
+  "name": "Flame",
+  "description": "Flame is a self-hosted startpage for your server. Its design is heavily inspired by SUI. Flame is user-friendly and easy to set up. With its built-in editors, users can quickly establish their own application hub without any file editing.",
+  "tagline": "Flame is a self-hosted startpage for your server. Manage your apps and bookmarks effortlessly with built-in editors.",
+  "version": "multiarch2.3.1",
+  "image": "pawelmalak/flame",
+  "developer": "",
+  "author": "BigBearCommunity",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/flame.png",
+  "thumbnail": "https://github.com/pawelmalak/flame/raw/master/.github/home.png",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "5005",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "envs": [
+        {
+          "container": "PASSWORD",
+          "description": {
+            "en_us": "Specifies the password to be used by the Flame application"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/app/data",
+          "description": {
+            "en_us": "Container Path: /app/data"
+          }
+        },
+        {
+          "container": "/var/run/docker.sock",
+          "description": {
+            "en_us": "Container Path: /var/run/docker.sock"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "5005",
+          "description": {
+            "en_us": "Container Port: 5005"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/p_P_jKmJRz8",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

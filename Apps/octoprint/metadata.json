@@ -1,0 +1,46 @@
+{
+  "id": "octoprint",
+  "name": "OctoPrint",
+  "description": "OctoPrint is the snappy web interface for your 3D printer!",
+  "tagline": "OctoPrint",
+  "version": "1.11.2",
+  "image": "octoprint/octoprint",
+  "developer": "octoprint",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/octoprint.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "1080",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "volumes": [
+        {
+          "container": "/octoprint",
+          "description": {
+            "en_us": "Container Path: /octoprint"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "80",
+          "description": {
+            "en_us": "Container Port: 80"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/gQ0J9y8w2wE",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

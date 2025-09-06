@@ -1,0 +1,15 @@
+name: big-bear-node-red
+services:
+  app:
+    image: nodered/node-red:4.1.0
+    network_mode: host
+    ports:
+      - target: 1880
+        published: '1880'
+        protocol: tcp
+    restart: always
+    volumes:
+      - type: bind
+        source: /DATA/AppData/$AppID/data
+        target: /data
+    container_name: node-red-updated

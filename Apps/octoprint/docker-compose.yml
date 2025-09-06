@@ -1,0 +1,10 @@
+name: big-bear-octoprint
+services:
+  app:
+    container_name: octoprint
+    image: octoprint/octoprint:1.11.2
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID/octoprint:/octoprint
+    ports:
+      - '1080:80'

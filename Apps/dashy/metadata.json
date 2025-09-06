@@ -1,0 +1,55 @@
+{
+  "id": "dashy",
+  "name": "Dashy",
+  "description": "Dashy helps you organize your self-hosted services by making them accessible from a single place",
+  "tagline": "Dashy",
+  "version": "3.1.0",
+  "image": "lissy93/dashy",
+  "developer": "Lissy93",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/dashy.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm",
+    "arm64"
+  ],
+  "main_service": "big-bear-dashy",
+  "port_map": "4000",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-dashy": {
+      "envs": [
+        {
+          "container": "NODE_ENV",
+          "description": {
+            "en_us": "Node environment"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/app/public",
+          "description": {
+            "en_us": "Container Path: /app/public"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

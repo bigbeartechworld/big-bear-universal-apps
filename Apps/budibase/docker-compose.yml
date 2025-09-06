@@ -1,0 +1,10 @@
+name: big-bear-budibase
+services:
+  big-bear-budibase:
+    container_name: big-bear-budibase
+    image: budibase/budibase:3.18.2
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID/data:/data
+    ports:
+      - '8080:80'

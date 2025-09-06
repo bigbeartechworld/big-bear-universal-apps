@@ -1,0 +1,124 @@
+{
+  "id": "seafile",
+  "name": "seafile",
+  "description": "Seafile is an open source file sync and share platform, focusing on reliability and performance. Seafile's built-in collaborative document SeaDoc, make it easy for collaborative writing and publishing documents.",
+  "tagline": "Seafile is an open source file sync and share platform, focusing on reliability and performance.",
+  "version": "11.0.13",
+  "image": "seafileltd/seafile-mc",
+  "developer": "seafile",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/seafile.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-seafile",
+  "port_map": "8080",
+  "tips": {
+    "before_install": {
+      "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-seafile-to-bigbearcasaos/1011#instructions-3\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-seafile": {
+      "envs": [
+        {
+          "container": "DB_HOST",
+          "description": {
+            "en_us": "Database host"
+          }
+        },
+        {
+          "container": "DB_ROOT_PASSWD",
+          "description": {
+            "en_us": "Database root password"
+          }
+        },
+        {
+          "container": "TIME_ZONE",
+          "description": {
+            "en_us": "Timezone"
+          }
+        },
+        {
+          "container": "SEAFILE_ADMIN_EMAIL",
+          "description": {
+            "en_us": "Seafile admin email"
+          }
+        },
+        {
+          "container": "SEAFILE_ADMIN_PASSWORD",
+          "description": {
+            "en_us": "Seafile admin password"
+          }
+        },
+        {
+          "container": "SEAFILE_SERVER_LETSENCRYPT",
+          "description": {
+            "en_us": "Seafile server Let's Encrypt"
+          }
+        },
+        {
+          "container": "SEAFILE_SERVER_HOSTNAME",
+          "description": {
+            "en_us": "Seafile server hostname"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/www/html/storage",
+          "description": {
+            "en_us": "Container Path: /var/www/html/storage"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "80",
+          "description": {
+            "en_us": "Container Port: 80"
+          }
+        }
+      ]
+    },
+    "big-bear-seafile-db": {
+      "envs": [
+        {
+          "container": "MYSQL_ROOT_PASSWORD",
+          "description": {
+            "en_us": "Database root password"
+          }
+        },
+        {
+          "container": "MYSQL_LOG_CONSOLE",
+          "description": {
+            "en_us": "Database log console"
+          }
+        },
+        {
+          "container": "MARIADB_AUTO_UPGRADE",
+          "description": {
+            "en_us": "Database auto upgrade"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/mysql",
+          "description": {
+            "en_us": "Container Path: /var/lib/mysql"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

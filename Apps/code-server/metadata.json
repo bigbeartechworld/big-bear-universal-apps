@@ -1,0 +1,72 @@
+{
+  "id": "code-server",
+  "name": "Code Server",
+  "description": "Run VS Code on any machine anywhere and access it in the browser.",
+  "tagline": "Code Server",
+  "version": "4.103.2",
+  "image": "linuxserver/code-server",
+  "developer": "",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/coder.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "8080",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "envs": [
+        {
+          "container": "PASSWORD",
+          "description": {
+            "en_us": "Password to access code-server"
+          }
+        },
+        {
+          "container": "PUID",
+          "description": {
+            "en_us": "User ID under which code-server will run"
+          }
+        },
+        {
+          "container": "PGID",
+          "description": {
+            "en_us": "Group ID under which code-server will run"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "config dir"
+          }
+        },
+        {
+          "container": "/projects",
+          "description": {
+            "en_us": "project dir"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/aiYcwXDfgE8",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

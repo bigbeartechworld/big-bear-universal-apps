@@ -1,0 +1,13 @@
+name: big-bear-wallos
+services:
+  big-bear-wallos:
+    container_name: big-bear-wallos
+    image: bellamy/wallos:4.1.1
+    restart: unless-stopped
+    environment:
+      TZ: UTC
+    volumes:
+      - /DATA/AppData/$AppID/db:/var/www/html/db
+      - /DATA/AppData/$AppID/logos:/var/www/html/images/uploads/logos
+    ports:
+      - '8282:80'

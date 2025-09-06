@@ -1,0 +1,31 @@
+{
+  "id": "reactive-resume",
+  "name": "Reactive Resume",
+  "description": "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume.",
+  "tagline": "A free and open-source resume builder",
+  "version": "4.4.6",
+  "image": "amruthpillai/reactive-resume",
+  "developer": "AmruthPillai",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/reactive-resume/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "3000",
+  "tips": {
+    "before_install": {
+      "en_us": "Change [CASAOS_IP] to your CasaOS IP address. In the environment variables.\n"
+    }
+  },
+  "services_metadata": {},
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

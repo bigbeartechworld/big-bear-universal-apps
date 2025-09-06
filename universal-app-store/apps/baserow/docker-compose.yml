@@ -1,0 +1,12 @@
+name: big-bear-baserow
+services:
+  app:
+    container_name: baserow
+    image: baserow/baserow:1.35.1
+    environment:
+      BASEROW_PUBLIC_URL: http://[YOUR_CASAOS_IP]:7350
+    ports:
+      - '7350:80'
+      - '7351:443'
+    volumes:
+      - /DATA/AppData/$AppID/data:/baserow/data

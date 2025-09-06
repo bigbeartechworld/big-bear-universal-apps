@@ -1,0 +1,86 @@
+{
+  "id": "pd3f",
+  "name": "PD3F",
+  "description": "pd3f is a PDF text extraction pipeline that is self-hosted, local-first and Docker-based. It reconstructs the original continuous text with the help of machine learning.",
+  "tagline": "PD3F",
+  "version": "latest",
+  "image": "pd3f/pd3f",
+  "developer": "pd3f",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/pd3f/logo.jpg",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "web",
+  "port_map": "1616",
+  "tips": {},
+  "services_metadata": {
+    "web": {
+      "volumes": [
+        {
+          "container": "/uploads/",
+          "description": {
+            "en_us": "Container Path: /uploads/"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "7575",
+          "description": {
+            "en_us": "Container Port: 7575"
+          }
+        }
+      ]
+    },
+    "worker": {
+      "envs": [
+        {
+          "container": "KEEP_RESULTS_HOURS",
+          "description": {
+            "en_us": "Container Path: KEEP_RESULTS_HOURS"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/root/.cache/",
+          "description": {
+            "en_us": "Container Path: /root/.cache/"
+          }
+        },
+        {
+          "container": "/to-ocr/",
+          "description": {
+            "en_us": "Container Path: /to-ocr/"
+          }
+        },
+        {
+          "container": "/uploads/",
+          "description": {
+            "en_us": "Container Path: /uploads/"
+          }
+        }
+      ]
+    },
+    "ocr_worker": {
+      "volumes": [
+        {
+          "container": "/to-ocr/",
+          "description": {
+            "en_us": "Container Path: /to-ocr/"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

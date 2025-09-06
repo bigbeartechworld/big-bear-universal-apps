@@ -1,0 +1,61 @@
+{
+  "id": "glances",
+  "name": "Glances",
+  "description": "Glances is an open-source system cross-platform monitoring tool. It allows real-time monitoring of various aspects of your system such as CPU, memory, disk, network usage etc. It also allows monitoring of running processes, logged in users, temperatures, voltages, fan speeds etc. It also supports container monitoring, it supports different container management systems such as Docker, LXC. The information is presented in an easy to read dashboard and can also be used for remote monitoring of systems via a web interface or command line interface. It is easy to install and use and can be customized to show only the information that you are interested in.",
+  "tagline": "Glances",
+  "version": "4.3.0.8-full",
+  "image": "nicolargo/glances",
+  "developer": "",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/glances.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm",
+    "arm64"
+  ],
+  "main_service": "big-bear-glances",
+  "port_map": "61208",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-glances": {
+      "envs": [
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Timezone"
+          }
+        },
+        {
+          "container": "GLANCES_OPT",
+          "description": {
+            "en_us": "Glances option to run as a web server"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/run/docker.sock",
+          "description": {
+            "en_us": "Container Path: /var/run/docker.sock"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "61208",
+          "description": {
+            "en_us": "Container Port: 61208"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/nwsVJ0QB0sM",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

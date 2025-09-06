@@ -1,0 +1,100 @@
+{
+  "id": "crafty",
+  "name": "Crafty Controller",
+  "description": "Crafty 4 is the next iteration of our Minecraft Server Wrapper / Controller / Launcher.",
+  "tagline": "Crafty Controller",
+  "version": "4.5.3",
+  "image": "registry.gitlab.com/crafty-controller/crafty-4",
+  "developer": "crafty-controller",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/crafty-controller.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-crafty",
+  "port_map": "8443",
+  "tips": {
+    "before_install": {
+      "en_us": "Before you install Crafty Controller, you need to read the https://community.bigbeartechworld.com/t/added-crafty-controller-to-bigbearcasaos/1013#instructions-3.\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-crafty": {
+      "envs": [
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Timezone"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/crafty/backups",
+          "description": {
+            "en_us": "Container Path: /crafty/backups"
+          }
+        },
+        {
+          "container": "/crafty/logs",
+          "description": {
+            "en_us": "Container Path: /crafty/logs"
+          }
+        },
+        {
+          "container": "/crafty/servers",
+          "description": {
+            "en_us": "Container Path: /crafty/servers"
+          }
+        },
+        {
+          "container": "/crafty/app/config",
+          "description": {
+            "en_us": "Container Path: /crafty/app/config"
+          }
+        },
+        {
+          "container": "/crafty/import",
+          "description": {
+            "en_us": "Container Path: /crafty/import"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8443",
+          "description": {
+            "en_us": "Container Port: 8443"
+          }
+        },
+        {
+          "container": "8123",
+          "description": {
+            "en_us": "Container Port: 8123"
+          }
+        },
+        {
+          "container": "19132",
+          "description": {
+            "en_us": "Container Port: 19132"
+          }
+        },
+        {
+          "container": "25500-25600",
+          "description": {
+            "en_us": "Container Port: 25500-25600"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/Vw4su8hT_7A",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

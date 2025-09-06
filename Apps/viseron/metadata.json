@@ -1,0 +1,94 @@
+{
+  "id": "viseron",
+  "name": "Viseron",
+  "description": "Viseron is a self-hosted, local only NVR and AI Computer Vision software",
+  "tagline": "Viseron",
+  "version": "3.2.3",
+  "image": "roflcoopter/viseron",
+  "developer": "roflcoopter",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/viseron/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-viseron",
+  "port_map": "8888",
+  "tips": {
+    "before_install": {
+      "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-viseron-to-bigbearcasaos/2134?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-viseron": {
+      "envs": [
+        {
+          "container": "PUID",
+          "description": {
+            "en_us": "Container Environment Variable: PUID"
+          }
+        },
+        {
+          "container": "PGID",
+          "description": {
+            "en_us": "Container Environment Variable: PGID"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/segments",
+          "description": {
+            "en_us": "Container Path: /segments"
+          }
+        },
+        {
+          "container": "/snapshots",
+          "description": {
+            "en_us": "Container Path: /snapshots"
+          }
+        },
+        {
+          "container": "/thumbnails",
+          "description": {
+            "en_us": "Container Path: /thumbnails"
+          }
+        },
+        {
+          "container": "/event_clips",
+          "description": {
+            "en_us": "Container Path: /event_clips"
+          }
+        },
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Container Path: /config"
+          }
+        },
+        {
+          "container": "/etc/localtime",
+          "description": {
+            "en_us": "Container Path: /etc/localtime"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8888",
+          "description": {
+            "en_us": "Container Port: 8888"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

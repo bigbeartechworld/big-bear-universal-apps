@@ -1,0 +1,77 @@
+{
+  "id": "cadvisor",
+  "name": "cAdvisor",
+  "description": "cAdvisor (Container Advisor) provides container users an understanding of the resource usage and performance characteristics of their running containers. It is a running daemon that collects, aggregates, processes, and exports information about running containers. Specifically, for each container it keeps resource isolation parameters, historical resource usage, histograms of complete historical resource usage and network statistics. This data is exported by container and machine-wide.",
+  "tagline": "cAdvisor",
+  "version": "0.52.1",
+  "image": "gcr.io/cadvisor/cadvisor",
+  "developer": "",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/cadvisor.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "8085",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "volumes": [
+        {
+          "container": "/rootfs",
+          "description": {
+            "en_us": "Container Path: /rootfs"
+          }
+        },
+        {
+          "container": "/var/run",
+          "description": {
+            "en_us": "Container Path: /var/run"
+          }
+        },
+        {
+          "container": "/var/run/docker.sock",
+          "description": {
+            "en_us": "Container Path: /var/run/docker.sock"
+          }
+        },
+        {
+          "container": "/sys",
+          "description": {
+            "en_us": "Container Path: /sys"
+          }
+        },
+        {
+          "container": "/var/lib/docker",
+          "description": {
+            "en_us": "Container Path: /var/lib/docker"
+          }
+        },
+        {
+          "container": "/dev/disk",
+          "description": {
+            "en_us": "Container Path: /dev/disk"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

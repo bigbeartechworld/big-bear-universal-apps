@@ -1,0 +1,74 @@
+{
+  "id": "immich-kiosk",
+  "name": "Immich Kiosk",
+  "description": "Immich Kiosk is a lightweight slideshow for running on kiosk devices and browsers that uses Immich as a data source.",
+  "tagline": "Immich Kiosk",
+  "version": "0.23.4",
+  "image": "ghcr.io/damongolding/immich-kiosk",
+  "developer": "damongolding",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/immich-kiosk.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-immich-kiosk",
+  "port_map": "3000",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-immich-kiosk-to-bigbearcasaos/3513?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-immich-kiosk": {
+      "envs": [
+        {
+          "container": "LANG",
+          "description": {
+            "en_us": "Sets the language and timezone for the container"
+          }
+        },
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Sets the language and timezone for the container"
+          }
+        },
+        {
+          "container": "KIOSK_IMMICH_API_KEY",
+          "description": {
+            "en_us": "Sets the Immich API key for the container"
+          }
+        },
+        {
+          "container": "KIOSK_IMMICH_URL",
+          "description": {
+            "en_us": "Sets the Immich server URL for the container"
+          }
+        },
+        {
+          "container": "KIOSK_IMMICH_EXTERNAL_URL",
+          "description": {
+            "en_us": "Sets the Immich external URL for the container"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3000",
+          "description": {
+            "en_us": "Container Port: 3000"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

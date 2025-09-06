@@ -1,0 +1,117 @@
+{
+  "id": "wordpress",
+  "name": "WordPress",
+  "description": "Initially started as a blogging tool in 2003, it has evolved into a highly flexible CMS that powers over 40% of the web (as of my last training data in 2022).",
+  "tagline": "WordPress",
+  "version": "6.8.2",
+  "image": "wordpress",
+  "developer": "Automattic",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/wordpress.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64",
+    "arm"
+  ],
+  "main_service": "app",
+  "port_map": "8080",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "envs": [
+        {
+          "container": "WORDPRESS_DB_HOST",
+          "description": {
+            "en_us": "Database host"
+          }
+        },
+        {
+          "container": "WORDPRESS_DB_USER",
+          "description": {
+            "en_us": "Database user"
+          }
+        },
+        {
+          "container": "WORDPRESS_DB_PASSWORD",
+          "description": {
+            "en_us": "Database password"
+          }
+        },
+        {
+          "container": "WORDPRESS_DB_NAME",
+          "description": {
+            "en_us": "Database name"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/www/html",
+          "description": {
+            "en_us": "Container Path: /var/www/html"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "80",
+          "description": {
+            "en_us": "Container Port: 80"
+          }
+        }
+      ]
+    },
+    "db": {
+      "envs": [
+        {
+          "container": "MYSQL_DATABASE",
+          "description": {
+            "en_us": "Database name"
+          }
+        },
+        {
+          "container": "MYSQL_USER",
+          "description": {
+            "en_us": "Database user"
+          }
+        },
+        {
+          "container": "MYSQL_PASSWORD",
+          "description": {
+            "en_us": "Database password"
+          }
+        },
+        {
+          "container": "MYSQL_ROOT_PASSWORD",
+          "description": {
+            "en_us": "Database root password"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/mysql",
+          "description": {
+            "en_us": "Container Path: /var/lib/mysql"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3306",
+          "description": {
+            "en_us": "Container Port: 3306"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/j5M4qlRCbYs",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

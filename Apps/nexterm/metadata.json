@@ -1,0 +1,50 @@
+{
+  "id": "nexterm",
+  "name": "Nexterm",
+  "description": "The open source server management software for SSH, VNC & RDP. This is in Preview Release.",
+  "tagline": "Nexterm",
+  "version": "1.0.5-OPEN-PREVIEW",
+  "image": "germannewsmaker/nexterm",
+  "developer": "germannewsmaker",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/nexterm/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-nexterm",
+  "port_map": "6989",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-nexterm-to-bigbearcasaos/1835#p-3452-documentation-3\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-nexterm": {
+      "volumes": [
+        {
+          "container": "/app/data",
+          "description": {
+            "en_us": "Container Path: /app/data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "6989",
+          "description": {
+            "en_us": "Container Port: 6989"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/RQPz4892npo",
+    "docs": "https://community.bigbeartechworld.com/t/added-nexterm-to-bigbearcasaos/1835#p-3452-documentation-3",
+    "big_bear_cosmos_youtube": ""
+  }
+}

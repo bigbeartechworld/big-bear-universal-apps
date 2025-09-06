@@ -1,0 +1,97 @@
+{
+  "id": "scrypted",
+  "name": "Scrypted",
+  "description": "Scrypted is an open source video integration platform. Using various Plugins, Scrypted can receive streams from a range of cameras and send them to other platforms (HomeKit, Google Home, Alexa, Home Assistant).",
+  "tagline": "Scrypted",
+  "version": "0.123.58-jammy-full",
+  "image": "koush/scrypted",
+  "developer": "koush",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/scrypted.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm",
+    "arm64"
+  ],
+  "main_service": "scrypted",
+  "port_map": "10443",
+  "tips": {},
+  "services_metadata": {
+    "scrypted": {
+      "envs": [
+        {
+          "container": "SCRYPTED_WEBHOOK_UPDATE_AUTHORIZATION",
+          "description": {
+            "en_us": "Scrypted webhook update authorization"
+          }
+        },
+        {
+          "container": "SCRYPTED_WEBHOOK_UPDATE",
+          "description": {
+            "en_us": "Scrypted webhook update URL"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/server/volume",
+          "description": {
+            "en_us": "Container Path: /server/volume"
+          }
+        }
+      ]
+    },
+    "watchtower": {
+      "envs": [
+        {
+          "container": "WATCHTOWER_HTTP_API_TOKEN",
+          "description": {
+            "en_us": "Watchtower HTTP API token"
+          }
+        },
+        {
+          "container": "WATCHTOWER_HTTP_API_UPDATE",
+          "description": {
+            "en_us": "Watchtower HTTP API update"
+          }
+        },
+        {
+          "container": "WATCHTOWER_SCOPE",
+          "description": {
+            "en_us": "Watchtower HTTP API scope"
+          }
+        },
+        {
+          "container": "WATCHTOWER_HTTP_API_PERIODIC_POLLS",
+          "description": {
+            "en_us": "Watchtower HTTP API periodic polls"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/run/docker.sock",
+          "description": {
+            "en_us": "Container Path: /var/run/docker.sock"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/5uH0LaSyKTY",
+    "docs": "https://community.bigbeartechworld.com/t/how-to-install-scrypted-on-casaos-using-bigbearcasaos/155",
+    "big_bear_cosmos_youtube": ""
+  }
+}

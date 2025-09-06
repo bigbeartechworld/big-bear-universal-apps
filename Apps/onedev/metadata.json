@@ -1,0 +1,88 @@
+{
+  "id": "onedev",
+  "name": "OneDev",
+  "description": "Self-hosted Git Server with Kanban and CI/CD",
+  "tagline": "Self-hosted Git Server with Kanban and CI/CD",
+  "version": "12.0.8",
+  "image": "1dev/server",
+  "developer": "theonedev",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/onedev.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-onedev",
+  "port_map": "6610",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-onedev": {
+      "volumes": [
+        {
+          "container": "/opt/onedev",
+          "description": {
+            "en_us": "Data directory for OneDev"
+          }
+        },
+        {
+          "container": "/var/run/docker.sock",
+          "description": {
+            "en_us": "Docker socket for OneDev"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "port": "6610",
+          "description": {
+            "en_us": "OneDev web interface"
+          }
+        },
+        {
+          "port": "6611",
+          "description": {
+            "en_us": "OneDev SSH interface"
+          }
+        }
+      ]
+    },
+    "big-bear-onedev-db": {
+      "envs": [
+        {
+          "name": "POSTGRES_USER",
+          "description": {
+            "en_us": "Default username for PostgreSQL"
+          }
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Password for the default user"
+          }
+        },
+        {
+          "name": "POSTGRES_DB",
+          "description": {
+            "en_us": "Default database created upon startup"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data",
+          "description": {
+            "en_us": "Database directory for OneDev"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/ps3JLYRB3SA",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

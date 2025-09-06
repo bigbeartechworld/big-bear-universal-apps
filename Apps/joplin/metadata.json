@@ -1,0 +1,136 @@
+{
+  "id": "joplin",
+  "name": "joplin",
+  "description": "Note taking and to-do application with synchronisation",
+  "tagline": "joplin",
+  "version": "3.4.2",
+  "image": "joplin/server:3.3.13",
+  "developer": "joplin",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/joplin.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-joplin",
+  "port_map": "22300",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-joplin-server-to-bigbearcasaos/800?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-joplin": {
+      "envs": [
+        {
+          "name": "APP_PORT",
+          "description": {
+            "en_us": "Application Port: 22300"
+          }
+        },
+        {
+          "name": "APP_BASE_URL",
+          "description": {
+            "en_us": "Application Base URL"
+          }
+        },
+        {
+          "name": "DB_CLIENT",
+          "description": {
+            "en_us": "Database Client: pg"
+          }
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Postgres Password: 27a1d42a-a15d-43dd-903c-2a73538647fe"
+          }
+        },
+        {
+          "name": "POSTGRES_USER",
+          "description": {
+            "en_us": "Postgres User: bigbear"
+          }
+        },
+        {
+          "name": "POSTGRES_DATABASE",
+          "description": {
+            "en_us": "Postgres Database: joplin"
+          }
+        },
+        {
+          "name": "POSTGRES_PORT",
+          "description": {
+            "en_us": "Postgres Port: 5432"
+          }
+        },
+        {
+          "name": "POSTGRES_HOST",
+          "description": {
+            "en_us": "Postgres Host: big-bear-joplin-db"
+          }
+        },
+        {
+          "name": "MAX_TIME_DRIFT",
+          "description": {
+            "en_us": "Max Time Drift: 0"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "22300",
+          "description": {
+            "en_us": "Container Port: 22300"
+          }
+        }
+      ]
+    },
+    "big-bear-joplin-db": {
+      "envs": [
+        {
+          "name": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Postgres Password: 27a1d42a-a15d-43dd-903c-2a73538647fe"
+          }
+        },
+        {
+          "name": "POSTGRES_USER",
+          "description": {
+            "en_us": "Postgres User: casaos"
+          }
+        },
+        {
+          "name": "POSTGRES_DB",
+          "description": {
+            "en_us": "Postgres Database: joplin"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data",
+          "description": {
+            "en_us": "Container Volume: /var/lib/postgresql/data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "5432",
+          "description": {
+            "en_us": "Container Port: 5432"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/FjVyg0X-_zc",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

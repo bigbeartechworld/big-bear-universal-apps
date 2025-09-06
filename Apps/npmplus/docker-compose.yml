@@ -1,0 +1,11 @@
+name: big-bear-npmplus
+services:
+  big-bear-npmplus:
+    container_name: big-bear-npmplus
+    image: zoeyvid/npmplus:449
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - TZ=America/Chicago
+    volumes:
+      - /DATA/AppData/$AppID/data:/data

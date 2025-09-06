@@ -1,0 +1,220 @@
+{
+  "id": "calcom",
+  "name": "Cal.com",
+  "description": "The open source Calendly successor. You are in charge of your own data, workflow, and appearance.\\nCalendly and other scheduling tools are awesome. It made our lives massively easier. We're using it for business meetings, seminars, yoga classes, and even calls with our families. However, most tools are very limited in terms of control and customization.\\n    That's where Cal.com comes in. Self-hosted or hosted by us. White-label by design. API-driven and ready to be deployed on your own domain. Full control of your events and data.",
+  "tagline": "Cal.com",
+  "version": "5.6.11",
+  "image": "calcom/cal.com",
+  "developer": "calcom",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/calcom/logo.jpg",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-calcom",
+  "port_map": "3000",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-cal-com-to-bigbearcasaos/1873#p-3510-documentation-4\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-calcom": {
+      "envs": [
+        {
+          "container": "DATABASE_HOST",
+          "description": {
+            "en_us": "Database host"
+          }
+        },
+        {
+          "container": "DATABASE_URL",
+          "description": {
+            "en_us": "Database URL"
+          }
+        },
+        {
+          "container": "DATABASE_DIRECT_URL",
+          "description": {
+            "en_us": "Database direct URL"
+          }
+        },
+        {
+          "container": "POSTGRES_USER",
+          "description": {
+            "en_us": "Database user"
+          }
+        },
+        {
+          "container": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Database password"
+          }
+        },
+        {
+          "container": "POSTGRES_DB",
+          "description": {
+            "en_us": "Database type"
+          }
+        },
+        {
+          "container": "LICENSE",
+          "description": {
+            "en_us": "License"
+          }
+        },
+        {
+          "container": "NEXT_PUBLIC_LICENSE_CONSENT",
+          "description": {
+            "en_us": "License consent"
+          }
+        },
+        {
+          "container": "NEXT_PUBLIC_WEBAPP_URL",
+          "description": {
+            "en_us": "Webapp URL"
+          }
+        },
+        {
+          "container": "NEXTAUTH_SECRET",
+          "description": {
+            "en_us": "Nextauth secret"
+          }
+        },
+        {
+          "container": "CALENDSO_ENCRYPTION_KEY",
+          "description": {
+            "en_us": "Calendar encryption key"
+          }
+        },
+        {
+          "container": "MS_GRAPH_CLIENT_ID",
+          "description": {
+            "en_us": "Microsoft Graph client ID"
+          }
+        },
+        {
+          "container": "MS_GRAPH_CLIENT_SECRET",
+          "description": {
+            "en_us": "Microsoft Graph client secret"
+          }
+        },
+        {
+          "container": "ZOOM_CLIENT_ID",
+          "description": {
+            "en_us": "Zoom client ID"
+          }
+        },
+        {
+          "container": "ZOOM_CLIENT_SECRET",
+          "description": {
+            "en_us": "Zoom client secret"
+          }
+        },
+        {
+          "container": "GOOGLE_API_CREDENTIALS",
+          "description": {
+            "en_us": "Google API credentials"
+          }
+        },
+        {
+          "container": "EMAIL_FROM",
+          "description": {
+            "en_us": "Email from"
+          }
+        },
+        {
+          "container": "EMAIL_SERVER_HOST",
+          "description": {
+            "en_us": "Email server host"
+          }
+        },
+        {
+          "container": "EMAIL_SERVER_PORT",
+          "description": {
+            "en_us": "Email server port"
+          }
+        },
+        {
+          "container": "EMAIL_SERVER_PASSWORD",
+          "description": {
+            "en_us": "Email server password"
+          }
+        },
+        {
+          "container": "EMAIL_SERVER_USER",
+          "description": {
+            "en_us": "Email server user"
+          }
+        },
+        {
+          "container": "NODE_ENV",
+          "description": {
+            "en_us": "Node environment"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Container Path: /config"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3000",
+          "description": {
+            "en_us": "Container Port: 3000"
+          }
+        },
+        {
+          "container": "3001",
+          "description": {
+            "en_us": "Container Port: 3001"
+          }
+        }
+      ]
+    },
+    "big-bear-calcom-db": {
+      "envs": [
+        {
+          "container": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Database password"
+          }
+        },
+        {
+          "container": "POSTGRES_USER",
+          "description": {
+            "en_us": "Database user"
+          }
+        },
+        {
+          "container": "POSTGRES_DB",
+          "description": {
+            "en_us": "Database type"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data",
+          "description": {
+            "en_us": "Container Path: /var/lib/postgresql/data"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

@@ -1,0 +1,15 @@
+name: big-bear-netalertx
+services:
+  big-bear-netalertx:
+    container_name: big-bear-netalertx
+    image: jokobsk/netalertx:25.8.6
+    restart: unless-stopped
+    privileged: true
+    volumes:
+      - /DATA/AppData/$AppID/config:/app/config
+      - /DATA/AppData/$AppID/db:/app/db
+    environment:
+      - TZ=UTC
+      - PORT=8080
+      - ALWAYS_FRESH_INSTALL=false
+    network_mode: host

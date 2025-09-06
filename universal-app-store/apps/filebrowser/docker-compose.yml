@@ -1,0 +1,19 @@
+name: big-bear-filebrowser
+services:
+  big-bear-filebrowser:
+    container_name: big-bear-filebrowser
+    image: filebrowser/filebrowser:v2.42.5-s6
+    restart: unless-stopped
+    environment:
+      - PUID=0
+      - PGID=0
+    volumes:
+      - /DATA/AppData:/srv/app-data
+      - /DATA/Documents:/srv/documents
+      - /DATA/Downloads:/srv/downloads
+      - /DATA/Gallery:/srv/gallery
+      - /DATA/media:/srv/media
+      - /DATA/AppData/$AppID/data/db:/database
+      - /DATA/AppData/$AppID/data/config:/config
+    ports:
+      - '8080:80'

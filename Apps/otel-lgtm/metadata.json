@@ -1,0 +1,67 @@
+{
+  "id": "otel-lgtm",
+  "name": "OTEL LGTM",
+  "description": "An OpenTelemetry Backend in a Docker Image.",
+  "tagline": "OpenTelemetry Backend",
+  "version": "0.11.9",
+  "image": "grafana/otel-lgtm",
+  "developer": "Grafana Labs",
+  "author": "Konrad Botor (Forinil)",
+  "icon": "https://www.gravatar.com/avatar/31cea69afa424609b2d83621b4d47f1d?s=120&r=g&d=404",
+  "thumbnail": "https://raw.githubusercontent.com/grafana/docker-otel-lgtm/main/img/overview.png",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-otel-lgtm",
+  "port_map": "3000",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://github.com/grafana/docker-otel-lgtm/\nand https://grafana.com/blog/2024/03/13/an-opentelemetry-backend-in-a-docker-image-introducing-grafana/otel-lgtm/\n",
+      "en_uk": "Read this before installing: https://github.com/grafana/docker-otel-lgtm/\nand https://grafana.com/blog/2024/03/13/an-opentelemetry-backend-in-a-docker-image-introducing-grafana/otel-lgtm/\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-otel-lgtm": {
+      "ports": [
+        {
+          "container": "3000",
+          "description": {
+            "en_us": "WebUI HTTP Port",
+            "en_uk": "WebUI HTTP Port"
+          }
+        },
+        {
+          "container": "4317",
+          "description": {
+            "en_us": "OpenTelemetry gRPC endpoint",
+            "en_uk": "OpenTelemetry gRPC endpoint"
+          }
+        },
+        {
+          "container": "4318",
+          "description": {
+            "en_us": "OpenTelemetry HTTP endpoint",
+            "en_uk": "OpenTelemetry HTTP endpoint"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Data directory",
+            "en_uk": "Data directory"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

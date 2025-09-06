@@ -1,0 +1,222 @@
+{
+  "id": "romm",
+  "name": "RomM",
+  "description": "ROM manager for organizing, enriching, and playing retro games, with support for 400+ platforms.",
+  "tagline": "RomM",
+  "version": "4.1.6",
+  "image": "rommapp/romm",
+  "developer": "RomM Team",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/romm.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-romm",
+  "port_map": "1080",
+  "tips": {
+    "before_install": {
+      "en_us": "Run this script before installing the big-bear-romm application:\n\n```\nbash -c \"$(wget -qLO - https://raw.githubusercontent.com/bigbeartechworld/big-bear-scripts/master/generate-romm-config/run.sh)\"\n```\n\nAfter running this script, you need to restart the container.\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-romm": {
+      "envs": [
+        {
+          "container": "DB_HOST",
+          "description": {
+            "en_us": "Database Host: romm_db"
+          }
+        },
+        {
+          "container": "DB_PORT",
+          "description": {
+            "en_us": "Database Port: 3306"
+          }
+        },
+        {
+          "container": "DB_USER",
+          "description": {
+            "en_us": "Database User: romm-user"
+          }
+        },
+        {
+          "container": "DB_NAME",
+          "description": {
+            "en_us": "Database Name: romm"
+          }
+        },
+        {
+          "container": "DB_PASSWD",
+          "description": {
+            "en_us": "Database Password: casaos"
+          }
+        },
+        {
+          "container": "IGDB_CLIENT_ID",
+          "description": {
+            "en_us": "IGDB Client ID (Optional): Generate an ID and SECRET in IGDB"
+          }
+        },
+        {
+          "container": "IGDB_CLIENT_SECRET",
+          "description": {
+            "en_us": "IGDB Client Secret (Optional): https://api-docs.igdb.com/#account-creation"
+          }
+        },
+        {
+          "container": "MOBYGAMES_API_KEY",
+          "description": {
+            "en_us": "MobyGames API Key (Optional): Generate at https://www.mobygames.com/info/api/"
+          }
+        },
+        {
+          "container": "STEAMGRIDDB_API_KEY",
+          "description": {
+            "en_us": "SteamGridDB API Key (Optional): See https://github.com/rommapp/romm/wiki/Generate-API-Keys#steamgriddb"
+          }
+        },
+        {
+          "container": "SCREENSCRAPER_USER",
+          "description": {
+            "en_us": "ScreenScraper User (Optional): ScreenScraper username"
+          }
+        },
+        {
+          "container": "SCREENSCRAPER_PASSWORD",
+          "description": {
+            "en_us": "ScreenScraper Password (Optional): ScreenScraper password"
+          }
+        },
+        {
+          "container": "RETROACHIEVEMENTS_API_KEY",
+          "description": {
+            "en_us": "RetroAchievements API Key (Optional): RetroAchievements API key"
+          }
+        },
+        {
+          "container": "HASHEOUS_API_ENABLED",
+          "description": {
+            "en_us": "Hasheous API Enabled (Optional): Enable Hasheous API integration"
+          }
+        },
+        {
+          "container": "ROMM_AUTH_SECRET_KEY",
+          "description": {
+            "en_us": "Authentication Secret Key: <secret key>"
+          }
+        },
+        {
+          "container": "ENABLE_RESCAN_ON_FILESYSTEM_CHANGE",
+          "description": {
+            "en_us": "Rescan On Filesystem Change: true"
+          }
+        },
+        {
+          "container": "ENABLE_SCHEDULED_RESCAN",
+          "description": {
+            "en_us": "Scheduled Rescan: true"
+          }
+        },
+        {
+          "container": "ENABLE_SCHEDULED_UPDATE_SWITCH_TITLEDB",
+          "description": {
+            "en_us": "Scheduled Update Switch TitleDB: true"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/romm/resources",
+          "description": {
+            "en_us": "Container Path: /romm/resources"
+          }
+        },
+        {
+          "container": "/romm/library",
+          "description": {
+            "en_us": "Container Path: /romm/library"
+          }
+        },
+        {
+          "container": "/romm/assets",
+          "description": {
+            "en_us": "Container Path: /romm/assets"
+          }
+        },
+        {
+          "container": "/romm/config",
+          "description": {
+            "en_us": "Container Path: /romm/config"
+          }
+        },
+        {
+          "container": "/romm/logs",
+          "description": {
+            "en_us": "Container Path: /romm/logs"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        }
+      ]
+    },
+    "big-bear-rommdb": {
+      "envs": [
+        {
+          "container": "MYSQL_ROOT_PASSWORD",
+          "description": {
+            "en_us": "MySQL root password: casaos"
+          }
+        },
+        {
+          "container": "MYSQL_DATABASE",
+          "description": {
+            "en_us": "MySQL database: romm"
+          }
+        },
+        {
+          "container": "MYSQL_USER",
+          "description": {
+            "en_us": "MySQL user: romm-user"
+          }
+        },
+        {
+          "container": "MYSQL_PASSWORD",
+          "description": {
+            "en_us": "MySQL password: casaos"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/mysql",
+          "description": {
+            "en_us": "Container Path: /var/lib/mysql"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3306",
+          "description": {
+            "en_us": "Container Port: 3306"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "https://github.com/rommapp/romm/wiki",
+    "big_bear_cosmos_youtube": ""
+  }
+}

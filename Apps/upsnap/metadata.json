@@ -1,0 +1,62 @@
+{
+  "id": "upsnap",
+  "name": "Upsnap",
+  "description": "A simple wake on lan web app written with SvelteKit, Go and PocketBase.",
+  "tagline": "Upsnap",
+  "version": "5.1.9",
+  "image": "ghcr.io/seriousm4x/upsnap",
+  "developer": "seriousm4x",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/upsnap.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-upsnap",
+  "port_map": "8090",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-upsnap-to-bigbearcasaos/2279?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-upsnap": {
+      "volumes": [
+        {
+          "container": "/app/data/configs",
+          "description": {
+            "en_us": "Container Path: /app/data/configs"
+          }
+        },
+        {
+          "container": "/app/public/icons",
+          "description": {
+            "en_us": "Container Path: /app/public/icons"
+          }
+        },
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8090",
+          "description": {
+            "en_us": "Container Port: 8090"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

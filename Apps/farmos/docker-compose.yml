@@ -1,0 +1,41 @@
+name: big-bear-farmos
+services:
+  big-bear-farmos:
+    container_name: big-bear-farmos
+    image: farmos/farmos:3.4.5
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID/sites:/opt/drupal/web/sites
+    ports:
+      - '8080:80'
+    networks:
+      - big-bear-farmos-network
+  big-bear-farmos-db:
+    container_name: big-bear-farmos-db
+    image: mariadb:10
+    volumes:
+      - /DATA/AppData/$AppID/db:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: 037ed96f-5f27-4fa8-bd7f-49b4a804a05c
+      MYSQL_DATABASE: big_bear_farmos
+      MYSQL_USER: farmos
+      MYSQL_PASSWORD: 037ed96f-5f27-4fa8-bd7f-49b4a804a05c
+    healthcheck:
+      test:
+        - CMD
+        - healthcheck.sh
+        - '--connect'
+        - '--innodb_initialized'
+      start_period: 1m
+      start_interval: 10s
+      interval: 1m
+      timeout: 5s
+      retries: 3
+    networks:
+      - big-bear-farmos-network
+networks:
+  big-bear-farmos-network:
+    name: big-bear-farmos-network
+    driver: bridge

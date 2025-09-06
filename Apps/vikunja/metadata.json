@@ -1,0 +1,126 @@
+{
+  "id": "vikunja",
+  "name": "Vikunja",
+  "description": "The open-source, self-hostable to-do app. Organize everything, on all platforms.",
+  "tagline": "Vikunja",
+  "version": "0.24.6",
+  "image": "vikunja/vikunja",
+  "developer": "kolaente",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/vikunja.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "vikunja",
+  "port_map": "8081",
+  "tips": {},
+  "services_metadata": {
+    "vikunja": {
+      "envs": [
+        {
+          "container": "VIKUNJA_DATABASE_HOST",
+          "description": {
+            "en_us": "Database host"
+          }
+        },
+        {
+          "container": "VIKUNJA_DATABASE_PASSWORD",
+          "description": {
+            "en_us": "Database password"
+          }
+        },
+        {
+          "container": "VIKUNJA_DATABASE_TYPE",
+          "description": {
+            "en_us": "Database type"
+          }
+        },
+        {
+          "container": "VIKUNJA_DATABASE_USER",
+          "description": {
+            "en_us": "Database user"
+          }
+        },
+        {
+          "container": "VIKUNJA_DATABASE_DATABASE",
+          "description": {
+            "en_us": "Database name"
+          }
+        },
+        {
+          "container": "VIKUNJA_SERVICE_JWTSECRET",
+          "description": {
+            "en_us": "JWT secret"
+          }
+        },
+        {
+          "container": "VIKUNJA_SERVICE_FRONTENDURL",
+          "description": {
+            "en_us": "Frontend URL"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3456",
+          "description": {
+            "en_us": "Container Port: 3456"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/app/vikunja/files",
+          "description": {
+            "en_us": "Container Path: /app/vikunja/files"
+          }
+        }
+      ]
+    },
+    "vikunja-db": {
+      "envs": [
+        {
+          "container": "MYSQL_ROOT_PASSWORD",
+          "description": {
+            "en_us": "MySQL root password: supersecret"
+          }
+        },
+        {
+          "container": "MYSQL_USER",
+          "description": {
+            "en_us": "MySQL user: vikunja"
+          }
+        },
+        {
+          "container": "MYSQL_PASSWORD",
+          "description": {
+            "en_us": "MySQL password: secret"
+          }
+        },
+        {
+          "container": "MYSQL_DATABASE",
+          "description": {
+            "en_us": "MySQL database: vikunja"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/mysql",
+          "description": {
+            "en_us": "Container Path: /var/lib/mysql"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/T-dNbdIttoI",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "id": "plex-nvidia",
+  "name": "Plex with NVIDIA GPU",
+  "description": "Stream Movies & TV Shows with NVIDIA GPU",
+  "tagline": "Stream Movies & TV Shows with NVIDIA GPU",
+  "version": "1.42.1",
+  "image": "linuxserver/plex",
+  "developer": "plexinc",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/plex.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-plex-nvidia",
+  "port_map": "32400",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-plex-with-nvidia-gpu-to-bigbearcasaos/3447?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-plex-nvidia": {
+      "envs": [
+        {
+          "container": "PUID",
+          "description": {
+            "en_us": "User ID"
+          }
+        },
+        {
+          "container": "PGID",
+          "description": {
+            "en_us": "Group ID"
+          }
+        },
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Timezone"
+          }
+        },
+        {
+          "container": "VERSION",
+          "description": {
+            "en_us": "Version"
+          }
+        },
+        {
+          "container": "PLEX_CLAIM",
+          "description": {
+            "en_us": "Plex Claim"
+          }
+        },
+        {
+          "container": "CPU_FALLBACK",
+          "description": {
+            "en_us": "CPU Fallback"
+          }
+        },
+        {
+          "container": "NVIDIA_VISIBLE_DEVICES",
+          "description": {
+            "en_us": "NVIDIA Visible Devices"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Configuration files"
+          }
+        },
+        {
+          "container": "/tv",
+          "description": {
+            "en_us": "TV Shows"
+          }
+        },
+        {
+          "container": "/movies",
+          "description": {
+            "en_us": "Movies"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

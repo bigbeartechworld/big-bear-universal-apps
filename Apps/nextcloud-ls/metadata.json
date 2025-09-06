@@ -1,0 +1,76 @@
+{
+  "id": "nextcloud-ls",
+  "name": "Nextcloud LS",
+  "description": "Nextcloud puts your data at your fingertips, under your control. Store your documents, calendar, contacts and photos on a server at home, at one of our providers or in a data center you trust.",
+  "tagline": "LinuxServer - The productivity platform that keeps you in control",
+  "version": "31.0.8",
+  "image": "linuxserver/nextcloud",
+  "developer": "nextcloud",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nextcloud.png",
+  "thumbnail": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/thumbnail.jpg",
+  "screenshots": [
+    "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-1.png",
+    "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-2.png",
+    "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-3.png"
+  ],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-nextcloud-ls",
+  "port_map": "10443",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-nextcloud-ls": {
+      "volumes": [
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Container Path: /config"
+          }
+        },
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "443",
+          "description": {
+            "en_us": "Container Port: 443"
+          }
+        }
+      ],
+      "envs": [
+        {
+          "container": "PUID",
+          "description": {
+            "en_us": "Process UID"
+          }
+        },
+        {
+          "container": "PGID",
+          "description": {
+            "en_us": "Process GID"
+          }
+        },
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Timezone"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

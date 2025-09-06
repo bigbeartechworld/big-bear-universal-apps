@@ -1,0 +1,88 @@
+{
+  "id": "farmos",
+  "name": "FarmOS",
+  "description": "farmOS is a web-based application for farm management, planning, and record keeping. It is developed by a community of volunteers and aims to provide a standard platform for farmers, developers, and researchers to build upon.",
+  "tagline": "A web-based farm record keeping application.",
+  "version": "3.4.5",
+  "image": "farmos/farmos",
+  "developer": "farmOS",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/farmos/logo.jpeg",
+  "thumbnail": "",
+  "screenshots": [
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/farmos/screenshot-1.png"
+  ],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-farmos",
+  "port_map": "8080",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-farmos-to-bigbearcasaos/2334?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-farmos": {
+      "volumes": [
+        {
+          "container": "/opt/drupal/web/sites",
+          "description": {
+            "en_us": "Container Path: /opt/drupal/web/sites"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        }
+      ]
+    },
+    "big-bear-farmos-db": {
+      "envs": [
+        {
+          "container": "MYSQL_ROOT_PASSWORD",
+          "description": {
+            "en_us": "Root Password"
+          }
+        },
+        {
+          "container": "MYSQL_DATABASE",
+          "description": {
+            "en_us": "Database Name"
+          }
+        },
+        {
+          "container": "MYSQL_USER",
+          "description": {
+            "en_us": "Database User"
+          }
+        },
+        {
+          "container": "MYSQL_PASSWORD",
+          "description": {
+            "en_us": "Database Password"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/mysql",
+          "description": {
+            "en_us": "Container Path: /var/lib/mysql"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "id": "dockpeek",
+  "name": "Dockpeek",
+  "description": "A lightweight, self-hosted Docker dashboard that provides quick access to all running containers and their exposed ports with one-click access to web apps.",
+  "tagline": "Docker Dashboard",
+  "version": "1.5.8",
+  "image": "ghcr.io/dockpeek/dockpeek",
+  "developer": "dockpeek",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/dockpeek.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-dockpeek",
+  "port_map": "3420",
+  "tips": {
+    "before_install": {
+      "en_us": "**Support BigBearTechWorld**: https://ko-fi.com/bigbeartechworld\n**Community Forum**: https://community.bigbeartechworld.com\n**Read this before installing**: https://community.bigbeartechworld.com/t/added-dockpeek-to-bigbearcasaos/4136?u=dragonfire1119\n\nBefore you install, make sure to change the default credentials (SECRET_KEY, USERNAME, PASSWORD) for security.\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-dockpeek": {
+      "volumes": [
+        {
+          "container": "/var/run/docker.sock",
+          "description": {
+            "en_us": "Container Path: /var/run/docker.sock"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8000",
+          "description": {
+            "en_us": "Container Port: 8000"
+          }
+        }
+      ],
+      "envs": [
+        {
+          "container": "SECRET_KEY",
+          "description": {
+            "en_us": "Secret key for the application. Change this for security."
+          }
+        },
+        {
+          "container": "USERNAME",
+          "description": {
+            "en_us": "Username for authentication. Change this from default."
+          }
+        },
+        {
+          "container": "PASSWORD",
+          "description": {
+            "en_us": "Password for authentication. Change this from default."
+          }
+        },
+        {
+          "container": "DOCKER_HOST",
+          "description": {
+            "en_us": "Docker host socket path."
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "id": "eufy-security-ws",
+  "name": "Eufy Security WS",
+  "description": "eufy-security-ws is a small server wrapper around the eufy-security-client library to access it via a WebSocket. It allows you to control Eufy security devices by connecting to the Eufy cloud servers and local/remote stations.",
+  "tagline": "eufy-security-ws",
+  "version": "1.9.3",
+  "image": "bropat/eufy-security-ws",
+  "developer": "bropat",
+  "author": "BigBearTechWorld",
+  "icon": "",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-eufy-security-ws",
+  "port_map": "3000",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-eufy-security-ws-to-bigbearcasaos/2228\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-eufy-security-ws": {
+      "envs": [
+        {
+          "name": "USERNAME",
+          "description": {
+            "en_us": "Eufy Account Username (required)"
+          }
+        },
+        {
+          "name": "PASSWORD",
+          "description": {
+            "en_us": "Eufy Account Password (required)"
+          }
+        },
+        {
+          "name": "COUNTRY",
+          "description": {
+            "en_us": "ISO 3166-1 Alpha-2 country code (default: US)"
+          }
+        },
+        {
+          "name": "LANGUAGE",
+          "description": {
+            "en_us": "ISO 639 language code (default: en)"
+          }
+        },
+        {
+          "name": "TRUSTED_DEVICE_NAME",
+          "description": {
+            "en_us": "Label of the trusted devices (viewable with 2fa activated in Eufy App; default: random device name)"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3000",
+          "description": {
+            "en_us": "Container Port: 3000"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

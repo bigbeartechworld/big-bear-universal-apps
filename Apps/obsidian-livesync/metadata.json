@@ -1,0 +1,56 @@
+{
+  "id": "obsidian-livesync",
+  "name": "Obsidian Livesync",
+  "description": "Self-hosted database for synchronizing Obsidian vaults.",
+  "tagline": "Self-hosted database for synchronizing Obsidian vaults.",
+  "version": "3.5.0",
+  "image": "couchdb",
+  "developer": "",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/obsidian.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "5984",
+  "tips": {
+    "before_install": {
+      "en_us": "Run this script before installing the big-bear-obsidian-livesync application:\n\n```\nbash -c \"$(wget -qLO - https://raw.githubusercontent.com/bigbeartechworld/big-bear-scripts/master/generate-obsidian-livesync-local-ini/run.sh)\"\n```\n\nVideo Tutorial: https://youtu.be/-n1abMPLmFg\n\nAfter running this script, you need to restart the container.\n"
+    }
+  },
+  "services_metadata": {
+    "app": {
+      "volumes": [
+        {
+          "container": "/opt/couchdb/data",
+          "description": {
+            "en_us": "Container Path: /opt/couchdb/data"
+          }
+        },
+        {
+          "container": "/opt/couchdb/etc/local.ini",
+          "description": {
+            "en_us": "Container Path: /opt/couchdb/etc/local.ini"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "5984",
+          "description": {
+            "en_us": "Container Port: 5984"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/-n1abMPLmFg",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "id": "brave",
+  "name": "Brave",
+  "description": "This Image contains a browser-accessible version of Brave.",
+  "tagline": "Brave",
+  "version": "1.15.0-rolling",
+  "image": "kasmweb/brave",
+  "developer": "kasmweb",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/brave.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "brave",
+  "port_map": "6901",
+  "tips": {
+    "before_install": {
+      "en_us": "Username: kasm_user\nPassword: casaos\n"
+    }
+  },
+  "services_metadata": {
+    "brave": {
+      "envs": [
+        {
+          "container": "VNC_PW",
+          "description": {
+            "en_us": "VNC Password"
+          }
+        },
+        {
+          "container": "LAUNCH_URL",
+          "description": {
+            "en_us": "Launch URL"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/CJ2x-yCW-co",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

@@ -1,0 +1,13 @@
+name: big-bear-portainer
+services:
+  app:
+    container_name: big-bear-portainer
+    image: portainer/portainer-ce:2.33.1-alpine
+    network_mode: bridge
+    ports:
+      - '8000:8000'
+      - '9000:9000'
+      - '9443:9443'
+    volumes:
+      - /DATA/AppData/$AppID/data:/data
+      - /var/run/docker.sock:/var/run/docker.sock

@@ -1,0 +1,186 @@
+{
+  "id": "healthchecks",
+  "name": "Healthchecks",
+  "description": "Healthchecks is a watchdog for your cron jobs. It's a web server that listens for pings from your cron jobs, plus a web interface.",
+  "tagline": "Healthchecks",
+  "version": "3.11.20250828",
+  "image": "linuxserver/healthchecks",
+  "developer": "linuxserver",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/healthchecks.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-healthchecks",
+  "port_map": "8000",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-healthchecks": {
+      "envs": [
+        {
+          "container": "PUID",
+          "description": {
+            "en_us": "Process UID"
+          }
+        },
+        {
+          "container": "PGID",
+          "description": {
+            "en_us": "Process GID"
+          }
+        },
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Timezone"
+          }
+        },
+        {
+          "container": "SITE_ROOT",
+          "description": {
+            "en_us": "Site root"
+          }
+        },
+        {
+          "container": "SITE_NAME",
+          "description": {
+            "en_us": "Site name"
+          }
+        },
+        {
+          "container": "SUPERUSER_EMAIL",
+          "description": {
+            "en_us": "Superuser email"
+          }
+        },
+        {
+          "container": "SUPERUSER_PASSWORD",
+          "description": {
+            "en_us": "Superuser password"
+          }
+        },
+        {
+          "container": "ALLOWED_HOSTS",
+          "description": {
+            "en_us": "Allowed hosts"
+          }
+        },
+        {
+          "container": "APPRISE_ENABLED",
+          "description": {
+            "en_us": "Apprise enabled"
+          }
+        },
+        {
+          "container": "CSRF_TRUSTED_ORIGINS",
+          "description": {
+            "en_us": "CSRF trusted origins"
+          }
+        },
+        {
+          "container": "DEBUG",
+          "description": {
+            "en_us": "Debug"
+          }
+        },
+        {
+          "container": "DEFAULT_FROM_EMAIL",
+          "description": {
+            "en_us": "Default from email"
+          }
+        },
+        {
+          "container": "EMAIL_HOST",
+          "description": {
+            "en_us": "Email host"
+          }
+        },
+        {
+          "container": "EMAIL_PORT",
+          "description": {
+            "en_us": "Email port"
+          }
+        },
+        {
+          "container": "EMAIL_HOST_USER",
+          "description": {
+            "en_us": "Email host user"
+          }
+        },
+        {
+          "container": "EMAIL_HOST_PASSWORD",
+          "description": {
+            "en_us": "Email host password"
+          }
+        },
+        {
+          "container": "EMAIL_USE_TLS",
+          "description": {
+            "en_us": "Email use TLS"
+          }
+        },
+        {
+          "container": "INTEGRATIONS_ALLOW_PRIVATE_IPS",
+          "description": {
+            "en_us": "Integrations allow private IPs"
+          }
+        },
+        {
+          "container": "PING_EMAIL_DOMAIN",
+          "description": {
+            "en_us": "Ping email domain"
+          }
+        },
+        {
+          "container": "RP_ID",
+          "description": {
+            "en_us": "RP ID"
+          }
+        },
+        {
+          "container": "SECRET_KEY",
+          "description": {
+            "en_us": "Secret key"
+          }
+        },
+        {
+          "container": "SITE_LOGO_URL",
+          "description": {
+            "en_us": "Site logo URL"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Container Path: /config"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8000",
+          "description": {
+            "en_us": "Container Port: 8000"
+          }
+        },
+        {
+          "container": "2525",
+          "description": {
+            "en_us": "Container Port: 2525"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

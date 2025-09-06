@@ -1,0 +1,46 @@
+{
+  "id": "trilium",
+  "name": "Trilium",
+  "description": "Build your personal knowledge base with Trilium Notes",
+  "tagline": "Build your personal knowledge base with Trilium Notes",
+  "version": "0.63.7",
+  "image": "zadam/trilium",
+  "developer": "zadam",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/trilium.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "8080",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "volumes": [
+        {
+          "container": "/home/node/trilium-data",
+          "description": {
+            "en_us": "Container Path: /home/node/trilium-data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Exposed port for the server"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/h5ISPmUuBHs",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

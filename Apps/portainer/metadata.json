@@ -1,0 +1,64 @@
+{
+  "id": "portainer",
+  "name": "Portainer",
+  "description": "Irrespective of your industry, orchestration platform, or computing device, Portainer is the most versatile container management software that simplifies your secure adoption of containers with remarkable speed.",
+  "tagline": "Portainer",
+  "version": "2.33.1-alpine",
+  "image": "portainer/portainer-ce",
+  "developer": "portainer",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/portainer.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "9443",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "ports": [
+        {
+          "container": "8000",
+          "description": {
+            "en_us": "Container: 8000"
+          }
+        },
+        {
+          "container": "9000",
+          "description": {
+            "en_us": "Container: 9000"
+          }
+        },
+        {
+          "container": "9443",
+          "description": {
+            "en_us": "Container: 9443"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Access to Portainer data"
+          }
+        },
+        {
+          "container": "/var/run/docker.sock",
+          "description": {
+            "en_us": "Access to Docker socket"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/GW4_OALLI_s",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

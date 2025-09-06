@@ -1,0 +1,75 @@
+{
+  "id": "neko-firefox",
+  "name": "Neko Firefox",
+  "description": "Welcome to Neko, a self-hosted virtual browser that runs in Docker and uses WebRTC technology. Neko is a powerful tool that allows you to run a fully-functional browser in a virtual environment, giving you the ability to access the internet securely and privately from anywhere. With Neko, you can browse the web, run applications, and perform other tasks just as you would on a regular browser, all within a secure and isolated environment. Whether you are a developer looking to test web applications, a privacy-conscious user seeking a secure browsing experience, or simply someone who wants to take advantage of the convenience and flexibility of a virtual browser, Neko is the perfect solution.",
+  "tagline": "A self hosted virtual browser that runs in docker and uses WebRTC.",
+  "version": "firefox",
+  "image": "m1k1o/neko",
+  "developer": "m1k1o",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/neko.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64"
+  ],
+  "main_service": "big-bear-neko-firefox",
+  "port_map": "8080",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-neko-firefox": {
+      "envs": [
+        {
+          "container": "NEKO_SCREEN",
+          "description": {
+            "en_us": "Container Environment: NEKO_SCREEN"
+          }
+        },
+        {
+          "container": "NEKO_PASSWORD",
+          "description": {
+            "en_us": "Container Environment: NEKO_PASSWORD"
+          }
+        },
+        {
+          "container": "NEKO_PASSWORD_ADMIN",
+          "description": {
+            "en_us": "Container Environment: NEKO_PASSWORD_ADMIN"
+          }
+        },
+        {
+          "container": "NEKO_EPR",
+          "description": {
+            "en_us": "Container Environment: NEKO_EPR"
+          }
+        },
+        {
+          "container": "NEKO_ICELITE",
+          "description": {
+            "en_us": "Container Environment: NEKO_ICELITE"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        },
+        {
+          "container": "52000-52100",
+          "description": {
+            "en_us": "Container Port: 52000-52100"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

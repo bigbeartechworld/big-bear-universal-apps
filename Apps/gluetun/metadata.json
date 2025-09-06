@@ -1,0 +1,56 @@
+{
+  "id": "gluetun",
+  "name": "Gluetun",
+  "description": "Lightweight swiss-knife-like VPN client to multiple VPN service providers",
+  "tagline": "Gluetun",
+  "version": "3.40.0",
+  "image": "qmcgaw/gluetun",
+  "developer": "portainer",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/gluetun.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "gluetun",
+  "port_map": "",
+  "tips": {
+    "before_install": {
+      "en_us": "You will need to configure the providers in the environment variables. See: [BigBearCasaOS Gluetun Docs](https://community.bigbeartechworld.com/t/added-gluetun-to-big-bear-casaos/175)\n"
+    }
+  },
+  "services_metadata": {
+    "gluetun": {
+      "ports": [
+        {
+          "container": "8888",
+          "description": {
+            "en_us": "HTTP Proxy"
+          }
+        },
+        {
+          "container": "8388",
+          "description": {
+            "en_us": "Shadowsocks"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/dev/net/tun",
+          "description": {
+            "en_us": "Tun"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "https://community.bigbeartechworld.com/t/added-gluetun-to-big-bear-casaos/175",
+    "big_bear_cosmos_youtube": ""
+  }
+}

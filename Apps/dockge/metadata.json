@@ -1,0 +1,58 @@
+{
+  "id": "dockge",
+  "name": "Dockge",
+  "description": "A fancy, easy-to-use and reactive docker `compose.yaml` stack-oriented manager",
+  "tagline": "Dockge",
+  "version": "1.5.0",
+  "image": "louislam/dockge",
+  "developer": "louislam",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/dockge.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "5001",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "volumes": [
+        {
+          "container": "/var/run/docker.sock",
+          "description": {
+            "en_us": "Container Path: /var/run/docker.sock"
+          }
+        },
+        {
+          "container": "/app/data",
+          "description": {
+            "en_us": "Container Path: /app/data"
+          }
+        },
+        {
+          "container": "/DATA/AppData/big-bear-dockge/stacks",
+          "description": {
+            "en_us": "Container Path: /DATA/AppData/big-bear-dockge/stacks"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "5001",
+          "description": {
+            "en_us": "Container Port: 5001"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/8Z6psh-t5iU",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

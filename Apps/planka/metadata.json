@@ -1,0 +1,62 @@
+{
+  "id": "planka",
+  "name": "Planka",
+  "description": "The realtime kanban board for workgroups built with React and Redux.",
+  "tagline": "Free open source kanban board for workgroups.",
+  "version": "1.26.3",
+  "image": "ghcr.io/plankanban/planka",
+  "developer": "plankanban",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/planka.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-planka",
+  "port_map": "3000",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-planka-to-bigbearcasaos/924#documentation-5\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-planka": {
+      "volumes": [
+        {
+          "container": "/app/public/user-avatars",
+          "description": {
+            "en_us": "Container Path: /app/public/user-avatars"
+          }
+        },
+        {
+          "container": "/app/public/project-background-images",
+          "description": {
+            "en_us": "Container Path: /app/public/project-background-images"
+          }
+        },
+        {
+          "container": "/app/private/attachments",
+          "description": {
+            "en_us": "Container Path: /app/private/attachments"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "1337",
+          "description": {
+            "en_us": "Container Port: 1337"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/rsyU2cBbbSI",
+    "docs": "",
+    "big_bear_cosmos_youtube": "https://youtu.be/KSARfLXAc1M"
+  }
+}

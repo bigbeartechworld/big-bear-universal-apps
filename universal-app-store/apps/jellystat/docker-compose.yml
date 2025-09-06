@@ -1,0 +1,33 @@
+name: big-bear-jellystat
+services:
+  big-bear-jellystat:
+    container_name: big-bear-jellystat
+    image: cyfershepard/jellystat:1.1.6
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=8a23ad09-61cf-4178-a783-6d4586496e3a
+      - POSTGRES_IP=big-bear-jellystat-db
+      - POSTGRES_PORT=5432
+      - JWT_SECRET="my-secret-jwt-key"
+    volumes:
+      - /DATA/AppData/$AppID/backup-data:/app/backend/backup-data
+    ports:
+      - '3000:3000'
+    networks:
+      - big-bear-jellystat-network
+  big-bear-jellystat-db:
+    container_name: big-bear-jellystat-db
+    image: postgres:15.2
+    environment:
+      POSTGRES_DB: jfstat
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 8a23ad09-61cf-4178-a783-6d4586496e3a
+    volumes:
+      - /DATA/AppData/$AppID/postgres-data:/var/lib/postgresql/data
+    networks:
+      - big-bear-jellystat-network
+networks:
+  big-bear-jellystat-network:
+    name: big-bear-jellystat-network
+    driver: bridge

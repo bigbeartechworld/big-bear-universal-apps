@@ -1,0 +1,10 @@
+name: big-bear-changedetection
+services:
+  big-bear-changedetection:
+    container_name: big-bear-changedetection
+    image: ghcr.io/dgtlmoon/changedetection.io:0.50.11
+    restart: unless-stopped
+    ports:
+      - '5000:5000'
+    volumes:
+      - /DATA/AppData/$AppID/datastore:/datastore

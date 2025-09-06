@@ -1,0 +1,38 @@
+{
+  "id": "changedetection",
+  "name": "Change Detection",
+  "description": "The best and simplest free open source website change detection, restock monitor and notification service.",
+  "tagline": "Website change detection.",
+  "version": "0.50.11",
+  "image": "ghcr.io/dgtlmoon/changedetection.io",
+  "developer": "dgtlmoon",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/changedetection.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-changedetection",
+  "port_map": "5000",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-changedetection": {
+      "ports": [
+        {
+          "container": "5000",
+          "description": {
+            "en_us": "Container Port: 5000"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

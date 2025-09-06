@@ -1,0 +1,16 @@
+name: big-bear-beaverhabits
+services:
+  big-bear-beaverhabits:
+    container_name: big-bear-beaverhabits
+    image: daya0576/beaverhabits:0.7.1
+    restart: unless-stopped
+    user: '1000:1000'
+    environment:
+      - HABITS_STORAGE=USER_DISK
+      - TRUSTED_LOCAL_EMAIL=your@email.com
+      - INDEX_HABIT_DATE_COLUMNS=5
+      - ENABLE_IOS_STANDALONE=true
+    volumes:
+      - /DATA/AppData/$AppID/.user:/app/.user/
+    ports:
+      - '8080:8080'

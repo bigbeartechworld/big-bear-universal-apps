@@ -1,0 +1,119 @@
+{
+  "id": "gitea-mirror",
+  "name": "Gitea Mirror",
+  "description": "Gitea Mirror is a modern web app for automatically mirroring repositories from GitHub to your self-hosted Gitea instance. It features a user-friendly interface to sync public, private, or starred GitHub repos, mirror entire organizations with structure preservation, and optionally mirror issues and labels. The application includes smart filtering, detailed logs, and scheduled automatic mirroring.",
+  "tagline": "Mirror GitHub repositories to Gitea",
+  "version": "2.22.0",
+  "image": "ghcr.io/raylabshq/gitea-mirror",
+  "developer": "raylabs.io",
+  "author": "RayLabs HQ",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/gitea-mirror/logo-no-bg.png",
+  "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/gitea-mirror/screenshot1.png",
+  "screenshots": [
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/gitea-mirror/screenshot1.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/gitea-mirror/screenshot2.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/gitea-mirror/screenshot3.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/gitea-mirror/screenshot4.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/gitea-mirror/screenshot5.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/gitea-mirror/screenshot6.png"
+  ],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-gitea-mirror",
+  "port_map": "4321",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-gitea-mirror-to-bigbearcasaos/3515?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-gitea-mirror": {
+      "envs": [
+        {
+          "container": "NODE_ENV",
+          "description": {
+            "en_us": "Node Environment: production"
+          }
+        },
+        {
+          "container": "HOST",
+          "description": {
+            "en_us": "Host Interface: 0.0.0.0"
+          }
+        },
+        {
+          "container": "PORT",
+          "description": {
+            "en_us": "Application Port: 4321"
+          }
+        },
+        {
+          "container": "JWT_SECRET",
+          "description": {
+            "en_us": "Secret key for JWT authentication"
+          }
+        },
+        {
+          "container": "DATABASE_URL",
+          "description": {
+            "en_us": "SQLite Database URL: file:data/gitea-mirror.db"
+          }
+        },
+        {
+          "container": "GITHUB_USERNAME",
+          "description": {
+            "en_us": "Your GitHub username (optional - can be set in UI)"
+          }
+        },
+        {
+          "container": "GITHUB_TOKEN",
+          "description": {
+            "en_us": "Your GitHub personal access token (optional - can be set in UI)"
+          }
+        },
+        {
+          "container": "GITEA_URL",
+          "description": {
+            "en_us": "URL of your Gitea instance (optional - can be set in UI)"
+          }
+        },
+        {
+          "container": "GITEA_TOKEN",
+          "description": {
+            "en_us": "Your Gitea access token (optional - can be set in UI)"
+          }
+        },
+        {
+          "container": "GITEA_USERNAME",
+          "description": {
+            "en_us": "Your Gitea username (optional - can be set in UI)"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/app/data",
+          "description": {
+            "en_us": "Container Path: /app/data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "4321",
+          "description": {
+            "en_us": "Container Port: 4321"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "https://community.bigbeartechworld.com/t/added-gitea-mirror-to-bigbearcasaos/3515?u=dragonfire1119#p-5962-documentation-6",
+    "big_bear_cosmos_youtube": ""
+  }
+}

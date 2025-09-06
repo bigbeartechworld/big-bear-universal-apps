@@ -1,0 +1,67 @@
+{
+  "id": "lancache",
+  "name": "LAN Cache",
+  "description": "Make the most of your network. Get more play for your gamers. Download your games once and serve them out to many people at your LAN.",
+  "tagline": "LAN Party game caching made easy",
+  "version": "latest",
+  "image": "lancachenet/monolithic",
+  "developer": "lancachenet",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/lancache.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64"
+  ],
+  "main_service": "app",
+  "port_map": "8080",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "volumes": [
+        {
+          "container": "/data/cache",
+          "description": {
+            "en_us": "Container Path: /data/cache"
+          }
+        },
+        {
+          "container": "/data/logs",
+          "description": {
+            "en_us": "Container Path: /data/logs"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "80",
+          "description": {
+            "en_us": "Container Port: 80"
+          }
+        },
+        {
+          "container": "443",
+          "description": {
+            "en_us": "Container Port: 443"
+          }
+        }
+      ]
+    },
+    "dns": {
+      "ports": [
+        {
+          "container": "53",
+          "description": {
+            "en_us": "Container Port: 53"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

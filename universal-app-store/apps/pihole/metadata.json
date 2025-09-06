@@ -1,0 +1,26 @@
+{
+  "id": "pihole",
+  "name": "pihole",
+  "description": "",
+  "tagline": "",
+  "version": "1.0.0",
+  "image": "",
+  "developer": "",
+  "author": "BigBearTechWorld",
+  "icon": "",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64"
+  ],
+  "main_service": "app",
+  "port_map": "",
+  "tips": {},
+  "services_metadata": {},
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

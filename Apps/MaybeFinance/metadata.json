@@ -1,0 +1,140 @@
+{
+  "id": "MaybeFinance",
+  "name": "Maybe Finance",
+  "description": "Maybe is a fully* open-source OS for your personal finances built by a small team alongside an incredible community Discord",
+  "tagline": "maybe-finance",
+  "version": "sha-347c0a790693031fdd3b32792b5b6792693d1805",
+  "image": "ghcr.io/maybe-finance/maybe",
+  "developer": "Maybe Finance",
+  "author": "BigBearCommunity",
+  "icon": "https://raw.githubusercontent.com/maybe-finance/maybe/refs/heads/main/app/assets/images/logo-color.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-maybe-finance",
+  "port_map": "4000",
+  "tips": {
+    "before_install": {
+      "en_us": "### Additional Instructions:\nGenerate the app secret key:\n\n  1. Open a terminal and digit:\n\n  ```bash\n  head -c 64 /dev/urandom | od -An -tx1 | tr -d ' \\n' && echo\n  ```\n  2. Copy the generated key and paste it in the `SECRET_KEY_BASE`.\n\n  3. Save the changes and restart the application.\n\nFor more information, refer to the [official documentation](https://maybe.co)\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-maybe-finance": {
+      "volumes": [
+        {
+          "container": "/rails/storage",
+          "description": {
+            "en_us": "Container Path: /rails/storage"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3000",
+          "description": {
+            "en_us": "Container Port: 3000"
+          }
+        }
+      ],
+      "envs": [
+        {
+          "container": "SELF_HOSTED",
+          "description": {
+            "en_us": "Indicates whether the application is self-hosted (true/false)."
+          }
+        },
+        {
+          "container": "RAILS_FORCE_SSL",
+          "description": {
+            "en_us": "Determines if SSL should be forced (true/false)."
+          }
+        },
+        {
+          "container": "GOOD_JOB_EXECUTION_MODE",
+          "description": {
+            "en_us": "Sets the execution mode for GoodJob (e.g., async)."
+          }
+        },
+        {
+          "container": "SECRET_KEY_BASE",
+          "description": {
+            "en_us": "Secret key used for verifying the integrity of signed cookies."
+          }
+        },
+        {
+          "container": "DB_HOST",
+          "description": {
+            "en_us": "Hostname for the PostgreSQL database service."
+          }
+        },
+        {
+          "container": "POSTGRES_DB",
+          "description": {
+            "en_us": "PostgreSQL database to be created and used by the application."
+          }
+        },
+        {
+          "container": "POSTGRES_USER",
+          "description": {
+            "en_us": "Username for connecting to the PostgreSQL database."
+          }
+        },
+        {
+          "container": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Password for the PostgreSQL user."
+          }
+        }
+      ]
+    },
+    "big-bear-maybe-finance-postgres": {
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data",
+          "description": {
+            "en_us": "Container Path: /var/lib/postgresql/data"
+          }
+        }
+      ],
+      "envs": [
+        {
+          "container": "POSTGRES_DB",
+          "description": {
+            "en_us": "PostgreSQL database to be created and used by the application."
+          }
+        },
+        {
+          "container": "POSTGRES_USER",
+          "description": {
+            "en_us": "Username for connecting to the PostgreSQL database."
+          }
+        },
+        {
+          "container": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Password for the PostgreSQL user."
+          }
+        }
+      ]
+    },
+    "big-bear-maybe-finance-redis": {
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

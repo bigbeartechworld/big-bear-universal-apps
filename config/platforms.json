@@ -1,0 +1,63 @@
+{
+  "platforms": {
+    "casaos": {
+      "repo": "bigbeartechworld/big-bear-casaos",
+      "branch": "master",
+      "base_path": "Apps",
+      "converter_script": "convert-to-casaos.js",
+      "output_dir": "casaos-apps",
+      "file_pattern": "*/config.json",
+      "description": "CasaOS app store with config.json and docker-compose.yml"
+    },
+    "portainer": {
+      "repo": "bigbeartechworld/big-bear-portainer",
+      "branch": "main", 
+      "base_path": "templates",
+      "converter_script": "convert-to-portainer.js",
+      "output_dir": "portainer-templates",
+      "file_pattern": "templates.json",
+      "description": "Portainer templates with master templates.json file"
+    },
+    "dockge": {
+      "repo": "bigbeartechworld/big-bear-dockge",
+      "branch": "main",
+      "base_path": "stacks",
+      "converter_script": "convert-to-dockge.js",
+      "output_dir": "dockge-stacks", 
+      "file_pattern": "*/compose.yaml",
+      "description": "Dockge stacks with individual compose.yaml files"
+    },
+    "runtipi": {
+      "repo": "bigbeartechworld/big-bear-runtipi",
+      "branch": "main",
+      "base_path": "apps",
+      "converter_script": "convert-to-runtipi.js",
+      "output_dir": "runtipi-apps",
+      "file_pattern": "*/config.json",
+      "description": "Runtipi apps with official app store format"
+    },
+    "cosmos": {
+      "repo": "bigbeartechworld/big-bear-cosmos", 
+      "branch": "master",
+      "base_path": "servapps",
+      "converter_script": "convert-to-cosmos.js",
+      "output_dir": "cosmos-servapps",
+      "file_pattern": "*/config.json",
+      "description": "Cosmos servApps with config.json and description.json"
+    }
+  },
+  "settings": {
+    "pr_title_template": "🤖 Auto-update apps for {platform} platform",
+    "pr_body_template": "## Automated App Update - {platform} Platform\n\nThis pull request was automatically generated from the Universal App Store Repository.\n\n### Changes\n- **Changed Apps**: `{changed_apps}`\n- **Platform**: `{platform}`\n- **Source Commit**: {source_commit}\n- **Workflow Run**: {workflow_run}\n\n### Converted Apps\nApps have been converted from universal format to {platform}-specific format using `{converter_script}`.\n\n### Verification\n- [ ] All apps deploy successfully\n- [ ] App metadata is correct\n- [ ] Docker compose files are valid\n- [ ] No breaking changes introduced\n\n---\n🤖 *This PR was created automatically by GitHub Actions*",
+    "commit_message_template": "chore: auto-update apps from universal repository\n\n- Updated apps: {changed_apps}\n- Platform: {platform}\n- Source: {source_repo}@{source_commit}",
+    "branch_prefix": "auto-update-apps",
+    "max_apps_per_pr": 50,
+    "reviewers": {
+      "casaos": ["bigbeartech"],
+      "portainer": ["bigbeartech"],  
+      "dockge": ["bigbeartech"],
+      "runtipi": ["bigbeartech"],
+      "cosmos": ["bigbeartech"]
+    }
+  }
+}

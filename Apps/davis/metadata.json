@@ -1,0 +1,198 @@
+{
+  "id": "davis",
+  "name": "Davis",
+  "description": "A simple, fully translatable admin interface for sabre/dav based on Symfony 5 and Bootstrap 5, initially inspired by Baïkal. Provides user edition, calendar creation and sharing, and address book creation. The interface is simple and straightforward, responsive, and provides a light and a dark mode.",
+  "tagline": "Davis",
+  "version": "5.1.3",
+  "image": "ghcr.io/tchapi/davis-standalone",
+  "developer": "tchapi",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/davis/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-davis",
+  "port_map": "9000",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-davis": {
+      "envs": [
+        {
+          "container": "APP_ENV",
+          "description": {
+            "en_us": "APP_ENV"
+          }
+        },
+        {
+          "container": "DATABASE_DRIVER",
+          "description": {
+            "en_us": "DATABASE_DRIVER"
+          }
+        },
+        {
+          "container": "DATABASE_URL",
+          "description": {
+            "en_us": "DATABASE_URL"
+          }
+        },
+        {
+          "container": "MAILER_DSN",
+          "description": {
+            "en_us": "MAILER_DSN"
+          }
+        },
+        {
+          "container": "ADMIN_LOGIN",
+          "description": {
+            "en_us": "ADMIN_LOGIN"
+          }
+        },
+        {
+          "container": "ADMIN_PASSWORD",
+          "description": {
+            "en_us": "ADMIN_PASSWORD"
+          }
+        },
+        {
+          "container": "AUTH_REALM",
+          "description": {
+            "en_us": "AUTH_REALM"
+          }
+        },
+        {
+          "container": "AUTH_METHOD",
+          "description": {
+            "en_us": "AUTH_METHOD"
+          }
+        },
+        {
+          "container": "CALDAV_ENABLED",
+          "description": {
+            "en_us": "CALDAV_ENABLED"
+          }
+        },
+        {
+          "container": "CARDDAV_ENABLED",
+          "description": {
+            "en_us": "CARDDAV_ENABLED"
+          }
+        },
+        {
+          "container": "WEBDAV_ENABLED",
+          "description": {
+            "en_us": "WEBDAV_ENABLED"
+          }
+        },
+        {
+          "container": "WEBDAV_TMP_DIR",
+          "description": {
+            "en_us": "WEBDAV_TMP_DIR"
+          }
+        },
+        {
+          "container": "WEBDAV_PUBLIC_DIR",
+          "description": {
+            "en_us": "WEBDAV_PUBLIC_DIR"
+          }
+        },
+        {
+          "container": "WEBDAV_HOMES_DIR",
+          "description": {
+            "en_us": "WEBDAV_HOMES_DIR"
+          }
+        },
+        {
+          "container": "INVITE_FROM_ADDRESS",
+          "description": {
+            "en_us": "INVITE_FROM_ADDRESS"
+          }
+        },
+        {
+          "container": "APP_TIMEZONE",
+          "description": {
+            "en_us": "APP_TIMEZONE"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "9000",
+          "description": {
+            "en_us": "Container Port: 9000"
+          }
+        }
+      ]
+    },
+    "big-bear-davis-mailpit": {
+      "envs": [
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Timezone"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8025",
+          "description": {
+            "en_us": "Container Port: 8025"
+          }
+        }
+      ]
+    },
+    "big-bear-davis-mysql": {
+      "envs": [
+        {
+          "container": "MYSQL_ROOT_PASSWORD",
+          "description": {
+            "en_us": "MYSQL_ROOT_PASSWORD"
+          }
+        },
+        {
+          "container": "MYSQL_DATABASE",
+          "description": {
+            "en_us": "MYSQL_DATABASE"
+          }
+        },
+        {
+          "container": "MYSQL_USER",
+          "description": {
+            "en_us": "MYSQL_USER"
+          }
+        },
+        {
+          "container": "MYSQL_PASSWORD",
+          "description": {
+            "en_us": "MYSQL_PASSWORD"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/mysql",
+          "description": {
+            "en_us": "MariaDB Data Volume"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

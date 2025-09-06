@@ -1,0 +1,124 @@
+{
+  "id": "ghost",
+  "name": "Ghost",
+  "description": "Ghost is a free and open source blogging platform written in JavaScript and distributed under the MIT License, designed to simplify the process of online publishing for individual bloggers as well as online publications.",
+  "tagline": "Ghost is a free and open source blogging platform",
+  "version": "6.0.6-alpine",
+  "image": "ghost",
+  "developer": "ghost",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ghost.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "2368",
+  "tips": {
+    "before_install": {
+      "en_us": "Update the url environment variable to reflect your CasaOS IP address.\n"
+    }
+  },
+  "services_metadata": {
+    "app": {
+      "envs": [
+        {
+          "container": "database__client",
+          "description": {
+            "en_us": "Database client"
+          }
+        },
+        {
+          "container": "database__connection__host",
+          "description": {
+            "en_us": "Database host"
+          }
+        },
+        {
+          "container": "database__connection__user",
+          "description": {
+            "en_us": "Database user"
+          }
+        },
+        {
+          "container": "database__connection__password",
+          "description": {
+            "en_us": "Database password"
+          }
+        },
+        {
+          "container": "database__connection__database",
+          "description": {
+            "en_us": "Database name"
+          }
+        },
+        {
+          "container": "url",
+          "description": {
+            "en_us": "Ghost URL"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/ghost/content",
+          "description": {
+            "en_us": "Container Path: /var/lib/ghost/content"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "2368",
+          "description": {
+            "en_us": "Container Port: 2368"
+          }
+        }
+      ]
+    },
+    "db": {
+      "envs": [
+        {
+          "container": "MYSQL_ROOT_PASSWORD",
+          "description": {
+            "en_us": "MySQL root password"
+          }
+        },
+        {
+          "container": "MYSQL_USER",
+          "description": {
+            "en_us": "MySQL user"
+          }
+        },
+        {
+          "container": "MYSQL_PASSWORD",
+          "description": {
+            "en_us": "MySQL password"
+          }
+        },
+        {
+          "container": "MYSQL_DATABASE",
+          "description": {
+            "en_us": "MySQL database"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/mysql",
+          "description": {
+            "en_us": "Container Path: /var/lib/mysql"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/oJZK9vH4W4Y",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

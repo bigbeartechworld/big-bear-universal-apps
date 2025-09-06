@@ -1,0 +1,10 @@
+name: big-bear-mealie
+services:
+  app:
+    container_name: big-bear-mealie
+    image: hkotel/mealie:v3.1.2
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID/data:/app/data
+    ports:
+      - '9925:9000'

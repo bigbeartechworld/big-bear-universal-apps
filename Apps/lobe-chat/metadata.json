@@ -1,0 +1,70 @@
+{
+  "id": "lobe-chat",
+  "name": "LobeChat",
+  "description": "LobeChat is a open-source, extensible (Function Calling), high-performance chatbot framework. It supports one-click free deployment of your private ChatGPT/LLM web application.",
+  "tagline": "LobeChat",
+  "version": "1.120.7",
+  "image": "lobehub/lobe-chat",
+  "developer": "lobehub",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/lobe-chat.png",
+  "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@main/Apps/lobe-chat/thumbnail.png",
+  "screenshots": [
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@main/Apps/lobe-chat/screenshot-1.png"
+  ],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-lobe-chat",
+  "port_map": "3210",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-lobe-chat-to-bigbearcasaos/2453?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-lobe-chat": {
+      "envs": [
+        {
+          "container": "OPENAI_API_KEY",
+          "description": {
+            "en_us": "OpenAI API Key"
+          }
+        },
+        {
+          "container": "OPENAI_PROXY_URL",
+          "description": {
+            "en_us": "OpenAI Proxy URL"
+          }
+        },
+        {
+          "container": "CUSTOM_MODELS",
+          "description": {
+            "en_us": "Custom Models"
+          }
+        },
+        {
+          "container": "ACCESS_CODE",
+          "description": {
+            "en_us": "Access Code"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3210",
+          "description": {
+            "en_us": "Container Port: 3210"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

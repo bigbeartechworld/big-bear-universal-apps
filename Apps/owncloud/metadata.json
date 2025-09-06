@@ -1,0 +1,186 @@
+{
+  "id": "owncloud",
+  "name": "ownCloud",
+  "description": "ownCloud offers file sharing and collaboration trusted by 200+ million users worldwide regardless of device or location.",
+  "tagline": "ownCloud",
+  "version": "10.15.3",
+  "image": "owncloud/server",
+  "developer": "owncloud",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/owncloud.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-owncloud",
+  "port_map": "8080",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-owncloud-to-bigbearcasaos/1874#p-3512-documentation-4\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-owncloud": {
+      "envs": [
+        {
+          "container": "OWNCLOUD_DOMAIN",
+          "description": {
+            "en_us": "Owncloud Domain"
+          }
+        },
+        {
+          "container": "OWNCLOUD_TRUSTED_DOMAINS",
+          "description": {
+            "en_us": "Owncloud Trusted Domains"
+          }
+        },
+        {
+          "container": "OWNCLOUD_DB_TYPE",
+          "description": {
+            "en_us": "Owncloud DB Type"
+          }
+        },
+        {
+          "container": "OWNCLOUD_DB_NAME",
+          "description": {
+            "en_us": "Owncloud DB Name"
+          }
+        },
+        {
+          "container": "OWNCLOUD_DB_USERNAME",
+          "description": {
+            "en_us": "Owncloud DB Username"
+          }
+        },
+        {
+          "container": "OWNCLOUD_DB_PASSWORD",
+          "description": {
+            "en_us": "Owncloud DB Password"
+          }
+        },
+        {
+          "container": "OWNCLOUD_DB_HOST",
+          "description": {
+            "en_us": "Owncloud DB Host"
+          }
+        },
+        {
+          "container": "OWNCLOUD_ADMIN_USERNAME",
+          "description": {
+            "en_us": "Owncloud Admin Username"
+          }
+        },
+        {
+          "container": "OWNCLOUD_ADMIN_PASSWORD",
+          "description": {
+            "en_us": "Owncloud Admin Password"
+          }
+        },
+        {
+          "container": "OWNCLOUD_MYSQL_UTF8MB4",
+          "description": {
+            "en_us": "Owncloud MySQL UTF8MB4"
+          }
+        },
+        {
+          "container": "OWNCLOUD_REDIS_ENABLED",
+          "description": {
+            "en_us": "Owncloud Redis Enabled"
+          }
+        },
+        {
+          "container": "OWNCLOUD_REDIS_HOST",
+          "description": {
+            "en_us": "Owncloud Redis Host"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/mnt/data",
+          "description": {
+            "en_us": "Container Path: /mnt/data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        }
+      ]
+    },
+    "big-bear-owncloud-db": {
+      "envs": [
+        {
+          "container": "MYSQL_ROOT_PASSWORD",
+          "description": {
+            "en_us": "MySQL root password"
+          }
+        },
+        {
+          "container": "MYSQL_USER",
+          "description": {
+            "en_us": "MySQL user"
+          }
+        },
+        {
+          "container": "MYSQL_PASSWORD",
+          "description": {
+            "en_us": "MySQL password"
+          }
+        },
+        {
+          "container": "MYSQL_DATABASE",
+          "description": {
+            "en_us": "MySQL database"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/mysql",
+          "description": {
+            "en_us": "Container Path: /var/lib/mysql"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "3306",
+          "description": {
+            "en_us": "Container Port: 3306"
+          }
+        }
+      ]
+    },
+    "big-bear-owncloud-redis": {
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "6379",
+          "description": {
+            "en_us": "Container Port: 6379"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

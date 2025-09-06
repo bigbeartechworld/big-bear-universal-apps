@@ -1,0 +1,64 @@
+{
+  "id": "jlesage-firefox",
+  "name": "Jlesage Firefox",
+  "description": "The GUI of the application is accessed through a modern web browser (no installation or configuration needed on the client side) or via any VNC client.",
+  "tagline": "This project implements a Docker container for Firefox.",
+  "version": "25.07.2",
+  "image": "jlesage/firefox",
+  "developer": "jlesage",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/firefox.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-jlesage-firefox",
+  "port_map": "5800",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-jlesage-firefox-to-bigbearcasaos/2506#p-4575-documentation-3\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-jlesage-firefox": {
+      "envs": [
+        {
+          "container": "VNC_PASSWORD",
+          "description": {
+            "en_us": "VNC Password"
+          }
+        },
+        {
+          "container": "FF_OPEN_URL",
+          "description": {
+            "en_us": "Launch URL"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "5800",
+          "description": {
+            "en_us": "Container Port: 5800"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Container Path: /config"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/JWhR8RKGh9Y",
+    "docs": "https://community.bigbeartechworld.com/t/added-jlesage-firefox-to-bigbearcasaos/2506#p-4575-documentation-4",
+    "big_bear_cosmos_youtube": ""
+  }
+}

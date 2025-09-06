@@ -1,0 +1,50 @@
+{
+  "id": "open-webui",
+  "name": "Open WebUI",
+  "description": "Open WebUI is an extensible, feature-rich, and user-friendly self-hosted WebUI designed to operate entirely offline.",
+  "tagline": "User-friendly WebUI for LLMs",
+  "version": "git-33e54a9",
+  "image": "ghcr.io/open-webui/open-webui",
+  "developer": "open-webui",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/open-webui.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-open-webui",
+  "port_map": "8080",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-open-webui-to-bigbearcasaos/1263#p-2265-documentation-3\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-open-webui": {
+      "volumes": [
+        {
+          "container": "/app/backend/data",
+          "description": {
+            "en_us": "Container Path: /app/backend/data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

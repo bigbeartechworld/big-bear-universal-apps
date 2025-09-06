@@ -1,0 +1,118 @@
+{
+  "id": "pterodactyl-wings",
+  "name": "Pterodactyl Wings",
+  "description": "Wings is Pterodactyl's server control plane, built for the rapidly changing gaming industry and designed to be highly performant and secure. Wings provides an HTTP API allowing you to interface directly with running server instances, fetch server logs, generate backups, and control all aspects of the server lifecycle.",
+  "tagline": "Pterodactyl Wings",
+  "version": "1.11.13",
+  "image": "ghcr.io/pterodactyl/wings",
+  "developer": "pterodactyl",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/pterodactyl.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "2022",
+  "tips": {
+    "before_install": {
+      "en_us": "Before setting up Pterodactyl Wings in your container, you need to ensure that the node is properly configured in the Pterodactyl panel. Follow these steps:\n\nCreate the Node in the Pterodactyl Panel: If you haven't already, initiate and configure the node within the Pterodactyl panel.\n\nCopy the Configuration: After creating the node, the panel will provide a configuration file. You need to copy the content of this configuration and place it in:\n\n```\n/etc/pterodactyl/config.yml\n```\n\nTip: Use the CasaOS files app for an easy file management experience.\n\nRestart the Container: Once the configuration is in place, ensure you restart the container for the changes to take effect.\n"
+    }
+  },
+  "services_metadata": {
+    "app": {
+      "envs": [
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Timezone"
+          }
+        },
+        {
+          "container": "WINGS_UID",
+          "description": {
+            "en_us": "User ID for the Wings process"
+          }
+        },
+        {
+          "container": "WINGS_GID",
+          "description": {
+            "en_us": "Group ID for the Wings process"
+          }
+        },
+        {
+          "container": "WINGS_USERNAME",
+          "description": {
+            "en_us": "Username for the Wings process"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "The HTTP API Port"
+          }
+        },
+        {
+          "container": "2022",
+          "description": {
+            "en_us": "The Portainer Agent Port"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/run/docker.sock",
+          "description": {
+            "en_us": "Access to Docker socket"
+          }
+        },
+        {
+          "container": "/var/lib/docker/containers/",
+          "description": {
+            "en_us": "Access the Docker containers"
+          }
+        },
+        {
+          "container": "/etc/ssl/certs",
+          "description": {
+            "en_us": "Access to SSL certificates"
+          }
+        },
+        {
+          "container": "/tmp/pterodactyl/",
+          "description": {
+            "en_us": "Access to temporary directory"
+          }
+        },
+        {
+          "container": "/etc/pterodactyl/",
+          "description": {
+            "en_us": "Access to configuration directory"
+          }
+        },
+        {
+          "container": "/var/log/pterodactyl/",
+          "description": {
+            "en_us": "Access to logs directory"
+          }
+        },
+        {
+          "container": "/var/lib/pterodactyl/",
+          "description": {
+            "en_us": "Access to library directory"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/p_140cc6_1g",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

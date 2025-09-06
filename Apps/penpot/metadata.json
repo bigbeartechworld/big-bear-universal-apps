@@ -1,0 +1,162 @@
+{
+  "id": "penpot",
+  "name": "Penpot",
+  "description": "Designers and developers can finally work in unison to build beautifully designed software experiences that truly scale up.",
+  "tagline": "Bring Design Freedom to your Product Team",
+  "version": "2.9.0",
+  "image": "penpotapp/frontend",
+  "developer": "penpotapp",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/penpot/logo.jpg",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "penpot-frontend",
+  "port_map": "9001",
+  "tips": {},
+  "services_metadata": {
+    "penpot-frontend": {
+      "volumes": [
+        {
+          "container": "/opt/data/assets",
+          "description": {
+            "en_us": "Local Assets directory"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        }
+      ]
+    },
+    "penpot-backend": {
+      "envs": [
+        {
+          "container": "PENPOT_FLAGS",
+          "description": {
+            "en_us": "Flags"
+          }
+        },
+        {
+          "container": "PENPOT_SECRET_KEY",
+          "description": {
+            "en_us": "Secret Key"
+          }
+        },
+        {
+          "container": "PENPOT_PUBLIC_URI",
+          "description": {
+            "en_us": "Public URI"
+          }
+        },
+        {
+          "container": "PENPOT_DATABASE_URI",
+          "description": {
+            "en_us": "Database URI"
+          }
+        },
+        {
+          "container": "PENPOT_DATABASE_USERNAME",
+          "description": {
+            "en_us": "Database Username"
+          }
+        },
+        {
+          "container": "PENPOT_DATABASE_PASSWORD",
+          "description": {
+            "en_us": "Database Password"
+          }
+        },
+        {
+          "container": "PENPOT_REDIS_URI",
+          "description": {
+            "en_us": "Redis URI"
+          }
+        },
+        {
+          "container": "PENPOT_ASSETS_STORAGE_BACKEND",
+          "description": {
+            "en_us": "Assets Storage Backend"
+          }
+        },
+        {
+          "container": "PENPOT_STORAGE_ASSETS_FS_DIRECTORY",
+          "description": {
+            "en_us": "Assets Storage Directory"
+          }
+        },
+        {
+          "container": "PENPOT_TELEMETRY_ENABLED",
+          "description": {
+            "en_us": "Telemetry"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/opt/data/assets",
+          "description": {
+            "en_us": "Local Assets directory"
+          }
+        }
+      ]
+    },
+    "penpot-exporter": {
+      "envs": [
+        {
+          "container": "PENPOT_PUBLIC_URI",
+          "description": {
+            "en_us": "Public URI"
+          }
+        },
+        {
+          "container": "PENPOT_REDIS_URI",
+          "description": {
+            "en_us": "Redis URI"
+          }
+        }
+      ]
+    },
+    "penpot-postgres": {
+      "envs": [
+        {
+          "container": "POSTGRES_INITDB_ARGS",
+          "description": {
+            "en_us": "Initialize Database"
+          }
+        },
+        {
+          "container": "POSTGRES_DB",
+          "description": {
+            "en_us": "Database Name"
+          }
+        },
+        {
+          "container": "POSTGRES_USER",
+          "description": {
+            "en_us": "Database Username"
+          }
+        },
+        {
+          "container": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Database Password"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

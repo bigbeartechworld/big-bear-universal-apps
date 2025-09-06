@@ -1,0 +1,94 @@
+{
+  "id": "send-visee",
+  "name": "Send Visee",
+  "description": "A fork of Mozilla's Firefox Send. Mozilla discontinued Send, this fork is a community effort to keep the project up-to-date and alive.",
+  "tagline": "A fork of Mozilla's Firefox Send.",
+  "version": "3.4.27",
+  "image": "registry.gitlab.com/timvisee/send",
+  "developer": "timvisee",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/send-visee.png",
+  "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/send-visee/thumbnail.png",
+  "screenshots": [
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/send-visee/screenshot-1.png"
+  ],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-send-visee",
+  "port_map": "1443",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-send-visee-to-bigbearcasaos/3456?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-send-visee": {
+      "envs": [
+        {
+          "container": "NODE_ENV",
+          "description": {
+            "en_us": "Node Environment"
+          }
+        },
+        {
+          "container": "BASE_URL",
+          "description": {
+            "en_us": "Base URL"
+          }
+        },
+        {
+          "container": "REDIS_HOST",
+          "description": {
+            "en_us": "Redis Host"
+          }
+        },
+        {
+          "container": "MAX_FILE_SIZE",
+          "description": {
+            "en_us": "Max File Size"
+          }
+        },
+        {
+          "container": "FILE_DIR",
+          "description": {
+            "en_us": "File Directory"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/uploads",
+          "description": {
+            "en_us": "Container Path: /uploads"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "1443",
+          "description": {
+            "en_us": "Container Port: 1443"
+          }
+        }
+      ]
+    },
+    "big-bear-send-visee-redis": {
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

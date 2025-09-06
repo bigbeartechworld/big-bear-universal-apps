@@ -1,0 +1,126 @@
+{
+  "id": "ls-adguardhome-sync",
+  "name": "LS Adguard Home Sync",
+  "description": "🛡️ Synchronize AdGuard Home config to replicas. This is the LinuxServer version.",
+  "tagline": "LS Adguard Home Sync",
+  "version": "0.7.8",
+  "image": "linuxserver/adguardhome-sync",
+  "developer": "bakito",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/adguard-home.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-ls-adguard-home-sync",
+  "port_map": "8080",
+  "tips": {},
+  "services_metadata": {
+    "big-bear-ls-adguard-home-sync": {
+      "envs": [
+        {
+          "container": "PUID",
+          "description": {
+            "en_us": "PUID"
+          }
+        },
+        {
+          "container": "PGID",
+          "description": {
+            "en_us": "PGID"
+          }
+        },
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "TZ"
+          }
+        },
+        {
+          "container": "LOG_LEVEL",
+          "description": {
+            "en_us": "LOG_LEVEL"
+          }
+        },
+        {
+          "container": "ORIGIN_URL",
+          "description": {
+            "en_us": "ORIGIN_URL"
+          }
+        },
+        {
+          "container": "ORIGIN_USERNAME",
+          "description": {
+            "en_us": "ORIGIN_USERNAME"
+          }
+        },
+        {
+          "container": "ORIGIN_PASSWORD",
+          "description": {
+            "en_us": "ORIGIN_PASSWORD"
+          }
+        },
+        {
+          "container": "REPLICA_URL",
+          "description": {
+            "en_us": "REPLICA_URL"
+          }
+        },
+        {
+          "container": "REPLICA_USERNAME",
+          "description": {
+            "en_us": "REPLICA_USERNAME"
+          }
+        },
+        {
+          "container": "REPLICA_PASSWORD",
+          "description": {
+            "en_us": "REPLICA_PASSWORD"
+          }
+        },
+        {
+          "container": "CRON",
+          "description": {
+            "en_us": "CRON"
+          }
+        },
+        {
+          "container": "RUN_ON_START",
+          "description": {
+            "en_us": "RUN_ON_START"
+          }
+        },
+        {
+          "container": "API_PORT",
+          "description": {
+            "en_us": "API_PORT"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Container Path: /config"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

@@ -1,0 +1,3 @@
+# Nextcloud LS
+
+Nextcloud puts your data at your fingertips, under your control. Store your documents, calendar, contacts and photos on a server at home, at one of our providers or in a data center you trust.

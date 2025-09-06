@@ -1,0 +1,76 @@
+{
+  "id": "jlesage-handbrake",
+  "name": "Jlesage Handbrake",
+  "description": "The GUI of the application is accessed through a modern web browser (no installation or configuration needed on the client side) or via any VNC client.",
+  "tagline": "This project implements a Docker container for Handbrake.",
+  "version": "25.07.2",
+  "image": "jlesage/handbrake",
+  "developer": "jlesage",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/handbrake.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-jlesage-handbrake",
+  "port_map": "5800",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-jlesage-handbrake-to-bigbearcasaos/2956?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-jlesage-handbrake": {
+      "envs": [
+        {
+          "container": "VNC_PASSWORD",
+          "description": {
+            "en_us": "VNC Password"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "5800",
+          "description": {
+            "en_us": "Container Port: 5800"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Container Path: /config"
+          }
+        },
+        {
+          "container": "/storage",
+          "description": {
+            "en_us": "Container Path: /storage"
+          }
+        },
+        {
+          "container": "/watch",
+          "description": {
+            "en_us": "Container Path: /watch"
+          }
+        },
+        {
+          "container": "/output",
+          "description": {
+            "en_us": "Container Path: /output"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

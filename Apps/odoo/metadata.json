@@ -1,0 +1,106 @@
+{
+  "id": "odoo",
+  "name": "Odoo",
+  "description": "Open-source business management software suite designed to streamline various aspects of business operations. With its modular structure, users can choose and integrate specific applications such as accounting, inventory, and sales. Odoo provides a user-friendly interface, scalability for businesses of all sizes, and is available in both community (free) and enterprise editions. Its integrated approach and customization options make it a popular choice for comprehensive ERP (Enterprise Resource Planning) solutions.",
+  "tagline": "Open-source business management software with modular applications for streamlined operations.",
+  "version": "18",
+  "image": "odoo",
+  "developer": "odoo",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/odoo/logo.jpg",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-odoo",
+  "port_map": "8069",
+  "tips": {
+    "before_install": {
+      "en_us": "Documentation: https://community.bigbeartechworld.com/t/added-odoo-to-bigbearcasaos/1115?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-odoo": {
+      "envs": [
+        {
+          "container": "HOST",
+          "description": {
+            "en_us": "Container Host: big-bear-odoo-db"
+          }
+        },
+        {
+          "container": "USER",
+          "description": {
+            "en_us": "Container User: odoo"
+          }
+        },
+        {
+          "container": "PASSWORD",
+          "description": {
+            "en_us": "Container Password: a8d785b6-bc00-49cc-8675-d404093d1507"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/etc/odoo",
+          "description": {
+            "en_us": "Container Path: /etc/odoo"
+          }
+        },
+        {
+          "container": "/mnt/extra-addons",
+          "description": {
+            "en_us": "Container Path: /mnt/extra-addons"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8069",
+          "description": {
+            "en_us": "Container Port: 8069"
+          }
+        }
+      ]
+    },
+    "big-bear-odoo-db": {
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data",
+          "description": {
+            "en_us": "Container Path: /var/lib/postgresql/data"
+          }
+        }
+      ],
+      "envs": [
+        {
+          "container": "POSTGRES_USER",
+          "description": {
+            "en_us": "Container User: odoo"
+          }
+        },
+        {
+          "container": "POSTGRES_PASSWORD",
+          "description": {
+            "en_us": "Container Password: a8d785b6-bc00-49cc-8675-d404093d1507"
+          }
+        },
+        {
+          "container": "POSTGRES_DB",
+          "description": {
+            "en_us": "Container Database: postgres"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "https://community.bigbeartechworld.com/t/added-odoo-to-bigbearcasaos/1115?u=dragonfire1119",
+    "big_bear_cosmos_youtube": ""
+  }
+}

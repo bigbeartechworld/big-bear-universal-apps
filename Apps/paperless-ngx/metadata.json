@@ -1,0 +1,160 @@
+{
+  "id": "paperless-ngx",
+  "name": "Paperless-ngx",
+  "description": "Paperless-ngx is a community-supported open-source document management system that transforms your physical documents into a searchable online archive so you can keep, well, less paper.",
+  "tagline": "Paperless-ngx",
+  "version": "2.18.3",
+  "image": "ghcr.io/paperless-ngx/paperless-ngx",
+  "developer": "paperless-ngx",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/paperless-ngx.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-paperless-ngx",
+  "port_map": "8000",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-paperlessngx-to-bigbearcasaos/1954#p-3625-documentation-4\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-paperless-ngx": {
+      "envs": [
+        {
+          "container": "PAPERLESS_REDIS",
+          "description": {
+            "en_us": "Container Path: /usr/src/paperless/data"
+          }
+        },
+        {
+          "container": "PAPERLESS_DBHOST",
+          "description": {
+            "en_us": "Container Path: /usr/src/paperless/data"
+          }
+        },
+        {
+          "container": "PAPERLESS_ADMIN_USER",
+          "description": {
+            "en_us": "Container Path: /usr/src/paperless/data"
+          }
+        },
+        {
+          "container": "PAPERLESS_ADMIN_PASSWORD",
+          "description": {
+            "en_us": "Container Path: /usr/src/paperless/data"
+          }
+        },
+        {
+          "container": "PAPERLESS_TIKA_ENABLED",
+          "description": {
+            "en_us": "Container Path: /usr/src/paperless/data"
+          }
+        },
+        {
+          "container": "PAPERLESS_TIKA_GOTENBERG_ENDPOINT",
+          "description": {
+            "en_us": "Container Path: /usr/src/paperless/data"
+          }
+        },
+        {
+          "container": "PAPERLESS_TIKA_ENDPOINT",
+          "description": {
+            "en_us": "Container Path: /usr/src/paperless/data"
+          }
+        },
+        {
+          "container": "PAPERLESS_URL",
+          "description": {
+            "en_us": "Container Path: /usr/src/paperless/data"
+          }
+        },
+        {
+          "container": "COMPOSE_PROJECT_NAME",
+          "description": {
+            "en_us": "Container Path: /usr/src/paperless/data"
+          }
+        },
+        {
+          "container": "PAPERLESS_CSRF_TRUSTED_ORIGINS",
+          "description": {
+            "en_us": "Container Path: /usr/src/paperless/data"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/app/data/configs",
+          "description": {
+            "en_us": "Container Path: /app/data/configs"
+          }
+        },
+        {
+          "container": "/app/public/icons",
+          "description": {
+            "en_us": "Container Path: /app/public/icons"
+          }
+        },
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8000",
+          "description": {
+            "en_us": "Container Port: 8000"
+          }
+        }
+      ]
+    },
+    "big-bear-paperless-ngx-broker": {
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "6379",
+          "description": {
+            "en_us": "Container Port: 6379"
+          }
+        }
+      ]
+    },
+    "big-bear-paperless-ngx-db": {
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data",
+          "description": {
+            "en_us": "Container Path: /var/lib/postgresql/data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "5432",
+          "description": {
+            "en_us": "Container Port: 5432"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

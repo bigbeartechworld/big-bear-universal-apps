@@ -1,0 +1,76 @@
+{
+  "id": "onlyoffice",
+  "name": "OnlyOffice",
+  "description": "Feature-rich web-based office suite with a vast range of collaborative capabilities",
+  "tagline": "OnlyOffice",
+  "version": "9.0.4",
+  "image": "onlyoffice/documentserver",
+  "developer": "",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/onlyoffice.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "7400",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "volumes": [
+        {
+          "container": "/var/log/onlyoffice",
+          "description": {
+            "en_us": "Container Path: /var/log/onlyoffice"
+          }
+        },
+        {
+          "container": "/var/www/onlyoffice/Data",
+          "description": {
+            "en_us": "Container Path: /var/www/onlyoffice/Data"
+          }
+        },
+        {
+          "container": "/var/lib/onlyoffice",
+          "description": {
+            "en_us": "Container Path: /var/lib/onlyoffice"
+          }
+        },
+        {
+          "container": "/var/lib/rabbitmq",
+          "description": {
+            "en_us": "Container Path: /var/lib/rabbitmq"
+          }
+        },
+        {
+          "container": "/var/lib/redis",
+          "description": {
+            "en_us": "Container Path: /var/lib/redis"
+          }
+        },
+        {
+          "container": "/var/lib/postgresql",
+          "description": {
+            "en_us": "Container Path: /var/lib/postgresql"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "80",
+          "description": {
+            "en_us": "Container Port: 80"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "id": "lyrionmusicserver",
+  "name": "LyriOn Music Server",
+  "description": "Simplify the management of your server with Homarr - a sleek, modern dashboard that puts all of your apps and services at your fingertips. With Homarr, you can access and control everything in one convenient location. Homarr seamlessly integrates with the apps you've added, providing you with valuable information and giving you complete control. Installation is a breeze, and Homarr supports a wide range of deployment methods.",
+  "tagline": "Streaming audio server",
+  "version": "9.1.0",
+  "image": "lmscommunity/lyrionmusicserver",
+  "developer": "LMS-Community",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/lyrionmusicserver/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-lyrionmusicserver",
+  "port_map": "9000",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-lyrion-music-server-to-bigbearcasaos/2606#p-4742-documentation-3\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-lyrionmusicserver": {
+      "envs": [
+        {
+          "container": "HTTP_PORT",
+          "description": {
+            "en_us": "Container Port: 9000"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Container Path: /config"
+          }
+        },
+        {
+          "container": "/music",
+          "description": {
+            "en_us": "Container Path: /music"
+          }
+        },
+        {
+          "container": "/playlist",
+          "description": {
+            "en_us": "Container Path: /playlist"
+          }
+        },
+        {
+          "container": "/etc/localtime",
+          "description": {
+            "en_us": "Container Path: /etc/localtime"
+          }
+        },
+        {
+          "container": "/etc/timezone",
+          "description": {
+            "en_us": "Container Path: /etc/timezone"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "9000",
+          "description": {
+            "en_us": "Container Port: 9000"
+          }
+        },
+        {
+          "container": "9090",
+          "description": {
+            "en_us": "Container Port: 9090"
+          }
+        },
+        {
+          "container": "3483",
+          "description": {
+            "en_us": "Container Port: 3483"
+          }
+        },
+        {
+          "container": "3483",
+          "description": {
+            "en_us": "Container Port: 3483"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

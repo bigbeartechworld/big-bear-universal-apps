@@ -1,0 +1,12 @@
+name: big-bear-python-matter-server
+services:
+  app:
+    image: ghcr.io/home-assistant-libs/python-matter-server:8.1.0
+    container_name: matter-server
+    restart: unless-stopped
+    network_mode: host
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - /DATA/AppData/$AppID/data:/data/
+      - /run/dbus:/run/dbus:ro

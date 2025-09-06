@@ -1,0 +1,9 @@
+name: big-bear-upsnap
+services:
+  big-bear-upsnap:
+    container_name: big-bear-upsnap
+    image: ghcr.io/seriousm4x/upsnap:5.1.9
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - /DATA/AppData/$AppID/pb_data:/app/pb_data

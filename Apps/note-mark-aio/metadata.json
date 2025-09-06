@@ -1,0 +1,64 @@
+{
+  "id": "note-mark-aio",
+  "name": "Note Mark AIO",
+  "description": "Note Mark Aio is a self-hosted note taking app that allows you to create, organize, and share notes. It's a fork of the popular note-mark app with a focus on simplicity and ease of use.",
+  "tagline": "Note Mark Aio",
+  "version": "0.17.1",
+  "image": "ghcr.io/enchant97/note-mark-aio",
+  "developer": "enchant97",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/note-mark-aio/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-note-mark-aio",
+  "port_map": "8000",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-note-mark-aio-to-bigbearcasaos/1952#p-3621-documentation-4\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-note-mark-aio": {
+      "envs": [
+        {
+          "container": "JWT_SECRET",
+          "description": {
+            "en_us": "JWT Secret"
+          }
+        },
+        {
+          "container": "CORS_ORIGINS",
+          "description": {
+            "en_us": "CORS Origins"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8000",
+          "description": {
+            "en_us": "Container Port: 8000"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

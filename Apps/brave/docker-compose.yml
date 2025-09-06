@@ -1,0 +1,13 @@
+name: big-bear-brave
+services:
+  brave:
+    container_name: big-bear-brave
+    image: kasmweb/brave:1.15.0-rolling
+    ports:
+      - '6901:6901'
+    environment:
+      - VNC_PW=casaos
+      - LAUNCH_URL=https://community.bigbeartechworld.com/
+    shm_size: 512m
+    volumes:
+      - /DATA/AppData/$AppID/Downloads:/home/kasm-user/Downloads

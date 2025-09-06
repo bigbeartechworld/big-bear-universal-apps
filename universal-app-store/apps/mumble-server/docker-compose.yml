@@ -1,0 +1,10 @@
+name: big-bear-mumble-server
+services:
+  app:
+    image: mumblevoip/mumble-server:v1.4.230-6
+    container_name: mumble-server
+    hostname: mumble-server
+    restart: on-failure
+    ports:
+      - '64738:64738'
+      - 64738:64738/udp

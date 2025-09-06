@@ -1,0 +1,76 @@
+{
+  "id": "write-freely",
+  "name": "Write Freely",
+  "description": "WriteFreely is a clean, minimalist publishing platform made for writers. Start a blog, share knowledge within your organization, or build a community around the shared act of writing.",
+  "tagline": "Markdown-based publishing platform.",
+  "version": "0.15",
+  "image": "nephatrine/write-freely",
+  "developer": "nephatrine",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/write-freely/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-write-freely",
+  "port_map": "8080",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-write-freely-to-bigbearcasaos/3164?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-write-freely": {
+      "envs": [
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Container Environment Variable: TZ"
+          }
+        },
+        {
+          "container": "PUID",
+          "description": {
+            "en_us": "Container Environment Variable: PUID"
+          }
+        },
+        {
+          "container": "PGID",
+          "description": {
+            "en_us": "Container Environment Variable: PGID"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/mnt/config",
+          "description": {
+            "en_us": "Container Path: /mnt/config"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "70",
+          "description": {
+            "en_us": "Container Port: 70"
+          }
+        },
+        {
+          "container": "8080",
+          "description": {
+            "en_us": "Container Port: 8080"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "id": "big-bear-casaos-user-management",
+  "name": "Big Bear CasaOS User Management",
+  "description": "Manage users in CasaOS",
+  "tagline": "Manage users in CasaOS",
+  "version": "0.1.0",
+  "image": "bigbeartechworld/big-bear-casaos-user-management",
+  "developer": "bigbeartechworld",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-docker-images/big-bear-casaos-user-management/logo.jpg",
+  "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/big-bear-casaos-user-management/thumbnail-v2.png",
+  "screenshots": [
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/big-bear-casaos-user-management/screenshot-1.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/big-bear-casaos-user-management/screenshot-2.png",
+    "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/big-bear-casaos-user-management/screenshot-3.png"
+  ],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-casaos-user-management",
+  "port_map": "5000",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-big-bear-casaos-user-management-to-bigbearcasaos/2227#p-4191-quick-start-3\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-casaos-user-management": {
+      "envs": [
+        {
+          "container": "FLASK_APP",
+          "description": {
+            "en_us": "Sets the Flask application entry point"
+          }
+        },
+        {
+          "container": "FLASK_ENV",
+          "description": {
+            "en_us": "Configures Flask to run in production mode"
+          }
+        },
+        {
+          "container": "ADMIN_USERNAME",
+          "description": {
+            "en_us": "Specifies the admin username for the service"
+          }
+        },
+        {
+          "container": "ADMIN_PASSWORD",
+          "description": {
+            "en_us": "Specifies the admin password for the service"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/sys/fs/cgroup:ro",
+          "description": {
+            "en_us": "Container Path: /sys/fs/cgroup:ro"
+          }
+        },
+        {
+          "container": "/var/lib/casaos/db",
+          "description": {
+            "en_us": "Container Path: /var/lib/casaos/db"
+          }
+        },
+        {
+          "container": "/run/systemd/system",
+          "description": {
+            "en_us": "Container Path: /run/systemd/system"
+          }
+        },
+        {
+          "container": "/var/run/dbus/system_bus_socket",
+          "description": {
+            "en_us": "Container Path: /var/run/dbus/system_bus_socket"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "5000",
+          "description": {
+            "en_us": "Container Port: 5000"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/-a9k8fLAbRE",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

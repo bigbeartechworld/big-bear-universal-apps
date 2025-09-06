@@ -1,0 +1,20 @@
+name: big-bear-ntfy
+services:
+  app:
+    image: binwiederhier/ntfy:v2.14.0
+    command:
+      - serve
+    environment:
+      - TZ=UTC
+    ports:
+      - target: 80
+        published: '7200'
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /DATA/AppData/$AppID/cache
+        target: /var/cache/ntfy
+      - type: bind
+        source: /DATA/AppData/$AppID/config
+        target: /etc/ntfy

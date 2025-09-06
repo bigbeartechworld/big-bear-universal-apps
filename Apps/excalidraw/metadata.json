@@ -1,0 +1,37 @@
+{
+  "id": "excalidraw",
+  "name": "Excalidraw",
+  "description": "Virtual whiteboard for sketching hand-drawn like diagrams",
+  "tagline": "Virtual whiteboard for sketching hand-drawn like diagrams",
+  "version": "latest",
+  "image": "excalidraw/excalidraw",
+  "developer": "excalidraw",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/excalidraw/logo.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64"
+  ],
+  "main_service": "app",
+  "port_map": "8000",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "ports": [
+        {
+          "container": "8000",
+          "description": {
+            "en_us": "Container Port: 8000"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/T4K6RDhieIA",
+    "docs": "",
+    "big_bear_cosmos_youtube": "https://youtu.be/CfPykJeOy4E"
+  }
+}

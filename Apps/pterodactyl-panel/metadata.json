@@ -1,0 +1,196 @@
+{
+  "id": "pterodactyl-panel",
+  "name": "Pterodactyl Panel",
+  "description": "Pterodactyl® is a free, open-source game server management panel built with PHP, React, and Go. Designed with security in mind, Pterodactyl runs all game servers in isolated Docker containers while exposing a beautiful and intuitive UI to end users.",
+  "tagline": "Pterodactyl Panel",
+  "version": "1.11.11",
+  "image": "ghcr.io/pterodactyl/panel",
+  "developer": "pterodactyl",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/pterodactyl.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "1180",
+  "tips": {
+    "before_install": {
+      "en_us": "Before you can use Pterodactyl Panel, you need to read the installation guide.\n\n[Install Guide Link](https://github.com/bigbeartechworld/big-bear-casaos/tree/master/Apps/pterodactyl-panel)\n"
+    }
+  },
+  "services_metadata": {
+    "app": {
+      "envs": [
+        {
+          "container": "APP_URL",
+          "description": {
+            "en_us": "App URL"
+          }
+        },
+        {
+          "container": "APP_TIMEZONE",
+          "description": {
+            "en_us": "App timezone"
+          }
+        },
+        {
+          "container": "APP_SERVICE_AUTHOR",
+          "description": {
+            "en_us": "Service author email"
+          }
+        },
+        {
+          "container": "LE_EMAIL",
+          "description": {
+            "en_us": "Let's Encrypt email"
+          }
+        },
+        {
+          "container": "MAIL_FROM",
+          "description": {
+            "en_us": "Email sender"
+          }
+        },
+        {
+          "container": "MAIL_DRIVER",
+          "description": {
+            "en_us": "Email driver"
+          }
+        },
+        {
+          "container": "MAIL_HOST",
+          "description": {
+            "en_us": "Email host"
+          }
+        },
+        {
+          "container": "MAIL_PORT",
+          "description": {
+            "en_us": "Email port"
+          }
+        },
+        {
+          "container": "MAIL_USERNAME",
+          "description": {
+            "en_us": "Email username"
+          }
+        },
+        {
+          "container": "MAIL_PASSWORD",
+          "description": {
+            "en_us": "Email password"
+          }
+        },
+        {
+          "container": "MAIL_ENCRYPTION",
+          "description": {
+            "en_us": "Use email encryption"
+          }
+        },
+        {
+          "container": "APP_ENV",
+          "description": {
+            "en_us": "App environment"
+          }
+        },
+        {
+          "container": "APP_ENVIRONMENT_ONLY",
+          "description": {
+            "en_us": "Environment setting"
+          }
+        },
+        {
+          "container": "CACHE_DRIVER",
+          "description": {
+            "en_us": "Cache driver"
+          }
+        },
+        {
+          "container": "SESSION_DRIVER",
+          "description": {
+            "en_us": "Session driver"
+          }
+        },
+        {
+          "container": "QUEUE_DRIVER",
+          "description": {
+            "en_us": "Queue driver"
+          }
+        },
+        {
+          "container": "REDIS_HOST",
+          "description": {
+            "en_us": "Redis host"
+          }
+        },
+        {
+          "container": "DB_HOST",
+          "description": {
+            "en_us": "Database host"
+          }
+        },
+        {
+          "container": "DB_PASSWORD",
+          "description": {
+            "en_us": "Database password"
+          }
+        },
+        {
+          "container": "DB_PORT",
+          "description": {
+            "en_us": "Database port"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/app/var/",
+          "description": {
+            "en_us": "Container Path: /app/var/"
+          }
+        },
+        {
+          "container": "/etc/nginx/http.d/",
+          "description": {
+            "en_us": "Container Path: /etc/nginx/http.d/"
+          }
+        },
+        {
+          "container": "/etc/letsencrypt/",
+          "description": {
+            "en_us": "Container Path: /etc/letsencrypt/"
+          }
+        },
+        {
+          "container": "/app/storage/logs",
+          "description": {
+            "en_us": "Container Path: /app/storage/logs"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "80",
+          "description": {
+            "en_us": "Container Port: 80"
+          }
+        },
+        {
+          "container": "443",
+          "description": {
+            "en_us": "Container Port: 443"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/p_140cc6_1g",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

@@ -1,0 +1,16 @@
+name: big-bear-music-assistant
+services:
+  big-bear-music-assistant-server:
+    container_name: big-bear-music-assistant-server
+    image: ghcr.io/music-assistant/server:2.5.8
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /DATA/AppData/$AppID/data
+        target: /data
+    network_mode: host
+    security_opt:
+      - apparmor:unconfined
+    cap_add:
+      - SYS_ADMIN
+      - DAC_READ_SEARCH

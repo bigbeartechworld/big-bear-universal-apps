@@ -1,0 +1,13 @@
+name: big-bear-jellyseerr
+services:
+  app:
+    image: fallenbagel/jellyseerr:2.7.3
+    ports:
+      - '5055:5055'
+    volumes:
+      - /DATA/AppData/$AppID/config:/app/config
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=$TZ
+    restart: unless-stopped
+    network_mode: bridge

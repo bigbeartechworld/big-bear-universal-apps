@@ -1,0 +1,100 @@
+{
+  "id": "filebrowser",
+  "name": "Filebrowser",
+  "description": "Reliable and Performant File Management Desktop Sync and File Sharing Tool.",
+  "tagline": "Access your homeserver files from your browser",
+  "version": "2.42.5-s6",
+  "image": "filebrowser/filebrowser",
+  "developer": "filebrowser",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/filebrowser-quantum.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-filebrowser",
+  "port_map": "8080",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-filebrowser-to-bigbearcasaos/1934#p-3590-documentation-4\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-filebrowser": {
+      "envs": [
+        {
+          "container": "PUID",
+          "description": {
+            "en_us": "User ID"
+          }
+        },
+        {
+          "container": "PGID",
+          "description": {
+            "en_us": "Group ID"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/srv/app-data",
+          "description": {
+            "en_us": "Container Path: /srv/app-data"
+          }
+        },
+        {
+          "container": "/srv/documents",
+          "description": {
+            "en_us": "Container Path: /srv/documents"
+          }
+        },
+        {
+          "container": "/srv/downloads",
+          "description": {
+            "en_us": "Container Path: /srv/downloads"
+          }
+        },
+        {
+          "container": "/srv/gallery",
+          "description": {
+            "en_us": "Container Path: /srv/gallery"
+          }
+        },
+        {
+          "container": "/srv/media",
+          "description": {
+            "en_us": "Container Path: /srv/media"
+          }
+        },
+        {
+          "container": "/database",
+          "description": {
+            "en_us": "Container Path: /database"
+          }
+        },
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Container Path: /config"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "80",
+          "description": {
+            "en_us": "Container Port: 80"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

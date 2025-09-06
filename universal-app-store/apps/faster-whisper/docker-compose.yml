@@ -1,0 +1,17 @@
+name: big-bear-faster-whisper
+services:
+  big-bear-faster-whisper:
+    container_name: big-bear-faster-whisper
+    image: linuxserver/faster-whisper:2.5.0
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - WHISPER_MODEL=tiny-int8
+      - WHISPER_BEAM=1
+      - WHISPER_LANG=en
+    volumes:
+      - /DATA/AppData/$AppID/config:/config
+    ports:
+      - '10300:10300'

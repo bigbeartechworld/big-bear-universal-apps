@@ -1,0 +1,64 @@
+{
+  "id": "komga",
+  "name": "Komga",
+  "description": "A media server for your comics, mangas, BDs, magazines and eBooks.",
+  "tagline": "A media server for your comics, mangas, BDs, magazines and eBooks.",
+  "version": "1.23.3",
+  "image": "ghcr.io/gotson/komga",
+  "developer": "gotson",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/komga.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-komga",
+  "port_map": "25600",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-komga-to-bigbearcasaos/1916#p-3567-documentation-4\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-komga": {
+      "envs": [
+        {
+          "container": "TZ",
+          "description": {
+            "en_us": "Timezone"
+          }
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/config",
+          "description": {
+            "en_us": "Container Path: /config"
+          }
+        },
+        {
+          "container": "/data",
+          "description": {
+            "en_us": "Container Path: /data"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "25600",
+          "description": {
+            "en_us": "Container Port: 25600"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

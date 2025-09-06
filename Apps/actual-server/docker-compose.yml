@@ -1,0 +1,10 @@
+name: big-bear-actual-server
+services:
+  app:
+    image: actualbudget/actual-server:25.8.0
+    container_name: actual-server
+    volumes:
+      - /DATA/AppData/$AppID:/data
+    ports:
+      - '5006:5006'
+    restart: unless-stopped

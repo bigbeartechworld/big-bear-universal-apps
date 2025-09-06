@@ -1,0 +1,83 @@
+{
+  "id": "cloudflared-web",
+  "name": "Cloudflared Web",
+  "description": "Cloudflared-web is a docker image that packages both cloudflared cli and a simple Web UI to easily start or stop remotely-managed Cloudflare tunnel.",
+  "tagline": "Cloudflared Web",
+  "version": "2025.8.1",
+  "image": "wisdomsky/cloudflared-web",
+  "developer": "wisdomsky",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/cloudflare.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "big-bear-cloudflared-web",
+  "port_map": "14333",
+  "tips": {
+    "before_install": {
+      "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-cloudflared-web-to-bigbearcasaos/2275?u=dragonfire1119\n"
+    }
+  },
+  "services_metadata": {
+    "big-bear-cloudflared-web": {
+      "envs": [
+        {
+          "container": "WEBUI_PORT",
+          "description": {
+            "en_us": "Web UI Port"
+          }
+        },
+        {
+          "container": "EDGE_IP_VERSION",
+          "description": {
+            "en_us": "Edge IP Version"
+          }
+        },
+        {
+          "container": "PROTOCOL",
+          "description": {
+            "en_us": "Protocol"
+          }
+        },
+        {
+          "container": "METRICS_ENABLE",
+          "description": {
+            "en_us": "Metrics Enable"
+          }
+        },
+        {
+          "container": "METRICS_PORT",
+          "description": {
+            "en_us": "Metrics Port"
+          }
+        },
+        {
+          "container": "BASIC_AUTH_USER",
+          "description": {
+            "en_us": "Basic Auth User"
+          }
+        },
+        {
+          "container": "BASIC_AUTH_PASS"
+        }
+      ],
+      "ports": [
+        {
+          "container": "14333",
+          "description": {
+            "en_us": "Container Port: 14333"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/JvyyolXJ0-A",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}

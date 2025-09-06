@@ -1,0 +1,58 @@
+{
+  "id": "traccar",
+  "name": "Traccar",
+  "description": "Traccar GPS Tracking System in Docker image.",
+  "tagline": "Traccar",
+  "version": "6.9-ubuntu",
+  "image": "traccar/traccar",
+  "developer": "traccar",
+  "author": "BigBearTechWorld",
+  "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/traccar.png",
+  "thumbnail": "",
+  "screenshots": [],
+  "category": "BigBearCasaOS",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "main_service": "app",
+  "port_map": "8080",
+  "tips": {},
+  "services_metadata": {
+    "app": {
+      "volumes": [
+        {
+          "container": "/opt/traccar/logs",
+          "description": {
+            "en_us": "Container Path: /opt/traccar/logs"
+          }
+        },
+        {
+          "container": "/opt/traccar/conf/traccar.xml",
+          "description": {
+            "en_us": "Container Path: /opt/traccar/conf/traccar.xml"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "container": "8082",
+          "description": {
+            "en_us": "Container Port: 8082"
+          }
+        },
+        {
+          "container": "5000-5150",
+          "description": {
+            "en_us": "Container Port: 5000-5150"
+          }
+        }
+      ]
+    }
+  },
+  "links": {
+    "big_bear_casaos_youtube": "https://youtu.be/zn_tu9r6g-w",
+    "docs": "",
+    "big_bear_cosmos_youtube": ""
+  }
+}
