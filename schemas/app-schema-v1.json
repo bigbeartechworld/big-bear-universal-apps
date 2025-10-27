@@ -315,6 +315,13 @@
             "youtube": {
               "type": "string",
               "description": "Platform-specific YouTube video URL"
+            },
+            "volume_mappings": {
+              "type": "object",
+              "description": "Custom volume path mappings to preserve existing CasaOS paths. Maps named volume names to CasaOS bind mount paths (e.g., {'app_data': '/DATA/AppData/$AppID/data'})",
+              "additionalProperties": {
+                "type": "string"
+              }
             }
           }
         },

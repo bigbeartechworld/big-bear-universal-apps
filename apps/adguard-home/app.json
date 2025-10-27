@@ -83,7 +83,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080"
+      "port_map": "8080",
+      "volume_mappings": {
+        "adguard-home_data_work": "/DATA/AppData/$AppID/data/work",
+        "adguard-home_data_conf": "/DATA/AppData/$AppID/data/conf"
+      }
     },
     "portainer": {
       "supported": true,

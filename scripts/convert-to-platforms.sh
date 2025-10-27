@@ -316,6 +316,14 @@ validate_app() {
     local app_name="$1"
     local app_dir="$APPS_DIR/$app_name"
     
+    # Skip the _example template app
+    if [[ "$app_name" == "_example" ]]; then
+        if [[ "$VERBOSE" == "true" ]]; then
+            print_info "Skipping _example template app"
+        fi
+        return 1
+    fi
+    
     if [[ ! -d "$app_dir" ]]; then
         print_error "App directory not found: $app_dir"
         return 1
@@ -402,99 +410,189 @@ convert_to_casaos() {
     yq eval ".x-casaos.architectures = $APP_ARCHITECTURES" -i "$compose_file"
     yq eval ".x-casaos.main = \"$APP_MAIN_SERVICE\"" -i "$compose_file"
     yq eval ".x-casaos.description.en_us = \"$APP_DESCRIPTION\"" -i "$compose_file"
+    
+    # Add screenshot_link if screenshots exist
+    local screenshots=$(jq -c '.visual.screenshots // []' "$app_dir/app.json")
+    local screenshot_count=$(echo "$screenshots" | jq 'length')
+    if [[ "$screenshot_count" -gt 0 ]]; then
+        yq eval ".x-casaos.screenshot_link = $screenshots" -i "$compose_file"
+    fi
+    
     yq eval ".x-casaos.tagline.en_us = \"$APP_TAGLINE\"" -i "$compose_file"
     yq eval ".x-casaos.developer = \"$APP_DEVELOPER\"" -i "$compose_file"
     yq eval ".x-casaos.author = \"$APP_AUTHOR\"" -i "$compose_file"
     yq eval ".x-casaos.icon = \"$APP_ICON\"" -i "$compose_file"
     yq eval ".x-casaos.thumbnail = \"$APP_THUMBNAIL\"" -i "$compose_file"
+    
+    # Add tips if they exist
+    local tips_before_install=$(jq -r '.ui.tips.before_install.en_us // ""' "$app_dir/app.json")
+    if [[ -n "$tips_before_install" && "$tips_before_install" != "null" ]]; then
+        # Escape the multiline string for yq and use style="literal" for proper formatting
+        local tips_json=$(jq -c '.ui.tips.before_install // {}' "$app_dir/app.json")
+        yq eval ".x-casaos.tips.before_install = $tips_json" -i "$compose_file"
+    fi
+    
     yq eval ".x-casaos.title.en_us = \"$APP_NAME\"" -i "$compose_file"
     yq eval ".x-casaos.category = \"$APP_CATEGORY\"" -i "$compose_file"
     yq eval ".x-casaos.port_map = \"$APP_DEFAULT_PORT\"" -i "$compose_file"
     
-    # Add service-level x-casaos for environment variables
-    local env_count=$(echo "$APP_ENV_VARS" | jq 'length')
-    for ((i=0; i<env_count; i++)); do
-        local env_name=$(echo "$APP_ENV_VARS" | jq -r ".[$i].name")
-        local env_desc=$(echo "$APP_ENV_VARS" | jq -r ".[$i].description")
-        
-        # Skip if env_name is null or empty
-        if [[ -z "$env_name" ]] || [[ "$env_name" == "null" ]]; then
-            continue
-        fi
-        
-        yq eval ".services.$APP_MAIN_SERVICE.x-casaos.envs[$i].container = \"$env_name\"" -i "$compose_file"
-        yq eval ".services.$APP_MAIN_SERVICE.x-casaos.envs[$i].description.en_us = \"$env_desc\"" -i "$compose_file"
-    done
+    # Add service-level x-casaos for ALL services (not just main)
+    # Get all service names
+    local all_services=$(yq eval '.services | keys | .[]' "$compose_file")
     
-    # Add volume descriptions
-    local vol_count=$(echo "$APP_VOLUMES" | jq 'length')
-    for ((i=0; i<vol_count; i++)); do
-        local vol_path=$(echo "$APP_VOLUMES" | jq -r ".[$i].container")
-        local vol_desc=$(echo "$APP_VOLUMES" | jq -r ".[$i].description")
+    while IFS= read -r service_name; do
+        [[ -z "$service_name" ]] && continue
         
-        # Skip if vol_path is null or empty
-        if [[ -z "$vol_path" ]] || [[ "$vol_path" == "null" ]]; then
-            continue
+        # Add environment variables for this service
+        # Environment can be either an array of "KEY=VALUE" strings or an object {KEY: VALUE}
+        local env_format=$(yq eval ".services[\"$service_name\"].environment | type" "$compose_file" 2>/dev/null || echo "null")
+        local env_index=0
+        
+        if [[ "$env_format" == "!!seq" ]]; then
+            # Array format: ["KEY=VALUE", ...]
+            local service_envs=$(yq eval ".services[\"$service_name\"].environment | .[]" "$compose_file" 2>/dev/null || echo "")
+            while IFS= read -r env_entry; do
+                [[ -z "$env_entry" ]] && continue
+                
+                # Extract key from "KEY=VALUE" format
+                local env_key="${env_entry%%=*}"
+                
+                # Skip if empty or invalid
+                if [[ -z "$env_key" ]] || [[ "$env_key" == "null" ]] || [[ "$env_key" == "#"* ]]; then
+                    continue
+                fi
+                
+                # Add to x-casaos with proper escaping
+                yq eval ".services.[\"$service_name\"].x-casaos.envs[$env_index].container = \"$env_key\"" -i "$compose_file" 2>/dev/null || true
+                yq eval ".services.[\"$service_name\"].x-casaos.envs[$env_index].description.en_us = \"Container Variable: $env_key\"" -i "$compose_file" 2>/dev/null || true
+                env_index=$((env_index + 1))
+            done <<< "$service_envs"
+        elif [[ "$env_format" == "!!map" ]]; then
+            # Object format: {KEY: VALUE, ...}
+            local service_envs=$(yq eval ".services[\"$service_name\"].environment | keys | .[]" "$compose_file" 2>/dev/null || echo "")
+            while IFS= read -r env_key; do
+                [[ -z "$env_key" ]] && continue
+                
+                # Skip if empty or invalid
+                if [[ -z "$env_key" ]] || [[ "$env_key" == "null" ]] || [[ "$env_key" == "#"* ]]; then
+                    continue
+                fi
+                
+                # Add to x-casaos with proper escaping
+                yq eval ".services.[\"$service_name\"].x-casaos.envs[$env_index].container = \"$env_key\"" -i "$compose_file" 2>/dev/null || true
+                yq eval ".services.[\"$service_name\"].x-casaos.envs[$env_index].description.en_us = \"Container Variable: $env_key\"" -i "$compose_file" 2>/dev/null || true
+                env_index=$((env_index + 1))
+            done <<< "$service_envs"
         fi
         
-        yq eval ".services.$APP_MAIN_SERVICE.x-casaos.volumes[$i].container = \"$vol_path\"" -i "$compose_file"
-        yq eval ".services.$APP_MAIN_SERVICE.x-casaos.volumes[$i].description.en_us = \"$vol_desc\"" -i "$compose_file"
-    done
-    
-    # Add port descriptions
-    local port_count=$(echo "$APP_PORTS" | jq 'length')
-    for ((i=0; i<port_count; i++)); do
-        local port_num=$(echo "$APP_PORTS" | jq -r ".[$i].container")
-        local port_desc=$(echo "$APP_PORTS" | jq -r ".[$i].description")
+        # Add volumes for this service
+        local service_volumes=$(yq eval ".services[\"$service_name\"].volumes | .[]" "$compose_file" 2>/dev/null || echo "")
+        local vol_index=0
+        while IFS= read -r volume_entry; do
+            [[ -z "$volume_entry" ]] && continue
+            
+            # Extract container path from volume entry (after the colon)
+            local container_path="${volume_entry#*:}"
+            # Remove any trailing options (e.g., :ro, :rw)
+            container_path="${container_path%%:*}"
+            
+            # Skip if it's not a valid path
+            if [[ -z "$container_path" ]] || [[ "$container_path" == "null" ]]; then
+                continue
+            fi
+            
+            # Add to x-casaos with proper escaping
+            yq eval ".services.[\"$service_name\"].x-casaos.volumes[$vol_index].container = \"$container_path\"" -i "$compose_file" 2>/dev/null || true
+            yq eval ".services.[\"$service_name\"].x-casaos.volumes[$vol_index].description.en_us = \"Container Path: $container_path\"" -i "$compose_file" 2>/dev/null || true
+            vol_index=$((vol_index + 1))
+        done <<< "$service_volumes"
         
-        # Skip if port_num is null or empty
-        if [[ -z "$port_num" ]] || [[ "$port_num" == "null" ]]; then
-            continue
-        fi
+        # Add ports for this service
+        local service_ports=$(yq eval ".services[\"$service_name\"].ports | .[]" "$compose_file" 2>/dev/null || echo "")
+        local port_index=0
+        while IFS= read -r port_entry; do
+            [[ -z "$port_entry" ]] && continue
+            
+            # Extract container port from port entry
+            local container_port="${port_entry#*:}"
+            # Remove any protocol suffix (e.g., /tcp, /udp)
+            container_port="${container_port%%/*}"
+            
+            # Skip if it's not a valid port
+            if [[ -z "$container_port" ]] || [[ "$container_port" == "null" ]]; then
+                continue
+            fi
+            
+            # Add to x-casaos with proper escaping
+            yq eval ".services.[\"$service_name\"].x-casaos.ports[$port_index].container = \"$container_port\"" -i "$compose_file" 2>/dev/null || true
+            yq eval ".services.[\"$service_name\"].x-casaos.ports[$port_index].description.en_us = \"Container Port: $container_port\"" -i "$compose_file" 2>/dev/null || true
+            port_index=$((port_index + 1))
+        done <<< "$service_ports"
         
-        yq eval ".services.$APP_MAIN_SERVICE.x-casaos.ports[$i].container = \"$port_num\"" -i "$compose_file"
-        yq eval ".services.$APP_MAIN_SERVICE.x-casaos.ports[$i].description.en_us = \"$port_desc\"" -i "$compose_file"
-    done
+    done <<< "$all_services"
     
     # Convert named volumes to CasaOS bind mounts
     # Only convert if there are named volumes defined at the top level
     local volume_names=$(yq eval '.volumes | keys | .[]' "$compose_file" 2>/dev/null || echo "")
     
     if [[ -n "$volume_names" ]]; then
-        # For each named volume, convert references in the service to CasaOS bind mounts
-        while IFS= read -r vol_name; do
-            [[ -z "$vol_name" ]] && continue
+        # Load platform-specific volume mappings from app.json if they exist
+        local volume_mappings_json=$(jq -c '.compatibility.casaos.volume_mappings // {}' "$app_dir/app.json" 2>/dev/null)
+        
+        # Get all service names
+        local all_services=$(yq eval '.services | keys | .[]' "$compose_file")
+        
+        # For each service
+        while IFS= read -r service_name; do
+            [[ -z "$service_name" ]] && continue
             
-            # Get the count of volumes in the service
-            local vol_count=$(yq eval ".services.$APP_MAIN_SERVICE.volumes | length" "$compose_file")
-            
-            for ((j=0; j<vol_count; j++)); do
-                local vol_entry=$(yq eval ".services.$APP_MAIN_SERVICE.volumes[$j]" "$compose_file")
+            # For each named volume, convert references in this service to CasaOS bind mounts
+            while IFS= read -r vol_name; do
+                [[ -z "$vol_name" ]] && continue
                 
-                # Skip if this is already a bind mount (starts with / or ./)
-                if [[ "$vol_entry" == /* ]] || [[ "$vol_entry" == ./* ]]; then
-                    continue
-                fi
+                # Get the count of volumes in this service
+                local vol_count=$(yq eval ".services.$service_name.volumes | length" "$compose_file" 2>/dev/null || echo "0")
                 
-                # Check if this volume entry uses the named volume
-                if [[ "$vol_entry" == "${vol_name}:"* ]]; then
-                    # Extract container path
-                    local container_path="${vol_entry#*:}"
-                    # Remove any trailing options (e.g., :ro, :rw)
-                    container_path="${container_path%%:*}"
+                for ((j=0; j<vol_count; j++)); do
+                    local vol_entry=$(yq eval ".services.$service_name.volumes[$j]" "$compose_file")
                     
-                    # Create CasaOS bind mount path
-                    # Convert volume name to a simple folder name (remove app prefix if exists)
-                    local folder_suffix="${vol_name#*_}"  # Remove prefix before underscore
-                    [[ "$folder_suffix" == "$vol_name" ]] && folder_suffix="${vol_name}"
+                    # Skip if this is already a bind mount (starts with / or ./)
+                    if [[ "$vol_entry" == /* ]] || [[ "$vol_entry" == ./* ]]; then
+                        continue
+                    fi
                     
-                    local casaos_path="/DATA/AppData/\$AppID/${folder_suffix}:${container_path}"
-                    
-                    # Replace the volume entry
-                    yq eval ".services.$APP_MAIN_SERVICE.volumes[$j] = \"$casaos_path\"" -i "$compose_file"
-                fi
-            done
-        done <<< "$volume_names"
+                    # Check if this volume entry uses the named volume
+                    if [[ "$vol_entry" == "${vol_name}:"* ]]; then
+                        # Extract container path
+                        local container_path="${vol_entry#*:}"
+                        # Remove any trailing options (e.g., :ro, :rw)
+                        container_path="${container_path%%:*}"
+                        
+                        # Check if there's a custom mapping for this volume
+                        local custom_mapping=$(echo "$volume_mappings_json" | jq -r --arg vol "$vol_name" '.[$vol] // empty')
+                        
+                        local casaos_path
+                        if [[ -n "$custom_mapping" && "$custom_mapping" != "null" ]]; then
+                            # Use the custom mapping from app.json
+                            casaos_path="${custom_mapping}:${container_path}"
+                        else
+                            # Fall back to default conversion logic
+                            # Convert volume name to a simple folder name (remove app prefix if exists)
+                            local folder_suffix="${vol_name#*_}"  # Remove prefix before underscore
+                            [[ "$folder_suffix" == "$vol_name" ]] && folder_suffix="${vol_name}"
+                            
+                            # Convert underscores to slashes for nested paths (e.g., data_work -> data/work)
+                            folder_suffix="${folder_suffix//_//}"
+                            
+                            casaos_path="/DATA/AppData/\$AppID/${folder_suffix}:${container_path}"
+                        fi
+                        
+                        # Replace the volume entry
+                        yq eval ".services.$service_name.volumes[$j] = \"$casaos_path\"" -i "$compose_file"
+                    fi
+                done
+            done <<< "$volume_names"
+        done <<< "$all_services"
         
         # Remove the volumes section at the top level (named volumes are no longer needed)
         yq eval 'del(.volumes)' -i "$compose_file"
