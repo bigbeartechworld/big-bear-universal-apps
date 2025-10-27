@@ -1,0 +1,42 @@
+# Converted apps (generated, don't commit)
+converted/
+
+# Port tracking files (generated)
+.port_tracker
+.port_map
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+.*.bak
+
+# Node modules (if any JS tooling is added)
+node_modules/
+
+# Python cache (if any Python tooling is added)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Test outputs
+test-output/
+coverage/
+
+docs/
