@@ -248,6 +248,23 @@ load_app_metadata() {
     export COMPAT_UMBREL=$(jq -r '.compatibility.umbrel.supported // true' "$app_json")
 }
 
+# Get folder name for a specific platform (with override support)
+get_platform_folder_name() {
+    local app_dir="$1"
+    local platform="$2"
+    local app_json="$app_dir/app.json"
+    
+    # Try to get platform-specific folder_name override
+    local folder_name=$(jq -r ".compatibility.$platform.folder_name // empty" "$app_json" 2>/dev/null)
+    
+    # If no override, use the app ID
+    if [[ -z "$folder_name" ]]; then
+        folder_name=$(jq -r '.metadata.id' "$app_json")
+    fi
+    
+    echo "$folder_name"
+}
+
 # Initialize Portainer master template file
 init_portainer_master_template() {
     local master_file="$OUTPUT_DIR/portainer/templates.json"
@@ -337,31 +354,9 @@ adjust_compose_for_platform() {
             # Will add x-casaos extensions in convert_to_casaos function
             ;;
         portainer)
-            # Convert to named volumes for Portainer
-            yq eval '.services[] |= (
-                if .volumes then
-                    .volumes |= map(
-                        if (. | type) == "!!str" and (. | test("^\\./")) then
-                            ("'$app_name'_" + (. | sub("^\\./", "") | sub("/", "_")) + ":" + (. | split(":")[1]))
-                        else
-                            .
-                        end
-                    )
-                else
-                    .
-                end
-            )' "$input_file" > "$output_file"
-            # Add volumes section
-            local volumes_section=$(yq eval '.services[].volumes[]?' "$output_file" | \
-                grep -E '^[a-zA-Z0-9_-]+:' | cut -d':' -f1 | sort -u | \
-                awk '{print "  " $1 ": {}"}')
-            if [[ -n "$volumes_section" ]]; then
-                yq eval ".volumes = {}" -i "$output_file"
-                while IFS= read -r vol; do
-                    vol_name=$(echo "$vol" | xargs | cut -d':' -f1)
-                    yq eval ".volumes.\"$vol_name\" = {}" -i "$output_file"
-                done <<< "$volumes_section"
-            fi
+            # Just copy the compose file for now
+            # TODO: Add support for converting relative paths to named volumes
+            cp "$input_file" "$output_file"
             ;;
         runtipi)
             # Copy compose, add runtipi.managed label and tipi_main_network
@@ -379,20 +374,24 @@ adjust_compose_for_platform() {
 convert_to_casaos() {
     local app_name="$1"
     local app_dir="$2"
-    local output_dir="$OUTPUT_DIR/casaos/$app_name"
     
-    if [[ "$DRY_RUN" == "true" ]]; then
-        print_info "DRY RUN: Would convert $app_name to CasaOS format"
-        return
-    fi
+    # Load metadata first to get compatibility settings
+    load_app_metadata "$app_dir"
     
     if [[ "$COMPAT_CASAOS" != "true" ]]; then
         print_warning "Skipping $app_name for CasaOS (not marked as compatible)"
         return
     fi
     
+    local folder_name=$(get_platform_folder_name "$app_dir" "casaos")
+    local output_dir="$OUTPUT_DIR/casaos/$folder_name"
+    
+    if [[ "$DRY_RUN" == "true" ]]; then
+        print_info "DRY RUN: Would convert $app_name to CasaOS format (folder: $folder_name)"
+        return
+    fi
+    
     mkdir -p "$output_dir"
-    load_app_metadata "$app_dir"
     
     # Start with clean compose
     cp "$app_dir/docker-compose.yml" "$output_dir/docker-compose.yml"
@@ -440,19 +439,8 @@ convert_to_casaos() {
     done
     
     # Adjust volume paths for CasaOS
-    yq eval '.services[] |= (
-        if .volumes then
-            .volumes |= map(
-                if (. | type) == "!!str" and (. | test("^\\./")) then
-                    ("/DATA/AppData/$AppID/" + (. | sub("^\\./", "")) + ":" + (. | split(":")[1]))
-                else
-                    .
-                end
-            )
-        else
-            .
-        end
-    )' -i "$compose_file"
+    # Skip volume path transformation for now - most apps already use named volumes
+    # TODO: Add support for converting relative paths to /DATA/AppData paths
     
     # Create config.json for CasaOS
     cat > "$output_dir/config.json" << EOF
@@ -472,21 +460,25 @@ EOF
 convert_to_portainer() {
     local app_name="$1"
     local app_dir="$2"
-    local output_dir="$OUTPUT_DIR/portainer/$app_name"
     local master_file="$OUTPUT_DIR/portainer/templates.json"
     
-    if [[ "$DRY_RUN" == "true" ]]; then
-        print_info "DRY RUN: Would convert $app_name to Portainer format"
-        return
-    fi
+    # Load metadata first to get compatibility settings
+    load_app_metadata "$app_dir"
     
     if [[ "$COMPAT_PORTAINER" != "true" ]]; then
         print_warning "Skipping $app_name for Portainer (not marked as compatible)"
         return
     fi
     
+    local folder_name=$(get_platform_folder_name "$app_dir" "portainer")
+    local output_dir="$OUTPUT_DIR/portainer/$folder_name"
+    
+    if [[ "$DRY_RUN" == "true" ]]; then
+        print_info "DRY RUN: Would convert $app_name to Portainer format (folder: $folder_name)"
+        return
+    fi
+    
     mkdir -p "$output_dir"
-    load_app_metadata "$app_dir"
     
     # Create docker-compose with named volumes
     adjust_compose_for_platform "$app_dir/docker-compose.yml" "$output_dir/docker-compose.yml" "portainer" "$app_name"
@@ -560,20 +552,24 @@ EOF
 convert_to_runtipi() {
     local app_name="$1"
     local app_dir="$2"
-    local output_dir="$OUTPUT_DIR/runtipi/$app_name"
     
-    if [[ "$DRY_RUN" == "true" ]]; then
-        print_info "DRY RUN: Would convert $app_name to Runtipi format"
-        return
-    fi
+    # Load metadata first to get compatibility settings
+    load_app_metadata "$app_dir"
     
     if [[ "$COMPAT_RUNTIPI" != "true" ]]; then
         print_warning "Skipping $app_name for Runtipi (not marked as compatible)"
         return
     fi
     
+    local folder_name=$(get_platform_folder_name "$app_dir" "runtipi")
+    local output_dir="$OUTPUT_DIR/runtipi/$folder_name"
+    
+    if [[ "$DRY_RUN" == "true" ]]; then
+        print_info "DRY RUN: Would convert $app_name to Runtipi format (folder: $folder_name)"
+        return
+    fi
+    
     mkdir -p "$output_dir/metadata"
-    load_app_metadata "$app_dir"
     
     # Copy and modify docker-compose
     cp "$app_dir/docker-compose.yml" "$output_dir/docker-compose.yml"
@@ -691,20 +687,24 @@ EOF
 convert_to_dockge() {
     local app_name="$1"
     local app_dir="$2"
-    local output_dir="$OUTPUT_DIR/dockge/$app_name"
     
-    if [[ "$DRY_RUN" == "true" ]]; then
-        print_info "DRY RUN: Would convert $app_name to Dockge format"
-        return
-    fi
+    # Load metadata first to get compatibility settings
+    load_app_metadata "$app_dir"
     
     if [[ "$COMPAT_DOCKGE" != "true" ]]; then
         print_warning "Skipping $app_name for Dockge (not marked as compatible)"
         return
     fi
     
+    local folder_name=$(get_platform_folder_name "$app_dir" "dockge")
+    local output_dir="$OUTPUT_DIR/dockge/$folder_name"
+    
+    if [[ "$DRY_RUN" == "true" ]]; then
+        print_info "DRY RUN: Would convert $app_name to Dockge format (folder: $folder_name)"
+        return
+    fi
+    
     mkdir -p "$output_dir"
-    load_app_metadata "$app_dir"
     
     # Copy compose as-is
     cp "$app_dir/docker-compose.yml" "$output_dir/compose.yaml"
@@ -731,15 +731,20 @@ EOF
 convert_to_cosmos() {
     local app_name="$1"
     local app_dir="$2"
-    local output_dir="$OUTPUT_DIR/cosmos/$app_name"
     
-    if [[ "$DRY_RUN" == "true" ]]; then
-        print_info "DRY RUN: Would convert $app_name to Cosmos format"
-        return
-    fi
+    # Load metadata first to get compatibility settings
+    load_app_metadata "$app_dir"
     
     if [[ "$COMPAT_COSMOS" != "true" ]]; then
         print_warning "Skipping $app_name for Cosmos (not marked as compatible)"
+        return
+    fi
+    
+    local folder_name=$(get_platform_folder_name "$app_dir" "cosmos")
+    local output_dir="$OUTPUT_DIR/cosmos/$folder_name"
+    
+    if [[ "$DRY_RUN" == "true" ]]; then
+        print_info "DRY RUN: Would convert $app_name to Cosmos format (folder: $folder_name)"
         return
     fi
     
@@ -793,12 +798,16 @@ EOF
 convert_to_umbrel() {
     local app_name="$1"
     local app_dir="$2"
-    # Umbrel repos use big-bear-umbrel- prefix for folder names
-    local umbrel_folder_name="big-bear-umbrel-$app_name"
-    local output_dir="$OUTPUT_DIR/umbrel/$umbrel_folder_name"
+    # Get the folder name from compatibility settings (defaults to big-bear-umbrel-{app_id})
+    local folder_name=$(get_platform_folder_name "$app_dir" "umbrel")
+    # If no override, use the default Umbrel naming convention
+    if [[ "$folder_name" == "$app_name" ]] || [[ -z "$folder_name" ]]; then
+        folder_name="big-bear-umbrel-$app_name"
+    fi
+    local output_dir="$OUTPUT_DIR/umbrel/$folder_name"
     
     if [[ "$DRY_RUN" == "true" ]]; then
-        print_info "DRY RUN: Would convert $app_name to Umbrel format"
+        print_info "DRY RUN: Would convert $app_name to Umbrel format (folder: $folder_name)"
         return
     fi
     

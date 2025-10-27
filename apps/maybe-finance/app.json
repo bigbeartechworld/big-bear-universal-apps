@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-maybe-finance",
     "default_port": "4000",
@@ -117,34 +117,40 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "4000"
+      "port_map": "4000",
+      "folder_name": "MaybeFinance"
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
       "categories": ["BigBearCasaOS", "selfhosted"],
-      "administrator_only": false
+      "administrator_only": false,
+      "folder_name": "MaybeFinance"
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "folder_name": "MaybeFinance"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "folder_name": "MaybeFinance"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "folder_name": "MaybeFinance"
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "folder_name": "big-bear-umbrel-maybe-finance"
     }
   },
   "tags": [

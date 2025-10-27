@@ -307,6 +307,10 @@
             },
             "port_map": {
               "type": "string"
+            },
+            "folder_name": {
+              "type": "string",
+              "description": "Override folder name in CasaOS repository (defaults to app id)"
             }
           }
         },
@@ -328,6 +332,10 @@
             },
             "administrator_only": {
               "type": "boolean"
+            },
+            "folder_name": {
+              "type": "string",
+              "description": "Override folder name in Portainer repository (defaults to app id)"
             }
           }
         },
@@ -345,6 +353,10 @@
               "items": {
                 "type": "string"
               }
+            },
+            "folder_name": {
+              "type": "string",
+              "description": "Override folder name in Runtipi repository (defaults to app id)"
             }
           }
         },
@@ -356,6 +368,10 @@
             },
             "file_based": {
               "type": "boolean"
+            },
+            "folder_name": {
+              "type": "string",
+              "description": "Override folder name in Dockge repository (defaults to app id)"
             }
           }
         },
@@ -370,6 +386,10 @@
             },
             "routes_required": {
               "type": "boolean"
+            },
+            "folder_name": {
+              "type": "string",
+              "description": "Override folder name in Cosmos repository (defaults to app id)"
             }
           }
         },
@@ -381,6 +401,10 @@
             },
             "manifest_version": {
               "type": "integer"
+            },
+            "folder_name": {
+              "type": "string",
+              "description": "Override folder name in Umbrel repository (defaults to app id)"
             }
           }
         }
