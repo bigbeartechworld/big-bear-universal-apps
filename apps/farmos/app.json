@@ -19,8 +19,8 @@
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/farmos/logo.jpeg",
     "thumbnail": "",
     "screenshots": [
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/farmos/screenshot-1.png"
-],
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/farmos/screenshots/screenshot-1.png"
+    ],
     "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/farmos/logo.jpeg"
   },
   "resources": {
@@ -32,9 +32,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-farmos",
     "default_port": "8080",
@@ -44,28 +44,28 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/opt/drupal/web/sites",
-    "description": "Container Path: /opt/drupal/web/sites"
-  }
-],
+      {
+        "container": "/opt/drupal/web/sites",
+        "description": "Container Path: /opt/drupal/web/sites"
+      }
+    ],
     "ports": [
-  {
-    "container": "8080",
-    "host": "8080",
-    "protocol": "tcp",
-    "description": "Container Port: 8080"
-  }
-]
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Container Port: 8080"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-farmos-to-bigbearcasaos/2334?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-farmos-to-bigbearcasaos/2334?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -75,16 +75,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

@@ -19,14 +19,14 @@
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/morphos/logo.png",
     "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/morphos/thumbnail.png",
     "screenshots": [
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/morphos/screenshot-1.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/morphos/screenshot-2.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/morphos/screenshot-3.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/morphos/screenshot-4.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/morphos/screenshot-5.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/morphos/screenshot-6.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/morphos/screenshot-7.png"
-],
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/morphos/screenshots/screenshot-1.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/morphos/screenshots/screenshot-2.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/morphos/screenshots/screenshot-3.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/morphos/screenshots/screenshot-4.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/morphos/screenshots/screenshot-5.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/morphos/screenshots/screenshot-6.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/morphos/screenshots/screenshot-7.png"
+    ],
     "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/morphos/logo.png"
   },
   "resources": {
@@ -38,9 +38,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-morphos",
     "default_port": "8080",
@@ -50,28 +50,28 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/tmp",
-    "description": "Container Path: /tmp"
-  }
-],
+      {
+        "container": "/tmp",
+        "description": "Container Path: /tmp"
+      }
+    ],
     "ports": [
-  {
-    "container": "8080",
-    "host": "8080",
-    "protocol": "tcp",
-    "description": "Container Port: 8080"
-  }
-]
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Container Port: 8080"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-morphos-to-bigbearcasaos/3160?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-morphos-to-bigbearcasaos/3160?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -81,16 +81,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

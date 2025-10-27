@@ -19,10 +19,9 @@
     "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/poste.png",
     "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/poste-io/thumbnail.png",
     "screenshots": [
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/poste-io/screenshot-1.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/poste-io/screenshot-2.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/poste-io/screenshot-3.png"
-],
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/poste-io/screenshots/screenshot-1.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/poste-io/screenshots/screenshot-2.png"
+    ],
     "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/poste.png"
   },
   "resources": {
@@ -34,9 +33,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-poste-io",
     "default_port": "80",
@@ -45,29 +44,29 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "TZ",
-    "default": "",
-    "description": "Timezone: UTC",
-    "required": false
-  }
-],
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Timezone: UTC",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/data",
-    "description": "Container Path: /data"
-  }
-],
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      }
+    ],
     "ports": []
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-poste-io-to-bigbearcasaos/3344\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-poste-io-to-bigbearcasaos/3344\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -77,16 +76,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

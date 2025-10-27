@@ -19,8 +19,8 @@
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/convertx/logo.png",
     "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/convertx/thumbnail.png",
     "screenshots": [
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/convertx/screenshot-1.png"
-],
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/convertx/screenshots/screenshot-1.png"
+    ],
     "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/convertx/logo.png"
   },
   "resources": {
@@ -32,9 +32,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-convertx",
     "default_port": "3000",
@@ -43,35 +43,35 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "JWT_SECRET",
-    "default": "",
-    "description": "JWT Secret",
-    "required": false
-  },
-  {
-    "name": "HTTP_ALLOWED",
-    "default": "",
-    "description": "HTTP Allowed",
-    "required": false
-  }
-],
+      {
+        "name": "JWT_SECRET",
+        "default": "",
+        "description": "JWT Secret",
+        "required": false
+      },
+      {
+        "name": "HTTP_ALLOWED",
+        "default": "",
+        "description": "HTTP Allowed",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/app/data",
-    "description": "Container Path: /app/data"
-  }
-],
+      {
+        "container": "/app/data",
+        "description": "Container Path: /app/data"
+      }
+    ],
     "ports": []
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/add-convertx-to-bigbearcasaos/3232#p-5599-documentation-5\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/add-convertx-to-bigbearcasaos/3232#p-5599-documentation-5\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -81,16 +81,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

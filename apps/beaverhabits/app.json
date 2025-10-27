@@ -19,10 +19,10 @@
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/beaver-habit-tracker.png",
     "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/beaverhabits/thumbnail.png",
     "screenshots": [
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/beaverhabits/screenshot-1.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/beaverhabits/screenshot-2.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/beaverhabits/screenshot-3.png"
-],
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/beaverhabits/screenshots/screenshot-1.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/beaverhabits/screenshots/screenshot-2.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/beaverhabits/screenshots/screenshot-3.png"
+    ],
     "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/beaver-habit-tracker.png"
   },
   "resources": {
@@ -34,9 +34,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-beaverhabits",
     "default_port": "8080",
@@ -45,54 +45,54 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "HABITS_STORAGE",
-    "default": "",
-    "description": "Sets the storage type for habits",
-    "required": false
-  },
-  {
-    "name": "TRUSTED_LOCAL_EMAIL",
-    "default": "",
-    "description": "Sets the trusted local email",
-    "required": false
-  },
-  {
-    "name": "INDEX_HABIT_DATE_COLUMNS",
-    "default": "",
-    "description": "Specifies the number of date columns for the index page",
-    "required": false
-  },
-  {
-    "name": "ENABLE_IOS_STANDALONE",
-    "default": "",
-    "description": "Enables iOS standalone mode",
-    "required": false
-  }
-],
+      {
+        "name": "HABITS_STORAGE",
+        "default": "",
+        "description": "Sets the storage type for habits",
+        "required": false
+      },
+      {
+        "name": "TRUSTED_LOCAL_EMAIL",
+        "default": "",
+        "description": "Sets the trusted local email",
+        "required": false
+      },
+      {
+        "name": "INDEX_HABIT_DATE_COLUMNS",
+        "default": "",
+        "description": "Specifies the number of date columns for the index page",
+        "required": false
+      },
+      {
+        "name": "ENABLE_IOS_STANDALONE",
+        "default": "",
+        "description": "Enables iOS standalone mode",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/app/.user/",
-    "description": "Container Path: /app/.user/"
-  }
-],
+      {
+        "container": "/app/.user/",
+        "description": "Container Path: /app/.user/"
+      }
+    ],
     "ports": [
-  {
-    "container": "8080",
-    "host": "8080",
-    "protocol": "tcp",
-    "description": "Container Port: 8080"
-  }
-]
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Container Port: 8080"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-beaverhabits-to-bigbearcasaos/3345?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-beaverhabits-to-bigbearcasaos/3345?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -102,16 +102,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

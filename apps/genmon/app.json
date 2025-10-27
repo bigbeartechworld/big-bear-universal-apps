@@ -18,7 +18,9 @@
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/genmon/logo.jpeg",
     "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/genmon/screenshot1.png",
-    "screenshots": [],
+    "screenshots": [
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/genmon/screenshots/screenshot1.png"
+    ],
     "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/genmon/logo.jpeg"
   },
   "resources": {
@@ -30,9 +32,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-genmon",
     "default_port": "8000",
@@ -42,39 +44,39 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/git/genmon",
-    "description": "Container Path: /git/genmon"
-  },
-  {
-    "container": "/etc/genmon",
-    "description": "Container Path: /etc/genmon"
-  },
-  {
-    "container": "/var/log",
-    "description": "Container Path: /var/log"
-  }
-],
+      {
+        "container": "/git/genmon",
+        "description": "Container Path: /git/genmon"
+      },
+      {
+        "container": "/etc/genmon",
+        "description": "Container Path: /etc/genmon"
+      },
+      {
+        "container": "/var/log",
+        "description": "Container Path: /var/log"
+      }
+    ],
     "ports": [
-  {
-    "container": "22",
-    "host": "22",
-    "protocol": "tcp",
-    "description": "Container Port: 22"
-  },
-  {
-    "container": "443",
-    "host": "443",
-    "protocol": "tcp",
-    "description": "Container Port: 443"
-  },
-  {
-    "container": "8000",
-    "host": "8000",
-    "protocol": "tcp",
-    "description": "Container Port: 8000"
-  }
-]
+      {
+        "container": "22",
+        "host": "22",
+        "protocol": "tcp",
+        "description": "Container Port: 22"
+      },
+      {
+        "container": "443",
+        "host": "443",
+        "protocol": "tcp",
+        "description": "Container Port: 443"
+      },
+      {
+        "container": "8000",
+        "host": "8000",
+        "protocol": "tcp",
+        "description": "Container Port: 8000"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -89,16 +91,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

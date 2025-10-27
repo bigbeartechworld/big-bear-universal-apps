@@ -19,9 +19,9 @@
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/wallabag.png",
     "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wallabag/thumbnail.png",
     "screenshots": [
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wallabag/screenshot-1.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wallabag/screenshot-2.png"
-],
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/wallabag/screenshots/screenshot-1.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/wallabag/screenshots/screenshot-2.png"
+    ],
     "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/wallabag.png"
   },
   "resources": {
@@ -33,9 +33,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-wallabag",
     "default_port": "8080",
@@ -44,108 +44,108 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "MYSQL_ROOT_PASSWORD",
-    "default": "",
-    "description": "MySQL root password",
-    "required": false
-  },
-  {
-    "name": "SYMFONY__ENV__DATABASE_DRIVER",
-    "default": "",
-    "description": "Database driver for Symfony",
-    "required": false
-  },
-  {
-    "name": "SYMFONY__ENV__DATABASE_HOST",
-    "default": "",
-    "description": "Database host",
-    "required": false
-  },
-  {
-    "name": "SYMFONY__ENV__DATABASE_PORT",
-    "default": "",
-    "description": "Database port",
-    "required": false
-  },
-  {
-    "name": "SYMFONY__ENV__DATABASE_NAME",
-    "default": "",
-    "description": "Database name",
-    "required": false
-  },
-  {
-    "name": "SYMFONY__ENV__DATABASE_USER",
-    "default": "",
-    "description": "Database user",
-    "required": false
-  },
-  {
-    "name": "SYMFONY__ENV__DATABASE_PASSWORD",
-    "default": "",
-    "description": "Database password",
-    "required": false
-  },
-  {
-    "name": "SYMFONY__ENV__DATABASE_CHARSET",
-    "default": "",
-    "description": "Database charset",
-    "required": false
-  },
-  {
-    "name": "SYMFONY__ENV__DATABASE_TABLE_PREFIX",
-    "default": "",
-    "description": "Database table prefix",
-    "required": false
-  },
-  {
-    "name": "SYMFONY__ENV__MAILER_DSN",
-    "default": "",
-    "description": "Mailer DSN configuration",
-    "required": false
-  },
-  {
-    "name": "SYMFONY__ENV__FROM_EMAIL",
-    "default": "",
-    "description": "From email address",
-    "required": false
-  },
-  {
-    "name": "SYMFONY__ENV__DOMAIN_NAME",
-    "default": "",
-    "description": "Domain name for Wallabag instance",
-    "required": false
-  },
-  {
-    "name": "SYMFONY__ENV__SERVER_NAME",
-    "default": "",
-    "description": "Server name for Wallabag instance",
-    "required": false
-  }
-],
+      {
+        "name": "MYSQL_ROOT_PASSWORD",
+        "default": "",
+        "description": "MySQL root password",
+        "required": false
+      },
+      {
+        "name": "SYMFONY__ENV__DATABASE_DRIVER",
+        "default": "",
+        "description": "Database driver for Symfony",
+        "required": false
+      },
+      {
+        "name": "SYMFONY__ENV__DATABASE_HOST",
+        "default": "",
+        "description": "Database host",
+        "required": false
+      },
+      {
+        "name": "SYMFONY__ENV__DATABASE_PORT",
+        "default": "",
+        "description": "Database port",
+        "required": false
+      },
+      {
+        "name": "SYMFONY__ENV__DATABASE_NAME",
+        "default": "",
+        "description": "Database name",
+        "required": false
+      },
+      {
+        "name": "SYMFONY__ENV__DATABASE_USER",
+        "default": "",
+        "description": "Database user",
+        "required": false
+      },
+      {
+        "name": "SYMFONY__ENV__DATABASE_PASSWORD",
+        "default": "",
+        "description": "Database password",
+        "required": false
+      },
+      {
+        "name": "SYMFONY__ENV__DATABASE_CHARSET",
+        "default": "",
+        "description": "Database charset",
+        "required": false
+      },
+      {
+        "name": "SYMFONY__ENV__DATABASE_TABLE_PREFIX",
+        "default": "",
+        "description": "Database table prefix",
+        "required": false
+      },
+      {
+        "name": "SYMFONY__ENV__MAILER_DSN",
+        "default": "",
+        "description": "Mailer DSN configuration",
+        "required": false
+      },
+      {
+        "name": "SYMFONY__ENV__FROM_EMAIL",
+        "default": "",
+        "description": "From email address",
+        "required": false
+      },
+      {
+        "name": "SYMFONY__ENV__DOMAIN_NAME",
+        "default": "",
+        "description": "Domain name for Wallabag instance",
+        "required": false
+      },
+      {
+        "name": "SYMFONY__ENV__SERVER_NAME",
+        "default": "",
+        "description": "Server name for Wallabag instance",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/var/www/wallabag/web/assets/images",
-    "description": "Container Path: /var/www/wallabag/web/assets/images"
-  }
-],
+      {
+        "container": "/var/www/wallabag/web/assets/images",
+        "description": "Container Path: /var/www/wallabag/web/assets/images"
+      }
+    ],
     "ports": [
-  {
-    "container": "80",
-    "host": "80",
-    "protocol": "tcp",
-    "description": "Container Port: 80"
-  }
-]
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp",
+        "description": "Container Port: 80"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-wallabag-to-bigbearcasaos/3544#p-6005-documentation-4\n"
-  }
-}
+      "before_install": {
+        "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-wallabag-to-bigbearcasaos/3544#p-6005-documentation-4\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -155,16 +155,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

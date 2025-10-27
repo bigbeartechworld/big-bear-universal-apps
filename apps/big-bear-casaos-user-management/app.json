@@ -19,10 +19,10 @@
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-docker-images/big-bear-casaos-user-management/logo.jpg",
     "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/big-bear-casaos-user-management/thumbnail-v2.png",
     "screenshots": [
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/big-bear-casaos-user-management/screenshot-1.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/big-bear-casaos-user-management/screenshot-2.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/big-bear-casaos-user-management/screenshot-3.png"
-],
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/big-bear-casaos-user-management/screenshots/screenshot-1.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/big-bear-casaos-user-management/screenshots/screenshot-2.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/big-bear-casaos-user-management/screenshots/screenshot-3.png"
+    ],
     "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-docker-images/big-bear-casaos-user-management/logo.jpg"
   },
   "resources": {
@@ -34,9 +34,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-casaos-user-management",
     "default_port": "5000",
@@ -45,66 +45,66 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "FLASK_APP",
-    "default": "",
-    "description": "Sets the Flask application entry point",
-    "required": false
-  },
-  {
-    "name": "FLASK_ENV",
-    "default": "",
-    "description": "Configures Flask to run in production mode",
-    "required": false
-  },
-  {
-    "name": "ADMIN_USERNAME",
-    "default": "",
-    "description": "Specifies the admin username for the service",
-    "required": false
-  },
-  {
-    "name": "ADMIN_PASSWORD",
-    "default": "",
-    "description": "Specifies the admin password for the service",
-    "required": false
-  }
-],
+      {
+        "name": "FLASK_APP",
+        "default": "",
+        "description": "Sets the Flask application entry point",
+        "required": false
+      },
+      {
+        "name": "FLASK_ENV",
+        "default": "",
+        "description": "Configures Flask to run in production mode",
+        "required": false
+      },
+      {
+        "name": "ADMIN_USERNAME",
+        "default": "",
+        "description": "Specifies the admin username for the service",
+        "required": false
+      },
+      {
+        "name": "ADMIN_PASSWORD",
+        "default": "",
+        "description": "Specifies the admin password for the service",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/sys/fs/cgroup:ro",
-    "description": "Container Path: /sys/fs/cgroup:ro"
-  },
-  {
-    "container": "/var/lib/casaos/db",
-    "description": "Container Path: /var/lib/casaos/db"
-  },
-  {
-    "container": "/run/systemd/system",
-    "description": "Container Path: /run/systemd/system"
-  },
-  {
-    "container": "/var/run/dbus/system_bus_socket",
-    "description": "Container Path: /var/run/dbus/system_bus_socket"
-  }
-],
+      {
+        "container": "/sys/fs/cgroup:ro",
+        "description": "Container Path: /sys/fs/cgroup:ro"
+      },
+      {
+        "container": "/var/lib/casaos/db",
+        "description": "Container Path: /var/lib/casaos/db"
+      },
+      {
+        "container": "/run/systemd/system",
+        "description": "Container Path: /run/systemd/system"
+      },
+      {
+        "container": "/var/run/dbus/system_bus_socket",
+        "description": "Container Path: /var/run/dbus/system_bus_socket"
+      }
+    ],
     "ports": [
-  {
-    "container": "5000",
-    "host": "5000",
-    "protocol": "tcp",
-    "description": "Container Port: 5000"
-  }
-]
+      {
+        "container": "5000",
+        "host": "5000",
+        "protocol": "tcp",
+        "description": "Container Port: 5000"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-big-bear-casaos-user-management-to-bigbearcasaos/2227#p-4191-quick-start-3\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-big-bear-casaos-user-management-to-bigbearcasaos/2227#p-4191-quick-start-3\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -114,16 +114,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

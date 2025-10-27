@@ -19,11 +19,11 @@
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/jellyfin.png",
     "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/jfa-go/thumbnail.png",
     "screenshots": [
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/jfa-go/screenshot-1.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/jfa-go/screenshot-2.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/jfa-go/screenshot-3.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/jfa-go/screenshot-4.png"
-],
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/jfa-go/screenshots/screenshot-1.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/jfa-go/screenshots/screenshot-2.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/jfa-go/screenshots/screenshot-3.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/jfa-go/screenshots/screenshot-4.png"
+    ],
     "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/jellyfin.png"
   },
   "resources": {
@@ -35,9 +35,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-jfa-go",
     "default_port": "8056",
@@ -47,36 +47,36 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/data",
-    "description": "Container Path: /data"
-  },
-  {
-    "container": "/jf",
-    "description": "Container Path: /jf"
-  },
-  {
-    "container": "/etc/localtime",
-    "description": "Container Path: /etc/localtime"
-  }
-],
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      },
+      {
+        "container": "/jf",
+        "description": "Container Path: /jf"
+      },
+      {
+        "container": "/etc/localtime",
+        "description": "Container Path: /etc/localtime"
+      }
+    ],
     "ports": [
-  {
-    "container": "8056",
-    "host": "8056",
-    "protocol": "tcp",
-    "description": "Container Port: 8056"
-  }
-]
+      {
+        "container": "8056",
+        "host": "8056",
+        "protocol": "tcp",
+        "description": "Container Port: 8056"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-jfa-go-to-bigbearcasaos/3364?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-jfa-go-to-bigbearcasaos/3364?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -86,16 +86,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

@@ -19,10 +19,10 @@
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wishlist/logo.png",
     "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wishlist/thumbnail.png",
     "screenshots": [
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wishlist/screenshot-1.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wishlist/screenshot-2.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wishlist/screenshot-3.png"
-],
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/wishlist/screenshots/screenshot-1.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/wishlist/screenshots/screenshot-2.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/wishlist/screenshots/screenshot-3.png"
+    ],
     "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wishlist/logo.png"
   },
   "resources": {
@@ -34,9 +34,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-wishlist",
     "default_port": "3280",
@@ -45,58 +45,58 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "ORIGIN",
-    "default": "",
-    "description": "If behind a reverse proxy, set this to your domain",
-    "required": false
-  },
-  {
-    "name": "TOKEN_TIME",
-    "default": "",
-    "description": "Hours until signup and password reset tokens expire",
-    "required": false
-  },
-  {
-    "name": "DEFAULT_CURRENCY",
-    "default": "",
-    "description": "The currency to use when a product search does not return a currency",
-    "required": false
-  },
-  {
-    "name": "LOG_LEVEL",
-    "default": "",
-    "description": "Set the logging level: trace | debug | info | warn | error | fatal | silent",
-    "required": false
-  }
-],
+      {
+        "name": "ORIGIN",
+        "default": "",
+        "description": "If behind a reverse proxy, set this to your domain",
+        "required": false
+      },
+      {
+        "name": "TOKEN_TIME",
+        "default": "",
+        "description": "Hours until signup and password reset tokens expire",
+        "required": false
+      },
+      {
+        "name": "DEFAULT_CURRENCY",
+        "default": "",
+        "description": "The currency to use when a product search does not return a currency",
+        "required": false
+      },
+      {
+        "name": "LOG_LEVEL",
+        "default": "",
+        "description": "Set the logging level: trace | debug | info | warn | error | fatal | silent",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/usr/src/app/uploads",
-    "description": "Container Path: /usr/src/app/uploads"
-  },
-  {
-    "container": "/usr/src/app/data",
-    "description": "Container Path: /usr/src/app/data"
-  }
-],
+      {
+        "container": "/usr/src/app/uploads",
+        "description": "Container Path: /usr/src/app/uploads"
+      },
+      {
+        "container": "/usr/src/app/data",
+        "description": "Container Path: /usr/src/app/data"
+      }
+    ],
     "ports": [
-  {
-    "container": "3280",
-    "host": "3280",
-    "protocol": "tcp",
-    "description": "Container Port: 3280"
-  }
-]
+      {
+        "container": "3280",
+        "host": "3280",
+        "protocol": "tcp",
+        "description": "Container Port: 3280"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-wishlist-to-bigbearcasaos/3555?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-wishlist-to-bigbearcasaos/3555?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -106,16 +106,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

@@ -19,8 +19,8 @@
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/lobe-chat.png",
     "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@main/Apps/lobe-chat/thumbnail.png",
     "screenshots": [
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@main/Apps/lobe-chat/screenshot-1.png"
-],
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/lobe-chat/screenshots/screenshot-1.png"
+    ],
     "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/lobe-chat.png"
   },
   "resources": {
@@ -32,9 +32,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-lobe-chat",
     "default_port": "3210",
@@ -43,49 +43,49 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "OPENAI_API_KEY",
-    "default": "",
-    "description": "OpenAI API Key",
-    "required": false
-  },
-  {
-    "name": "OPENAI_PROXY_URL",
-    "default": "",
-    "description": "OpenAI Proxy URL",
-    "required": false
-  },
-  {
-    "name": "CUSTOM_MODELS",
-    "default": "",
-    "description": "Custom Models",
-    "required": false
-  },
-  {
-    "name": "ACCESS_CODE",
-    "default": "",
-    "description": "Access Code",
-    "required": false
-  }
-],
+      {
+        "name": "OPENAI_API_KEY",
+        "default": "",
+        "description": "OpenAI API Key",
+        "required": false
+      },
+      {
+        "name": "OPENAI_PROXY_URL",
+        "default": "",
+        "description": "OpenAI Proxy URL",
+        "required": false
+      },
+      {
+        "name": "CUSTOM_MODELS",
+        "default": "",
+        "description": "Custom Models",
+        "required": false
+      },
+      {
+        "name": "ACCESS_CODE",
+        "default": "",
+        "description": "Access Code",
+        "required": false
+      }
+    ],
     "volumes": [],
     "ports": [
-  {
-    "container": "3210",
-    "host": "3210",
-    "protocol": "tcp",
-    "description": "Container Port: 3210"
-  }
-]
+      {
+        "container": "3210",
+        "host": "3210",
+        "protocol": "tcp",
+        "description": "Container Port: 3210"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-lobe-chat-to-bigbearcasaos/2453?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-lobe-chat-to-bigbearcasaos/2453?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -95,16 +95,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
