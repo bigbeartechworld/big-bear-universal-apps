@@ -12,8 +12,8 @@
     "license": "",
     "homepage": "",
     "source": "big-bear-universal",
-    "created": "2025-10-27T02:41:35Z",
-    "updated": "2025-10-27T02:41:35Z"
+    "created": "2025-10-27T02:53:15Z",
+    "updated": "2025-10-27T02:53:15Z"
   },
   "visual": {
     "icon": "https://user-images.githubusercontent.com/1289128/276442834-bdb528d0-78fa-4155-ba15-7165d88b9836.png",
@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "8000",
@@ -41,27 +41,27 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": null,
-    "default": "",
-    "description": "Application URL",
-    "required": false
-  }
-],
+      {
+        "name": null,
+        "default": "",
+        "description": "Application URL",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/2fauth",
-    "description": "Container Path: /2fauth"
-  }
-],
+      {
+        "container": "/2fauth",
+        "description": "Container Path: /2fauth"
+      }
+    ],
     "ports": [
-  {
-    "container": "8000",
-    "host": "8000",
-    "protocol": "tcp",
-    "description": "Container Port: 8000"
-  }
-]
+      {
+        "container": "8000",
+        "host": "8000",
+        "protocol": "tcp",
+        "description": "Container Port: 8000"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -76,16 +76,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
