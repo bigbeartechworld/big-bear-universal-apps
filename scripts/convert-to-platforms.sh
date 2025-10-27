@@ -428,6 +428,46 @@ convert_to_casaos() {
     yq eval ".x-casaos.category = \"$APP_CATEGORY\"" -i "$compose_file"
     yq eval ".x-casaos.port_map = \"$APP_DEFAULT_PORT\"" -i "$compose_file"
     
+    # Add descriptive comments to x-casaos section using perl (works on both macOS and Linux)
+    # Add comment before architectures
+    perl -i -pe 's/^x-casaos:/x-casaos:\n  # Supported CPU architectures for this application/' "$compose_file"
+    
+    # Add comment before main
+    perl -i -pe 's/^  main:/  # Main service for this application\n  main:/' "$compose_file"
+    
+    # Add comment before description
+    perl -i -pe 's/^  description:/  # Detailed description for the application\n  description:/' "$compose_file"
+    
+    # Add comment before screenshot_link (if it exists)
+    perl -i -pe 's/^  screenshot_link:/  # Screenshot links for the application\n  screenshot_link:/' "$compose_file"
+    
+    # Add comment before tagline
+    perl -i -pe 's/^  tagline:/  # Brief tagline for the application\n  tagline:/' "$compose_file"
+    
+    # Add comment before developer
+    perl -i -pe 's/^  developer:/  # Developer'"'"'s information\n  developer:/' "$compose_file"
+    
+    # Add comment before author  
+    perl -i -pe 's/^  author:/  # Author of this particular configuration\n  author:/' "$compose_file"
+    
+    # Add comment before icon
+    perl -i -pe 's/^  icon:/  # Icon URL for the application\n  icon:/' "$compose_file"
+    
+    # Add comment before thumbnail
+    perl -i -pe 's/^  thumbnail:/  # Thumbnail image for the application (if any)\n  thumbnail:/' "$compose_file"
+    
+    # Add comment before tips (if it exists)
+    perl -i -pe 's/^  tips:/  # Installation tips\n  tips:/' "$compose_file"
+    
+    # Add comment before title
+    perl -i -pe 's/^  title:/  # Title for the application\n  title:/' "$compose_file"
+    
+    # Add comment before category
+    perl -i -pe 's/^  category:/  # Category under which the application falls\n  category:/' "$compose_file"
+    
+    # Add comment before port_map
+    perl -i -pe 's/^  port_map:/  # Default port mapping for the application\n  port_map:/' "$compose_file"
+    
     # Add service-level x-casaos for ALL services (not just main)
     # Get all service names
     local all_services=$(yq eval '.services | keys | .[]' "$compose_file")
