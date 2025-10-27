@@ -11,12 +11,32 @@ on:
       - 'apps/**'
   workflow_dispatch:
     inputs:
+      app_name:
+        description: 'Specific app to convert/sync (leave empty for all apps)'
+        required: false
+        type: string
       platforms:
-        description: 'Platforms to convert (comma-separated or "all")'
+        description: 'Platforms to sync (comma-separated: portainer,runtipi,dockge,cosmos,umbrel)'
         required: false
         default: 'all'
+        type: string
       sync:
         description: 'Sync to platform repositories'
+        required: false
+        type: boolean
+        default: false
+      create_draft:
+        description: 'Create PRs as drafts'
+        required: false
+        type: boolean
+        default: false
+      auto_merge:
+        description: 'Enable auto-merge on PRs'
+        required: false
+        type: boolean
+        default: false
+      dry_run:
+        description: 'Dry run (preview only, no actual changes)'
         required: false
         type: boolean
         default: false
@@ -38,7 +58,11 @@ jobs:
 
       - name: Validate app definitions
         run: |
-          ./scripts/validate-apps.sh
+          APP_ARG=""
+          if [ -n "${{ github.event.inputs.app_name }}" ]; then
+            APP_ARG="--app ${{ github.event.inputs.app_name }}"
+          fi
+          ./scripts/validate-apps.sh $APP_ARG
 
   convert:
     name: Convert to Platform Formats
@@ -56,28 +80,76 @@ jobs:
           sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
           sudo chmod +x /usr/local/bin/yq
 
-      - name: Convert apps to all platforms
+      - name: Convert apps to platforms
         run: |
-          if [ "${{ github.event.inputs.platforms }}" == "all" ] || [ -z "${{ github.event.inputs.platforms }}" ]; then
-            ./scripts/convert-to-platforms.sh
-          else
-            ./scripts/convert-to-platforms.sh -p ${{ github.event.inputs.platforms }}
+          # Determine platforms to convert
+          PLATFORMS="${{ github.event.inputs.platforms }}"
+          if [ -z "$PLATFORMS" ] || [ "$PLATFORMS" == "all" ]; then
+            PLATFORMS="casaos,portainer,runtipi,dockge,cosmos,umbrel"
           fi
+          
+          # Determine if specific app
+          APP_ARG=""
+          if [ -n "${{ github.event.inputs.app_name }}" ]; then
+            APP_ARG="--app ${{ github.event.inputs.app_name }}"
+          fi
+          
+          # Determine if dry run
+          DRY_RUN_ARG=""
+          if [ "${{ github.event.inputs.dry_run }}" == "true" ]; then
+            DRY_RUN_ARG="--dry-run"
+          fi
+          
+          echo "🔄 Converting apps for platforms: $PLATFORMS"
+          ./scripts/convert-to-platforms.sh -p "$PLATFORMS" $APP_ARG $DRY_RUN_ARG --verbose
 
       - name: Upload converted apps
         uses: actions/upload-artifact@v4
+        if: github.event.inputs.dry_run != 'true'
         with:
           name: converted-apps
           path: converted/
           retention-days: 7
+
+      - name: Generate conversion summary
+        if: always()
+        run: |
+          echo "## 📊 Conversion Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -n "${{ github.event.inputs.app_name }}" ]; then
+            echo "**App:** ${{ github.event.inputs.app_name }}" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "**Apps:** All apps" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          PLATFORMS="${{ github.event.inputs.platforms || 'all' }}"
+          echo "**Platforms:** $PLATFORMS" >> $GITHUB_STEP_SUMMARY
+          echo "**Dry Run:** ${{ github.event.inputs.dry_run || 'false' }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Check if converted directory exists and count apps
+          if [ -d "converted" ]; then
+            echo "### 🔄 Converted Apps" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            
+            for platform_dir in converted/*/; do
+              if [ -d "$platform_dir" ]; then
+                platform=$(basename "$platform_dir")
+                app_count=$(find "$platform_dir" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l)
+                echo "- **$platform**: $app_count apps" >> $GITHUB_STEP_SUMMARY
+              fi
+            done
+          fi
 
   sync:
     name: Sync to Platform Repositories
     needs: convert
     runs-on: ubuntu-latest
     if: |
-      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
-      (github.event_name == 'workflow_dispatch' && github.event.inputs.sync == 'true')
+      github.event.inputs.dry_run != 'true' &&
+      ((github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.sync == 'true'))
     strategy:
       matrix:
         platform:
@@ -88,12 +160,35 @@ jobs:
           - cosmos
           - umbrel
     steps:
+      - name: Check if platform should be synced
+        id: check-platform
+        run: |
+          PLATFORMS="${{ github.event.inputs.platforms }}"
+          CURRENT_PLATFORM="${{ matrix.platform }}"
+          
+          # If platforms input is empty or 'all', sync all platforms
+          if [ -z "$PLATFORMS" ] || [ "$PLATFORMS" == "all" ]; then
+            echo "should_sync=true" >> $GITHUB_OUTPUT
+            echo "✅ Syncing $CURRENT_PLATFORM (all platforms selected)"
+          else
+            # Check if current platform is in the comma-separated list
+            if echo "$PLATFORMS" | grep -qw "$CURRENT_PLATFORM"; then
+              echo "should_sync=true" >> $GITHUB_OUTPUT
+              echo "✅ Syncing $CURRENT_PLATFORM (explicitly selected)"
+            else
+              echo "should_sync=false" >> $GITHUB_OUTPUT
+              echo "⏭️ Skipping $CURRENT_PLATFORM (not in: $PLATFORMS)"
+            fi
+          fi
+
       - name: Checkout universal-apps
+        if: steps.check-platform.outputs.should_sync == 'true'
         uses: actions/checkout@v4
         with:
           path: big-bear-universal-apps
 
       - name: Checkout platform repository
+        if: steps.check-platform.outputs.should_sync == 'true'
         uses: actions/checkout@v4
         with:
           repository: bigbeartechworld/big-bear-${{ matrix.platform }}
@@ -101,22 +196,38 @@ jobs:
           path: big-bear-${{ matrix.platform }}
 
       - name: Download converted apps
+        if: steps.check-platform.outputs.should_sync == 'true'
         uses: actions/download-artifact@v4
         with:
           name: converted-apps
           path: big-bear-universal-apps/converted
 
       - name: Install dependencies
+        if: steps.check-platform.outputs.should_sync == 'true'
         run: |
           sudo apt-get update
           sudo apt-get install -y rsync
 
       - name: Sync apps to platform repository
+        if: steps.check-platform.outputs.should_sync == 'true'
         run: |
           cd big-bear-universal-apps
-          ./scripts/sync-to-platforms.sh -p ${{ matrix.platform }} --force
+          
+          # Build sync command with options
+          SYNC_CMD="./scripts/sync-to-platforms.sh -p ${{ matrix.platform }} --force"
+          
+          # Add app filter if specified
+          if [ -n "${{ github.event.inputs.app_name }}" ]; then
+            SYNC_CMD="$SYNC_CMD --app ${{ github.event.inputs.app_name }}"
+            echo "🎯 Syncing specific app: ${{ github.event.inputs.app_name }}"
+          fi
+          
+          echo "📦 Executing sync: $SYNC_CMD"
+          eval $SYNC_CMD
 
       - name: Create Pull Request
+        if: steps.check-platform.outputs.should_sync == 'true'
+        id: create-pr
         uses: peter-evans/create-pull-request@v6
         with:
           path: big-bear-${{ matrix.platform }}
@@ -125,16 +236,19 @@ jobs:
             🤖 Automated update from Universal Apps
             
             Synced apps from big-bear-universal-apps
+            ${{ github.event.inputs.app_name && format('App: {0}', github.event.inputs.app_name) || 'All apps updated' }}
             Generated: ${{ github.sha }}
           branch: automated-update-${{ github.run_number }}
           delete-branch: true
-          title: 🤖 Automated Update from Universal Apps
+          title: |
+            🤖 Automated Update from Universal Apps${{ github.event.inputs.app_name && format(' - {0}', github.event.inputs.app_name) || '' }}
           body: |
             ## Automated Update
             
             This PR contains automated updates from the [Big Bear Universal Apps](https://github.com/bigbeartechworld/big-bear-universal-apps) repository.
             
             ### Platform: ${{ matrix.platform }}
+            ${{ github.event.inputs.app_name && format('### App: {0}', github.event.inputs.app_name) || '### Scope: All apps' }}
             
             ### Changes
             - Synced latest app definitions
@@ -152,4 +266,27 @@ jobs:
           labels: |
             automated
             sync
-          draft: false
+          draft: ${{ github.event.inputs.create_draft == 'true' }}
+
+      - name: Enable auto-merge
+        if: steps.check-platform.outputs.should_sync == 'true' && steps.create-pr.outputs.pull-request-number && github.event.inputs.auto_merge == 'true'
+        run: |
+          gh pr merge --auto --squash "${{ steps.create-pr.outputs.pull-request-number }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        working-directory: big-bear-${{ matrix.platform }}
+
+      - name: Generate sync summary
+        if: steps.check-platform.outputs.should_sync == 'true' && always()
+        run: |
+          echo "## 🔄 Sync Summary - ${{ matrix.platform }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -n "${{ steps.create-pr.outputs.pull-request-number }}" ]; then
+            echo "✅ **Pull Request Created:** #${{ steps.create-pr.outputs.pull-request-number }}" >> $GITHUB_STEP_SUMMARY
+            echo "🔗 **URL:** ${{ steps.create-pr.outputs.pull-request-url }}" >> $GITHUB_STEP_SUMMARY
+            echo "📝 **Draft:** ${{ github.event.inputs.create_draft || 'false' }}" >> $GITHUB_STEP_SUMMARY
+            echo "🔀 **Auto-merge:** ${{ github.event.inputs.auto_merge || 'false' }}" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ No changes to sync" >> $GITHUB_STEP_SUMMARY
+          fi
