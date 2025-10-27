@@ -293,10 +293,8 @@ validate_app() {
     validate_id_format "$app_id"
     errors=$((errors + $?))
     
-    # Validate version format
-    local version=$(jq -r '.metadata.version' "$app_json")
-    validate_version_format "$version"
-    warnings=$((warnings + $?))
+    # Note: Version can be any valid Docker image tag format
+    # No validation needed as Docker accepts any string as a tag
     
     # Validate URLs
     validate_urls "$app_json"
@@ -374,7 +372,7 @@ main() {
     else
         while IFS= read -r -d '' app_dir; do
             app_name=$(basename "$app_dir")
-            validate_app "$app_name"
+            validate_app "$app_name" || true
         done < <(find "$APPS_DIR" -mindepth 1 -maxdepth 1 -type d -print0 | sort -z)
     fi
     

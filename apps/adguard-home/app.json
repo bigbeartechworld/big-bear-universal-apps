@@ -36,7 +36,7 @@
     "architectures": [
   "amd64",
   "arm64",
-  "arm"
+  "armv7"
 ],
     "platform": "linux",
     "main_service": "app",
