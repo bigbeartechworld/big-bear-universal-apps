@@ -793,12 +793,17 @@ EOF
 convert_to_umbrel() {
     local app_name="$1"
     local app_dir="$2"
-    local output_dir="$OUTPUT_DIR/umbrel/$app_name"
+    # Umbrel repos use big-bear-umbrel- prefix for folder names
+    local umbrel_folder_name="big-bear-umbrel-$app_name"
+    local output_dir="$OUTPUT_DIR/umbrel/$umbrel_folder_name"
     
     if [[ "$DRY_RUN" == "true" ]]; then
         print_info "DRY RUN: Would convert $app_name to Umbrel format"
         return
     fi
+    
+    # Load app metadata BEFORE checking compatibility
+    load_app_metadata "$app_dir"
     
     if [[ "$COMPAT_UMBREL" != "true" ]]; then
         print_warning "Skipping $app_name for Umbrel (not marked as compatible)"
@@ -806,19 +811,171 @@ convert_to_umbrel() {
     fi
     
     mkdir -p "$output_dir"
-    load_app_metadata "$app_dir"
     
-    # Copy compose
+    # Check if main service uses network_mode: host early
+    local uses_host_network=false
+    local main_service_for_check="${APP_MAIN_SERVICE:-app}"
+    if [[ -z "$main_service_for_check" || "$main_service_for_check" == "null" ]]; then
+        main_service_for_check=$(yq eval '.services | keys | .[0]' "$app_dir/docker-compose.yml" 2>/dev/null || echo "app")
+    fi
+    local network_mode_check
+    network_mode_check=$(yq eval ".services[\"$main_service_for_check\"].network_mode // \"\"" "$app_dir/docker-compose.yml" 2>/dev/null)
+    if [[ "$network_mode_check" == "host" ]]; then
+        uses_host_network=true
+        echo "  ℹ App uses network_mode: host"
+    fi
+    
+    # Umbrel base port for safer port allocation (avoids common 8000s conflicts)
+    local UMBREL_BASE_PORT=10000
+    
+    # Extract ports from docker-compose.yml if available
+    # For Umbrel we need TWO ports:
+    # 1. host_port (umbrel-app.yml "port" field) - unique public port
+    # 2. container_port (APP_PORT in docker-compose.yml) - internal port app listens on
+    local host_port="$APP_DEFAULT_PORT"
+    local container_port="$APP_DEFAULT_PORT"
+    local port_spec=$(yq eval '.services[].ports[0]' "$app_dir/docker-compose.yml" 2>/dev/null | head -1)
+    
+    if [[ -n "$port_spec" && "$port_spec" != "null" ]]; then
+        if [[ "$port_spec" =~ ^[0-9]+:[0-9]+$ ]]; then
+            # Format: "host:container" - extract both sides
+            host_port=$(echo "$port_spec" | cut -d':' -f1)
+            container_port=$(echo "$port_spec" | cut -d':' -f2)
+        elif [[ "$port_spec" =~ ^[0-9]+$ ]]; then
+            # Format: just the port number - use for both
+            host_port="$port_spec"
+            container_port="$port_spec"
+        else
+            # Complex format (e.g., "8080:8000/tcp")
+            local clean_spec=$(echo "$port_spec" | sed 's|/.*||')
+            if [[ "$clean_spec" =~ : ]]; then
+                host_port=$(echo "$clean_spec" | cut -d':' -f1)
+                container_port=$(echo "$clean_spec" | cut -d':' -f2)
+            fi
+        fi
+    fi
+    
+    # Remap host_port to safer 10000+ range to avoid common port conflicts
+    # Keep container_port as-is (internal app port)
+    if [[ "$host_port" -lt "$UMBREL_BASE_PORT" ]]; then
+        # Calculate sequential port from base
+        local port_map_file="$OUTPUT_DIR/umbrel/.port_sequence"
+        if [[ ! -f "$port_map_file" ]]; then
+            echo "$UMBREL_BASE_PORT" > "$port_map_file"
+        fi
+        
+        # Read next available port
+        local next_port=$(cat "$port_map_file")
+        host_port="$next_port"
+        
+        # Increment for next app
+        echo $((next_port + 1)) > "$port_map_file"
+    fi
+    
+    # Copy compose and process it
     cp "$app_dir/docker-compose.yml" "$output_dir/docker-compose.yml"
     
-    # Create umbrel-app.yml
+    local temp_compose="$output_dir/docker-compose.tmp.yml"
+    
+    # Step 1: Add version: "3.7" at the top and remove incompatible Umbrel fields
+    # Remove: name, ports, container_name
+    # For network_mode: only delete if NOT set to "host" (host networking is valid for Umbrel)
+    yq eval 'del(.name) | 
+             del(.services[].ports) | 
+             del(.services[].container_name) | 
+             (.services[] | select(.network_mode != "host") | .network_mode) |= null |
+             del(.services[] | select(.network_mode == null) | .network_mode) |
+             . = {"version": "3.7"} + .' "$output_dir/docker-compose.yml" > "$temp_compose"
+    mv "$temp_compose" "$output_dir/docker-compose.yml"
+    
+    # Step 2: Remove all comments from the YAML file
+    # Umbrel apps should be clean without platform-specific comments
+    # Remove both comment-only lines and inline comments
+    sed -E 's/[[:space:]]*#.*$//g; /^[[:space:]]*$/d' "$output_dir/docker-compose.yml" > "$temp_compose"
+    mv "$temp_compose" "$output_dir/docker-compose.yml"
+    
+    # Get the main service name
+    local main_service="${APP_MAIN_SERVICE:-app}"
+    if [[ -z "$main_service" || "$main_service" == "null" ]]; then
+        main_service=$(yq eval '.services | keys | .[0]' "$output_dir/docker-compose.yml" 2>/dev/null || echo "app")
+    fi
+    
+    # Check if main service uses network_mode: host
+    local uses_host_network=false
+    local network_mode_value
+    network_mode_value=$(yq eval ".services[\"$main_service\"].network_mode // \"\"" "$output_dir/docker-compose.yml" 2>/dev/null)
+    if [[ "$network_mode_value" == "host" ]]; then
+        uses_host_network=true
+        echo "  ℹ App uses network_mode: host, skipping app_proxy service"
+    fi
+    
+    # Step 3: Add or update app_proxy service (only if not using host networking)
+    # APP_HOST: container name that proxy connects to
+    # APP_PORT: container's internal port (what the app listens on inside the container)
+    if [[ "$uses_host_network" == "false" ]]; then
+        if yq eval '.services.app_proxy' "$output_dir/docker-compose.yml" > /dev/null 2>&1; then
+            # Update existing app_proxy and remove empty volumes if present
+            yq eval "del(.services.app_proxy.volumes) | 
+                     .services.app_proxy.environment.APP_HOST = \"${umbrel_folder_name}_${main_service}_1\" | 
+                     .services.app_proxy.environment.APP_PORT = \"$container_port\"" "$output_dir/docker-compose.yml" > "$temp_compose"
+            mv "$temp_compose" "$output_dir/docker-compose.yml"
+        else
+            # Add new app_proxy service at the beginning of services
+            yq eval ".services = {\"app_proxy\": {\"environment\": {\"APP_HOST\": \"${umbrel_folder_name}_${main_service}_1\", \"APP_PORT\": \"$container_port\"}}} + .services" "$output_dir/docker-compose.yml" > "$temp_compose"
+            mv "$temp_compose" "$output_dir/docker-compose.yml"
+        fi
+    fi
+    
+    # Convert named volumes to ${APP_DATA_DIR} bind mounts for Umbrel
+    # First, get list of named volumes
+    local named_volumes=$(yq eval '.volumes | keys | .[]' "$output_dir/docker-compose.yml" 2>/dev/null || echo "")
+    
+    if [[ -n "$named_volumes" ]]; then
+        # For each service, replace volume references
+        while IFS= read -r vol_name; do
+            [[ -z "$vol_name" ]] && continue
+            # Use sed to replace volume mounts in the file
+            # Pattern: "volume_name:/path" becomes "${APP_DATA_DIR}/volume_name:/path"
+            sed -i.bak "s|: ${vol_name}:|: \${APP_DATA_DIR}/${vol_name}:|g" "$output_dir/docker-compose.yml"
+            sed -i.bak "s|- ${vol_name}:|- \${APP_DATA_DIR}/${vol_name}:|g" "$output_dir/docker-compose.yml"
+            rm -f "$output_dir/docker-compose.yml.bak"
+        done <<< "$named_volumes"
+        
+        # Remove the volumes section entirely
+        yq eval 'del(.volumes)' "$output_dir/docker-compose.yml" > "$temp_compose"
+        mv "$temp_compose" "$output_dir/docker-compose.yml"
+        
+        # Also remove any empty volumes arrays from services
+        yq eval 'del(.services.app_proxy.volumes)' "$output_dir/docker-compose.yml" > "$temp_compose"
+        mv "$temp_compose" "$output_dir/docker-compose.yml"
+    fi
+    
+    # Create umbrel-app.yml with full app ID including prefix
+    # For network_mode: host apps, use container_port (the actual port the app binds to)
+    # For normal apps, use host_port (the remapped public port)
+    local umbrel_port
+    if [[ "$uses_host_network" == "true" ]]; then
+        umbrel_port="$container_port"
+        echo "  ℹ Using container port $container_port for umbrel-app.yml (network_mode: host)"
+    else
+        umbrel_port="$host_port"
+    fi
+    
+    # Quote tagline if it contains colon (common YAML issue)
+    local tagline_value="$APP_TAGLINE"
+    if [[ "$tagline_value" == *:* ]] || [[ "$tagline_value" == *\#* ]] || [[ "$tagline_value" == *\[* ]] || [[ "$tagline_value" == *\{* ]]; then
+        # Escape any existing quotes in the tagline
+        local escaped_tagline="${APP_TAGLINE//\"/\\\"}"
+        tagline_value="\"$escaped_tagline\""
+    fi
+    
     cat > "$output_dir/umbrel-app.yml" << EOF
 manifestVersion: 1
-id: $APP_ID
+id: $umbrel_folder_name
 category: $APP_CATEGORY
 name: $APP_NAME
 version: "$APP_VERSION"
-tagline: $APP_TAGLINE
+tagline: $tagline_value
 description: >-
   $APP_DESCRIPTION
 releaseNotes: >-
@@ -828,7 +985,7 @@ website: $APP_HOMEPAGE
 dependencies: []
 repo: https://github.com/bigbeartechworld/big-bear-universal-apps
 support: https://github.com/bigbeartechworld/big-bear-universal-apps/issues
-port: $APP_DEFAULT_PORT
+port: $umbrel_port
 gallery:
   - 1.jpg
   - 2.jpg
@@ -845,6 +1002,10 @@ EOF
     for i in 1 2 3; do
         create_placeholder_logo "$output_dir/$i.jpg"
     done
+    
+    # Create data directory with .gitkeep (standard Umbrel app structure)
+    mkdir -p "$output_dir/data"
+    touch "$output_dir/data/.gitkeep"
     
     print_success "Converted $app_name for Umbrel"
 }
