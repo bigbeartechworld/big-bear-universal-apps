@@ -238,6 +238,14 @@ sync_platform() {
     
     # Sync each app
     for app_name in "${apps[@]}"; do
+        # Skip _example template app
+        if [[ "$app_name" == "_example" ]]; then
+            if [[ "$VERBOSE" == "true" ]]; then
+                print_info "Skipping _example template app"
+            fi
+            continue
+        fi
+        
         if [[ -n "$SPECIFIC_APP" ]] && [[ "$app_name" != "$SPECIFIC_APP" ]]; then
             continue
         fi

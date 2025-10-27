@@ -316,14 +316,6 @@ validate_app() {
     local app_name="$1"
     local app_dir="$APPS_DIR/$app_name"
     
-    # Skip the _example template app
-    if [[ "$app_name" == "_example" ]]; then
-        if [[ "$VERBOSE" == "true" ]]; then
-            print_info "Skipping _example template app"
-        fi
-        return 1
-    fi
-    
     if [[ ! -d "$app_dir" ]]; then
         print_error "App directory not found: $app_dir"
         return 1
@@ -1183,6 +1175,15 @@ EOF
 convert_app() {
     local app_name="$1"
     local app_dir="$APPS_DIR/$app_name"
+    
+    # Skip the _example template app
+    if [[ "$app_name" == "_example" ]]; then
+        if [[ "$VERBOSE" == "true" ]]; then
+            print_info "Skipping _example template app"
+        fi
+        TOTAL_SKIPPED=$((TOTAL_SKIPPED + 1))
+        return 0
+    fi
     
     if ! validate_app "$app_name"; then
         TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
