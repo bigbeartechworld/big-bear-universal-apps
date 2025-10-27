@@ -42,8 +42,8 @@
   "deployment": {
     "environment_variables": [
       {
-        "name": null,
-        "default": "",
+        "name": "APP_URL",
+        "default": "http://[CHANGE_TO_LAN_IP]:8000",
         "description": "Application URL",
         "required": false
       }

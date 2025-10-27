@@ -311,6 +311,10 @@
             "folder_name": {
               "type": "string",
               "description": "Override folder name in CasaOS repository (defaults to app id)"
+            },
+            "youtube": {
+              "type": "string",
+              "description": "Platform-specific YouTube video URL"
             }
           }
         },
@@ -336,6 +340,10 @@
             "folder_name": {
               "type": "string",
               "description": "Override folder name in Portainer repository (defaults to app id)"
+            },
+            "youtube": {
+              "type": "string",
+              "description": "Platform-specific YouTube video URL"
             }
           }
         },
@@ -357,6 +365,10 @@
             "folder_name": {
               "type": "string",
               "description": "Override folder name in Runtipi repository (defaults to app id)"
+            },
+            "youtube": {
+              "type": "string",
+              "description": "Platform-specific YouTube video URL"
             }
           }
         },
@@ -372,6 +384,10 @@
             "folder_name": {
               "type": "string",
               "description": "Override folder name in Dockge repository (defaults to app id)"
+            },
+            "youtube": {
+              "type": "string",
+              "description": "Platform-specific YouTube video URL"
             }
           }
         },
@@ -390,6 +406,10 @@
             "folder_name": {
               "type": "string",
               "description": "Override folder name in Cosmos repository (defaults to app id)"
+            },
+            "youtube": {
+              "type": "string",
+              "description": "Platform-specific YouTube video URL"
             }
           }
         },
@@ -405,6 +425,10 @@
             "folder_name": {
               "type": "string",
               "description": "Override folder name in Umbrel repository (defaults to app id)"
+            },
+            "youtube": {
+              "type": "string",
+              "description": "Platform-specific YouTube video URL"
             }
           }
         }

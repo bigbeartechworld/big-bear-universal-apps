@@ -416,6 +416,12 @@ convert_to_casaos() {
     for ((i=0; i<env_count; i++)); do
         local env_name=$(echo "$APP_ENV_VARS" | jq -r ".[$i].name")
         local env_desc=$(echo "$APP_ENV_VARS" | jq -r ".[$i].description")
+        
+        # Skip if env_name is null or empty
+        if [[ -z "$env_name" ]] || [[ "$env_name" == "null" ]]; then
+            continue
+        fi
+        
         yq eval ".services.$APP_MAIN_SERVICE.x-casaos.envs[$i].container = \"$env_name\"" -i "$compose_file"
         yq eval ".services.$APP_MAIN_SERVICE.x-casaos.envs[$i].description.en_us = \"$env_desc\"" -i "$compose_file"
     done
@@ -425,6 +431,12 @@ convert_to_casaos() {
     for ((i=0; i<vol_count; i++)); do
         local vol_path=$(echo "$APP_VOLUMES" | jq -r ".[$i].container")
         local vol_desc=$(echo "$APP_VOLUMES" | jq -r ".[$i].description")
+        
+        # Skip if vol_path is null or empty
+        if [[ -z "$vol_path" ]] || [[ "$vol_path" == "null" ]]; then
+            continue
+        fi
+        
         yq eval ".services.$APP_MAIN_SERVICE.x-casaos.volumes[$i].container = \"$vol_path\"" -i "$compose_file"
         yq eval ".services.$APP_MAIN_SERVICE.x-casaos.volumes[$i].description.en_us = \"$vol_desc\"" -i "$compose_file"
     done
@@ -434,13 +446,63 @@ convert_to_casaos() {
     for ((i=0; i<port_count; i++)); do
         local port_num=$(echo "$APP_PORTS" | jq -r ".[$i].container")
         local port_desc=$(echo "$APP_PORTS" | jq -r ".[$i].description")
+        
+        # Skip if port_num is null or empty
+        if [[ -z "$port_num" ]] || [[ "$port_num" == "null" ]]; then
+            continue
+        fi
+        
         yq eval ".services.$APP_MAIN_SERVICE.x-casaos.ports[$i].container = \"$port_num\"" -i "$compose_file"
         yq eval ".services.$APP_MAIN_SERVICE.x-casaos.ports[$i].description.en_us = \"$port_desc\"" -i "$compose_file"
     done
     
-    # Adjust volume paths for CasaOS
-    # Skip volume path transformation for now - most apps already use named volumes
-    # TODO: Add support for converting relative paths to /DATA/AppData paths
+    # Convert named volumes to CasaOS bind mounts
+    # Only convert if there are named volumes defined at the top level
+    local volume_names=$(yq eval '.volumes | keys | .[]' "$compose_file" 2>/dev/null || echo "")
+    
+    if [[ -n "$volume_names" ]]; then
+        # For each named volume, convert references in the service to CasaOS bind mounts
+        while IFS= read -r vol_name; do
+            [[ -z "$vol_name" ]] && continue
+            
+            # Get the count of volumes in the service
+            local vol_count=$(yq eval ".services.$APP_MAIN_SERVICE.volumes | length" "$compose_file")
+            
+            for ((j=0; j<vol_count; j++)); do
+                local vol_entry=$(yq eval ".services.$APP_MAIN_SERVICE.volumes[$j]" "$compose_file")
+                
+                # Skip if this is already a bind mount (starts with / or ./)
+                if [[ "$vol_entry" == /* ]] || [[ "$vol_entry" == ./* ]]; then
+                    continue
+                fi
+                
+                # Check if this volume entry uses the named volume
+                if [[ "$vol_entry" == "${vol_name}:"* ]]; then
+                    # Extract container path
+                    local container_path="${vol_entry#*:}"
+                    # Remove any trailing options (e.g., :ro, :rw)
+                    container_path="${container_path%%:*}"
+                    
+                    # Create CasaOS bind mount path
+                    # Convert volume name to a simple folder name (remove app prefix if exists)
+                    local folder_suffix="${vol_name#*_}"  # Remove prefix before underscore
+                    [[ "$folder_suffix" == "$vol_name" ]] && folder_suffix="${vol_name}"
+                    
+                    local casaos_path="/DATA/AppData/\$AppID/${folder_suffix}:${container_path}"
+                    
+                    # Replace the volume entry
+                    yq eval ".services.$APP_MAIN_SERVICE.volumes[$j] = \"$casaos_path\"" -i "$compose_file"
+                fi
+            done
+        done <<< "$volume_names"
+        
+        # Remove the volumes section at the top level (named volumes are no longer needed)
+        yq eval 'del(.volumes)' -i "$compose_file"
+    fi
+    
+    # Get platform-specific YouTube (or fall back to global)
+    local platform_youtube=$(jq -r '.compatibility.casaos.youtube // ""' "$app_dir/app.json")
+    local youtube_url="${platform_youtube:-$APP_YOUTUBE}"
     
     # Create config.json for CasaOS
     cat > "$output_dir/config.json" << EOF
@@ -448,7 +510,7 @@ convert_to_casaos() {
   "id": "$APP_ID",
   "version": "$APP_VERSION",
   "image": "$APP_MAIN_IMAGE",
-  "youtube": "$APP_YOUTUBE",
+  "youtube": "$youtube_url",
   "docs_link": "$APP_DOCS"
 }
 EOF
