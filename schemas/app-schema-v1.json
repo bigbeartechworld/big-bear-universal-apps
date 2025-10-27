@@ -1,0 +1,397 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://bigbeartechworld.com/schemas/universal-app-v1.json",
+  "title": "Big Bear Universal App Format",
+  "description": "Schema for Big Bear Universal App metadata format",
+  "type": "object",
+  "required": ["spec_version", "metadata", "technical", "deployment"],
+  "properties": {
+    "spec_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$",
+      "description": "Schema specification version"
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["id", "name", "description", "version", "category"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "Unique app identifier (lowercase, alphanumeric and hyphens only)"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Human-readable app name"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10,
+          "description": "Full app description"
+        },
+        "tagline": {
+          "type": "string",
+          "description": "Short tagline or subtitle"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+.*$",
+          "description": "App version (semver format)"
+        },
+        "author": {
+          "type": "string",
+          "description": "Configuration author"
+        },
+        "developer": {
+          "type": "string",
+          "description": "Original app developer"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "Media",
+            "Network",
+            "Utilities",
+            "Security",
+            "Productivity",
+            "Communication",
+            "Development",
+            "Smart Home",
+            "Gaming",
+            "Finance",
+            "Education",
+            "Health",
+            "Entertainment",
+            "Analytics",
+            "Automation",
+            "Backup",
+            "Database",
+            "Monitoring",
+            "Storage",
+            "Web",
+            "Other",
+            "BigBearCasaOS"
+          ],
+          "description": "App category"
+        },
+        "license": {
+          "type": "string",
+          "description": "Software license"
+        },
+        "homepage": {
+          "type": "string",
+          "format": "uri",
+          "description": "App homepage URL"
+        },
+        "source": {
+          "type": "string",
+          "description": "Source repository identifier"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp"
+        }
+      }
+    },
+    "visual": {
+      "type": "object",
+      "properties": {
+        "icon": {
+          "type": "string",
+          "format": "uri",
+          "description": "App icon URL"
+        },
+        "thumbnail": {
+          "type": "string",
+          "format": "uri",
+          "description": "App thumbnail URL"
+        },
+        "screenshots": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "description": "Screenshot URLs"
+        },
+        "logo": {
+          "type": "string",
+          "format": "uri",
+          "description": "App logo URL"
+        }
+      }
+    },
+    "resources": {
+      "type": "object",
+      "properties": {
+        "youtube": {
+          "type": "string",
+          "description": "YouTube video URL"
+        },
+        "documentation": {
+          "type": "string",
+          "format": "uri",
+          "description": "Documentation URL"
+        },
+        "repository": {
+          "type": "string",
+          "format": "uri",
+          "description": "Source code repository URL"
+        },
+        "issues": {
+          "type": "string",
+          "format": "uri",
+          "description": "Issue tracker URL"
+        },
+        "support": {
+          "type": "string",
+          "format": "uri",
+          "description": "Support/community URL"
+        }
+      }
+    },
+    "technical": {
+      "type": "object",
+      "required": ["architectures", "main_service", "main_image", "compose_file"],
+      "properties": {
+        "architectures": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["amd64", "arm64", "armv7", "armv6", "i386", "ppc64le", "s390x"]
+          },
+          "minItems": 1,
+          "description": "Supported CPU architectures"
+        },
+        "platform": {
+          "type": "string",
+          "enum": ["linux", "windows", "darwin"],
+          "description": "Target platform"
+        },
+        "main_service": {
+          "type": "string",
+          "description": "Name of the main service in docker-compose.yml"
+        },
+        "default_port": {
+          "type": "string",
+          "description": "Default port for web UI"
+        },
+        "main_image": {
+          "type": "string",
+          "description": "Main Docker image name (without tag)"
+        },
+        "compose_file": {
+          "type": "string",
+          "description": "Docker Compose file name"
+        }
+      }
+    },
+    "deployment": {
+      "type": "object",
+      "properties": {
+        "environment_variables": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "description"],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Environment variable name"
+              },
+              "default": {
+                "type": "string",
+                "description": "Default value"
+              },
+              "description": {
+                "type": "string",
+                "description": "Variable description"
+              },
+              "required": {
+                "type": "boolean",
+                "description": "Whether this variable is required"
+              }
+            }
+          }
+        },
+        "volumes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["container", "description"],
+            "properties": {
+              "container": {
+                "type": "string",
+                "description": "Container path"
+              },
+              "description": {
+                "type": "string",
+                "description": "Volume description"
+              }
+            }
+          }
+        },
+        "ports": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["container"],
+            "properties": {
+              "container": {
+                "type": "string",
+                "description": "Container port"
+              },
+              "host": {
+                "type": "string",
+                "description": "Host port"
+              },
+              "protocol": {
+                "type": "string",
+                "enum": ["tcp", "udp"],
+                "description": "Port protocol"
+              },
+              "description": {
+                "type": "string",
+                "description": "Port description"
+              }
+            }
+          }
+        },
+        "services": {
+          "type": "array",
+          "description": "Detailed service information (auto-extracted from docker-compose.yml)"
+        },
+        "networks": {
+          "type": "object",
+          "description": "Network configurations (auto-extracted from docker-compose.yml)"
+        },
+        "volumes_config": {
+          "type": "object",
+          "description": "Volume configurations (auto-extracted from docker-compose.yml)"
+        }
+      }
+    },
+    "ui": {
+      "type": "object",
+      "properties": {
+        "scheme": {
+          "type": "string",
+          "enum": ["http", "https"],
+          "description": "URL scheme for web UI"
+        },
+        "path": {
+          "type": "string",
+          "description": "URL path for web UI"
+        },
+        "tips": {
+          "type": "object",
+          "description": "Platform-specific tips and hints"
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "properties": {
+        "casaos": {
+          "type": "object",
+          "properties": {
+            "supported": {
+              "type": "boolean"
+            },
+            "port_map": {
+              "type": "string"
+            }
+          }
+        },
+        "portainer": {
+          "type": "object",
+          "properties": {
+            "supported": {
+              "type": "boolean"
+            },
+            "template_type": {
+              "type": "integer",
+              "enum": [1, 2, 3]
+            },
+            "categories": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "administrator_only": {
+              "type": "boolean"
+            }
+          }
+        },
+        "runtipi": {
+          "type": "object",
+          "properties": {
+            "supported": {
+              "type": "boolean"
+            },
+            "tipi_version": {
+              "type": "integer"
+            },
+            "supported_architectures": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "dockge": {
+          "type": "object",
+          "properties": {
+            "supported": {
+              "type": "boolean"
+            },
+            "file_based": {
+              "type": "boolean"
+            }
+          }
+        },
+        "cosmos": {
+          "type": "object",
+          "properties": {
+            "supported": {
+              "type": "boolean"
+            },
+            "servapp": {
+              "type": "boolean"
+            },
+            "routes_required": {
+              "type": "boolean"
+            }
+          }
+        },
+        "umbrel": {
+          "type": "object",
+          "properties": {
+            "supported": {
+              "type": "boolean"
+            },
+            "manifest_version": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "App tags for searchability"
+    }
+  }
+}

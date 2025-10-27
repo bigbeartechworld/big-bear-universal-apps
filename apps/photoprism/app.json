@@ -1,0 +1,263 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "photoprism",
+    "name": "Photoprism",
+    "description": "PhotoPrism® is an AI-Powered Photos App for the Decentralized Web. It makes use of the latest technologies to tag and find pictures automatically without getting in your way. You can run it at home, on a private server, or in the cloud.",
+    "tagline": "AI-Powered Photos App",
+    "version": "240915",
+    "author": "BigBearTechWorld",
+    "developer": "photoprism.app",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:10Z",
+    "updated": "2025-10-27T02:42:10Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/photoprism.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/photoprism.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "2342",
+    "main_image": "photoprism/photoprism",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "PHOTOPRISM_ADMIN_PASSWORD",
+    "default": "",
+    "description": "Photoprism admin password: casaos",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_SITE_URL",
+    "default": "",
+    "description": "Photoprism site url: http://locahost/",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_ORIGINALS_LIMIT",
+    "default": "",
+    "description": "Photoprism originals limit: 5000",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_HTTP_COMPRESSION",
+    "default": "",
+    "description": "Photoprism http compression: gzip",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_LOG_LEVEL",
+    "default": "",
+    "description": "Photoprism log level: info",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_PUBLIC",
+    "default": "",
+    "description": "Photoprism public: false",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_READONLY",
+    "default": "",
+    "description": "Photoprism readonly: false",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_EXPERIMENTAL",
+    "default": "",
+    "description": "Photoprism experimental: false",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_DISABLE_CHOWN",
+    "default": "",
+    "description": "Photoprism disable chown: false",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_DISABLE_WEBDAV",
+    "default": "",
+    "description": "Photoprism disable webdav: false",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_DISABLE_SETTINGS",
+    "default": "",
+    "description": "Photoprism disable settings: false",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_DISABLE_TENSORFLOW",
+    "default": "",
+    "description": "Photoprism disable tensorflow: false",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_DISABLE_FACES",
+    "default": "",
+    "description": "Photoprism disable faces: false",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_DISABLE_CLASSIFICATION",
+    "default": "",
+    "description": "Photoprism disable classification: false",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_DISABLE_RAW",
+    "default": "",
+    "description": "Photoprism disable raw: false",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_RAW_PRESETS",
+    "default": "",
+    "description": "Photoprism raw presets: false",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_JPEG_QUALITY",
+    "default": "",
+    "description": "Photoprism jpeg quality: 85",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_DETECT_NSFW",
+    "default": "",
+    "description": "Photoprism detect nsfw: false",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_UPLOAD_NSFW",
+    "default": "",
+    "description": "Photoprism upload nsfw: true",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_DATABASE_DRIVER",
+    "default": "",
+    "description": "Photoprism database driver: mysql",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_DATABASE_SERVER",
+    "default": "",
+    "description": "Photoprism database server: photoprism-db:3306",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_DATABASE_NAME",
+    "default": "",
+    "description": "Photoprism database name: photoprism",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_DATABASE_USER",
+    "default": "",
+    "description": "Photoprism database user: photoprism",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_DATABASE_PASSWORD",
+    "default": "",
+    "description": "Photoprism database password: casaos",
+    "required": false
+  },
+  {
+    "name": "PHOTOPRISM_SITE_CAPTION",
+    "default": "",
+    "description": "Photoprism site caption: AI-Powered Photos App",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/app/data/configs",
+    "description": "Container Path: /app/data/configs"
+  },
+  {
+    "container": "/app/public/icons",
+    "description": "Container Path: /app/public/icons"
+  },
+  {
+    "container": "/data",
+    "description": "Container Path: /data"
+  }
+],
+    "ports": [
+  {
+    "container": "7575",
+    "host": "7575",
+    "protocol": "tcp",
+    "description": "Container Port: 7575"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "2342"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

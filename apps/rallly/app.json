@@ -1,0 +1,169 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "rallly",
+    "name": "Rallly",
+    "description": "Rallly is an open-source scheduling and collaboration tool designed to make organizing events and meetings easier.",
+    "tagline": "Rallly",
+    "version": "4.4.1",
+    "author": "BigBearTechWorld",
+    "developer": "lukevella",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:16Z",
+    "updated": "2025-10-27T02:42:16Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/rallly.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/rallly.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/2MY3S6csrVw",
+    "documentation": "https://community.bigbeartechworld.com/t/added-rallly-to-bigbearcasaos/1012#instructions-3",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-rallly",
+    "default_port": "3000",
+    "main_image": "lukevella/rallly",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "DATABASE_URL",
+    "default": "",
+    "description": "Database URL: postgres://rallly:f87c7126-f816-47ef-9193-2e5eec763fcd@big-bear-rallly-db/big-bear-rallly",
+    "required": false
+  },
+  {
+    "name": "SECRET_PASSWORD",
+    "default": "",
+    "description": "Secret password for application security",
+    "required": false
+  },
+  {
+    "name": "NEXT_PUBLIC_BASE_URL",
+    "default": "",
+    "description": "Frontend URL: http",
+    "required": false
+  },
+  {
+    "name": "NOREPLY_EMAIL",
+    "default": "",
+    "description": "Email used for sending no-reply messages",
+    "required": false
+  },
+  {
+    "name": "SUPPORT_EMAIL",
+    "default": "",
+    "description": "Support contact email",
+    "required": false
+  },
+  {
+    "name": "SMTP_HOST",
+    "default": "",
+    "description": "SMTP server host",
+    "required": false
+  },
+  {
+    "name": "SMTP_PORT",
+    "default": "",
+    "description": "SMTP server port",
+    "required": false
+  },
+  {
+    "name": "SMTP_SECURE",
+    "default": "",
+    "description": "SMTP server security",
+    "required": false
+  },
+  {
+    "name": "SMTP_USER",
+    "default": "",
+    "description": "SMTP server username",
+    "required": false
+  },
+  {
+    "name": "SMTP_PWD",
+    "default": "",
+    "description": "SMTP server password",
+    "required": false
+  },
+  {
+    "name": "SMTP_TLS_ENABLED",
+    "default": "",
+    "description": "SMTP server TLS enabled",
+    "required": false
+  },
+  {
+    "name": "ALLOWED_EMAILS",
+    "default": "",
+    "description": "Allowed emails for the application",
+    "required": false
+  }
+],
+    "volumes": [],
+    "ports": []
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-rallly-to-bigbearcasaos/1012#instructions-3\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "portracker",
+    "name": "Portracker",
+    "description": "A self-hosted, real-time port monitoring and discovery tool that automatically discovers and maps network services across systems.",
+    "tagline": "Real-time Port Monitoring Tool",
+    "version": "1.1",
+    "author": "BigBearTechWorld",
+    "developer": "Mostafa-Wahied",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:14Z",
+    "updated": "2025-10-27T02:42:14Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/portracker.png",
+    "thumbnail": "",
+    "screenshots": [
+  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/portracker/screenshot-1.png",
+  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/portracker/screenshot-2.png",
+  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/portracker/screenshot-3.png",
+  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/portracker/screenshot-4.png"
+],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/portracker.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-portracker",
+    "default_port": "4999",
+    "main_image": "mostafawahied/portracker",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "PORT",
+    "default": "",
+    "description": "Web application port",
+    "required": false
+  },
+  {
+    "name": "DATABASE_PATH",
+    "default": "",
+    "description": "SQLite database file path",
+    "required": false
+  },
+  {
+    "name": "TRUSTED_LOCAL_EMAIL",
+    "default": "",
+    "description": "Trusted local email for authentication",
+    "required": false
+  },
+  {
+    "name": "CACHE_TIMEOUT_MS",
+    "default": "",
+    "description": "Cache timeout in milliseconds",
+    "required": false
+  },
+  {
+    "name": "DISABLE_CACHE",
+    "default": "",
+    "description": "Disable caching (true/false)",
+    "required": false
+  },
+  {
+    "name": "INCLUDE_UDP",
+    "default": "",
+    "description": "Include UDP ports in scanning (true/false)",
+    "required": false
+  },
+  {
+    "name": "DEBUG",
+    "default": "",
+    "description": "Enable debug logging (true/false)",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/data",
+    "description": "Portracker Data Directory"
+  },
+  {
+    "container": "/var/run/docker.sock",
+    "description": "Docker Socket for Container Discovery"
+  }
+],
+    "ports": [
+  {
+    "container": "4999",
+    "host": "4999",
+    "protocol": "tcp",
+    "description": "Container Port: 4999"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Portracker is a self-hosted port monitoring tool that automatically discovers network services.\n                \nRead this before installing: https://community.bigbeartechworld.com/t/added-portracker-to-bigbearcasaos/5003?u=dragonfire1119"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "4999"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "dashdot",
+    "name": "Dashdot",
+    "description": "About A simple, modern server dashboard, primarily used by smaller private servers.",
+    "tagline": "dash. - a modern server dashboard",
+    "version": "6.2.0",
+    "author": "BigBearTechWorld",
+    "developer": "mauricenino",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:42Z",
+    "updated": "2025-10-27T02:41:42Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/dashdot.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/dashdot.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/if_fyuX_5fU",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "3001",
+    "main_image": "mauricenino/dashdot",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/mnt/host",
+    "description": "Container Path: /mnt/host"
+  }
+],
+    "ports": [
+  {
+    "container": "3001",
+    "host": "3001",
+    "protocol": "tcp",
+    "description": "Container Port: 3001"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3001"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

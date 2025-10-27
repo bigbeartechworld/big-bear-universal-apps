@@ -1,0 +1,110 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "appsmith",
+    "name": "Appsmith",
+    "description": "Low code project to build admin panels, internal tools, and dashboards, integrating 15+ databases.",
+    "tagline": "Appsmith",
+    "version": "1.73.1",
+    "author": "BigBearTechWorld",
+    "developer": "appsmithorg",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:36Z",
+    "updated": "2025-10-27T02:41:36Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/appsmithorg/appsmith/static/logo.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/appsmithorg/appsmith/static/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "1080",
+    "main_image": "appsmith/appsmith-ee",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/appsmith-stacks",
+    "description": "Container Path: /appsmith-stacks"
+  }
+],
+    "ports": [
+  {
+    "container": "1080",
+    "host": "1080",
+    "protocol": "tcp",
+    "description": "Container Port: 1080"
+  },
+  {
+    "container": "10443",
+    "host": "10443",
+    "protocol": "tcp",
+    "description": "Container Port: 10443"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "1080"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

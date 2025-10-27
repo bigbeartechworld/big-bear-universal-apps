@@ -1,0 +1,161 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "stirling-pdf",
+    "name": "Stirling-PDF",
+    "description": "Stirling PDF - Local hosted web based PDF editor",
+    "tagline": "Stirling PDF - Local hosted web based PDF editor",
+    "version": "1.5.0",
+    "author": "BigBearTechWorld",
+    "developer": "stirlingtools",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:19Z",
+    "updated": "2025-10-27T02:42:19Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/stirling-pdf/logo.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/stirling-pdf/logo.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/ZoPSPDvOPdo",
+    "documentation": "https://community.bigbeartechworld.com/t/added-stirling-pdf-to-bigbearcasaos/2265#p-4248-documentation-3",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-stirling-pdf",
+    "default_port": "8080",
+    "main_image": "stirlingpdf/stirlingpdf",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "DOCKER_ENABLE_SECURITY",
+    "default": "",
+    "description": "Enable Security Jar for Authentication",
+    "required": false
+  },
+  {
+    "name": "SECURITY_ENABLE_LOGIN",
+    "default": "",
+    "description": "Enable Login for Authentication",
+    "required": false
+  },
+  {
+    "name": "SECURITY_INITIALLOGIN_USERNAME",
+    "default": "",
+    "description": "Initial admin username",
+    "required": false
+  },
+  {
+    "name": "SECURITY_INITIALLOGIN_PASSWORD",
+    "default": "",
+    "description": "Initial admin password",
+    "required": false
+  },
+  {
+    "name": "CSRF_DISABLED",
+    "default": "",
+    "description": "Disable CSRF Protection",
+    "required": false
+  },
+  {
+    "name": "DEFAULT_LOCALE",
+    "default": "",
+    "description": "Set Default Locale",
+    "required": false
+  },
+  {
+    "name": "INSTALL_BOOK_AND_ADVANCED_HTML_OPS",
+    "default": "",
+    "description": "Install Book and Advanced HTML Ops",
+    "required": false
+  },
+  {
+    "name": "LANGS",
+    "default": "",
+    "description": "Languages",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/usr/share/tessdata",
+    "description": "Container Path: /usr/share/tessdata"
+  },
+  {
+    "container": "/configs",
+    "description": "Configuration Files Path: /configs"
+  }
+],
+    "ports": [
+  {
+    "container": "8080",
+    "host": "8080",
+    "protocol": "tcp",
+    "description": "Container Port: 8080"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-stirling-pdf-to-bigbearcasaos/2265#p-4248-documentation-3\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "scrypted",
+    "name": "Scrypted",
+    "description": "Scrypted is an open source video integration platform. Using various Plugins, Scrypted can receive streams from a range of cameras and send them to other platforms (HomeKit, Google Home, Alexa, Home Assistant).",
+    "tagline": "Scrypted",
+    "version": "0.123.58-jammy-full",
+    "author": "BigBearTechWorld",
+    "developer": "koush",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:17Z",
+    "updated": "2025-10-27T02:42:17Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/scrypted.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/scrypted.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/5uH0LaSyKTY",
+    "documentation": "https://community.bigbeartechworld.com/t/how-to-install-scrypted-on-casaos-using-bigbearcasaos/155",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "scrypted",
+    "default_port": "10443",
+    "main_image": "koush/scrypted",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "SCRYPTED_WEBHOOK_UPDATE_AUTHORIZATION",
+    "default": "",
+    "description": "Scrypted webhook update authorization",
+    "required": false
+  },
+  {
+    "name": "SCRYPTED_WEBHOOK_UPDATE",
+    "default": "",
+    "description": "Scrypted webhook update URL",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/server/volume",
+    "description": "Container Path: /server/volume"
+  }
+],
+    "ports": []
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "10443"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

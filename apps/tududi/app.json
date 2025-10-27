@@ -1,0 +1,130 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "tududi",
+    "name": "Tududi",
+    "description": "tududi is a task and project management web application built with Sinatra. It allows users to efficiently manage their tasks and projects, categorize them into different areas, and track due dates. tududi is designed to be intuitive and easy to use, providing a seamless experience for personal productivity.",
+    "tagline": "tududi is a task and project management web application built with Sinatra",
+    "version": "0.84",
+    "author": "BigBearTechWorld",
+    "developer": "chrisvel",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:21Z",
+    "updated": "2025-10-27T02:42:21Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/tududi/logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/tududi/screenshot-1.png",
+    "screenshots": [
+  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/tududi/screenshot-1.png",
+  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/tududi/screenshot-2.png"
+],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/tududi/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-tududi",
+    "default_port": "9292",
+    "main_image": "chrisvel/tududi",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "TUDUDI_USER_EMAIL",
+    "default": "",
+    "description": "User Email",
+    "required": false
+  },
+  {
+    "name": "TUDUDI_USER_PASSWORD",
+    "default": "",
+    "description": "User Password",
+    "required": false
+  },
+  {
+    "name": "TUDUDI_SESSION_SECRET",
+    "default": "",
+    "description": "Session Secret",
+    "required": false
+  },
+  {
+    "name": "TUDUDI_INTERNAL_SSL_ENABLED",
+    "default": "",
+    "description": "Internal SSL Enabled",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/usr/src/app/tududi_db",
+    "description": "Container Path: /usr/src/app/tududi_db"
+  }
+],
+    "ports": [
+  {
+    "container": "9292",
+    "host": "9292",
+    "protocol": "tcp",
+    "description": "Container Port: 9292"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "9292"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

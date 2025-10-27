@@ -1,0 +1,128 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "guacamole",
+    "name": "Guacamole",
+    "description": "Apache Guacamole is a free and open-source, cross-platform, clientless remote desktop gateway maintained by the Apache Software Foundation.",
+    "tagline": "Guacamole",
+    "version": "1.6.0",
+    "author": "BigBearTechWorld",
+    "developer": "",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:51Z",
+    "updated": "2025-10-27T02:41:51Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/guacamole.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/guacamole.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/6cu0kfP50Jg",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8090",
+    "main_image": "guacamole/guacamole",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "GUACD_HOSTNAME",
+    "default": "",
+    "description": "Guacd hostname",
+    "required": false
+  },
+  {
+    "name": "MYSQL_HOSTNAME",
+    "default": "",
+    "description": "MySQL hostname",
+    "required": false
+  },
+  {
+    "name": "MYSQL_DATABASE",
+    "default": "",
+    "description": "MySQL database",
+    "required": false
+  },
+  {
+    "name": "MYSQL_USER",
+    "default": "",
+    "description": "MySQL user",
+    "required": false
+  },
+  {
+    "name": "MYSQL_PASSWORD",
+    "default": "",
+    "description": "MySQL password",
+    "required": false
+  }
+],
+    "volumes": [],
+    "ports": [
+  {
+    "container": "8080",
+    "host": "8080",
+    "protocol": "tcp",
+    "description": "Container Port: 8080"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8090"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

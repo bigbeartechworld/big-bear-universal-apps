@@ -1,0 +1,137 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "beaverhabits",
+    "name": "Beaver Habit Tracker",
+    "description": "A self-hosted habit tracking app without "Goals"",
+    "tagline": "A self-hosted habit tracking app without "Goals"",
+    "version": "0.7.3",
+    "author": "BigBearTechWorld",
+    "developer": "daya0576",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:37Z",
+    "updated": "2025-10-27T02:41:37Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/beaver-habit-tracker.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/beaverhabits/thumbnail.png",
+    "screenshots": [
+  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/beaverhabits/screenshot-1.png",
+  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/beaverhabits/screenshot-2.png",
+  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/beaverhabits/screenshot-3.png"
+],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/beaver-habit-tracker.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-beaverhabits",
+    "default_port": "8080",
+    "main_image": "daya0576/beaverhabits",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "HABITS_STORAGE",
+    "default": "",
+    "description": "Sets the storage type for habits",
+    "required": false
+  },
+  {
+    "name": "TRUSTED_LOCAL_EMAIL",
+    "default": "",
+    "description": "Sets the trusted local email",
+    "required": false
+  },
+  {
+    "name": "INDEX_HABIT_DATE_COLUMNS",
+    "default": "",
+    "description": "Specifies the number of date columns for the index page",
+    "required": false
+  },
+  {
+    "name": "ENABLE_IOS_STANDALONE",
+    "default": "",
+    "description": "Enables iOS standalone mode",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/app/.user/",
+    "description": "Container Path: /app/.user/"
+  }
+],
+    "ports": [
+  {
+    "container": "8080",
+    "host": "8080",
+    "protocol": "tcp",
+    "description": "Container Port: 8080"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-beaverhabits-to-bigbearcasaos/3345?u=dragonfire1119\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

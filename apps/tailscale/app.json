@@ -1,0 +1,167 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "tailscale",
+    "name": "Tailscale",
+    "description": "Zero config VPN. Installs on any device in minutes, manages firewall rules for you, and works from anywhere.",
+    "tagline": "The easiest, most secure way to use WireGuard and 2FA.",
+    "version": "1.88.4",
+    "author": "BigBearTechWorld",
+    "developer": "tailscale",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:20Z",
+    "updated": "2025-10-27T02:42:20Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/tailscale.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/tailscale.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-tailscale",
+    "default_port": "",
+    "main_image": "tailscale/tailscale",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": null,
+    "default": "",
+    "description": "Tailscale Config",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Accept DNS",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Auth Once",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Auth Key",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Tailscale Hostname",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Routes",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Tailscale Extra Args",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Tailscale User Space",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Tailscale State Dir",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/var/lib/tailscale",
+    "description": "Container Path: /var/lib/tailscale"
+  },
+  {
+    "container": "/config",
+    "description": "Container Path: /config"
+  },
+  {
+    "container": "/dev/net/tun",
+    "description": "Container Path: /dev/net/tun"
+  }
+],
+    "ports": [
+  {
+    "container": "7575",
+    "host": "7575",
+    "protocol": "tcp",
+    "description": "Container Port: 7575"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": ""
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "jfa-go",
+    "name": "jfa-go",
+    "description": "jfa-go is a user management app for Jellyfin (and Emby as 2nd class) that provides invite-based account creation as well as other features that make one's instance much easier to manage.",
+    "tagline": "Manage users in Jellyfin",
+    "version": "latest",
+    "author": "BigBearTechWorld",
+    "developer": "hrfee",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:55Z",
+    "updated": "2025-10-27T02:41:55Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/jellyfin.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/jfa-go/thumbnail.png",
+    "screenshots": [
+  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/jfa-go/screenshot-1.png",
+  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/jfa-go/screenshot-2.png",
+  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/jfa-go/screenshot-3.png",
+  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/jfa-go/screenshot-4.png"
+],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/jellyfin.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-jfa-go",
+    "default_port": "8056",
+    "main_image": "hrfee/jfa-go",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/data",
+    "description": "Container Path: /data"
+  },
+  {
+    "container": "/jf",
+    "description": "Container Path: /jf"
+  },
+  {
+    "container": "/etc/localtime",
+    "description": "Container Path: /etc/localtime"
+  }
+],
+    "ports": [
+  {
+    "container": "8056",
+    "host": "8056",
+    "protocol": "tcp",
+    "description": "Container Port: 8056"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-jfa-go-to-bigbearcasaos/3364?u=dragonfire1119\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8056"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

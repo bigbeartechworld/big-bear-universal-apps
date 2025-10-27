@@ -1,0 +1,141 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "viseron",
+    "name": "Viseron",
+    "description": "Viseron is a self-hosted, local only NVR and AI Computer Vision software",
+    "tagline": "Viseron",
+    "version": "3.3.1",
+    "author": "BigBearTechWorld",
+    "developer": "roflcoopter",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:24Z",
+    "updated": "2025-10-27T02:42:24Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/viseron/logo.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/viseron/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-viseron",
+    "default_port": "8888",
+    "main_image": "roflcoopter/viseron",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "PUID",
+    "default": "",
+    "description": "Container Environment Variable: PUID",
+    "required": false
+  },
+  {
+    "name": "PGID",
+    "default": "",
+    "description": "Container Environment Variable: PGID",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/segments",
+    "description": "Container Path: /segments"
+  },
+  {
+    "container": "/snapshots",
+    "description": "Container Path: /snapshots"
+  },
+  {
+    "container": "/thumbnails",
+    "description": "Container Path: /thumbnails"
+  },
+  {
+    "container": "/event_clips",
+    "description": "Container Path: /event_clips"
+  },
+  {
+    "container": "/config",
+    "description": "Container Path: /config"
+  },
+  {
+    "container": "/etc/localtime",
+    "description": "Container Path: /etc/localtime"
+  }
+],
+    "ports": [
+  {
+    "container": "8888",
+    "host": "8888",
+    "protocol": "tcp",
+    "description": "Container Port: 8888"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-viseron-to-bigbearcasaos/2134?u=dragonfire1119\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8888"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

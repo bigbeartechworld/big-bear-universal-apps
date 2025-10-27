@@ -1,0 +1,165 @@
+name: Validate Pull Requests
+
+on:
+  pull_request:
+    paths:
+      - 'apps/**'
+      - 'schemas/**'
+      - 'scripts/**'
+
+jobs:
+  validate-apps:
+    name: Validate App Definitions
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+          sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
+          sudo chmod +x /usr/local/bin/yq
+
+      - name: Get changed apps
+        id: changed-apps
+        run: |
+          # Get list of changed app directories
+          changed_dirs=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '^apps/' | cut -d'/' -f2 | sort -u)
+          echo "changed_apps<<EOF" >> $GITHUB_OUTPUT
+          echo "$changed_dirs" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Validate changed apps
+        run: |
+          changed_apps="${{ steps.changed-apps.outputs.changed_apps }}"
+          
+          if [ -z "$changed_apps" ]; then
+            echo "No apps changed"
+            exit 0
+          fi
+          
+          echo "Validating changed apps:"
+          echo "$changed_apps"
+          echo ""
+          
+          failed=0
+          for app in $changed_apps; do
+            if [ -d "apps/$app" ]; then
+              echo "Validating $app..."
+              if ./scripts/validate-apps.sh -a "$app"; then
+                echo "✓ $app passed validation"
+              else
+                echo "✗ $app failed validation"
+                failed=1
+              fi
+            fi
+          done
+          
+          exit $failed
+
+  test-conversion:
+    name: Test App Conversion
+    runs-on: ubuntu-latest
+    needs: validate-apps
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq imagemagick
+          sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
+          sudo chmod +x /usr/local/bin/yq
+
+      - name: Get changed apps
+        id: changed-apps
+        run: |
+          changed_dirs=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '^apps/' | cut -d'/' -f2 | sort -u)
+          echo "changed_apps<<EOF" >> $GITHUB_OUTPUT
+          echo "$changed_dirs" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Test conversion for changed apps
+        run: |
+          changed_apps="${{ steps.changed-apps.outputs.changed_apps }}"
+          
+          if [ -z "$changed_apps" ]; then
+            echo "No apps changed"
+            exit 0
+          fi
+          
+          echo "Testing conversion for changed apps:"
+          echo "$changed_apps"
+          echo ""
+          
+          failed=0
+          for app in $changed_apps; do
+            if [ -d "apps/$app" ]; then
+              echo "Converting $app to all platforms..."
+              if ./scripts/convert-to-platforms.sh -a "$app"; then
+                echo "✓ $app converted successfully"
+                
+                # Check that conversion created files
+                for platform in casaos portainer runtipi dockge cosmos umbrel; do
+                  if [ -d "converted/$platform/$app" ]; then
+                    echo "  ✓ $platform format created"
+                  else
+                    echo "  ✗ $platform format missing"
+                    failed=1
+                  fi
+                done
+              else
+                echo "✗ $app conversion failed"
+                failed=1
+              fi
+            fi
+          done
+          
+          exit $failed
+
+      - name: Upload conversion results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-conversions
+          path: converted/
+          retention-days: 3
+
+  comment-pr:
+    name: Comment on PR
+    runs-on: ubuntu-latest
+    needs: [validate-apps, test-conversion]
+    if: always()
+    steps:
+      - name: Comment PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const validation = '${{ needs.validate-apps.result }}';
+            const conversion = '${{ needs.test-conversion.result }}';
+            
+            let message = '## Validation Results\n\n';
+            
+            message += validation === 'success' 
+              ? '✅ App validation passed\n' 
+              : '❌ App validation failed\n';
+            
+            message += conversion === 'success' 
+              ? '✅ Platform conversion test passed\n' 
+              : '❌ Platform conversion test failed\n';
+            
+            if (validation === 'success' && conversion === 'success') {
+              message += '\n✨ All checks passed! Ready to merge.';
+            } else {
+              message += '\n⚠️ Please fix the issues above before merging.';
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: message
+            });

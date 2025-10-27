@@ -1,0 +1,163 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "pterodactyl-wings",
+    "name": "Pterodactyl Wings",
+    "description": "Wings is Pterodactyl's server control plane, built for the rapidly changing gaming industry and designed to be highly performant and secure. Wings provides an HTTP API allowing you to interface directly with running server instances, fetch server logs, generate backups, and control all aspects of the server lifecycle.",
+    "tagline": "Pterodactyl Wings",
+    "version": "1.11.13",
+    "author": "BigBearTechWorld",
+    "developer": "pterodactyl",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:15Z",
+    "updated": "2025-10-27T02:42:15Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/pterodactyl.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/pterodactyl.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/p_140cc6_1g",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "2022",
+    "main_image": "ghcr.io/pterodactyl/wings",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "TZ",
+    "default": "",
+    "description": "Timezone",
+    "required": false
+  },
+  {
+    "name": "WINGS_UID",
+    "default": "",
+    "description": "User ID for the Wings process",
+    "required": false
+  },
+  {
+    "name": "WINGS_GID",
+    "default": "",
+    "description": "Group ID for the Wings process",
+    "required": false
+  },
+  {
+    "name": "WINGS_USERNAME",
+    "default": "",
+    "description": "Username for the Wings process",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/var/run/docker.sock",
+    "description": "Access to Docker socket"
+  },
+  {
+    "container": "/var/lib/docker/containers/",
+    "description": "Access the Docker containers"
+  },
+  {
+    "container": "/etc/ssl/certs",
+    "description": "Access to SSL certificates"
+  },
+  {
+    "container": "/tmp/pterodactyl/",
+    "description": "Access to temporary directory"
+  },
+  {
+    "container": "/etc/pterodactyl/",
+    "description": "Access to configuration directory"
+  },
+  {
+    "container": "/var/log/pterodactyl/",
+    "description": "Access to logs directory"
+  },
+  {
+    "container": "/var/lib/pterodactyl/",
+    "description": "Access to library directory"
+  }
+],
+    "ports": [
+  {
+    "container": "8080",
+    "host": "8080",
+    "protocol": "tcp",
+    "description": "The HTTP API Port"
+  },
+  {
+    "container": "2022",
+    "host": "2022",
+    "protocol": "tcp",
+    "description": "The Portainer Agent Port"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Before setting up Pterodactyl Wings in your container, you need to ensure that the node is properly configured in the Pterodactyl panel. Follow these steps:\n\nCreate the Node in the Pterodactyl Panel: If you haven't already, initiate and configure the node within the Pterodactyl panel.\n\nCopy the Configuration: After creating the node, the panel will provide a configuration file. You need to copy the content of this configuration and place it in:\n\n```\n/etc/pterodactyl/config.yml\n```\n\nTip: Use the CasaOS files app for an easy file management experience.\n\nRestart the Container: Once the configuration is in place, ensure you restart the container for the changes to take effect.\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "2022"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

@@ -1,0 +1,26 @@
+# Configuration for adguard home host setup
+
+# Application Name
+name: big-bear-adguard-home-host
+# Services used in the application
+services:
+  # The `app` service for the adguard home host application
+  big-bear-adguard-home-host:
+    # Name of the container
+    container_name: big-bear-adguard-home-host
+    # Docker image to be used
+    image: adguard/adguardhome:v0.107.68
+    # Volume mappings for the service
+    volumes:
+      - "adguard-home-host_data_work:/opt/adguardhome/work" # Map data work directory
+      - "adguard-home-host_data_conf:/opt/adguardhome/conf" # Map configuration directory
+    restart: unless-stopped
+    # Define the networks section
+    network_mode: host
+volumes:
+  adguard-home-host_data_conf:
+    name: adguard-home-host_data_conf
+    driver: local
+  adguard-home-host_data_work:
+    name: adguard-home-host_data_work
+    driver: local

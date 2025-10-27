@@ -1,0 +1,151 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "seafile",
+    "name": "seafile",
+    "description": "Seafile is an open source file sync and share platform, focusing on reliability and performance. Seafile's built-in collaborative document SeaDoc, make it easy for collaborative writing and publishing documents.",
+    "tagline": "Seafile is an open source file sync and share platform, focusing on reliability and performance.",
+    "version": "11.0.13",
+    "author": "BigBearTechWorld",
+    "developer": "seafile",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:18Z",
+    "updated": "2025-10-27T02:42:18Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/seafile.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/seafile.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-seafile",
+    "default_port": "8080",
+    "main_image": "seafileltd/seafile-mc",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "DB_HOST",
+    "default": "",
+    "description": "Database host",
+    "required": false
+  },
+  {
+    "name": "DB_ROOT_PASSWD",
+    "default": "",
+    "description": "Database root password",
+    "required": false
+  },
+  {
+    "name": "TIME_ZONE",
+    "default": "",
+    "description": "Timezone",
+    "required": false
+  },
+  {
+    "name": "SEAFILE_ADMIN_EMAIL",
+    "default": "",
+    "description": "Seafile admin email",
+    "required": false
+  },
+  {
+    "name": "SEAFILE_ADMIN_PASSWORD",
+    "default": "",
+    "description": "Seafile admin password",
+    "required": false
+  },
+  {
+    "name": "SEAFILE_SERVER_LETSENCRYPT",
+    "default": "",
+    "description": "Seafile server Let's Encrypt",
+    "required": false
+  },
+  {
+    "name": "SEAFILE_SERVER_HOSTNAME",
+    "default": "",
+    "description": "Seafile server hostname",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/var/www/html/storage",
+    "description": "Container Path: /var/www/html/storage"
+  }
+],
+    "ports": [
+  {
+    "container": "80",
+    "host": "80",
+    "protocol": "tcp",
+    "description": "Container Port: 80"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-seafile-to-bigbearcasaos/1011#instructions-3\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

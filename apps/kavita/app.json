@@ -1,0 +1,116 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "kavita",
+    "name": "Kavita",
+    "description": "Kavita is a fast, feature rich, cross platform reading server",
+    "tagline": "Kavita",
+    "version": "0.8.8",
+    "author": "BigBearTechWorld",
+    "developer": "jvmilazz0",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:56Z",
+    "updated": "2025-10-27T02:41:56Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/kavita.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/kavita.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-kavita",
+    "default_port": "5000",
+    "main_image": "jvmilazz0/kavita",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/kavita/config",
+    "description": "Container Path: /kavita/config"
+  },
+  {
+    "container": "/books",
+    "description": "Container Path: /books"
+  },
+  {
+    "container": "/comics",
+    "description": "Container Path: /comics"
+  },
+  {
+    "container": "/manga",
+    "description": "Container Path: /manga"
+  }
+],
+    "ports": [
+  {
+    "container": "5000",
+    "host": "5000",
+    "protocol": "tcp",
+    "description": "Container Port: 5000"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "5000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

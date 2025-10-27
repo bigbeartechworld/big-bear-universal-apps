@@ -1,0 +1,146 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "cloudflared-web",
+    "name": "Cloudflared Web",
+    "description": "Cloudflared-web is a docker image that packages both cloudflared cli and a simple Web UI to easily start or stop remotely-managed Cloudflare tunnel.",
+    "tagline": "Cloudflared Web",
+    "version": "2025.10.0",
+    "author": "BigBearTechWorld",
+    "developer": "wisdomsky",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:40Z",
+    "updated": "2025-10-27T02:41:40Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/cloudflare.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/cloudflare.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/JvyyolXJ0-A",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-cloudflared-web",
+    "default_port": "14333",
+    "main_image": "wisdomsky/cloudflared-web",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "WEBUI_PORT",
+    "default": "",
+    "description": "Web UI Port",
+    "required": false
+  },
+  {
+    "name": "EDGE_IP_VERSION",
+    "default": "",
+    "description": "Edge IP Version",
+    "required": false
+  },
+  {
+    "name": "PROTOCOL",
+    "default": "",
+    "description": "Protocol",
+    "required": false
+  },
+  {
+    "name": "METRICS_ENABLE",
+    "default": "",
+    "description": "Metrics Enable",
+    "required": false
+  },
+  {
+    "name": "METRICS_PORT",
+    "default": "",
+    "description": "Metrics Port",
+    "required": false
+  },
+  {
+    "name": "BASIC_AUTH_USER",
+    "default": "",
+    "description": "Basic Auth User",
+    "required": false
+  },
+  {
+    "name": "BASIC_AUTH_PASS",
+    "default": "",
+    "description": "",
+    "required": false
+  }
+],
+    "volumes": [],
+    "ports": [
+  {
+    "container": "14333",
+    "host": "14333",
+    "protocol": "tcp",
+    "description": "Container Port: 14333"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-cloudflared-web-to-bigbearcasaos/2275?u=dragonfire1119\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "14333"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

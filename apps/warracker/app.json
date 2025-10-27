@@ -1,0 +1,161 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "warracker",
+    "name": "Warracker",
+    "description": "A self-hosted warranty tracker",
+    "tagline": "A self-hosted warranty tracker",
+    "version": "9.9.3",
+    "author": "BigBearTechWorld",
+    "developer": "sassanix",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:25Z",
+    "updated": "2025-10-27T02:42:25Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/warracker.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/warracker/thumbnail.png",
+    "screenshots": [
+  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/warracker/screenshot-1.png",
+  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/warracker/screenshot-2.png",
+  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/warracker/screenshot-3.png"
+],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/warracker.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-warracker",
+    "default_port": "8005",
+    "main_image": "ghcr.io/sassanix/warracker/main",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "DB_HOST",
+    "default": "",
+    "description": "Sets the database host",
+    "required": false
+  },
+  {
+    "name": "DB_NAME",
+    "default": "",
+    "description": "Sets the database name",
+    "required": false
+  },
+  {
+    "name": "DB_USER",
+    "default": "",
+    "description": "Sets the database user",
+    "required": false
+  },
+  {
+    "name": "DB_PASSWORD",
+    "default": "",
+    "description": "Sets the database password",
+    "required": false
+  },
+  {
+    "name": "SMTP_HOST",
+    "default": "",
+    "description": "Sets the SMTP host",
+    "required": false
+  },
+  {
+    "name": "SMTP_PORT",
+    "default": "",
+    "description": "Sets the SMTP port",
+    "required": false
+  },
+  {
+    "name": "SMTP_USERNAME",
+    "default": "",
+    "description": "Sets the SMTP username",
+    "required": false
+  },
+  {
+    "name": "SMTP_PASSWORD",
+    "default": "",
+    "description": "Sets the SMTP password",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/DATA/AppData/$AppID/uploads",
+    "description": "Container Path: /DATA/AppData/$AppID/uploads"
+  }
+],
+    "ports": [
+  {
+    "container": "80",
+    "host": "80",
+    "protocol": "tcp",
+    "description": "Container Port: 80"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-warracker-to-bigbearcasaos/3346?u=dragonfire1119\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8005"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

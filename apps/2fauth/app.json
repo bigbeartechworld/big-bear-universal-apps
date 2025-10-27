@@ -1,0 +1,111 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "2fauth",
+    "name": "2FAuth",
+    "description": "A Web app to manage your Two-Factor Authentication (2FA) accounts and generate their security codes",
+    "tagline": "A Web app to manage your Two-Factor Authentication (2FA) accounts and generate their security codes",
+    "version": "5.6.0",
+    "author": "BigBearTechWorld",
+    "developer": "bubka",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:35Z",
+    "updated": "2025-10-27T02:41:35Z"
+  },
+  "visual": {
+    "icon": "https://user-images.githubusercontent.com/1289128/276442834-bdb528d0-78fa-4155-ba15-7165d88b9836.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://user-images.githubusercontent.com/1289128/276442834-bdb528d0-78fa-4155-ba15-7165d88b9836.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/yCnjxSryD_U",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8000",
+    "main_image": "2fauth/2fauth",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": null,
+    "default": "",
+    "description": "Application URL",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/2fauth",
+    "description": "Container Path: /2fauth"
+  }
+],
+    "ports": [
+  {
+    "container": "8000",
+    "host": "8000",
+    "protocol": "tcp",
+    "description": "Container Port: 8000"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

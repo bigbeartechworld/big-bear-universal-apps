@@ -1,0 +1,130 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "lobe-chat",
+    "name": "LobeChat",
+    "description": "LobeChat is a open-source, extensible (Function Calling), high-performance chatbot framework. It supports one-click free deployment of your private ChatGPT/LLM web application.",
+    "tagline": "LobeChat",
+    "version": "1.141.10",
+    "author": "BigBearTechWorld",
+    "developer": "lobehub",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:59Z",
+    "updated": "2025-10-27T02:41:59Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/lobe-chat.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@main/Apps/lobe-chat/thumbnail.png",
+    "screenshots": [
+  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@main/Apps/lobe-chat/screenshot-1.png"
+],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/lobe-chat.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-lobe-chat",
+    "default_port": "3210",
+    "main_image": "lobehub/lobe-chat",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "OPENAI_API_KEY",
+    "default": "",
+    "description": "OpenAI API Key",
+    "required": false
+  },
+  {
+    "name": "OPENAI_PROXY_URL",
+    "default": "",
+    "description": "OpenAI Proxy URL",
+    "required": false
+  },
+  {
+    "name": "CUSTOM_MODELS",
+    "default": "",
+    "description": "Custom Models",
+    "required": false
+  },
+  {
+    "name": "ACCESS_CODE",
+    "default": "",
+    "description": "Access Code",
+    "required": false
+  }
+],
+    "volumes": [],
+    "ports": [
+  {
+    "container": "3210",
+    "host": "3210",
+    "protocol": "tcp",
+    "description": "Container Port: 3210"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-lobe-chat-to-bigbearcasaos/2453?u=dragonfire1119\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3210"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}
