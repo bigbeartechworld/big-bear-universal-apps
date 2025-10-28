@@ -17,7 +17,7 @@
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-docker-images/big-bear-casaos-user-management/logo.jpg",
-    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/big-bear-casaos-user-management/thumbnail-v2.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/big-bear-casaos-user-management/thumbnail-v2.png",
     "screenshots": [
       "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/big-bear-casaos-user-management/screenshots/screenshot-1.png",
       "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/big-bear-casaos-user-management/screenshots/screenshot-2.png",
