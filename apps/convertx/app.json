@@ -16,12 +16,12 @@
     "updated": "2025-10-27T02:41:41Z"
   },
   "visual": {
-    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/convertx/logo.png",
-    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/convertx/thumbnail.png",
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/convertx/logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/convertx/thumbnail.png",
     "screenshots": [
       "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/convertx/screenshots/screenshot-1.png"
     ],
-    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/convertx/logo.png"
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/convertx/logo.png"
   },
   "resources": {
     "youtube": "",

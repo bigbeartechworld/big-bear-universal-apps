@@ -16,13 +16,13 @@
     "updated": "2025-10-27T02:42:21Z"
   },
   "visual": {
-    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/tududi/logo.png",
-    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/tududi/screenshot-1.png",
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/tududi/logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/tududi/screenshot-1.png",
     "screenshots": [
       "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/tududi/screenshots/screenshot-1.png",
       "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/tududi/screenshots/screenshot-2.png"
     ],
-    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/tududi/logo.png"
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/tududi/logo.png"
   },
   "resources": {
     "youtube": "",

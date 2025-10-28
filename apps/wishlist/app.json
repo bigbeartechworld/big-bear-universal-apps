@@ -16,14 +16,14 @@
     "updated": "2025-10-27T02:42:26Z"
   },
   "visual": {
-    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wishlist/logo.png",
-    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wishlist/thumbnail.png",
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/wishlist/logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/wishlist/thumbnail.png",
     "screenshots": [
       "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/wishlist/screenshots/screenshot-1.png",
       "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/wishlist/screenshots/screenshot-2.png",
       "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/wishlist/screenshots/screenshot-3.png"
     ],
-    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/wishlist/logo.png"
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/wishlist/logo.png"
   },
   "resources": {
     "youtube": "",
