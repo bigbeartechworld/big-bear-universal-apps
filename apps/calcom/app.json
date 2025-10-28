@@ -1,0 +1,247 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "calcom",
+    "name": "Cal.com",
+    "description": "The open source Calendly successor. You are in charge of your own data, workflow, and appearance.\nCalendly and other scheduling tools are awesome. It made our lives massively easier. We're using it for business meetings, seminars, yoga classes, and even calls with our families. However, most tools are very limited in terms of control and customization.\n    That's where Cal.com comes in. Self-hosted or hosted by us. White-label by design. API-driven and ready to be deployed on your own domain. Full control of your events and data.",
+    "tagline": "Cal.com",
+    "version": "5.8.2",
+    "author": "BigBearTechWorld",
+    "developer": "calcom",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:39Z",
+    "updated": "2025-10-27T02:41:39Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/calcom/logo.jpg",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/calcom/logo.jpg"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-calcom",
+    "default_port": "3000",
+    "main_image": "calcom/cal.com",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "DATABASE_HOST",
+    "default": "",
+    "description": "Database host",
+    "required": false
+  },
+  {
+    "name": "DATABASE_URL",
+    "default": "",
+    "description": "Database URL",
+    "required": false
+  },
+  {
+    "name": "DATABASE_DIRECT_URL",
+    "default": "",
+    "description": "Database direct URL",
+    "required": false
+  },
+  {
+    "name": "POSTGRES_USER",
+    "default": "",
+    "description": "Database user",
+    "required": false
+  },
+  {
+    "name": "POSTGRES_PASSWORD",
+    "default": "",
+    "description": "Database password",
+    "required": false
+  },
+  {
+    "name": "POSTGRES_DB",
+    "default": "",
+    "description": "Database type",
+    "required": false
+  },
+  {
+    "name": "LICENSE",
+    "default": "",
+    "description": "License",
+    "required": false
+  },
+  {
+    "name": "NEXT_PUBLIC_LICENSE_CONSENT",
+    "default": "",
+    "description": "License consent",
+    "required": false
+  },
+  {
+    "name": "NEXT_PUBLIC_WEBAPP_URL",
+    "default": "",
+    "description": "Webapp URL",
+    "required": false
+  },
+  {
+    "name": "NEXTAUTH_SECRET",
+    "default": "",
+    "description": "Nextauth secret",
+    "required": false
+  },
+  {
+    "name": "CALENDSO_ENCRYPTION_KEY",
+    "default": "",
+    "description": "Calendar encryption key",
+    "required": false
+  },
+  {
+    "name": "MS_GRAPH_CLIENT_ID",
+    "default": "",
+    "description": "Microsoft Graph client ID",
+    "required": false
+  },
+  {
+    "name": "MS_GRAPH_CLIENT_SECRET",
+    "default": "",
+    "description": "Microsoft Graph client secret",
+    "required": false
+  },
+  {
+    "name": "ZOOM_CLIENT_ID",
+    "default": "",
+    "description": "Zoom client ID",
+    "required": false
+  },
+  {
+    "name": "ZOOM_CLIENT_SECRET",
+    "default": "",
+    "description": "Zoom client secret",
+    "required": false
+  },
+  {
+    "name": "GOOGLE_API_CREDENTIALS",
+    "default": "",
+    "description": "Google API credentials",
+    "required": false
+  },
+  {
+    "name": "EMAIL_FROM",
+    "default": "",
+    "description": "Email from",
+    "required": false
+  },
+  {
+    "name": "EMAIL_SERVER_HOST",
+    "default": "",
+    "description": "Email server host",
+    "required": false
+  },
+  {
+    "name": "EMAIL_SERVER_PORT",
+    "default": "",
+    "description": "Email server port",
+    "required": false
+  },
+  {
+    "name": "EMAIL_SERVER_PASSWORD",
+    "default": "",
+    "description": "Email server password",
+    "required": false
+  },
+  {
+    "name": "EMAIL_SERVER_USER",
+    "default": "",
+    "description": "Email server user",
+    "required": false
+  },
+  {
+    "name": "NODE_ENV",
+    "default": "",
+    "description": "Node environment",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/config",
+    "description": "Container Path: /config"
+  }
+],
+    "ports": [
+  {
+    "container": "3000",
+    "host": "3000",
+    "protocol": "tcp",
+    "description": "Container Port: 3000"
+  },
+  {
+    "container": "3001",
+    "host": "3001",
+    "protocol": "tcp",
+    "description": "Container Port: 3001"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-cal-com-to-bigbearcasaos/1873#p-3510-documentation-4\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

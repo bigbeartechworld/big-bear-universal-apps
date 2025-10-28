@@ -1,0 +1,118 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "umami",
+    "name": "Umami",
+    "description": "Umami is a simple, fast, privacy-focused alternative to Google Analytics.",
+    "tagline": "Umami is a simple, fast, privacy-focused alternative to Google Analytics.",
+    "version": "postgresql-latest",
+    "author": "BigBearTechWorld",
+    "developer": "umami-software",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:22Z",
+    "updated": "2025-10-27T02:42:22Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/umami.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/umami.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/4DEF5fNf8hU",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "3000",
+    "main_image": "ghcr.io/umami-software/umami",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "DATABASE_URL",
+    "default": "",
+    "description": "Database URL",
+    "required": false
+  },
+  {
+    "name": "DATABASE_TYPE",
+    "default": "",
+    "description": "Database type",
+    "required": false
+  },
+  {
+    "name": "APP_SECRET",
+    "default": "",
+    "description": "Application secret",
+    "required": false
+  }
+],
+    "volumes": [],
+    "ports": [
+  {
+    "container": "3000",
+    "host": "3000",
+    "protocol": "tcp",
+    "description": "Container Port: 3000"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

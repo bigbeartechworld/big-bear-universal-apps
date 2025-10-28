@@ -1,0 +1,27 @@
+name: big-bear-jlesage-handbrake # Name of the CasaOS application
+services:
+  big-bear-jlesage-handbrake:
+    container_name: big-bear-jlesage-handbrake # Name of the Docker container
+    image: jlesage/handbrake:v25.10.1 # Docker image for the Handbrake
+    ports:
+      - "5800:5800" # Expose port 5800 for VNC access
+    environment:
+      - VNC_PASSWORD=casaos # Set the VNC password to 'casaos'
+    volumes:
+      - jlesage-handbrake_config:/config:rw
+      - jlesage-handbrake_storage:/storage:ro
+      - jlesage-handbrake_watch:/watch:rw
+      - jlesage-handbrake_output:/output:rw
+volumes:
+  jlesage-handbrake_config:
+    name: jlesage-handbrake_config
+    driver: local
+  jlesage-handbrake_output:
+    name: jlesage-handbrake_output
+    driver: local
+  jlesage-handbrake_storage:
+    name: jlesage-handbrake_storage
+    driver: local
+  jlesage-handbrake_watch:
+    name: jlesage-handbrake_watch
+    driver: local

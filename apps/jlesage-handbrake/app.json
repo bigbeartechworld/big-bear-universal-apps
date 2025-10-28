@@ -1,0 +1,127 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "jlesage-handbrake",
+    "name": "Jlesage Handbrake",
+    "description": "The GUI of the application is accessed through a modern web browser (no installation or configuration needed on the client side) or via any VNC client.",
+    "tagline": "This project implements a Docker container for Handbrake.",
+    "version": "25.10.1",
+    "author": "BigBearTechWorld",
+    "developer": "jlesage",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:55Z",
+    "updated": "2025-10-27T02:41:55Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/handbrake.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/handbrake.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-jlesage-handbrake",
+    "default_port": "5800",
+    "main_image": "jlesage/handbrake",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "VNC_PASSWORD",
+    "default": "",
+    "description": "VNC Password",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/config",
+    "description": "Container Path: /config"
+  },
+  {
+    "container": "/storage",
+    "description": "Container Path: /storage"
+  },
+  {
+    "container": "/watch",
+    "description": "Container Path: /watch"
+  },
+  {
+    "container": "/output",
+    "description": "Container Path: /output"
+  }
+],
+    "ports": [
+  {
+    "container": "5800",
+    "host": "5800",
+    "protocol": "tcp",
+    "description": "Container Port: 5800"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-jlesage-handbrake-to-bigbearcasaos/2956?u=dragonfire1119\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "5800"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

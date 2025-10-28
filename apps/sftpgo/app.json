@@ -1,0 +1,126 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "sftpgo",
+    "name": "SFTPGO",
+    "description": "Full-featured and highly configurable SFTP, HTTP/S, FTP/S and WebDAV server - S3, Google Cloud Storage, Azure Blob",
+    "tagline": "SFTPGO",
+    "version": "2.7",
+    "author": "BigBearTechWorld",
+    "developer": "drakkan",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:18Z",
+    "updated": "2025-10-27T02:42:18Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/sftpgo.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/sftpgo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-sftpgo",
+    "default_port": "8080",
+    "main_image": "drakkan/sftpgo",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/DATA/AppData/$AppID/srv",
+    "description": "Container Path: /DATA/AppData/$AppID/srv"
+  },
+  {
+    "container": "/DATA/AppData/$AppID/data",
+    "description": "Container Path: /DATA/AppData/$AppID/data"
+  }
+],
+    "ports": [
+  {
+    "container": "8080",
+    "host": "8080",
+    "protocol": "tcp",
+    "description": "Container Port: 8080"
+  },
+  {
+    "container": "2022",
+    "host": "2022",
+    "protocol": "tcp",
+    "description": "Container Port: 2022"
+  },
+  {
+    "container": "2121",
+    "host": "2121",
+    "protocol": "tcp",
+    "description": "Container Port: 2121"
+  },
+  {
+    "container": "10080",
+    "host": "10080",
+    "protocol": "tcp",
+    "description": "Container Port: 10080"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

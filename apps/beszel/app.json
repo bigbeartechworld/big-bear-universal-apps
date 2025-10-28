@@ -1,0 +1,104 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "beszel",
+    "name": "Beszel",
+    "description": "A lightweight server resource monitoring hub with historical data, docker stats, and alerts.",
+    "tagline": "Server Monitoring Hub",
+    "version": "0.14.1",
+    "author": "BigBearTechWorld",
+    "developer": "henrygd",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:37Z",
+    "updated": "2025-10-27T02:41:37Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/beszel/logo.jpg",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/beszel/logo.jpg"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/BUVVG-9RCbg",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-beszel",
+    "default_port": "8090",
+    "main_image": "henrygd/beszel",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/beszel_data",
+    "description": "Beszel Data"
+  }
+],
+    "ports": [
+  {
+    "container": "8090",
+    "host": "8090",
+    "protocol": "tcp",
+    "description": "Container Port: 8090"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8090"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "komf",
+    "name": "Komf",
+    "description": "Komga and Kavita Metadata Fetcher is a tool that fetches metadata and thumbnails for your digital comic book library. It can automatically pick up added series and update their metadata and thumbnail. You can also manually search and identify series, or match the entire library or a series. Additionally, you can install the Komf userscript to add Komf integration directly to Komga and Kavita UI, allowing you to launch manual or automatic metadata identification.",
+    "tagline": "Komga and Kavita Metadata Fetcher",
+    "version": "1.6.1",
+    "author": "BigBearTechWorld",
+    "developer": "sndxr",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:57Z",
+    "updated": "2025-10-27T02:41:57Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/komga.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/komga.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-komf",
+    "default_port": "8085",
+    "main_image": "sndxr/komf",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "KOMF_KOMGA_BASE_URI",
+    "default": "",
+    "description": "Komga Base URI",
+    "required": false
+  },
+  {
+    "name": "KOMF_KOMGA_USER",
+    "default": "",
+    "description": "Komga User",
+    "required": false
+  },
+  {
+    "name": "KOMF_KOMGA_PASSWORD",
+    "default": "",
+    "description": "Komga Password",
+    "required": false
+  },
+  {
+    "name": "KOMF_KAVITA_BASE_URI",
+    "default": "",
+    "description": "Kavita Base URI",
+    "required": false
+  },
+  {
+    "name": "KOMF_KAVITA_API_KEY",
+    "default": "",
+    "description": "Kavita API Key",
+    "required": false
+  },
+  {
+    "name": "KOMF_LOG_LEVEL",
+    "default": "",
+    "description": "Log Level",
+    "required": false
+  },
+  {
+    "name": "JAVA_TOOL_OPTIONS",
+    "default": "",
+    "description": "Java Tool Options",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/config",
+    "description": "Container Path: /config"
+  }
+],
+    "ports": [
+  {
+    "container": "8085",
+    "host": "8085",
+    "protocol": "tcp",
+    "description": "Container Port: 8085"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-komf-to-bigbearcasaos/1951#p-3619-documentation-4\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8085"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

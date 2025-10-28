@@ -1,0 +1,121 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "note-mark-aio",
+    "name": "Note Mark AIO",
+    "description": "Note Mark Aio is a self-hosted note taking app that allows you to create, organize, and share notes. It's a fork of the popular note-mark app with a focus on simplicity and ease of use.",
+    "tagline": "Note Mark Aio",
+    "version": "0.17.1",
+    "author": "BigBearTechWorld",
+    "developer": "enchant97",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:05Z",
+    "updated": "2025-10-27T02:42:05Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/note-mark-aio/logo.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/note-mark-aio/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-note-mark-aio",
+    "default_port": "8000",
+    "main_image": "ghcr.io/enchant97/note-mark-aio",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "JWT_SECRET",
+    "default": "",
+    "description": "JWT Secret",
+    "required": false
+  },
+  {
+    "name": "CORS_ORIGINS",
+    "default": "",
+    "description": "CORS Origins",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/data",
+    "description": "Container Path: /data"
+  }
+],
+    "ports": [
+  {
+    "container": "8000",
+    "host": "8000",
+    "protocol": "tcp",
+    "description": "Container Port: 8000"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-note-mark-aio-to-bigbearcasaos/1952#p-3621-documentation-4\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

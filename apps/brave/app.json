@@ -1,0 +1,109 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "brave",
+    "name": "Brave",
+    "description": "This Image contains a browser-accessible version of Brave.",
+    "tagline": "Brave",
+    "version": "1.15.0-rolling",
+    "author": "BigBearTechWorld",
+    "developer": "kasmweb",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:38Z",
+    "updated": "2025-10-27T02:41:38Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/brave.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/brave.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/CJ2x-yCW-co",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "brave",
+    "default_port": "6901",
+    "main_image": "kasmweb/brave",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "VNC_PW",
+    "default": "",
+    "description": "VNC Password",
+    "required": false
+  },
+  {
+    "name": "LAUNCH_URL",
+    "default": "",
+    "description": "Launch URL",
+    "required": false
+  }
+],
+    "volumes": [],
+    "ports": []
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Username: kasm_user\nPassword: casaos\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "6901"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

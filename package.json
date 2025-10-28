@@ -1,0 +1,23 @@
+{
+  "name": "big-bear-universal-apps",
+  "version": "1.0.0",
+  "description": "Universal app definitions for Big Bear platforms",
+  "main": "",
+  "scripts": {
+    "generate-readme": "bun .github/scripts/readme-generator.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigbeartechworld/big-bear-universal-apps.git"
+  },
+  "author": "BigBearTechWorld",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bigbeartechworld/big-bear-universal-apps/issues"
+  },
+  "homepage": "https://github.com/bigbeartechworld/big-bear-universal-apps#readme",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.4.5"
+  }
+}

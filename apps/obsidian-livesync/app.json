@@ -1,0 +1,112 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "obsidian-livesync",
+    "name": "Obsidian Livesync",
+    "description": "Self-hosted database for synchronizing Obsidian vaults.",
+    "tagline": "Self-hosted database for synchronizing Obsidian vaults.",
+    "version": "3.5.0",
+    "author": "BigBearTechWorld",
+    "developer": "",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:06Z",
+    "updated": "2025-10-27T02:42:06Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/obsidian.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/obsidian.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/-n1abMPLmFg",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "5984",
+    "main_image": "couchdb",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/opt/couchdb/data",
+    "description": "Container Path: /opt/couchdb/data"
+  },
+  {
+    "container": "/opt/couchdb/etc/local.ini",
+    "description": "Container Path: /opt/couchdb/etc/local.ini"
+  }
+],
+    "ports": [
+  {
+    "container": "5984",
+    "host": "5984",
+    "protocol": "tcp",
+    "description": "Container Port: 5984"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Run this script before installing the big-bear-obsidian-livesync application:\n\n```\nbash -c \"$(wget -qLO - https://raw.githubusercontent.com/bigbeartechworld/big-bear-scripts/master/generate-obsidian-livesync-local-ini/run.sh)\"\n```\n\nVideo Tutorial: https://youtu.be/-n1abMPLmFg\n\nAfter running this script, you need to restart the container.\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "5984"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

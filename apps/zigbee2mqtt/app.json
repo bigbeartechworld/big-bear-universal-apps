@@ -1,0 +1,112 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "zigbee2mqtt",
+    "name": "Zigbee to MQTT bridge",
+    "description": "Zigbee to MQTT bridge, get rid of your proprietary Zigbee bridges",
+    "tagline": "Zigbee to MQTT bridge",
+    "version": "2.6.2",
+    "author": "BigBearTechWorld",
+    "developer": "koenkk",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:26Z",
+    "updated": "2025-10-27T02:42:26Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/zigbee2mqtt.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/zigbee2mqtt.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-zigbee2mqtt",
+    "default_port": "8080",
+    "main_image": "koenkk/zigbee2mqtt",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/app/data",
+    "description": "Container Path: /app/data"
+  },
+  {
+    "container": "/run/udev",
+    "description": "Container Path: /run/udev"
+  }
+],
+    "ports": [
+  {
+    "container": "8080",
+    "host": "8080",
+    "protocol": "tcp",
+    "description": "Container Port: 8080"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-zigbee2mqtt-to-bigbearcasaos/1337#documentation-3\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

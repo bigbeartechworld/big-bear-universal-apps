@@ -1,0 +1,111 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "mailpit",
+    "name": "Mailpit",
+    "description": "Mailpit is a multi-platform email testing tool & API for developers.",
+    "tagline": "Mailpit",
+    "version": "1.27",
+    "author": "BigBearTechWorld",
+    "developer": "axllent",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:59Z",
+    "updated": "2025-10-27T02:41:59Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/mailpit/logo.png",
+    "thumbnail": "https://github.com/axllent/mailpit/blob/develop/docs/screenshot.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/mailpit/logo.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/2MY3S6csrVw",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8025",
+    "main_image": "axllent/mailpit",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "TZ",
+    "default": "",
+    "description": "Timezone",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/data",
+    "description": "Container Path: /data"
+  }
+],
+    "ports": [
+  {
+    "container": "8025",
+    "host": "8025",
+    "protocol": "tcp",
+    "description": "Container Port: 8025"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8025"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

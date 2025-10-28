@@ -1,0 +1,129 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "genmon",
+    "name": "Genmon",
+    "description": "Generac (and other models) Generator Monitoring using a Raspberry Pi and WiFi",
+    "tagline": "Genmon",
+    "version": "1.19.06",
+    "author": "BigBearTechWorld",
+    "developer": "bigbeartechworld",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:49Z",
+    "updated": "2025-10-27T02:41:49Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/genmon/logo.jpeg",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/genmon/screenshot1.png",
+    "screenshots": [
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/genmon/screenshots/screenshot1.png"
+    ],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/genmon/logo.jpeg"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/b0_zuVVeIP4",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "big-bear-genmon",
+    "default_port": "8000",
+    "main_image": "bigbeartechworld/big-bear-genmon",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+      {
+        "container": "/git/genmon",
+        "description": "Container Path: /git/genmon"
+      },
+      {
+        "container": "/etc/genmon",
+        "description": "Container Path: /etc/genmon"
+      },
+      {
+        "container": "/var/log",
+        "description": "Container Path: /var/log"
+      }
+    ],
+    "ports": [
+      {
+        "container": "22",
+        "host": "22",
+        "protocol": "tcp",
+        "description": "Container Port: 22"
+      },
+      {
+        "container": "443",
+        "host": "443",
+        "protocol": "tcp",
+        "description": "Container Port: 443"
+      },
+      {
+        "container": "8000",
+        "host": "8000",
+        "protocol": "tcp",
+        "description": "Container Port: 8000"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

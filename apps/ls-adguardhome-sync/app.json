@@ -1,0 +1,183 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "ls-adguardhome-sync",
+    "name": "LS Adguard Home Sync",
+    "description": "🛡️ Synchronize AdGuard Home config to replicas. This is the LinuxServer version.",
+    "tagline": "LS Adguard Home Sync",
+    "version": "0.8.1",
+    "author": "BigBearTechWorld",
+    "developer": "bakito",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:59Z",
+    "updated": "2025-10-27T02:41:59Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/adguard-home.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/adguard-home.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-ls-adguard-home-sync",
+    "default_port": "8080",
+    "main_image": "linuxserver/adguardhome-sync",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "PUID",
+    "default": "",
+    "description": "PUID",
+    "required": false
+  },
+  {
+    "name": "PGID",
+    "default": "",
+    "description": "PGID",
+    "required": false
+  },
+  {
+    "name": "TZ",
+    "default": "",
+    "description": "TZ",
+    "required": false
+  },
+  {
+    "name": "LOG_LEVEL",
+    "default": "",
+    "description": "LOG_LEVEL",
+    "required": false
+  },
+  {
+    "name": "ORIGIN_URL",
+    "default": "",
+    "description": "ORIGIN_URL",
+    "required": false
+  },
+  {
+    "name": "ORIGIN_USERNAME",
+    "default": "",
+    "description": "ORIGIN_USERNAME",
+    "required": false
+  },
+  {
+    "name": "ORIGIN_PASSWORD",
+    "default": "",
+    "description": "ORIGIN_PASSWORD",
+    "required": false
+  },
+  {
+    "name": "REPLICA_URL",
+    "default": "",
+    "description": "REPLICA_URL",
+    "required": false
+  },
+  {
+    "name": "REPLICA_USERNAME",
+    "default": "",
+    "description": "REPLICA_USERNAME",
+    "required": false
+  },
+  {
+    "name": "REPLICA_PASSWORD",
+    "default": "",
+    "description": "REPLICA_PASSWORD",
+    "required": false
+  },
+  {
+    "name": "CRON",
+    "default": "",
+    "description": "CRON",
+    "required": false
+  },
+  {
+    "name": "RUN_ON_START",
+    "default": "",
+    "description": "RUN_ON_START",
+    "required": false
+  },
+  {
+    "name": "API_PORT",
+    "default": "",
+    "description": "API_PORT",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/config",
+    "description": "Container Path: /config"
+  }
+],
+    "ports": [
+  {
+    "container": "8080",
+    "host": "8080",
+    "protocol": "tcp",
+    "description": "Container Port: 8080"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

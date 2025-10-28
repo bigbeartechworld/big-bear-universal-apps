@@ -1,0 +1,145 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "ghost",
+    "name": "Ghost",
+    "description": "Ghost is a free and open source blogging platform written in JavaScript and distributed under the MIT License, designed to simplify the process of online publishing for individual bloggers as well as online publications.",
+    "tagline": "Ghost is a free and open source blogging platform",
+    "version": "6.5.0-alpine",
+    "author": "BigBearTechWorld",
+    "developer": "ghost",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:49Z",
+    "updated": "2025-10-27T02:41:49Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ghost.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ghost.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/oJZK9vH4W4Y",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "2368",
+    "main_image": "ghost",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "database__client",
+    "default": "",
+    "description": "Database client",
+    "required": false
+  },
+  {
+    "name": "database__connection__host",
+    "default": "",
+    "description": "Database host",
+    "required": false
+  },
+  {
+    "name": "database__connection__user",
+    "default": "",
+    "description": "Database user",
+    "required": false
+  },
+  {
+    "name": "database__connection__password",
+    "default": "",
+    "description": "Database password",
+    "required": false
+  },
+  {
+    "name": "database__connection__database",
+    "default": "",
+    "description": "Database name",
+    "required": false
+  },
+  {
+    "name": "url",
+    "default": "",
+    "description": "Ghost URL",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/var/lib/ghost/content",
+    "description": "Container Path: /var/lib/ghost/content"
+  }
+],
+    "ports": [
+  {
+    "container": "2368",
+    "host": "2368",
+    "protocol": "tcp",
+    "description": "Container Port: 2368"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Update the url environment variable to reflect your CasaOS IP address.\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "2368"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

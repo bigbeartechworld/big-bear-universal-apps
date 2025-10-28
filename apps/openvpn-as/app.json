@@ -1,0 +1,116 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "openvpn-as",
+    "name": "OpenVPN",
+    "description": "OpenVPN is an open-source commercial software that implements virtual private network (VPN) techniques to create secure point-to-point or site-to-site connections in routed or bridged configurations and remote access facilities.",
+    "tagline": "OpenVPN is an open-source commercial software that implements virtual private network (VPN).",
+    "version": "2.13.1-d8cdeb9c-Ubuntu22",
+    "author": "BigBearCommunity",
+    "developer": "openvpn",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:08Z",
+    "updated": "2025-10-27T02:42:08Z"
+  },
+  "visual": {
+    "icon": "https://static-00.iconduck.com/assets.00/openvpn-icon-512x512-nmf6geqm.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://static-00.iconduck.com/assets.00/openvpn-icon-512x512-nmf6geqm.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-openvpn-as",
+    "default_port": "943",
+    "main_image": "openvpn/openvpn-as",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/openvpn",
+    "description": "Container Path: /openvpn"
+  }
+],
+    "ports": [
+  {
+    "container": "943",
+    "host": "943",
+    "protocol": "tcp",
+    "description": "Container Port: 943"
+  },
+  {
+    "container": "443",
+    "host": "443",
+    "protocol": "tcp",
+    "description": "Container Port: 443"
+  },
+  {
+    "container": "1194",
+    "host": "1194",
+    "protocol": "tcp",
+    "description": "Container Port: 1194"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "custom": "Username: `openvpn`\nPassword: `You can find you first time password in the log of the container`"
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "943"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "onlyoffice",
+    "name": "OnlyOffice",
+    "description": "Feature-rich web-based office suite with a vast range of collaborative capabilities",
+    "tagline": "OnlyOffice",
+    "version": "9.1.0",
+    "author": "BigBearTechWorld",
+    "developer": "",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:08Z",
+    "updated": "2025-10-27T02:42:08Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/onlyoffice.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/onlyoffice.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "7400",
+    "main_image": "onlyoffice/documentserver",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/var/log/onlyoffice",
+    "description": "Container Path: /var/log/onlyoffice"
+  },
+  {
+    "container": "/var/www/onlyoffice/Data",
+    "description": "Container Path: /var/www/onlyoffice/Data"
+  },
+  {
+    "container": "/var/lib/onlyoffice",
+    "description": "Container Path: /var/lib/onlyoffice"
+  },
+  {
+    "container": "/var/lib/rabbitmq",
+    "description": "Container Path: /var/lib/rabbitmq"
+  },
+  {
+    "container": "/var/lib/redis",
+    "description": "Container Path: /var/lib/redis"
+  },
+  {
+    "container": "/var/lib/postgresql",
+    "description": "Container Path: /var/lib/postgresql"
+  }
+],
+    "ports": [
+  {
+    "container": "80",
+    "host": "80",
+    "protocol": "tcp",
+    "description": "Container Port: 80"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "7400"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

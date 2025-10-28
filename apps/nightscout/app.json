@@ -1,0 +1,138 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "nightscout",
+    "name": "nightscout",
+    "description": "This acts as a web-based CGM (Continuous Glucose Monitor) to allow multiple caregivers to remotely view a patient's glucose data in real time. The server reads a MongoDB which is intended to be data from a physical CGM, where it sends new SGV (sensor glucose values) as the data becomes available. The data is then displayed graphically and blood glucose values are predicted 0.5 hours ahead using an autoregressive second order model. Alarms are generated for high and low values, which can be cleared by any watcher of the data.",
+    "tagline": "Nightscout",
+    "version": "15.0.3",
+    "author": "BigBearTechWorld",
+    "developer": "nightscout",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:04Z",
+    "updated": "2025-10-27T02:42:04Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nightscout.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/nightscout/screenshot.png",
+    "screenshots": [
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/nightscout/screenshots/screenshot.png"
+    ],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nightscout.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/ty0F0lo9kSo",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "big-bear-nightscout",
+    "default_port": "1337",
+    "main_image": "nightscout/cgm-remote-monitor",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "NODE_ENV",
+        "default": "",
+        "description": "NODE_ENV",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "TZ",
+        "required": false
+      },
+      {
+        "name": "MONGO_CONNECTION",
+        "default": "",
+        "description": "MONGO_CONNECTION",
+        "required": false
+      },
+      {
+        "name": "API_SECRET",
+        "default": "",
+        "description": "API_SECRET",
+        "required": false
+      },
+      {
+        "name": "ENABLE",
+        "default": "",
+        "description": "ENABLE",
+        "required": false
+      },
+      {
+        "name": "AUTH_DEFAULT_ROLES",
+        "default": "",
+        "description": "AUTH_DEFAULT_ROLES",
+        "required": false
+      }
+    ],
+    "volumes": [],
+    "ports": []
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "https://community.bigbeartechworld.com/t/added-nightscout-to-bigbearcasaos/1403#documentation-3\n"
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "1337"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

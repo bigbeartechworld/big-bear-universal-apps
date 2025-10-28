@@ -1,0 +1,111 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "composetoolbox",
+    "name": "Compose Toolbox",
+    "description": "Self-hosted tool to edit, validate, and get suggestions for docker-compose.yml files.",
+    "tagline": "Compose file editor & validator",
+    "version": "latest",
+    "author": "BigBearTechWorld",
+    "developer": "bluegoosemedia",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:41Z",
+    "updated": "2025-10-27T02:41:41Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bluegoosemedia/composetoolbox@498d1527dcf9cc6422300216df6244ea79ae3630/public/favicon.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bluegoosemedia/composetoolbox@498d1527dcf9cc6422300216df6244ea79ae3630/public/favicon.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://github.com/bluegoosemedia/composetoolbox",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-composetoolbox",
+    "default_port": "3002",
+    "main_image": "ghcr.io/bluegoosemedia/composetoolbox",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "NODE_ENV",
+    "default": "",
+    "description": "Node environment (should be 'production' for deployment)",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/app/data",
+    "description": "Container Path: /app/data for ComposeToolbox data storage"
+  }
+],
+    "ports": [
+  {
+    "container": "3000",
+    "host": "3000",
+    "protocol": "tcp",
+    "description": "Container Port: 3000 (web interface)"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3002"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

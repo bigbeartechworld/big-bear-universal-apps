@@ -1,0 +1,133 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "readeck",
+    "name": "Readeck",
+    "description": "Readeck is a simple web application that lets you save the precious readable content of web pages you like and want to keep forever. It is a self-hosted alternative to Instapaper and Wallabag with a modern interface and powerful features for managing your bookmarks and reading list.",
+    "tagline": "Self-hosted bookmark manager and read-it-later app",
+    "version": "0.20.4",
+    "author": "BigBearTechWorld",
+    "developer": "readeck",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:16Z",
+    "updated": "2025-10-27T02:42:16Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/readeck.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/readeck.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-readeck",
+    "default_port": "8000",
+    "main_image": "codeberg.org/readeck/readeck",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "READECK_LOG_LEVEL",
+    "default": "",
+    "description": "Application log level (error, warn, info, debug)",
+    "required": false
+  },
+  {
+    "name": "READECK_SERVER_HOST",
+    "default": "",
+    "description": "IP address on which Readeck listens",
+    "required": false
+  },
+  {
+    "name": "READECK_SERVER_PORT",
+    "default": "",
+    "description": "TCP port on which Readeck listens",
+    "required": false
+  },
+  {
+    "name": "READECK_LOG_FORMAT",
+    "default": "",
+    "description": "Log format (json, text, or dev)",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/readeck",
+    "description": "Container Path: /readeck"
+  }
+],
+    "ports": [
+  {
+    "container": "8000",
+    "host": "8000",
+    "protocol": "tcp",
+    "description": "Container Port: 8000"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-readeck-to-bigbearcasaos/5079#p-7723-documentation-3\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

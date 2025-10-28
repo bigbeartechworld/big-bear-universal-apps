@@ -1,0 +1,193 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "immich-aio-alpine",
+    "name": "Immich AIO Alpine",
+    "description": "AIO Alpine. Self-hosted photo and video storage.",
+    "tagline": "Immich All In One Alpine",
+    "version": "2.0.0-alpine",
+    "author": "BigBearTechWorld",
+    "developer": "imagegenius",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:53Z",
+    "updated": "2025-10-27T02:41:53Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/immich.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/immich.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-immich-aio-alpine",
+    "default_port": "2283",
+    "main_image": "ghcr.io/imagegenius/immich",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "PUID",
+    "default": "",
+    "description": "Process UID",
+    "required": false
+  },
+  {
+    "name": "PGID",
+    "default": "",
+    "description": "Process GID",
+    "required": false
+  },
+  {
+    "name": "TZ",
+    "default": "",
+    "description": "Timezone",
+    "required": false
+  },
+  {
+    "name": "DB_HOSTNAME",
+    "default": "",
+    "description": "Database Hostname",
+    "required": false
+  },
+  {
+    "name": "DB_USERNAME",
+    "default": "",
+    "description": "Database Username",
+    "required": false
+  },
+  {
+    "name": "DB_PASSWORD",
+    "default": "",
+    "description": "Database Password",
+    "required": false
+  },
+  {
+    "name": "DB_DATABASE_NAME",
+    "default": "",
+    "description": "Database Name",
+    "required": false
+  },
+  {
+    "name": "DB_PORT",
+    "default": "",
+    "description": "Database Port",
+    "required": false
+  },
+  {
+    "name": "REDIS_HOSTNAME",
+    "default": "",
+    "description": "Redis Hostname",
+    "required": false
+  },
+  {
+    "name": "REDIS_PORT",
+    "default": "",
+    "description": "Redis Port",
+    "required": false
+  },
+  {
+    "name": "REDIS_PASSWORD",
+    "default": "",
+    "description": "Redis Password",
+    "required": false
+  },
+  {
+    "name": "MACHINE_LEARNING_GPU_ACCELERATION",
+    "default": "",
+    "description": "Machine Learning GPU Acceleration",
+    "required": false
+  },
+  {
+    "name": "MACHINE_LEARNING_WORKERS",
+    "default": "",
+    "description": "Machine Learning Workers",
+    "required": false
+  },
+  {
+    "name": "MACHINE_LEARNING_WORKER_TIMEOUT",
+    "default": "",
+    "description": "Machine Learning Worker Timeout",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/config",
+    "description": "Container Path: /config"
+  },
+  {
+    "container": "/photos",
+    "description": "Container Path: /photos"
+  }
+],
+    "ports": [
+  {
+    "container": "3001",
+    "host": "3001",
+    "protocol": "tcp",
+    "description": "Container Port: 3001"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "2283"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

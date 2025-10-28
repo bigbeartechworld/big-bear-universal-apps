@@ -1,0 +1,143 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "btop",
+    "name": "btop",
+    "description": "A monitor of resources. Software made by Aristocratos at https://github.com/aristocratos/btop",
+    "tagline": "A monitor of resources",
+    "version": "0.1.5",
+    "author": "BigBearTechWorld",
+    "developer": "bigbeartechworld",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:38Z",
+    "updated": "2025-10-27T02:41:38Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/aristocratos/btop/Img/icon.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/aristocratos/btop/Img/icon.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/mD52bujMt68",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-btop",
+    "default_port": "7681",
+    "main_image": "bigbeartechworld/big-bear-btop",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "GOTTY_AUTH_USER",
+    "default": "",
+    "description": "Container Environment Variable: GOTTY_AUTH_USER",
+    "required": false
+  },
+  {
+    "name": "GOTTY_AUTH_PASS",
+    "default": "",
+    "description": "Container Environment Variable: GOTTY_AUTH_PASS",
+    "required": false
+  },
+  {
+    "name": "GOTTY_AUTH_ENABLED",
+    "default": "",
+    "description": "Container Environment Variable: GOTTY_AUTH_ENABLED",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/proc",
+    "description": "Container Path: /proc"
+  },
+  {
+    "container": "/sys",
+    "description": "Container Path: /sys"
+  },
+  {
+    "container": "/dev",
+    "description": "Container Path: /dev"
+  },
+  {
+    "container": "/etc/localtime",
+    "description": "Container Path: /etc/localtime"
+  },
+  {
+    "container": "/root/.config/btop",
+    "description": "Container Path: /root/.config/btop"
+  }
+],
+    "ports": [
+  {
+    "container": "7681",
+    "host": "7681",
+    "protocol": "tcp",
+    "description": ""
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-btop-to-bigbearcasaos/1240?u=dragonfire1119\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "7681"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

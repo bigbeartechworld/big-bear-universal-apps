@@ -1,0 +1,243 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "healthchecks",
+    "name": "Healthchecks",
+    "description": "Healthchecks is a watchdog for your cron jobs. It's a web server that listens for pings from your cron jobs, plus a web interface.",
+    "tagline": "Healthchecks",
+    "version": "3.11.20250828",
+    "author": "BigBearTechWorld",
+    "developer": "linuxserver",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:51Z",
+    "updated": "2025-10-27T02:41:51Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/healthchecks.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/healthchecks.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-healthchecks",
+    "default_port": "8000",
+    "main_image": "linuxserver/healthchecks",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "PUID",
+    "default": "",
+    "description": "Process UID",
+    "required": false
+  },
+  {
+    "name": "PGID",
+    "default": "",
+    "description": "Process GID",
+    "required": false
+  },
+  {
+    "name": "TZ",
+    "default": "",
+    "description": "Timezone",
+    "required": false
+  },
+  {
+    "name": "SITE_ROOT",
+    "default": "",
+    "description": "Site root",
+    "required": false
+  },
+  {
+    "name": "SITE_NAME",
+    "default": "",
+    "description": "Site name",
+    "required": false
+  },
+  {
+    "name": "SUPERUSER_EMAIL",
+    "default": "",
+    "description": "Superuser email",
+    "required": false
+  },
+  {
+    "name": "SUPERUSER_PASSWORD",
+    "default": "",
+    "description": "Superuser password",
+    "required": false
+  },
+  {
+    "name": "ALLOWED_HOSTS",
+    "default": "",
+    "description": "Allowed hosts",
+    "required": false
+  },
+  {
+    "name": "APPRISE_ENABLED",
+    "default": "",
+    "description": "Apprise enabled",
+    "required": false
+  },
+  {
+    "name": "CSRF_TRUSTED_ORIGINS",
+    "default": "",
+    "description": "CSRF trusted origins",
+    "required": false
+  },
+  {
+    "name": "DEBUG",
+    "default": "",
+    "description": "Debug",
+    "required": false
+  },
+  {
+    "name": "DEFAULT_FROM_EMAIL",
+    "default": "",
+    "description": "Default from email",
+    "required": false
+  },
+  {
+    "name": "EMAIL_HOST",
+    "default": "",
+    "description": "Email host",
+    "required": false
+  },
+  {
+    "name": "EMAIL_PORT",
+    "default": "",
+    "description": "Email port",
+    "required": false
+  },
+  {
+    "name": "EMAIL_HOST_USER",
+    "default": "",
+    "description": "Email host user",
+    "required": false
+  },
+  {
+    "name": "EMAIL_HOST_PASSWORD",
+    "default": "",
+    "description": "Email host password",
+    "required": false
+  },
+  {
+    "name": "EMAIL_USE_TLS",
+    "default": "",
+    "description": "Email use TLS",
+    "required": false
+  },
+  {
+    "name": "INTEGRATIONS_ALLOW_PRIVATE_IPS",
+    "default": "",
+    "description": "Integrations allow private IPs",
+    "required": false
+  },
+  {
+    "name": "PING_EMAIL_DOMAIN",
+    "default": "",
+    "description": "Ping email domain",
+    "required": false
+  },
+  {
+    "name": "RP_ID",
+    "default": "",
+    "description": "RP ID",
+    "required": false
+  },
+  {
+    "name": "SECRET_KEY",
+    "default": "",
+    "description": "Secret key",
+    "required": false
+  },
+  {
+    "name": "SITE_LOGO_URL",
+    "default": "",
+    "description": "Site logo URL",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/config",
+    "description": "Container Path: /config"
+  }
+],
+    "ports": [
+  {
+    "container": "8000",
+    "host": "8000",
+    "protocol": "tcp",
+    "description": "Container Port: 8000"
+  },
+  {
+    "container": "2525",
+    "host": "2525",
+    "protocol": "tcp",
+    "description": "Container Port: 2525"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

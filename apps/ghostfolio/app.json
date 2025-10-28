@@ -1,0 +1,172 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "ghostfolio",
+    "name": "Ghostfolio",
+    "description": "Open Source Wealth Management Software. Angular + NestJS + Prisma + Nx + TypeScript 🤍",
+    "tagline": "Ghostfolio",
+    "version": "2.210.1",
+    "author": "BigBearTechWorld",
+    "developer": "ghostfolio",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:49Z",
+    "updated": "2025-10-27T02:41:49Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ghostfolio.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ghostfolio.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/CNe4-8Vyhos",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-ghostfolio",
+    "default_port": "3333",
+    "main_image": "ghostfolio/ghostfolio",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "NODE_ENV",
+    "default": "",
+    "description": "Environment: production",
+    "required": false
+  },
+  {
+    "name": "HOST",
+    "default": "",
+    "description": "Container Interface: 0.0.0.0",
+    "required": false
+  },
+  {
+    "name": "PORT",
+    "default": "",
+    "description": "Container Port: 3333",
+    "required": false
+  },
+  {
+    "name": "ACCESS_TOKEN_SALT",
+    "default": "",
+    "description": "Access Token Salt: 5a7f9e0d-0e64-4c19-8279-bbe8b4c590f4",
+    "required": false
+  },
+  {
+    "name": "DATABASE_URL",
+    "default": "",
+    "description": "Database URL: postgresql://ghostfolio:casaospassword@big-bear-ghostfolio-db:5432/ghostfolio?sslmode=prefer",
+    "required": false
+  },
+  {
+    "name": "JWT_SECRET_KEY",
+    "default": "",
+    "description": "JWT Secret Key: 534e820d-da30-4dd3-baf9-0511847c478a",
+    "required": false
+  },
+  {
+    "name": "POSTGRES_DB",
+    "default": "",
+    "description": "Database Type: ghostfolio",
+    "required": false
+  },
+  {
+    "name": "POSTGRES_USER",
+    "default": "",
+    "description": "Database User: ghostfolio",
+    "required": false
+  },
+  {
+    "name": "POSTGRES_PASSWORD",
+    "default": "",
+    "description": "Database Password: casaospassword",
+    "required": false
+  },
+  {
+    "name": "REDIS_HOST",
+    "default": "",
+    "description": "Redis Host: big-bear-ghostfolio-redis",
+    "required": false
+  },
+  {
+    "name": "REDIS_PASSWORD",
+    "default": "",
+    "description": "Redis Password: casaosredispassword",
+    "required": false
+  },
+  {
+    "name": "REDIS_PORT",
+    "default": "",
+    "description": "Redis Port: 6379",
+    "required": false
+  }
+],
+    "volumes": [],
+    "ports": [
+  {
+    "container": "3333",
+    "host": "3333",
+    "protocol": "tcp",
+    "description": "Container Port: 3333"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3333"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

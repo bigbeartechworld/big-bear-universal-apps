@@ -1,0 +1,97 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "excalidraw",
+    "name": "Excalidraw",
+    "description": "Virtual whiteboard for sketching hand-drawn like diagrams",
+    "tagline": "Virtual whiteboard for sketching hand-drawn like diagrams",
+    "version": "latest",
+    "author": "BigBearTechWorld",
+    "developer": "excalidraw",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:46Z",
+    "updated": "2025-10-27T02:41:46Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/excalidraw/logo.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/excalidraw/logo.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/T4K6RDhieIA",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8000",
+    "main_image": "excalidraw/excalidraw",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [],
+    "ports": [
+  {
+    "container": "8000",
+    "host": "8000",
+    "protocol": "tcp",
+    "description": "Container Port: 8000"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

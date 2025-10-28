@@ -1,0 +1,247 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "pterodactyl-panel",
+    "name": "Pterodactyl Panel",
+    "description": "Pterodactyl® is a free, open-source game server management panel built with PHP, React, and Go. Designed with security in mind, Pterodactyl runs all game servers in isolated Docker containers while exposing a beautiful and intuitive UI to end users.",
+    "tagline": "Pterodactyl Panel",
+    "version": "1.11.11",
+    "author": "BigBearTechWorld",
+    "developer": "pterodactyl",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:15Z",
+    "updated": "2025-10-27T02:42:15Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/pterodactyl.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/pterodactyl.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/p_140cc6_1g",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "1180",
+    "main_image": "ghcr.io/pterodactyl/panel",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "APP_URL",
+    "default": "",
+    "description": "App URL",
+    "required": false
+  },
+  {
+    "name": "APP_TIMEZONE",
+    "default": "",
+    "description": "App timezone",
+    "required": false
+  },
+  {
+    "name": "APP_SERVICE_AUTHOR",
+    "default": "",
+    "description": "Service author email",
+    "required": false
+  },
+  {
+    "name": "LE_EMAIL",
+    "default": "",
+    "description": "Let's Encrypt email",
+    "required": false
+  },
+  {
+    "name": "MAIL_FROM",
+    "default": "",
+    "description": "Email sender",
+    "required": false
+  },
+  {
+    "name": "MAIL_DRIVER",
+    "default": "",
+    "description": "Email driver",
+    "required": false
+  },
+  {
+    "name": "MAIL_HOST",
+    "default": "",
+    "description": "Email host",
+    "required": false
+  },
+  {
+    "name": "MAIL_PORT",
+    "default": "",
+    "description": "Email port",
+    "required": false
+  },
+  {
+    "name": "MAIL_USERNAME",
+    "default": "",
+    "description": "Email username",
+    "required": false
+  },
+  {
+    "name": "MAIL_PASSWORD",
+    "default": "",
+    "description": "Email password",
+    "required": false
+  },
+  {
+    "name": "MAIL_ENCRYPTION",
+    "default": "",
+    "description": "Use email encryption",
+    "required": false
+  },
+  {
+    "name": "APP_ENV",
+    "default": "",
+    "description": "App environment",
+    "required": false
+  },
+  {
+    "name": "APP_ENVIRONMENT_ONLY",
+    "default": "",
+    "description": "Environment setting",
+    "required": false
+  },
+  {
+    "name": "CACHE_DRIVER",
+    "default": "",
+    "description": "Cache driver",
+    "required": false
+  },
+  {
+    "name": "SESSION_DRIVER",
+    "default": "",
+    "description": "Session driver",
+    "required": false
+  },
+  {
+    "name": "QUEUE_DRIVER",
+    "default": "",
+    "description": "Queue driver",
+    "required": false
+  },
+  {
+    "name": "REDIS_HOST",
+    "default": "",
+    "description": "Redis host",
+    "required": false
+  },
+  {
+    "name": "DB_HOST",
+    "default": "",
+    "description": "Database host",
+    "required": false
+  },
+  {
+    "name": "DB_PASSWORD",
+    "default": "",
+    "description": "Database password",
+    "required": false
+  },
+  {
+    "name": "DB_PORT",
+    "default": "",
+    "description": "Database port",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/app/var/",
+    "description": "Container Path: /app/var/"
+  },
+  {
+    "container": "/etc/nginx/http.d/",
+    "description": "Container Path: /etc/nginx/http.d/"
+  },
+  {
+    "container": "/etc/letsencrypt/",
+    "description": "Container Path: /etc/letsencrypt/"
+  },
+  {
+    "container": "/app/storage/logs",
+    "description": "Container Path: /app/storage/logs"
+  }
+],
+    "ports": [
+  {
+    "container": "80",
+    "host": "80",
+    "protocol": "tcp",
+    "description": "Container Port: 80"
+  },
+  {
+    "container": "443",
+    "host": "443",
+    "protocol": "tcp",
+    "description": "Container Port: 443"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Before you can use Pterodactyl Panel, you need to read the installation guide.\n\n[Install Guide Link](https://github.com/bigbeartechworld/big-bear-casaos/tree/master/Apps/pterodactyl-panel)\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "1180"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

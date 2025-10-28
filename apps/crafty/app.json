@@ -1,0 +1,149 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "crafty",
+    "name": "Crafty Controller",
+    "description": "Crafty 4 is the next iteration of our Minecraft Server Wrapper / Controller / Launcher.",
+    "tagline": "Crafty Controller",
+    "version": "4.5.5",
+    "author": "BigBearTechWorld",
+    "developer": "crafty-controller",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:42Z",
+    "updated": "2025-10-27T02:41:42Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/crafty-controller.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/crafty-controller.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/Vw4su8hT_7A",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-crafty",
+    "default_port": "8443",
+    "main_image": "registry.gitlab.com/crafty-controller/crafty-4",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "TZ",
+    "default": "",
+    "description": "Timezone",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/crafty/backups",
+    "description": "Container Path: /crafty/backups"
+  },
+  {
+    "container": "/crafty/logs",
+    "description": "Container Path: /crafty/logs"
+  },
+  {
+    "container": "/crafty/servers",
+    "description": "Container Path: /crafty/servers"
+  },
+  {
+    "container": "/crafty/app/config",
+    "description": "Container Path: /crafty/app/config"
+  },
+  {
+    "container": "/crafty/import",
+    "description": "Container Path: /crafty/import"
+  }
+],
+    "ports": [
+  {
+    "container": "8443",
+    "host": "8443",
+    "protocol": "tcp",
+    "description": "Container Port: 8443"
+  },
+  {
+    "container": "8123",
+    "host": "8123",
+    "protocol": "tcp",
+    "description": "Container Port: 8123"
+  },
+  {
+    "container": "19132",
+    "host": "19132",
+    "protocol": "tcp",
+    "description": "Container Port: 19132"
+  },
+  {
+    "container": "25500-25600",
+    "host": "25500-25600",
+    "protocol": "tcp",
+    "description": "Container Port: 25500-25600"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Before you install Crafty Controller, you need to read the https://community.bigbeartechworld.com/t/added-crafty-controller-to-bigbearcasaos/1013#instructions-3.\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8443"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

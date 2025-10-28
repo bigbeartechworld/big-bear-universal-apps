@@ -1,0 +1,143 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "gladys",
+    "name": "Gladys Assistant",
+    "description": "Gladys Assistant is a modern, privacy-first & open-source home automation software that runs anywhere.",
+    "tagline": "A privacy-first, open-source home assistant.",
+    "version": "4.64.0",
+    "author": "BigBearTechWorld",
+    "developer": "GladysAssistant",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:50Z",
+    "updated": "2025-10-27T02:41:50Z"
+  },
+  "visual": {
+    "icon": "https://gladysassistant.com/img/external/github-gladys-logo.png",
+    "thumbnail": "https://gladysassistant.com/img/home/main_screenshot/main_screenshot_en_j5czyj_c_scale,w_2526.png",
+    "screenshots": [
+  "https://gladysassistant.com/img/home/main_screenshot/main_screenshot_en_j5czyj_c_scale,w_2526.png"
+],
+    "logo": "https://gladysassistant.com/img/external/github-gladys-logo.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/l4GPomJMIT0",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "1080",
+    "main_image": "gladysassistant/gladys",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": null,
+    "default": "",
+    "description": "Node environment",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Path to SQLite database file",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Timezone",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Exposed port for the server",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/var/run/docker.sock",
+    "description": "Docker socket"
+  },
+  {
+    "container": "/var/lib/gladysassistant",
+    "description": "Gladys Assistant data"
+  },
+  {
+    "container": "/dev",
+    "description": "Device access"
+  },
+  {
+    "container": "/run/udev",
+    "description": "Device access"
+  }
+],
+    "ports": [
+  {
+    "container": "1080",
+    "host": "1080",
+    "protocol": "tcp",
+    "description": "HTTP port"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "1080"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

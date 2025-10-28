@@ -1,0 +1,112 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "libredesk",
+    "name": "Libredesk",
+    "description": "Open source, self-hosted customer support desk. Single binary app.",
+    "tagline": "Open source, self-hosted customer support desk. Single binary app.",
+    "version": "0.7.4-alpha",
+    "author": "BigBearTechWorld",
+    "developer": "libredesk",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:58Z",
+    "updated": "2025-10-27T02:41:58Z"
+  },
+  "visual": {
+    "icon": "",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": ""
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-libredesk",
+    "default_port": "9000",
+    "main_image": "libredesk/libredesk",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/libredesk/uploads",
+    "description": "Container Path: /libredesk/uploads"
+  },
+  {
+    "container": "/libredesk/config.toml",
+    "description": "Container Path: /libredesk/config.toml"
+  }
+],
+    "ports": [
+  {
+    "container": "9000",
+    "host": "9000",
+    "protocol": "tcp",
+    "description": "Container Port: 9000"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-libredesk-to-bigbearcasaos/2993#p-5277-documentation-4\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "9000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "plex-nvidia",
+    "name": "Plex with NVIDIA GPU",
+    "description": "Stream Movies & TV Shows with NVIDIA GPU",
+    "tagline": "Stream Movies & TV Shows with NVIDIA GPU",
+    "version": "1.42.2",
+    "author": "BigBearTechWorld",
+    "developer": "plexinc",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:13Z",
+    "updated": "2025-10-27T02:42:13Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/plex.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/plex.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-plex-nvidia",
+    "default_port": "32400",
+    "main_image": "linuxserver/plex",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "PUID",
+    "default": "",
+    "description": "User ID",
+    "required": false
+  },
+  {
+    "name": "PGID",
+    "default": "",
+    "description": "Group ID",
+    "required": false
+  },
+  {
+    "name": "TZ",
+    "default": "",
+    "description": "Timezone",
+    "required": false
+  },
+  {
+    "name": "VERSION",
+    "default": "",
+    "description": "Version",
+    "required": false
+  },
+  {
+    "name": "PLEX_CLAIM",
+    "default": "",
+    "description": "Plex Claim",
+    "required": false
+  },
+  {
+    "name": "CPU_FALLBACK",
+    "default": "",
+    "description": "CPU Fallback",
+    "required": false
+  },
+  {
+    "name": "NVIDIA_VISIBLE_DEVICES",
+    "default": "",
+    "description": "NVIDIA Visible Devices",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/config",
+    "description": "Configuration files"
+  },
+  {
+    "container": "/tv",
+    "description": "TV Shows"
+  },
+  {
+    "container": "/movies",
+    "description": "Movies"
+  }
+],
+    "ports": []
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-plex-with-nvidia-gpu-to-bigbearcasaos/3447?u=dragonfire1119\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "32400"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

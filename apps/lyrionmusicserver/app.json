@@ -1,0 +1,149 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "lyrionmusicserver",
+    "name": "LyriOn Music Server",
+    "description": "Simplify the management of your server with Homarr - a sleek, modern dashboard that puts all of your apps and services at your fingertips. With Homarr, you can access and control everything in one convenient location. Homarr seamlessly integrates with the apps you've added, providing you with valuable information and giving you complete control. Installation is a breeze, and Homarr supports a wide range of deployment methods.",
+    "tagline": "Streaming audio server",
+    "version": "9.1.0",
+    "author": "BigBearTechWorld",
+    "developer": "LMS-Community",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:59Z",
+    "updated": "2025-10-27T02:41:59Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/lyrionmusicserver/logo.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/lyrionmusicserver/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-lyrionmusicserver",
+    "default_port": "9000",
+    "main_image": "lmscommunity/lyrionmusicserver",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "HTTP_PORT",
+    "default": "",
+    "description": "Container Port: 9000",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/config",
+    "description": "Container Path: /config"
+  },
+  {
+    "container": "/music",
+    "description": "Container Path: /music"
+  },
+  {
+    "container": "/playlist",
+    "description": "Container Path: /playlist"
+  },
+  {
+    "container": "/etc/localtime",
+    "description": "Container Path: /etc/localtime"
+  },
+  {
+    "container": "/etc/timezone",
+    "description": "Container Path: /etc/timezone"
+  }
+],
+    "ports": [
+  {
+    "container": "9000",
+    "host": "9000",
+    "protocol": "tcp",
+    "description": "Container Port: 9000"
+  },
+  {
+    "container": "9090",
+    "host": "9090",
+    "protocol": "tcp",
+    "description": "Container Port: 9090"
+  },
+  {
+    "container": "3483",
+    "host": "3483",
+    "protocol": "tcp",
+    "description": "Container Port: 3483"
+  },
+  {
+    "container": "3483",
+    "host": "3483",
+    "protocol": "tcp",
+    "description": "Container Port: 3483"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-lyrion-music-server-to-bigbearcasaos/2606#p-4742-documentation-3\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "9000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

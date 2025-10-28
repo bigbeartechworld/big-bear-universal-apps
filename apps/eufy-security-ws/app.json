@@ -1,0 +1,139 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "eufy-security-ws",
+    "name": "Eufy Security WS",
+    "description": "eufy-security-ws is a small server wrapper around the eufy-security-client library to access it via a WebSocket. It allows you to control Eufy security devices by connecting to the Eufy cloud servers and local/remote stations.",
+    "tagline": "eufy-security-ws",
+    "version": "1.9.3",
+    "author": "BigBearTechWorld",
+    "developer": "bropat",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:45Z",
+    "updated": "2025-10-27T02:41:45Z"
+  },
+  "visual": {
+    "icon": "",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": ""
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-eufy-security-ws",
+    "default_port": "3000",
+    "main_image": "bropat/eufy-security-ws",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": null,
+    "default": "",
+    "description": "Eufy Account Username (required)",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Eufy Account Password (required)",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "ISO 3166-1 Alpha-2 country code (default: US)",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "ISO 639 language code (default: en)",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Label of the trusted devices (viewable with 2fa activated in Eufy App; default: random device name)",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/data",
+    "description": "Container Path: /data"
+  }
+],
+    "ports": [
+  {
+    "container": "3000",
+    "host": "3000",
+    "protocol": "tcp",
+    "description": "Container Port: 3000"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-eufy-security-ws-to-bigbearcasaos/2228\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

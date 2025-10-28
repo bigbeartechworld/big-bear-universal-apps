@@ -1,0 +1,130 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "ihatemoney",
+    "name": "I Hate Money",
+    "description": "I hate money is a web application made to ease shared budget management. It keeps track of who bought what, when, and for whom; and helps to settle the bills.",
+    "tagline": "A simple shared budget manager web application",
+    "version": "6.1.5",
+    "author": "BigBearTechWorld",
+    "developer": "spiral-project",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:53Z",
+    "updated": "2025-10-27T02:41:53Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ihatemoney.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ihatemoney.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/aHz0Vh-KbXw",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-ihatemoney",
+    "default_port": "8001",
+    "main_image": "ihatemoney/ihatemoney",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": null,
+    "default": "",
+    "description": "Sets the secret key environment variable for the application.",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Database connection string.",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Enables the admin dashboard.",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Sets the admin password. On the host run: docker run -it --rm --entrypoint ihatemoney ihatemoney/ihatemoney generate_password_hash",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Disables secure session cookies for development.",
+    "required": false
+  }
+],
+    "volumes": [],
+    "ports": [
+  {
+    "container": "8000",
+    "host": "8000",
+    "protocol": "tcp",
+    "description": "Container Port: 8000"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8001"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

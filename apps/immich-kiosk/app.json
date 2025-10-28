@@ -1,0 +1,134 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "immich-kiosk",
+    "name": "Immich Kiosk",
+    "description": "Immich Kiosk is a lightweight slideshow for running on kiosk devices and browsers that uses Immich as a data source.",
+    "tagline": "Immich Kiosk",
+    "version": "0.26.1",
+    "author": "BigBearTechWorld",
+    "developer": "damongolding",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:53Z",
+    "updated": "2025-10-27T02:41:53Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/immich-kiosk.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/immich-kiosk.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-immich-kiosk",
+    "default_port": "3000",
+    "main_image": "ghcr.io/damongolding/immich-kiosk",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "LANG",
+    "default": "",
+    "description": "Sets the language and timezone for the container",
+    "required": false
+  },
+  {
+    "name": "TZ",
+    "default": "",
+    "description": "Sets the language and timezone for the container",
+    "required": false
+  },
+  {
+    "name": "KIOSK_IMMICH_API_KEY",
+    "default": "",
+    "description": "Sets the Immich API key for the container",
+    "required": false
+  },
+  {
+    "name": "KIOSK_IMMICH_URL",
+    "default": "",
+    "description": "Sets the Immich server URL for the container",
+    "required": false
+  },
+  {
+    "name": "KIOSK_IMMICH_EXTERNAL_URL",
+    "default": "",
+    "description": "Sets the Immich external URL for the container",
+    "required": false
+  }
+],
+    "volumes": [],
+    "ports": [
+  {
+    "container": "3000",
+    "host": "3000",
+    "protocol": "tcp",
+    "description": "Container Port: 3000"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-immich-kiosk-to-bigbearcasaos/3513?u=dragonfire1119\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

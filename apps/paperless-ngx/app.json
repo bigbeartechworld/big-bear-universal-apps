@@ -1,0 +1,177 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "paperless-ngx",
+    "name": "Paperless-ngx",
+    "description": "Paperless-ngx is a community-supported open-source document management system that transforms your physical documents into a searchable online archive so you can keep, well, less paper.",
+    "tagline": "Paperless-ngx",
+    "version": "2.19.2",
+    "author": "BigBearTechWorld",
+    "developer": "paperless-ngx",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:09Z",
+    "updated": "2025-10-27T02:42:09Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/paperless-ngx.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/paperless-ngx.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-paperless-ngx",
+    "default_port": "8000",
+    "main_image": "ghcr.io/paperless-ngx/paperless-ngx",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "PAPERLESS_REDIS",
+    "default": "",
+    "description": "Container Path: /usr/src/paperless/data",
+    "required": false
+  },
+  {
+    "name": "PAPERLESS_DBHOST",
+    "default": "",
+    "description": "Container Path: /usr/src/paperless/data",
+    "required": false
+  },
+  {
+    "name": "PAPERLESS_ADMIN_USER",
+    "default": "",
+    "description": "Container Path: /usr/src/paperless/data",
+    "required": false
+  },
+  {
+    "name": "PAPERLESS_ADMIN_PASSWORD",
+    "default": "",
+    "description": "Container Path: /usr/src/paperless/data",
+    "required": false
+  },
+  {
+    "name": "PAPERLESS_TIKA_ENABLED",
+    "default": "",
+    "description": "Container Path: /usr/src/paperless/data",
+    "required": false
+  },
+  {
+    "name": "PAPERLESS_TIKA_GOTENBERG_ENDPOINT",
+    "default": "",
+    "description": "Container Path: /usr/src/paperless/data",
+    "required": false
+  },
+  {
+    "name": "PAPERLESS_TIKA_ENDPOINT",
+    "default": "",
+    "description": "Container Path: /usr/src/paperless/data",
+    "required": false
+  },
+  {
+    "name": "PAPERLESS_URL",
+    "default": "",
+    "description": "Container Path: /usr/src/paperless/data",
+    "required": false
+  },
+  {
+    "name": "COMPOSE_PROJECT_NAME",
+    "default": "",
+    "description": "Container Path: /usr/src/paperless/data",
+    "required": false
+  },
+  {
+    "name": "PAPERLESS_CSRF_TRUSTED_ORIGINS",
+    "default": "",
+    "description": "Container Path: /usr/src/paperless/data",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/app/data/configs",
+    "description": "Container Path: /app/data/configs"
+  },
+  {
+    "container": "/app/public/icons",
+    "description": "Container Path: /app/public/icons"
+  },
+  {
+    "container": "/data",
+    "description": "Container Path: /data"
+  }
+],
+    "ports": [
+  {
+    "container": "8000",
+    "host": "8000",
+    "protocol": "tcp",
+    "description": "Container Port: 8000"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-paperlessngx-to-bigbearcasaos/1954#p-3625-documentation-4\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

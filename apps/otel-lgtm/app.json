@@ -1,0 +1,121 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "otel-lgtm",
+    "name": "OTEL LGTM",
+    "description": "An OpenTelemetry Backend in a Docker Image.",
+    "tagline": "OpenTelemetry Backend",
+    "version": "0.11.12",
+    "author": "Konrad Botor (Forinil)",
+    "developer": "Grafana Labs",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:08Z",
+    "updated": "2025-10-27T02:42:08Z"
+  },
+  "visual": {
+    "icon": "https://www.gravatar.com/avatar/31cea69afa424609b2d83621b4d47f1d?s=120&r=g&d=404",
+    "thumbnail": "https://raw.githubusercontent.com/grafana/docker-otel-lgtm/main/img/overview.png",
+    "screenshots": [],
+    "logo": "https://www.gravatar.com/avatar/31cea69afa424609b2d83621b4d47f1d?s=120&r=g&d=404"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-otel-lgtm",
+    "default_port": "3000",
+    "main_image": "grafana/otel-lgtm",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/data",
+    "description": "Data directory"
+  }
+],
+    "ports": [
+  {
+    "container": "3000",
+    "host": "3000",
+    "protocol": "tcp",
+    "description": "WebUI HTTP Port"
+  },
+  {
+    "container": "4317",
+    "host": "4317",
+    "protocol": "tcp",
+    "description": "OpenTelemetry gRPC endpoint"
+  },
+  {
+    "container": "4318",
+    "host": "4318",
+    "protocol": "tcp",
+    "description": "OpenTelemetry HTTP endpoint"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://github.com/grafana/docker-otel-lgtm/\nand https://grafana.com/blog/2024/03/13/an-opentelemetry-backend-in-a-docker-image-introducing-grafana/otel-lgtm/\n",
+    "en_uk": "Read this before installing: https://github.com/grafana/docker-otel-lgtm/\nand https://grafana.com/blog/2024/03/13/an-opentelemetry-backend-in-a-docker-image-introducing-grafana/otel-lgtm/"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

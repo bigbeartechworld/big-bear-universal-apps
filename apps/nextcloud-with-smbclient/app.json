@@ -1,0 +1,173 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "nextcloud-with-smbclient",
+    "name": "Nextcloud with SMB (Legacy)",
+    "description": "This is legacy and you should use the BigBearCasaOS Nextcloud instead. Nextcloud puts your data at your fingertips, under your control. Store your documents, calendar, contacts and photos on a server at home, at one of our providers or in a data center you trust.",
+    "tagline": "The productivity platform that keeps you in control",
+    "version": "0.0.11",
+    "author": "BigBearTechWorld",
+    "developer": "nextcloud",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:04Z",
+    "updated": "2025-10-27T02:42:04Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nextcloud.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/thumbnail.jpg",
+    "screenshots": [
+  "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-1.png",
+  "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-2.png",
+  "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-3.png"
+],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nextcloud.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-nextcloud-smb",
+    "default_port": "7580",
+    "main_image": "bigbeartechworld/big-bear-nextcloud-with-smbclient",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "POSTGRES_HOST",
+    "default": "",
+    "description": "Database host",
+    "required": false
+  },
+  {
+    "name": "REDIS_HOST",
+    "default": "",
+    "description": "Redis host",
+    "required": false
+  },
+  {
+    "name": "POSTGRES_PASSWORD",
+    "default": "",
+    "description": "Database password",
+    "required": false
+  },
+  {
+    "name": "POSTGRES_USER",
+    "default": "",
+    "description": "Database user",
+    "required": false
+  },
+  {
+    "name": "POSTGRES_DB",
+    "default": "",
+    "description": "Database type",
+    "required": false
+  },
+  {
+    "name": "NEXTCLOUD_ADMIN_USER",
+    "default": "",
+    "description": "Nextcloud admin user",
+    "required": false
+  },
+  {
+    "name": "NEXTCLOUD_ADMIN_PASSWORD",
+    "default": "",
+    "description": "Nextcloud admin password",
+    "required": false
+  },
+  {
+    "name": "TRUSTED_PROXIES",
+    "default": "",
+    "description": "Trusted proxies",
+    "required": false
+  },
+  {
+    "name": "OVERWRITEPROTOCOL",
+    "default": "",
+    "description": "Overwrite protocol",
+    "required": false
+  },
+  {
+    "name": "PHP_UPLOAD_LIMIT",
+    "default": "",
+    "description": "PHP upload limit",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/var/www/html",
+    "description": "Container Path: /var/www/html"
+  }
+],
+    "ports": [
+  {
+    "container": "7580",
+    "host": "7580",
+    "protocol": "tcp",
+    "description": "Container Port: 7580"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read the [Nextcloud installation guide](https://community.bigbeartechworld.com/t/added-nextcloud-to-bigbearcasaos/455?u=dragonfire1119)\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "7580"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

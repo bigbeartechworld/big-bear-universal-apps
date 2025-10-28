@@ -1,0 +1,196 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "davis",
+    "name": "Davis",
+    "description": "A simple, fully translatable admin interface for sabre/dav based on Symfony 5 and Bootstrap 5, initially inspired by Baïkal. Provides user edition, calendar creation and sharing, and address book creation. The interface is simple and straightforward, responsive, and provides a light and a dark mode.",
+    "tagline": "Davis",
+    "version": "5.2.0",
+    "author": "BigBearTechWorld",
+    "developer": "tchapi",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:43Z",
+    "updated": "2025-10-27T02:41:43Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/davis/logo.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/davis/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-davis",
+    "default_port": "9000",
+    "main_image": "ghcr.io/tchapi/davis-standalone",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "APP_ENV",
+    "default": "",
+    "description": "APP_ENV",
+    "required": false
+  },
+  {
+    "name": "DATABASE_DRIVER",
+    "default": "",
+    "description": "DATABASE_DRIVER",
+    "required": false
+  },
+  {
+    "name": "DATABASE_URL",
+    "default": "",
+    "description": "DATABASE_URL",
+    "required": false
+  },
+  {
+    "name": "MAILER_DSN",
+    "default": "",
+    "description": "MAILER_DSN",
+    "required": false
+  },
+  {
+    "name": "ADMIN_LOGIN",
+    "default": "",
+    "description": "ADMIN_LOGIN",
+    "required": false
+  },
+  {
+    "name": "ADMIN_PASSWORD",
+    "default": "",
+    "description": "ADMIN_PASSWORD",
+    "required": false
+  },
+  {
+    "name": "AUTH_REALM",
+    "default": "",
+    "description": "AUTH_REALM",
+    "required": false
+  },
+  {
+    "name": "AUTH_METHOD",
+    "default": "",
+    "description": "AUTH_METHOD",
+    "required": false
+  },
+  {
+    "name": "CALDAV_ENABLED",
+    "default": "",
+    "description": "CALDAV_ENABLED",
+    "required": false
+  },
+  {
+    "name": "CARDDAV_ENABLED",
+    "default": "",
+    "description": "CARDDAV_ENABLED",
+    "required": false
+  },
+  {
+    "name": "WEBDAV_ENABLED",
+    "default": "",
+    "description": "WEBDAV_ENABLED",
+    "required": false
+  },
+  {
+    "name": "WEBDAV_TMP_DIR",
+    "default": "",
+    "description": "WEBDAV_TMP_DIR",
+    "required": false
+  },
+  {
+    "name": "WEBDAV_PUBLIC_DIR",
+    "default": "",
+    "description": "WEBDAV_PUBLIC_DIR",
+    "required": false
+  },
+  {
+    "name": "WEBDAV_HOMES_DIR",
+    "default": "",
+    "description": "WEBDAV_HOMES_DIR",
+    "required": false
+  },
+  {
+    "name": "INVITE_FROM_ADDRESS",
+    "default": "",
+    "description": "INVITE_FROM_ADDRESS",
+    "required": false
+  },
+  {
+    "name": "APP_TIMEZONE",
+    "default": "",
+    "description": "APP_TIMEZONE",
+    "required": false
+  }
+],
+    "volumes": [],
+    "ports": [
+  {
+    "container": "9000",
+    "host": "9000",
+    "protocol": "tcp",
+    "description": "Container Port: 9000"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "9000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

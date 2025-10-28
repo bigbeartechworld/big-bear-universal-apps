@@ -1,0 +1,133 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "write-freely",
+    "name": "Write Freely",
+    "description": "WriteFreely is a clean, minimalist publishing platform made for writers. Start a blog, share knowledge within your organization, or build a community around the shared act of writing.",
+    "tagline": "Markdown-based publishing platform.",
+    "version": "0.16",
+    "author": "BigBearTechWorld",
+    "developer": "nephatrine",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:26Z",
+    "updated": "2025-10-27T02:42:26Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/write-freely/logo.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/write-freely/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-write-freely",
+    "default_port": "8080",
+    "main_image": "nephatrine/write-freely",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "TZ",
+    "default": "",
+    "description": "Container Environment Variable: TZ",
+    "required": false
+  },
+  {
+    "name": "PUID",
+    "default": "",
+    "description": "Container Environment Variable: PUID",
+    "required": false
+  },
+  {
+    "name": "PGID",
+    "default": "",
+    "description": "Container Environment Variable: PGID",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/mnt/config",
+    "description": "Container Path: /mnt/config"
+  }
+],
+    "ports": [
+  {
+    "container": "70",
+    "host": "70",
+    "protocol": "tcp",
+    "description": "Container Port: 70"
+  },
+  {
+    "container": "8080",
+    "host": "8080",
+    "protocol": "tcp",
+    "description": "Container Port: 8080"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-write-freely-to-bigbearcasaos/3164?u=dragonfire1119\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "adguard-home",
+    "name": "AdGuard Home",
+    "description": "AdGuard Home is a network-wide software for blocking ads and tracking. After you set it up, it'll cover all your home devices, and you won't need any client-side software for that. Learn more on our official Github repository.",
+    "tagline": "Network-wide ads & trackers blocking DNS server.",
+    "version": "0.107.68",
+    "author": "BigBearTechWorld",
+    "developer": "AdGuardTeam",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:35Z",
+    "updated": "2025-10-27T02:41:35Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/adguard-home.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/AdGuardHome/thumbnail.png",
+    "screenshots": [
+  "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/AdGuardHome/screenshot-1.png",
+  "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/AdGuardHome/screenshot-2.png",
+  "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/AdGuardHome/screenshot-3.png"
+],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/adguard-home.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/6cu0kfP50Jg",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64",
+  "armv7"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8080",
+    "main_image": "adguard/adguardhome",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/opt/adguardhome/work",
+    "description": "Container Path: /opt/adguardhome/work"
+  },
+  {
+    "container": "/opt/adguardhome/conf",
+    "description": "Container Path: /opt/adguardhome/conf"
+  }
+],
+    "ports": [
+  {
+    "container": "53",
+    "host": "53",
+    "protocol": "tcp",
+    "description": "Container Port: 53"
+  },
+  {
+    "container": "80",
+    "host": "80",
+    "protocol": "tcp",
+    "description": "Container Port: 80"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Run this script:\n\n```\nbash -c \"$(wget -qLO - https://raw.githubusercontent.com/bigbeartechworld/big-bear-scripts/master/generate-adguard-home-config/run.sh)\"\n```\n\nAfter running this script, you need to restart the container.\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080",
+      "volume_mappings": {
+        "adguard-home_data_work": "/DATA/AppData/$AppID/data/work",
+        "adguard-home_data_conf": "/DATA/AppData/$AppID/data/conf"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64",
+  "arm"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

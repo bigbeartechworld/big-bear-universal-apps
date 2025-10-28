@@ -1,0 +1,28 @@
+# Configuration for node-red setup
+
+# Application Name
+name: node-red
+
+# Services used in the application
+services:
+  # The `app` service for the node-red application
+  app:
+    # Name of the container
+    container_name: node-red
+    # Docker image to be used
+    image: nodered/node-red:4.1.1
+    # Restart policy for the service
+    restart: unless-stopped
+    # Port mappings for the service
+    ports:
+      - "1880:1880"
+    # Network mode for the service
+    network_mode: bridge
+    # Volumes for the service HOST -> CONTAINER
+    volumes:
+      - node-red_data:/data
+
+volumes:
+  node-red_data:
+    name: node-red_data
+    driver: local
