@@ -126,7 +126,7 @@ done
 
 # Check dependencies
 check_dependencies() {
-    local deps=("jq" "yq")
+    local deps=("jq" "yq" "perl")
     local missing=()
     
     for dep in "${deps[@]}"; do
@@ -145,6 +145,9 @@ check_dependencies() {
                     ;;
                 yq)
                     print_info "  - yq: brew install yq  # or wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64"
+                    ;;
+                perl)
+                    print_info "  - perl: apt-get install perl  # or brew install perl (usually pre-installed)"
                     ;;
             esac
         done
