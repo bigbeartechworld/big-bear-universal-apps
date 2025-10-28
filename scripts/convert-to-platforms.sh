@@ -375,14 +375,6 @@ convert_to_casaos() {
     local app_name="$1"
     local app_dir="$2"
     
-    # Load metadata first to get compatibility settings
-    load_app_metadata "$app_dir"
-    
-    if [[ "$COMPAT_CASAOS" != "true" ]]; then
-        print_warning "Skipping $app_name for CasaOS (not marked as compatible)"
-        return
-    fi
-    
     local folder_name=$(get_platform_folder_name "$app_dir" "casaos")
     local output_dir="$OUTPUT_DIR/casaos/$folder_name"
     
@@ -654,14 +646,6 @@ convert_to_portainer() {
     local app_dir="$2"
     local master_file="$OUTPUT_DIR/portainer/templates.json"
     
-    # Load metadata first to get compatibility settings
-    load_app_metadata "$app_dir"
-    
-    if [[ "$COMPAT_PORTAINER" != "true" ]]; then
-        print_warning "Skipping $app_name for Portainer (not marked as compatible)"
-        return
-    fi
-    
     local folder_name=$(get_platform_folder_name "$app_dir" "portainer")
     local output_dir="$OUTPUT_DIR/portainer/$folder_name"
     
@@ -744,14 +728,6 @@ EOF
 convert_to_runtipi() {
     local app_name="$1"
     local app_dir="$2"
-    
-    # Load metadata first to get compatibility settings
-    load_app_metadata "$app_dir"
-    
-    if [[ "$COMPAT_RUNTIPI" != "true" ]]; then
-        print_warning "Skipping $app_name for Runtipi (not marked as compatible)"
-        return
-    fi
     
     local folder_name=$(get_platform_folder_name "$app_dir" "runtipi")
     local output_dir="$OUTPUT_DIR/runtipi/$folder_name"
@@ -880,14 +856,6 @@ convert_to_dockge() {
     local app_name="$1"
     local app_dir="$2"
     
-    # Load metadata first to get compatibility settings
-    load_app_metadata "$app_dir"
-    
-    if [[ "$COMPAT_DOCKGE" != "true" ]]; then
-        print_warning "Skipping $app_name for Dockge (not marked as compatible)"
-        return
-    fi
-    
     local folder_name=$(get_platform_folder_name "$app_dir" "dockge")
     local output_dir="$OUTPUT_DIR/dockge/$folder_name"
     
@@ -924,14 +892,6 @@ convert_to_cosmos() {
     local app_name="$1"
     local app_dir="$2"
     
-    # Load metadata first to get compatibility settings
-    load_app_metadata "$app_dir"
-    
-    if [[ "$COMPAT_COSMOS" != "true" ]]; then
-        print_warning "Skipping $app_name for Cosmos (not marked as compatible)"
-        return
-    fi
-    
     local folder_name=$(get_platform_folder_name "$app_dir" "cosmos")
     local output_dir="$OUTPUT_DIR/cosmos/$folder_name"
     
@@ -941,7 +901,6 @@ convert_to_cosmos() {
     fi
     
     mkdir -p "$output_dir"
-    load_app_metadata "$app_dir"
     
     # Create cosmos-compose.json with routes
     local routes=""
@@ -1000,14 +959,6 @@ convert_to_umbrel() {
     
     if [[ "$DRY_RUN" == "true" ]]; then
         print_info "DRY RUN: Would convert $app_name to Umbrel format (folder: $folder_name)"
-        return
-    fi
-    
-    # Load app metadata BEFORE checking compatibility
-    load_app_metadata "$app_dir"
-    
-    if [[ "$COMPAT_UMBREL" != "true" ]]; then
-        print_warning "Skipping $app_name for Umbrel (not marked as compatible)"
         return
     fi
     
@@ -1230,28 +1181,64 @@ convert_app() {
         return 1
     fi
     
+    # Load metadata to get compatibility flags
+    load_app_metadata "$app_dir"
+    
     print_info "Converting $app_name..."
+    
+    # Track if any platform was converted
+    local platforms_converted=0
     
     # Convert to each platform
     for platform in "${PLATFORMS[@]}"; do
         case "$platform" in
             casaos)
-                convert_to_casaos "$app_name" "$app_dir"
+                if [[ "$COMPAT_CASAOS" == "true" ]]; then
+                    convert_to_casaos "$app_name" "$app_dir"
+                    platforms_converted=$((platforms_converted + 1))
+                elif [[ "$VERBOSE" == "true" ]]; then
+                    print_info "$app_name: Skipping CasaOS (not supported)"
+                fi
                 ;;
             portainer)
-                convert_to_portainer "$app_name" "$app_dir"
+                if [[ "$COMPAT_PORTAINER" == "true" ]]; then
+                    convert_to_portainer "$app_name" "$app_dir"
+                    platforms_converted=$((platforms_converted + 1))
+                elif [[ "$VERBOSE" == "true" ]]; then
+                    print_info "$app_name: Skipping Portainer (not supported)"
+                fi
                 ;;
             runtipi)
-                convert_to_runtipi "$app_name" "$app_dir"
+                if [[ "$COMPAT_RUNTIPI" == "true" ]]; then
+                    convert_to_runtipi "$app_name" "$app_dir"
+                    platforms_converted=$((platforms_converted + 1))
+                elif [[ "$VERBOSE" == "true" ]]; then
+                    print_info "$app_name: Skipping Runtipi (not supported)"
+                fi
                 ;;
             dockge)
-                convert_to_dockge "$app_name" "$app_dir"
+                if [[ "$COMPAT_DOCKGE" == "true" ]]; then
+                    convert_to_dockge "$app_name" "$app_dir"
+                    platforms_converted=$((platforms_converted + 1))
+                elif [[ "$VERBOSE" == "true" ]]; then
+                    print_info "$app_name: Skipping Dockge (not supported)"
+                fi
                 ;;
             cosmos)
-                convert_to_cosmos "$app_name" "$app_dir"
+                if [[ "$COMPAT_COSMOS" == "true" ]]; then
+                    convert_to_cosmos "$app_name" "$app_dir"
+                    platforms_converted=$((platforms_converted + 1))
+                elif [[ "$VERBOSE" == "true" ]]; then
+                    print_info "$app_name: Skipping Cosmos (not supported)"
+                fi
                 ;;
             umbrel)
-                convert_to_umbrel "$app_name" "$app_dir"
+                if [[ "$COMPAT_UMBREL" == "true" ]]; then
+                    convert_to_umbrel "$app_name" "$app_dir"
+                    platforms_converted=$((platforms_converted + 1))
+                elif [[ "$VERBOSE" == "true" ]]; then
+                    print_info "$app_name: Skipping Umbrel (not supported)"
+                fi
                 ;;
             *)
                 print_warning "Unknown platform: $platform"
@@ -1259,7 +1246,12 @@ convert_app() {
         esac
     done
     
-    TOTAL_CONVERTED=$((TOTAL_CONVERTED + 1))
+    # Update counters based on whether any platforms were converted
+    if [[ $platforms_converted -gt 0 ]]; then
+        TOTAL_CONVERTED=$((TOTAL_CONVERTED + 1))
+    else
+        TOTAL_SKIPPED=$((TOTAL_SKIPPED + 1))
+    fi
 }
 
 # Print summary
