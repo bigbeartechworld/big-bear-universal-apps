@@ -197,7 +197,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: bigbeartechworld/big-bear-${{ matrix.platform }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PLATFORM_SYNC_TOKEN }}
           path: big-bear-${{ matrix.platform }}
 
       - name: Download converted apps
@@ -236,7 +236,7 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           path: big-bear-${{ matrix.platform }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PLATFORM_SYNC_TOKEN }}
           commit-message: |
             🤖 Automated update from Universal Apps
             
@@ -278,7 +278,7 @@ jobs:
         run: |
           gh pr merge --auto --squash "${{ steps.create-pr.outputs.pull-request-number }}"
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PLATFORM_SYNC_TOKEN }}
         working-directory: big-bear-${{ matrix.platform }}
 
       - name: Generate sync summary
