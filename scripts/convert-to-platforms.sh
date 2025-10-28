@@ -389,6 +389,12 @@ convert_to_casaos() {
     cp "$app_dir/docker-compose.yml" "$output_dir/docker-compose.yml"
     local compose_file="$output_dir/docker-compose.yml"
     
+    # Update the name to include big-bear- prefix for CasaOS
+    local current_name=$(yq eval '.name' "$compose_file")
+    if [[ "$current_name" != "big-bear-"* ]]; then
+        yq eval ".name = \"big-bear-$current_name\"" -i "$compose_file"
+    fi
+    
     # Add x-casaos sections to compose file
     # Add top-level x-casaos
     yq eval ".x-casaos.architectures = $APP_ARCHITECTURES" -i "$compose_file"
