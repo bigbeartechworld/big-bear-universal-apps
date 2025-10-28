@@ -67,14 +67,14 @@
     "casaos": {
       "supported": true,
       "port_map": "3333",
-      "folder_name": "GemDigest"
+      "folder_name": "gemdigest"
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
       "categories": ["BigBearCasaOS", "selfhosted"],
       "administrator_only": false,
-      "folder_name": "GemDigest"
+      "folder_name": "gemdigest"
     },
     "runtipi": {
       "supported": true,
@@ -83,18 +83,18 @@
   "amd64",
   "arm64"
 ],
-      "folder_name": "GemDigest"
+      "folder_name": "gemdigest"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "folder_name": "GemDigest"
+      "folder_name": "gemdigest"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "folder_name": "GemDigest"
+      "folder_name": "gemdigest"
     },
     "umbrel": {
       "supported": true,
