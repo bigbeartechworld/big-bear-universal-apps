@@ -1,0 +1,114 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "homepage",
+    "name": "Homepage",
+    "description": "A modern, fully static, fast, secure fully proxied, highly customizable application dashboard with integrations for over 100 services and translations into multiple languages. Easily configured via YAML files or through docker label discovery.",
+    "tagline": "Homepage",
+    "version": "1.5.0",
+    "author": "BigBearTechWorld",
+    "developer": "gethomepage",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:52Z",
+    "updated": "2025-10-27T02:41:52Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/homepage.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/homepage.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "3000",
+    "main_image": "ghcr.io/gethomepage/homepage",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/app/config",
+    "description": "Container Path: /app/config"
+  },
+  {
+    "container": "/var/run/docker.sock",
+    "description": "Container Path: /var/run/docker.sock"
+  }
+],
+    "ports": [
+  {
+    "container": "3000",
+    "host": "3000",
+    "protocol": "tcp",
+    "description": "Container Port: 3000"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3000",
+      "folder_name": "Homepage"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false,
+      "folder_name": "Homepage"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+],
+      "folder_name": "Homepage"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "folder_name": "Homepage"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "folder_name": "Homepage"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "folder_name": "big-bear-umbrel-homepage"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

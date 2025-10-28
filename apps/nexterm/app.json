@@ -1,0 +1,108 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "nexterm",
+    "name": "Nexterm",
+    "description": "The open source server management software for SSH, VNC & RDP. This is in Preview Release.",
+    "tagline": "Nexterm",
+    "version": "1.0.5-OPEN-PREVIEW",
+    "author": "BigBearTechWorld",
+    "developer": "germannewsmaker",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:04Z",
+    "updated": "2025-10-27T02:42:04Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/nexterm/logo.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/nexterm/logo.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/RQPz4892npo",
+    "documentation": "https://community.bigbeartechworld.com/t/added-nexterm-to-bigbearcasaos/1835#p-3452-documentation-3",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-nexterm",
+    "default_port": "6989",
+    "main_image": "germannewsmaker/nexterm",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/app/data",
+    "description": "Container Path: /app/data"
+  }
+],
+    "ports": [
+  {
+    "container": "6989",
+    "host": "6989",
+    "protocol": "tcp",
+    "description": "Container Port: 6989"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-nexterm-to-bigbearcasaos/1835#p-3452-documentation-3\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "6989"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "invoice-ninja",
+    "name": "Invoice Ninja",
+    "description": "Invoice Ninja is a free and open-source invoice and expense management system. It is a web-based application that allows you to create, manage, and track invoices and expenses.",
+    "tagline": "Invoice Ninja",
+    "version": "5.12.28",
+    "author": "BigBearTechWorld",
+    "developer": "invoiceninja",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:54Z",
+    "updated": "2025-10-27T02:41:54Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/invoice-ninja.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/invoice-ninja.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-invoice-ninja-web",
+    "default_port": "8080",
+    "main_image": "invoiceninja/invoiceninja",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/etc/nginx/conf.d/default.conf",
+    "description": "Container Path: /etc/nginx/conf.d/default.conf"
+  },
+  {
+    "container": "/var/www/app/public",
+    "description": "Container Path: /var/www/app/public"
+  }
+],
+    "ports": [
+  {
+    "container": "80",
+    "host": "80",
+    "protocol": "tcp",
+    "description": "Container Port: 80"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-invoice-ninja-to-bigbearcasaos/1697?u=dragonfire1119#p-3214-instructions-3\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

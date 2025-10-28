@@ -1,0 +1,121 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "uisp",
+    "name": "UISP",
+    "description": "All-in-one docker image for Ubiquiti UISP (formerly UNMS). Supports x86_64 and ARM (Raspberry Pi).",
+    "tagline": "UISP",
+    "version": "2.4.155.1",
+    "author": "BigBearTechWorld",
+    "developer": "nico640",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:22Z",
+    "updated": "2025-10-27T02:42:22Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-icons/Apps/uisp/logo.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-icons/Apps/uisp/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-uisp",
+    "default_port": "10443",
+    "main_image": "nico640/docker-unms",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "TZ",
+    "default": "",
+    "description": "Container Timezone",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/config",
+    "description": "Container Path: /config"
+  }
+],
+    "ports": [
+  {
+    "container": "80",
+    "host": "80",
+    "protocol": "tcp",
+    "description": "Container Port: 80"
+  },
+  {
+    "container": "443",
+    "host": "443",
+    "protocol": "tcp",
+    "description": "Container Port: 443"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-uisp-to-bigbearcasaos/2582#p-4674-documentation-3\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "10443"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

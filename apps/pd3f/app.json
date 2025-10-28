@@ -1,0 +1,104 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "pd3f",
+    "name": "PD3F",
+    "description": "pd3f is a PDF text extraction pipeline that is self-hosted, local-first and Docker-based. It reconstructs the original continuous text with the help of machine learning.",
+    "tagline": "PD3F",
+    "version": "latest",
+    "author": "BigBearTechWorld",
+    "developer": "pd3f",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:10Z",
+    "updated": "2025-10-27T02:42:10Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/pd3f/logo.jpg",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/pd3f/logo.jpg"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "web",
+    "default_port": "1616",
+    "main_image": "pd3f/pd3f",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/uploads/",
+    "description": "Container Path: /uploads/"
+  }
+],
+    "ports": [
+  {
+    "container": "7575",
+    "host": "7575",
+    "protocol": "tcp",
+    "description": "Container Port: 7575"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "1616"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

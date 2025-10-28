@@ -1,0 +1,97 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "mumble-server",
+    "name": "Mumble Server",
+    "description": "Mumble is a free, open source, low latency, high quality voice chat application.",
+    "tagline": "Mumble Server",
+    "version": "v1.4.230-6",
+    "author": "BigBearTechWorld",
+    "developer": "",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:02Z",
+    "updated": "2025-10-27T02:42:02Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/mumble.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/mumble.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "64738",
+    "main_image": "mumblevoip/mumble-server",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [],
+    "ports": [
+  {
+    "container": "64738",
+    "host": "64738",
+    "protocol": "tcp",
+    "description": "Container Port: 64738"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "64738"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

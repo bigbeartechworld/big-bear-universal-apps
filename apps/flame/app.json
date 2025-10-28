@@ -1,0 +1,117 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "flame",
+    "name": "Flame",
+    "description": "Flame is a self-hosted startpage for your server. Its design is heavily inspired by SUI. Flame is user-friendly and easy to set up. With its built-in editors, users can quickly establish their own application hub without any file editing.",
+    "tagline": "Flame is a self-hosted startpage for your server. Manage your apps and bookmarks effortlessly with built-in editors.",
+    "version": "multiarch2.3.1",
+    "author": "BigBearCommunity",
+    "developer": "",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:48Z",
+    "updated": "2025-10-27T02:41:48Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/flame.png",
+    "thumbnail": "https://github.com/pawelmalak/flame/raw/master/.github/home.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/flame.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/p_P_jKmJRz8",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "armv7",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "5005",
+    "main_image": "pawelmalak/flame",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "PASSWORD",
+    "default": "",
+    "description": "Specifies the password to be used by the Flame application",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/app/data",
+    "description": "Container Path: /app/data"
+  },
+  {
+    "container": "/var/run/docker.sock",
+    "description": "Container Path: /var/run/docker.sock"
+  }
+],
+    "ports": [
+  {
+    "container": "5005",
+    "host": "5005",
+    "protocol": "tcp",
+    "description": "Container Port: 5005"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "5005"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "armv7",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

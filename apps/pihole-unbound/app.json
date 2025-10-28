@@ -1,0 +1,126 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "pihole-unbound",
+    "name": "Pi-hole and Unbound",
+    "description": "This is a custom pihole and unbound setup.",
+    "tagline": "Pi-hole and Unbound",
+    "version": "2025.08.0",
+    "author": "BigBearTechWorld",
+    "developer": "bigbeartechworld",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:11Z",
+    "updated": "2025-10-27T02:42:11Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/pi-hole-unbound.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/pi-hole-unbound.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/ByFSgnnUuBI",
+    "documentation": "https://community.bigbeartechworld.com/t/added-pihole-and-unbound-to-bigbearcasaos/191",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8080",
+    "main_image": "bigbeartechworld/big-bear-pihole-unbound",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/etc/pihole",
+    "description": "Container Path: /etc/pihole"
+  },
+  {
+    "container": "/etc/dnsmasq.d",
+    "description": "Container Path: /etc/dnsmasq.d"
+  }
+],
+    "ports": [
+  {
+    "container": "53",
+    "host": "53",
+    "protocol": "tcp",
+    "description": "Container Port: 53"
+  },
+  {
+    "container": "67",
+    "host": "67",
+    "protocol": "tcp",
+    "description": "Container Port: 67"
+  },
+  {
+    "container": "80",
+    "host": "80",
+    "protocol": "tcp",
+    "description": "Container Port: 80"
+  },
+  {
+    "container": "443",
+    "host": "443",
+    "protocol": "tcp",
+    "description": "Container Port: 443"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

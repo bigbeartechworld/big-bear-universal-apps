@@ -1,0 +1,139 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "pocketid",
+    "name": "Pocket ID",
+    "description": "Simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to your services.",
+    "tagline": "Passkey-based OIDC authentication",
+    "version": "1.14",
+    "author": "techieanant",
+    "developer": "pocket-id",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:14Z",
+    "updated": "2025-10-27T02:42:14Z"
+  },
+  "visual": {
+    "icon": "https://pocket-id.org/img/logo.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://pocket-id.org/img/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://pocket-id.org/docs/introduction",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-pocketid",
+    "default_port": "1411",
+    "main_image": "ghcr.io/pocket-id/pocket-id",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "APP_URL",
+    "default": "",
+    "description": "Application URL for pocket-id",
+    "required": false
+  },
+  {
+    "name": "TRUST_PROXY",
+    "default": "",
+    "description": "Whether to trust proxy headers",
+    "required": false
+  },
+  {
+    "name": "MAXMIND_LICENSE_KEY",
+    "default": "",
+    "description": "MaxMind license key for geolocation (optional)",
+    "required": false
+  },
+  {
+    "name": "PUID",
+    "default": "",
+    "description": "User ID for file permissions",
+    "required": false
+  },
+  {
+    "name": "PGID",
+    "default": "",
+    "description": "Group ID for file permissions",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/app/data",
+    "description": "Container Path: /app/data"
+  }
+],
+    "ports": [
+  {
+    "container": "1411",
+    "host": "1411",
+    "protocol": "tcp",
+    "description": "Container Port: 1411"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-pocket-id-to-bigbearcasaos/3552#p-6013-documentation-4\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "1411"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

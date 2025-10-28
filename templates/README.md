@@ -71,14 +71,6 @@ big-bear-universal-apps/
 ./scripts/convert-to-platforms.sh --dry-run
 ```
 
-### Migrating from CasaOS Format
-
-If you have existing apps in CasaOS format, you can migrate them:
-
-```bash
-./scripts/migrate-from-casaos.sh -c /path/to/big-bear-casaos
-```
-
 ## 📝 Universal App Format
 
 Apps in this repository use the **Universal App Format** - a comprehensive, platform-agnostic format that contains all necessary metadata and configuration.
@@ -150,27 +142,6 @@ Converts universal apps to all platform formats.
 ./scripts/convert-to-platforms.sh -p casaos,runtipi  # Specific platforms
 ```
 
-### `migrate-from-casaos.sh`
-
-Migrate existing CasaOS apps to universal format.
-
-```bash
-# Usage
-./scripts/migrate-from-casaos.sh [OPTIONS]
-
-# Options
--c, --casaos DIR        CasaOS repository path
--i, --input DIR         CasaOS Apps directory
--o, --output DIR        Output directory (default: ./apps)
--a, --app NAME          Migrate specific app only
---overwrite            Overwrite existing apps
---dry-run              Preview without changes
-
-# Examples
-./scripts/migrate-from-casaos.sh -c ../big-bear-casaos
-./scripts/migrate-from-casaos.sh -a jellyseerr -c ../big-bear-casaos
-```
-
 ## 🧪 Validation
 
 Validate apps against the JSON schema:
@@ -182,6 +153,10 @@ Validate apps against the JSON schema:
 # Validate specific app
 ./scripts/validate-apps.sh -a jellyseerr
 ```
+
+## 📊 Apps
+
+<!appsList>
 
 ## 🤝 Contributing
 
@@ -219,21 +194,6 @@ Validate apps against the JSON schema:
 - **curl** - File downloads
 - **ImageMagick** (optional) - Icon conversion for Runtipi
 
-### Installation
-
-**Ubuntu/Debian:**
-```bash
-sudo apt-get update
-sudo apt-get install jq curl imagemagick
-sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
-sudo chmod +x /usr/local/bin/yq
-```
-
-**macOS:**
-```bash
-brew install jq yq curl imagemagick
-```
-
 ## 🎬 CI/CD
 
 Automated workflows handle:
@@ -243,17 +203,11 @@ Automated workflows handle:
 - 🤖 Creating pull requests in platform repos
 - 🔄 Renovate bot for version updates
 
-## 📊 Statistics
-
-- **Total Apps:** Auto-counted
-- **Platforms Supported:** 6
-- **Average App Conversion Time:** < 1 second per platform
-
 ## 💬 Community
 
-- **Discord:** [Big Bear Community](https://discord.gg/bigbeartech)
-- **Forum:** [community.bigbeartechworld.com](https://community.bigbeartechworld.com)
 - **YouTube:** [Big Bear Tech World](https://youtube.com/@bigbeartechworld)
+- **Forum:** [community.bigbeartechworld.com](https://community.bigbeartechworld.com)
+- **Discord:** [Big Bear Community](https://discord.gg/dExAgnrWH3)
 
 ## 📄 License
 

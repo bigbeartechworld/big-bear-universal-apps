@@ -1,0 +1,120 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "jellyseerr",
+    "name": "Jellyseerr",
+    "description": "Jellyseerr is a free and open source software application for managing requests for your media library. It is a fork of Overseerr built to bring support for Jellyfin & Emby media servers!",
+    "tagline": "Jellyseerr is a free and open source software application for managing requests for your media library. It is a fork of Overseerr built to bring support for Jellyfin & Emby media servers!",
+    "version": "2.7.3",
+    "author": "BigBearCommunity",
+    "developer": "Fallenbagel",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:54:16Z",
+    "updated": "2025-10-27T02:54:16Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/jellyseerr.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Jellyseerr/thumbnail.jpg",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/jellyseerr.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "5055",
+    "main_image": "fallenbagel/jellyseerr",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "LOG_LEVEL",
+        "default": "",
+        "description": "Log level",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Timezone",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/app/config",
+        "description": "Container Path: /app/config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "5055",
+        "host": "5055",
+        "protocol": "tcp",
+        "description": "Container Port: 5055"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "5055"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

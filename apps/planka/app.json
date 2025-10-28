@@ -1,0 +1,116 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "planka",
+    "name": "Planka",
+    "description": "The realtime kanban board for workgroups built with React and Redux.",
+    "tagline": "Free open source kanban board for workgroups.",
+    "version": "1.26.3",
+    "author": "BigBearTechWorld",
+    "developer": "plankanban",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:12Z",
+    "updated": "2025-10-27T02:42:12Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/planka.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/planka.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/rsyU2cBbbSI",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-planka",
+    "default_port": "3000",
+    "main_image": "ghcr.io/plankanban/planka",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/app/public/user-avatars",
+    "description": "Container Path: /app/public/user-avatars"
+  },
+  {
+    "container": "/app/public/project-background-images",
+    "description": "Container Path: /app/public/project-background-images"
+  },
+  {
+    "container": "/app/private/attachments",
+    "description": "Container Path: /app/private/attachments"
+  }
+],
+    "ports": [
+  {
+    "container": "1337",
+    "host": "1337",
+    "protocol": "tcp",
+    "description": "Container Port: 1337"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-planka-to-bigbearcasaos/924#documentation-5\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

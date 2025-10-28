@@ -1,0 +1,120 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "portainer",
+    "name": "Portainer",
+    "description": "Irrespective of your industry, orchestration platform, or computing device, Portainer is the most versatile container management software that simplifies your secure adoption of containers with remarkable speed.",
+    "tagline": "Portainer",
+    "version": "2.35.0-alpine",
+    "author": "BigBearTechWorld",
+    "developer": "portainer",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:14Z",
+    "updated": "2025-10-27T02:42:14Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/portainer.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/portainer.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/GW4_OALLI_s",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "9443",
+    "main_image": "portainer/portainer-ce",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/data",
+    "description": "Access to Portainer data"
+  },
+  {
+    "container": "/var/run/docker.sock",
+    "description": "Access to Docker socket"
+  }
+],
+    "ports": [
+  {
+    "container": "8000",
+    "host": "8000",
+    "protocol": "tcp",
+    "description": "Container: 8000"
+  },
+  {
+    "container": "9000",
+    "host": "9000",
+    "protocol": "tcp",
+    "description": "Container: 9000"
+  },
+  {
+    "container": "9443",
+    "host": "9443",
+    "protocol": "tcp",
+    "description": "Container: 9443"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "9443"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

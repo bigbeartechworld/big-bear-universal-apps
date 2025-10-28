@@ -1,0 +1,131 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "nextcloud-ls",
+    "name": "Nextcloud LS",
+    "description": "Nextcloud puts your data at your fingertips, under your control. Store your documents, calendar, contacts and photos on a server at home, at one of our providers or in a data center you trust.",
+    "tagline": "LinuxServer - The productivity platform that keeps you in control",
+    "version": "32.0.1",
+    "author": "BigBearTechWorld",
+    "developer": "nextcloud",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:03Z",
+    "updated": "2025-10-27T02:42:03Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nextcloud.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/thumbnail.jpg",
+    "screenshots": [
+  "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-1.png",
+  "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-2.png",
+  "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-3.png"
+],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nextcloud.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-nextcloud-ls",
+    "default_port": "10443",
+    "main_image": "linuxserver/nextcloud",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "PUID",
+    "default": "",
+    "description": "Process UID",
+    "required": false
+  },
+  {
+    "name": "PGID",
+    "default": "",
+    "description": "Process GID",
+    "required": false
+  },
+  {
+    "name": "TZ",
+    "default": "",
+    "description": "Timezone",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/config",
+    "description": "Container Path: /config"
+  },
+  {
+    "container": "/data",
+    "description": "Container Path: /data"
+  }
+],
+    "ports": [
+  {
+    "container": "443",
+    "host": "443",
+    "protocol": "tcp",
+    "description": "Container Port: 443"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "10443"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

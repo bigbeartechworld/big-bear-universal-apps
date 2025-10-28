@@ -1,0 +1,137 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "example-app",
+    "name": "Example App",
+    "description": "This is an example app demonstrating the Universal App Format. It shows all the required and optional fields you can use when creating a new app definition.",
+    "tagline": "A simple example app for the Universal format",
+    "version": "1.0.0",
+    "author": "BigBearCommunity",
+    "developer": "Example Developer",
+    "category": "Utilities",
+    "license": "MIT",
+    "homepage": "https://example.com",
+    "source": "big-bear-universal",
+    "created": "2024-10-26T00:00:00Z",
+    "updated": "2024-10-26T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/example.png",
+    "thumbnail": "",
+    "screenshots": [
+      "https://example.com/screenshot1.png",
+      "https://example.com/screenshot2.png"
+    ],
+    "logo": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/example.png"
+  },
+  "resources": {
+    "youtube": "https://youtube.com/watch?v=example",
+    "documentation": "https://docs.example.com",
+    "repository": "https://github.com/example/example-app",
+    "issues": "https://github.com/example/example-app/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": ["amd64", "arm64"],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8080",
+    "main_image": "example/example-app",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "EXAMPLE_VAR",
+        "default": "default_value",
+        "description": "An example environment variable",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "UTC",
+        "description": "Timezone for the application",
+        "required": false
+      },
+      {
+        "name": "API_KEY",
+        "default": "",
+        "description": "API key (required for authentication)",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/app/data",
+        "description": "Application data directory"
+      },
+      {
+        "container": "/app/config",
+        "description": "Configuration files"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Web UI"
+      },
+      {
+        "container": "9090",
+        "host": "9090",
+        "protocol": "tcp",
+        "description": "API endpoint"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "/",
+    "tips": {
+      "before_install": {
+        "en_us": "Make sure to set your API_KEY before installing."
+      },
+      "after_install": {
+        "en_us": "Access the web UI at http://your-server:8080"
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["Utilities", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": ["amd64", "arm64"]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "utilities",
+    "example"
+  ]
+}

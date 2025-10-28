@@ -1,0 +1,97 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "watchyourlan",
+    "name": "WatchYourLAN",
+    "description": "Lightweight network IP scanner. Can be used to notify about new hosts and monitor host online/offline history",
+    "tagline": "WatchYourLAN",
+    "version": "2.1.4",
+    "author": "BigBearTechWorld",
+    "developer": "ajnart",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:25Z",
+    "updated": "2025-10-27T02:42:25Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/watchyourlan.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/watchyourlan.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/LaYZjvUJ9U8",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-watchyourlan",
+    "default_port": "8840",
+    "main_image": "aceberg/watchyourlan",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/data/WatchYourLAN",
+    "description": "Container Path: /data/WatchYourLAN"
+  }
+],
+    "ports": []
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8840"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

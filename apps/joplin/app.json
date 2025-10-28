@@ -1,0 +1,158 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "joplin",
+    "name": "joplin",
+    "description": "Note taking and to-do application with synchronisation",
+    "tagline": "joplin",
+    "version": "3.4.3",
+    "author": "BigBearTechWorld",
+    "developer": "joplin",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:56Z",
+    "updated": "2025-10-27T02:41:56Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/joplin.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/joplin.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/FjVyg0X-_zc",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-joplin",
+    "default_port": "22300",
+    "main_image": "joplin/server:3.3.13",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": null,
+    "default": "",
+    "description": "Application Port: 22300",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Application Base URL",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Database Client: pg",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Postgres Password: 27a1d42a-a15d-43dd-903c-2a73538647fe",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Postgres User: bigbear",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Postgres Database: joplin",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Postgres Port: 5432",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Postgres Host: big-bear-joplin-db",
+    "required": false
+  },
+  {
+    "name": null,
+    "default": "",
+    "description": "Max Time Drift: 0",
+    "required": false
+  }
+],
+    "volumes": [],
+    "ports": [
+  {
+    "container": "22300",
+    "host": "22300",
+    "protocol": "tcp",
+    "description": "Container Port: 22300"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-joplin-server-to-bigbearcasaos/800?u=dragonfire1119\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "22300"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

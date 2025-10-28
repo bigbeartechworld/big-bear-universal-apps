@@ -1,0 +1,147 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "vikunja",
+    "name": "Vikunja",
+    "description": "The open-source, self-hostable to-do app. Organize everything, on all platforms.",
+    "tagline": "Vikunja",
+    "version": "0.24.6",
+    "author": "BigBearTechWorld",
+    "developer": "kolaente",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:23Z",
+    "updated": "2025-10-27T02:42:23Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/vikunja.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/vikunja.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/T-dNbdIttoI",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "vikunja",
+    "default_port": "8081",
+    "main_image": "vikunja/vikunja",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "VIKUNJA_DATABASE_HOST",
+    "default": "",
+    "description": "Database host",
+    "required": false
+  },
+  {
+    "name": "VIKUNJA_DATABASE_PASSWORD",
+    "default": "",
+    "description": "Database password",
+    "required": false
+  },
+  {
+    "name": "VIKUNJA_DATABASE_TYPE",
+    "default": "",
+    "description": "Database type",
+    "required": false
+  },
+  {
+    "name": "VIKUNJA_DATABASE_USER",
+    "default": "",
+    "description": "Database user",
+    "required": false
+  },
+  {
+    "name": "VIKUNJA_DATABASE_DATABASE",
+    "default": "",
+    "description": "Database name",
+    "required": false
+  },
+  {
+    "name": "VIKUNJA_SERVICE_JWTSECRET",
+    "default": "",
+    "description": "JWT secret",
+    "required": false
+  },
+  {
+    "name": "VIKUNJA_SERVICE_FRONTENDURL",
+    "default": "",
+    "description": "Frontend URL",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/app/vikunja/files",
+    "description": "Container Path: /app/vikunja/files"
+  }
+],
+    "ports": [
+  {
+    "container": "3456",
+    "host": "3456",
+    "protocol": "tcp",
+    "description": "Container Port: 3456"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8081"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

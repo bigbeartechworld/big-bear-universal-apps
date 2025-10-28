@@ -1,0 +1,127 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "passwordpusher",
+    "name": "Password Pusher",
+    "description": "Password Pusher is an open source application to communicate passwords over the web. Links to passwords expire after a certain number of views and/or time has passed.",
+    "tagline": "Give your users the tools to be secure by default.",
+    "version": "1.62.1",
+    "author": "BigBearTechWorld",
+    "developer": "pglombardo",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:09Z",
+    "updated": "2025-10-27T02:42:09Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/password-pusher.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/password-pusher.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/U17LWqXfOmU",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-pwpush",
+    "default_port": "5100",
+    "main_image": "pglombardo/pwpush",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "PWP__PW__EXPIRE_AFTER_DAYS_DEFAULT",
+    "default": "",
+    "description": "Password Expire After Days Default",
+    "required": false
+  },
+  {
+    "name": "PWP__PW__EXPIRE_AFTER_VIEWS_MIN",
+    "default": "",
+    "description": "Password Expire After Views Min",
+    "required": false
+  },
+  {
+    "name": "PWP__PW__RETRIEVAL_STEP_DEFAULT",
+    "default": "",
+    "description": "Password Retrieval Step Default",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/opt/PasswordPusher/storage",
+    "description": "Container Path: /opt/PasswordPusher/storage"
+  }
+],
+    "ports": [
+  {
+    "container": "5100",
+    "host": "5100",
+    "protocol": "tcp",
+    "description": "Container Port: 5100"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-password-pusher-to-bigbearcasaos/1508?u=dragonfire1119\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "5100"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "wordpress",
+    "name": "WordPress",
+    "description": "Initially started as a blogging tool in 2003, it has evolved into a highly flexible CMS that powers over 40% of the web (as of my last training data in 2022).",
+    "tagline": "WordPress",
+    "version": "6.8.3",
+    "author": "BigBearTechWorld",
+    "developer": "Automattic",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:26Z",
+    "updated": "2025-10-27T02:42:26Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/wordpress.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/wordpress.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/j5M4qlRCbYs",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64",
+  "armv7"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8080",
+    "main_image": "wordpress",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "WORDPRESS_DB_HOST",
+    "default": "",
+    "description": "Database host",
+    "required": false
+  },
+  {
+    "name": "WORDPRESS_DB_USER",
+    "default": "",
+    "description": "Database user",
+    "required": false
+  },
+  {
+    "name": "WORDPRESS_DB_PASSWORD",
+    "default": "",
+    "description": "Database password",
+    "required": false
+  },
+  {
+    "name": "WORDPRESS_DB_NAME",
+    "default": "",
+    "description": "Database name",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/var/www/html",
+    "description": "Container Path: /var/www/html"
+  }
+],
+    "ports": [
+  {
+    "container": "80",
+    "host": "80",
+    "protocol": "tcp",
+    "description": "Container Port: 80"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64",
+  "arm"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

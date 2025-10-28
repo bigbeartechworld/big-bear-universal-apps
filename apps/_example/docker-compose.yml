@@ -1,0 +1,31 @@
+name: example-app
+
+services:
+  app:
+    image: example/example-app:1.0.0
+    container_name: example-app
+    ports:
+      - "8080:8080"
+      - "9090:9090"
+    volumes:
+      - example-app_data:/app/data
+      - example-app_config:/app/config
+    environment:
+      - EXAMPLE_VAR=default_value
+      - TZ=UTC
+      - API_KEY=${API_KEY:-}
+    restart: unless-stopped
+    networks:
+      - example-network
+
+networks:
+  example-network:
+    driver: bridge
+
+volumes:
+  example-app_data:
+    name: example-app_data
+    driver: local
+  example-app_config:
+    name: example-app_config
+    driver: local

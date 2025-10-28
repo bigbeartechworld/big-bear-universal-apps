@@ -1,0 +1,104 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "actual-server",
+    "name": "Actual Budget",
+    "description": "Actual Budget is a super fast and privacy-focused app for managing your finances. At its heart is the well proven and much loved Envelope Budgeting methodology. You own your data and can do whatever you want with it. Featuring multi-device sync, optional end-to-end encryption and so much more.",
+    "tagline": "Local-first OpenSource Budget tool",
+    "version": "25.10.0",
+    "author": "BigBearCommunity",
+    "developer": "",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:41:35Z",
+    "updated": "2025-10-27T02:41:35Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/actual-budget.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/actual-budget.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/fa8j7ZfkYaM",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "5006",
+    "main_image": "actualbudget/actual-server",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/data",
+    "description": "Container Path: /data"
+  }
+],
+    "ports": [
+  {
+    "container": "5006",
+    "host": "5006",
+    "protocol": "tcp",
+    "description": "Container Port: 5006"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "5006"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

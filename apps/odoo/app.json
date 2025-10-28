@@ -1,0 +1,131 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "odoo",
+    "name": "Odoo",
+    "description": "Open-source business management software suite designed to streamline various aspects of business operations. With its modular structure, users can choose and integrate specific applications such as accounting, inventory, and sales. Odoo provides a user-friendly interface, scalability for businesses of all sizes, and is available in both community (free) and enterprise editions. Its integrated approach and customization options make it a popular choice for comprehensive ERP (Enterprise Resource Planning) solutions.",
+    "tagline": "Open-source business management software with modular applications for streamlined operations.",
+    "version": "19",
+    "author": "BigBearTechWorld",
+    "developer": "odoo",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:06Z",
+    "updated": "2025-10-27T02:42:06Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/odoo/logo.jpg",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/odoo/logo.jpg"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://community.bigbeartechworld.com/t/added-odoo-to-bigbearcasaos/1115?u=dragonfire1119",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-odoo",
+    "default_port": "8069",
+    "main_image": "odoo",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "HOST",
+    "default": "",
+    "description": "Container Host: big-bear-odoo-db",
+    "required": false
+  },
+  {
+    "name": "USER",
+    "default": "",
+    "description": "Container User: odoo",
+    "required": false
+  },
+  {
+    "name": "PASSWORD",
+    "default": "",
+    "description": "Container Password: a8d785b6-bc00-49cc-8675-d404093d1507",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/etc/odoo",
+    "description": "Container Path: /etc/odoo"
+  },
+  {
+    "container": "/mnt/extra-addons",
+    "description": "Container Path: /mnt/extra-addons"
+  }
+],
+    "ports": [
+  {
+    "container": "8069",
+    "host": "8069",
+    "protocol": "tcp",
+    "description": "Container Port: 8069"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Documentation: https://community.bigbeartechworld.com/t/added-odoo-to-bigbearcasaos/1115?u=dragonfire1119\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8069"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

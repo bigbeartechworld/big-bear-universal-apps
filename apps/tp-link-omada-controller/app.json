@@ -1,0 +1,206 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "tp-link-omada-controller",
+    "name": "TP-Link Omada Controller",
+    "description": "Docker image for TP-Link Omada Controller to control TP-Link Omada Hardware",
+    "tagline": "TP-Link Omada Controller",
+    "version": "5.15",
+    "author": "BigBearTechWorld",
+    "developer": "",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:21Z",
+    "updated": "2025-10-27T02:42:21Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/omada.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/omada.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/aECteVrkt6s",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "armv7",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8088",
+    "main_image": "mbentley/omada-controller",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+  {
+    "name": "PUID",
+    "default": "",
+    "description": "Process UID",
+    "required": false
+  },
+  {
+    "name": "PGID",
+    "default": "",
+    "description": "Process GID",
+    "required": false
+  },
+  {
+    "name": "MANAGE_HTTP_PORT",
+    "default": "",
+    "description": "Management HTTP Port",
+    "required": false
+  },
+  {
+    "name": "MANAGE_HTTPS_PORT",
+    "default": "",
+    "description": "Management HTTPS Port",
+    "required": false
+  },
+  {
+    "name": "PORTAL_HTTP_PORT",
+    "default": "",
+    "description": "User Portal HTTP Port",
+    "required": false
+  },
+  {
+    "name": "PORTAL_HTTPS_PORT",
+    "default": "",
+    "description": "User Portal HTTPS Port",
+    "required": false
+  },
+  {
+    "name": "PORT_APP_DISCOVERY",
+    "default": "",
+    "description": "App Discovery Port",
+    "required": false
+  },
+  {
+    "name": "PORT_ADOPT_V1",
+    "default": "",
+    "description": "Adopt V1 Port",
+    "required": false
+  },
+  {
+    "name": "PORT_UPGRADE_V1",
+    "default": "",
+    "description": "Upgrade V1 Port",
+    "required": false
+  },
+  {
+    "name": "PORT_MANAGER_V1",
+    "default": "",
+    "description": "Manager V1 Port",
+    "required": false
+  },
+  {
+    "name": "PORT_MANAGER_V2",
+    "default": "",
+    "description": "Manager V2 Port",
+    "required": false
+  },
+  {
+    "name": "PORT_DISCOVERY",
+    "default": "",
+    "description": "Discovery Port",
+    "required": false
+  },
+  {
+    "name": "SHOW_SERVER_LOGS",
+    "default": "",
+    "description": "Show Server Logs",
+    "required": false
+  },
+  {
+    "name": "SHOW_MONGODB_LOGS",
+    "default": "",
+    "description": "Show MongoDB Logs",
+    "required": false
+  },
+  {
+    "name": "SSL_CERT_NAME",
+    "default": "",
+    "description": "SSL Certificate Name",
+    "required": false
+  },
+  {
+    "name": "SSL_KEY_NAME",
+    "default": "",
+    "description": "SSL Key Name",
+    "required": false
+  },
+  {
+    "name": "TZ",
+    "default": "",
+    "description": "Timezone",
+    "required": false
+  }
+],
+    "volumes": [
+  {
+    "container": "/opt/tplink/EAPController/data",
+    "description": "Container Path: /opt/tplink/EAPController/data"
+  },
+  {
+    "container": "/opt/tplink/EAPController/logs",
+    "description": "Container Path: /opt/tplink/EAPController/logs"
+  }
+],
+    "ports": []
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8088"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "armv7",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

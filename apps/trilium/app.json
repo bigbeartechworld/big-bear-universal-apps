@@ -1,0 +1,104 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "trilium",
+    "name": "Trilium",
+    "description": "Build your personal knowledge base with Trilium Notes",
+    "tagline": "Build your personal knowledge base with Trilium Notes",
+    "version": "v0.99.3",
+    "author": "BigBearTechWorld",
+    "developer": "TriliumNext",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:21Z",
+    "updated": "2025-10-27T02:42:21Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/trilium-notes.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/trilium-notes.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/h5ISPmUuBHs",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8080",
+    "main_image": "triliumnext/trilium",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/home/node/trilium-data",
+    "description": "Container Path: /home/node/trilium-data"
+  }
+],
+    "ports": [
+  {
+    "container": "8080",
+    "host": "8080",
+    "protocol": "tcp",
+    "description": "Exposed port for the server"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

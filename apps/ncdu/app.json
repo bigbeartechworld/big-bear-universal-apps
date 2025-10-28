@@ -1,0 +1,124 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "ncdu",
+    "name": "Ncdu",
+    "description": "Ncdu is a disk usage analyzer with an ncurses interface. It is designed to find space hogs on a remote server where you don’t have an entire graphical setup available, but it is a useful tool even on regular desktop systems. Ncdu aims to be fast, simple and easy to use, and should be able to run in any minimal POSIX-like environment with ncurses installed. Software made by Yorhel at https://dev.yorhel.nl/ncdu",
+    "tagline": "Ncdu is a disk usage analyzer with an ncurses interface.",
+    "version": "0.0.4",
+    "author": "BigBearTechWorld",
+    "developer": "bigbeartechworld",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:02Z",
+    "updated": "2025-10-27T02:42:02Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/ncdu/logo.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/ncdu/logo.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/5RCTglGRXss",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+  "amd64",
+  "arm64"
+],
+    "platform": "linux",
+    "main_service": "big-bear-ncdu",
+    "default_port": "7681",
+    "main_image": "bigbeartechworld/big-bear-ncdu",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+  {
+    "container": "/proc",
+    "description": "Container Path: /proc"
+  },
+  {
+    "container": "/sys",
+    "description": "Container Path: /sys"
+  },
+  {
+    "container": "/dev",
+    "description": "Container Path: /dev"
+  },
+  {
+    "container": "/etc/localtime",
+    "description": "Container Path: /etc/localtime"
+  },
+  {
+    "container": "/casaos",
+    "description": "Container Path: /casaos"
+  }
+],
+    "ports": [
+  {
+    "container": "7681",
+    "host": "7681",
+    "protocol": "tcp",
+    "description": "Container Port: 7681"
+  }
+]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+  "before_install": {
+    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-ncdu-to-bigbearcasaos/1240?u=dragonfire1119\n"
+  }
+}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "7681"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+  "amd64",
+  "arm64"
+]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}
