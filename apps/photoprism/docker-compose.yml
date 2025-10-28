@@ -10,7 +10,7 @@ services:
     # Name of the container
     container_name: big-bear-photoprism
     # Image to be used for the container
-    image: photoprism/photoprism:240915
+    image: photoprism/photoprism:20220121
     environment:
       PHOTOPRISM_ADMIN_PASSWORD: casaos
       PHOTOPRISM_SITE_URL: "http://locahost/"
