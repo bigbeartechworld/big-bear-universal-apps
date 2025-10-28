@@ -69,14 +69,14 @@
     "casaos": {
       "supported": true,
       "port_map": "3000",
-      "folder_name": "Homepage"
+      "folder_name": "homepage"
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
       "categories": ["BigBearCasaOS", "selfhosted"],
       "administrator_only": false,
-      "folder_name": "Homepage"
+      "folder_name": "homepage"
     },
     "runtipi": {
       "supported": true,
@@ -85,18 +85,18 @@
   "amd64",
   "arm64"
 ],
-      "folder_name": "Homepage"
+      "folder_name": "homepage"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "folder_name": "Homepage"
+      "folder_name": "homepage"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "folder_name": "Homepage"
+      "folder_name": "homepage"
     },
     "umbrel": {
       "supported": true,
