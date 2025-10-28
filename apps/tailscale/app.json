@@ -42,72 +42,76 @@
   "deployment": {
     "environment_variables": [
   {
-    "name": null,
-    "default": "",
-    "description": "Tailscale Config",
+    "name": "TS_SERVE_CONFIG",
+    "default": "/config/serve-config.json",
+    "description": "Path to serve configuration file for persistent drive shares (file will be created if it doesn't exist)",
     "required": false
   },
   {
-    "name": null,
-    "default": "",
-    "description": "Accept DNS",
+    "name": "TS_ACCEPT_DNS",
+    "default": "false",
+    "description": "Accept DNS configuration from Tailscale",
     "required": false
   },
   {
-    "name": null,
-    "default": "",
-    "description": "Auth Once",
+    "name": "TS_AUTH_ONCE",
+    "default": "false",
+    "description": "Only authenticate once, then reuse credentials",
     "required": false
   },
   {
-    "name": null,
+    "name": "TS_AUTHKEY",
     "default": "",
-    "description": "Auth Key",
+    "description": "Tailscale authentication key (get from admin console)",
     "required": false
   },
   {
-    "name": null,
+    "name": "TS_HOSTNAME",
     "default": "",
-    "description": "Tailscale Hostname",
+    "description": "Hostname for this Tailscale node",
     "required": false
   },
   {
-    "name": null,
+    "name": "TS_ROUTES",
     "default": "",
-    "description": "Routes",
+    "description": "Subnet routes to advertise (comma-separated)",
     "required": false
   },
   {
-    "name": null,
+    "name": "TS_EXTRA_ARGS",
     "default": "",
-    "description": "Tailscale Extra Args",
+    "description": "Extra arguments to pass to 'tailscale up'",
     "required": false
   },
   {
-    "name": null,
-    "default": "",
-    "description": "Tailscale User Space",
+    "name": "TS_USERSPACE",
+    "default": "true",
+    "description": "Run with userspace networking",
     "required": false
   },
   {
-    "name": null,
-    "default": "",
-    "description": "Tailscale State Dir",
+    "name": "TS_STATE_DIR",
+    "default": "/var/lib/tailscale",
+    "description": "Directory to store Tailscale state",
     "required": false
   }
 ],
     "volumes": [
   {
     "container": "/var/lib/tailscale",
-    "description": "Container Path: /var/lib/tailscale"
+    "description": "Container Path: /var/lib/tailscale - Tailscale state directory"
   },
   {
     "container": "/config",
-    "description": "Container Path: /config"
+    "description": "Container Path: /config - Configuration files (including optional serve-config.json for persistent drive shares)"
   },
   {
     "container": "/dev/net/tun",
-    "description": "Container Path: /dev/net/tun"
+    "description": "Container Path: /dev/net/tun - TUN device for VPN"
+  },
+  {
+    "container": "/shared",
+    "description": "Container Path: /shared - Optional: Directory to share via Taildrive (map to your desired host path)"
   }
 ],
     "ports": [
