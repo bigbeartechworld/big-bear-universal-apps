@@ -194,21 +194,6 @@ Validate apps against the JSON schema:
 - **curl** - File downloads
 - **ImageMagick** (optional) - Icon conversion for Runtipi
 
-### Installation
-
-**Ubuntu/Debian:**
-```bash
-sudo apt-get update
-sudo apt-get install jq curl imagemagick
-sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
-sudo chmod +x /usr/local/bin/yq
-```
-
-**macOS:**
-```bash
-brew install jq yq curl imagemagick
-```
-
 ## 🎬 CI/CD
 
 Automated workflows handle:
@@ -220,9 +205,9 @@ Automated workflows handle:
 
 ## 💬 Community
 
-- **Discord:** [Big Bear Community](https://discord.gg/dExAgnrWH3)
-- **Forum:** [community.bigbeartechworld.com](https://community.bigbeartechworld.com)
 - **YouTube:** [Big Bear Tech World](https://youtube.com/@bigbeartechworld)
+- **Forum:** [community.bigbeartechworld.com](https://community.bigbeartechworld.com)
+- **Discord:** [Big Bear Community](https://discord.gg/dExAgnrWH3)
 
 ## 📄 License
 
