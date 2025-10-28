@@ -16,8 +16,8 @@
     "updated": "2025-10-27T02:42:01Z"
   },
   "visual": {
-    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/morphos/logo.png",
-    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/morphos/thumbnail.png",
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/morphos/logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/morphos/thumbnail.png",
     "screenshots": [
       "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/morphos/screenshots/screenshot-1.png",
       "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/morphos/screenshots/screenshot-2.png",
@@ -27,7 +27,7 @@
       "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/morphos/screenshots/screenshot-6.png",
       "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/morphos/screenshots/screenshot-7.png"
     ],
-    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/morphos/logo.png"
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/morphos/logo.png"
   },
   "resources": {
     "youtube": "https://youtu.be/dw7AEDbGqZY",
