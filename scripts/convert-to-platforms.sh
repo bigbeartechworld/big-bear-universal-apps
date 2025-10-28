@@ -766,19 +766,23 @@ convert_to_runtipi() {
     local labels_type=$(yq eval ".services[\"$app_name\"].labels | type" "$compose_file" 2>/dev/null || echo "null")
     if [[ "$labels_type" == "!!seq" ]]; then
         # Convert array format (- key=value) to object format (key: value)
-        local temp_labels=$(yq eval ".services[\"$app_name\"].labels" "$compose_file" | sed 's/^- //' | awk -F= '{print $1 ": \"" $2 "\""}')
-        yq eval ".services[\"$app_name\"].labels = {}" -i "$compose_file"
-        while IFS= read -r label; do
-            if [[ -n "$label" ]]; then
-                local key=$(echo "$label" | cut -d: -f1 | xargs)
-                local value=$(echo "$label" | cut -d: -f2- | xargs | sed 's/^"//' | sed 's/"$//')
-                yq eval ".services[\"$app_name\"].labels[\"$key\"] = \"$value\"" -i "$compose_file"
-            fi
-        done <<< "$temp_labels"
+        local temp_labels=$(yq eval ".services[\"$app_name\"].labels" "$compose_file" | sed 's/^- //' | awk -F= '{print $1 ": \"" $2 "\""}' 2>/dev/null || echo "")
+        if [[ -n "$temp_labels" ]]; then
+            yq eval ".services[\"$app_name\"].labels = {}" -i "$compose_file"
+            while IFS= read -r label; do
+                if [[ -n "$label" && "$label" =~ : ]]; then
+                    local key=$(echo "$label" | cut -d: -f1 | xargs)
+                    local value=$(echo "$label" | cut -d: -f2- | xargs | sed 's/^"//' | sed 's/"$//')
+                    if [[ -n "$key" ]]; then
+                        yq eval ".services[\"$app_name\"].labels[\"$key\"] = \"$value\"" -i "$compose_file" 2>/dev/null || true
+                    fi
+                fi
+            done <<< "$temp_labels"
+        fi
     fi
     
-    # Add runtipi.managed label
-    yq eval ".services[\"$app_name\"].labels[\"runtipi.managed\"] = \"true\"" -i "$compose_file"
+    # Add runtipi.managed label (create labels object if it doesn't exist)
+    yq eval ".services[\"$app_name\"].labels[\"runtipi.managed\"] = \"true\"" -i "$compose_file" 2>/dev/null || true
     
     # Add tipi_main_network (skip for certain apps)
     local network_exceptions=("pihole" "tailscale" "homeassistant" "plex")
@@ -1066,9 +1070,9 @@ convert_to_umbrel() {
     mv "$temp_compose" "$output_dir/docker-compose.yml"
     
     # Step 2: Remove all comments from the YAML file
-    # Umbrel apps should be clean without platform-specific comments
-    # Remove both comment-only lines and inline comments
-    sed -E 's/[[:space:]]*#.*$//g; /^[[:space:]]*$/d' "$output_dir/docker-compose.yml" > "$temp_compose"
+    # Remove blank lines but preserve all content (including # in values like dns ports)
+    # Comment removal was too aggressive and removed parts of values (e.g., 127.0.0.1#5353)
+    sed -E '/^[[:space:]]*$/d' "$output_dir/docker-compose.yml" > "$temp_compose"
     mv "$temp_compose" "$output_dir/docker-compose.yml"
     
     # Get the main service name
@@ -1090,7 +1094,8 @@ convert_to_umbrel() {
     # APP_HOST: container name that proxy connects to
     # APP_PORT: container's internal port (what the app listens on inside the container)
     if [[ "$uses_host_network" == "false" ]]; then
-        if yq eval '.services.app_proxy' "$output_dir/docker-compose.yml" > /dev/null 2>&1; then
+        local has_app_proxy=$(yq eval '.services.app_proxy // "null"' "$output_dir/docker-compose.yml" 2>/dev/null)
+        if [[ "$has_app_proxy" != "null" ]]; then
             # Update existing app_proxy and remove empty volumes if present
             yq eval "del(.services.app_proxy.volumes) | 
                      .services.app_proxy.environment.APP_HOST = \"${umbrel_folder_name}_${main_service}_1\" | 
@@ -1122,9 +1127,11 @@ convert_to_umbrel() {
         yq eval 'del(.volumes)' "$output_dir/docker-compose.yml" > "$temp_compose"
         mv "$temp_compose" "$output_dir/docker-compose.yml"
         
-        # Also remove any empty volumes arrays from services
-        yq eval 'del(.services.app_proxy.volumes)' "$output_dir/docker-compose.yml" > "$temp_compose"
-        mv "$temp_compose" "$output_dir/docker-compose.yml"
+        # Also remove any empty volumes arrays from services (only if app_proxy exists)
+        if [[ "$uses_host_network" == "false" ]]; then
+            yq eval 'del(.services.app_proxy.volumes)' "$output_dir/docker-compose.yml" > "$temp_compose" 2>/dev/null || cp "$output_dir/docker-compose.yml" "$temp_compose"
+            mv "$temp_compose" "$output_dir/docker-compose.yml"
+        fi
     fi
     
     # Create umbrel-app.yml with full app ID including prefix
