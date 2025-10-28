@@ -67,7 +67,7 @@
     "casaos": {
       "supported": true,
       "port_map": "3333",
-      "folder_name": "GemDigest"
+      "folder_name": "gemdigest"
     },
     "portainer": {
       "supported": true,
