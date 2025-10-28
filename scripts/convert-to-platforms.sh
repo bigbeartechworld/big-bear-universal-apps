@@ -762,7 +762,7 @@ convert_to_runtipi() {
     yq eval ".services[\"$app_name\"].container_name = \"$app_name\"" -i "$compose_file"
     
     # Add runtipi.managed label
-    yq eval ".services[\"$app_name\"].labels.\"runtipi.managed\" = \"true\"" -i "$compose_file"
+    yq eval ".services[\"$app_name\"].labels[\"runtipi.managed\"] = \"true\"" -i "$compose_file"
     
     # Add tipi_main_network (skip for certain apps)
     local network_exceptions=("pihole" "tailscale" "homeassistant" "plex")
@@ -934,7 +934,7 @@ convert_to_cosmos() {
   "cosmos-installer": {
     $routes
     "services": {
-      "$app_name": "$(jq -c ".services.$APP_MAIN_SERVICE // .services | to_entries[0].value" "$app_dir/docker-compose.yml")"
+      "$app_name": $(yq eval -o=json ".services.[\"$APP_MAIN_SERVICE\"] // (.services | to_entries[0].value)" "$app_dir/docker-compose.yml")
     }
   }
 }
