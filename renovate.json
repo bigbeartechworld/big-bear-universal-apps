@@ -2,5 +2,77 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
-  ]
+  ],
+  "stabilityDays": 3,
+  "automerge": true,
+  "dependencyDashboard": true,
+  "enabledManagers": ["docker-compose", "dockerfile"],
+  "labels": ["dependencies", "renovate"],
+  "hostRules": [
+    {
+      "matchHost": "docker.io",
+      "concurrentRequestLimit": 2
+    },
+    {
+      "matchHost": "index.docker.io",
+      "concurrentRequestLimit": 2
+    }
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": "docker",
+      "matchPackagePatterns": ["^guacamole/"],
+      "groupName": "guacamole docker images"
+    },
+    {
+      "matchDatasources": "docker",
+      "matchPackagePatterns": ["^vikunja/"],
+      "groupName": "vikunja docker images"
+    },
+    {
+      "matchDatasources": "docker",
+      "matchPackagePatterns": ["^ghcr\\.io/immich-app/"],
+      "groupName": "immich docker images"
+    },
+    {
+      "matchDatasources": "docker",
+      "matchPackagePatterns": [
+        "^([^\\/]+\\/)?(mysql|mariadb|mongodb|mongo|postgres|redis|memcached|clickhouse-server|clickhouse|nginx|couchdb|documentserver)(:|$)"
+      ],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": ["ghcr.io/immich-app/postgres"],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": [
+        "rocket.chat",
+        "ghcr.io/immich-app/immich-machine-learning",
+        "ghcr.io/immich-app/immich-server"
+      ],
+      "automerge": false
+    },
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    },
+    {
+      "matchPackageNames": ["ghcr.io/diced/zipline"],
+      "matchFileNames": ["apps/zipline/docker-compose.yml"],
+      "enabled": false
+    },
+    {
+      "matchDatasources": "docker",
+      "matchPackagePatterns": [".*"],
+      "matchCurrentVersion": "/^latest$/",
+      "automerge": false,
+      "groupName": "latest-tag-packages"
+    }
+  ],
+  "regexManagers": []
 }
