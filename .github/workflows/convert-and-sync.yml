@@ -1,5 +1,10 @@
 name: Convert and Sync Apps
 
+# Explicit permissions for security
+permissions:
+  contents: write      # Required for checkout and sync operations
+  pull-requests: write # Required for creating and auto-merging PRs
+
 on:
   push:
     branches:
@@ -214,16 +219,16 @@ jobs:
           cd big-bear-universal-apps
           
           # Build sync command with options
-          SYNC_CMD="./scripts/sync-to-platforms.sh -p ${{ matrix.platform }} --force"
+          SYNC_ARGS="-p ${{ matrix.platform }} --force"
           
           # Add app filter if specified
           if [ -n "${{ github.event.inputs.app_name }}" ]; then
-            SYNC_CMD="$SYNC_CMD --app ${{ github.event.inputs.app_name }}"
+            SYNC_ARGS="$SYNC_ARGS --app ${{ github.event.inputs.app_name }}"
             echo "🎯 Syncing specific app: ${{ github.event.inputs.app_name }}"
           fi
           
-          echo "📦 Executing sync: $SYNC_CMD"
-          eval $SYNC_CMD
+          echo "📦 Executing sync with args: $SYNC_ARGS"
+          ./scripts/sync-to-platforms.sh $SYNC_ARGS
 
       - name: Create Pull Request
         if: steps.check-platform.outputs.should_sync == 'true'
