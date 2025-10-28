@@ -761,6 +761,22 @@ convert_to_runtipi() {
     # Set container name
     yq eval ".services[\"$app_name\"].container_name = \"$app_name\"" -i "$compose_file"
     
+    # Convert labels from array to object format if needed (some apps use array syntax)
+    # Check if labels exists and is an array
+    local labels_type=$(yq eval ".services[\"$app_name\"].labels | type" "$compose_file" 2>/dev/null || echo "null")
+    if [[ "$labels_type" == "!!seq" ]]; then
+        # Convert array format (- key=value) to object format (key: value)
+        local temp_labels=$(yq eval ".services[\"$app_name\"].labels" "$compose_file" | sed 's/^- //' | awk -F= '{print $1 ": \"" $2 "\""}')
+        yq eval ".services[\"$app_name\"].labels = {}" -i "$compose_file"
+        while IFS= read -r label; do
+            if [[ -n "$label" ]]; then
+                local key=$(echo "$label" | cut -d: -f1 | xargs)
+                local value=$(echo "$label" | cut -d: -f2- | xargs | sed 's/^"//' | sed 's/"$//')
+                yq eval ".services[\"$app_name\"].labels[\"$key\"] = \"$value\"" -i "$compose_file"
+            fi
+        done <<< "$temp_labels"
+    fi
+    
     # Add runtipi.managed label
     yq eval ".services[\"$app_name\"].labels[\"runtipi.managed\"] = \"true\"" -i "$compose_file"
     
