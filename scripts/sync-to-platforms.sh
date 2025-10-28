@@ -253,7 +253,41 @@ sync_platform() {
         sync_app_to_platform "$platform" "$app_name"
     done
     
+    # Post-sync tasks for specific platforms
+    post_sync_platform "$platform"
+    
     echo ""
+}
+
+# Post-sync tasks for specific platforms
+post_sync_platform() {
+    local platform="$1"
+    
+    case "$platform" in
+        portainer)
+            # Copy master templates.json and .template_id_counter to root
+            local master_template="$CONVERTED_DIR/portainer/templates.json"
+            local counter_file="$CONVERTED_DIR/portainer/.template_id_counter"
+            
+            if [[ -f "$master_template" ]]; then
+                if [[ "$DRY_RUN" == "true" ]]; then
+                    print_info "[DRY RUN] Would copy templates.json to Portainer root"
+                else
+                    cp "$master_template" "$PORTAINER_REPO/templates.json"
+                    print_success "Copied templates.json to Portainer root"
+                fi
+            fi
+            
+            if [[ -f "$counter_file" ]]; then
+                if [[ "$DRY_RUN" == "true" ]]; then
+                    print_info "[DRY RUN] Would copy .template_id_counter to Portainer root"
+                else
+                    cp "$counter_file" "$PORTAINER_REPO/.template_id_counter"
+                    print_success "Copied .template_id_counter to Portainer root"
+                fi
+            fi
+            ;;
+    esac
 }
 
 # Clean orphaned apps
