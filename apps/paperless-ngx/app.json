@@ -5,7 +5,7 @@
     "name": "Paperless-ngx",
     "description": "Paperless-ngx is a community-supported open-source document management system that transforms your physical documents into a searchable online archive so you can keep, well, less paper.",
     "tagline": "Paperless-ngx",
-    "version": "2.19.2",
+    "version": "2.19.3",
     "author": "BigBearTechWorld",
     "developer": "paperless-ngx",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:09Z",
-    "updated": "2025-10-27T02:42:09Z"
+    "updated": "2025-10-29T20:44:11.937Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/paperless-ngx.png",
@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-paperless-ngx",
     "default_port": "8000",
@@ -41,98 +41,98 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "PAPERLESS_REDIS",
-    "default": "",
-    "description": "Container Path: /usr/src/paperless/data",
-    "required": false
-  },
-  {
-    "name": "PAPERLESS_DBHOST",
-    "default": "",
-    "description": "Container Path: /usr/src/paperless/data",
-    "required": false
-  },
-  {
-    "name": "PAPERLESS_ADMIN_USER",
-    "default": "",
-    "description": "Container Path: /usr/src/paperless/data",
-    "required": false
-  },
-  {
-    "name": "PAPERLESS_ADMIN_PASSWORD",
-    "default": "",
-    "description": "Container Path: /usr/src/paperless/data",
-    "required": false
-  },
-  {
-    "name": "PAPERLESS_TIKA_ENABLED",
-    "default": "",
-    "description": "Container Path: /usr/src/paperless/data",
-    "required": false
-  },
-  {
-    "name": "PAPERLESS_TIKA_GOTENBERG_ENDPOINT",
-    "default": "",
-    "description": "Container Path: /usr/src/paperless/data",
-    "required": false
-  },
-  {
-    "name": "PAPERLESS_TIKA_ENDPOINT",
-    "default": "",
-    "description": "Container Path: /usr/src/paperless/data",
-    "required": false
-  },
-  {
-    "name": "PAPERLESS_URL",
-    "default": "",
-    "description": "Container Path: /usr/src/paperless/data",
-    "required": false
-  },
-  {
-    "name": "COMPOSE_PROJECT_NAME",
-    "default": "",
-    "description": "Container Path: /usr/src/paperless/data",
-    "required": false
-  },
-  {
-    "name": "PAPERLESS_CSRF_TRUSTED_ORIGINS",
-    "default": "",
-    "description": "Container Path: /usr/src/paperless/data",
-    "required": false
-  }
-],
+      {
+        "name": "PAPERLESS_REDIS",
+        "default": "",
+        "description": "Container Path: /usr/src/paperless/data",
+        "required": false
+      },
+      {
+        "name": "PAPERLESS_DBHOST",
+        "default": "",
+        "description": "Container Path: /usr/src/paperless/data",
+        "required": false
+      },
+      {
+        "name": "PAPERLESS_ADMIN_USER",
+        "default": "",
+        "description": "Container Path: /usr/src/paperless/data",
+        "required": false
+      },
+      {
+        "name": "PAPERLESS_ADMIN_PASSWORD",
+        "default": "",
+        "description": "Container Path: /usr/src/paperless/data",
+        "required": false
+      },
+      {
+        "name": "PAPERLESS_TIKA_ENABLED",
+        "default": "",
+        "description": "Container Path: /usr/src/paperless/data",
+        "required": false
+      },
+      {
+        "name": "PAPERLESS_TIKA_GOTENBERG_ENDPOINT",
+        "default": "",
+        "description": "Container Path: /usr/src/paperless/data",
+        "required": false
+      },
+      {
+        "name": "PAPERLESS_TIKA_ENDPOINT",
+        "default": "",
+        "description": "Container Path: /usr/src/paperless/data",
+        "required": false
+      },
+      {
+        "name": "PAPERLESS_URL",
+        "default": "",
+        "description": "Container Path: /usr/src/paperless/data",
+        "required": false
+      },
+      {
+        "name": "COMPOSE_PROJECT_NAME",
+        "default": "",
+        "description": "Container Path: /usr/src/paperless/data",
+        "required": false
+      },
+      {
+        "name": "PAPERLESS_CSRF_TRUSTED_ORIGINS",
+        "default": "",
+        "description": "Container Path: /usr/src/paperless/data",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/app/data/configs",
-    "description": "Container Path: /app/data/configs"
-  },
-  {
-    "container": "/app/public/icons",
-    "description": "Container Path: /app/public/icons"
-  },
-  {
-    "container": "/data",
-    "description": "Container Path: /data"
-  }
-],
+      {
+        "container": "/app/data/configs",
+        "description": "Container Path: /app/data/configs"
+      },
+      {
+        "container": "/app/public/icons",
+        "description": "Container Path: /app/public/icons"
+      },
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      }
+    ],
     "ports": [
-  {
-    "container": "8000",
-    "host": "8000",
-    "protocol": "tcp",
-    "description": "Container Port: 8000"
-  }
-]
+      {
+        "container": "8000",
+        "host": "8000",
+        "protocol": "tcp",
+        "description": "Container Port: 8000"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-paperlessngx-to-bigbearcasaos/1954#p-3625-documentation-4\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-paperlessngx-to-bigbearcasaos/1954#p-3625-documentation-4\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -142,16 +142,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
