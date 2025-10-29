@@ -2,7 +2,7 @@ name: example-app
 
 services:
   app:
-    image: example/example-app:1.0.0
+    image: bigbeartechworld/big-bear-minio:RELEASE.2025-10-15T17-29-55Z
     container_name: example-app
     ports:
       - "8080:8080"

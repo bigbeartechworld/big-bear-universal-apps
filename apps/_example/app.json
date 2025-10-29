@@ -5,7 +5,7 @@
     "name": "Example App",
     "description": "This is an example app demonstrating the Universal App Format. It shows all the required and optional fields you can use when creating a new app definition.",
     "tagline": "A simple example app for the Universal format",
-    "version": "1.0.0",
+    "version": "RELEASE.2025-10-15T17-29-55Z",
     "author": "BigBearCommunity",
     "developer": "Example Developer",
     "category": "Utilities",
