@@ -18,6 +18,8 @@
   "homepage": "https://github.com/bigbeartechworld/big-bear-universal-apps#readme",
   "devDependencies": {
     "@types/bun": "latest",
+    "js-yaml": "^4.1.0",
+    "semver": "^7.6.0",
     "typescript": "^5.4.5"
   }
 }
