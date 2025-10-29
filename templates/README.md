@@ -219,4 +219,4 @@ Maintained by [BigBearTechWorld](https://github.com/bigbeartechworld) and the Bi
 
 ---
 
-**Questions?** Open an issue or join our [Discord](https://discord.gg/bigbeartech)!
+**Questions?** Open an issue or join our [Discord](https://discord.gg/dExAgnrWH3)!
