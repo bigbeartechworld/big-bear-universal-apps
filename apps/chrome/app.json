@@ -49,7 +49,7 @@
   },
   {
     "name": "LAUNCH_URL",
-    "default": "",
+    "default": "https://community.bigbeartechworld.com/",
     "description": "Launch URL",
     "required": false
   }
@@ -95,7 +95,7 @@
       "routes_required": true
     },
     "umbrel": {
-      "supported": true,
+      "supported": false,
       "manifest_version": 1
     }
   },
