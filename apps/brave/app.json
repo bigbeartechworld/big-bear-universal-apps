@@ -95,7 +95,7 @@
       "routes_required": true
     },
     "umbrel": {
-      "supported": true,
+      "supported": false,
       "manifest_version": 1
     }
   },
