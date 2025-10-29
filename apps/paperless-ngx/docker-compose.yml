@@ -93,7 +93,7 @@ services:
   # Apache Tika project and is configured to use the minimal image.
   big-bear-paperless-ngx-tika:
     container_name: big-bear-paperless-ngx-tika
-    image: apache/tika:2.9.2.1
+    image: apache/tika:3.2.3.0
     restart: unless-stopped
     # The Tika service is connected to the big-bear-paperless-ngx-network
     # network.
