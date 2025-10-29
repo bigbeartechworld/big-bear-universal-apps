@@ -94,11 +94,17 @@ async function updateAppVersion() {
           continue;
         }
 
-        const newVersion = versionMatch[1];
+        let newVersion = versionMatch[1];
         console.log(`Extracted version: ${newVersion}`);
 
-        // Skip if version is "latest" or other non-semver tags
-        if (newVersion === 'latest' || newVersion === 'stable' || !newVersion.match(/^\d+/)) {
+        // Skip if version is "latest" or "stable"
+        if (newVersion === 'latest' || newVersion === 'stable') {
+          console.log(`Skipping non-semver version tag: ${newVersion}`);
+          continue;
+        }
+        
+        // Check if version starts with digits or 'v' followed by digits
+        if (!newVersion.match(/^(v)?\d+/)) {
           console.log(`Skipping non-semver version tag: ${newVersion}`);
           continue;
         }
