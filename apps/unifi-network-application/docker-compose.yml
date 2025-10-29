@@ -4,18 +4,6 @@
 name: big-bear-unifi-network-application
 # Service definitions for the big-bear-homarr application
 services:
-  # MongoDB database for the application
-  unifi-db:
-    image: mongo:6.0.11
-    container_name: big-bear-unifi-db
-    volumes:
-      - unifi-network-application_db_data:/data/db # MongoDB data persistence
-      - unifi-network-application_db_init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-    ports:
-      - 27017:27017 # MongoDB default port
-    networks: # Networks to join
-      - unifi-nework-application-network
-    restart: unless-stopped # Restart policy
   # Main application service
   app: # Name of the service
     image: linuxserver/unifi-network-application:9.5.21 # Docker image to use
@@ -50,6 +38,18 @@ services:
       - unifi-nework-application-network
     depends_on:
       - unifi-db
+  # MongoDB database for the application
+  unifi-db:
+    image: mongo:6.0.11
+    container_name: big-bear-unifi-db
+    volumes:
+      - unifi-network-application_db_data:/data/db # MongoDB data persistence
+      - unifi-network-application_db_init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    ports:
+      - 27017:27017 # MongoDB default port
+    networks: # Networks to join
+      - unifi-nework-application-network
+    restart: unless-stopped # Restart policy
 # Networks used by the application
 networks:
   # Define the network for AdGuard Home

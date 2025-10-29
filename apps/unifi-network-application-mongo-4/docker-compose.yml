@@ -4,18 +4,6 @@
 name: big-bear-unifi-network-application-mongo-4
 # Service definitions for the big-bear-unifi-network-application-mongo-4 application
 services:
-  # MongoDB database for the application
-  unifi-db:
-    image: mongo:4.4.28
-    container_name: big-bear-unifi-db
-    volumes:
-      - unifi-network-application-mongo-4_db_data:/data/db # MongoDB data persistence
-      - /DATA/AppData/big-bear-unifi-network-application/db/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-    ports:
-      - 27017:27017 # MongoDB default port
-    networks: # Networks to join
-      - unifi-nework-application-network
-    restart: unless-stopped # Restart policy
   # Main application service
   app: # Name of the service
     image: linuxserver/unifi-network-application:9.5.21 # Docker image to use
@@ -50,15 +38,30 @@ services:
       - unifi-nework-application-network
     depends_on:
       - unifi-db
+  # MongoDB database for the application
+  unifi-db:
+    image: mongo:4.4.28
+    container_name: big-bear-unifi-db
+    volumes:
+      - unifi-network-application-mongo-4_db_data:/data/db # MongoDB data persistence
+      - /DATA/AppData/big-bear-unifi-network-application/db/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    ports:
+      - 27017:27017 # MongoDB default port
+    networks: # Networks to join
+      - unifi-nework-application-network
+    restart: unless-stopped # Restart policy
 # Networks used by the application
 networks:
   # Define the network for AdGuard Home
   unifi-nework-application-network:
     driver: bridge
+# Volumes for data persistence
 volumes:
+  # Configuration data for the application
   unifi-network-application-mongo-4_config:
     name: unifi-network-application-mongo-4_config
     driver: local
+  # Database data for MongoDB
   unifi-network-application-mongo-4_db_data:
     name: unifi-network-application-mongo-4_db_data
     driver: local
