@@ -120,9 +120,9 @@ get_platform_dest_dir() {
         casaos) echo "$CASAOS_REPO/Apps" ;;
         portainer) echo "$PORTAINER_REPO/Apps" ;;
         runtipi) echo "$RUNTIPI_REPO/apps" ;;
-        dockge) echo "$DOCKGE_REPO/stacks" ;;
+        dockge) echo "$DOCKGE_REPO/Apps" ;;
         cosmos) echo "$COSMOS_REPO/servapps" ;;
-        umbrel) echo "$UMBREL_REPO/apps" ;;
+        umbrel) echo "$UMBREL_REPO" ;;
         *) echo "" ;;
     esac
 }
