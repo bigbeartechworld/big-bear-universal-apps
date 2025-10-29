@@ -5,9 +5,9 @@
     "name": "Firefox",
     "description": "This Image contains a browser-accessible version of Firefox.",
     "tagline": "Firefox",
-    "version": "1.15.0-rolling",
+    "version": "1.2404.1",
     "author": "BigBearTechWorld",
-    "developer": "kasmweb",
+    "developer": "linuxserver",
     "category": "BigBearCasaOS",
     "license": "",
     "homepage": "",
@@ -35,22 +35,34 @@
 ],
     "platform": "linux",
     "main_service": "firefox",
-    "default_port": "6902",
-    "main_image": "kasmweb/firefox",
+    "default_port": "3000",
+    "main_image": "lscr.io/linuxserver/firefox",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {
     "environment_variables": [
   {
-    "name": "VNC_PW",
-    "default": "",
-    "description": "VNC Password",
+    "name": "PUID",
+    "default": "1000",
+    "description": "User ID",
     "required": false
   },
   {
-    "name": "LAUNCH_URL",
-    "default": "",
-    "description": "Launch URL",
+    "name": "PGID",
+    "default": "1000",
+    "description": "Group ID",
+    "required": false
+  },
+  {
+    "name": "TZ",
+    "default": "Etc/UTC",
+    "description": "Timezone",
+    "required": false
+  },
+  {
+    "name": "FIREFOX_CLI",
+    "default": "https://community.bigbeartechworld.com/",
+    "description": "Default URL to open",
     "required": false
   }
 ],
@@ -62,14 +74,14 @@
     "path": "",
     "tips": {
   "before_install": {
-    "en_us": "Username: kasm_user\n"
+    "en_us": "Access the browser at http://your-server:3000 or https://your-server:3001\n"
   }
 }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "6902"
+      "port_map": "3000"
     },
     "portainer": {
       "supported": true,
