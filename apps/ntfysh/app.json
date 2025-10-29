@@ -5,7 +5,7 @@
     "name": "Ntfy.sh",
     "description": "ntfy (pronounced notify) is a simple HTTP-based pub-sub notification service. It allows you to send notifications to your phone or desktop via scripts from any computer, and/or using a REST API. It's infinitely flexible, and 100% free software.",
     "tagline": "A simple HTTP-based pub-sub notification service",
-    "version": "2.14.0",
+    "version": "v2.14.0",
     "author": "BigBearTechWorld",
     "developer": "",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:05Z",
-    "updated": "2025-10-27T02:42:05Z"
+    "updated": "2025-10-29T01:57:44.244Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ntfy.png",
@@ -30,10 +30,10 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "armv7",
-  "arm64"
-],
+      "amd64",
+      "armv7",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "7200",
@@ -42,31 +42,31 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "TZ",
-    "default": "",
-    "description": "Timezone",
-    "required": false
-  }
-],
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Timezone",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/var/cache/ntfy",
-    "description": "Container Path: /var/cache/ntfy"
-  },
-  {
-    "container": "/etc/ntfy",
-    "description": "Container Path: /etc/ntfy"
-  }
-],
+      {
+        "container": "/var/cache/ntfy",
+        "description": "Container Path: /var/cache/ntfy"
+      },
+      {
+        "container": "/etc/ntfy",
+        "description": "Container Path: /etc/ntfy"
+      }
+    ],
     "ports": [
-  {
-    "container": "80",
-    "host": "80",
-    "protocol": "tcp",
-    "description": "Container Port: 80"
-  }
-]
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp",
+        "description": "Container Port: 80"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -81,17 +81,20 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "armv7",
-  "arm64"
-]
+        "amd64",
+        "armv7",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

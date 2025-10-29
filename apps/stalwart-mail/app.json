@@ -5,7 +5,7 @@
     "name": "Stalwart Mail",
     "description": "Stalwart Mail Server is an open-source mail server solution with JMAP, IMAP4, POP3, and SMTP support and a wide range of modern features. It is written in Rust and designed to be secure, fast, robust and scalable.",
     "tagline": "Secure & Modern All-in-One Mail Server (IMAP, JMAP, POP3, SMTP) 🛡️",
-    "version": "0.14.0",
+    "version": "v0.14.0",
     "author": "BigBearTechWorld",
     "developer": "stalwartlabs",
     "category": "BigBearCasaOS",
@@ -13,14 +13,14 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:19Z",
-    "updated": "2025-10-27T02:42:19Z"
+    "updated": "2025-10-29T01:57:44.243Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/stalwart.png",
     "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/stalwart-mail/thumbnail.gif",
     "screenshots": [
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/stalwart-mail/thumbnail.gif"
-],
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/stalwart-mail/thumbnail.gif"
+    ],
     "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/stalwart.png"
   },
   "resources": {
@@ -32,9 +32,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-stalwart-mail",
     "default_port": "8080",
@@ -44,64 +44,64 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/opt/stalwart",
-    "description": "Container Path: /opt/stalwart"
-  }
-],
+      {
+        "container": "/opt/stalwart",
+        "description": "Container Path: /opt/stalwart"
+      }
+    ],
     "ports": [
-  {
-    "container": "8080",
-    "host": "8080",
-    "protocol": "tcp",
-    "description": "Container Port: 8080"
-  },
-  {
-    "container": "25",
-    "host": "25",
-    "protocol": "tcp",
-    "description": "Container Port: 25"
-  },
-  {
-    "container": "143",
-    "host": "143",
-    "protocol": "tcp",
-    "description": "Container Port: 143"
-  },
-  {
-    "container": "465",
-    "host": "465",
-    "protocol": "tcp",
-    "description": "Container Port: 465"
-  },
-  {
-    "container": "587",
-    "host": "587",
-    "protocol": "tcp",
-    "description": "Container Port: 587"
-  },
-  {
-    "container": "993",
-    "host": "993",
-    "protocol": "tcp",
-    "description": "Container Port: 993"
-  },
-  {
-    "container": "4190",
-    "host": "4190",
-    "protocol": "tcp",
-    "description": "Container Port: 4190"
-  }
-]
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Container Port: 8080"
+      },
+      {
+        "container": "25",
+        "host": "25",
+        "protocol": "tcp",
+        "description": "Container Port: 25"
+      },
+      {
+        "container": "143",
+        "host": "143",
+        "protocol": "tcp",
+        "description": "Container Port: 143"
+      },
+      {
+        "container": "465",
+        "host": "465",
+        "protocol": "tcp",
+        "description": "Container Port: 465"
+      },
+      {
+        "container": "587",
+        "host": "587",
+        "protocol": "tcp",
+        "description": "Container Port: 587"
+      },
+      {
+        "container": "993",
+        "host": "993",
+        "protocol": "tcp",
+        "description": "Container Port: 993"
+      },
+      {
+        "container": "4190",
+        "host": "4190",
+        "protocol": "tcp",
+        "description": "Container Port: 4190"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-stalwart-to-bigbearcasaos/3342#p-5723-documentation-3\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-stalwart-to-bigbearcasaos/3342#p-5723-documentation-3\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -111,16 +111,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

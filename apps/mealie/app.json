@@ -5,7 +5,7 @@
     "name": "Mealie",
     "description": "Mealie is a self hosted recipe manager and meal planner with a RestAPI backend and a reactive frontend application built in Vue for a pleasant user experience for the whole family. Easily add recipes into your database by providing the url and mealie will automatically import the relevant data or add a family recipe with the UI editor",
     "tagline": "Mealie",
-    "version": "3.3.2",
+    "version": "v3.3.2",
     "author": "BigBearTechWorld",
     "developer": "mealie-recipes",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:00Z",
-    "updated": "2025-10-27T02:42:00Z"
+    "updated": "2025-10-29T01:57:44.262Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/mealie.png",
@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "9925",
@@ -42,28 +42,28 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/app/data",
-    "description": "Container Path: /app/data"
-  }
-],
+      {
+        "container": "/app/data",
+        "description": "Container Path: /app/data"
+      }
+    ],
     "ports": [
-  {
-    "container": "9000",
-    "host": "9000",
-    "protocol": "tcp",
-    "description": "Container Port: 9000"
-  }
-]
+      {
+        "container": "9000",
+        "host": "9000",
+        "protocol": "tcp",
+        "description": "Container Port: 9000"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this: https://community.bigbeartechworld.com/t/added-mealie-to-bigbearcasaos/587\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this: https://community.bigbeartechworld.com/t/added-mealie-to-bigbearcasaos/587\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -73,16 +73,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

@@ -5,7 +5,7 @@
     "name": "AdGuard Home (HOST)",
     "description": "Use if you're going to use Adguard Home as a DHCP server. AdGuard Home is a network-wide software for blocking ads and tracking. After you set it up, it'll cover all your home devices, and you won't need any client-side software for that. Learn more on our official Github repository.",
     "tagline": "Network Mode is host. Network-wide ads & trackers blocking DNS server.",
-    "version": "0.107.68",
+    "version": "v0.107.68",
     "author": "BigBearTechWorld",
     "developer": "AdGuardTeam",
     "category": "BigBearCasaOS",
@@ -13,16 +13,16 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:35Z",
-    "updated": "2025-10-27T02:41:35Z"
+    "updated": "2025-10-29T01:57:44.267Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/adguard-home.png",
     "thumbnail": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/AdGuardHome/thumbnail.png",
     "screenshots": [
-  "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/AdGuardHome/screenshot-1.png",
-  "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/AdGuardHome/screenshot-2.png",
-  "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/AdGuardHome/screenshot-3.png"
-],
+      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/AdGuardHome/screenshot-1.png",
+      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/AdGuardHome/screenshot-2.png",
+      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/AdGuardHome/screenshot-3.png"
+    ],
     "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/adguard-home.png"
   },
   "resources": {
@@ -34,10 +34,10 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64",
-  "armv7"
-],
+      "amd64",
+      "arm64",
+      "armv7"
+    ],
     "platform": "linux",
     "main_service": "big-bear-adguard-home-host",
     "default_port": "80",
@@ -47,44 +47,44 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/opt/adguardhome/work",
-    "description": "Container Path: /opt/adguardhome/work"
-  },
-  {
-    "container": "/opt/adguardhome/conf",
-    "description": "Container Path: /opt/adguardhome/conf"
-  }
-],
+      {
+        "container": "/opt/adguardhome/work",
+        "description": "Container Path: /opt/adguardhome/work"
+      },
+      {
+        "container": "/opt/adguardhome/conf",
+        "description": "Container Path: /opt/adguardhome/conf"
+      }
+    ],
     "ports": [
-  {
-    "container": "53",
-    "host": "53",
-    "protocol": "tcp",
-    "description": "Container Port: 53"
-  },
-  {
-    "container": "3000",
-    "host": "3000",
-    "protocol": "tcp",
-    "description": "Container Port: 3000"
-  },
-  {
-    "container": "80",
-    "host": "80",
-    "protocol": "tcp",
-    "description": "Container Port: 80"
-  }
-]
+      {
+        "container": "53",
+        "host": "53",
+        "protocol": "tcp",
+        "description": "Container Port: 53"
+      },
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp",
+        "description": "Container Port: 3000"
+      },
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp",
+        "description": "Container Port: 80"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Run this script:\n\n```\nbash -c \"$(wget -qLO - https://raw.githubusercontent.com/bigbeartechworld/big-bear-scripts/master/generate-adguard-home-config/run.sh)\"\n```\n\nAfter running this script, you need to restart the container.\n"
-  }
-}
+      "before_install": {
+        "en_us": "Run this script:\n\n```\nbash -c \"$(wget -qLO - https://raw.githubusercontent.com/bigbeartechworld/big-bear-scripts/master/generate-adguard-home-config/run.sh)\"\n```\n\nAfter running this script, you need to restart the container.\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -94,17 +94,20 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64",
-  "arm"
-]
+        "amd64",
+        "arm64",
+        "arm"
+      ]
     },
     "dockge": {
       "supported": true,

@@ -5,7 +5,7 @@
     "name": "Tailscale",
     "description": "Zero config VPN. Installs on any device in minutes, manages firewall rules for you, and works from anywhere.",
     "tagline": "The easiest, most secure way to use WireGuard and 2FA.",
-    "version": "1.88.4",
+    "version": "v1.88.4",
     "author": "BigBearTechWorld",
     "developer": "tailscale",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:20Z",
-    "updated": "2025-10-27T02:42:20Z"
+    "updated": "2025-10-29T01:57:44.264Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/tailscale.png",
@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-tailscale",
     "default_port": "",
@@ -41,87 +41,87 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "TS_SERVE_CONFIG",
-    "default": "/config/serve-config.json",
-    "description": "Path to serve configuration file for persistent drive shares (file will be created if it doesn't exist)",
-    "required": false
-  },
-  {
-    "name": "TS_ACCEPT_DNS",
-    "default": "false",
-    "description": "Accept DNS configuration from Tailscale",
-    "required": false
-  },
-  {
-    "name": "TS_AUTH_ONCE",
-    "default": "false",
-    "description": "Only authenticate once, then reuse credentials",
-    "required": false
-  },
-  {
-    "name": "TS_AUTHKEY",
-    "default": "",
-    "description": "Tailscale authentication key (get from admin console)",
-    "required": false
-  },
-  {
-    "name": "TS_HOSTNAME",
-    "default": "",
-    "description": "Hostname for this Tailscale node",
-    "required": false
-  },
-  {
-    "name": "TS_ROUTES",
-    "default": "",
-    "description": "Subnet routes to advertise (comma-separated)",
-    "required": false
-  },
-  {
-    "name": "TS_EXTRA_ARGS",
-    "default": "",
-    "description": "Extra arguments to pass to 'tailscale up'",
-    "required": false
-  },
-  {
-    "name": "TS_USERSPACE",
-    "default": "true",
-    "description": "Run with userspace networking",
-    "required": false
-  },
-  {
-    "name": "TS_STATE_DIR",
-    "default": "/var/lib/tailscale",
-    "description": "Directory to store Tailscale state",
-    "required": false
-  }
-],
+      {
+        "name": "TS_SERVE_CONFIG",
+        "default": "/config/serve-config.json",
+        "description": "Path to serve configuration file for persistent drive shares (file will be created if it doesn't exist)",
+        "required": false
+      },
+      {
+        "name": "TS_ACCEPT_DNS",
+        "default": "false",
+        "description": "Accept DNS configuration from Tailscale",
+        "required": false
+      },
+      {
+        "name": "TS_AUTH_ONCE",
+        "default": "false",
+        "description": "Only authenticate once, then reuse credentials",
+        "required": false
+      },
+      {
+        "name": "TS_AUTHKEY",
+        "default": "",
+        "description": "Tailscale authentication key (get from admin console)",
+        "required": false
+      },
+      {
+        "name": "TS_HOSTNAME",
+        "default": "",
+        "description": "Hostname for this Tailscale node",
+        "required": false
+      },
+      {
+        "name": "TS_ROUTES",
+        "default": "",
+        "description": "Subnet routes to advertise (comma-separated)",
+        "required": false
+      },
+      {
+        "name": "TS_EXTRA_ARGS",
+        "default": "",
+        "description": "Extra arguments to pass to 'tailscale up'",
+        "required": false
+      },
+      {
+        "name": "TS_USERSPACE",
+        "default": "true",
+        "description": "Run with userspace networking",
+        "required": false
+      },
+      {
+        "name": "TS_STATE_DIR",
+        "default": "/var/lib/tailscale",
+        "description": "Directory to store Tailscale state",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/var/lib/tailscale",
-    "description": "Container Path: /var/lib/tailscale - Tailscale state directory"
-  },
-  {
-    "container": "/config",
-    "description": "Container Path: /config - Configuration files (including optional serve-config.json for persistent drive shares)"
-  },
-  {
-    "container": "/dev/net/tun",
-    "description": "Container Path: /dev/net/tun - TUN device for VPN"
-  },
-  {
-    "container": "/shared",
-    "description": "Container Path: /shared - Optional: Directory to share via Taildrive (map to your desired host path)"
-  }
-],
+      {
+        "container": "/var/lib/tailscale",
+        "description": "Container Path: /var/lib/tailscale - Tailscale state directory"
+      },
+      {
+        "container": "/config",
+        "description": "Container Path: /config - Configuration files (including optional serve-config.json for persistent drive shares)"
+      },
+      {
+        "container": "/dev/net/tun",
+        "description": "Container Path: /dev/net/tun - TUN device for VPN"
+      },
+      {
+        "container": "/shared",
+        "description": "Container Path: /shared - Optional: Directory to share via Taildrive (map to your desired host path)"
+      }
+    ],
     "ports": [
-  {
-    "container": "7575",
-    "host": "7575",
-    "protocol": "tcp",
-    "description": "Container Port: 7575"
-  }
-]
+      {
+        "container": "7575",
+        "host": "7575",
+        "protocol": "tcp",
+        "description": "Container Port: 7575"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -136,16 +136,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

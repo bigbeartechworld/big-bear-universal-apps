@@ -5,7 +5,7 @@
     "name": "Wireguard Easy 14 (Legacy)",
     "description": "Access your homeserver from anywhere even on your mobile device. Wireguard-easy is a simple tool to configure and manage Wireguard VPN servers. It is written in Go and uses the official Wireguard client. You have to open and redirect port 51820 to your homeserver in order to connect.",
     "tagline": "VPN server for your homeserver",
-    "version": "14",
+    "version": "15",
     "author": "BigBearTechWorld",
     "developer": "WeeJeWel",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:25Z",
-    "updated": "2025-10-27T02:42:25Z"
+    "updated": "2025-10-29T01:57:44.271Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/wg-easy/logo.png",
@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-wg-easy",
     "default_port": "51821",
@@ -42,34 +42,34 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/etc/wireguard",
-    "description": "Container Path: /etc/wireguard"
-  }
-],
+      {
+        "container": "/etc/wireguard",
+        "description": "Container Path: /etc/wireguard"
+      }
+    ],
     "ports": [
-  {
-    "container": "51820",
-    "host": "51820",
-    "protocol": "tcp",
-    "description": "Container Port: 51820"
-  },
-  {
-    "container": "51821",
-    "host": "51821",
-    "protocol": "tcp",
-    "description": "Container Port: 51821"
-  }
-]
+      {
+        "container": "51820",
+        "host": "51820",
+        "protocol": "tcp",
+        "description": "Container Port: 51820"
+      },
+      {
+        "container": "51821",
+        "host": "51821",
+        "protocol": "tcp",
+        "description": "Container Port: 51821"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-wg-easy-to-bigbearcasaos/1631#p-3101-documentation-3\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-wg-easy-to-bigbearcasaos/1631#p-3101-documentation-3\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -79,16 +79,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

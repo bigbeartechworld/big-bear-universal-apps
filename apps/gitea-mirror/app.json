@@ -5,7 +5,7 @@
     "name": "Gitea Mirror",
     "description": "Gitea Mirror is a modern web app for automatically mirroring repositories from GitHub to your self-hosted Gitea instance. It features a user-friendly interface to sync public, private, or starred GitHub repos, mirror entire organizations with structure preservation, and optionally mirror issues and labels. The application includes smart filtering, detailed logs, and scheduled automatic mirroring.",
     "tagline": "Mirror GitHub repositories to Gitea",
-    "version": "3.8.10",
+    "version": "v3.8.10",
     "author": "RayLabs HQ",
     "developer": "raylabs.io",
     "category": "BigBearCasaOS",
@@ -13,19 +13,19 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:49Z",
-    "updated": "2025-10-27T02:41:49Z"
+    "updated": "2025-10-29T01:57:44.253Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/gitea-mirror/logo-new.png",
     "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/gitea-mirror/1.png",
     "screenshots": [
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/gitea-mirror/1.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/gitea-mirror/2.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/gitea-mirror/3.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/gitea-mirror/4.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/gitea-mirror/5.png",
-  "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/gitea-mirror/6.png"
-],
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/gitea-mirror/1.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/gitea-mirror/2.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/gitea-mirror/3.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/gitea-mirror/4.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/gitea-mirror/5.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/gitea-mirror/6.png"
+    ],
     "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/gitea-mirror/logo-new.png"
   },
   "resources": {
@@ -37,9 +37,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-gitea-mirror",
     "default_port": "4321",
@@ -48,60 +48,60 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "NODE_ENV",
-    "default": "",
-    "description": "Node Environment: production",
-    "required": false
-  },
-  {
-    "name": "HOST",
-    "default": "",
-    "description": "Host Interface: 0.0.0.0",
-    "required": false
-  },
-  {
-    "name": "PORT",
-    "default": "",
-    "description": "Application Port: 4321",
-    "required": false
-  },
-  {
-    "name": "BETTER_AUTH_URL",
-    "default": "",
-    "description": "Better Auth URL for authentication",
-    "required": false
-  },
-  {
-    "name": "BETTER_AUTH_SECRET",
-    "default": "",
-    "description": "Secret key for Better Auth authentication (change in production)",
-    "required": false
-  }
-],
+      {
+        "name": "NODE_ENV",
+        "default": "",
+        "description": "Node Environment: production",
+        "required": false
+      },
+      {
+        "name": "HOST",
+        "default": "",
+        "description": "Host Interface: 0.0.0.0",
+        "required": false
+      },
+      {
+        "name": "PORT",
+        "default": "",
+        "description": "Application Port: 4321",
+        "required": false
+      },
+      {
+        "name": "BETTER_AUTH_URL",
+        "default": "",
+        "description": "Better Auth URL for authentication",
+        "required": false
+      },
+      {
+        "name": "BETTER_AUTH_SECRET",
+        "default": "",
+        "description": "Secret key for Better Auth authentication (change in production)",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/app/data",
-    "description": "Container Path: /app/data"
-  }
-],
+      {
+        "container": "/app/data",
+        "description": "Container Path: /app/data"
+      }
+    ],
     "ports": [
-  {
-    "container": "4321",
-    "host": "4321",
-    "protocol": "tcp",
-    "description": "Container Port: 4321"
-  }
-]
+      {
+        "container": "4321",
+        "host": "4321",
+        "protocol": "tcp",
+        "description": "Container Port: 4321"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-gitea-mirror-to-bigbearcasaos/3515?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-gitea-mirror-to-bigbearcasaos/3515?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -111,16 +111,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
