@@ -5,7 +5,7 @@
     "name": "Unifi Network Application",
     "description": "The Unifi-network-application software is a powerful, enterprise wireless software engine ideal for high-density client deployments requiring low latency and high uptime performance.",
     "tagline": "The Unifi-network-application",
-    "version": "6.0.11",
+    "version": "9.5.21",
     "author": "BigBearTechWorld",
     "developer": "Ubiquiti",
     "category": "BigBearCasaOS",
@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "8443",
@@ -201,9 +201,9 @@
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
