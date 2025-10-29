@@ -5,7 +5,7 @@
     "name": "Uptime Kuma",
     "description": "A fancy self-hosted monitoring tool",
     "tagline": "A fancy self-hosted monitoring tool",
-    "version": "1",
+    "version": "2",
     "author": "BigBearTechWorld",
     "developer": "louislam",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:23Z",
-    "updated": "2025-10-27T02:42:23Z"
+    "updated": "2025-10-29T01:57:44.282Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/uptime-kuma.png",
@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "3001",
@@ -42,19 +42,19 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/app/data",
-    "description": "Container Path: /app/data"
-  }
-],
+      {
+        "container": "/app/data",
+        "description": "Container Path: /app/data"
+      }
+    ],
     "ports": [
-  {
-    "container": "3001",
-    "host": "3001",
-    "protocol": "tcp",
-    "description": "Container Port: 3001"
-  }
-]
+      {
+        "container": "3001",
+        "host": "3001",
+        "protocol": "tcp",
+        "description": "Container Port: 3001"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -69,16 +69,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

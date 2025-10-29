@@ -5,7 +5,7 @@
     "name": "Homer",
     "description": "A dead simple static HOMepage for your servER to keep your services on hand, from a simple yaml configuration file.",
     "tagline": "Homer",
-    "version": "25.10.1",
+    "version": "v25.10.1",
     "author": "BigBearTechWorld",
     "developer": "bastienwirtz",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:52Z",
-    "updated": "2025-10-27T02:41:52Z"
+    "updated": "2025-10-29T01:57:44.253Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/homer.png",
@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "8080",
@@ -41,27 +41,27 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "INIT_ASSETS",
-    "default": "",
-    "description": "Initialize assets",
-    "required": false
-  }
-],
+      {
+        "name": "INIT_ASSETS",
+        "default": "",
+        "description": "Initialize assets",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/www/assets",
-    "description": "Container Path: /www/assets"
-  }
-],
+      {
+        "container": "/www/assets",
+        "description": "Container Path: /www/assets"
+      }
+    ],
     "ports": [
-  {
-    "container": "8080",
-    "host": "8080",
-    "protocol": "tcp",
-    "description": "Container Port: 8080"
-  }
-]
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Container Port: 8080"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -76,16 +76,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

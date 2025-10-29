@@ -5,7 +5,7 @@
     "name": "Pocket ID",
     "description": "Simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to your services.",
     "tagline": "Passkey-based OIDC authentication",
-    "version": "1.14",
+    "version": "v1.14",
     "author": "techieanant",
     "developer": "pocket-id",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:14Z",
-    "updated": "2025-10-27T02:42:14Z"
+    "updated": "2025-10-29T01:57:44.280Z"
   },
   "visual": {
     "icon": "https://pocket-id.org/img/logo.png",
@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-pocketid",
     "default_port": "1411",
@@ -41,60 +41,60 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "APP_URL",
-    "default": "",
-    "description": "Application URL for pocket-id",
-    "required": false
-  },
-  {
-    "name": "TRUST_PROXY",
-    "default": "",
-    "description": "Whether to trust proxy headers",
-    "required": false
-  },
-  {
-    "name": "MAXMIND_LICENSE_KEY",
-    "default": "",
-    "description": "MaxMind license key for geolocation (optional)",
-    "required": false
-  },
-  {
-    "name": "PUID",
-    "default": "",
-    "description": "User ID for file permissions",
-    "required": false
-  },
-  {
-    "name": "PGID",
-    "default": "",
-    "description": "Group ID for file permissions",
-    "required": false
-  }
-],
+      {
+        "name": "APP_URL",
+        "default": "",
+        "description": "Application URL for pocket-id",
+        "required": false
+      },
+      {
+        "name": "TRUST_PROXY",
+        "default": "",
+        "description": "Whether to trust proxy headers",
+        "required": false
+      },
+      {
+        "name": "MAXMIND_LICENSE_KEY",
+        "default": "",
+        "description": "MaxMind license key for geolocation (optional)",
+        "required": false
+      },
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "User ID for file permissions",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Group ID for file permissions",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/app/data",
-    "description": "Container Path: /app/data"
-  }
-],
+      {
+        "container": "/app/data",
+        "description": "Container Path: /app/data"
+      }
+    ],
     "ports": [
-  {
-    "container": "1411",
-    "host": "1411",
-    "protocol": "tcp",
-    "description": "Container Port: 1411"
-  }
-]
+      {
+        "container": "1411",
+        "host": "1411",
+        "protocol": "tcp",
+        "description": "Container Port: 1411"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-pocket-id-to-bigbearcasaos/3552#p-6013-documentation-4\n"
-  }
-}
+      "before_install": {
+        "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-pocket-id-to-bigbearcasaos/3552#p-6013-documentation-4\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -104,16 +104,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

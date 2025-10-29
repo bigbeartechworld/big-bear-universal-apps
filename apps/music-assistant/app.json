@@ -5,7 +5,7 @@
     "name": "Music Assistant",
     "description": "Music Assistant is a music library manager for your offline and online music sources which can easily stream your favourite music to a wide range of supported players and be combined with the power of Home Assistant!",
     "tagline": "Home Automation",
-    "version": "2.6.0",
+    "version": "2.6.1",
     "author": "Tofil",
     "developer": "music-assistant",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:02Z",
-    "updated": "2025-10-27T02:42:02Z"
+    "updated": "2025-10-29T01:57:44.252Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/music-assistant/logo.png",
@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-music-assistant-server",
     "default_port": "8095",
@@ -42,11 +42,11 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/data",
-    "description": "Container Path: /data"
-  }
-],
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      }
+    ],
     "ports": []
   },
   "ui": {
@@ -62,16 +62,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

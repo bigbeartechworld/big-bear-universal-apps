@@ -5,7 +5,7 @@
     "name": "Send Visee",
     "description": "A fork of Mozilla's Firefox Send. Mozilla discontinued Send, this fork is a community effort to keep the project up-to-date and alive.",
     "tagline": "A fork of Mozilla's Firefox Send.",
-    "version": "3.4.27",
+    "version": "v3.4.27",
     "author": "BigBearTechWorld",
     "developer": "timvisee",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:18Z",
-    "updated": "2025-10-27T02:42:18Z"
+    "updated": "2025-10-29T01:57:44.248Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/send-visee.png",

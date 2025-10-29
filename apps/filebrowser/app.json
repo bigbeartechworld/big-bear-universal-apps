@@ -5,7 +5,7 @@
     "name": "Filebrowser",
     "description": "Reliable and Performant File Management Desktop Sync and File Sharing Tool.",
     "tagline": "Access your homeserver files from your browser",
-    "version": "2.44.2-s6",
+    "version": "v2.44.2-s6",
     "author": "BigBearTechWorld",
     "developer": "filebrowser",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:47Z",
-    "updated": "2025-10-27T02:41:47Z"
+    "updated": "2025-10-29T01:57:44.270Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/filebrowser-quantum.png",
@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-filebrowser",
     "default_port": "8080",
@@ -41,66 +41,66 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "PUID",
-    "default": "",
-    "description": "User ID",
-    "required": false
-  },
-  {
-    "name": "PGID",
-    "default": "",
-    "description": "Group ID",
-    "required": false
-  }
-],
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "User ID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Group ID",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/srv/app-data",
-    "description": "Container Path: /srv/app-data"
-  },
-  {
-    "container": "/srv/documents",
-    "description": "Container Path: /srv/documents"
-  },
-  {
-    "container": "/srv/downloads",
-    "description": "Container Path: /srv/downloads"
-  },
-  {
-    "container": "/srv/gallery",
-    "description": "Container Path: /srv/gallery"
-  },
-  {
-    "container": "/srv/media",
-    "description": "Container Path: /srv/media"
-  },
-  {
-    "container": "/database",
-    "description": "Container Path: /database"
-  },
-  {
-    "container": "/config",
-    "description": "Container Path: /config"
-  }
-],
+      {
+        "container": "/srv/app-data",
+        "description": "Container Path: /srv/app-data"
+      },
+      {
+        "container": "/srv/documents",
+        "description": "Container Path: /srv/documents"
+      },
+      {
+        "container": "/srv/downloads",
+        "description": "Container Path: /srv/downloads"
+      },
+      {
+        "container": "/srv/gallery",
+        "description": "Container Path: /srv/gallery"
+      },
+      {
+        "container": "/srv/media",
+        "description": "Container Path: /srv/media"
+      },
+      {
+        "container": "/database",
+        "description": "Container Path: /database"
+      },
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
     "ports": [
-  {
-    "container": "80",
-    "host": "80",
-    "protocol": "tcp",
-    "description": "Container Port: 80"
-  }
-]
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp",
+        "description": "Container Port: 80"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-filebrowser-to-bigbearcasaos/1934#p-3590-documentation-4\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-filebrowser-to-bigbearcasaos/1934#p-3590-documentation-4\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -110,16 +110,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
