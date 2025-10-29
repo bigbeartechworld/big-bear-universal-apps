@@ -1293,8 +1293,9 @@ convert_to_umbrel() {
             rm -f "$output_dir/docker-compose.yml.bak"
         done <<< "$named_volumes"
         
-        # Remove any trailing quotes that may be left after replacement (cleanup pass)
-        sed -i.bak 's|"\( *#.*\)$|\1|g' "$output_dir/docker-compose.yml"
+        # Remove any trailing quotes that may be left after volume path replacement (cleanup pass)
+        # Only target lines with ${APP_DATA_DIR} to avoid breaking other quoted values
+        sed -i.bak 's|\(${APP_DATA_DIR}/[^:]*\)"\( *#.*\)$|\1\2|g' "$output_dir/docker-compose.yml"
         rm -f "$output_dir/docker-compose.yml.bak"
         
         # Remove the volumes section entirely
