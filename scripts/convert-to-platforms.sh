@@ -1272,13 +1272,24 @@ convert_to_umbrel() {
         # For each service, replace volume references
         while IFS= read -r vol_name; do
             [[ -z "$vol_name" ]] && continue
+            
+            # Convert volume name to a proper path by replacing underscores with slashes
+            # e.g., "audiobookshelf_data_config" -> "data/config"
+            # Remove common app name prefixes to get cleaner paths
+            local clean_path="$vol_name"
+            # Remove app-specific prefix (e.g., "audiobookshelf_" from "audiobookshelf_data_config")
+            # This preserves backward compatibility with existing Umbrel app structures
+            clean_path=$(echo "$clean_path" | sed -E "s/^[a-z0-9-]+_//")
+            # Convert remaining underscores to slashes for hierarchical paths
+            clean_path=$(echo "$clean_path" | tr '_' '/')
+            
             # Use sed to replace volume mounts in the file
-            # Pattern: "volume_name:/path" becomes "${APP_DATA_DIR}/volume_name:/path"
+            # Pattern: "volume_name:/path" becomes "${APP_DATA_DIR}/clean_path:/path"
             # Handle both quoted and unquoted volume references
-            sed -i.bak "s|: ${vol_name}:|: \${APP_DATA_DIR}/${vol_name}:|g" "$output_dir/docker-compose.yml"
-            sed -i.bak "s|- ${vol_name}:|- \${APP_DATA_DIR}/${vol_name}:|g" "$output_dir/docker-compose.yml"
-            sed -i.bak "s|: \"${vol_name}:|: \${APP_DATA_DIR}/${vol_name}:|g" "$output_dir/docker-compose.yml"
-            sed -i.bak "s|- \"${vol_name}:|- \${APP_DATA_DIR}/${vol_name}:|g" "$output_dir/docker-compose.yml"
+            sed -i.bak "s|: ${vol_name}:|: \${APP_DATA_DIR}/${clean_path}:|g" "$output_dir/docker-compose.yml"
+            sed -i.bak "s|- ${vol_name}:|- \${APP_DATA_DIR}/${clean_path}:|g" "$output_dir/docker-compose.yml"
+            sed -i.bak "s|: \"${vol_name}:|: \${APP_DATA_DIR}/${clean_path}:|g" "$output_dir/docker-compose.yml"
+            sed -i.bak "s|- \"${vol_name}:|- \${APP_DATA_DIR}/${clean_path}:|g" "$output_dir/docker-compose.yml"
             rm -f "$output_dir/docker-compose.yml.bak"
         done <<< "$named_volumes"
         
