@@ -1254,12 +1254,12 @@ convert_to_umbrel() {
         if [[ "$has_app_proxy" != "null" ]]; then
             # Update existing app_proxy and remove empty volumes if present
             yq eval "del(.services.app_proxy.volumes) | 
-                     .services.app_proxy.environment.APP_HOST = \"${umbrel_folder_name}_${main_service}_1\" | 
+                     .services.app_proxy.environment.APP_HOST = \"${folder_name}_${main_service}_1\" | 
                      .services.app_proxy.environment.APP_PORT = \"$container_port\"" "$output_dir/docker-compose.yml" > "$temp_compose"
             mv "$temp_compose" "$output_dir/docker-compose.yml"
         else
             # Add new app_proxy service at the beginning of services
-            yq eval ".services = {\"app_proxy\": {\"environment\": {\"APP_HOST\": \"${umbrel_folder_name}_${main_service}_1\", \"APP_PORT\": \"$container_port\"}}} + .services" "$output_dir/docker-compose.yml" > "$temp_compose"
+            yq eval ".services = {\"app_proxy\": {\"environment\": {\"APP_HOST\": \"${folder_name}_${main_service}_1\", \"APP_PORT\": \"$container_port\"}}} + .services" "$output_dir/docker-compose.yml" > "$temp_compose"
             mv "$temp_compose" "$output_dir/docker-compose.yml"
         fi
     fi
@@ -1274,10 +1274,17 @@ convert_to_umbrel() {
             [[ -z "$vol_name" ]] && continue
             # Use sed to replace volume mounts in the file
             # Pattern: "volume_name:/path" becomes "${APP_DATA_DIR}/volume_name:/path"
+            # Handle both quoted and unquoted volume references
             sed -i.bak "s|: ${vol_name}:|: \${APP_DATA_DIR}/${vol_name}:|g" "$output_dir/docker-compose.yml"
             sed -i.bak "s|- ${vol_name}:|- \${APP_DATA_DIR}/${vol_name}:|g" "$output_dir/docker-compose.yml"
+            sed -i.bak "s|: \"${vol_name}:|: \${APP_DATA_DIR}/${vol_name}:|g" "$output_dir/docker-compose.yml"
+            sed -i.bak "s|- \"${vol_name}:|- \${APP_DATA_DIR}/${vol_name}:|g" "$output_dir/docker-compose.yml"
             rm -f "$output_dir/docker-compose.yml.bak"
         done <<< "$named_volumes"
+        
+        # Remove any trailing quotes that may be left after replacement (cleanup pass)
+        sed -i.bak 's|"\( *#.*\)$|\1|g' "$output_dir/docker-compose.yml"
+        rm -f "$output_dir/docker-compose.yml.bak"
         
         # Remove the volumes section entirely
         yq eval 'del(.volumes)' "$output_dir/docker-compose.yml" > "$temp_compose"
@@ -1289,6 +1296,11 @@ convert_to_umbrel() {
             mv "$temp_compose" "$output_dir/docker-compose.yml"
         fi
     fi
+    
+    # Convert CasaOS-style bind mounts to Umbrel format
+    # Replace /DATA/AppData/$AppID with ${APP_DATA_DIR}
+    sed -i.bak 's|/DATA/AppData/\$AppID|\${APP_DATA_DIR}|g' "$output_dir/docker-compose.yml"
+    rm -f "$output_dir/docker-compose.yml.bak"
     
     # Create umbrel-app.yml with full app ID including prefix
     # For network_mode: host apps, use container_port (the actual port the app binds to)
@@ -1311,7 +1323,7 @@ convert_to_umbrel() {
     
     cat > "$output_dir/umbrel-app.yml" << EOF
 manifestVersion: 1
-id: $umbrel_folder_name
+id: $folder_name
 category: $APP_CATEGORY
 name: $APP_NAME
 version: "$APP_VERSION"
