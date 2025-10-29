@@ -781,10 +781,14 @@ convert_to_runtipi() {
         fi
     fi
     
-    # Add runtipi.managed label (create labels object if it doesn't exist)
-    yq eval ".services[\"$app_name\"].labels[\"runtipi.managed\"] = \"true\"" -i "$compose_file" 2>/dev/null || true
+    # Add runtipi.managed label to ALL services
+    local all_services=$(yq eval '.services | keys | .[]' "$compose_file")
+    while IFS= read -r service_name; do
+        [[ -z "$service_name" ]] && continue
+        yq eval ".services[\"$service_name\"].labels[\"runtipi.managed\"] = \"true\"" -i "$compose_file" 2>/dev/null || true
+    done <<< "$all_services"
     
-    # Add tipi_main_network (skip for certain apps)
+    # Replace all networks with tipi_main_network only (skip for certain apps)
     local network_exceptions=("pihole" "tailscale" "homeassistant" "plex")
     local skip_network=false
     for exception in "${network_exceptions[@]}"; do
@@ -795,9 +799,139 @@ convert_to_runtipi() {
     done
     
     if [[ "$skip_network" == "false" ]]; then
-        yq eval ".services[\"$app_name\"].networks = [\"tipi_main_network\"]" -i "$compose_file"
-        yq eval '.networks.tipi_main_network.external = true' -i "$compose_file"
+        # Remove all custom networks from services and set only tipi_main_network
+        all_services=$(yq eval '.services | keys | .[]' "$compose_file")
+        while IFS= read -r service_name; do
+            [[ -z "$service_name" ]] && continue
+            # Replace networks with only tipi_main_network
+            yq eval ".services[\"$service_name\"].networks = [\"tipi_main_network\"]" -i "$compose_file"
+        done <<< "$all_services"
+        
+        # Remove all custom networks and add only tipi_main_network
+        yq eval 'del(.networks) | .networks.tipi_main_network.external = true' -i "$compose_file"
     fi
+    
+    # Convert named volumes to ${APP_DATA_DIR} bind mounts for Runtipi
+    local volume_names=$(yq eval '.volumes | keys | .[]' "$compose_file" 2>/dev/null || echo "")
+    
+    if [[ -n "$volume_names" ]]; then
+        # Get all service names
+        local all_services=$(yq eval '.services | keys | .[]' "$compose_file")
+        
+        # For each service
+        while IFS= read -r service_name; do
+            [[ -z "$service_name" ]] && continue
+            
+            # For each named volume, convert references in this service to Runtipi bind mounts
+            while IFS= read -r vol_name; do
+                [[ -z "$vol_name" ]] && continue
+                
+                # Get the count of volumes in this service
+                local vol_count=$(yq eval ".services.$service_name.volumes | length" "$compose_file" 2>/dev/null || echo "0")
+                
+                for ((j=0; j<vol_count; j++)); do
+                    local vol_entry=$(yq eval ".services.$service_name.volumes[$j]" "$compose_file")
+                    
+                    # Check if this volume entry uses the named volume
+                    if [[ "$vol_entry" == "${vol_name}:"* ]]; then
+                        # Extract container path
+                        local container_path="${vol_entry#*:}"
+                        # Remove any trailing options (e.g., :ro, :rw)
+                        local mount_options=""
+                        if [[ "$container_path" == *":ro" ]]; then
+                            mount_options=":ro"
+                            container_path="${container_path%:ro}"
+                        elif [[ "$container_path" == *":rw" ]]; then
+                            mount_options=":rw"
+                            container_path="${container_path%:rw}"
+                        fi
+                        
+                        # Convert to ${APP_DATA_DIR} format
+                        local runtipi_path="\${APP_DATA_DIR}/data/${vol_name}:${container_path}${mount_options}"
+                        
+                        # Replace the volume entry
+                        yq eval ".services.$service_name.volumes[$j] = \"$runtipi_path\"" -i "$compose_file"
+                    fi
+                done
+            done <<< "$volume_names"
+        done <<< "$all_services"
+        
+        # Remove the volumes section at the top level (named volumes are no longer needed)
+        yq eval 'del(.volumes)' -i "$compose_file"
+    fi
+    
+    # Convert relative path volumes to ${APP_DATA_DIR} format
+    local all_services=$(yq eval '.services | keys | .[]' "$compose_file")
+    while IFS= read -r service_name; do
+        [[ -z "$service_name" ]] && continue
+        
+        local vol_count=$(yq eval ".services.$service_name.volumes | length" "$compose_file" 2>/dev/null || echo "0")
+        
+        for ((j=0; j<vol_count; j++)); do
+            local vol_entry=$(yq eval ".services.$service_name.volumes[$j]" "$compose_file")
+            
+            # Check if this is a relative path volume (starts with ./)
+            if [[ "$vol_entry" == "./"* ]]; then
+                # Extract the path after ./
+                local relative_path="${vol_entry#./}"
+                local container_path="${relative_path#*:}"
+                local host_path="${relative_path%%:*}"
+                
+                # Remove any trailing options (e.g., :ro, :rw)
+                local mount_options=""
+                if [[ "$container_path" == *":ro" ]]; then
+                    mount_options=":ro"
+                    container_path="${container_path%:ro}"
+                elif [[ "$container_path" == *":rw" ]]; then
+                    mount_options=":rw"
+                    container_path="${container_path%:rw}"
+                fi
+                
+                # Convert to ${APP_DATA_DIR} format
+                local runtipi_path="\${APP_DATA_DIR}/${host_path}:${container_path}${mount_options}"
+                
+                # Replace the volume entry
+                yq eval ".services.$service_name.volumes[$j] = \"$runtipi_path\"" -i "$compose_file"
+            fi
+        done
+    done <<< "$all_services"
+    
+    # Convert ports to use ${APP_PORT} for the main service
+    # Get all service names
+    local all_services=$(yq eval '.services | keys | .[]' "$compose_file")
+    while IFS= read -r service_name; do
+        [[ -z "$service_name" ]] && continue
+        
+        # Only convert ports for the main service (app_name)
+        if [[ "$service_name" == "$app_name" ]]; then
+            local port_count=$(yq eval ".services.$service_name.ports | length" "$compose_file" 2>/dev/null || echo "0")
+            
+            for ((p=0; p<port_count; p++)); do
+                local port_entry=$(yq eval ".services.$service_name.ports[$p]" "$compose_file")
+                
+                # Extract container port from port entry (after the colon)
+                local container_port="${port_entry#*:}"
+                # Remove any protocol suffix (e.g., /tcp, /udp)
+                local protocol=""
+                if [[ "$container_port" == *"/tcp" ]]; then
+                    protocol="/tcp"
+                    container_port="${container_port%/tcp}"
+                elif [[ "$container_port" == *"/udp" ]]; then
+                    protocol="/udp"
+                    container_port="${container_port%/udp}"
+                fi
+                
+                # Convert to ${APP_PORT}:container_port format
+                local runtipi_port="\${APP_PORT}:${container_port}${protocol}"
+                
+                # Replace the port entry
+                yq eval ".services.$service_name.ports[$p] = \"$runtipi_port\"" -i "$compose_file"
+                
+                # Only convert the first port mapping to use ${APP_PORT}
+                break
+            done
+        fi
+    done <<< "$all_services"
     
     # Determine port
     local runtipi_port="$APP_DEFAULT_PORT"
