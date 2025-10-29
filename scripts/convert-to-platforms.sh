@@ -830,27 +830,39 @@ convert_to_runtipi() {
                 local vol_count=$(yq eval ".services.$service_name.volumes | length" "$compose_file" 2>/dev/null || echo "0")
                 
                 for ((j=0; j<vol_count; j++)); do
-                    local vol_entry=$(yq eval ".services.$service_name.volumes[$j]" "$compose_file")
+                    # Check if this is long-form syntax (has a 'source' key)
+                    local vol_source=$(yq eval ".services.$service_name.volumes[$j].source" "$compose_file" 2>/dev/null)
                     
-                    # Check if this volume entry uses the named volume
-                    if [[ "$vol_entry" == "${vol_name}:"* ]]; then
-                        # Extract container path
-                        local container_path="${vol_entry#*:}"
-                        # Remove any trailing options (e.g., :ro, :rw)
-                        local mount_options=""
-                        if [[ "$container_path" == *":ro" ]]; then
-                            mount_options=":ro"
-                            container_path="${container_path%:ro}"
-                        elif [[ "$container_path" == *":rw" ]]; then
-                            mount_options=":rw"
-                            container_path="${container_path%:rw}"
+                    if [[ -n "$vol_source" && "$vol_source" != "null" ]]; then
+                        # Long-form syntax
+                        if [[ "$vol_source" == "$vol_name" ]]; then
+                            # This is a named volume reference, convert to ${APP_DATA_DIR}
+                            yq eval ".services.$service_name.volumes[$j].source = \"\${APP_DATA_DIR}/data/${vol_name}\"" -i "$compose_file"
                         fi
+                    else
+                        # Short-form syntax
+                        local vol_entry=$(yq eval ".services.$service_name.volumes[$j]" "$compose_file")
                         
-                        # Convert to ${APP_DATA_DIR} format
-                        local runtipi_path="\${APP_DATA_DIR}/data/${vol_name}:${container_path}${mount_options}"
-                        
-                        # Replace the volume entry
-                        yq eval ".services.$service_name.volumes[$j] = \"$runtipi_path\"" -i "$compose_file"
+                        # Check if this volume entry uses the named volume
+                        if [[ "$vol_entry" == "${vol_name}:"* ]]; then
+                            # Extract container path
+                            local container_path="${vol_entry#*:}"
+                            # Remove any trailing options (e.g., :ro, :rw)
+                            local mount_options=""
+                            if [[ "$container_path" == *":ro" ]]; then
+                                mount_options=":ro"
+                                container_path="${container_path%:ro}"
+                            elif [[ "$container_path" == *":rw" ]]; then
+                                mount_options=":rw"
+                                container_path="${container_path%:rw}"
+                            fi
+                            
+                            # Convert to ${APP_DATA_DIR} format
+                            local runtipi_path="\${APP_DATA_DIR}/data/${vol_name}:${container_path}${mount_options}"
+                            
+                            # Replace the volume entry
+                            yq eval ".services.$service_name.volumes[$j] = \"$runtipi_path\"" -i "$compose_file"
+                        fi
                     fi
                 done
             done <<< "$volume_names"
@@ -907,25 +919,34 @@ convert_to_runtipi() {
             local port_count=$(yq eval ".services.$service_name.ports | length" "$compose_file" 2>/dev/null || echo "0")
             
             for ((p=0; p<port_count; p++)); do
-                local port_entry=$(yq eval ".services.$service_name.ports[$p]" "$compose_file")
+                # Check if this is long-form syntax (has a 'target' key)
+                local port_target=$(yq eval ".services.$service_name.ports[$p].target" "$compose_file" 2>/dev/null)
                 
-                # Extract container port from port entry (after the colon)
-                local container_port="${port_entry#*:}"
-                # Remove any protocol suffix (e.g., /tcp, /udp)
-                local protocol=""
-                if [[ "$container_port" == *"/tcp" ]]; then
-                    protocol="/tcp"
-                    container_port="${container_port%/tcp}"
-                elif [[ "$container_port" == *"/udp" ]]; then
-                    protocol="/udp"
-                    container_port="${container_port%/udp}"
+                if [[ -n "$port_target" && "$port_target" != "null" ]]; then
+                    # Long-form syntax - update the published port to use ${APP_PORT}
+                    yq eval ".services.$service_name.ports[$p].published = \"\${APP_PORT}\"" -i "$compose_file"
+                else
+                    # Short-form syntax
+                    local port_entry=$(yq eval ".services.$service_name.ports[$p]" "$compose_file")
+                    
+                    # Extract container port from port entry (after the colon)
+                    local container_port="${port_entry#*:}"
+                    # Remove any protocol suffix (e.g., /tcp, /udp)
+                    local protocol=""
+                    if [[ "$container_port" == *"/tcp" ]]; then
+                        protocol="/tcp"
+                        container_port="${container_port%/tcp}"
+                    elif [[ "$container_port" == *"/udp" ]]; then
+                        protocol="/udp"
+                        container_port="${container_port%/udp}"
+                    fi
+                    
+                    # Convert to ${APP_PORT}:container_port format
+                    local runtipi_port="\${APP_PORT}:${container_port}${protocol}"
+                    
+                    # Replace the port entry
+                    yq eval ".services.$service_name.ports[$p] = \"$runtipi_port\"" -i "$compose_file"
                 fi
-                
-                # Convert to ${APP_PORT}:container_port format
-                local runtipi_port="\${APP_PORT}:${container_port}${protocol}"
-                
-                # Replace the port entry
-                yq eval ".services.$service_name.ports[$p] = \"$runtipi_port\"" -i "$compose_file"
                 
                 # Only convert the first port mapping to use ${APP_PORT}
                 break
@@ -934,8 +955,9 @@ convert_to_runtipi() {
     done <<< "$all_services"
     
     # Determine port
-    local runtipi_port="$APP_DEFAULT_PORT"
-    if [[ "$runtipi_port" -le 999 ]]; then
+    local runtipi_port="${APP_DEFAULT_PORT:-8080}"
+    # Only process port if it's a valid number
+    if [[ "$runtipi_port" =~ ^[0-9]+$ ]] && [[ "$runtipi_port" -le 999 ]]; then
         case "$runtipi_port" in
             80) runtipi_port=8080 ;;
             443) runtipi_port=8443 ;;
@@ -1172,7 +1194,7 @@ convert_to_umbrel() {
     
     # Remap host_port to safer 10000+ range to avoid common port conflicts
     # Keep container_port as-is (internal app port)
-    if [[ "$host_port" -lt "$UMBREL_BASE_PORT" ]]; then
+    if [[ "$host_port" =~ ^[0-9]+$ ]] && [[ "$host_port" -lt "$UMBREL_BASE_PORT" ]]; then
         # Calculate sequential port from base
         local port_map_file="$OUTPUT_DIR/umbrel/.port_sequence"
         if [[ ! -f "$port_map_file" ]]; then
