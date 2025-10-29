@@ -5,7 +5,7 @@
     "name": "Gluetun",
     "description": "Lightweight swiss-knife-like VPN client to multiple VPN service providers",
     "tagline": "Gluetun",
-    "version": "3.40.0",
+    "version": "v3.40.0",
     "author": "BigBearTechWorld",
     "developer": "portainer",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:50Z",
-    "updated": "2025-10-27T02:41:50Z"
+    "updated": "2025-10-29T01:57:44.276Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/gluetun.png",
@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "gluetun",
     "default_port": "",
@@ -42,34 +42,34 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/dev/net/tun",
-    "description": "Tun"
-  }
-],
+      {
+        "container": "/dev/net/tun",
+        "description": "Tun"
+      }
+    ],
     "ports": [
-  {
-    "container": "8888",
-    "host": "8888",
-    "protocol": "tcp",
-    "description": "HTTP Proxy"
-  },
-  {
-    "container": "8388",
-    "host": "8388",
-    "protocol": "tcp",
-    "description": "Shadowsocks"
-  }
-]
+      {
+        "container": "8888",
+        "host": "8888",
+        "protocol": "tcp",
+        "description": "HTTP Proxy"
+      },
+      {
+        "container": "8388",
+        "host": "8388",
+        "protocol": "tcp",
+        "description": "Shadowsocks"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "You will need to configure the providers in the environment variables. See: [BigBearCasaOS Gluetun Docs](https://community.bigbeartechworld.com/t/added-gluetun-to-big-bear-casaos/175)\n"
-  }
-}
+      "before_install": {
+        "en_us": "You will need to configure the providers in the environment variables. See: [BigBearCasaOS Gluetun Docs](https://community.bigbeartechworld.com/t/added-gluetun-to-big-bear-casaos/175)\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -79,16 +79,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

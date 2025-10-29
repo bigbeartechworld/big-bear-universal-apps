@@ -5,7 +5,7 @@
     "name": "Immich",
     "description": "Self-hosted photo and video storage.",
     "tagline": "Immich",
-    "version": "2.1.0",
+    "version": "v2.1.0",
     "author": "BigBearTechWorld",
     "developer": "",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:53Z",
-    "updated": "2025-10-27T02:41:53Z"
+    "updated": "2025-10-29T01:57:44.259Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/immich.png",
@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "immich-server",
     "default_port": "2283",
@@ -41,63 +41,63 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "DB_HOSTNAME",
-    "default": "",
-    "description": "Database Hostname",
-    "required": false
-  },
-  {
-    "name": "DB_USERNAME",
-    "default": "",
-    "description": "Database Username",
-    "required": false
-  },
-  {
-    "name": "DB_PASSWORD",
-    "default": "",
-    "description": "Database Password",
-    "required": false
-  },
-  {
-    "name": "DB_DATABASE_NAME",
-    "default": "",
-    "description": "Database Name",
-    "required": false
-  },
-  {
-    "name": "DB_PORT",
-    "default": "",
-    "description": "Database Port",
-    "required": false
-  },
-  {
-    "name": "REDIS_HOSTNAME",
-    "default": "",
-    "description": "Redis Hostname",
-    "required": false
-  },
-  {
-    "name": "IMMICH_MACHINE_LEARNING_URL",
-    "default": "",
-    "description": "Immich Machine Learning URL",
-    "required": false
-  }
-],
+      {
+        "name": "DB_HOSTNAME",
+        "default": "",
+        "description": "Database Hostname",
+        "required": false
+      },
+      {
+        "name": "DB_USERNAME",
+        "default": "",
+        "description": "Database Username",
+        "required": false
+      },
+      {
+        "name": "DB_PASSWORD",
+        "default": "",
+        "description": "Database Password",
+        "required": false
+      },
+      {
+        "name": "DB_DATABASE_NAME",
+        "default": "",
+        "description": "Database Name",
+        "required": false
+      },
+      {
+        "name": "DB_PORT",
+        "default": "",
+        "description": "Database Port",
+        "required": false
+      },
+      {
+        "name": "REDIS_HOSTNAME",
+        "default": "",
+        "description": "Redis Hostname",
+        "required": false
+      },
+      {
+        "name": "IMMICH_MACHINE_LEARNING_URL",
+        "default": "",
+        "description": "Immich Machine Learning URL",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/usr/src/app/upload",
-    "description": "Container Path: /usr/src/app/upload"
-  }
-],
+      {
+        "container": "/usr/src/app/upload",
+        "description": "Container Path: /usr/src/app/upload"
+      }
+    ],
     "ports": [
-  {
-    "container": "2283",
-    "host": "2283",
-    "protocol": "tcp",
-    "description": "Container Port: 2283"
-  }
-]
+      {
+        "container": "2283",
+        "host": "2283",
+        "protocol": "tcp",
+        "description": "Container Port: 2283"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -112,16 +112,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

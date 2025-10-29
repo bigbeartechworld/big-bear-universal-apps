@@ -5,7 +5,7 @@
     "name": "cAdvisor",
     "description": "cAdvisor (Container Advisor) provides container users an understanding of the resource usage and performance characteristics of their running containers. It is a running daemon that collects, aggregates, processes, and exports information about running containers. Specifically, for each container it keeps resource isolation parameters, historical resource usage, histograms of complete historical resource usage and network statistics. This data is exported by container and machine-wide.",
     "tagline": "cAdvisor",
-    "version": "0.52.1",
+    "version": "v0.52.1",
     "author": "BigBearTechWorld",
     "developer": "",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:39Z",
-    "updated": "2025-10-27T02:41:39Z"
+    "updated": "2025-10-29T01:57:44.269Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/cadvisor.png",
@@ -30,10 +30,10 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "armv7",
-  "arm64"
-],
+      "amd64",
+      "armv7",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "8085",
@@ -43,39 +43,39 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/rootfs",
-    "description": "Container Path: /rootfs"
-  },
-  {
-    "container": "/var/run",
-    "description": "Container Path: /var/run"
-  },
-  {
-    "container": "/var/run/docker.sock",
-    "description": "Container Path: /var/run/docker.sock"
-  },
-  {
-    "container": "/sys",
-    "description": "Container Path: /sys"
-  },
-  {
-    "container": "/var/lib/docker",
-    "description": "Container Path: /var/lib/docker"
-  },
-  {
-    "container": "/dev/disk",
-    "description": "Container Path: /dev/disk"
-  }
-],
+      {
+        "container": "/rootfs",
+        "description": "Container Path: /rootfs"
+      },
+      {
+        "container": "/var/run",
+        "description": "Container Path: /var/run"
+      },
+      {
+        "container": "/var/run/docker.sock",
+        "description": "Container Path: /var/run/docker.sock"
+      },
+      {
+        "container": "/sys",
+        "description": "Container Path: /sys"
+      },
+      {
+        "container": "/var/lib/docker",
+        "description": "Container Path: /var/lib/docker"
+      },
+      {
+        "container": "/dev/disk",
+        "description": "Container Path: /dev/disk"
+      }
+    ],
     "ports": [
-  {
-    "container": "8080",
-    "host": "8080",
-    "protocol": "tcp",
-    "description": "Container Port: 8080"
-  }
-]
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Container Port: 8080"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -90,17 +90,20 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "armv7",
-  "arm64"
-]
+        "amd64",
+        "armv7",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,

@@ -5,7 +5,7 @@
     "name": "Homepage",
     "description": "A modern, fully static, fast, secure fully proxied, highly customizable application dashboard with integrations for over 100 services and translations into multiple languages. Easily configured via YAML files or through docker label discovery.",
     "tagline": "Homepage",
-    "version": "1.5.0",
+    "version": "v1.5.0",
     "author": "BigBearTechWorld",
     "developer": "gethomepage",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:52Z",
-    "updated": "2025-10-27T02:41:52Z"
+    "updated": "2025-10-29T01:57:44.266Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/homepage.png",
@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "3000",
@@ -42,23 +42,23 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/app/config",
-    "description": "Container Path: /app/config"
-  },
-  {
-    "container": "/var/run/docker.sock",
-    "description": "Container Path: /var/run/docker.sock"
-  }
-],
+      {
+        "container": "/app/config",
+        "description": "Container Path: /app/config"
+      },
+      {
+        "container": "/var/run/docker.sock",
+        "description": "Container Path: /var/run/docker.sock"
+      }
+    ],
     "ports": [
-  {
-    "container": "3000",
-    "host": "3000",
-    "protocol": "tcp",
-    "description": "Container Port: 3000"
-  }
-]
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp",
+        "description": "Container Port: 3000"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -74,7 +74,10 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false,
       "folder_name": "homepage"
     },
@@ -82,9 +85,9 @@
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-],
+        "amd64",
+        "arm64"
+      ],
       "folder_name": "homepage"
     },
     "dockge": {
