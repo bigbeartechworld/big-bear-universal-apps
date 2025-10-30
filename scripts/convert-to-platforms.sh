@@ -1134,12 +1134,27 @@ EOF
 convert_to_umbrel() {
     local app_name="$1"
     local app_dir="$2"
+    
+    # Validate app_name is not empty
+    if [[ -z "$app_name" ]]; then
+        print_error "Cannot convert to Umbrel: app_name is empty"
+        return 1
+    fi
+    
     # Get the folder name from compatibility settings (defaults to big-bear-umbrel-{app_id})
     local folder_name=$(get_platform_folder_name "$app_dir" "umbrel")
-    # If no override, use the default Umbrel naming convention
-    if [[ "$folder_name" == "$app_name" ]] || [[ -z "$folder_name" ]]; then
+    
+    # If no override, or if folder_name is empty/null, use the default Umbrel naming convention
+    if [[ "$folder_name" == "$app_name" ]] || [[ -z "$folder_name" ]] || [[ "$folder_name" == "null" ]]; then
         folder_name="big-bear-umbrel-$app_name"
     fi
+    
+    # Final validation: ensure folder_name is valid
+    if [[ -z "$folder_name" ]] || [[ "$folder_name" == "null" ]]; then
+        print_error "Cannot convert $app_name to Umbrel: invalid folder_name"
+        return 1
+    fi
+    
     local output_dir="$OUTPUT_DIR/umbrel/$folder_name"
     
     if [[ "$DRY_RUN" == "true" ]]; then
@@ -1268,20 +1283,38 @@ convert_to_umbrel() {
     # First, get list of named volumes
     local named_volumes=$(yq eval '.volumes | keys | .[]' "$output_dir/docker-compose.yml" 2>/dev/null || echo "")
     
+    # Check if there are volume mapping overrides in app.json compatibility.umbrel.volume_mappings
+    local has_volume_overrides=false
+    local volume_overrides=$(yq eval '.compatibility.umbrel.volume_mappings // {}' "$app_dir/app.json" 2>/dev/null)
+    if [[ "$volume_overrides" != "{}" && "$volume_overrides" != "null" ]]; then
+        has_volume_overrides=true
+        echo "  ℹ Using volume mapping overrides from app.json"
+    fi
+    
     if [[ -n "$named_volumes" ]]; then
         # For each service, replace volume references
         while IFS= read -r vol_name; do
             [[ -z "$vol_name" ]] && continue
             
-            # Convert volume name to a proper path by replacing underscores with slashes
-            # e.g., "audiobookshelf_data_config" -> "data/config"
-            # Remove common app name prefixes to get cleaner paths
-            local clean_path="$vol_name"
-            # Remove app-specific prefix (e.g., "audiobookshelf_" from "audiobookshelf_data_config")
-            # This preserves backward compatibility with existing Umbrel app structures
-            clean_path=$(echo "$clean_path" | sed -E "s/^[a-z0-9-]+_//")
-            # Convert remaining underscores to slashes for hierarchical paths
-            clean_path=$(echo "$clean_path" | tr '_' '/')
+            local clean_path
+            
+            # Check if there's a custom override for this volume
+            if [[ "$has_volume_overrides" == "true" ]]; then
+                clean_path=$(yq eval ".compatibility.umbrel.volume_mappings.\"$vol_name\" // \"\"" "$app_dir/app.json" 2>/dev/null)
+            fi
+            
+            # If no override found, use automatic conversion
+            if [[ -z "$clean_path" || "$clean_path" == "null" ]]; then
+                # Convert volume name to a proper path by replacing underscores with slashes
+                # e.g., "audiobookshelf_data_config" -> "data/config"
+                # Remove common app name prefixes to get cleaner paths
+                clean_path="$vol_name"
+                # Remove app-specific prefix (e.g., "audiobookshelf_" from "audiobookshelf_data_config")
+                # This preserves backward compatibility with existing Umbrel app structures
+                clean_path=$(echo "$clean_path" | sed -E "s/^[a-z0-9-]+_//")
+                # Convert remaining underscores to slashes for hierarchical paths
+                clean_path=$(echo "$clean_path" | tr '_' '/')
+            fi
             
             # Use sed to replace volume mounts in the file
             # Pattern: "volume_name:/path" becomes "${APP_DATA_DIR}/clean_path:/path"
@@ -1333,6 +1366,16 @@ convert_to_umbrel() {
         tagline_value="\"$escaped_tagline\""
     fi
     
+    # Clean description: replace literal \n with spaces and collapse multiple spaces
+    local clean_description=$(echo "$APP_DESCRIPTION" | tr '\n' ' ' | sed 's/  */ /g')
+    
+    # Debug: Print variables before creating umbrel-app.yml
+    if [[ "$VERBOSE" == "true" ]]; then
+        echo "  DEBUG: folder_name='$folder_name'"
+        echo "  DEBUG: APP_NAME='$APP_NAME'"
+        echo "  DEBUG: APP_VERSION='$APP_VERSION'"
+    fi
+    
     cat > "$output_dir/umbrel-app.yml" << EOF
 manifestVersion: 1
 id: $folder_name
@@ -1341,7 +1384,7 @@ name: $APP_NAME
 version: "$APP_VERSION"
 tagline: $tagline_value
 description: >-
-  $APP_DESCRIPTION
+  $clean_description
 releaseNotes: >-
   This version includes various improvements and bug fixes.
 developer: $APP_DEVELOPER
@@ -1361,6 +1404,17 @@ icon: $APP_ICON
 submitter: BigBearTechWorld
 submission: https://github.com/bigbeartechworld/big-bear-universal-apps
 EOF
+    
+    # Validate the generated umbrel-app.yml has a valid ID
+    local generated_id=$(yq eval '.id' "$output_dir/umbrel-app.yml" 2>/dev/null)
+    if [[ -z "$generated_id" ]] || [[ "$generated_id" == "null" ]]; then
+        print_error "Generated umbrel-app.yml for $app_name has invalid ID: '$generated_id'"
+        print_error "folder_name was: '$folder_name'"
+        print_error "Contents of umbrel-app.yml:"
+        head -20 "$output_dir/umbrel-app.yml" | sed 's/^/  /'
+        rm -rf "$output_dir"
+        return 1
+    fi
     
     # Create placeholder gallery images
     for i in 1 2 3; do
