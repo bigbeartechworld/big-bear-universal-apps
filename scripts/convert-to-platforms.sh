@@ -356,21 +356,52 @@ adjust_compose_for_platform() {
             cp "$input_file" "$output_file"
             # Will add x-casaos extensions in convert_to_casaos function
             ;;
-        portainer)
-            # Just copy the compose file for now
-            # TODO: Add support for converting relative paths to named volumes
+        portainer|dockge|cosmos)
+            # Copy the compose file and add big-bear- prefix to volume names
             cp "$input_file" "$output_file"
+            add_bigbear_volume_prefix "$output_file"
             ;;
         runtipi)
             # Copy compose, add runtipi.managed label and tipi_main_network
             cp "$input_file" "$output_file"
             # Will be modified in convert_to_runtipi function
             ;;
-        dockge|cosmos|umbrel)
+        umbrel)
             # Use clean compose as-is
             cp "$input_file" "$output_file"
             ;;
     esac
+}
+
+# Add big-bear- prefix to all named volumes
+add_bigbear_volume_prefix() {
+    local compose_file="$1"
+    
+    # Get list of named volumes
+    local volume_names=$(yq eval '.volumes | keys | .[]' "$compose_file" 2>/dev/null || echo "")
+    
+    if [[ -z "$volume_names" ]]; then
+        return
+    fi
+    
+    # For each volume, add big-bear- prefix using sed
+    while IFS= read -r vol_name; do
+        [[ -z "$vol_name" ]] && continue
+        
+        local new_vol_name="big-bear-${vol_name}"
+        
+        # Use sed to replace all occurrences
+        # 1. Replace in volumes section keys
+        sed -i.bak "s/^  ${vol_name}:/  ${new_vol_name}:/g" "$compose_file"
+        # 2. Replace volume name values
+        sed -i.bak "s/name: ${vol_name}$/name: ${new_vol_name}/g" "$compose_file"
+        # 3. Replace in service volume references (short form: - vol_name:)
+        sed -i.bak "s/- ${vol_name}:/- ${new_vol_name}:/g" "$compose_file"
+        # 4. Replace in service volume references (long form: source: vol_name)
+        sed -i.bak "s/source: ${vol_name}$/source: ${new_vol_name}/g" "$compose_file"
+        
+        rm -f "$compose_file.bak"
+    done <<< "$volume_names"
 }
 
 # Convert to CasaOS format
@@ -1075,8 +1106,8 @@ convert_to_dockge() {
     
     mkdir -p "$output_dir"
     
-    # Copy compose as-is
-    cp "$app_dir/docker-compose.yml" "$output_dir/compose.yaml"
+    # Copy compose and add big-bear- prefix to volumes
+    adjust_compose_for_platform "$app_dir/docker-compose.yml" "$output_dir/compose.yaml" "dockge" "$app_name"
     
     # Create metadata.json
     cat > "$output_dir/metadata.json" << EOF
@@ -1111,6 +1142,10 @@ convert_to_cosmos() {
     
     mkdir -p "$output_dir"
     
+    # Create temporary compose file with big-bear- prefix
+    local temp_compose=$(mktemp)
+    adjust_compose_for_platform "$app_dir/docker-compose.yml" "$temp_compose" "cosmos" "$app_name"
+    
     # Create cosmos-compose.json with routes
     local routes=""
     if [[ -n "$APP_DEFAULT_PORT" ]]; then
@@ -1134,11 +1169,14 @@ convert_to_cosmos() {
   "cosmos-installer": {
     $routes
     "services": {
-      "$app_name": $(yq eval -o=json ".services.[\"$APP_MAIN_SERVICE\"] // (.services | to_entries[0].value)" "$app_dir/docker-compose.yml")
+      "$app_name": $(yq eval -o=json ".services.[\"$APP_MAIN_SERVICE\"] // (.services | to_entries[0].value)" "$temp_compose")
     }
   }
 }
 EOF
+    
+    # Clean up temporary file
+    rm -f "$temp_compose"
     
     # Create description.json
     cat > "$output_dir/description.json" << EOF
