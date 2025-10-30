@@ -30,10 +30,10 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64",
-  "armv7"
-],
+      "amd64",
+      "arm64",
+      "armv7"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "8080",
@@ -42,45 +42,45 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "WORDPRESS_DB_HOST",
-    "default": "",
-    "description": "Database host",
-    "required": false
-  },
-  {
-    "name": "WORDPRESS_DB_USER",
-    "default": "",
-    "description": "Database user",
-    "required": false
-  },
-  {
-    "name": "WORDPRESS_DB_PASSWORD",
-    "default": "",
-    "description": "Database password",
-    "required": false
-  },
-  {
-    "name": "WORDPRESS_DB_NAME",
-    "default": "",
-    "description": "Database name",
-    "required": false
-  }
-],
+      {
+        "name": "WORDPRESS_DB_HOST",
+        "default": "",
+        "description": "Database host",
+        "required": false
+      },
+      {
+        "name": "WORDPRESS_DB_USER",
+        "default": "",
+        "description": "Database user",
+        "required": false
+      },
+      {
+        "name": "WORDPRESS_DB_PASSWORD",
+        "default": "",
+        "description": "Database password",
+        "required": false
+      },
+      {
+        "name": "WORDPRESS_DB_NAME",
+        "default": "",
+        "description": "Database name",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/var/www/html",
-    "description": "Container Path: /var/www/html"
-  }
-],
+      {
+        "container": "/var/www/html",
+        "description": "Container Path: /var/www/html"
+      }
+    ],
     "ports": [
-  {
-    "container": "80",
-    "host": "80",
-    "protocol": "tcp",
-    "description": "Container Port: 80"
-  }
-]
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp",
+        "description": "Container Port: 80"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -95,17 +95,20 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64",
-  "arm"
-]
+        "amd64",
+        "arm64",
+        "arm"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -118,7 +121,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "wordpress_html": "html",
+        "wordpress_mysql": "mysql"
+      }
     }
   },
   "tags": [

@@ -167,7 +167,15 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "paperless-ngx_paperless_consume": "paperless/consume",
+        "paperless-ngx_paperless_data": "paperless/data",
+        "paperless-ngx_paperless_export": "paperless/export",
+        "paperless-ngx_paperless_media": "paperless/media",
+        "paperless-ngx_postgres": "postgres",
+        "paperless-ngx_redis": "redis"
+      }
     }
   },
   "tags": [

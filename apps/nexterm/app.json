@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-nexterm",
     "default_port": "6989",
@@ -42,28 +42,28 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/app/data",
-    "description": "Container Path: /app/data"
-  }
-],
+      {
+        "container": "/app/data",
+        "description": "Container Path: /app/data"
+      }
+    ],
     "ports": [
-  {
-    "container": "6989",
-    "host": "6989",
-    "protocol": "tcp",
-    "description": "Container Port: 6989"
-  }
-]
+      {
+        "container": "6989",
+        "host": "6989",
+        "protocol": "tcp",
+        "description": "Container Port: 6989"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-nexterm-to-bigbearcasaos/1835#p-3452-documentation-3\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-nexterm-to-bigbearcasaos/1835#p-3452-documentation-3\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -73,16 +73,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -95,7 +98,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "nexterm_data": "data"
+      }
     }
   },
   "tags": [

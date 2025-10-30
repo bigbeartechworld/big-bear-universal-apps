@@ -102,7 +102,13 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "libredesk_config": "config",
+        "libredesk_data_postgres": "data/postgres",
+        "libredesk_data_redis": "data/redis",
+        "libredesk_uploads": "uploads"
+      }
     }
   },
   "tags": [

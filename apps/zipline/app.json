@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "zipline",
     "default_port": "3000",
@@ -42,32 +42,32 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/zipline/uploads",
-    "description": "Container Path: /zipline/uploads"
-  },
-  {
-    "container": "/zipline/public",
-    "description": "Container Path: /zipline/public"
-  }
-],
+      {
+        "container": "/zipline/uploads",
+        "description": "Container Path: /zipline/uploads"
+      },
+      {
+        "container": "/zipline/public",
+        "description": "Container Path: /zipline/public"
+      }
+    ],
     "ports": [
-  {
-    "container": "3000",
-    "host": "3000",
-    "protocol": "tcp",
-    "description": "Container Port: 3000"
-  }
-]
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp",
+        "description": "Container Port: 3000"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-zipline-to-bigbearcasaos/629?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-zipline-to-bigbearcasaos/629?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -77,16 +77,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -99,7 +102,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "zipline_postgres": "postgres",
+        "zipline_public": "public",
+        "zipline_uploads": "uploads"
+      }
     }
   },
   "tags": [

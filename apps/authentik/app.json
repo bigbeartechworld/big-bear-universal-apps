@@ -106,7 +106,14 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "authentik_data_authentik-certs": "data/authentik-certs",
+        "authentik_data_authentik-custom-templates": "data/authentik-custom-templates",
+        "authentik_data_authentik-media": "data/authentik-media",
+        "authentik_data_postgres": "data/postgres",
+        "authentik_data_redis": "data/redis"
+      }
     }
   },
   "tags": [

@@ -30,8 +30,8 @@
   },
   "technical": {
     "architectures": [
-  "amd64"
-],
+      "amd64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "8091",
@@ -40,33 +40,33 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "GOTIFY_DEFAULTUSER_NAME",
-    "default": "",
-    "description": "Gotify default user name",
-    "required": false
-  },
-  {
-    "name": "GOTIFY_DEFAULTUSER_PASS",
-    "default": "",
-    "description": "Gotify default user password",
-    "required": false
-  }
-],
+      {
+        "name": "GOTIFY_DEFAULTUSER_NAME",
+        "default": "",
+        "description": "Gotify default user name",
+        "required": false
+      },
+      {
+        "name": "GOTIFY_DEFAULTUSER_PASS",
+        "default": "",
+        "description": "Gotify default user password",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/app/data",
-    "description": "Container Path: /app/data"
-  }
-],
+      {
+        "container": "/app/data",
+        "description": "Container Path: /app/data"
+      }
+    ],
     "ports": [
-  {
-    "container": "80",
-    "host": "80",
-    "protocol": "tcp",
-    "description": "Container Port: 80"
-  }
-]
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp",
+        "description": "Container Port: 80"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -81,15 +81,18 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64"
-]
+        "amd64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -102,7 +105,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "gotify_data": "data"
+      }
     }
   },
   "tags": [

@@ -94,7 +94,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "uptime-kuma_data": "data"
+      }
     }
   },
   "tags": [

@@ -30,8 +30,8 @@
   },
   "technical": {
     "architectures": [
-  "amd64"
-],
+      "amd64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-openvpn-as",
     "default_port": "943",
@@ -41,38 +41,38 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/openvpn",
-    "description": "Container Path: /openvpn"
-  }
-],
+      {
+        "container": "/openvpn",
+        "description": "Container Path: /openvpn"
+      }
+    ],
     "ports": [
-  {
-    "container": "943",
-    "host": "943",
-    "protocol": "tcp",
-    "description": "Container Port: 943"
-  },
-  {
-    "container": "443",
-    "host": "443",
-    "protocol": "tcp",
-    "description": "Container Port: 443"
-  },
-  {
-    "container": "1194",
-    "host": "1194",
-    "protocol": "tcp",
-    "description": "Container Port: 1194"
-  }
-]
+      {
+        "container": "943",
+        "host": "943",
+        "protocol": "tcp",
+        "description": "Container Port: 943"
+      },
+      {
+        "container": "443",
+        "host": "443",
+        "protocol": "tcp",
+        "description": "Container Port: 443"
+      },
+      {
+        "container": "1194",
+        "host": "1194",
+        "protocol": "tcp",
+        "description": "Container Port: 1194"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "custom": "Username: `openvpn`\nPassword: `You can find you first time password in the log of the container`"
-}
+      "custom": "Username: `openvpn`\nPassword: `You can find you first time password in the log of the container`"
+    }
   },
   "compatibility": {
     "casaos": {
@@ -82,15 +82,18 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64"
-]
+        "amd64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -103,7 +106,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "openvpn-as_data": "data"
+      }
     }
   },
   "tags": [

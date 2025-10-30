@@ -116,7 +116,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "sftpgo_data": "data",
+        "sftpgo_srv": "srv"
+      }
     }
   },
   "tags": [

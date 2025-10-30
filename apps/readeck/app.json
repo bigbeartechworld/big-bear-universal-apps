@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-readeck",
     "default_port": "8000",
@@ -41,54 +41,54 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "READECK_LOG_LEVEL",
-    "default": "",
-    "description": "Application log level (error, warn, info, debug)",
-    "required": false
-  },
-  {
-    "name": "READECK_SERVER_HOST",
-    "default": "",
-    "description": "IP address on which Readeck listens",
-    "required": false
-  },
-  {
-    "name": "READECK_SERVER_PORT",
-    "default": "",
-    "description": "TCP port on which Readeck listens",
-    "required": false
-  },
-  {
-    "name": "READECK_LOG_FORMAT",
-    "default": "",
-    "description": "Log format (json, text, or dev)",
-    "required": false
-  }
-],
+      {
+        "name": "READECK_LOG_LEVEL",
+        "default": "",
+        "description": "Application log level (error, warn, info, debug)",
+        "required": false
+      },
+      {
+        "name": "READECK_SERVER_HOST",
+        "default": "",
+        "description": "IP address on which Readeck listens",
+        "required": false
+      },
+      {
+        "name": "READECK_SERVER_PORT",
+        "default": "",
+        "description": "TCP port on which Readeck listens",
+        "required": false
+      },
+      {
+        "name": "READECK_LOG_FORMAT",
+        "default": "",
+        "description": "Log format (json, text, or dev)",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/readeck",
-    "description": "Container Path: /readeck"
-  }
-],
+      {
+        "container": "/readeck",
+        "description": "Container Path: /readeck"
+      }
+    ],
     "ports": [
-  {
-    "container": "8000",
-    "host": "8000",
-    "protocol": "tcp",
-    "description": "Container Port: 8000"
-  }
-]
+      {
+        "container": "8000",
+        "host": "8000",
+        "protocol": "tcp",
+        "description": "Container Port: 8000"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-readeck-to-bigbearcasaos/5079#p-7723-documentation-3\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-readeck-to-bigbearcasaos/5079#p-7723-documentation-3\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -98,16 +98,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -120,7 +123,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "readeck_data": "data"
+      }
     }
   },
   "tags": [

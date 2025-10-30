@@ -87,7 +87,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "music-assistant_data": "data"
+      }
     }
   },
   "tags": [

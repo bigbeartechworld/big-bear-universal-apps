@@ -161,7 +161,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "tailscale_config": "config",
+        "tailscale_state": "state",
+        "tailscale_shared": "shared"
+      }
     }
   },
   "tags": [

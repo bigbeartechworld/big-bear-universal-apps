@@ -135,7 +135,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "ghost_content": "content",
+        "ghost_mysql": "mysql"
+      }
     }
   },
   "tags": [

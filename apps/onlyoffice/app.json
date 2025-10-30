@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "7400",
@@ -42,39 +42,39 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/var/log/onlyoffice",
-    "description": "Container Path: /var/log/onlyoffice"
-  },
-  {
-    "container": "/var/www/onlyoffice/Data",
-    "description": "Container Path: /var/www/onlyoffice/Data"
-  },
-  {
-    "container": "/var/lib/onlyoffice",
-    "description": "Container Path: /var/lib/onlyoffice"
-  },
-  {
-    "container": "/var/lib/rabbitmq",
-    "description": "Container Path: /var/lib/rabbitmq"
-  },
-  {
-    "container": "/var/lib/redis",
-    "description": "Container Path: /var/lib/redis"
-  },
-  {
-    "container": "/var/lib/postgresql",
-    "description": "Container Path: /var/lib/postgresql"
-  }
-],
+      {
+        "container": "/var/log/onlyoffice",
+        "description": "Container Path: /var/log/onlyoffice"
+      },
+      {
+        "container": "/var/www/onlyoffice/Data",
+        "description": "Container Path: /var/www/onlyoffice/Data"
+      },
+      {
+        "container": "/var/lib/onlyoffice",
+        "description": "Container Path: /var/lib/onlyoffice"
+      },
+      {
+        "container": "/var/lib/rabbitmq",
+        "description": "Container Path: /var/lib/rabbitmq"
+      },
+      {
+        "container": "/var/lib/redis",
+        "description": "Container Path: /var/lib/redis"
+      },
+      {
+        "container": "/var/lib/postgresql",
+        "description": "Container Path: /var/lib/postgresql"
+      }
+    ],
     "ports": [
-  {
-    "container": "80",
-    "host": "80",
-    "protocol": "tcp",
-    "description": "Container Port: 80"
-  }
-]
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp",
+        "description": "Container Port: 80"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -89,16 +89,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -111,7 +114,15 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "onlyoffice_onlyoffice_data": "onlyoffice/data",
+        "onlyoffice_onlyoffice_db": "onlyoffice/db",
+        "onlyoffice_onlyoffice_lib": "onlyoffice/lib",
+        "onlyoffice_onlyoffice_logs": "onlyoffice/logs",
+        "onlyoffice_onlyoffice_rabbitmq": "onlyoffice/rabbitmq",
+        "onlyoffice_onlyoffice_redis": "onlyoffice/redis"
+      }
     }
   },
   "tags": [

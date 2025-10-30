@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-komf",
     "default_port": "8085",
@@ -41,72 +41,72 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "KOMF_KOMGA_BASE_URI",
-    "default": "",
-    "description": "Komga Base URI",
-    "required": false
-  },
-  {
-    "name": "KOMF_KOMGA_USER",
-    "default": "",
-    "description": "Komga User",
-    "required": false
-  },
-  {
-    "name": "KOMF_KOMGA_PASSWORD",
-    "default": "",
-    "description": "Komga Password",
-    "required": false
-  },
-  {
-    "name": "KOMF_KAVITA_BASE_URI",
-    "default": "",
-    "description": "Kavita Base URI",
-    "required": false
-  },
-  {
-    "name": "KOMF_KAVITA_API_KEY",
-    "default": "",
-    "description": "Kavita API Key",
-    "required": false
-  },
-  {
-    "name": "KOMF_LOG_LEVEL",
-    "default": "",
-    "description": "Log Level",
-    "required": false
-  },
-  {
-    "name": "JAVA_TOOL_OPTIONS",
-    "default": "",
-    "description": "Java Tool Options",
-    "required": false
-  }
-],
+      {
+        "name": "KOMF_KOMGA_BASE_URI",
+        "default": "",
+        "description": "Komga Base URI",
+        "required": false
+      },
+      {
+        "name": "KOMF_KOMGA_USER",
+        "default": "",
+        "description": "Komga User",
+        "required": false
+      },
+      {
+        "name": "KOMF_KOMGA_PASSWORD",
+        "default": "",
+        "description": "Komga Password",
+        "required": false
+      },
+      {
+        "name": "KOMF_KAVITA_BASE_URI",
+        "default": "",
+        "description": "Kavita Base URI",
+        "required": false
+      },
+      {
+        "name": "KOMF_KAVITA_API_KEY",
+        "default": "",
+        "description": "Kavita API Key",
+        "required": false
+      },
+      {
+        "name": "KOMF_LOG_LEVEL",
+        "default": "",
+        "description": "Log Level",
+        "required": false
+      },
+      {
+        "name": "JAVA_TOOL_OPTIONS",
+        "default": "",
+        "description": "Java Tool Options",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/config",
-    "description": "Container Path: /config"
-  }
-],
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
     "ports": [
-  {
-    "container": "8085",
-    "host": "8085",
-    "protocol": "tcp",
-    "description": "Container Port: 8085"
-  }
-]
+      {
+        "container": "8085",
+        "host": "8085",
+        "protocol": "tcp",
+        "description": "Container Port: 8085"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-komf-to-bigbearcasaos/1951#p-3619-documentation-4\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-komf-to-bigbearcasaos/1951#p-3619-documentation-4\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -116,16 +116,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -138,7 +141,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "komf_config": "config"
+      }
     }
   },
   "tags": [

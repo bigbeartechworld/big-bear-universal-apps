@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "5001",
@@ -42,27 +42,27 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/var/run/docker.sock",
-    "description": "Container Path: /var/run/docker.sock"
-  },
-  {
-    "container": "/app/data",
-    "description": "Container Path: /app/data"
-  },
-  {
-    "container": "/DATA/AppData/big-bear-dockge/stacks",
-    "description": "Container Path: /DATA/AppData/big-bear-dockge/stacks"
-  }
-],
+      {
+        "container": "/var/run/docker.sock",
+        "description": "Container Path: /var/run/docker.sock"
+      },
+      {
+        "container": "/app/data",
+        "description": "Container Path: /app/data"
+      },
+      {
+        "container": "/DATA/AppData/big-bear-dockge/stacks",
+        "description": "Container Path: /DATA/AppData/big-bear-dockge/stacks"
+      }
+    ],
     "ports": [
-  {
-    "container": "5001",
-    "host": "5001",
-    "protocol": "tcp",
-    "description": "Container Port: 5001"
-  }
-]
+      {
+        "container": "5001",
+        "host": "5001",
+        "protocol": "tcp",
+        "description": "Container Port: 5001"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -77,16 +77,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -99,7 +102,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "dockge_data": "data",
+        "dockge_stacks": "stacks"
+      }
     }
   },
   "tags": [

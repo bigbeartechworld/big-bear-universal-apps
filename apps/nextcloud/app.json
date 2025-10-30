@@ -19,10 +19,10 @@
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nextcloud.png",
     "thumbnail": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/thumbnail.jpg",
     "screenshots": [
-  "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-1.png",
-  "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-2.png",
-  "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-3.png"
-],
+      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-1.png",
+      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-2.png",
+      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-3.png"
+    ],
     "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nextcloud.png"
   },
   "resources": {
@@ -34,9 +34,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "nextcloud",
     "default_port": "7580",
@@ -45,90 +45,90 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "POSTGRES_HOST",
-    "default": "",
-    "description": "Database host",
-    "required": false
-  },
-  {
-    "name": "REDIS_HOST",
-    "default": "",
-    "description": "Redis host",
-    "required": false
-  },
-  {
-    "name": "POSTGRES_PASSWORD",
-    "default": "",
-    "description": "Database password",
-    "required": false
-  },
-  {
-    "name": "POSTGRES_USER",
-    "default": "",
-    "description": "Database user",
-    "required": false
-  },
-  {
-    "name": "POSTGRES_DB",
-    "default": "",
-    "description": "Database type",
-    "required": false
-  },
-  {
-    "name": "NEXTCLOUD_ADMIN_USER",
-    "default": "",
-    "description": "Nextcloud admin user",
-    "required": false
-  },
-  {
-    "name": "NEXTCLOUD_ADMIN_PASSWORD",
-    "default": "",
-    "description": "Nextcloud admin password",
-    "required": false
-  },
-  {
-    "name": "TRUSTED_PROXIES",
-    "default": "",
-    "description": "Trusted proxies",
-    "required": false
-  },
-  {
-    "name": "OVERWRITEPROTOCOL",
-    "default": "",
-    "description": "Overwrite protocol",
-    "required": false
-  },
-  {
-    "name": "PHP_UPLOAD_LIMIT",
-    "default": "",
-    "description": "PHP upload limit",
-    "required": false
-  }
-],
+      {
+        "name": "POSTGRES_HOST",
+        "default": "",
+        "description": "Database host",
+        "required": false
+      },
+      {
+        "name": "REDIS_HOST",
+        "default": "",
+        "description": "Redis host",
+        "required": false
+      },
+      {
+        "name": "POSTGRES_PASSWORD",
+        "default": "",
+        "description": "Database password",
+        "required": false
+      },
+      {
+        "name": "POSTGRES_USER",
+        "default": "",
+        "description": "Database user",
+        "required": false
+      },
+      {
+        "name": "POSTGRES_DB",
+        "default": "",
+        "description": "Database type",
+        "required": false
+      },
+      {
+        "name": "NEXTCLOUD_ADMIN_USER",
+        "default": "",
+        "description": "Nextcloud admin user",
+        "required": false
+      },
+      {
+        "name": "NEXTCLOUD_ADMIN_PASSWORD",
+        "default": "",
+        "description": "Nextcloud admin password",
+        "required": false
+      },
+      {
+        "name": "TRUSTED_PROXIES",
+        "default": "",
+        "description": "Trusted proxies",
+        "required": false
+      },
+      {
+        "name": "OVERWRITEPROTOCOL",
+        "default": "",
+        "description": "Overwrite protocol",
+        "required": false
+      },
+      {
+        "name": "PHP_UPLOAD_LIMIT",
+        "default": "",
+        "description": "PHP upload limit",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/var/www/html",
-    "description": "Container Path: /var/www/html"
-  }
-],
+      {
+        "container": "/var/www/html",
+        "description": "Container Path: /var/www/html"
+      }
+    ],
     "ports": [
-  {
-    "container": "7580",
-    "host": "7580",
-    "protocol": "tcp",
-    "description": "Container Port: 7580"
-  }
-]
+      {
+        "container": "7580",
+        "host": "7580",
+        "protocol": "tcp",
+        "description": "Container Port: 7580"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read the [Nextcloud installation guide](https://community.bigbeartechworld.com/t/added-nextcloud-to-bigbearcasaos/455?u=dragonfire1119)\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read the [Nextcloud installation guide](https://community.bigbeartechworld.com/t/added-nextcloud-to-bigbearcasaos/455?u=dragonfire1119)\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -138,16 +138,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -160,7 +163,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "nextcloud_html": "html",
+        "nextcloud_pgdata": "pgdata",
+        "nextcloud_redis": "redis"
+      }
     }
   },
   "tags": [

@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-immich-aio-alpine",
     "default_port": "2283",
@@ -41,109 +41,109 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "PUID",
-    "default": "",
-    "description": "Process UID",
-    "required": false
-  },
-  {
-    "name": "PGID",
-    "default": "",
-    "description": "Process GID",
-    "required": false
-  },
-  {
-    "name": "TZ",
-    "default": "",
-    "description": "Timezone",
-    "required": false
-  },
-  {
-    "name": "DB_HOSTNAME",
-    "default": "",
-    "description": "Database Hostname",
-    "required": false
-  },
-  {
-    "name": "DB_USERNAME",
-    "default": "",
-    "description": "Database Username",
-    "required": false
-  },
-  {
-    "name": "DB_PASSWORD",
-    "default": "",
-    "description": "Database Password",
-    "required": false
-  },
-  {
-    "name": "DB_DATABASE_NAME",
-    "default": "",
-    "description": "Database Name",
-    "required": false
-  },
-  {
-    "name": "DB_PORT",
-    "default": "",
-    "description": "Database Port",
-    "required": false
-  },
-  {
-    "name": "REDIS_HOSTNAME",
-    "default": "",
-    "description": "Redis Hostname",
-    "required": false
-  },
-  {
-    "name": "REDIS_PORT",
-    "default": "",
-    "description": "Redis Port",
-    "required": false
-  },
-  {
-    "name": "REDIS_PASSWORD",
-    "default": "",
-    "description": "Redis Password",
-    "required": false
-  },
-  {
-    "name": "MACHINE_LEARNING_GPU_ACCELERATION",
-    "default": "",
-    "description": "Machine Learning GPU Acceleration",
-    "required": false
-  },
-  {
-    "name": "MACHINE_LEARNING_WORKERS",
-    "default": "",
-    "description": "Machine Learning Workers",
-    "required": false
-  },
-  {
-    "name": "MACHINE_LEARNING_WORKER_TIMEOUT",
-    "default": "",
-    "description": "Machine Learning Worker Timeout",
-    "required": false
-  }
-],
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Process UID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Process GID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Timezone",
+        "required": false
+      },
+      {
+        "name": "DB_HOSTNAME",
+        "default": "",
+        "description": "Database Hostname",
+        "required": false
+      },
+      {
+        "name": "DB_USERNAME",
+        "default": "",
+        "description": "Database Username",
+        "required": false
+      },
+      {
+        "name": "DB_PASSWORD",
+        "default": "",
+        "description": "Database Password",
+        "required": false
+      },
+      {
+        "name": "DB_DATABASE_NAME",
+        "default": "",
+        "description": "Database Name",
+        "required": false
+      },
+      {
+        "name": "DB_PORT",
+        "default": "",
+        "description": "Database Port",
+        "required": false
+      },
+      {
+        "name": "REDIS_HOSTNAME",
+        "default": "",
+        "description": "Redis Hostname",
+        "required": false
+      },
+      {
+        "name": "REDIS_PORT",
+        "default": "",
+        "description": "Redis Port",
+        "required": false
+      },
+      {
+        "name": "REDIS_PASSWORD",
+        "default": "",
+        "description": "Redis Password",
+        "required": false
+      },
+      {
+        "name": "MACHINE_LEARNING_GPU_ACCELERATION",
+        "default": "",
+        "description": "Machine Learning GPU Acceleration",
+        "required": false
+      },
+      {
+        "name": "MACHINE_LEARNING_WORKERS",
+        "default": "",
+        "description": "Machine Learning Workers",
+        "required": false
+      },
+      {
+        "name": "MACHINE_LEARNING_WORKER_TIMEOUT",
+        "default": "",
+        "description": "Machine Learning Worker Timeout",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/config",
-    "description": "Container Path: /config"
-  },
-  {
-    "container": "/photos",
-    "description": "Container Path: /photos"
-  }
-],
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/photos",
+        "description": "Container Path: /photos"
+      }
+    ],
     "ports": [
-  {
-    "container": "3001",
-    "host": "3001",
-    "protocol": "tcp",
-    "description": "Container Port: 3001"
-  }
-]
+      {
+        "container": "3001",
+        "host": "3001",
+        "protocol": "tcp",
+        "description": "Container Port: 3001"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -158,16 +158,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -180,7 +183,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "immich-aio-alpine_config": "config",
+        "immich-aio-alpine_pgdata": "pgdata",
+        "immich-aio-alpine_photos": "photos"
+      }
     }
   },
   "tags": [

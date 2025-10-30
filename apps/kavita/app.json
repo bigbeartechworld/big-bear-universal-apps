@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-kavita",
     "default_port": "5000",
@@ -42,31 +42,31 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/kavita/config",
-    "description": "Container Path: /kavita/config"
-  },
-  {
-    "container": "/books",
-    "description": "Container Path: /books"
-  },
-  {
-    "container": "/comics",
-    "description": "Container Path: /comics"
-  },
-  {
-    "container": "/manga",
-    "description": "Container Path: /manga"
-  }
-],
+      {
+        "container": "/kavita/config",
+        "description": "Container Path: /kavita/config"
+      },
+      {
+        "container": "/books",
+        "description": "Container Path: /books"
+      },
+      {
+        "container": "/comics",
+        "description": "Container Path: /comics"
+      },
+      {
+        "container": "/manga",
+        "description": "Container Path: /manga"
+      }
+    ],
     "ports": [
-  {
-    "container": "5000",
-    "host": "5000",
-    "protocol": "tcp",
-    "description": "Container Port: 5000"
-  }
-]
+      {
+        "container": "5000",
+        "host": "5000",
+        "protocol": "tcp",
+        "description": "Container Port: 5000"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -81,16 +81,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -103,7 +106,13 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "kavita_data_kavita-config": "data/kavita-config",
+        "kavita_media_data_books": "media/data/books",
+        "kavita_media_data_comics": "media/data/comics",
+        "kavita_media_data_manga": "media/data/manga"
+      }
     }
   },
   "tags": [

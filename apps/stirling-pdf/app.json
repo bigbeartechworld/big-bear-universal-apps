@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-stirling-pdf",
     "default_port": "8080",
@@ -41,82 +41,82 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "DOCKER_ENABLE_SECURITY",
-    "default": "",
-    "description": "Enable Security Jar for Authentication",
-    "required": false
-  },
-  {
-    "name": "SECURITY_ENABLE_LOGIN",
-    "default": "",
-    "description": "Enable Login for Authentication",
-    "required": false
-  },
-  {
-    "name": "SECURITY_INITIALLOGIN_USERNAME",
-    "default": "",
-    "description": "Initial admin username",
-    "required": false
-  },
-  {
-    "name": "SECURITY_INITIALLOGIN_PASSWORD",
-    "default": "",
-    "description": "Initial admin password",
-    "required": false
-  },
-  {
-    "name": "CSRF_DISABLED",
-    "default": "",
-    "description": "Disable CSRF Protection",
-    "required": false
-  },
-  {
-    "name": "DEFAULT_LOCALE",
-    "default": "",
-    "description": "Set Default Locale",
-    "required": false
-  },
-  {
-    "name": "INSTALL_BOOK_AND_ADVANCED_HTML_OPS",
-    "default": "",
-    "description": "Install Book and Advanced HTML Ops",
-    "required": false
-  },
-  {
-    "name": "LANGS",
-    "default": "",
-    "description": "Languages",
-    "required": false
-  }
-],
+      {
+        "name": "DOCKER_ENABLE_SECURITY",
+        "default": "",
+        "description": "Enable Security Jar for Authentication",
+        "required": false
+      },
+      {
+        "name": "SECURITY_ENABLE_LOGIN",
+        "default": "",
+        "description": "Enable Login for Authentication",
+        "required": false
+      },
+      {
+        "name": "SECURITY_INITIALLOGIN_USERNAME",
+        "default": "",
+        "description": "Initial admin username",
+        "required": false
+      },
+      {
+        "name": "SECURITY_INITIALLOGIN_PASSWORD",
+        "default": "",
+        "description": "Initial admin password",
+        "required": false
+      },
+      {
+        "name": "CSRF_DISABLED",
+        "default": "",
+        "description": "Disable CSRF Protection",
+        "required": false
+      },
+      {
+        "name": "DEFAULT_LOCALE",
+        "default": "",
+        "description": "Set Default Locale",
+        "required": false
+      },
+      {
+        "name": "INSTALL_BOOK_AND_ADVANCED_HTML_OPS",
+        "default": "",
+        "description": "Install Book and Advanced HTML Ops",
+        "required": false
+      },
+      {
+        "name": "LANGS",
+        "default": "",
+        "description": "Languages",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/usr/share/tessdata",
-    "description": "Container Path: /usr/share/tessdata"
-  },
-  {
-    "container": "/configs",
-    "description": "Configuration Files Path: /configs"
-  }
-],
+      {
+        "container": "/usr/share/tessdata",
+        "description": "Container Path: /usr/share/tessdata"
+      },
+      {
+        "container": "/configs",
+        "description": "Configuration Files Path: /configs"
+      }
+    ],
     "ports": [
-  {
-    "container": "8080",
-    "host": "8080",
-    "protocol": "tcp",
-    "description": "Container Port: 8080"
-  }
-]
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Container Port: 8080"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-stirling-pdf-to-bigbearcasaos/2265#p-4248-documentation-3\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-stirling-pdf-to-bigbearcasaos/2265#p-4248-documentation-3\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -126,16 +126,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -148,7 +151,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "stirling-pdf_configs": "configs",
+        "stirling-pdf_tessdata": "tessdata"
+      }
     }
   },
   "tags": [

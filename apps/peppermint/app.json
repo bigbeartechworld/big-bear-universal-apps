@@ -30,8 +30,8 @@
   },
   "technical": {
     "architectures": [
-  "amd64"
-],
+      "amd64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "3000",
@@ -47,10 +47,10 @@
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "### Additional Instructions:\nAfter finished installing, open the `app settings` and update the `API_URL` to point it to your Home Server's IP Address.\ne.g:\n``` http://192.168.31.31:5003\n```\n### Default credentials:\nUsername: `admin@admin.com` Password: `1234`\n"
-  }
-}
+      "before_install": {
+        "en_us": "### Additional Instructions:\nAfter finished installing, open the `app settings` and update the `API_URL` to point it to your Home Server's IP Address.\ne.g:\n``` http://192.168.31.31:5003\n```\n### Default credentials:\nUsername: `admin@admin.com` Password: `1234`\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -60,15 +60,18 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64"
-]
+        "amd64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -81,7 +84,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "peppermint_postgres_data": "postgres/data"
+      }
     }
   },
   "tags": [

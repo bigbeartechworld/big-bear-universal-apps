@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-ollama-cpu",
     "default_port": "11434",
@@ -42,19 +42,19 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/root/.ollama",
-    "description": "Container Path: /root/.ollama"
-  }
-],
+      {
+        "container": "/root/.ollama",
+        "description": "Container Path: /root/.ollama"
+      }
+    ],
     "ports": [
-  {
-    "container": "11434",
-    "host": "11434",
-    "protocol": "tcp",
-    "description": "Container Port: 11434"
-  }
-]
+      {
+        "container": "11434",
+        "host": "11434",
+        "protocol": "tcp",
+        "description": "Container Port: 11434"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -69,16 +69,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -91,7 +94,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "ollama-cpu_.ollama": ".ollama"
+      }
     }
   },
   "tags": [

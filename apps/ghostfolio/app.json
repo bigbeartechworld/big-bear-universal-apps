@@ -162,7 +162,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "ghostfolio_data_db": "data/db",
+        "ghostfolio_data_redis": "data/redis"
+      }
     }
   },
   "tags": [

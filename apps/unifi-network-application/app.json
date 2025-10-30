@@ -41,150 +41,150 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "PUID",
-    "default": "",
-    "description": "User ID",
-    "required": false
-  },
-  {
-    "name": "PGID",
-    "default": "",
-    "description": "Group ID",
-    "required": false
-  },
-  {
-    "name": "TZ",
-    "default": "",
-    "description": "Timezone",
-    "required": false
-  },
-  {
-    "name": "MONGO_HOST",
-    "default": "",
-    "description": "MongoDB host",
-    "required": false
-  },
-  {
-    "name": "MONGO_USER",
-    "default": "",
-    "description": "MongoDB username",
-    "required": false
-  },
-  {
-    "name": "MONGO_PASS",
-    "default": "",
-    "description": "MongoDB password",
-    "required": false
-  },
-  {
-    "name": "MONGO_PORT",
-    "default": "",
-    "description": "MongoDB port",
-    "required": false
-  },
-  {
-    "name": "MONGO_DBNAME",
-    "default": "",
-    "description": "MongoDB database name",
-    "required": false
-  },
-  {
-    "name": "MEM_LIMIT",
-    "default": "",
-    "description": "Memory limit for the container",
-    "required": false
-  },
-  {
-    "name": "MEM_STARTUP",
-    "default": "",
-    "description": "Memory to allocate on container startup",
-    "required": false
-  },
-  {
-    "name": "MONGO_TLS",
-    "default": "",
-    "description": "MongoDB TLS setting",
-    "required": false
-  },
-  {
-    "name": "MONGO_AUTHSOURCE",
-    "default": "",
-    "description": "MongoDB authentication source",
-    "required": false
-  }
-],
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "User ID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Group ID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Timezone",
+        "required": false
+      },
+      {
+        "name": "MONGO_HOST",
+        "default": "",
+        "description": "MongoDB host",
+        "required": false
+      },
+      {
+        "name": "MONGO_USER",
+        "default": "",
+        "description": "MongoDB username",
+        "required": false
+      },
+      {
+        "name": "MONGO_PASS",
+        "default": "",
+        "description": "MongoDB password",
+        "required": false
+      },
+      {
+        "name": "MONGO_PORT",
+        "default": "",
+        "description": "MongoDB port",
+        "required": false
+      },
+      {
+        "name": "MONGO_DBNAME",
+        "default": "",
+        "description": "MongoDB database name",
+        "required": false
+      },
+      {
+        "name": "MEM_LIMIT",
+        "default": "",
+        "description": "Memory limit for the container",
+        "required": false
+      },
+      {
+        "name": "MEM_STARTUP",
+        "default": "",
+        "description": "Memory to allocate on container startup",
+        "required": false
+      },
+      {
+        "name": "MONGO_TLS",
+        "default": "",
+        "description": "MongoDB TLS setting",
+        "required": false
+      },
+      {
+        "name": "MONGO_AUTHSOURCE",
+        "default": "",
+        "description": "MongoDB authentication source",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/config",
-    "description": "Container Path: /config"
-  }
-],
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
     "ports": [
-  {
-    "container": "8443",
-    "host": "8443",
-    "protocol": "tcp",
-    "description": "Container Port: 8443"
-  },
-  {
-    "container": "3478/udp",
-    "host": "3478/udp",
-    "protocol": "tcp",
-    "description": "Container Port: 3478/udp"
-  },
-  {
-    "container": "10001/udp",
-    "host": "10001/udp",
-    "protocol": "tcp",
-    "description": "Container Port: 10001/udp"
-  },
-  {
-    "container": "8080",
-    "host": "8080",
-    "protocol": "tcp",
-    "description": "Container Port: 8080"
-  },
-  {
-    "container": "1900/udp",
-    "host": "1900/udp",
-    "protocol": "tcp",
-    "description": "Container Port: 1900/udp"
-  },
-  {
-    "container": "8843",
-    "host": "8843",
-    "protocol": "tcp",
-    "description": "Container Port: 8843"
-  },
-  {
-    "container": "8880",
-    "host": "8880",
-    "protocol": "tcp",
-    "description": "Container Port: 8880"
-  },
-  {
-    "container": "6789",
-    "host": "6789",
-    "protocol": "tcp",
-    "description": "Container Port: 6789"
-  },
-  {
-    "container": "5514/udp",
-    "host": "5514/udp",
-    "protocol": "tcp",
-    "description": "Container Port: 5514/udp"
-  }
-]
+      {
+        "container": "8443",
+        "host": "8443",
+        "protocol": "tcp",
+        "description": "Container Port: 8443"
+      },
+      {
+        "container": "3478/udp",
+        "host": "3478/udp",
+        "protocol": "tcp",
+        "description": "Container Port: 3478/udp"
+      },
+      {
+        "container": "10001/udp",
+        "host": "10001/udp",
+        "protocol": "tcp",
+        "description": "Container Port: 10001/udp"
+      },
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Container Port: 8080"
+      },
+      {
+        "container": "1900/udp",
+        "host": "1900/udp",
+        "protocol": "tcp",
+        "description": "Container Port: 1900/udp"
+      },
+      {
+        "container": "8843",
+        "host": "8843",
+        "protocol": "tcp",
+        "description": "Container Port: 8843"
+      },
+      {
+        "container": "8880",
+        "host": "8880",
+        "protocol": "tcp",
+        "description": "Container Port: 8880"
+      },
+      {
+        "container": "6789",
+        "host": "6789",
+        "protocol": "tcp",
+        "description": "Container Port: 6789"
+      },
+      {
+        "container": "5514/udp",
+        "host": "5514/udp",
+        "protocol": "tcp",
+        "description": "Container Port: 5514/udp"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-unifi-network-application-to-bigbearcasaos/487\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-unifi-network-application-to-bigbearcasaos/487\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -194,7 +194,10 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
@@ -216,7 +219,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "unifi-network-application_config": "config",
+        "unifi-network-application_db_data": "db/data",
+        "unifi-network-application_db_init-mongo.js": "db/init-mongo.js"
+      }
     }
   },
   "tags": [

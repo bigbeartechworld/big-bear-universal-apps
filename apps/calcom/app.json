@@ -237,7 +237,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "calcom_config": "config",
+        "calcom_data_db": "data/db"
+      }
     }
   },
   "tags": [

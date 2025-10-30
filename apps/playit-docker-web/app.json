@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-playit-docker-web",
     "default_port": "8008",
@@ -41,36 +41,36 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "WEBUI_PORT",
-    "default": "",
-    "description": "Container Environment Variable: WEBUI_PORT",
-    "required": false
-  }
-],
+      {
+        "name": "WEBUI_PORT",
+        "default": "",
+        "description": "Container Environment Variable: WEBUI_PORT",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/config",
-    "description": "Container Path: /config"
-  }
-],
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
     "ports": [
-  {
-    "container": "8008",
-    "host": "8008",
-    "protocol": "tcp",
-    "description": "Container Port: 8008"
-  }
-]
+      {
+        "container": "8008",
+        "host": "8008",
+        "protocol": "tcp",
+        "description": "Container Port: 8008"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-playit-docker-web-to-bigbearcasaos/2276?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-playit-docker-web-to-bigbearcasaos/2276?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -80,16 +80,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -102,7 +105,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "playit-docker-web_config": "config"
+      }
     }
   },
   "tags": [

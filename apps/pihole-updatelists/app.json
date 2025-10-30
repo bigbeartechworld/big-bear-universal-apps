@@ -149,7 +149,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "pihole-updatelists_dnsmasq.d": "dnsmasq.d",
+        "pihole-updatelists_etc": "etc",
+        "pihole-updatelists_etc_pihole-updatelists": "etc/pihole-updatelists"
+      }
     }
   },
   "tags": [

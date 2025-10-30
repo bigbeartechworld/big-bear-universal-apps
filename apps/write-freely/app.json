@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-write-freely",
     "default_port": "8080",
@@ -41,54 +41,54 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "TZ",
-    "default": "",
-    "description": "Container Environment Variable: TZ",
-    "required": false
-  },
-  {
-    "name": "PUID",
-    "default": "",
-    "description": "Container Environment Variable: PUID",
-    "required": false
-  },
-  {
-    "name": "PGID",
-    "default": "",
-    "description": "Container Environment Variable: PGID",
-    "required": false
-  }
-],
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Environment Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Environment Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Environment Variable: PGID",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/mnt/config",
-    "description": "Container Path: /mnt/config"
-  }
-],
+      {
+        "container": "/mnt/config",
+        "description": "Container Path: /mnt/config"
+      }
+    ],
     "ports": [
-  {
-    "container": "70",
-    "host": "70",
-    "protocol": "tcp",
-    "description": "Container Port: 70"
-  },
-  {
-    "container": "8080",
-    "host": "8080",
-    "protocol": "tcp",
-    "description": "Container Port: 8080"
-  }
-]
+      {
+        "container": "70",
+        "host": "70",
+        "protocol": "tcp",
+        "description": "Container Port: 70"
+      },
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Container Port: 8080"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-write-freely-to-bigbearcasaos/3164?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-write-freely-to-bigbearcasaos/3164?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -98,16 +98,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -120,7 +123,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "write-freely_data_config": "data/config"
+      }
     }
   },
   "tags": [

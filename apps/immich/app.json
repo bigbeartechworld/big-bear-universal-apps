@@ -137,7 +137,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "immich_model-cache": "model-cache",
+        "immich_pgdata": "pgdata",
+        "immich_upload": "upload"
+      }
     }
   },
   "tags": [

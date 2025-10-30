@@ -237,7 +237,14 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "pterodactyl-panel_certs_": "certs/",
+        "pterodactyl-panel_database": "database",
+        "pterodactyl-panel_logs_": "logs/",
+        "pterodactyl-panel_nginx_": "nginx/",
+        "pterodactyl-panel_var_": "var/"
+      }
     }
   },
   "tags": [

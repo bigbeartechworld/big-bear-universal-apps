@@ -117,7 +117,13 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "jlesage-handbrake_config": "config",
+        "jlesage-handbrake_output": "output",
+        "jlesage-handbrake_storage": "storage",
+        "jlesage-handbrake_watch": "watch"
+      }
     }
   },
   "tags": [

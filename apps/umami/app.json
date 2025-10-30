@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "3000",
@@ -41,34 +41,34 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "DATABASE_URL",
-    "default": "",
-    "description": "Database URL",
-    "required": false
-  },
-  {
-    "name": "DATABASE_TYPE",
-    "default": "",
-    "description": "Database type",
-    "required": false
-  },
-  {
-    "name": "APP_SECRET",
-    "default": "",
-    "description": "Application secret",
-    "required": false
-  }
-],
+      {
+        "name": "DATABASE_URL",
+        "default": "",
+        "description": "Database URL",
+        "required": false
+      },
+      {
+        "name": "DATABASE_TYPE",
+        "default": "",
+        "description": "Database type",
+        "required": false
+      },
+      {
+        "name": "APP_SECRET",
+        "default": "",
+        "description": "Application secret",
+        "required": false
+      }
+    ],
     "volumes": [],
     "ports": [
-  {
-    "container": "3000",
-    "host": "3000",
-    "protocol": "tcp",
-    "description": "Container Port: 3000"
-  }
-]
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp",
+        "description": "Container Port: 3000"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -83,16 +83,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -105,7 +108,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "umami_pgdata": "pgdata"
+      }
     }
   },
   "tags": [

@@ -173,7 +173,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "ls-adguardhome-sync_config": "config"
+      }
     }
   },
   "tags": [

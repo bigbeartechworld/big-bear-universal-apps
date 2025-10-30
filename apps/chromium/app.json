@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "chromium",
     "default_port": "3000",
@@ -41,31 +41,31 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "PUID",
-    "default": "1000",
-    "description": "User ID",
-    "required": false
-  },
-  {
-    "name": "PGID",
-    "default": "1000",
-    "description": "Group ID",
-    "required": false
-  },
-  {
-    "name": "TZ",
-    "default": "Etc/UTC",
-    "description": "Timezone",
-    "required": false
-  },
-  {
-    "name": "CHROME_CLI",
-    "default": "https://community.bigbeartechworld.com/",
-    "description": "Default URL to open",
-    "required": false
-  }
-],
+      {
+        "name": "PUID",
+        "default": "1000",
+        "description": "User ID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "1000",
+        "description": "Group ID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "Etc/UTC",
+        "description": "Timezone",
+        "required": false
+      },
+      {
+        "name": "CHROME_CLI",
+        "default": "https://community.bigbeartechworld.com/",
+        "description": "Default URL to open",
+        "required": false
+      }
+    ],
     "volumes": [],
     "ports": []
   },
@@ -73,10 +73,10 @@
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Access the browser at http://your-server:3000 or https://your-server:3001\n"
-  }
-}
+      "before_install": {
+        "en_us": "Access the browser at http://your-server:3000 or https://your-server:3001\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -86,16 +86,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -108,7 +111,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "chromium_config": "config"
+      }
     }
   },
   "tags": [

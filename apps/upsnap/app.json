@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-upsnap",
     "default_port": "8090",
@@ -42,36 +42,36 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/app/data/configs",
-    "description": "Container Path: /app/data/configs"
-  },
-  {
-    "container": "/app/public/icons",
-    "description": "Container Path: /app/public/icons"
-  },
-  {
-    "container": "/data",
-    "description": "Container Path: /data"
-  }
-],
+      {
+        "container": "/app/data/configs",
+        "description": "Container Path: /app/data/configs"
+      },
+      {
+        "container": "/app/public/icons",
+        "description": "Container Path: /app/public/icons"
+      },
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      }
+    ],
     "ports": [
-  {
-    "container": "8090",
-    "host": "8090",
-    "protocol": "tcp",
-    "description": "Container Port: 8090"
-  }
-]
+      {
+        "container": "8090",
+        "host": "8090",
+        "protocol": "tcp",
+        "description": "Container Port: 8090"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-upsnap-to-bigbearcasaos/2279?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-upsnap-to-bigbearcasaos/2279?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -81,16 +81,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -103,7 +106,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "upsnap_pb_data": "pb/data"
+      }
     }
   },
   "tags": [

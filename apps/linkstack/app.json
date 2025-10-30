@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-linkstack",
     "default_port": "10443",
@@ -42,25 +42,25 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/data",
-    "description": "Container Path: /data - LinkStack data directory"
-  }
-],
+      {
+        "container": "/data",
+        "description": "Container Path: /data - LinkStack data directory"
+      }
+    ],
     "ports": [
-  {
-    "container": "80",
-    "host": "80",
-    "protocol": "tcp",
-    "description": "Container Port: 80 - HTTP"
-  },
-  {
-    "container": "443",
-    "host": "443",
-    "protocol": "tcp",
-    "description": "Container Port: 443 - HTTPS"
-  }
-]
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp",
+        "description": "Container Port: 80 - HTTP"
+      },
+      {
+        "container": "443",
+        "host": "443",
+        "protocol": "tcp",
+        "description": "Container Port: 443 - HTTPS"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -75,16 +75,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -97,7 +100,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "linkstack_data": "data"
+      }
     }
   },
   "tags": [

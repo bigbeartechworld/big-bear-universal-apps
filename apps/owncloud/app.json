@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-owncloud",
     "default_port": "8080",
@@ -41,102 +41,102 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "OWNCLOUD_DOMAIN",
-    "default": "",
-    "description": "Owncloud Domain",
-    "required": false
-  },
-  {
-    "name": "OWNCLOUD_TRUSTED_DOMAINS",
-    "default": "",
-    "description": "Owncloud Trusted Domains",
-    "required": false
-  },
-  {
-    "name": "OWNCLOUD_DB_TYPE",
-    "default": "",
-    "description": "Owncloud DB Type",
-    "required": false
-  },
-  {
-    "name": "OWNCLOUD_DB_NAME",
-    "default": "",
-    "description": "Owncloud DB Name",
-    "required": false
-  },
-  {
-    "name": "OWNCLOUD_DB_USERNAME",
-    "default": "",
-    "description": "Owncloud DB Username",
-    "required": false
-  },
-  {
-    "name": "OWNCLOUD_DB_PASSWORD",
-    "default": "",
-    "description": "Owncloud DB Password",
-    "required": false
-  },
-  {
-    "name": "OWNCLOUD_DB_HOST",
-    "default": "",
-    "description": "Owncloud DB Host",
-    "required": false
-  },
-  {
-    "name": "OWNCLOUD_ADMIN_USERNAME",
-    "default": "",
-    "description": "Owncloud Admin Username",
-    "required": false
-  },
-  {
-    "name": "OWNCLOUD_ADMIN_PASSWORD",
-    "default": "",
-    "description": "Owncloud Admin Password",
-    "required": false
-  },
-  {
-    "name": "OWNCLOUD_MYSQL_UTF8MB4",
-    "default": "",
-    "description": "Owncloud MySQL UTF8MB4",
-    "required": false
-  },
-  {
-    "name": "OWNCLOUD_REDIS_ENABLED",
-    "default": "",
-    "description": "Owncloud Redis Enabled",
-    "required": false
-  },
-  {
-    "name": "OWNCLOUD_REDIS_HOST",
-    "default": "",
-    "description": "Owncloud Redis Host",
-    "required": false
-  }
-],
+      {
+        "name": "OWNCLOUD_DOMAIN",
+        "default": "",
+        "description": "Owncloud Domain",
+        "required": false
+      },
+      {
+        "name": "OWNCLOUD_TRUSTED_DOMAINS",
+        "default": "",
+        "description": "Owncloud Trusted Domains",
+        "required": false
+      },
+      {
+        "name": "OWNCLOUD_DB_TYPE",
+        "default": "",
+        "description": "Owncloud DB Type",
+        "required": false
+      },
+      {
+        "name": "OWNCLOUD_DB_NAME",
+        "default": "",
+        "description": "Owncloud DB Name",
+        "required": false
+      },
+      {
+        "name": "OWNCLOUD_DB_USERNAME",
+        "default": "",
+        "description": "Owncloud DB Username",
+        "required": false
+      },
+      {
+        "name": "OWNCLOUD_DB_PASSWORD",
+        "default": "",
+        "description": "Owncloud DB Password",
+        "required": false
+      },
+      {
+        "name": "OWNCLOUD_DB_HOST",
+        "default": "",
+        "description": "Owncloud DB Host",
+        "required": false
+      },
+      {
+        "name": "OWNCLOUD_ADMIN_USERNAME",
+        "default": "",
+        "description": "Owncloud Admin Username",
+        "required": false
+      },
+      {
+        "name": "OWNCLOUD_ADMIN_PASSWORD",
+        "default": "",
+        "description": "Owncloud Admin Password",
+        "required": false
+      },
+      {
+        "name": "OWNCLOUD_MYSQL_UTF8MB4",
+        "default": "",
+        "description": "Owncloud MySQL UTF8MB4",
+        "required": false
+      },
+      {
+        "name": "OWNCLOUD_REDIS_ENABLED",
+        "default": "",
+        "description": "Owncloud Redis Enabled",
+        "required": false
+      },
+      {
+        "name": "OWNCLOUD_REDIS_HOST",
+        "default": "",
+        "description": "Owncloud Redis Host",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/mnt/data",
-    "description": "Container Path: /mnt/data"
-  }
-],
+      {
+        "container": "/mnt/data",
+        "description": "Container Path: /mnt/data"
+      }
+    ],
     "ports": [
-  {
-    "container": "8080",
-    "host": "8080",
-    "protocol": "tcp",
-    "description": "Container Port: 8080"
-  }
-]
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Container Port: 8080"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-owncloud-to-bigbearcasaos/1874#p-3512-documentation-4\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-owncloud-to-bigbearcasaos/1874#p-3512-documentation-4\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -146,16 +146,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -168,7 +171,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "owncloud_data": "data",
+        "owncloud_mysql": "mysql",
+        "owncloud_redis": "redis"
+      }
     }
   },
   "tags": [

@@ -41,78 +41,78 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "SELF_HOSTED",
-    "default": "",
-    "description": "Indicates whether the application is self-hosted (true/false).",
-    "required": false
-  },
-  {
-    "name": "RAILS_FORCE_SSL",
-    "default": "",
-    "description": "Determines if SSL should be forced (true/false).",
-    "required": false
-  },
-  {
-    "name": "GOOD_JOB_EXECUTION_MODE",
-    "default": "",
-    "description": "Sets the execution mode for GoodJob (e.g., async).",
-    "required": false
-  },
-  {
-    "name": "SECRET_KEY_BASE",
-    "default": "",
-    "description": "Secret key used for verifying the integrity of signed cookies.",
-    "required": false
-  },
-  {
-    "name": "DB_HOST",
-    "default": "",
-    "description": "Hostname for the PostgreSQL database service.",
-    "required": false
-  },
-  {
-    "name": "POSTGRES_DB",
-    "default": "",
-    "description": "PostgreSQL database to be created and used by the application.",
-    "required": false
-  },
-  {
-    "name": "POSTGRES_USER",
-    "default": "",
-    "description": "Username for connecting to the PostgreSQL database.",
-    "required": false
-  },
-  {
-    "name": "POSTGRES_PASSWORD",
-    "default": "",
-    "description": "Password for the PostgreSQL user.",
-    "required": false
-  }
-],
+      {
+        "name": "SELF_HOSTED",
+        "default": "",
+        "description": "Indicates whether the application is self-hosted (true/false).",
+        "required": false
+      },
+      {
+        "name": "RAILS_FORCE_SSL",
+        "default": "",
+        "description": "Determines if SSL should be forced (true/false).",
+        "required": false
+      },
+      {
+        "name": "GOOD_JOB_EXECUTION_MODE",
+        "default": "",
+        "description": "Sets the execution mode for GoodJob (e.g., async).",
+        "required": false
+      },
+      {
+        "name": "SECRET_KEY_BASE",
+        "default": "",
+        "description": "Secret key used for verifying the integrity of signed cookies.",
+        "required": false
+      },
+      {
+        "name": "DB_HOST",
+        "default": "",
+        "description": "Hostname for the PostgreSQL database service.",
+        "required": false
+      },
+      {
+        "name": "POSTGRES_DB",
+        "default": "",
+        "description": "PostgreSQL database to be created and used by the application.",
+        "required": false
+      },
+      {
+        "name": "POSTGRES_USER",
+        "default": "",
+        "description": "Username for connecting to the PostgreSQL database.",
+        "required": false
+      },
+      {
+        "name": "POSTGRES_PASSWORD",
+        "default": "",
+        "description": "Password for the PostgreSQL user.",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/rails/storage",
-    "description": "Container Path: /rails/storage"
-  }
-],
+      {
+        "container": "/rails/storage",
+        "description": "Container Path: /rails/storage"
+      }
+    ],
     "ports": [
-  {
-    "container": "3000",
-    "host": "3000",
-    "protocol": "tcp",
-    "description": "Container Port: 3000"
-  }
-]
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp",
+        "description": "Container Port: 3000"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "### Additional Instructions:\nGenerate the app secret key:\n\n  1. Open a terminal and digit:\n\n  ```bash\n  head -c 64 /dev/urandom | od -An -tx1 | tr -d ' \\n' && echo\n  ```\n  2. Copy the generated key and paste it in the `SECRET_KEY_BASE`.\n\n  3. Save the changes and restart the application.\n\nFor more information, refer to the [official documentation](https://maybe.co)\n"
-  }
-}
+      "before_install": {
+        "en_us": "### Additional Instructions:\nGenerate the app secret key:\n\n  1. Open a terminal and digit:\n\n  ```bash\n  head -c 64 /dev/urandom | od -An -tx1 | tr -d ' \\n' && echo\n  ```\n  2. Copy the generated key and paste it in the `SECRET_KEY_BASE`.\n\n  3. Save the changes and restart the application.\n\nFor more information, refer to the [official documentation](https://maybe.co)\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -123,7 +123,10 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false,
       "folder_name": "maybe-finance"
     },
@@ -150,7 +153,12 @@
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
-      "folder_name": "big-bear-umbrel-maybe-finance"
+      "folder_name": "big-bear-umbrel-maybe-finance",
+      "volume_mappings": {
+        "MaybeFinance_app-storage": "MaybeFinance/app-storage",
+        "MaybeFinance_postgres-data": "MaybeFinance/postgres-data",
+        "MaybeFinance_redis-data": "MaybeFinance/redis-data"
+      }
     }
   },
   "tags": [

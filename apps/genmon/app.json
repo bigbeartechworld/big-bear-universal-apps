@@ -116,7 +116,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "genmon_etc_genmon": "etc/genmon",
+        "genmon_git_genmon": "git/genmon",
+        "genmon_var_log": "var/log"
+      }
     }
   },
   "tags": [

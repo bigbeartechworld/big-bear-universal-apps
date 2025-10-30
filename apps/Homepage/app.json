@@ -104,7 +104,10 @@
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
-      "folder_name": "big-bear-umbrel-homepage"
+      "folder_name": "big-bear-umbrel-homepage",
+      "volume_mappings": {
+        "Homepage_config": "Homepage/config"
+      }
     }
   },
   "tags": [

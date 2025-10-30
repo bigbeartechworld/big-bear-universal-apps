@@ -133,7 +133,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "gladys_data": "data"
+      }
     }
   },
   "tags": [

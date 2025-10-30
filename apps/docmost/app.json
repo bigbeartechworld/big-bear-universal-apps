@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-docmost",
     "default_port": "3000",
@@ -41,62 +41,62 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "APP_URL",
-    "default": "",
-    "description": "Container Environment Variable: APP_URL",
-    "required": false
-  },
-  {
-    "name": "APP_SECRET",
-    "default": "",
-    "description": "Container Environment Variable: APP_SECRET",
-    "required": false
-  },
-  {
-    "name": "DATABASE_URL",
-    "default": "",
-    "description": "Container Environment Variable: DATABASE_URL",
-    "required": false
-  },
-  {
-    "name": "REDIS_URL",
-    "default": "",
-    "description": "Container Environment Variable: REDIS_URL",
-    "required": false
-  }
-],
+      {
+        "name": "APP_URL",
+        "default": "",
+        "description": "Container Environment Variable: APP_URL",
+        "required": false
+      },
+      {
+        "name": "APP_SECRET",
+        "default": "",
+        "description": "Container Environment Variable: APP_SECRET",
+        "required": false
+      },
+      {
+        "name": "DATABASE_URL",
+        "default": "",
+        "description": "Container Environment Variable: DATABASE_URL",
+        "required": false
+      },
+      {
+        "name": "REDIS_URL",
+        "default": "",
+        "description": "Container Environment Variable: REDIS_URL",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/app/data/configs",
-    "description": "Container Path: /app/data/configs"
-  },
-  {
-    "container": "/app/public/icons",
-    "description": "Container Path: /app/public/icons"
-  },
-  {
-    "container": "/data",
-    "description": "Container Path: /data"
-  }
-],
+      {
+        "container": "/app/data/configs",
+        "description": "Container Path: /app/data/configs"
+      },
+      {
+        "container": "/app/public/icons",
+        "description": "Container Path: /app/public/icons"
+      },
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      }
+    ],
     "ports": [
-  {
-    "container": "3000",
-    "host": "3000",
-    "protocol": "tcp",
-    "description": "Container Port: 3000"
-  }
-]
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp",
+        "description": "Container Port: 3000"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this: https://community.bigbeartechworld.com/t/added-docmost-to-bigbearcasaos/1724#p-3266-documentation-3\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this: https://community.bigbeartechworld.com/t/added-docmost-to-bigbearcasaos/1724#p-3266-documentation-3\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -106,16 +106,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -128,7 +131,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "docmost_data_pgdata": "data/pgdata",
+        "docmost_data_redis": "data/redis",
+        "docmost_data_storage": "data/storage"
+      }
     }
   },
   "tags": [

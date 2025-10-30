@@ -111,7 +111,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "jfa-go_.config_jfa-go": ".config/jfa-go",
+        "jfa-go_jellyfin": "jellyfin"
+      }
     }
   },
   "tags": [

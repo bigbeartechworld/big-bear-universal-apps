@@ -105,7 +105,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "n8n_.n8n": ".n8n",
+        "n8n_db_init-data.sh": "db/init-data.sh",
+        "n8n_pgdata": "pgdata"
+      }
     }
   },
   "tags": [

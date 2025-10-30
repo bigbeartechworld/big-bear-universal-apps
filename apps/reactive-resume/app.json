@@ -86,7 +86,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "reactive-resume_minio_data": "minio/data",
+        "reactive-resume_pg_data": "pg/data"
+      }
     }
   },
   "tags": [

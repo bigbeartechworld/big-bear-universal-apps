@@ -120,7 +120,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "adguard-home-host_data_conf": "data/conf",
+        "adguard-home-host_data_work": "data/work"
+      }
     }
   },
   "tags": [

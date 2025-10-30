@@ -98,7 +98,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "semaphore_home": "home",
+        "semaphore_lib": "lib",
+        "semaphore_mysql": "mysql"
+      }
     }
   },
   "tags": [

@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "9443",
@@ -42,35 +42,35 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/data",
-    "description": "Access to Portainer data"
-  },
-  {
-    "container": "/var/run/docker.sock",
-    "description": "Access to Docker socket"
-  }
-],
+      {
+        "container": "/data",
+        "description": "Access to Portainer data"
+      },
+      {
+        "container": "/var/run/docker.sock",
+        "description": "Access to Docker socket"
+      }
+    ],
     "ports": [
-  {
-    "container": "8000",
-    "host": "8000",
-    "protocol": "tcp",
-    "description": "Container: 8000"
-  },
-  {
-    "container": "9000",
-    "host": "9000",
-    "protocol": "tcp",
-    "description": "Container: 9000"
-  },
-  {
-    "container": "9443",
-    "host": "9443",
-    "protocol": "tcp",
-    "description": "Container: 9443"
-  }
-]
+      {
+        "container": "8000",
+        "host": "8000",
+        "protocol": "tcp",
+        "description": "Container: 8000"
+      },
+      {
+        "container": "9000",
+        "host": "9000",
+        "protocol": "tcp",
+        "description": "Container: 9000"
+      },
+      {
+        "container": "9443",
+        "host": "9443",
+        "protocol": "tcp",
+        "description": "Container: 9443"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -85,16 +85,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -107,7 +110,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "portainer_data": "data"
+      }
     }
   },
   "tags": [

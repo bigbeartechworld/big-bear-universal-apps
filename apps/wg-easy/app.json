@@ -104,7 +104,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "wg-easy_data": "data"
+      }
     }
   },
   "tags": [

@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-planka",
     "default_port": "3000",
@@ -42,36 +42,36 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/app/public/user-avatars",
-    "description": "Container Path: /app/public/user-avatars"
-  },
-  {
-    "container": "/app/public/project-background-images",
-    "description": "Container Path: /app/public/project-background-images"
-  },
-  {
-    "container": "/app/private/attachments",
-    "description": "Container Path: /app/private/attachments"
-  }
-],
+      {
+        "container": "/app/public/user-avatars",
+        "description": "Container Path: /app/public/user-avatars"
+      },
+      {
+        "container": "/app/public/project-background-images",
+        "description": "Container Path: /app/public/project-background-images"
+      },
+      {
+        "container": "/app/private/attachments",
+        "description": "Container Path: /app/private/attachments"
+      }
+    ],
     "ports": [
-  {
-    "container": "1337",
-    "host": "1337",
-    "protocol": "tcp",
-    "description": "Container Port: 1337"
-  }
-]
+      {
+        "container": "1337",
+        "host": "1337",
+        "protocol": "tcp",
+        "description": "Container Port: 1337"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-planka-to-bigbearcasaos/924#documentation-5\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-planka-to-bigbearcasaos/924#documentation-5\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -81,16 +81,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -103,7 +106,13 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "planka_attachments": "attachments",
+        "planka_postgresql": "postgresql",
+        "planka_project-background-images": "project-background-images",
+        "planka_user-avatars": "user-avatars"
+      }
     }
   },
   "tags": [

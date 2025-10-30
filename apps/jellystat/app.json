@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-jellystat",
     "default_port": "3000",
@@ -42,19 +42,19 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/DATA/AppData/$AppID/postgres-data",
-    "description": "Container Path: /DATA/AppData/$AppID/postgres-data"
-  }
-],
+      {
+        "container": "/DATA/AppData/$AppID/postgres-data",
+        "description": "Container Path: /DATA/AppData/$AppID/postgres-data"
+      }
+    ],
     "ports": [
-  {
-    "container": "3000",
-    "host": "3000",
-    "protocol": "tcp",
-    "description": "Container Port: 3000"
-  }
-]
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp",
+        "description": "Container Port: 3000"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -69,16 +69,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -91,7 +94,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "jellystat_backup-data": "backup-data",
+        "jellystat_postgres-data": "postgres-data"
+      }
     }
   },
   "tags": [

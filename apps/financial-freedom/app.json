@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "8443",
@@ -41,218 +41,218 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "APP_NAME",
-    "default": "",
-    "description": "App Name",
-    "required": false
-  },
-  {
-    "name": "APP_ENV",
-    "default": "",
-    "description": "App Environment",
-    "required": false
-  },
-  {
-    "name": "APP_DEBUG",
-    "default": "",
-    "description": "App Debug",
-    "required": false
-  },
-  {
-    "name": "APP_URL",
-    "default": "",
-    "description": "App URL",
-    "required": false
-  },
-  {
-    "name": "APP_KEY",
-    "default": "",
-    "description": "App Key",
-    "required": false
-  },
-  {
-    "name": "DB_ROOT_PASSWORD",
-    "default": "",
-    "description": "Database Root Password",
-    "required": false
-  },
-  {
-    "name": "DB_DATABASE",
-    "default": "",
-    "description": "Database Name",
-    "required": false
-  },
-  {
-    "name": "DB_USERNAME",
-    "default": "",
-    "description": "Database Username",
-    "required": false
-  },
-  {
-    "name": "DB_PASSWORD",
-    "default": "",
-    "description": "Database Password",
-    "required": false
-  },
-  {
-    "name": "MAIL_MAILER",
-    "default": "",
-    "description": "Mail Mailer",
-    "required": false
-  },
-  {
-    "name": "MAIL_HOST",
-    "default": "",
-    "description": "Mail Host",
-    "required": false
-  },
-  {
-    "name": "MAIL_PORT",
-    "default": "",
-    "description": "Mail Port",
-    "required": false
-  },
-  {
-    "name": "MAIL_USERNAME",
-    "default": "",
-    "description": "Mail Username",
-    "required": false
-  },
-  {
-    "name": "MAIL_PASSWORD",
-    "default": "",
-    "description": "Mail Password",
-    "required": false
-  },
-  {
-    "name": "MAIL_ENCRYPTION",
-    "default": "",
-    "description": "Mail Encryption",
-    "required": false
-  },
-  {
-    "name": "MAIL_FROM_ADDRESS",
-    "default": "",
-    "description": "Mail From Address",
-    "required": false
-  },
-  {
-    "name": "MAIL_FROM_NAME",
-    "default": "",
-    "description": "Mail From Name",
-    "required": false
-  },
-  {
-    "name": "SSL_MODE",
-    "default": "",
-    "description": "SSL Mode",
-    "required": false
-  },
-  {
-    "name": "AUTORUN_ENABLED",
-    "default": "",
-    "description": "Autorun Enabled",
-    "required": false
-  },
-  {
-    "name": "FINANCIAL_FREEDOM_ALLOW_REGISTRATION",
-    "default": "",
-    "description": "Financial Freedom Allow Registration",
-    "required": false
-  },
-  {
-    "name": "LOG_CHANNEL",
-    "default": "",
-    "description": "Log Channel",
-    "required": false
-  },
-  {
-    "name": "BROADCAST_DRIVER",
-    "default": "",
-    "description": "Broadcast Driver",
-    "required": false
-  },
-  {
-    "name": "CACHE_DRIVER",
-    "default": "",
-    "description": "Cache Driver",
-    "required": false
-  },
-  {
-    "name": "QUEUE_CONNECTION",
-    "default": "",
-    "description": "Queue Connection",
-    "required": false
-  },
-  {
-    "name": "SESSION_LIFETIME",
-    "default": "",
-    "description": "Session Lifetime",
-    "required": false
-  },
-  {
-    "name": "SESSION_DRIVER",
-    "default": "",
-    "description": "Session Driver",
-    "required": false
-  },
-  {
-    "name": "MYSQL_ROOT_PASSWORD",
-    "default": "",
-    "description": "MySQL Root Password",
-    "required": false
-  },
-  {
-    "name": "MYSQL_DATABASE",
-    "default": "",
-    "description": "MySQL Database",
-    "required": false
-  },
-  {
-    "name": "MYSQL_USER",
-    "default": "",
-    "description": "MySQL User",
-    "required": false
-  },
-  {
-    "name": "MYSQL_PASSWORD",
-    "default": "",
-    "description": "MySQL Password",
-    "required": false
-  }
-],
+      {
+        "name": "APP_NAME",
+        "default": "",
+        "description": "App Name",
+        "required": false
+      },
+      {
+        "name": "APP_ENV",
+        "default": "",
+        "description": "App Environment",
+        "required": false
+      },
+      {
+        "name": "APP_DEBUG",
+        "default": "",
+        "description": "App Debug",
+        "required": false
+      },
+      {
+        "name": "APP_URL",
+        "default": "",
+        "description": "App URL",
+        "required": false
+      },
+      {
+        "name": "APP_KEY",
+        "default": "",
+        "description": "App Key",
+        "required": false
+      },
+      {
+        "name": "DB_ROOT_PASSWORD",
+        "default": "",
+        "description": "Database Root Password",
+        "required": false
+      },
+      {
+        "name": "DB_DATABASE",
+        "default": "",
+        "description": "Database Name",
+        "required": false
+      },
+      {
+        "name": "DB_USERNAME",
+        "default": "",
+        "description": "Database Username",
+        "required": false
+      },
+      {
+        "name": "DB_PASSWORD",
+        "default": "",
+        "description": "Database Password",
+        "required": false
+      },
+      {
+        "name": "MAIL_MAILER",
+        "default": "",
+        "description": "Mail Mailer",
+        "required": false
+      },
+      {
+        "name": "MAIL_HOST",
+        "default": "",
+        "description": "Mail Host",
+        "required": false
+      },
+      {
+        "name": "MAIL_PORT",
+        "default": "",
+        "description": "Mail Port",
+        "required": false
+      },
+      {
+        "name": "MAIL_USERNAME",
+        "default": "",
+        "description": "Mail Username",
+        "required": false
+      },
+      {
+        "name": "MAIL_PASSWORD",
+        "default": "",
+        "description": "Mail Password",
+        "required": false
+      },
+      {
+        "name": "MAIL_ENCRYPTION",
+        "default": "",
+        "description": "Mail Encryption",
+        "required": false
+      },
+      {
+        "name": "MAIL_FROM_ADDRESS",
+        "default": "",
+        "description": "Mail From Address",
+        "required": false
+      },
+      {
+        "name": "MAIL_FROM_NAME",
+        "default": "",
+        "description": "Mail From Name",
+        "required": false
+      },
+      {
+        "name": "SSL_MODE",
+        "default": "",
+        "description": "SSL Mode",
+        "required": false
+      },
+      {
+        "name": "AUTORUN_ENABLED",
+        "default": "",
+        "description": "Autorun Enabled",
+        "required": false
+      },
+      {
+        "name": "FINANCIAL_FREEDOM_ALLOW_REGISTRATION",
+        "default": "",
+        "description": "Financial Freedom Allow Registration",
+        "required": false
+      },
+      {
+        "name": "LOG_CHANNEL",
+        "default": "",
+        "description": "Log Channel",
+        "required": false
+      },
+      {
+        "name": "BROADCAST_DRIVER",
+        "default": "",
+        "description": "Broadcast Driver",
+        "required": false
+      },
+      {
+        "name": "CACHE_DRIVER",
+        "default": "",
+        "description": "Cache Driver",
+        "required": false
+      },
+      {
+        "name": "QUEUE_CONNECTION",
+        "default": "",
+        "description": "Queue Connection",
+        "required": false
+      },
+      {
+        "name": "SESSION_LIFETIME",
+        "default": "",
+        "description": "Session Lifetime",
+        "required": false
+      },
+      {
+        "name": "SESSION_DRIVER",
+        "default": "",
+        "description": "Session Driver",
+        "required": false
+      },
+      {
+        "name": "MYSQL_ROOT_PASSWORD",
+        "default": "",
+        "description": "MySQL Root Password",
+        "required": false
+      },
+      {
+        "name": "MYSQL_DATABASE",
+        "default": "",
+        "description": "MySQL Database",
+        "required": false
+      },
+      {
+        "name": "MYSQL_USER",
+        "default": "",
+        "description": "MySQL User",
+        "required": false
+      },
+      {
+        "name": "MYSQL_PASSWORD",
+        "default": "",
+        "description": "MySQL Password",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": null,
-    "description": "Container Path: /app/data/configs"
-  },
-  {
-    "container": "/app/public/icons",
-    "description": "Container Path: /app/public/icons"
-  },
-  {
-    "container": "/data",
-    "description": "Container Path: /data"
-  }
-],
+      {
+        "container": null,
+        "description": "Container Path: /app/data/configs"
+      },
+      {
+        "container": "/app/public/icons",
+        "description": "Container Path: /app/public/icons"
+      },
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      }
+    ],
     "ports": [
-  {
-    "container": "7575",
-    "host": "7575",
-    "protocol": "tcp",
-    "description": "Container Port: 7575"
-  }
-]
+      {
+        "container": "7575",
+        "host": "7575",
+        "protocol": "tcp",
+        "description": "Container Port: 7575"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-financial-freedom-to-bigbearcasaos/542\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-financial-freedom-to-bigbearcasaos/542\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -262,16 +262,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -284,7 +287,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "financial-freedom_logs": "logs",
+        "financial-freedom_mariadb": "mariadb",
+        "financial-freedom_sessions": "sessions"
+      }
     }
   },
   "tags": [

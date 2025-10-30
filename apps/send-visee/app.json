@@ -131,7 +131,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "send-visee_redis": "redis",
+        "send-visee_uploads": "uploads"
+      }
     }
   },
   "tags": [

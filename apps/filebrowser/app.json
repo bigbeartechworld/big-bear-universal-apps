@@ -135,7 +135,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "filebrowser_data_config": "data/config",
+        "filebrowser_data_db": "data/db"
+      }
     }
   },
   "tags": [

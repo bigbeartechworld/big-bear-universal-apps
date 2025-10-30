@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-gem-digest-bot",
     "default_port": "3333",
@@ -42,26 +42,26 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/gem_digest_bot/extra_configs",
-    "description": "Container Path: /gem_digest_bot/extra_configs"
-  }
-],
+      {
+        "container": "/gem_digest_bot/extra_configs",
+        "description": "Container Path: /gem_digest_bot/extra_configs"
+      }
+    ],
     "ports": [
-  {
-    "container": "8080",
-    "host": "8080",
-    "protocol": "tcp",
-    "description": "Container Port: 8080"
-  }
-]
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Container Port: 8080"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "custom": "Add you `TELEGRAM-API-KEY` and `GEMINI-API-KEY` in settings and the users `ID` that are considered as admin separated by a \";\" if thereare more then one. for more info visit [GemDigest](https://github.com/Armaggheddon/GemDigest)"
-}
+      "custom": "Add you `TELEGRAM-API-KEY` and `GEMINI-API-KEY` in settings and the users `ID` that are considered as admin separated by a \";\" if thereare more then one. for more info visit [GemDigest](https://github.com/Armaggheddon/GemDigest)"
+    }
   },
   "compatibility": {
     "casaos": {
@@ -72,7 +72,10 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false,
       "folder_name": "gemdigest"
     },
@@ -80,9 +83,9 @@
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-],
+        "amd64",
+        "arm64"
+      ],
       "folder_name": "gemdigest"
     },
     "dockge": {
@@ -99,7 +102,10 @@
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
-      "folder_name": "big-bear-umbrel-gemdigest"
+      "folder_name": "big-bear-umbrel-gemdigest",
+      "volume_mappings": {
+        "GemDigest_extra_configs": "GemDigest/extra/configs"
+      }
     }
   },
   "tags": [

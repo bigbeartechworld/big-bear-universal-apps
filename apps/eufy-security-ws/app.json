@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-eufy-security-ws",
     "default_port": "3000",
@@ -41,60 +41,60 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": null,
-    "default": "",
-    "description": "Eufy Account Username (required)",
-    "required": false
-  },
-  {
-    "name": null,
-    "default": "",
-    "description": "Eufy Account Password (required)",
-    "required": false
-  },
-  {
-    "name": null,
-    "default": "",
-    "description": "ISO 3166-1 Alpha-2 country code (default: US)",
-    "required": false
-  },
-  {
-    "name": null,
-    "default": "",
-    "description": "ISO 639 language code (default: en)",
-    "required": false
-  },
-  {
-    "name": null,
-    "default": "",
-    "description": "Label of the trusted devices (viewable with 2fa activated in Eufy App; default: random device name)",
-    "required": false
-  }
-],
+      {
+        "name": null,
+        "default": "",
+        "description": "Eufy Account Username (required)",
+        "required": false
+      },
+      {
+        "name": null,
+        "default": "",
+        "description": "Eufy Account Password (required)",
+        "required": false
+      },
+      {
+        "name": null,
+        "default": "",
+        "description": "ISO 3166-1 Alpha-2 country code (default: US)",
+        "required": false
+      },
+      {
+        "name": null,
+        "default": "",
+        "description": "ISO 639 language code (default: en)",
+        "required": false
+      },
+      {
+        "name": null,
+        "default": "",
+        "description": "Label of the trusted devices (viewable with 2fa activated in Eufy App; default: random device name)",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/data",
-    "description": "Container Path: /data"
-  }
-],
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      }
+    ],
     "ports": [
-  {
-    "container": "3000",
-    "host": "3000",
-    "protocol": "tcp",
-    "description": "Container Port: 3000"
-  }
-]
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp",
+        "description": "Container Port: 3000"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-eufy-security-ws-to-bigbearcasaos/2228\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-eufy-security-ws-to-bigbearcasaos/2228\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -104,16 +104,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -126,7 +129,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "eufy-security-ws_data": "data"
+      }
     }
   },
   "tags": [

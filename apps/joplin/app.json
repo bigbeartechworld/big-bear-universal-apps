@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-joplin",
     "default_port": "22300",
@@ -41,79 +41,79 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": null,
-    "default": "",
-    "description": "Application Port: 22300",
-    "required": false
-  },
-  {
-    "name": null,
-    "default": "",
-    "description": "Application Base URL",
-    "required": false
-  },
-  {
-    "name": null,
-    "default": "",
-    "description": "Database Client: pg",
-    "required": false
-  },
-  {
-    "name": null,
-    "default": "",
-    "description": "Postgres Password: 27a1d42a-a15d-43dd-903c-2a73538647fe",
-    "required": false
-  },
-  {
-    "name": null,
-    "default": "",
-    "description": "Postgres User: bigbear",
-    "required": false
-  },
-  {
-    "name": null,
-    "default": "",
-    "description": "Postgres Database: joplin",
-    "required": false
-  },
-  {
-    "name": null,
-    "default": "",
-    "description": "Postgres Port: 5432",
-    "required": false
-  },
-  {
-    "name": null,
-    "default": "",
-    "description": "Postgres Host: big-bear-joplin-db",
-    "required": false
-  },
-  {
-    "name": null,
-    "default": "",
-    "description": "Max Time Drift: 0",
-    "required": false
-  }
-],
+      {
+        "name": null,
+        "default": "",
+        "description": "Application Port: 22300",
+        "required": false
+      },
+      {
+        "name": null,
+        "default": "",
+        "description": "Application Base URL",
+        "required": false
+      },
+      {
+        "name": null,
+        "default": "",
+        "description": "Database Client: pg",
+        "required": false
+      },
+      {
+        "name": null,
+        "default": "",
+        "description": "Postgres Password: 27a1d42a-a15d-43dd-903c-2a73538647fe",
+        "required": false
+      },
+      {
+        "name": null,
+        "default": "",
+        "description": "Postgres User: bigbear",
+        "required": false
+      },
+      {
+        "name": null,
+        "default": "",
+        "description": "Postgres Database: joplin",
+        "required": false
+      },
+      {
+        "name": null,
+        "default": "",
+        "description": "Postgres Port: 5432",
+        "required": false
+      },
+      {
+        "name": null,
+        "default": "",
+        "description": "Postgres Host: big-bear-joplin-db",
+        "required": false
+      },
+      {
+        "name": null,
+        "default": "",
+        "description": "Max Time Drift: 0",
+        "required": false
+      }
+    ],
     "volumes": [],
     "ports": [
-  {
-    "container": "22300",
-    "host": "22300",
-    "protocol": "tcp",
-    "description": "Container Port: 22300"
-  }
-]
+      {
+        "container": "22300",
+        "host": "22300",
+        "protocol": "tcp",
+        "description": "Container Port: 22300"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-joplin-server-to-bigbearcasaos/800?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-joplin-server-to-bigbearcasaos/800?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -123,16 +123,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -145,7 +148,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "joplin_postgresql_data": "postgresql/data"
+      }
     }
   },
   "tags": [

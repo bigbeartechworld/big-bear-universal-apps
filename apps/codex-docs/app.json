@@ -102,7 +102,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "codex-docs_codex-docs-config.local.yaml": "codex-docs-config.local.yaml",
+        "codex-docs_db": "db",
+        "codex-docs_uploads": "uploads"
+      }
     }
   },
   "tags": [
