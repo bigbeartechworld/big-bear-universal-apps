@@ -71,7 +71,7 @@
       "port_map": "3000",
       "folder_name": "homepage",
       "volume_mappings": {
-        "Homepage_config": "/DATA/AppData/$AppID/Homepage/config"
+        "Homepage_config": "/DATA/AppData/$AppID/config"
       }
     },
     "portainer": {

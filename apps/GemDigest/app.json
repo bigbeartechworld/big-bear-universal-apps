@@ -69,7 +69,7 @@
       "port_map": "3333",
       "folder_name": "gemdigest",
       "volume_mappings": {
-        "GemDigest_extra_configs": "/DATA/AppData/$AppID/GemDigest/extra/configs"
+        "GemDigest_extra_configs": "/DATA/AppData/$AppID/extra/configs"
       }
     },
     "portainer": {
@@ -91,7 +91,7 @@
       ],
       "folder_name": "gemdigest",
       "volume_mappings": {
-        "GemDigest_extra_configs": "GemDigest/extra/configs"
+        "GemDigest_extra_configs": "/extra/configs"
       }
     },
     "dockge": {
@@ -110,7 +110,7 @@
       "manifest_version": 1,
       "folder_name": "big-bear-umbrel-gemdigest",
       "volume_mappings": {
-        "GemDigest_extra_configs": "GemDigest/extra/configs"
+        "GemDigest_extra_configs": "/extra/configs"
       }
     }
   },
