@@ -80,7 +80,8 @@
       "port_map": "943",
       "volume_mappings": {
         "openvpn-as_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "943"
     },
     "portainer": {
       "supported": true,
@@ -89,7 +90,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "943"
     },
     "runtipi": {
       "supported": true,
@@ -118,7 +120,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "openvpn-as_data": "data"
-      }
+      },
+      "port": "10124"
     }
   },
   "tags": [

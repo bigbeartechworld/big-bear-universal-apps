@@ -72,7 +72,8 @@
       "volume_mappings": {
         "libretranslate_.local": "/DATA/AppData/$AppID/.local",
         "libretranslate_db": "/DATA/AppData/$AppID/db"
-      }
+      },
+      "port": "5000"
     },
     "portainer": {
       "supported": true,
@@ -81,7 +82,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "5000"
     },
     "runtipi": {
       "supported": true,
@@ -113,7 +115,8 @@
       "volume_mappings": {
         "libretranslate_.local": ".local",
         "libretranslate_db": "db"
-      }
+      },
+      "port": "10087"
     }
   },
   "tags": [

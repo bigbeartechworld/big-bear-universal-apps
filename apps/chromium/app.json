@@ -84,7 +84,8 @@
       "port_map": "3000",
       "volume_mappings": {
         "chromium_config": "/DATA/AppData/$AppID/config"
-      }
+      },
+      "port": "6902"
     },
     "portainer": {
       "supported": true,
@@ -93,7 +94,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "6902"
     },
     "runtipi": {
       "supported": true,

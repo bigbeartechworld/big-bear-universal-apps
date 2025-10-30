@@ -68,7 +68,8 @@
       "port_map": "3001",
       "volume_mappings": {
         "dashdot_data": "/DATA/AppData/$AppID"
-      }
+      },
+      "port": "3001"
     },
     "portainer": {
       "supported": true,
@@ -77,7 +78,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3001"
     },
     "runtipi": {
       "supported": true,

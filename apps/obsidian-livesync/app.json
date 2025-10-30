@@ -76,7 +76,8 @@
       "volume_mappings": {
         "obsidian-livesync_data_couchdb": "/DATA/AppData/$AppID/data/couchdb",
         "obsidian-livesync_data_local.ini": "/DATA/AppData/$AppID/data/local.ini"
-      }
+      },
+      "port": "5984"
     },
     "portainer": {
       "supported": true,
@@ -85,7 +86,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "5984"
     },
     "runtipi": {
       "supported": true,
@@ -117,7 +119,8 @@
       "volume_mappings": {
         "obsidian-livesync_data_couchdb": "data/couchdb",
         "obsidian-livesync_data_local.ini": "data/local.ini"
-      }
+      },
+      "port": "10118"
     }
   },
   "tags": [

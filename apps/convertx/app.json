@@ -79,7 +79,8 @@
       "port_map": "3000",
       "volume_mappings": {
         "convertx_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "3000"
     },
     "portainer": {
       "supported": true,
@@ -88,7 +89,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3000"
     },
     "runtipi": {
       "supported": true,

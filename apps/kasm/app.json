@@ -60,7 +60,8 @@
       "volume_mappings": {
         "kasm_opt": "/DATA/AppData/$AppID/opt",
         "kasm_profiles": "/DATA/AppData/$AppID/profiles"
-      }
+      },
+      "port": "3000"
     },
     "portainer": {
       "supported": true,
@@ -69,7 +70,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3000"
     },
     "runtipi": {
       "supported": true,
@@ -101,7 +103,8 @@
       "volume_mappings": {
         "kasm_opt": "opt",
         "kasm_profiles": "profiles"
-      }
+      },
+      "port": "10081"
     }
   },
   "tags": [

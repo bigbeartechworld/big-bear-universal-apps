@@ -132,7 +132,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "diun_data": "data"
-      }
+      },
+      "port": "10034"
     }
   },
   "tags": [

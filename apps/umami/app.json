@@ -81,7 +81,8 @@
       "port_map": "3000",
       "volume_mappings": {
         "umami_pgdata": "/DATA/AppData/$AppID/pgdata"
-      }
+      },
+      "port": "3000"
     },
     "portainer": {
       "supported": true,
@@ -90,7 +91,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3000"
     },
     "runtipi": {
       "supported": true,
@@ -120,7 +122,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "umami_pgdata": "pgdata"
-      }
+      },
+      "port": "10175"
     }
   },
   "tags": [

@@ -80,7 +80,8 @@
       "port_map": "7350",
       "volume_mappings": {
         "baserow_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "7350"
     },
     "portainer": {
       "supported": true,
@@ -89,7 +90,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "7350"
     },
     "runtipi": {
       "supported": true,

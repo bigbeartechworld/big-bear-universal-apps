@@ -94,7 +94,8 @@
       "port_map": "9292",
       "volume_mappings": {
         "tududi_tududi_db": "/DATA/AppData/$AppID/tududi/db"
-      }
+      },
+      "port": "9292"
     },
     "portainer": {
       "supported": true,
@@ -103,7 +104,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "9292"
     },
     "runtipi": {
       "supported": true,
@@ -132,7 +134,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "tududi_tududi_db": "tududi/db"
-      }
+      },
+      "port": "10172"
     }
   },
   "tags": [

@@ -72,7 +72,8 @@
       "volume_mappings": {
         "netalertx_config": "/DATA/AppData/$AppID/config",
         "netalertx_db": "/DATA/AppData/$AppID/db"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -111,7 +112,8 @@
       "volume_mappings": {
         "netalertx_config": "config",
         "netalertx_db": "db"
-      }
+      },
+      "port": "10444"
     }
   },
   "tags": [

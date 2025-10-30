@@ -79,7 +79,8 @@
       "port_map": "8091",
       "volume_mappings": {
         "gotify_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "8091"
     },
     "portainer": {
       "supported": true,
@@ -88,7 +89,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8091"
     },
     "runtipi": {
       "supported": true,

@@ -80,7 +80,8 @@
       "port_map": "5055",
       "volume_mappings": {
         "jellyseerr_config": "/DATA/AppData/$AppID/config"
-      }
+      },
+      "port": "5055"
     },
     "portainer": {
       "supported": true,
@@ -89,7 +90,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "5055"
     },
     "runtipi": {
       "supported": true,

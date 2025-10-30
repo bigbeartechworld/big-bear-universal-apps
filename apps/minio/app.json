@@ -81,7 +81,8 @@
       "port_map": "9011",
       "volume_mappings": {
         "minio_data": "/DATA/AppData/$AppID"
-      }
+      },
+      "port": "9011"
     },
     "portainer": {
       "supported": true,
@@ -90,7 +91,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "9010"
     },
     "runtipi": {
       "supported": true,

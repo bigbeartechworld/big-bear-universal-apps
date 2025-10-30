@@ -109,7 +109,8 @@
       "volume_mappings": {
         "ghost_content": "/DATA/AppData/$AppID/content",
         "ghost_mysql": "/DATA/AppData/$AppID/mysql"
-      }
+      },
+      "port": "2368"
     },
     "portainer": {
       "supported": true,
@@ -118,7 +119,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "2368"
     },
     "runtipi": {
       "supported": true,
@@ -150,7 +152,8 @@
       "volume_mappings": {
         "ghost_content": "content",
         "ghost_mysql": "mysql"
-      }
+      },
+      "port": "10054"
     }
   },
   "tags": [

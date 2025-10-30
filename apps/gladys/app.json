@@ -106,7 +106,8 @@
       "port_map": "1080",
       "volume_mappings": {
         "gladys_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "1080"
     },
     "portainer": {
       "supported": true,
@@ -143,7 +144,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "gladys_data": "data"
-      }
+      },
+      "port": "1080"
     }
   },
   "tags": [

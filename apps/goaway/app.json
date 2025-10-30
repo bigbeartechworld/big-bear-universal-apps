@@ -83,7 +83,8 @@
       "port_map": "8080",
       "volume_mappings": {
         "goaway_config": "/DATA/AppData/$AppID/config"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -92,7 +93,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "53"
     },
     "runtipi": {
       "supported": true,
@@ -121,7 +123,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "goaway_config": "config"
-      }
+      },
+      "port": "10059"
     }
   },
   "tags": [

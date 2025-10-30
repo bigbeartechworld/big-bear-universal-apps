@@ -72,7 +72,8 @@
       "folder_name": "homepage",
       "volume_mappings": {
         "Homepage_config": "/DATA/AppData/$AppID/config"
-      }
+      },
+      "port": "3000"
     },
     "portainer": {
       "supported": true,
@@ -82,7 +83,8 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "folder_name": "homepage"
+      "folder_name": "homepage",
+      "port": "3000"
     },
     "runtipi": {
       "supported": true,
@@ -116,7 +118,8 @@
       "folder_name": "big-bear-umbrel-homepage",
       "volume_mappings": {
         "Homepage_config": "Homepage/config"
-      }
+      },
+      "port": "10067"
     }
   },
   "tags": [

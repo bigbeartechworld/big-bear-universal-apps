@@ -101,7 +101,8 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "2283"
+      "port_map": "2283",
+      "port": "2283"
     },
     "portainer": {
       "supported": true,
@@ -110,7 +111,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "2283"
     },
     "runtipi": {
       "supported": true,

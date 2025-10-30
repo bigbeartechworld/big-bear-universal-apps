@@ -123,7 +123,8 @@
       "port_map": "4999",
       "volume_mappings": {
         "portracker_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "4999"
     },
     "portainer": {
       "supported": true,
@@ -132,7 +133,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "4999"
     },
     "runtipi": {
       "supported": true,
@@ -161,7 +163,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "portracker_data": "data"
-      }
+      },
+      "port": "10146"
     }
   },
   "tags": [

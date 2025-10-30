@@ -111,7 +111,8 @@
       "port_map": "9412",
       "volume_mappings": {
         "tugtainer_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "9412"
     },
     "portainer": {
       "supported": true,
@@ -120,7 +121,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "9412"
     },
     "runtipi": {
       "supported": true,
@@ -148,7 +150,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "tugtainer_data": "data"
-      }
+      },
+      "port": "10173"
     }
   },
   "tags": [

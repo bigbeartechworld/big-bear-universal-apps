@@ -124,7 +124,8 @@
         "pihole-updatelists_dnsmasq.d": "/DATA/AppData/$AppID/dnsmasq.d",
         "pihole-updatelists_etc": "/DATA/AppData/$AppID/etc",
         "pihole-updatelists_etc_pihole-updatelists": "/DATA/AppData/$AppID/etc/pihole-updatelists"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -133,7 +134,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "53"
     },
     "runtipi": {
       "supported": true,
@@ -166,7 +168,8 @@
         "pihole-updatelists_dnsmasq.d": "dnsmasq.d",
         "pihole-updatelists_etc": "etc",
         "pihole-updatelists_etc_pihole-updatelists": "etc/pihole-updatelists"
-      }
+      },
+      "port": "10136"
     }
   },
   "tags": [

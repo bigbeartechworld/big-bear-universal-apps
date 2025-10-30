@@ -91,7 +91,8 @@
       "volume_mappings": {
         "passwordpusher_mysql": "/DATA/AppData/$AppID/mysql",
         "passwordpusher_storage": "/DATA/AppData/$AppID/storage"
-      }
+      },
+      "port": "5100"
     },
     "portainer": {
       "supported": true,
@@ -100,7 +101,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "5100\n3306"
     },
     "runtipi": {
       "supported": true,
@@ -132,7 +134,8 @@
       "volume_mappings": {
         "passwordpusher_mysql": "mysql",
         "passwordpusher_storage": "storage"
-      }
+      },
+      "port": "10128"
     }
   },
   "tags": [

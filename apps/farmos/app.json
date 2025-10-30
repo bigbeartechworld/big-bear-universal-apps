@@ -74,7 +74,8 @@
       "volume_mappings": {
         "farmos_db": "/DATA/AppData/$AppID/db",
         "farmos_sites": "/DATA/AppData/$AppID/sites"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -83,7 +84,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080\n3306"
     },
     "runtipi": {
       "supported": true,
@@ -115,7 +117,8 @@
       "volume_mappings": {
         "farmos_db": "db",
         "farmos_sites": "sites"
-      }
+      },
+      "port": "10044"
     }
   },
   "tags": [

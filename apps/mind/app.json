@@ -75,7 +75,8 @@
       "port_map": "8080",
       "volume_mappings": {
         "mind_db": "/DATA/AppData/$AppID/db"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -84,7 +85,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,

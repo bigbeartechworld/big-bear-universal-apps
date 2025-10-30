@@ -84,7 +84,8 @@
       "port_map": "3000",
       "volume_mappings": {
         "otel-lgtm_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "3000"
     },
     "portainer": {
       "supported": true,
@@ -114,14 +115,16 @@
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "otel-lgtm_data": "data"
-      }
+      },
+      "port": "10125"
     }
   },
   "tags": [

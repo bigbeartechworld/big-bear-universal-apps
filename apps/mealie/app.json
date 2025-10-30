@@ -71,7 +71,8 @@
       "port_map": "9925",
       "volume_mappings": {
         "mealie_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "9925"
     },
     "portainer": {
       "supported": true,
@@ -80,7 +81,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "9925"
     },
     "runtipi": {
       "supported": true,

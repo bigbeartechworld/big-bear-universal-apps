@@ -70,7 +70,8 @@
       "volume_mappings": {
         "matterbridge_.matterbridge": "/DATA/AppData/$AppID/.matterbridge",
         "matterbridge_Matterbridge": "/DATA/AppData/$AppID/Matterbridge"
-      }
+      },
+      "port": "8283"
     },
     "portainer": {
       "supported": true,
@@ -110,7 +111,8 @@
       "volume_mappings": {
         "matterbridge_.matterbridge": ".matterbridge",
         "matterbridge_Matterbridge": "Matterbridge"
-      }
+      },
+      "port": "8283"
     }
   },
   "tags": [

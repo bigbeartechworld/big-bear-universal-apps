@@ -60,7 +60,8 @@
       "port_map": "8840",
       "volume_mappings": {
         "watchyourlan_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "8840"
     },
     "portainer": {
       "supported": true,
@@ -97,7 +98,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "watchyourlan_data": "data"
-      }
+      },
+      "port": "8840"
     }
   },
   "tags": [

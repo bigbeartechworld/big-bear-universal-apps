@@ -83,7 +83,8 @@
         "plant-it_certificates": "/DATA/AppData/$AppID/certificates",
         "plant-it_mysql": "/DATA/AppData/$AppID/mysql",
         "plant-it_upload-dir": "/DATA/AppData/$AppID/upload-dir"
-      }
+      },
+      "port": "3000"
     },
     "portainer": {
       "supported": true,
@@ -92,7 +93,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080\n3306"
     },
     "runtipi": {
       "supported": true,
@@ -126,7 +128,8 @@
         "plant-it_certificates": "certificates",
         "plant-it_mysql": "mysql",
         "plant-it_upload-dir": "upload-dir"
-      }
+      },
+      "port": "10140"
     }
   },
   "tags": [

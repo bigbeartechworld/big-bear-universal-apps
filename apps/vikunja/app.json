@@ -111,7 +111,8 @@
       "volume_mappings": {
         "vikunja_files": "/DATA/AppData/$AppID/files",
         "vikunja_mysql": "/DATA/AppData/$AppID/mysql"
-      }
+      },
+      "port": "8081"
     },
     "portainer": {
       "supported": true,
@@ -120,7 +121,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8081"
     },
     "runtipi": {
       "supported": true,
@@ -152,7 +154,8 @@
       "volume_mappings": {
         "vikunja_files": "files",
         "vikunja_mysql": "mysql"
-      }
+      },
+      "port": "10179"
     }
   },
   "tags": [

@@ -75,7 +75,8 @@
       "port_map": "4000",
       "volume_mappings": {
         "dashy_public": "/DATA/AppData/$AppID/public"
-      }
+      },
+      "port": "4000"
     },
     "portainer": {
       "supported": true,
@@ -84,7 +85,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "4000"
     },
     "runtipi": {
       "supported": true,

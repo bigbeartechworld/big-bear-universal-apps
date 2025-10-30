@@ -77,7 +77,8 @@
         "piwigo_config": "/DATA/AppData/$AppID/config",
         "piwigo_gallery": "/DATA/AppData/$AppID/gallery",
         "piwigo_mysql": "/DATA/AppData/$AppID/mysql"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -86,7 +87,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -120,7 +122,8 @@
         "piwigo_config": "config",
         "piwigo_gallery": "gallery",
         "piwigo_mysql": "mysql"
-      }
+      },
+      "port": "10138"
     }
   },
   "tags": [

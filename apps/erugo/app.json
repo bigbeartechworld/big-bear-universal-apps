@@ -67,7 +67,8 @@
       "port_map": "9997",
       "volume_mappings": {
         "erugo_storage": "/DATA/AppData/$AppID/storage"
-      }
+      },
+      "port": "9997"
     },
     "portainer": {
       "supported": true,
@@ -76,7 +77,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "9997"
     },
     "runtipi": {
       "supported": true,

@@ -90,7 +90,8 @@
       "volume_mappings": {
         "pihole_dnsmasq.d": "/DATA/AppData/$AppID/dnsmasq.d",
         "pihole_etc": "/DATA/AppData/$AppID/etc"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -99,7 +100,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "53"
     },
     "runtipi": {
       "supported": true,
@@ -131,7 +133,8 @@
       "volume_mappings": {
         "pihole_dnsmasq.d": "dnsmasq.d",
         "pihole_etc": "etc"
-      }
+      },
+      "port": "10134"
     }
   },
   "tags": [

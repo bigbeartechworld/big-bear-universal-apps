@@ -114,7 +114,8 @@
       "port_map": "8085",
       "volume_mappings": {
         "komf_config": "/DATA/AppData/$AppID/config"
-      }
+      },
+      "port": "8085"
     },
     "portainer": {
       "supported": true,
@@ -123,7 +124,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8085"
     },
     "runtipi": {
       "supported": true,

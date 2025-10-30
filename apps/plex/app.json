@@ -70,7 +70,8 @@
         "plex_config": "/DATA/AppData/$AppID/config",
         "plex_movies": "/DATA/AppData/$AppID/movies",
         "plex_tv": "/DATA/AppData/$AppID/tv"
-      }
+      },
+      "port": "32400"
     },
     "portainer": {
       "supported": true,
@@ -111,7 +112,8 @@
         "plex_config": "config",
         "plex_movies": "movies",
         "plex_tv": "tv"
-      }
+      },
+      "port": "32400"
     }
   },
   "tags": [

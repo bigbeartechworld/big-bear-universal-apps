@@ -102,7 +102,8 @@
       "port_map": "1411",
       "volume_mappings": {
         "pocketid_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "1411"
     },
     "portainer": {
       "supported": true,
@@ -139,7 +140,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "pocketid_data": "data"
-      }
+      },
+      "port": "10143"
     }
   },
   "tags": [

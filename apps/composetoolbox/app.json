@@ -74,7 +74,8 @@
       "port_map": "3002",
       "volume_mappings": {
         "composetoolbox_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "3002"
     },
     "portainer": {
       "supported": true,
@@ -83,7 +84,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3002"
     },
     "runtipi": {
       "supported": true,
@@ -112,7 +114,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "composetoolbox_data": "data"
-      }
+      },
+      "port": "10025"
     }
   },
   "tags": [

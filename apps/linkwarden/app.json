@@ -68,7 +68,8 @@
       "volume_mappings": {
         "linkwarden_data_linkwarden": "/DATA/AppData/$AppID/data/linkwarden",
         "linkwarden_data_postgres": "/DATA/AppData/$AppID/data/postgres"
-      }
+      },
+      "port": "3000"
     },
     "portainer": {
       "supported": true,
@@ -77,7 +78,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3000"
     },
     "runtipi": {
       "supported": true,
@@ -109,7 +111,8 @@
       "volume_mappings": {
         "linkwarden_data_linkwarden": "data/linkwarden",
         "linkwarden_data_postgres": "data/postgres"
-      }
+      },
+      "port": "10089"
     }
   },
   "tags": [

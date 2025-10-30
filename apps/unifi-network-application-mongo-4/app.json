@@ -193,7 +193,8 @@
       "volume_mappings": {
         "unifi-network-application-mongo-4_config": "/DATA/AppData/$AppID/config",
         "unifi-network-application-mongo-4_db_data": "/DATA/AppData/$AppID/db/data"
-      }
+      },
+      "port": "8443"
     },
     "portainer": {
       "supported": true,
@@ -202,7 +203,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "27017\n8443"
     },
     "runtipi": {
       "supported": true,
@@ -234,7 +236,8 @@
       "volume_mappings": {
         "unifi-network-application-mongo-4_config": "config",
         "unifi-network-application-mongo-4_db_data": "db/data"
-      }
+      },
+      "port": "27018"
     }
   },
   "tags": [

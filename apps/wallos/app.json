@@ -83,7 +83,8 @@
       "volume_mappings": {
         "wallos_db": "/DATA/AppData/$AppID/db",
         "wallos_logos": "/DATA/AppData/$AppID/logos"
-      }
+      },
+      "port": "8282"
     },
     "portainer": {
       "supported": true,
@@ -92,7 +93,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8282"
     },
     "runtipi": {
       "supported": true,
@@ -124,7 +126,8 @@
       "volume_mappings": {
         "wallos_db": "db",
         "wallos_logos": "logos"
-      }
+      },
+      "port": "10182"
     }
   },
   "tags": [

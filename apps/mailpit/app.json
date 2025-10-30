@@ -74,7 +74,8 @@
       "port_map": "8025",
       "volume_mappings": {
         "mailpit_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "8025"
     },
     "portainer": {
       "supported": true,
@@ -83,7 +84,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8025"
     },
     "runtipi": {
       "supported": true,

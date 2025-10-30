@@ -71,7 +71,8 @@
       "port_map": "6989",
       "volume_mappings": {
         "nexterm_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "6989"
     },
     "portainer": {
       "supported": true,
@@ -80,7 +81,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "6989"
     },
     "runtipi": {
       "supported": true,

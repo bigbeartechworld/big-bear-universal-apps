@@ -106,7 +106,8 @@
         "docmost_data_pgdata": "/DATA/AppData/$AppID/data/pgdata",
         "docmost_data_redis": "/DATA/AppData/$AppID/data/redis",
         "docmost_data_storage": "/DATA/AppData/$AppID/data/storage"
-      }
+      },
+      "port": "3000"
     },
     "portainer": {
       "supported": true,
@@ -115,7 +116,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3000"
     },
     "runtipi": {
       "supported": true,
@@ -149,7 +151,8 @@
         "docmost_data_pgdata": "data/pgdata",
         "docmost_data_redis": "data/redis",
         "docmost_data_storage": "data/storage"
-      }
+      },
+      "port": "10038"
     }
   },
   "tags": [

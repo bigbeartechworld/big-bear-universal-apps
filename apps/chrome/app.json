@@ -72,7 +72,8 @@
       "port_map": "6902",
       "volume_mappings": {
         "chrome_Downloads": "/DATA/AppData/$AppID/Downloads"
-      }
+      },
+      "port": "6902"
     },
     "portainer": {
       "supported": true,
@@ -81,7 +82,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "6902"
     },
     "runtipi": {
       "supported": true,

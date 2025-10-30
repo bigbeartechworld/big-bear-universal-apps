@@ -138,7 +138,8 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "port": "14333"
     }
   },
   "tags": [

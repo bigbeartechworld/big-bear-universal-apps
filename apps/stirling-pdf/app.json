@@ -125,7 +125,8 @@
       "volume_mappings": {
         "stirling-pdf_configs": "/DATA/AppData/$AppID/configs",
         "stirling-pdf_tessdata": "/DATA/AppData/$AppID/tessdata"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -134,7 +135,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -166,7 +168,8 @@
       "volume_mappings": {
         "stirling-pdf_configs": "configs",
         "stirling-pdf_tessdata": "tessdata"
-      }
+      },
+      "port": "10165"
     }
   },
   "tags": [

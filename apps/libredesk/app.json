@@ -78,7 +78,8 @@
         "libredesk_data_postgres": "/DATA/AppData/$AppID/data/postgres",
         "libredesk_data_redis": "/DATA/AppData/$AppID/data/redis",
         "libredesk_uploads": "/DATA/AppData/$AppID/uploads"
-      }
+      },
+      "port": "9000"
     },
     "portainer": {
       "supported": true,
@@ -87,7 +88,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "9000\n5432\n6379"
     },
     "runtipi": {
       "supported": true,
@@ -123,7 +125,8 @@
         "libredesk_data_postgres": "data/postgres",
         "libredesk_data_redis": "data/redis",
         "libredesk_uploads": "uploads"
-      }
+      },
+      "port": "10086"
     }
   },
   "tags": [

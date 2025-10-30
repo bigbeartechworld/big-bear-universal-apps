@@ -93,7 +93,8 @@
       "port_map": "8001",
       "volume_mappings": {
         "ihatemoney_mysql": "/DATA/AppData/$AppID/mysql"
-      }
+      },
+      "port": "8001"
     },
     "portainer": {
       "supported": true,
@@ -102,7 +103,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8001\n3306"
     },
     "runtipi": {
       "supported": true,

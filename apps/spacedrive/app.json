@@ -78,7 +78,8 @@
       "port_map": "8080",
       "volume_mappings": {
         "spacedrive_data_spacedrive": "/DATA/AppData/$AppID/data/spacedrive"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -87,7 +88,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -117,7 +119,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "spacedrive_data_spacedrive": "data/spacedrive"
-      }
+      },
+      "port": "10162"
     }
   },
   "tags": [

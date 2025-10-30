@@ -105,7 +105,8 @@
       "volume_mappings": {
         "wishlist_data": "/DATA/AppData/$AppID/data",
         "wishlist_uploads": "/DATA/AppData/$AppID/uploads"
-      }
+      },
+      "port": "3280"
     },
     "portainer": {
       "supported": true,
@@ -114,7 +115,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3280"
     },
     "runtipi": {
       "supported": true,
@@ -145,7 +147,8 @@
       "volume_mappings": {
         "wishlist_data": "data",
         "wishlist_uploads": "uploads"
-      }
+      },
+      "port": "10186"
     }
   },
   "tags": [

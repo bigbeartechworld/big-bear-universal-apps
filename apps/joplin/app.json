@@ -121,7 +121,8 @@
       "port_map": "22300",
       "volume_mappings": {
         "joplin_postgresql_data": "/DATA/AppData/$AppID/postgresql/data"
-      }
+      },
+      "port": "22300"
     },
     "portainer": {
       "supported": true,
@@ -130,7 +131,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "22300"
     },
     "runtipi": {
       "supported": true,

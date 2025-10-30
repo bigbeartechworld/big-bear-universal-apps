@@ -84,7 +84,8 @@
       "port_map": "5800",
       "volume_mappings": {
         "jlesage-firefox_config": "/DATA/AppData/$AppID/config"
-      }
+      },
+      "port": "5800"
     },
     "portainer": {
       "supported": true,
@@ -93,7 +94,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "5800"
     },
     "runtipi": {
       "supported": true,

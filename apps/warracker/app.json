@@ -125,7 +125,8 @@
       "volume_mappings": {
         "warracker_uploads": "/DATA/AppData/$AppID/uploads",
         "warracker_warrackerdb": "/DATA/AppData/$AppID/warrackerdb"
-      }
+      },
+      "port": "8005"
     },
     "portainer": {
       "supported": true,
@@ -134,7 +135,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8005"
     },
     "runtipi": {
       "supported": true,
@@ -165,7 +167,8 @@
       "volume_mappings": {
         "warracker_uploads": "uploads",
         "warracker_warrackerdb": "warrackerdb"
-      }
+      },
+      "port": "10183"
     }
   },
   "tags": [

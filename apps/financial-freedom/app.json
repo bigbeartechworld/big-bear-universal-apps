@@ -262,7 +262,8 @@
         "financial-freedom_logs": "/DATA/AppData/$AppID/logs",
         "financial-freedom_mariadb": "/DATA/AppData/$AppID/mariadb",
         "financial-freedom_sessions": "/DATA/AppData/$AppID/sessions"
-      }
+      },
+      "port": "8443"
     },
     "portainer": {
       "supported": true,
@@ -271,7 +272,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -305,7 +307,8 @@
         "financial-freedom_logs": "logs",
         "financial-freedom_mariadb": "mariadb",
         "financial-freedom_sessions": "sessions"
-      }
+      },
+      "port": "10047"
     }
   },
   "tags": [

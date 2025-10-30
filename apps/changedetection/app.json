@@ -62,7 +62,8 @@
       "port_map": "5000",
       "volume_mappings": {
         "changedetection_datastore": "/DATA/AppData/$AppID/datastore"
-      }
+      },
+      "port": "5000"
     },
     "portainer": {
       "supported": true,
@@ -71,7 +72,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "5000"
     },
     "runtipi": {
       "supported": true,

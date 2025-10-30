@@ -78,7 +78,8 @@
       "volume_mappings": {
         "traccar_logs": "/DATA/AppData/$AppID/logs",
         "traccar_traccar.xml": "/DATA/AppData/$AppID/traccar.xml"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -87,7 +88,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -119,7 +121,8 @@
       "volume_mappings": {
         "traccar_logs": "logs",
         "traccar_traccar.xml": "traccar.xml"
-      }
+      },
+      "port": "10170"
     }
   },
   "tags": [

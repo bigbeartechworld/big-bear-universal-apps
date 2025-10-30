@@ -77,7 +77,8 @@
       "port_map": "51821",
       "volume_mappings": {
         "wg-easy_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "51821"
     },
     "portainer": {
       "supported": true,
@@ -86,7 +87,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "51820"
     },
     "runtipi": {
       "supported": true,
@@ -116,7 +118,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "wg-easy_data": "data"
-      }
+      },
+      "port": "51820"
     }
   },
   "tags": [

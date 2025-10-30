@@ -81,7 +81,8 @@
         "invoice-ninja_data_php_php.ini": "/DATA/AppData/$AppID/data/php/php.ini",
         "invoice-ninja_data_public": "/DATA/AppData/$AppID/data/public",
         "invoice-ninja_data_storage": "/DATA/AppData/$AppID/data/storage"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -90,7 +91,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -132,7 +134,8 @@
         "invoice-ninja_data_php_php.ini": "data/php/php.ini",
         "invoice-ninja_data_public": "data/public",
         "invoice-ninja_data_storage": "data/storage"
-      }
+      },
+      "port": "10074"
     }
   },
   "tags": [

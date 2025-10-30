@@ -206,7 +206,8 @@
       "port_map": "8000",
       "volume_mappings": {
         "healthchecks_config": "/DATA/AppData/$AppID/config"
-      }
+      },
+      "port": "8000"
     },
     "portainer": {
       "supported": true,
@@ -215,7 +216,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8000"
     },
     "runtipi": {
       "supported": true,

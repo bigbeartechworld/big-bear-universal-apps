@@ -83,7 +83,8 @@
       "port_map": "8443",
       "volume_mappings": {
         "ejbca-ce_persistent": "/DATA/AppData/$AppID/persistent"
-      }
+      },
+      "port": "8443"
     },
     "portainer": {
       "supported": true,
@@ -92,7 +93,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,

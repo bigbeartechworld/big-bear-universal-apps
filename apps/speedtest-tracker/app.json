@@ -143,7 +143,8 @@
         "speedtest-tracker_config": "/DATA/AppData/$AppID/config",
         "speedtest-tracker_mysql": "/DATA/AppData/$AppID/mysql",
         "speedtest-tracker_web": "/DATA/AppData/$AppID/web"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -152,7 +153,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -187,7 +189,8 @@
         "speedtest-tracker_config": "config",
         "speedtest-tracker_mysql": "mysql",
         "speedtest-tracker_web": "web"
-      }
+      },
+      "port": "10163"
     }
   },
   "tags": [

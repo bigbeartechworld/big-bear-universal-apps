@@ -95,7 +95,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "playitgg_secrets": "secrets"
-      }
+      },
+      "port": "10142"
     }
   },
   "tags": [

@@ -60,7 +60,8 @@
       "port_map": "8581",
       "volume_mappings": {
         "homebridge_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "8581"
     },
     "portainer": {
       "supported": true,
@@ -97,7 +98,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "homebridge_data": "data"
-      }
+      },
+      "port": "8581"
     }
   },
   "tags": [

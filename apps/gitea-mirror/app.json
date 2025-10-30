@@ -109,7 +109,8 @@
       "port_map": "4321",
       "volume_mappings": {
         "gitea-mirror_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "4321"
     },
     "portainer": {
       "supported": true,
@@ -118,7 +119,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "4321"
     },
     "runtipi": {
       "supported": true,
@@ -147,7 +149,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "gitea-mirror_data": "data"
-      }
+      },
+      "port": "10056"
     }
   },
   "tags": [

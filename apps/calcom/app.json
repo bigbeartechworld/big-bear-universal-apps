@@ -211,7 +211,8 @@
       "volume_mappings": {
         "calcom_config": "/DATA/AppData/$AppID/config",
         "calcom_data_db": "/DATA/AppData/$AppID/data/db"
-      }
+      },
+      "port": "3000"
     },
     "portainer": {
       "supported": true,
@@ -220,7 +221,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3000"
     },
     "runtipi": {
       "supported": true,
@@ -252,7 +254,8 @@
       "volume_mappings": {
         "calcom_config": "config",
         "calcom_data_db": "data/db"
-      }
+      },
+      "port": "10018"
     }
   },
   "tags": [

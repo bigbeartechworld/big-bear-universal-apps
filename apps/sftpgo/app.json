@@ -90,7 +90,8 @@
       "volume_mappings": {
         "sftpgo_data": "/DATA/AppData/$AppID/data",
         "sftpgo_srv": "/DATA/AppData/$AppID/srv"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -99,7 +100,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -131,7 +133,8 @@
       "volume_mappings": {
         "sftpgo_data": "data",
         "sftpgo_srv": "srv"
-      }
+      },
+      "port": "10161"
     }
   },
   "tags": [

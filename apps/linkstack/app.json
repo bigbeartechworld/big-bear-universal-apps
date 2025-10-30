@@ -73,7 +73,8 @@
       "port_map": "10443",
       "volume_mappings": {
         "linkstack_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "10443"
     },
     "portainer": {
       "supported": true,
@@ -82,7 +83,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,

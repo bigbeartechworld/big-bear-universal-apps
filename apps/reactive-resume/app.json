@@ -60,7 +60,8 @@
       "volume_mappings": {
         "reactive-resume_minio_data": "/DATA/AppData/$AppID/minio/data",
         "reactive-resume_pg_data": "/DATA/AppData/$AppID/pg/data"
-      }
+      },
+      "port": "3000"
     },
     "portainer": {
       "supported": true,
@@ -69,7 +70,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3000\n9000"
     },
     "runtipi": {
       "supported": true,
@@ -101,7 +103,8 @@
       "volume_mappings": {
         "reactive-resume_minio_data": "minio/data",
         "reactive-resume_pg_data": "pg/data"
-      }
+      },
+      "port": "10153"
     }
   },
   "tags": [

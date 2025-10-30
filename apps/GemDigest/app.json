@@ -80,7 +80,8 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "folder_name": "gemdigest"
+      "folder_name": "gemdigest",
+      "port": "3333"
     },
     "runtipi": {
       "supported": true,
@@ -114,7 +115,8 @@
       "folder_name": "big-bear-umbrel-gemdigest",
       "volume_mappings": {
         "GemDigest_extra_configs": "/extra/configs"
-      }
+      },
+      "port": "10053"
     }
   },
   "tags": [

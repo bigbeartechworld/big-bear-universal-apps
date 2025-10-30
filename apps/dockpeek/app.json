@@ -93,7 +93,8 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3420"
+      "port_map": "3420",
+      "port": "3420"
     },
     "portainer": {
       "supported": true,
@@ -102,7 +103,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3420"
     },
     "runtipi": {
       "supported": true,
@@ -125,7 +127,8 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "port": "10037"
     }
   },
   "tags": [

@@ -145,7 +145,8 @@
         "paperless-ngx_paperless_media": "/DATA/AppData/$AppID/paperless/media",
         "paperless-ngx_postgres": "/DATA/AppData/$AppID/postgres",
         "paperless-ngx_redis": "/DATA/AppData/$AppID/redis"
-      }
+      },
+      "port": "8000"
     },
     "portainer": {
       "supported": true,
@@ -154,7 +155,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8000"
     },
     "runtipi": {
       "supported": true,
@@ -194,7 +196,8 @@
         "paperless-ngx_paperless_media": "paperless/media",
         "paperless-ngx_postgres": "postgres",
         "paperless-ngx_redis": "redis"
-      }
+      },
+      "port": "10127"
     }
   },
   "tags": [

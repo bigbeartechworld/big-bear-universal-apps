@@ -92,7 +92,8 @@
       "port_map": "8090",
       "volume_mappings": {
         "guacamole_mysql": "/DATA/AppData/$AppID/mysql"
-      }
+      },
+      "port": "8090"
     },
     "portainer": {
       "supported": true,
@@ -101,7 +102,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8090"
     },
     "runtipi": {
       "supported": true,

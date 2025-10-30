@@ -60,7 +60,8 @@
       "port_map": "8095",
       "volume_mappings": {
         "music-assistant_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "8095"
     },
     "portainer": {
       "supported": true,
@@ -97,7 +98,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "music-assistant_data": "data"
-      }
+      },
+      "port": "8095"
     }
   },
   "tags": [

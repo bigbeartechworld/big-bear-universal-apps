@@ -160,7 +160,8 @@
       "volume_mappings": {
         "davis_mailpit_data": "/DATA/AppData/$AppID/mailpit/data",
         "davis_mysql": "/DATA/AppData/$AppID/mysql"
-      }
+      },
+      "port": "9000"
     },
     "portainer": {
       "supported": true,
@@ -169,7 +170,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "9000\n8025"
     },
     "runtipi": {
       "supported": true,
@@ -201,7 +203,8 @@
       "volume_mappings": {
         "davis_mailpit_data": "mailpit/data",
         "davis_mysql": "mysql"
-      }
+      },
+      "port": "10032"
     }
   },
   "tags": [

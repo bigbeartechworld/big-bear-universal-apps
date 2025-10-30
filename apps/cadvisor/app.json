@@ -85,7 +85,8 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8085"
+      "port_map": "8085",
+      "port": "8085"
     },
     "portainer": {
       "supported": true,
@@ -94,7 +95,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8085"
     },
     "runtipi": {
       "supported": true,

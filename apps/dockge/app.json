@@ -76,7 +76,8 @@
       "volume_mappings": {
         "dockge_data": "/DATA/AppData/$AppID/data",
         "dockge_stacks": "/DATA/AppData/$AppID/stacks"
-      }
+      },
+      "port": "5001"
     },
     "portainer": {
       "supported": true,
@@ -85,7 +86,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "5001"
     },
     "runtipi": {
       "supported": true,
@@ -117,7 +119,8 @@
       "volume_mappings": {
         "dockge_data": "data",
         "dockge_stacks": "stacks"
-      }
+      },
+      "port": "10036"
     }
   },
   "tags": [

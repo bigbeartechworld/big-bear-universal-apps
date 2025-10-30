@@ -84,7 +84,8 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080"
+      "port_map": "8080",
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -118,7 +119,8 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "port": "10133"
     }
   },
   "tags": [

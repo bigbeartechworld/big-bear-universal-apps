@@ -83,7 +83,8 @@
       "port_map": "9443",
       "volume_mappings": {
         "portainer_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "9443"
     },
     "portainer": {
       "supported": true,
@@ -92,7 +93,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8000"
     },
     "runtipi": {
       "supported": true,
@@ -122,7 +124,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "portainer_data": "data"
-      }
+      },
+      "port": "10144"
     }
   },
   "tags": [

@@ -71,7 +71,8 @@
       "port_map": "8080",
       "volume_mappings": {
         "kiwix-serve_zim": "/DATA/AppData/$AppID/zim"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -80,7 +81,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,

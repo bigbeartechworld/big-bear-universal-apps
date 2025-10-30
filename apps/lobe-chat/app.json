@@ -90,7 +90,8 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3210"
+      "port_map": "3210",
+      "port": "3210"
     },
     "portainer": {
       "supported": true,
@@ -99,7 +100,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3210"
     },
     "runtipi": {
       "supported": true,

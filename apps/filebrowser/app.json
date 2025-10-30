@@ -109,7 +109,8 @@
       "volume_mappings": {
         "filebrowser_data_config": "/DATA/AppData/$AppID/data/config",
         "filebrowser_data_db": "/DATA/AppData/$AppID/data/db"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -118,7 +119,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -150,7 +152,8 @@
       "volume_mappings": {
         "filebrowser_data_config": "data/config",
         "filebrowser_data_db": "data/db"
-      }
+      },
+      "port": "10046"
     }
   },
   "tags": [
