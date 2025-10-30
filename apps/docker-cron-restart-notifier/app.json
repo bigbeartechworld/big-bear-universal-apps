@@ -30,8 +30,8 @@
   },
   "technical": {
     "architectures": [
-  "amd64"
-],
+      "amd64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "",
@@ -40,47 +40,47 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "DISCORD_WEBHOOK_URL",
-    "default": "",
-    "description": "Discord Webhook URL",
-    "required": false
-  },
-  {
-    "name": "RESTART_CONTAINERS",
-    "default": "",
-    "description": "Restart Containers",
-    "required": false
-  },
-  {
-    "name": "RUN_ON_STARTUP",
-    "default": "",
-    "description": "Run on Startup",
-    "required": false
-  },
-  {
-    "name": "CRON_SCHEDULE",
-    "default": "",
-    "description": "Cron Schedule",
-    "required": false
-  }
-],
+      {
+        "name": "DISCORD_WEBHOOK_URL",
+        "default": "",
+        "description": "Discord Webhook URL",
+        "required": false
+      },
+      {
+        "name": "RESTART_CONTAINERS",
+        "default": "",
+        "description": "Restart Containers",
+        "required": false
+      },
+      {
+        "name": "RUN_ON_STARTUP",
+        "default": "",
+        "description": "Run on Startup",
+        "required": false
+      },
+      {
+        "name": "CRON_SCHEDULE",
+        "default": "",
+        "description": "Cron Schedule",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/var/run/docker.sock",
-    "description": "Container Path: /var/run/docker.sock"
-  }
-],
+      {
+        "container": "/var/run/docker.sock",
+        "description": "Container Path: /var/run/docker.sock"
+      }
+    ],
     "ports": []
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "You must add a Discord webhook URL to the `DISCORD_WEBHOOK_URL` environment variable.\n"
-  }
-}
+      "before_install": {
+        "en_us": "You must add a Discord webhook URL to the `DISCORD_WEBHOOK_URL` environment variable.\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -90,15 +90,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64"
-]
+        "amd64"
+      ],
+      "port": "8092"
     },
     "dockge": {
       "supported": true,

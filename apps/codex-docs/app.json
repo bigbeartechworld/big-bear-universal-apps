@@ -99,16 +99,19 @@
         "codex-docs_codex-docs-config.local.yaml": "codex-docs-config.local.yaml",
         "codex-docs_db": "db",
         "codex-docs_uploads": "uploads"
-      }
+      },
+      "port": "3002"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,

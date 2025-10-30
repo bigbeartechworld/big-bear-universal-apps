@@ -93,7 +93,8 @@
       "volume_mappings": {
         "netalertx_config": "config",
         "netalertx_db": "db"
-      }
+      },
+      "port": "8112"
     },
     "dockge": {
       "supported": true,

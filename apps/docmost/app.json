@@ -128,16 +128,19 @@
         "docmost_data_pgdata": "data/pgdata",
         "docmost_data_redis": "data/redis",
         "docmost_data_storage": "data/storage"
-      }
+      },
+      "port": "3007"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,

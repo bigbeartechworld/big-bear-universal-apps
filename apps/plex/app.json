@@ -92,7 +92,8 @@
         "plex_config": "config",
         "plex_movies": "movies",
         "plex_tv": "tv"
-      }
+      },
+      "port": "32400"
     },
     "dockge": {
       "supported": true,

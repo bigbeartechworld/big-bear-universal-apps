@@ -118,23 +118,27 @@
       ],
       "volume_mappings": {
         "nightscout_mongo-data": "mongo-data"
-      }
+      },
+      "port": "1337"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "1337"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "1337"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "nightscout_mongo-data": "mongo-data"
-      }
+      },
+      "port": "10111"
     }
   },
   "tags": [

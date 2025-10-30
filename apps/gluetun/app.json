@@ -97,23 +97,27 @@
       ],
       "volume_mappings": {
         "gluetun_data": "data"
-      }
+      },
+      "port": "8096"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8888"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8888"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "gluetun_data": "data"
-      }
+      },
+      "port": "10058"
     }
   },
   "tags": [

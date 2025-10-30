@@ -101,16 +101,19 @@
         "libredesk_data_postgres": "data/postgres",
         "libredesk_data_redis": "data/redis",
         "libredesk_uploads": "uploads"
-      }
+      },
+      "port": "9001"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "9000\n5432\n6379"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "9000\n5432\n6379"
     },
     "umbrel": {
       "supported": true,

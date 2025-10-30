@@ -99,16 +99,19 @@
         "piwigo_config": "config",
         "piwigo_gallery": "gallery",
         "piwigo_mysql": "mysql"
-      }
+      },
+      "port": "8121"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,

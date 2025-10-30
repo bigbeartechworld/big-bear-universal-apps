@@ -85,16 +85,19 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "port": "3016"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,

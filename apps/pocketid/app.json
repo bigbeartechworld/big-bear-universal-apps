@@ -122,7 +122,8 @@
       ],
       "volume_mappings": {
         "pocketid_data": "data"
-      }
+      },
+      "port": "1411"
     },
     "dockge": {
       "supported": true,

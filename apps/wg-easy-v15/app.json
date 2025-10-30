@@ -97,11 +97,13 @@
       ],
       "volume_mappings": {
         "wg-easy-v15_data": "data"
-      }
+      },
+      "port": "51822"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "51820"
     },
     "cosmos": {
       "supported": true,

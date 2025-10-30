@@ -122,7 +122,8 @@
       ],
       "volume_mappings": {
         "eufy-security-ws_data": "data"
-      }
+      },
+      "port": "3008"
     },
     "dockge": {
       "supported": true,

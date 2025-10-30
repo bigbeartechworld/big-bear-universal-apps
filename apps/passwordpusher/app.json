@@ -112,16 +112,19 @@
       "volume_mappings": {
         "passwordpusher_mysql": "mysql",
         "passwordpusher_storage": "storage"
-      }
+      },
+      "port": "5100"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "5100\n3306"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "5100\n3306"
     },
     "umbrel": {
       "supported": true,

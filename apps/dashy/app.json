@@ -96,23 +96,27 @@
       ],
       "volume_mappings": {
         "dashy_public": "public"
-      }
+      },
+      "port": "4001"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "4000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "4000"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "dashy_public": "public"
-      }
+      },
+      "port": "10031"
     }
   },
   "tags": [

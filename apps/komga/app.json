@@ -104,16 +104,19 @@
       "volume_mappings": {
         "komga_config": "config",
         "komga_data": "data"
-      }
+      },
+      "port": "25600"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "25600"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "25600"
     },
     "umbrel": {
       "supported": true,

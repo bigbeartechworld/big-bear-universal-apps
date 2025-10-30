@@ -117,16 +117,19 @@
         "onlyoffice_onlyoffice_logs": "onlyoffice/logs",
         "onlyoffice_onlyoffice_rabbitmq": "onlyoffice/rabbitmq",
         "onlyoffice_onlyoffice_redis": "onlyoffice/redis"
-      }
+      },
+      "port": "7400"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "7400"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "7400"
     },
     "umbrel": {
       "supported": true,

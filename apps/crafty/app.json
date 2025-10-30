@@ -140,16 +140,19 @@
         "crafty_data_import": "data/import",
         "crafty_data_logs": "data/logs",
         "crafty_data_servers": "data/servers"
-      }
+      },
+      "port": "8443"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8443"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8443"
     },
     "umbrel": {
       "supported": true,

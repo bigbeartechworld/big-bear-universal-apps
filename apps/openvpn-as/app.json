@@ -99,16 +99,19 @@
       ],
       "volume_mappings": {
         "openvpn-as_data": "data"
-      }
+      },
+      "port": "9444"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "943"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "943"
     },
     "umbrel": {
       "supported": true,

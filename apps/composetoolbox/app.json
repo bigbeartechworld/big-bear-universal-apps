@@ -94,11 +94,13 @@
       ],
       "volume_mappings": {
         "composetoolbox_data": "data"
-      }
+      },
+      "port": "3003"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3002"
     },
     "cosmos": {
       "supported": true,

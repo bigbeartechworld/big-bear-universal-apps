@@ -110,11 +110,13 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "port": "3420"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3420"
     },
     "cosmos": {
       "supported": true,

@@ -95,16 +95,19 @@
         "semaphore_home": "home",
         "semaphore_lib": "lib",
         "semaphore_mysql": "mysql"
-      }
+      },
+      "port": "3022"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,

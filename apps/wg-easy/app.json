@@ -97,16 +97,19 @@
       ],
       "volume_mappings": {
         "wg-easy_data": "data"
-      }
+      },
+      "port": "51821"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "51820"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "51820"
     },
     "umbrel": {
       "supported": true,

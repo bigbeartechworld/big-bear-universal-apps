@@ -103,16 +103,19 @@
       "volume_mappings": {
         "scrutiny_config": "config",
         "scrutiny_influxdb": "influxdb"
-      }
+      },
+      "port": "38080"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "38080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "38080"
     },
     "umbrel": {
       "supported": true,

@@ -170,16 +170,19 @@
         "paperless-ngx_paperless_media": "paperless/media",
         "paperless-ngx_postgres": "postgres",
         "paperless-ngx_redis": "redis"
-      }
+      },
+      "port": "8008"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8000"
     },
     "umbrel": {
       "supported": true,

@@ -95,16 +95,19 @@
       ],
       "volume_mappings": {
         "scrypted_data": "data"
-      }
+      },
+      "port": "10445"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "10444"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "10444"
     },
     "umbrel": {
       "supported": true,

@@ -332,11 +332,13 @@
       ],
       "volume_mappings": {
         "microbin_data": "data"
-      }
+      },
+      "port": "8889"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8888"
     },
     "cosmos": {
       "supported": true,

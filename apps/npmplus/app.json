@@ -87,7 +87,8 @@
       ],
       "volume_mappings": {
         "npmplus_data": "data"
-      }
+      },
+      "port": "8114"
     },
     "dockge": {
       "supported": true,

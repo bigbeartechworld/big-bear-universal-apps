@@ -99,16 +99,19 @@
         "zipline_postgres": "postgres",
         "zipline_public": "public",
         "zipline_uploads": "uploads"
-      }
+      },
+      "port": "3026"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,

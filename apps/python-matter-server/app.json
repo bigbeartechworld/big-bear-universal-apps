@@ -84,7 +84,8 @@
       ],
       "volume_mappings": {
         "python-matter-server_data": "data"
-      }
+      },
+      "port": "5080"
     },
     "dockge": {
       "supported": true,

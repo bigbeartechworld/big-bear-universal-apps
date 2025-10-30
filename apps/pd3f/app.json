@@ -91,16 +91,19 @@
         "pd3f_cache": "cache",
         "pd3f_to-ocr": "to-ocr",
         "pd3f_uploads": "uploads"
-      }
+      },
+      "port": "1616"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "1616"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "1616"
     },
     "umbrel": {
       "supported": true,

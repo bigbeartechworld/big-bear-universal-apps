@@ -91,16 +91,19 @@
         "nocodb_data": "data",
         "nocodb_pgdata": "pgdata",
         "nocodb_redis": "redis"
-      }
+      },
+      "port": "8113"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,

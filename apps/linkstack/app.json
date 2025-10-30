@@ -93,23 +93,27 @@
       ],
       "volume_mappings": {
         "linkstack_data": "data"
-      }
+      },
+      "port": "10443"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "linkstack_data": "data"
-      }
+      },
+      "port": "10088"
     }
   },
   "tags": [

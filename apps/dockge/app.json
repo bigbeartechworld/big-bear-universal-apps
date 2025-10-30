@@ -97,16 +97,19 @@
       "volume_mappings": {
         "dockge_data": "data",
         "dockge_stacks": "stacks"
-      }
+      },
+      "port": "5003"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "5001"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "5001"
     },
     "umbrel": {
       "supported": true,

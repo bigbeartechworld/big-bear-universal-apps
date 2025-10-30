@@ -129,11 +129,13 @@
       ],
       "volume_mappings": {
         "gitea-mirror_data": "data"
-      }
+      },
+      "port": "4321"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "4321"
     },
     "cosmos": {
       "supported": true,

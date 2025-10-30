@@ -95,16 +95,19 @@
         "tandoor_mediafiles": "mediafiles",
         "tandoor_postgresql": "postgresql",
         "tandoor_staticfiles": "staticfiles"
-      }
+      },
+      "port": "8134"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,

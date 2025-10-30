@@ -89,7 +89,8 @@
       ],
       "volume_mappings": {
         "node-red_data": "data"
-      }
+      },
+      "port": "1880"
     },
     "dockge": {
       "supported": true,

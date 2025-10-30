@@ -180,16 +180,19 @@
         "immich-aio-alpine_config": "config",
         "immich-aio-alpine_pgdata": "pgdata",
         "immich-aio-alpine_photos": "photos"
-      }
+      },
+      "port": "2284"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "2283"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "2283"
     },
     "umbrel": {
       "supported": true,

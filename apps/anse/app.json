@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-anse",
     "default_port": "8014",
@@ -41,22 +41,22 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "PORT",
-    "default": "",
-    "description": "Port: 8014",
-    "required": false
-  }
-],
+      {
+        "name": "PORT",
+        "default": "",
+        "description": "Port: 8014",
+        "required": false
+      }
+    ],
     "volumes": [],
     "ports": [
-  {
-    "container": "8014",
-    "host": "8014",
-    "protocol": "tcp",
-    "description": "Container Port: 8014"
-  }
-]
+      {
+        "container": "8014",
+        "host": "8014",
+        "protocol": "tcp",
+        "description": "Container Port: 8014"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -66,34 +66,43 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8014"
+      "port_map": "8014",
+      "port": "8014"
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
-      "administrator_only": false
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8014"
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "port": "8014"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8014"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8014"
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "port": "10004"
     }
   },
   "tags": [

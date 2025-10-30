@@ -100,23 +100,27 @@
       ],
       "volume_mappings": {
         "baserow_data": "data"
-      }
+      },
+      "port": "7350"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "7350"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "7350"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "baserow_data": "data"
-      }
+      },
+      "port": "10009"
     }
   },
   "tags": [

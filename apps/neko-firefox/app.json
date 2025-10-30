@@ -30,8 +30,8 @@
   },
   "technical": {
     "architectures": [
-  "amd64"
-],
+      "amd64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-neko-firefox",
     "default_port": "8080",
@@ -40,52 +40,52 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "NEKO_SCREEN",
-    "default": "",
-    "description": "Container Environment: NEKO_SCREEN",
-    "required": false
-  },
-  {
-    "name": "NEKO_PASSWORD",
-    "default": "",
-    "description": "Container Environment: NEKO_PASSWORD",
-    "required": false
-  },
-  {
-    "name": "NEKO_PASSWORD_ADMIN",
-    "default": "",
-    "description": "Container Environment: NEKO_PASSWORD_ADMIN",
-    "required": false
-  },
-  {
-    "name": "NEKO_EPR",
-    "default": "",
-    "description": "Container Environment: NEKO_EPR",
-    "required": false
-  },
-  {
-    "name": "NEKO_ICELITE",
-    "default": "",
-    "description": "Container Environment: NEKO_ICELITE",
-    "required": false
-  }
-],
+      {
+        "name": "NEKO_SCREEN",
+        "default": "",
+        "description": "Container Environment: NEKO_SCREEN",
+        "required": false
+      },
+      {
+        "name": "NEKO_PASSWORD",
+        "default": "",
+        "description": "Container Environment: NEKO_PASSWORD",
+        "required": false
+      },
+      {
+        "name": "NEKO_PASSWORD_ADMIN",
+        "default": "",
+        "description": "Container Environment: NEKO_PASSWORD_ADMIN",
+        "required": false
+      },
+      {
+        "name": "NEKO_EPR",
+        "default": "",
+        "description": "Container Environment: NEKO_EPR",
+        "required": false
+      },
+      {
+        "name": "NEKO_ICELITE",
+        "default": "",
+        "description": "Container Environment: NEKO_ICELITE",
+        "required": false
+      }
+    ],
     "volumes": [],
     "ports": [
-  {
-    "container": "8080",
-    "host": "8080",
-    "protocol": "tcp",
-    "description": "Container Port: 8080"
-  },
-  {
-    "container": "52000-52100",
-    "host": "52000-52100",
-    "protocol": "tcp",
-    "description": "Container Port: 52000-52100"
-  }
-]
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Container Port: 8080"
+      },
+      {
+        "container": "52000-52100",
+        "host": "52000-52100",
+        "protocol": "tcp",
+        "description": "Container Port: 52000-52100"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -95,33 +95,42 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080"
+      "port_map": "8080",
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
-      "administrator_only": false
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64"
-]
+        "amd64"
+      ],
+      "port": "8111"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "port": "10106"
     }
   },
   "tags": [

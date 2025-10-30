@@ -222,16 +222,19 @@
         "romm_mysql": "mysql",
         "romm_redis-data": "redis-data",
         "romm_resources": "resources"
-      }
+      },
+      "port": "1083"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "1080\n3306"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "1080\n3306"
     },
     "umbrel": {
       "supported": true,

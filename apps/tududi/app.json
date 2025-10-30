@@ -113,16 +113,19 @@
       ],
       "volume_mappings": {
         "tududi_tududi_db": "tududi/db"
-      }
+      },
+      "port": "9292"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "9292"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "9292"
     },
     "umbrel": {
       "supported": true,

@@ -248,6 +248,14 @@ load_app_metadata() {
     export COMPAT_RUNTIPI=$(jq -r '.compatibility.runtipi.supported // true' "$app_json")
     export COMPAT_DOCKGE=$(jq -r '.compatibility.dockge.supported // true' "$app_json")
     export COMPAT_COSMOS=$(jq -r '.compatibility.cosmos.supported // true' "$app_json")
+    
+    # Platform-specific port overrides
+    export PORT_CASAOS=$(jq -r '.compatibility.casaos.port // empty' "$app_json")
+    export PORT_PORTAINER=$(jq -r '.compatibility.portainer.port // empty' "$app_json")
+    export PORT_RUNTIPI=$(jq -r '.compatibility.runtipi.port // empty' "$app_json")
+    export PORT_DOCKGE=$(jq -r '.compatibility.dockge.port // empty' "$app_json")
+    export PORT_COSMOS=$(jq -r '.compatibility.cosmos.port // empty' "$app_json")
+    export PORT_UMBREL=$(jq -r '.compatibility.umbrel.port // empty' "$app_json")
     export COMPAT_UMBREL=$(jq -r '.compatibility.umbrel.supported // true' "$app_json")
 }
 
@@ -458,7 +466,10 @@ convert_to_casaos() {
     
     yq eval ".x-casaos.title.en_us = \"$APP_NAME\"" -i "$compose_file"
     yq eval ".x-casaos.category = \"$APP_CATEGORY\"" -i "$compose_file"
-    yq eval ".x-casaos.port_map = \"$APP_DEFAULT_PORT\"" -i "$compose_file"
+    
+    # Use platform-specific port if defined, otherwise use default
+    local casaos_port="${PORT_CASAOS:-$APP_DEFAULT_PORT}"
+    yq eval ".x-casaos.port_map = \"$casaos_port\"" -i "$compose_file"
     
     # Add descriptive comments to x-casaos section using perl (works on both macOS and Linux)
     # Add comment before architectures
@@ -1009,10 +1020,10 @@ convert_to_runtipi() {
         fi
     done <<< "$all_services"
     
-    # Determine port
-    local runtipi_port="${APP_DEFAULT_PORT:-8080}"
-    # Only process port if it's a valid number
-    if [[ "$runtipi_port" =~ ^[0-9]+$ ]] && [[ "$runtipi_port" -le 999 ]]; then
+    # Determine port - use platform-specific port if defined, otherwise use default
+    local runtipi_port="${PORT_RUNTIPI:-${APP_DEFAULT_PORT:-8080}}"
+    # Only process port if it's a valid number and no platform-specific port is set
+    if [[ -z "$PORT_RUNTIPI" ]] && [[ "$runtipi_port" =~ ^[0-9]+$ ]] && [[ "$runtipi_port" -le 999 ]]; then
         case "$runtipi_port" in
             80) runtipi_port=8080 ;;
             443) runtipi_port=8443 ;;
@@ -1147,14 +1158,15 @@ convert_to_cosmos() {
     adjust_compose_for_platform "$app_dir/docker-compose.yml" "$temp_compose" "cosmos" "$app_name"
     
     # Create cosmos-compose.json with routes
+    local cosmos_port="${PORT_COSMOS:-$APP_DEFAULT_PORT}"
     local routes=""
-    if [[ -n "$APP_DEFAULT_PORT" ]]; then
+    if [[ -n "$cosmos_port" ]]; then
         routes="\"routes\": [
         {
           \"name\": \"$APP_NAME\",
           \"description\": \"Web UI\",
           \"useHost\": true,
-          \"target\": \"http://$app_name:$APP_DEFAULT_PORT\",
+          \"target\": \"http://$app_name:$cosmos_port\",
           \"mode\": \"SERVAPP\",
           \"Timeout\": 14400000,
           \"ThrottlePerMinute\": 12000,
@@ -1242,36 +1254,48 @@ convert_to_umbrel() {
     # Umbrel base port for safer port allocation (avoids common 8000s conflicts)
     local UMBREL_BASE_PORT=10000
     
+    # Check if platform-specific port override exists
+    local use_port_override=false
+    if [[ -n "$PORT_UMBREL" ]]; then
+        use_port_override=true
+    fi
+    
     # Extract ports from docker-compose.yml if available
     # For Umbrel we need TWO ports:
     # 1. host_port (umbrel-app.yml "port" field) - unique public port
     # 2. container_port (APP_PORT in docker-compose.yml) - internal port app listens on
-    local host_port="$APP_DEFAULT_PORT"
+    local host_port="${PORT_UMBREL:-$APP_DEFAULT_PORT}"
     local container_port="$APP_DEFAULT_PORT"
     local port_spec=$(yq eval '.services[].ports[0]' "$app_dir/docker-compose.yml" 2>/dev/null | head -1)
     
     if [[ -n "$port_spec" && "$port_spec" != "null" ]]; then
         if [[ "$port_spec" =~ ^[0-9]+:[0-9]+$ ]]; then
             # Format: "host:container" - extract both sides
-            host_port=$(echo "$port_spec" | cut -d':' -f1)
+            if [[ "$use_port_override" == false ]]; then
+                host_port=$(echo "$port_spec" | cut -d':' -f1)
+            fi
             container_port=$(echo "$port_spec" | cut -d':' -f2)
         elif [[ "$port_spec" =~ ^[0-9]+$ ]]; then
             # Format: just the port number - use for both
-            host_port="$port_spec"
+            if [[ "$use_port_override" == false ]]; then
+                host_port="$port_spec"
+            fi
             container_port="$port_spec"
         else
             # Complex format (e.g., "8080:8000/tcp")
             local clean_spec=$(echo "$port_spec" | sed 's|/.*||')
             if [[ "$clean_spec" =~ : ]]; then
-                host_port=$(echo "$clean_spec" | cut -d':' -f1)
+                if [[ "$use_port_override" == false ]]; then
+                    host_port=$(echo "$clean_spec" | cut -d':' -f1)
+                fi
                 container_port=$(echo "$clean_spec" | cut -d':' -f2)
             fi
         fi
     fi
     
-    # Remap host_port to safer 10000+ range to avoid common port conflicts
+    # Remap host_port to safer 10000+ range to avoid common port conflicts (unless port override is set)
     # Keep container_port as-is (internal app port)
-    if [[ "$host_port" =~ ^[0-9]+$ ]] && [[ "$host_port" -lt "$UMBREL_BASE_PORT" ]]; then
+    if [[ "$use_port_override" == false ]] && [[ "$host_port" =~ ^[0-9]+$ ]] && [[ "$host_port" -lt "$UMBREL_BASE_PORT" ]]; then
         # Calculate sequential port from base
         local port_map_file="$OUTPUT_DIR/umbrel/.port_sequence"
         if [[ ! -f "$port_map_file" ]]; then

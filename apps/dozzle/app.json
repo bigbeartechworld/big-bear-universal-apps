@@ -81,20 +81,24 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "port": "8888"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8888"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8888"
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "port": "10039"
     }
   },
   "tags": [

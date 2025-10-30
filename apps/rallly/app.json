@@ -152,16 +152,19 @@
       ],
       "volume_mappings": {
         "rallly_postgresql": "postgresql"
-      }
+      },
+      "port": "3019"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,

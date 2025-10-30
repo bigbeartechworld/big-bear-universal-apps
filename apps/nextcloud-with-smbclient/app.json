@@ -160,16 +160,19 @@
         "nextcloud-with-smbclient_html": "html",
         "nextcloud-with-smbclient_pgdata": "pgdata",
         "nextcloud-with-smbclient_redis": "redis"
-      }
+      },
+      "port": "7581"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "7580"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "7580"
     },
     "umbrel": {
       "supported": true,

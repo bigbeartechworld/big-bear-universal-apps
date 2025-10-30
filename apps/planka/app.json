@@ -105,16 +105,19 @@
         "planka_postgresql": "postgresql",
         "planka_project-background-images": "project-background-images",
         "planka_user-avatars": "user-avatars"
-      }
+      },
+      "port": "3017"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,

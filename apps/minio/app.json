@@ -102,23 +102,27 @@
       ],
       "volume_mappings": {
         "minio_data": "data"
-      }
+      },
+      "port": "9011"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "9010"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "9010"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "minio_data": "data"
-      }
+      },
+      "port": "10099"
     }
   },
   "tags": [

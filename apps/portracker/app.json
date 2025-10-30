@@ -143,11 +143,13 @@
       ],
       "volume_mappings": {
         "portracker_data": "data"
-      }
+      },
+      "port": "4999"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "4999"
     },
     "cosmos": {
       "supported": true,

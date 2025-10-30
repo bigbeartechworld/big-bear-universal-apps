@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "phpmyadmin",
     "default_port": "8080",
@@ -41,40 +41,40 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "PMA_HOST",
-    "default": "",
-    "description": "Host of the database server",
-    "required": false
-  },
-  {
-    "name": "PMA_PORT",
-    "default": "",
-    "description": "Port of the database server",
-    "required": false
-  },
-  {
-    "name": "PMA_USER",
-    "default": "",
-    "description": "Username to connect to the database",
-    "required": false
-  },
-  {
-    "name": "PMA_PASSWORD",
-    "default": "",
-    "description": "Password to connect to the database",
-    "required": false
-  }
-],
+      {
+        "name": "PMA_HOST",
+        "default": "",
+        "description": "Host of the database server",
+        "required": false
+      },
+      {
+        "name": "PMA_PORT",
+        "default": "",
+        "description": "Port of the database server",
+        "required": false
+      },
+      {
+        "name": "PMA_USER",
+        "default": "",
+        "description": "Username to connect to the database",
+        "required": false
+      },
+      {
+        "name": "PMA_PASSWORD",
+        "default": "",
+        "description": "Password to connect to the database",
+        "required": false
+      }
+    ],
     "volumes": [],
     "ports": [
-  {
-    "container": "80",
-    "host": "80",
-    "protocol": "tcp",
-    "description": "Container Port: 80"
-  }
-]
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp",
+        "description": "Container Port: 80"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -89,25 +89,32 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
-      "administrator_only": false
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "port": "8117"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,

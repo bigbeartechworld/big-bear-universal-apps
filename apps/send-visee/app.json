@@ -126,11 +126,13 @@
       "volume_mappings": {
         "send-visee_redis": "redis",
         "send-visee_uploads": "uploads"
-      }
+      },
+      "port": "1443"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "1443"
     },
     "cosmos": {
       "supported": true,

@@ -103,11 +103,13 @@
       ],
       "volume_mappings": {
         "goaway_config": "config"
-      }
+      },
+      "port": "8097"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "53"
     },
     "cosmos": {
       "supported": true,

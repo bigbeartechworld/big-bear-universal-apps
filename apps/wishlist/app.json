@@ -126,11 +126,13 @@
       "volume_mappings": {
         "wishlist_data": "data",
         "wishlist_uploads": "uploads"
-      }
+      },
+      "port": "3280"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3280"
     },
     "cosmos": {
       "supported": true,

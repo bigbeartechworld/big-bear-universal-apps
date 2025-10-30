@@ -170,23 +170,27 @@
       ],
       "volume_mappings": {
         "flowise_data": "data"
-      }
+      },
+      "port": "8009"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8009"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8009"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "flowise_data": "data"
-      }
+      },
+      "port": "10051"
     }
   },
   "tags": [

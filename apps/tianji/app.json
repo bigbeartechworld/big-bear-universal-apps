@@ -95,16 +95,19 @@
       ],
       "volume_mappings": {
         "tianji_pgdata": "pgdata"
-      }
+      },
+      "port": "12345"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "12345"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "12345"
     },
     "umbrel": {
       "supported": true,

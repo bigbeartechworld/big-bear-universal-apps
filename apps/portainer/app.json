@@ -103,16 +103,19 @@
       ],
       "volume_mappings": {
         "portainer_data": "data"
-      }
+      },
+      "port": "9445"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8000"
     },
     "umbrel": {
       "supported": true,

@@ -181,16 +181,19 @@
       "volume_mappings": {
         "davis_mailpit_data": "mailpit/data",
         "davis_mysql": "mysql"
-      }
+      },
+      "port": "9000"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "9000\n8025"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "9000\n8025"
     },
     "umbrel": {
       "supported": true,

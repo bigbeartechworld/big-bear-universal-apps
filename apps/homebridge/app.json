@@ -80,7 +80,8 @@
       ],
       "volume_mappings": {
         "homebridge_data": "data"
-      }
+      },
+      "port": "8581"
     },
     "dockge": {
       "supported": true,

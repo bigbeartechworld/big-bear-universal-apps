@@ -112,16 +112,19 @@
       "volume_mappings": {
         "code-server_config": "config",
         "code-server_projects": "projects"
-      }
+      },
+      "port": "8088"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,

@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-cloudflared-web",
     "default_port": "14333",
@@ -41,86 +41,91 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "WEBUI_PORT",
-    "default": "",
-    "description": "Web UI Port",
-    "required": false
-  },
-  {
-    "name": "EDGE_IP_VERSION",
-    "default": "",
-    "description": "Edge IP Version",
-    "required": false
-  },
-  {
-    "name": "PROTOCOL",
-    "default": "",
-    "description": "Protocol",
-    "required": false
-  },
-  {
-    "name": "METRICS_ENABLE",
-    "default": "",
-    "description": "Metrics Enable",
-    "required": false
-  },
-  {
-    "name": "METRICS_PORT",
-    "default": "",
-    "description": "Metrics Port",
-    "required": false
-  },
-  {
-    "name": "BASIC_AUTH_USER",
-    "default": "",
-    "description": "Basic Auth User",
-    "required": false
-  },
-  {
-    "name": "BASIC_AUTH_PASS",
-    "default": "",
-    "description": "",
-    "required": false
-  }
-],
+      {
+        "name": "WEBUI_PORT",
+        "default": "",
+        "description": "Web UI Port",
+        "required": false
+      },
+      {
+        "name": "EDGE_IP_VERSION",
+        "default": "",
+        "description": "Edge IP Version",
+        "required": false
+      },
+      {
+        "name": "PROTOCOL",
+        "default": "",
+        "description": "Protocol",
+        "required": false
+      },
+      {
+        "name": "METRICS_ENABLE",
+        "default": "",
+        "description": "Metrics Enable",
+        "required": false
+      },
+      {
+        "name": "METRICS_PORT",
+        "default": "",
+        "description": "Metrics Port",
+        "required": false
+      },
+      {
+        "name": "BASIC_AUTH_USER",
+        "default": "",
+        "description": "Basic Auth User",
+        "required": false
+      },
+      {
+        "name": "BASIC_AUTH_PASS",
+        "default": "",
+        "description": "",
+        "required": false
+      }
+    ],
     "volumes": [],
     "ports": [
-  {
-    "container": "14333",
-    "host": "14333",
-    "protocol": "tcp",
-    "description": "Container Port: 14333"
-  }
-]
+      {
+        "container": "14333",
+        "host": "14333",
+        "protocol": "tcp",
+        "description": "Container Port: 14333"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-cloudflared-web-to-bigbearcasaos/2275?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-cloudflared-web-to-bigbearcasaos/2275?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "14333"
+      "port_map": "14333",
+      "port": "14333"
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "port": "14333"
     },
     "dockge": {
       "supported": true,

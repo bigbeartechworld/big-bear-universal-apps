@@ -104,7 +104,8 @@
       ],
       "volume_mappings": {
         "otel-lgtm_data": "data"
-      }
+      },
+      "port": "3014"
     },
     "dockge": {
       "supported": true,

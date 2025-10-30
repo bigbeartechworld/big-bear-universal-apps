@@ -238,16 +238,19 @@
         "pterodactyl-panel_logs_": "logs/",
         "pterodactyl-panel_nginx_": "nginx/",
         "pterodactyl-panel_var_": "var/"
-      }
+      },
+      "port": "1180"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "1180"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "1180"
     },
     "umbrel": {
       "supported": true,

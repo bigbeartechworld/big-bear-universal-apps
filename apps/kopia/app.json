@@ -111,16 +111,19 @@
         "kopia_config": "config",
         "kopia_home": "home",
         "kopia_repository": "repository"
-      }
+      },
+      "port": "51515"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "51515"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "51515"
     },
     "umbrel": {
       "supported": true,

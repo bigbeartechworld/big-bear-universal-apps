@@ -126,23 +126,27 @@
       ],
       "volume_mappings": {
         "btop_config": "config"
-      }
+      },
+      "port": "7681"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "7681"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "7681"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "btop_config": "config"
-      }
+      },
+      "port": "10015"
     }
   },
   "tags": [

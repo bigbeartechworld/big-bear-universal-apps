@@ -98,16 +98,19 @@
       ],
       "volume_mappings": {
         "spacedrive_data_spacedrive": "data/spacedrive"
-      }
+      },
+      "port": "8129"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,

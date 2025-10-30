@@ -93,23 +93,27 @@
       ],
       "volume_mappings": {
         "obsidian_config": "config"
-      }
+      },
+      "port": "3013"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "obsidian_config": "config"
-      }
+      },
+      "port": "10117"
     }
   },
   "tags": [

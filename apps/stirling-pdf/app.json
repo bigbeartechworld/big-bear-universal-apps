@@ -146,16 +146,19 @@
       "volume_mappings": {
         "stirling-pdf_configs": "configs",
         "stirling-pdf_tessdata": "tessdata"
-      }
+      },
+      "port": "8132"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,

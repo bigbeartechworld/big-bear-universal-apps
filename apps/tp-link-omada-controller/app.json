@@ -191,7 +191,8 @@
       "volume_mappings": {
         "tp-link-omada-controller_data": "data",
         "tp-link-omada-controller_logs": "logs"
-      }
+      },
+      "port": "8135"
     },
     "dockge": {
       "supported": true,

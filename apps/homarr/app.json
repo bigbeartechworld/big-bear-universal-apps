@@ -99,16 +99,19 @@
         "homarr_configs": "configs",
         "homarr_data": "data",
         "homarr_icons": "icons"
-      }
+      },
+      "port": "7576"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "7575"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "7575"
     },
     "umbrel": {
       "supported": true,

@@ -88,7 +88,8 @@
       ],
       "volume_mappings": {
         "home-assistant_config": "config"
-      }
+      },
+      "port": "8123"
     },
     "dockge": {
       "supported": true,

@@ -120,11 +120,13 @@
       ],
       "volume_mappings": {
         "beaverhabits_.user": ".user"
-      }
+      },
+      "port": "8083"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,

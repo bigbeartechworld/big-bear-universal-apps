@@ -129,11 +129,13 @@
       ],
       "volume_mappings": {
         "stalwart-mail_data": "data"
-      }
+      },
+      "port": "8131"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,

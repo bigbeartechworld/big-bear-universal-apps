@@ -94,23 +94,27 @@
       ],
       "volume_mappings": {
         "mailpit_data": "data"
-      }
+      },
+      "port": "8025"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8025"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8025"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "mailpit_data": "data"
-      }
+      },
+      "port": "10093"
     }
   },
   "tags": [

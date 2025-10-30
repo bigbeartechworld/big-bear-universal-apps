@@ -89,16 +89,19 @@
       "volume_mappings": {
         "monica_mysql": "mysql",
         "monica_storage": "storage"
-      }
+      },
+      "port": "8108"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,

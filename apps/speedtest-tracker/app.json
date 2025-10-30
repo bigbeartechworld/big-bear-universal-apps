@@ -166,16 +166,19 @@
         "speedtest-tracker_config": "config",
         "speedtest-tracker_mysql": "mysql",
         "speedtest-tracker_web": "web"
-      }
+      },
+      "port": "8130"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,

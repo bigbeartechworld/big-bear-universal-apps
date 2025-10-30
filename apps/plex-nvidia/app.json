@@ -139,7 +139,8 @@
         "plex-nvidia_config": "config",
         "plex-nvidia_movies": "movies",
         "plex-nvidia_tv": "tv"
-      }
+      },
+      "port": "32401"
     },
     "dockge": {
       "supported": true,

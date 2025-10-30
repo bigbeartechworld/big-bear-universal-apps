@@ -116,16 +116,19 @@
       ],
       "volume_mappings": {
         "write-freely_data_config": "data/config"
-      }
+      },
+      "port": "8143"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "70"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "70"
     },
     "umbrel": {
       "supported": true,

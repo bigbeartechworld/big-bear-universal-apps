@@ -97,16 +97,19 @@
       "volume_mappings": {
         "obsidian-livesync_data_couchdb": "data/couchdb",
         "obsidian-livesync_data_local.ini": "data/local.ini"
-      }
+      },
+      "port": "5984"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "5984"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "5984"
     },
     "umbrel": {
       "supported": true,

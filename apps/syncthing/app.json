@@ -93,16 +93,19 @@
       "volume_mappings": {
         "syncthing_data": "data",
         "syncthing_media_data_syncthing": "media/data/syncthing"
-      }
+      },
+      "port": "8384"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8384"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8384"
     },
     "umbrel": {
       "supported": true,

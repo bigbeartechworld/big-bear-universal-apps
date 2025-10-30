@@ -94,7 +94,8 @@
       ],
       "volume_mappings": {
         "poste-io_data": "data"
-      }
+      },
+      "port": "8125"
     },
     "dockge": {
       "supported": true,

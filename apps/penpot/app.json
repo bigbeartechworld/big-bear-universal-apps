@@ -89,16 +89,19 @@
       "volume_mappings": {
         "penpot_assets": "assets",
         "penpot_pgdata": "pgdata"
-      }
+      },
+      "port": "9003"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "9001\n1080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "9001\n1080"
     },
     "umbrel": {
       "supported": true,

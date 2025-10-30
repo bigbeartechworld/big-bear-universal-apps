@@ -87,16 +87,19 @@
       ],
       "volume_mappings": {
         "uptime-kuma_data": "data"
-      }
+      },
+      "port": "3024"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3001"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3001"
     },
     "umbrel": {
       "supported": true,

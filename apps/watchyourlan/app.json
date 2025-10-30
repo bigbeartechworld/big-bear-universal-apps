@@ -80,7 +80,8 @@
       ],
       "volume_mappings": {
         "watchyourlan_data": "data"
-      }
+      },
+      "port": "8840"
     },
     "dockge": {
       "supported": true,

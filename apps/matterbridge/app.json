@@ -92,7 +92,8 @@
       "volume_mappings": {
         "matterbridge_.matterbridge": ".matterbridge",
         "matterbridge_Matterbridge": "Matterbridge"
-      }
+      },
+      "port": "8283"
     },
     "dockge": {
       "supported": true,

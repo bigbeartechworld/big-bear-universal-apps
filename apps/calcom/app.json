@@ -232,16 +232,19 @@
       "volume_mappings": {
         "calcom_config": "config",
         "calcom_data_db": "data/db"
-      }
+      },
+      "port": "3001"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,

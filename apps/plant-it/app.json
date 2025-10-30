@@ -105,16 +105,19 @@
         "plant-it_certificates": "certificates",
         "plant-it_mysql": "mysql",
         "plant-it_upload-dir": "upload-dir"
-      }
+      },
+      "port": "3018"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080\n3306"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080\n3306"
     },
     "umbrel": {
       "supported": true,

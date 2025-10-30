@@ -160,16 +160,19 @@
         "nextcloud_html": "html",
         "nextcloud_pgdata": "pgdata",
         "nextcloud_redis": "redis"
-      }
+      },
+      "port": "7580"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "7580"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "7580"
     },
     "umbrel": {
       "supported": true,

@@ -85,23 +85,27 @@
       ],
       "volume_mappings": {
         "faster-whisper_config": "config"
-      }
+      },
+      "port": "7575"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "10300"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "10300"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "faster-whisper_config": "config"
-      }
+      },
+      "port": "10300"
     }
   },
   "tags": [

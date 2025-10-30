@@ -93,16 +93,19 @@
       "volume_mappings": {
         "bookstack_config": "config",
         "bookstack_mysql": "mysql"
-      }
+      },
+      "port": "8084"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,

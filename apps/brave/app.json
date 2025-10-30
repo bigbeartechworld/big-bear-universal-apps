@@ -92,16 +92,19 @@
       ],
       "volume_mappings": {
         "brave_Downloads": "Downloads"
-      }
+      },
+      "port": "6901"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "6901"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "6901"
     },
     "umbrel": {
       "supported": false,

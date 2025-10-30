@@ -98,7 +98,8 @@
       ],
       "volume_mappings": {
         "playit-docker-web_config": "config"
-      }
+      },
+      "port": "8010"
     },
     "dockge": {
       "supported": true,

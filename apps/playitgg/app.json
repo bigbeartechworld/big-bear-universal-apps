@@ -78,7 +78,8 @@
       ],
       "volume_mappings": {
         "playitgg_secrets": "secrets"
-      }
+      },
+      "port": "8122"
     },
     "dockge": {
       "supported": true,

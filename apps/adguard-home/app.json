@@ -109,16 +109,19 @@
       "volume_mappings": {
         "adguard-home_data_conf": "data/conf",
         "adguard-home_data_work": "data/work"
-      }
+      },
+      "port": "8080"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "53"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "53"
     },
     "umbrel": {
       "supported": true,

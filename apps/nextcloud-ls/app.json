@@ -116,16 +116,19 @@
       "volume_mappings": {
         "nextcloud-ls_config": "config",
         "nextcloud-ls_data": "data"
-      }
+      },
+      "port": "10444"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "10443"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "10443"
     },
     "umbrel": {
       "supported": true,

@@ -100,7 +100,8 @@
       ],
       "volume_mappings": {
         "flame_data": "data"
-      }
+      },
+      "port": "5005"
     },
     "dockge": {
       "supported": true,

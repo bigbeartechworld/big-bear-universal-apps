@@ -250,16 +250,19 @@
         "photoprism_mysql": "mysql",
         "photoprism_originals": "originals",
         "photoprism_storage": "storage"
-      }
+      },
+      "port": "2342"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "2342"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "2342"
     },
     "umbrel": {
       "supported": true,

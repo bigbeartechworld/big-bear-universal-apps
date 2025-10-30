@@ -106,11 +106,13 @@
       "volume_mappings": {
         "jfa-go_.config_jfa-go": ".config/jfa-go",
         "jfa-go_jellyfin": "jellyfin"
-      }
+      },
+      "port": "8056"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8056"
     },
     "cosmos": {
       "supported": true,

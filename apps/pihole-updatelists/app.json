@@ -146,11 +146,13 @@
         "pihole-updatelists_dnsmasq.d": "dnsmasq.d",
         "pihole-updatelists_etc": "etc",
         "pihole-updatelists_etc_pihole-updatelists": "etc/pihole-updatelists"
-      }
+      },
+      "port": "8120"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "53"
     },
     "cosmos": {
       "supported": true,

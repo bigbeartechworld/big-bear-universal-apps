@@ -157,16 +157,19 @@
       "volume_mappings": {
         "ghostfolio_data_db": "data/db",
         "ghostfolio_data_redis": "data/redis"
-      }
+      },
+      "port": "3334"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3333"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3333"
     },
     "umbrel": {
       "supported": true,

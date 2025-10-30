@@ -136,16 +136,19 @@
         "lyrionmusicserver_config": "config",
         "lyrionmusicserver_music": "music",
         "lyrionmusicserver_playlists": "playlists"
-      }
+      },
+      "port": "9002"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "9000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "9000"
     },
     "umbrel": {
       "supported": true,

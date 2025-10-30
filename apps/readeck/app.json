@@ -116,11 +116,13 @@
       ],
       "volume_mappings": {
         "readeck_data": "data"
-      }
+      },
+      "port": "8012"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8000"
     },
     "cosmos": {
       "supported": true,

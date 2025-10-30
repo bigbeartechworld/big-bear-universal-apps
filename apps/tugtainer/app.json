@@ -130,11 +130,13 @@
       ],
       "volume_mappings": {
         "tugtainer_data": "data"
-      }
+      },
+      "port": "9412"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "9412"
     },
     "cosmos": {
       "supported": true,

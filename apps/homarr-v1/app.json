@@ -91,11 +91,13 @@
       ],
       "volume_mappings": {
         "homarr-v1_appdata": "appdata"
-      }
+      },
+      "port": "7577"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "7575"
     },
     "cosmos": {
       "supported": true,

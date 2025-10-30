@@ -168,16 +168,19 @@
         "owncloud_data": "data",
         "owncloud_mysql": "mysql",
         "owncloud_redis": "redis"
-      }
+      },
+      "port": "8116"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,

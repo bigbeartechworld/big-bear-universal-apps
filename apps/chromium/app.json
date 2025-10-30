@@ -104,23 +104,27 @@
       ],
       "volume_mappings": {
         "chromium_config": "config"
-      }
+      },
+      "port": "6903"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "6902"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "6902"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "chromium_config": "config"
-      }
+      },
+      "port": "10022"
     }
   },
   "tags": [

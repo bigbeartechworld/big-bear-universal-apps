@@ -136,16 +136,19 @@
       "volume_mappings": {
         "seafile_mysql": "mysql",
         "seafile_shared": "shared"
-      }
+      },
+      "port": "8127"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,

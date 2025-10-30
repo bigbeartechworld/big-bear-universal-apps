@@ -89,16 +89,19 @@
       "volume_mappings": {
         "jellystat_backup-data": "backup-data",
         "jellystat_postgres-data": "postgres-data"
-      }
+      },
+      "port": "3010"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,

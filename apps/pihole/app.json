@@ -111,16 +111,19 @@
       "volume_mappings": {
         "pihole_dnsmasq.d": "dnsmasq.d",
         "pihole_etc": "etc"
-      }
+      },
+      "port": "8118"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "53"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "53"
     },
     "umbrel": {
       "supported": true,

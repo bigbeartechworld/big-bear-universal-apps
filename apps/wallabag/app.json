@@ -175,11 +175,13 @@
       "volume_mappings": {
         "wallabag_images": "images",
         "wallabag_mysql": "mysql"
-      }
+      },
+      "port": "8141"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,

@@ -130,16 +130,19 @@
       "volume_mappings": {
         "ghost_content": "content",
         "ghost_mysql": "mysql"
-      }
+      },
+      "port": "2368"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "2368"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "2368"
     },
     "umbrel": {
       "supported": true,

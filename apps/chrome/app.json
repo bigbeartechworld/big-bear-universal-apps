@@ -92,16 +92,19 @@
       ],
       "volume_mappings": {
         "chrome_Downloads": "Downloads"
-      }
+      },
+      "port": "6902"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "6902"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "6902"
     },
     "umbrel": {
       "supported": false,
