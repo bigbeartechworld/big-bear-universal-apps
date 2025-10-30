@@ -15,7 +15,7 @@ services:
     restart: unless-stopped
     # Volumes to be mounted to the container
     volumes:
-      # Mounting the local /DATA/AppData/$AppID/data directory to /data inside the container
+      # Mounting the local otel-lgtm_data directory to /data inside the container
       - type: bind
         source: otel-lgtm_data
         target: /data

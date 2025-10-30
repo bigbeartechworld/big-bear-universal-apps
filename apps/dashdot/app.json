@@ -30,10 +30,10 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "armv7",
-  "arm64"
-],
+      "amd64",
+      "armv7",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "3001",
@@ -43,19 +43,19 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/mnt/host",
-    "description": "Container Path: /mnt/host"
-  }
-],
+      {
+        "container": "/mnt/host",
+        "description": "Container Path: /mnt/host"
+      }
+    ],
     "ports": [
-  {
-    "container": "3001",
-    "host": "3001",
-    "protocol": "tcp",
-    "description": "Container Port: 3001"
-  }
-]
+      {
+        "container": "3001",
+        "host": "3001",
+        "protocol": "tcp",
+        "description": "Container Port: 3001"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -65,22 +65,31 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3001"
+      "port_map": "3001",
+      "volume_mappings": {
+        "dashdot_data": "/DATA/AppData/$AppID"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "armv7",
-  "arm64"
-]
+        "amd64",
+        "armv7",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "dashdot_data": "data"
+      }
     },
     "dockge": {
       "supported": true,
@@ -93,7 +102,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "dashdot_data": "data"
+      }
     }
   },
   "tags": [
