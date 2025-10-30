@@ -120,9 +120,9 @@
       "port_map": "4000",
       "folder_name": "maybe-finance",
       "volume_mappings": {
-        "MaybeFinance_app-storage": "/DATA/AppData/$AppID/MaybeFinance/app-storage",
-        "MaybeFinance_postgres-data": "/DATA/AppData/$AppID/MaybeFinance/postgres-data",
-        "MaybeFinance_redis-data": "/DATA/AppData/$AppID/MaybeFinance/redis-data"
+        "MaybeFinance_app-storage": "/DATA/AppData/$AppID/app-storage",
+        "MaybeFinance_postgres-data": "/DATA/AppData/$AppID/postgres-data",
+        "MaybeFinance_redis-data": "/DATA/AppData/$AppID/redis-data"
       }
     },
     "portainer": {
