@@ -170,6 +170,28 @@ check_dependencies() {
     fi
 }
 
+# Validate JSON syntax
+validate_json_syntax() {
+    local file="$1"
+    
+    if ! jq empty "$file" 2>/dev/null; then
+        return 1
+    fi
+    
+    return 0
+}
+
+# Validate YAML syntax
+validate_yaml_syntax() {
+    local file="$1"
+    
+    if ! yq eval '.' "$file" > /dev/null 2>&1; then
+        return 1
+    fi
+    
+    return 0
+}
+
 # Initialize output directories
 init_directories() {
     if [[ "$DRY_RUN" == "true" ]]; then
@@ -698,6 +720,23 @@ convert_to_casaos() {
 }
 EOF
     
+    # Validate generated files
+    if ! validate_yaml_syntax "$compose_file"; then
+        print_error "Generated docker-compose.yml for $app_name (CasaOS) has invalid YAML!"
+        print_error "File: $compose_file"
+        yq eval '.' "$compose_file" 2>&1 | head -10
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if ! jq empty "$output_dir/config.json" 2>/dev/null; then
+        print_error "Generated config.json for $app_name (CasaOS) has invalid JSON!"
+        print_error "Validation error:"
+        jq empty "$output_dir/config.json" 2>&1
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
     print_success "Converted $app_name for CasaOS"
 }
 
@@ -1158,6 +1197,31 @@ EOF
         create_placeholder_logo "$output_dir/metadata/logo.jpg"
     fi
     
+    # Validate generated files
+    if ! validate_yaml_syntax "$compose_file"; then
+        print_error "Generated docker-compose.yml for $app_name (Runtipi) has invalid YAML!"
+        print_error "File: $compose_file"
+        yq eval '.' "$compose_file" 2>&1 | head -10
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if ! jq empty "$output_dir/docker-compose.json" 2>/dev/null; then
+        print_error "Generated docker-compose.json for $app_name (Runtipi) has invalid JSON!"
+        print_error "Validation error:"
+        jq empty "$output_dir/docker-compose.json" 2>&1
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if ! jq empty "$output_dir/config.json" 2>/dev/null; then
+        print_error "Generated config.json for $app_name (Runtipi) has invalid JSON!"
+        print_error "Validation error:"
+        jq empty "$output_dir/config.json" 2>&1
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
     print_success "Converted $app_name for Runtipi"
 }
 
@@ -1179,13 +1243,41 @@ convert_to_dockge() {
     # Copy compose and add big-bear- prefix to volumes
     adjust_compose_for_platform "$app_dir/docker-compose.yml" "$output_dir/compose.yaml" "dockge" "$app_name"
     
+    # Escape JSON strings - order matters! Backslashes first, then quotes, then control chars
+    local name_json="${APP_NAME}"
+    local desc_json="${APP_DESCRIPTION}"
+    local author_json="${APP_AUTHOR}"
+    
+    # Escape backslashes first
+    name_json="${name_json//\\/\\\\}"
+    desc_json="${desc_json//\\/\\\\}"
+    author_json="${author_json//\\/\\\\}"
+    
+    # Then escape quotes
+    name_json="${name_json//\"/\\\"}"
+    desc_json="${desc_json//\"/\\\"}"
+    author_json="${author_json//\"/\\\"}"
+    
+    # Then escape control characters
+    name_json="${name_json//$'\n'/\\n}"
+    name_json="${name_json//$'\r'/\\r}"
+    name_json="${name_json//$'\t'/\\t}"
+    
+    desc_json="${desc_json//$'\n'/\\n}"
+    desc_json="${desc_json//$'\r'/\\r}"
+    desc_json="${desc_json//$'\t'/\\t}"
+    
+    author_json="${author_json//$'\n'/\\n}"
+    author_json="${author_json//$'\r'/\\r}"
+    author_json="${author_json//$'\t'/\\t}"
+    
     # Create metadata.json
     cat > "$output_dir/metadata.json" << EOF
 {
-  "name": "$APP_NAME",
-  "description": "$APP_DESCRIPTION",
+  "name": "$name_json",
+  "description": "$desc_json",
   "version": "$APP_VERSION",
-  "author": "$APP_AUTHOR",
+  "author": "$author_json",
   "icon": "$APP_ICON",
   "category": "$APP_CATEGORY",
   "port": "$APP_DEFAULT_PORT",
@@ -1193,6 +1285,23 @@ convert_to_dockge() {
   "source": "$APP_REPOSITORY"
 }
 EOF
+    
+    # Validate generated files
+    if ! validate_yaml_syntax "$output_dir/compose.yaml"; then
+        print_error "Generated compose.yaml for $app_name (Dockge) has invalid YAML!"
+        print_error "File: $output_dir/compose.yaml"
+        yq eval '.' "$output_dir/compose.yaml" 2>&1 | head -10
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if ! jq empty "$output_dir/metadata.json" 2>/dev/null; then
+        print_error "Generated metadata.json for $app_name (Dockge) has invalid JSON!"
+        print_error "Validation error:"
+        jq empty "$output_dir/metadata.json" 2>&1
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
     
     print_success "Converted $app_name for Dockge"
 }
@@ -1216,13 +1325,21 @@ convert_to_cosmos() {
     local temp_compose=$(mktemp)
     adjust_compose_for_platform "$app_dir/docker-compose.yml" "$temp_compose" "cosmos" "$app_name"
     
+    # Escape APP_NAME for JSON in routes
+    local name_for_routes="${APP_NAME}"
+    name_for_routes="${name_for_routes//\\/\\\\}"
+    name_for_routes="${name_for_routes//\"/\\\"}"
+    name_for_routes="${name_for_routes//$'\n'/\\n}"
+    name_for_routes="${name_for_routes//$'\r'/\\r}"
+    name_for_routes="${name_for_routes//$'\t'/\\t}"
+    
     # Create cosmos-compose.json with routes
     local cosmos_port="${PORT_COSMOS:-$APP_DEFAULT_PORT}"
     local routes=""
     if [[ -n "$cosmos_port" ]]; then
         routes="\"routes\": [
         {
-          \"name\": \"$APP_NAME\",
+          \"name\": \"$name_for_routes\",
           \"description\": \"Web UI\",
           \"useHost\": true,
           \"target\": \"http://$app_name:$cosmos_port\",
@@ -1249,16 +1366,54 @@ EOF
     # Clean up temporary file
     rm -f "$temp_compose"
     
+    # Escape JSON strings - order matters! Backslashes first, then quotes, then control chars
+    local name_json="${APP_NAME}"
+    local desc_json="${APP_DESCRIPTION}"
+    
+    # Escape backslashes first
+    name_json="${name_json//\\/\\\\}"
+    desc_json="${desc_json//\\/\\\\}"
+    
+    # Then escape quotes
+    name_json="${name_json//\"/\\\"}"
+    desc_json="${desc_json//\"/\\\"}"
+    
+    # Then escape control characters
+    name_json="${name_json//$'\n'/\\n}"
+    name_json="${name_json//$'\r'/\\r}"
+    name_json="${name_json//$'\t'/\\t}"
+    
+    desc_json="${desc_json//$'\n'/\\n}"
+    desc_json="${desc_json//$'\r'/\\r}"
+    desc_json="${desc_json//$'\t'/\\t}"
+    
     # Create description.json
     cat > "$output_dir/description.json" << EOF
 {
-  "name": "$APP_NAME",
-  "description": "$APP_DESCRIPTION",
+  "name": "$name_json",
+  "description": "$desc_json",
   "url": "$APP_HOMEPAGE",
-  "longDescription": "$APP_DESCRIPTION",
+  "longDescription": "$desc_json",
   "tags": $(echo "$APP_TAGS" | jq -c '.')
 }
 EOF
+    
+    # Validate generated files
+    if ! jq empty "$output_dir/cosmos-compose.json" 2>/dev/null; then
+        print_error "Generated cosmos-compose.json for $app_name (Cosmos) has invalid JSON!"
+        print_error "Validation error:"
+        jq empty "$output_dir/cosmos-compose.json" 2>&1
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if ! jq empty "$output_dir/description.json" 2>/dev/null; then
+        print_error "Generated description.json for $app_name (Cosmos) has invalid JSON!"
+        print_error "Validation error:"
+        jq empty "$output_dir/description.json" 2>&1
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
     
     print_success "Converted $app_name for Cosmos"
 }
@@ -1573,6 +1728,23 @@ EOF
     # Create data directory with .gitkeep (standard Umbrel app structure)
     mkdir -p "$output_dir/data"
     touch "$output_dir/data/.gitkeep"
+    
+    # Validate generated files
+    if ! validate_yaml_syntax "$output_dir/docker-compose.yml"; then
+        print_error "Generated docker-compose.yml for $app_name (Umbrel) has invalid YAML!"
+        print_error "File: $output_dir/docker-compose.yml"
+        yq eval '.' "$output_dir/docker-compose.yml" 2>&1 | head -10
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if ! validate_yaml_syntax "$output_dir/umbrel-app.yml"; then
+        print_error "Generated umbrel-app.yml for $app_name (Umbrel) has invalid YAML!"
+        print_error "File: $output_dir/umbrel-app.yml"
+        yq eval '.' "$output_dir/umbrel-app.yml" 2>&1 | head -10
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
     
     print_success "Converted $app_name for Umbrel"
 }
