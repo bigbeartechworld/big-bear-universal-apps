@@ -5,7 +5,7 @@
     "name": "Dockpeek",
     "description": "A lightweight, self-hosted Docker dashboard that provides quick access to all running containers and their exposed ports with one-click access to web apps.",
     "tagline": "Docker Dashboard",
-    "version": "v1.7.0",
+    "version": "v1.7.1",
     "author": "BigBearTechWorld",
     "developer": "dockpeek",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:44Z",
-    "updated": "2025-10-29T01:57:44.252Z"
+    "updated": "2025-10-30T14:49:00.392Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/dockpeek.png",
