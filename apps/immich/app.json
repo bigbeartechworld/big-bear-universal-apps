@@ -121,12 +121,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "immich_model-cache": "model-cache",
-        "immich_pgdata": "pgdata",
-        "immich_upload": "upload"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -143,22 +138,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "immich_model-cache": "model-cache",
-        "immich_pgdata": "pgdata",
-        "immich_upload": "upload"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "immich_model-cache": "model-cache",
-        "immich_pgdata": "pgdata",
-        "immich_upload": "upload"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

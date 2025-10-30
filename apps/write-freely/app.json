@@ -105,10 +105,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "write-freely_data_config": "data/config"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -123,18 +120,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "write-freely_data_config": "data/config"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "write-freely_data_config": "data/config"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

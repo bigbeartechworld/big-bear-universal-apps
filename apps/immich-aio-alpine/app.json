@@ -167,12 +167,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "immich-aio-alpine_config": "config",
-        "immich-aio-alpine_pgdata": "pgdata",
-        "immich-aio-alpine_photos": "photos"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -189,22 +184,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "immich-aio-alpine_config": "config",
-        "immich-aio-alpine_pgdata": "pgdata",
-        "immich-aio-alpine_photos": "photos"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "immich-aio-alpine_config": "config",
-        "immich-aio-alpine_pgdata": "pgdata",
-        "immich-aio-alpine_photos": "photos"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

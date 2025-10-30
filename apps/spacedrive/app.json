@@ -87,10 +87,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "spacedrive_data_spacedrive": "data/spacedrive"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -105,18 +102,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "spacedrive_data_spacedrive": "data/spacedrive"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "spacedrive_data_spacedrive": "data/spacedrive"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

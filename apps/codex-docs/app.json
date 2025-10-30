@@ -86,12 +86,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "codex-docs_codex-docs-config.local.yaml": "codex-docs-config.local.yaml",
-        "codex-docs_db": "db",
-        "codex-docs_uploads": "uploads"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -108,22 +103,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "codex-docs_codex-docs-config.local.yaml": "codex-docs-config.local.yaml",
-        "codex-docs_db": "db",
-        "codex-docs_uploads": "uploads"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "codex-docs_codex-docs-config.local.yaml": "codex-docs-config.local.yaml",
-        "codex-docs_db": "db",
-        "codex-docs_uploads": "uploads"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

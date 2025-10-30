@@ -134,11 +134,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "warracker_uploads": "uploads",
-        "warracker_warrackerdb": "warrackerdb"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -154,20 +150,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "warracker_uploads": "uploads",
-        "warracker_warrackerdb": "warrackerdb"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "warracker_uploads": "uploads",
-        "warracker_warrackerdb": "warrackerdb"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

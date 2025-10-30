@@ -152,12 +152,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "speedtest-tracker_config": "config",
-        "speedtest-tracker_mysql": "mysql",
-        "speedtest-tracker_web": "web"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -175,22 +170,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "speedtest-tracker_config": "config",
-        "speedtest-tracker_mysql": "mysql",
-        "speedtest-tracker_web": "web"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "speedtest-tracker_config": "config",
-        "speedtest-tracker_mysql": "mysql",
-        "speedtest-tracker_web": "web"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

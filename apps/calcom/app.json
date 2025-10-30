@@ -220,11 +220,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "calcom_config": "config",
-        "calcom_data_db": "data/db"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -240,20 +236,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "calcom_config": "config",
-        "calcom_data_db": "data/db"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "calcom_config": "config",
-        "calcom_data_db": "data/db"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

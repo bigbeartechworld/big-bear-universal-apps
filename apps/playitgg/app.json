@@ -68,10 +68,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "playitgg_secrets": "secrets"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -85,18 +82,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "playitgg_secrets": "secrets"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "playitgg_secrets": "secrets"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

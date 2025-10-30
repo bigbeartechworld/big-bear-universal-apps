@@ -105,12 +105,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "odoo_data_addons": "data/addons",
-        "odoo_data_etc": "data/etc",
-        "odoo_data_postgresql": "data/postgresql"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -127,22 +122,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "odoo_data_addons": "data/addons",
-        "odoo_data_etc": "data/etc",
-        "odoo_data_postgresql": "data/postgresql"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "odoo_data_addons": "data/addons",
-        "odoo_data_etc": "data/etc",
-        "odoo_data_postgresql": "data/postgresql"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

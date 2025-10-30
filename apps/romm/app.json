@@ -205,16 +205,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "romm_assets": "assets",
-        "romm_config": "config",
-        "romm_library": "library",
-        "romm_logs": "logs",
-        "romm_mysql": "mysql",
-        "romm_redis-data": "redis-data",
-        "romm_resources": "resources"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -235,30 +226,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "romm_assets": "assets",
-        "romm_config": "config",
-        "romm_library": "library",
-        "romm_logs": "logs",
-        "romm_mysql": "mysql",
-        "romm_redis-data": "redis-data",
-        "romm_resources": "resources"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "romm_assets": "assets",
-        "romm_config": "config",
-        "romm_library": "library",
-        "romm_logs": "logs",
-        "romm_mysql": "mysql",
-        "romm_redis-data": "redis-data",
-        "romm_resources": "resources"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

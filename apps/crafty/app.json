@@ -125,14 +125,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "crafty_data_backups": "data/backups",
-        "crafty_data_config": "data/config",
-        "crafty_data_import": "data/import",
-        "crafty_data_logs": "data/logs",
-        "crafty_data_servers": "data/servers"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -151,26 +144,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "crafty_data_backups": "data/backups",
-        "crafty_data_config": "data/config",
-        "crafty_data_import": "data/import",
-        "crafty_data_logs": "data/logs",
-        "crafty_data_servers": "data/servers"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "crafty_data_backups": "data/backups",
-        "crafty_data_config": "data/config",
-        "crafty_data_import": "data/import",
-        "crafty_data_logs": "data/logs",
-        "crafty_data_servers": "data/servers"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

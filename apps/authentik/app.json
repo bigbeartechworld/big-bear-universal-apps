@@ -92,14 +92,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "authentik_data_authentik-certs": "data/authentik-certs",
-        "authentik_data_authentik-custom-templates": "data/authentik-custom-templates",
-        "authentik_data_authentik-media": "data/authentik-media",
-        "authentik_data_postgres": "data/postgres",
-        "authentik_data_redis": "data/redis"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -118,26 +111,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "authentik_data_authentik-certs": "data/authentik-certs",
-        "authentik_data_authentik-custom-templates": "data/authentik-custom-templates",
-        "authentik_data_authentik-media": "data/authentik-media",
-        "authentik_data_postgres": "data/postgres",
-        "authentik_data_redis": "data/redis"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "authentik_data_authentik-certs": "data/authentik-certs",
-        "authentik_data_authentik-custom-templates": "data/authentik-custom-templates",
-        "authentik_data_authentik-media": "data/authentik-media",
-        "authentik_data_postgres": "data/postgres",
-        "authentik_data_redis": "data/redis"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

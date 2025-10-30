@@ -124,11 +124,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "seafile_mysql": "mysql",
-        "seafile_shared": "shared"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -144,20 +140,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "seafile_mysql": "mysql",
-        "seafile_shared": "shared"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "seafile_mysql": "mysql",
-        "seafile_shared": "shared"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

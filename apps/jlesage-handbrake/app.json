@@ -102,13 +102,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "jlesage-handbrake_config": "config",
-        "jlesage-handbrake_output": "output",
-        "jlesage-handbrake_storage": "storage",
-        "jlesage-handbrake_watch": "watch"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -126,24 +120,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "jlesage-handbrake_config": "config",
-        "jlesage-handbrake_output": "output",
-        "jlesage-handbrake_storage": "storage",
-        "jlesage-handbrake_watch": "watch"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "jlesage-handbrake_config": "config",
-        "jlesage-handbrake_output": "output",
-        "jlesage-handbrake_storage": "storage",
-        "jlesage-handbrake_watch": "watch"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

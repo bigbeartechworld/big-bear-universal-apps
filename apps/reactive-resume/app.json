@@ -69,11 +69,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "reactive-resume_minio_data": "minio/data",
-        "reactive-resume_pg_data": "pg/data"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -89,20 +85,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "reactive-resume_minio_data": "minio/data",
-        "reactive-resume_pg_data": "pg/data"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "reactive-resume_minio_data": "minio/data",
-        "reactive-resume_pg_data": "pg/data"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

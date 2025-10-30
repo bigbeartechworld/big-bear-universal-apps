@@ -133,12 +133,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "pihole-updatelists_dnsmasq.d": "dnsmasq.d",
-        "pihole-updatelists_etc": "etc",
-        "pihole-updatelists_etc_pihole-updatelists": "etc/pihole-updatelists"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -155,22 +150,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "pihole-updatelists_dnsmasq.d": "dnsmasq.d",
-        "pihole-updatelists_etc": "etc",
-        "pihole-updatelists_etc_pihole-updatelists": "etc/pihole-updatelists"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "pihole-updatelists_dnsmasq.d": "dnsmasq.d",
-        "pihole-updatelists_etc": "etc",
-        "pihole-updatelists_etc_pihole-updatelists": "etc/pihole-updatelists"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

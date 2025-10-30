@@ -92,12 +92,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "plant-it_certificates": "certificates",
-        "plant-it_mysql": "mysql",
-        "plant-it_upload-dir": "upload-dir"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -114,22 +109,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "plant-it_certificates": "certificates",
-        "plant-it_mysql": "mysql",
-        "plant-it_upload-dir": "upload-dir"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "plant-it_certificates": "certificates",
-        "plant-it_mysql": "mysql",
-        "plant-it_upload-dir": "upload-dir"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

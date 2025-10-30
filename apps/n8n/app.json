@@ -89,12 +89,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "n8n_.n8n": ".n8n",
-        "n8n_db_init-data.sh": "db/init-data.sh",
-        "n8n_pgdata": "pgdata"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -111,22 +106,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "n8n_.n8n": ".n8n",
-        "n8n_db_init-data.sh": "db/init-data.sh",
-        "n8n_pgdata": "pgdata"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "n8n_.n8n": ".n8n",
-        "n8n_db_init-data.sh": "db/init-data.sh",
-        "n8n_pgdata": "pgdata"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

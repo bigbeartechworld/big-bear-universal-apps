@@ -154,15 +154,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "paperless-ngx_paperless_consume": "paperless/consume",
-        "paperless-ngx_paperless_data": "paperless/data",
-        "paperless-ngx_paperless_export": "paperless/export",
-        "paperless-ngx_paperless_media": "paperless/media",
-        "paperless-ngx_postgres": "postgres",
-        "paperless-ngx_redis": "redis"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -182,28 +174,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "paperless-ngx_paperless_consume": "paperless/consume",
-        "paperless-ngx_paperless_data": "paperless/data",
-        "paperless-ngx_paperless_export": "paperless/export",
-        "paperless-ngx_paperless_media": "paperless/media",
-        "paperless-ngx_postgres": "postgres",
-        "paperless-ngx_redis": "redis"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "paperless-ngx_paperless_consume": "paperless/consume",
-        "paperless-ngx_paperless_data": "paperless/data",
-        "paperless-ngx_paperless_export": "paperless/export",
-        "paperless-ngx_paperless_media": "paperless/media",
-        "paperless-ngx_postgres": "postgres",
-        "paperless-ngx_redis": "redis"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

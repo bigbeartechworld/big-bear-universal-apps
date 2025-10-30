@@ -115,12 +115,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "docmost_data_pgdata": "data/pgdata",
-        "docmost_data_redis": "data/redis",
-        "docmost_data_storage": "data/storage"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -137,22 +132,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "docmost_data_pgdata": "data/pgdata",
-        "docmost_data_redis": "data/redis",
-        "docmost_data_storage": "data/storage"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "docmost_data_pgdata": "data/pgdata",
-        "docmost_data_redis": "data/redis",
-        "docmost_data_storage": "data/storage"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

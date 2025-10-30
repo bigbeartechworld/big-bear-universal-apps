@@ -84,10 +84,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "mind_db": "db"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -103,18 +100,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "mind_db": "db"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "mind_db": "db"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

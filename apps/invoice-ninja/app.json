@@ -90,16 +90,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "invoice-ninja_data": "data",
-        "invoice-ninja_data_mysql": "data/mysql",
-        "invoice-ninja_data_nginx_invoice-ninja.conf": "data/nginx/invoice-ninja.conf",
-        "invoice-ninja_data_php_php-cli.ini": "data/php/php-cli.ini",
-        "invoice-ninja_data_php_php.ini": "data/php/php.ini",
-        "invoice-ninja_data_public": "data/public",
-        "invoice-ninja_data_storage": "data/storage"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -120,30 +111,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "invoice-ninja_data": "data",
-        "invoice-ninja_data_mysql": "data/mysql",
-        "invoice-ninja_data_nginx_invoice-ninja.conf": "data/nginx/invoice-ninja.conf",
-        "invoice-ninja_data_php_php-cli.ini": "data/php/php-cli.ini",
-        "invoice-ninja_data_php_php.ini": "data/php/php.ini",
-        "invoice-ninja_data_public": "data/public",
-        "invoice-ninja_data_storage": "data/storage"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "invoice-ninja_data": "data",
-        "invoice-ninja_data_mysql": "data/mysql",
-        "invoice-ninja_data_nginx_invoice-ninja.conf": "data/nginx/invoice-ninja.conf",
-        "invoice-ninja_data_php_php-cli.ini": "data/php/php-cli.ini",
-        "invoice-ninja_data_php_php.ini": "data/php/php.ini",
-        "invoice-ninja_data_public": "data/public",
-        "invoice-ninja_data_storage": "data/storage"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

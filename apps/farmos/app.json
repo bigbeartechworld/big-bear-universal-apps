@@ -83,11 +83,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "farmos_db": "db",
-        "farmos_sites": "sites"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -103,20 +99,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "farmos_db": "db",
-        "farmos_sites": "sites"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "farmos_db": "db",
-        "farmos_sites": "sites"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

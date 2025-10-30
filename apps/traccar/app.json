@@ -87,11 +87,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "traccar_logs": "logs",
-        "traccar_traccar.xml": "traccar.xml"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -107,20 +103,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "traccar_logs": "logs",
-        "traccar_traccar.xml": "traccar.xml"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "traccar_logs": "logs",
-        "traccar_traccar.xml": "traccar.xml"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

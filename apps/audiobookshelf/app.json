@@ -91,13 +91,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "audiobookshelf_data_config": "data/config",
-        "audiobookshelf_data_metadata": "data/metadata",
-        "audiobookshelf_media_data_books_spoken": "media/data/books/spoken",
-        "audiobookshelf_media_data_podcasts": "media/data/podcasts"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -115,24 +109,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "audiobookshelf_data_config": "data/config",
-        "audiobookshelf_data_metadata": "data/metadata",
-        "audiobookshelf_media_data_books_spoken": "media/data/books/spoken",
-        "audiobookshelf_media_data_podcasts": "media/data/podcasts"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "audiobookshelf_data_config": "data/config",
-        "audiobookshelf_data_metadata": "data/metadata",
-        "audiobookshelf_media_data_books_spoken": "media/data/books/spoken",
-        "audiobookshelf_media_data_podcasts": "media/data/podcasts"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

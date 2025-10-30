@@ -100,11 +100,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "code-server_config": "config",
-        "code-server_projects": "projects"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -120,20 +116,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "code-server_config": "config",
-        "code-server_projects": "projects"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "code-server_config": "config",
-        "code-server_projects": "projects"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

@@ -91,13 +91,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "kavita_data_kavita-config": "data/kavita-config",
-        "kavita_media_data_books": "media/data/books",
-        "kavita_media_data_comics": "media/data/comics",
-        "kavita_media_data_manga": "media/data/manga"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -115,24 +109,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "kavita_data_kavita-config": "data/kavita-config",
-        "kavita_media_data_books": "media/data/books",
-        "kavita_media_data_comics": "media/data/comics",
-        "kavita_media_data_manga": "media/data/manga"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "kavita_data_kavita-config": "data/kavita-config",
-        "kavita_media_data_books": "media/data/books",
-        "kavita_media_data_comics": "media/data/comics",
-        "kavita_media_data_manga": "media/data/manga"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

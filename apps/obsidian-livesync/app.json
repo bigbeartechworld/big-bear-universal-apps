@@ -85,11 +85,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "obsidian-livesync_data_couchdb": "data/couchdb",
-        "obsidian-livesync_data_local.ini": "data/local.ini"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -105,20 +101,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "obsidian-livesync_data_couchdb": "data/couchdb",
-        "obsidian-livesync_data_local.ini": "data/local.ini"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "obsidian-livesync_data_couchdb": "data/couchdb",
-        "obsidian-livesync_data_local.ini": "data/local.ini"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

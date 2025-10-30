@@ -86,12 +86,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "piwigo_config": "config",
-        "piwigo_gallery": "gallery",
-        "piwigo_mysql": "mysql"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -108,22 +103,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "piwigo_config": "config",
-        "piwigo_gallery": "gallery",
-        "piwigo_mysql": "mysql"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "piwigo_config": "config",
-        "piwigo_gallery": "gallery",
-        "piwigo_mysql": "mysql"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

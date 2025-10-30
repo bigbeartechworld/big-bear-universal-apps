@@ -82,10 +82,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "folder_name": "homepage",
-      "volume_mappings": {
-        "Homepage_config": "Homepage/config"
-      }
+      "folder_name": "homepage"
     },
     "runtipi": {
       "supported": true,
@@ -102,19 +99,13 @@
     "dockge": {
       "supported": true,
       "file_based": true,
-      "folder_name": "homepage",
-      "volume_mappings": {
-        "Homepage_config": "Homepage/config"
-      }
+      "folder_name": "homepage"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "folder_name": "homepage",
-      "volume_mappings": {
-        "Homepage_config": "Homepage/config"
-      }
+      "folder_name": "homepage"
     },
     "umbrel": {
       "supported": true,

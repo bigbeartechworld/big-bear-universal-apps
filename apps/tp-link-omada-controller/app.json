@@ -178,11 +178,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "tp-link-omada-controller_data": "data",
-        "tp-link-omada-controller_logs": "logs"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -199,20 +195,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "tp-link-omada-controller_data": "data",
-        "tp-link-omada-controller_logs": "logs"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "tp-link-omada-controller_data": "data",
-        "tp-link-omada-controller_logs": "logs"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

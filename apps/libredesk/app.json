@@ -87,13 +87,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "libredesk_config": "config",
-        "libredesk_data_postgres": "data/postgres",
-        "libredesk_data_redis": "data/redis",
-        "libredesk_uploads": "uploads"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -111,24 +105,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "libredesk_config": "config",
-        "libredesk_data_postgres": "data/postgres",
-        "libredesk_data_redis": "data/redis",
-        "libredesk_uploads": "uploads"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "libredesk_config": "config",
-        "libredesk_data_postgres": "data/postgres",
-        "libredesk_data_redis": "data/redis",
-        "libredesk_uploads": "uploads"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

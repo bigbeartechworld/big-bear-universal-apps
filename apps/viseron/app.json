@@ -117,14 +117,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "viseron_config": "config",
-        "viseron_event_clips": "event/clips",
-        "viseron_segments": "segments",
-        "viseron_snapshots": "snapshots",
-        "viseron_thumbnails": "thumbnails"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -143,26 +136,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "viseron_config": "config",
-        "viseron_event_clips": "event/clips",
-        "viseron_segments": "segments",
-        "viseron_snapshots": "snapshots",
-        "viseron_thumbnails": "thumbnails"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "viseron_config": "config",
-        "viseron_event_clips": "event/clips",
-        "viseron_segments": "segments",
-        "viseron_snapshots": "snapshots",
-        "viseron_thumbnails": "thumbnails"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

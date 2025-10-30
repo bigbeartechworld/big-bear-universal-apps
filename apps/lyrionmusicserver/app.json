@@ -123,12 +123,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "lyrionmusicserver_config": "config",
-        "lyrionmusicserver_music": "music",
-        "lyrionmusicserver_playlists": "playlists"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -145,22 +140,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "lyrionmusicserver_config": "config",
-        "lyrionmusicserver_music": "music",
-        "lyrionmusicserver_playlists": "playlists"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "lyrionmusicserver_config": "config",
-        "lyrionmusicserver_music": "music",
-        "lyrionmusicserver_playlists": "playlists"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

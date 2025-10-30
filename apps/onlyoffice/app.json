@@ -101,15 +101,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "onlyoffice_onlyoffice_data": "onlyoffice/data",
-        "onlyoffice_onlyoffice_db": "onlyoffice/db",
-        "onlyoffice_onlyoffice_lib": "onlyoffice/lib",
-        "onlyoffice_onlyoffice_logs": "onlyoffice/logs",
-        "onlyoffice_onlyoffice_rabbitmq": "onlyoffice/rabbitmq",
-        "onlyoffice_onlyoffice_redis": "onlyoffice/redis"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -129,28 +121,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "onlyoffice_onlyoffice_data": "onlyoffice/data",
-        "onlyoffice_onlyoffice_db": "onlyoffice/db",
-        "onlyoffice_onlyoffice_lib": "onlyoffice/lib",
-        "onlyoffice_onlyoffice_logs": "onlyoffice/logs",
-        "onlyoffice_onlyoffice_rabbitmq": "onlyoffice/rabbitmq",
-        "onlyoffice_onlyoffice_redis": "onlyoffice/redis"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "onlyoffice_onlyoffice_data": "onlyoffice/data",
-        "onlyoffice_onlyoffice_db": "onlyoffice/db",
-        "onlyoffice_onlyoffice_lib": "onlyoffice/lib",
-        "onlyoffice_onlyoffice_logs": "onlyoffice/logs",
-        "onlyoffice_onlyoffice_rabbitmq": "onlyoffice/rabbitmq",
-        "onlyoffice_onlyoffice_redis": "onlyoffice/redis"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

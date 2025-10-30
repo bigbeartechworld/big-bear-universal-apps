@@ -92,11 +92,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "komga_config": "config",
-        "komga_data": "data"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -112,20 +108,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "komga_config": "config",
-        "komga_data": "data"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "komga_config": "config",
-        "komga_data": "data"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

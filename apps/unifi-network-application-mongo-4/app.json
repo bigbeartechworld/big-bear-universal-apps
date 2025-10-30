@@ -202,11 +202,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "unifi-network-application-mongo-4_config": "config",
-        "unifi-network-application-mongo-4_db_data": "db/data"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -222,20 +218,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "unifi-network-application-mongo-4_config": "config",
-        "unifi-network-application-mongo-4_db_data": "db/data"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "unifi-network-application-mongo-4_config": "config",
-        "unifi-network-application-mongo-4_db_data": "db/data"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

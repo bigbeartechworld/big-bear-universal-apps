@@ -76,10 +76,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "ollama-amd_.ollama": ".ollama"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -94,18 +91,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "ollama-amd_.ollama": ".ollama"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "ollama-amd_.ollama": ".ollama"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

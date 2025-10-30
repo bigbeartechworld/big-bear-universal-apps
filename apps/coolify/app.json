@@ -432,18 +432,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "coolify_applications": "applications",
-        "coolify_backups": "backups",
-        "coolify_databases": "databases",
-        "coolify_logs": "logs",
-        "coolify_pgdata": "pgdata",
-        "coolify_redis": "redis",
-        "coolify_services": "services",
-        "coolify_ssh": "ssh",
-        "coolify_webhooks-during-maintenance": "webhooks-during-maintenance"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -466,34 +455,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "coolify_applications": "applications",
-        "coolify_backups": "backups",
-        "coolify_databases": "databases",
-        "coolify_logs": "logs",
-        "coolify_pgdata": "pgdata",
-        "coolify_redis": "redis",
-        "coolify_services": "services",
-        "coolify_ssh": "ssh",
-        "coolify_webhooks-during-maintenance": "webhooks-during-maintenance"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "coolify_applications": "applications",
-        "coolify_backups": "backups",
-        "coolify_databases": "databases",
-        "coolify_logs": "logs",
-        "coolify_pgdata": "pgdata",
-        "coolify_redis": "redis",
-        "coolify_services": "services",
-        "coolify_ssh": "ssh",
-        "coolify_webhooks-during-maintenance": "webhooks-during-maintenance"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,

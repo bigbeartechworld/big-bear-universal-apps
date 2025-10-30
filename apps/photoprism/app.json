@@ -237,12 +237,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "volume_mappings": {
-        "photoprism_mysql": "mysql",
-        "photoprism_originals": "originals",
-        "photoprism_storage": "storage"
-      }
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -259,22 +254,12 @@
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "volume_mappings": {
-        "photoprism_mysql": "mysql",
-        "photoprism_originals": "originals",
-        "photoprism_storage": "storage"
-      }
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "volume_mappings": {
-        "photoprism_mysql": "mysql",
-        "photoprism_originals": "originals",
-        "photoprism_storage": "storage"
-      }
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,
