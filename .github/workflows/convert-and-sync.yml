@@ -40,6 +40,11 @@ on:
         required: false
         type: boolean
         default: false
+      skip_tests:
+        description: 'Skip running tests before creating PR'
+        required: false
+        type: boolean
+        default: false
       dry_run:
         description: 'Dry run (preview only, no actual changes)'
         required: false
@@ -273,8 +278,98 @@ jobs:
             sync
           draft: ${{ github.event.inputs.create_draft == 'true' }}
 
+      - name: Run platform tests
+        if: steps.check-platform.outputs.should_sync == 'true' && steps.create-pr.outputs.pull-request-number && github.event.inputs.skip_tests != 'true'
+        id: run-tests
+        continue-on-error: true
+        run: |
+          cd big-bear-${{ matrix.platform }}
+          
+          # Check if platform has tests
+          HAS_TESTS=false
+          TEST_COMMAND=""
+          
+          case "${{ matrix.platform }}" in
+            casaos|runtipi|umbrel)
+              # These platforms have test suites
+              if [ -f "package.json" ] && grep -q '"test"' package.json; then
+                HAS_TESTS=true
+                
+                # Determine package manager
+                if [ -f "pnpm-lock.yaml" ]; then
+                  TEST_COMMAND="pnpm install && pnpm test"
+                elif [ -f "yarn.lock" ]; then
+                  TEST_COMMAND="yarn install && yarn test"
+                elif [ -f "bun.lockb" ]; then
+                  TEST_COMMAND="bun install && bun test"
+                else
+                  TEST_COMMAND="npm install && npm test"
+                fi
+              fi
+              ;;
+            portainer|dockge|cosmos)
+              echo "ℹ️ No test suite available for ${{ matrix.platform }} - skipping tests"
+              echo "test_status=skipped" >> $GITHUB_OUTPUT
+              exit 0
+              ;;
+          esac
+          
+          if [ "$HAS_TESTS" = "false" ]; then
+            echo "ℹ️ No tests configured for ${{ matrix.platform }} - skipping"
+            echo "test_status=skipped" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          echo "🧪 Running tests for ${{ matrix.platform }}..."
+          echo "📝 Command: $TEST_COMMAND"
+          
+          if eval "$TEST_COMMAND"; then
+            echo "✅ All tests passed for ${{ matrix.platform }}"
+            echo "test_status=passed" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Tests failed for ${{ matrix.platform }}"
+            echo "test_status=failed" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+      - name: Set test status as skipped if tests are disabled
+        if: steps.check-platform.outputs.should_sync == 'true' && steps.create-pr.outputs.pull-request-number && github.event.inputs.skip_tests == 'true'
+        id: skip-tests
+        run: |
+          echo "test_status=skipped_by_user" >> $GITHUB_OUTPUT
+          echo "⚠️ Tests skipped by user request"
+
+      - name: Comment test results on PR
+        if: steps.check-platform.outputs.should_sync == 'true' && steps.create-pr.outputs.pull-request-number
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.PLATFORM_SYNC_TOKEN }}
+          repository: bigbeartechworld/big-bear-${{ matrix.platform }}
+          issue-number: ${{ steps.create-pr.outputs.pull-request-number }}
+          body: |
+            ## 🧪 Test Results
+            
+            **Platform:** ${{ matrix.platform }}
+            **Status:** ${{ steps.run-tests.outputs.test_status == 'passed' && '✅ Passed' || steps.run-tests.outputs.test_status == 'failed' && '❌ Failed' || steps.skip-tests.outputs.test_status == 'skipped_by_user' && '⚠️ Skipped by user' || 'ℹ️ Skipped (no tests)' }}
+            
+            ${{ steps.run-tests.outputs.test_status == 'failed' && '⚠️ **Tests failed!** Please review the workflow logs and fix the issues before merging.' || '' }}
+            ${{ steps.run-tests.outputs.test_status == 'passed' && '✅ All tests passed successfully!' || '' }}
+            ${{ steps.skip-tests.outputs.test_status == 'skipped_by_user' && '⚠️ **Tests were skipped** by user request. Please ensure changes are safe to merge.' || '' }}
+            
+            ---
+            *Workflow Run: [${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})*
+
+      - name: Close PR if tests failed
+        if: steps.check-platform.outputs.should_sync == 'true' && steps.run-tests.outputs.test_status == 'failed'
+        run: |
+          echo "❌ Tests failed - closing PR #${{ steps.create-pr.outputs.pull-request-number }}"
+          gh pr close "${{ steps.create-pr.outputs.pull-request-number }}" --comment "Closing this PR because tests failed. Please check the workflow logs and fix the issues."
+        env:
+          GH_TOKEN: ${{ secrets.PLATFORM_SYNC_TOKEN }}
+        working-directory: big-bear-${{ matrix.platform }}
+
       - name: Enable auto-merge
-        if: steps.check-platform.outputs.should_sync == 'true' && steps.create-pr.outputs.pull-request-number && github.event.inputs.auto_merge == 'true'
+        if: steps.check-platform.outputs.should_sync == 'true' && steps.create-pr.outputs.pull-request-number && github.event.inputs.auto_merge == 'true' && steps.run-tests.outputs.test_status == 'passed'
         run: |
           gh pr merge --auto --squash "${{ steps.create-pr.outputs.pull-request-number }}"
         env:
@@ -292,6 +387,21 @@ jobs:
             echo "🔗 **URL:** ${{ steps.create-pr.outputs.pull-request-url }}" >> $GITHUB_STEP_SUMMARY
             echo "📝 **Draft:** ${{ github.event.inputs.create_draft || 'false' }}" >> $GITHUB_STEP_SUMMARY
             echo "🔀 **Auto-merge:** ${{ github.event.inputs.auto_merge || 'false' }}" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            
+            # Add test results
+            TEST_STATUS="${{ steps.run-tests.outputs.test_status }}"
+            SKIP_STATUS="${{ steps.skip-tests.outputs.test_status }}"
+            
+            if [ "$TEST_STATUS" = "passed" ]; then
+              echo "🧪 **Tests:** ✅ Passed" >> $GITHUB_STEP_SUMMARY
+            elif [ "$TEST_STATUS" = "failed" ]; then
+              echo "🧪 **Tests:** ❌ Failed (PR closed)" >> $GITHUB_STEP_SUMMARY
+            elif [ "$SKIP_STATUS" = "skipped_by_user" ]; then
+              echo "🧪 **Tests:** ⚠️ Skipped by user" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "🧪 **Tests:** ℹ️ Skipped (no tests available)" >> $GITHUB_STEP_SUMMARY
+            fi
           else
             echo "ℹ️ No changes to sync" >> $GITHUB_STEP_SUMMARY
           fi
