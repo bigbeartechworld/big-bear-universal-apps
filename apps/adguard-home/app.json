@@ -98,7 +98,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "53"
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -117,13 +117,13 @@
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "53"
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "53"
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,

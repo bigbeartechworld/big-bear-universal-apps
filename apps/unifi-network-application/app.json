@@ -230,7 +230,7 @@
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "27017\n8443"
+      "port": "8443"
     },
     "umbrel": {
       "supported": true,
@@ -240,7 +240,7 @@
         "unifi-network-application_db_data": "db/data",
         "unifi-network-application_db_init-mongo.js": "db/init-mongo.js"
       },
-      "port": "27017"
+      "port": "8443"
     }
   },
   "tags": [
