@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-homebridge",
     "default_port": "8581",
@@ -42,11 +42,11 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "TZ",
-    "description": "Container Path: TZ"
-  }
-],
+      {
+        "container": "TZ",
+        "description": "Container Path: TZ"
+      }
+    ],
     "ports": []
   },
   "ui": {
@@ -57,21 +57,30 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8581"
+      "port_map": "8581",
+      "volume_mappings": {
+        "homebridge_data": "/DATA/AppData/$AppID/data"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "homebridge_data": "data"
+      }
     },
     "dockge": {
       "supported": true,
@@ -84,7 +93,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "homebridge_data": "data"
+      }
     }
   },
   "tags": [

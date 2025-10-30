@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "5984",
@@ -42,51 +42,62 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/opt/couchdb/data",
-    "description": "Container Path: /opt/couchdb/data"
-  },
-  {
-    "container": "/opt/couchdb/etc/local.ini",
-    "description": "Container Path: /opt/couchdb/etc/local.ini"
-  }
-],
+      {
+        "container": "/opt/couchdb/data",
+        "description": "Container Path: /opt/couchdb/data"
+      },
+      {
+        "container": "/opt/couchdb/etc/local.ini",
+        "description": "Container Path: /opt/couchdb/etc/local.ini"
+      }
+    ],
     "ports": [
-  {
-    "container": "5984",
-    "host": "5984",
-    "protocol": "tcp",
-    "description": "Container Port: 5984"
-  }
-]
+      {
+        "container": "5984",
+        "host": "5984",
+        "protocol": "tcp",
+        "description": "Container Port: 5984"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Run this script before installing the big-bear-obsidian-livesync application:\n\n```\nbash -c \"$(wget -qLO - https://raw.githubusercontent.com/bigbeartechworld/big-bear-scripts/master/generate-obsidian-livesync-local-ini/run.sh)\"\n```\n\nVideo Tutorial: https://youtu.be/-n1abMPLmFg\n\nAfter running this script, you need to restart the container.\n"
-  }
-}
+      "before_install": {
+        "en_us": "Run this script before installing the big-bear-obsidian-livesync application:\n\n```\nbash -c \"$(wget -qLO - https://raw.githubusercontent.com/bigbeartechworld/big-bear-scripts/master/generate-obsidian-livesync-local-ini/run.sh)\"\n```\n\nVideo Tutorial: https://youtu.be/-n1abMPLmFg\n\nAfter running this script, you need to restart the container.\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "5984"
+      "port_map": "5984",
+      "volume_mappings": {
+        "obsidian-livesync_data_couchdb": "/DATA/AppData/$AppID/data/couchdb",
+        "obsidian-livesync_data_local.ini": "/DATA/AppData/$AppID/data/local.ini"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "obsidian-livesync_data_couchdb": "data/couchdb",
+        "obsidian-livesync_data_local.ini": "data/local.ini"
+      }
     },
     "dockge": {
       "supported": true,
@@ -99,7 +110,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "obsidian-livesync_data_couchdb": "data/couchdb",
+        "obsidian-livesync_data_local.ini": "data/local.ini"
+      }
     }
   },
   "tags": [

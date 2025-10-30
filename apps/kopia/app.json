@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-kopia",
     "default_port": "51515",
@@ -42,39 +42,39 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/config",
-    "description": "Container Path: /config"
-  },
-  {
-    "container": "/backups/home",
-    "description": "Container Path: /backups/home"
-  },
-  {
-    "container": "/backups/docker",
-    "description": "Container Path: /backups/docker"
-  },
-  {
-    "container": "/repository",
-    "description": "Container Path: /repository"
-  },
-  {
-    "container": "/tmp",
-    "description": "Container Path: /tmp"
-  },
-  {
-    "container": "/var/run/docker.sock",
-    "description": "Container Path: /var/run/docker.sock"
-  }
-],
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/backups/home",
+        "description": "Container Path: /backups/home"
+      },
+      {
+        "container": "/backups/docker",
+        "description": "Container Path: /backups/docker"
+      },
+      {
+        "container": "/repository",
+        "description": "Container Path: /repository"
+      },
+      {
+        "container": "/tmp",
+        "description": "Container Path: /tmp"
+      },
+      {
+        "container": "/var/run/docker.sock",
+        "description": "Container Path: /var/run/docker.sock"
+      }
+    ],
     "ports": [
-  {
-    "container": "51515",
-    "host": "51515",
-    "protocol": "tcp",
-    "description": "Container Port: 51515"
-  }
-]
+      {
+        "container": "51515",
+        "host": "51515",
+        "protocol": "tcp",
+        "description": "Container Port: 51515"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -84,21 +84,34 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "51515"
+      "port_map": "51515",
+      "volume_mappings": {
+        "kopia_config": "/DATA/AppData/$AppID/config",
+        "kopia_home": "/DATA/AppData/$AppID/home",
+        "kopia_repository": "/DATA/AppData/$AppID/repository"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "kopia_config": "config",
+        "kopia_home": "home",
+        "kopia_repository": "repository"
+      }
     },
     "dockge": {
       "supported": true,
@@ -111,7 +124,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "kopia_config": "config",
+        "kopia_home": "home",
+        "kopia_repository": "repository"
+      }
     }
   },
   "tags": [

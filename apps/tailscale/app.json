@@ -131,7 +131,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": ""
+      "port_map": "",
+      "volume_mappings": {
+        "tailscale_config": "/DATA/AppData/$AppID/config",
+        "tailscale_state": "/DATA/AppData/$AppID/state",
+        "tailscale_shared": "/DATA/AppData/$AppID/shared"
+      }
     },
     "portainer": {
       "supported": true,
@@ -148,7 +153,12 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "tailscale_config": "config",
+        "tailscale_state": "state",
+        "tailscale_shared": "shared"
+      }
     },
     "dockge": {
       "supported": true,
@@ -161,7 +171,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "tailscale_config": "config",
+        "tailscale_state": "state",
+        "tailscale_shared": "shared"
+      }
     }
   },
   "tags": [

@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "7575",
@@ -42,27 +42,27 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/app/data/configs",
-    "description": "Container Path: /app/data/configs"
-  },
-  {
-    "container": "/app/public/icons",
-    "description": "Container Path: /app/public/icons"
-  },
-  {
-    "container": "/data",
-    "description": "Container Path: /data"
-  }
-],
+      {
+        "container": "/app/data/configs",
+        "description": "Container Path: /app/data/configs"
+      },
+      {
+        "container": "/app/public/icons",
+        "description": "Container Path: /app/public/icons"
+      },
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      }
+    ],
     "ports": [
-  {
-    "container": "7575",
-    "host": "7575",
-    "protocol": "tcp",
-    "description": "Container Port: 7575"
-  }
-]
+      {
+        "container": "7575",
+        "host": "7575",
+        "protocol": "tcp",
+        "description": "Container Port: 7575"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -72,21 +72,34 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "7575"
+      "port_map": "7575",
+      "volume_mappings": {
+        "homarr_configs": "/DATA/AppData/$AppID/configs",
+        "homarr_data": "/DATA/AppData/$AppID/data",
+        "homarr_icons": "/DATA/AppData/$AppID/icons"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "homarr_configs": "configs",
+        "homarr_data": "data",
+        "homarr_icons": "icons"
+      }
     },
     "dockge": {
       "supported": true,
@@ -99,7 +112,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "homarr_configs": "configs",
+        "homarr_data": "data",
+        "homarr_icons": "icons"
+      }
     }
   },
   "tags": [

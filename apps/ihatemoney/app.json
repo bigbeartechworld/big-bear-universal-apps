@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-ihatemoney",
     "default_port": "8001",
@@ -41,46 +41,46 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": null,
-    "default": "",
-    "description": "Sets the secret key environment variable for the application.",
-    "required": false
-  },
-  {
-    "name": null,
-    "default": "",
-    "description": "Database connection string.",
-    "required": false
-  },
-  {
-    "name": null,
-    "default": "",
-    "description": "Enables the admin dashboard.",
-    "required": false
-  },
-  {
-    "name": null,
-    "default": "",
-    "description": "Sets the admin password. On the host run: docker run -it --rm --entrypoint ihatemoney ihatemoney/ihatemoney generate_password_hash",
-    "required": false
-  },
-  {
-    "name": null,
-    "default": "",
-    "description": "Disables secure session cookies for development.",
-    "required": false
-  }
-],
+      {
+        "name": null,
+        "default": "",
+        "description": "Sets the secret key environment variable for the application.",
+        "required": false
+      },
+      {
+        "name": null,
+        "default": "",
+        "description": "Database connection string.",
+        "required": false
+      },
+      {
+        "name": null,
+        "default": "",
+        "description": "Enables the admin dashboard.",
+        "required": false
+      },
+      {
+        "name": null,
+        "default": "",
+        "description": "Sets the admin password. On the host run: docker run -it --rm --entrypoint ihatemoney ihatemoney/ihatemoney generate_password_hash",
+        "required": false
+      },
+      {
+        "name": null,
+        "default": "",
+        "description": "Disables secure session cookies for development.",
+        "required": false
+      }
+    ],
     "volumes": [],
     "ports": [
-  {
-    "container": "8000",
-    "host": "8000",
-    "protocol": "tcp",
-    "description": "Container Port: 8000"
-  }
-]
+      {
+        "container": "8000",
+        "host": "8000",
+        "protocol": "tcp",
+        "description": "Container Port: 8000"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -90,21 +90,30 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8001"
+      "port_map": "8001",
+      "volume_mappings": {
+        "ihatemoney_mysql": "/DATA/AppData/$AppID/mysql"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "ihatemoney_mysql": "mysql"
+      }
     },
     "dockge": {
       "supported": true,
@@ -117,7 +126,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "ihatemoney_mysql": "mysql"
+      }
     }
   },
   "tags": [

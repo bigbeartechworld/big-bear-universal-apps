@@ -87,7 +87,13 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "5800"
+      "port_map": "5800",
+      "volume_mappings": {
+        "jlesage-handbrake_config": "/DATA/AppData/$AppID/config",
+        "jlesage-handbrake_output": "/DATA/AppData/$AppID/output",
+        "jlesage-handbrake_storage": "/DATA/AppData/$AppID/storage",
+        "jlesage-handbrake_watch": "/DATA/AppData/$AppID/watch"
+      }
     },
     "portainer": {
       "supported": true,
@@ -104,7 +110,13 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "jlesage-handbrake_config": "config",
+        "jlesage-handbrake_output": "output",
+        "jlesage-handbrake_storage": "storage",
+        "jlesage-handbrake_watch": "watch"
+      }
     },
     "dockge": {
       "supported": true,
@@ -117,7 +129,13 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "jlesage-handbrake_config": "config",
+        "jlesage-handbrake_output": "output",
+        "jlesage-handbrake_storage": "storage",
+        "jlesage-handbrake_watch": "watch"
+      }
     }
   },
   "tags": [

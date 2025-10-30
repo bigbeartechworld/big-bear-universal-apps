@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-plex",
     "default_port": "32400",
@@ -42,19 +42,19 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/config",
-    "description": "Configuration files"
-  },
-  {
-    "container": "/tv",
-    "description": "TV Shows"
-  },
-  {
-    "container": "/movies",
-    "description": "Movies"
-  }
-],
+      {
+        "container": "/config",
+        "description": "Configuration files"
+      },
+      {
+        "container": "/tv",
+        "description": "TV Shows"
+      },
+      {
+        "container": "/movies",
+        "description": "Movies"
+      }
+    ],
     "ports": []
   },
   "ui": {
@@ -65,21 +65,34 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "32400"
+      "port_map": "32400",
+      "volume_mappings": {
+        "plex_config": "/DATA/AppData/$AppID/config",
+        "plex_movies": "/DATA/AppData/$AppID/movies",
+        "plex_tv": "/DATA/AppData/$AppID/tv"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "plex_config": "config",
+        "plex_movies": "movies",
+        "plex_tv": "tv"
+      }
     },
     "dockge": {
       "supported": true,
@@ -92,7 +105,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "plex_config": "config",
+        "plex_movies": "movies",
+        "plex_tv": "tv"
+      }
     }
   },
   "tags": [

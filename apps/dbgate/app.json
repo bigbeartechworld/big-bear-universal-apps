@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-dbgate",
     "default_port": "3000",
@@ -42,19 +42,19 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/root/.dbgate",
-    "description": "Container Path: /root/.dbgate"
-  }
-],
+      {
+        "container": "/root/.dbgate",
+        "description": "Container Path: /root/.dbgate"
+      }
+    ],
     "ports": [
-  {
-    "container": "3000",
-    "host": "3000",
-    "protocol": "tcp",
-    "description": "Container Port: 3000"
-  }
-]
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp",
+        "description": "Container Port: 3000"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -64,21 +64,30 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3000"
+      "port_map": "3000",
+      "volume_mappings": {
+        "dbgate_config": "/DATA/AppData/$AppID/config"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "dbgate_config": "config"
+      }
     },
     "dockge": {
       "supported": true,
@@ -91,7 +100,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "dbgate_config": "config"
+      }
     }
   },
   "tags": [

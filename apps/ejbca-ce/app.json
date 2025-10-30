@@ -30,8 +30,8 @@
   },
   "technical": {
     "architectures": [
-  "amd64"
-],
+      "amd64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-ejbca-ce",
     "default_port": "8443",
@@ -40,60 +40,69 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "TLS_SETUP_ENABLED",
-    "default": "",
-    "description": "Controls Admin UI access",
-    "required": false
-  }
-],
+      {
+        "name": "TLS_SETUP_ENABLED",
+        "default": "",
+        "description": "Controls Admin UI access",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/mnt/persistent",
-    "description": "Container Path: /mnt/persistent"
-  }
-],
+      {
+        "container": "/mnt/persistent",
+        "description": "Container Path: /mnt/persistent"
+      }
+    ],
     "ports": [
-  {
-    "container": "8080",
-    "host": "8080",
-    "protocol": "tcp",
-    "description": "EJBCA Admin GUI"
-  },
-  {
-    "container": "8443",
-    "host": "8443",
-    "protocol": "tcp",
-    "description": "EJBCA Admin GUI"
-  }
-]
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "EJBCA Admin GUI"
+      },
+      {
+        "container": "8443",
+        "host": "8443",
+        "protocol": "tcp",
+        "description": "EJBCA Admin GUI"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "After installation wait for a few minutes as the initialization takes a while.\nDefault admin URL: https://<host/ip>:8443/ejbca/adminweb\nDefault HTTP port: 8080\nFor more information on custom setup visit: https://github.com/Keyfactor/ejbca-ce\n"
-  }
-}
+      "before_install": {
+        "en_us": "After installation wait for a few minutes as the initialization takes a while.\nDefault admin URL: https://<host/ip>:8443/ejbca/adminweb\nDefault HTTP port: 8080\nFor more information on custom setup visit: https://github.com/Keyfactor/ejbca-ce\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8443"
+      "port_map": "8443",
+      "volume_mappings": {
+        "ejbca-ce_persistent": "/DATA/AppData/$AppID/persistent"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64"
-]
+        "amd64"
+      ],
+      "volume_mappings": {
+        "ejbca-ce_persistent": "persistent"
+      }
     },
     "dockge": {
       "supported": true,
@@ -106,7 +115,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "ejbca-ce_persistent": "persistent"
+      }
     }
   },
   "tags": [

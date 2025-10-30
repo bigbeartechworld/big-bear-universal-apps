@@ -30,8 +30,8 @@
   },
   "technical": {
     "architectures": [
-  "amd64"
-],
+      "amd64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "8090",
@@ -40,46 +40,46 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "GUACD_HOSTNAME",
-    "default": "",
-    "description": "Guacd hostname",
-    "required": false
-  },
-  {
-    "name": "MYSQL_HOSTNAME",
-    "default": "",
-    "description": "MySQL hostname",
-    "required": false
-  },
-  {
-    "name": "MYSQL_DATABASE",
-    "default": "",
-    "description": "MySQL database",
-    "required": false
-  },
-  {
-    "name": "MYSQL_USER",
-    "default": "",
-    "description": "MySQL user",
-    "required": false
-  },
-  {
-    "name": "MYSQL_PASSWORD",
-    "default": "",
-    "description": "MySQL password",
-    "required": false
-  }
-],
+      {
+        "name": "GUACD_HOSTNAME",
+        "default": "",
+        "description": "Guacd hostname",
+        "required": false
+      },
+      {
+        "name": "MYSQL_HOSTNAME",
+        "default": "",
+        "description": "MySQL hostname",
+        "required": false
+      },
+      {
+        "name": "MYSQL_DATABASE",
+        "default": "",
+        "description": "MySQL database",
+        "required": false
+      },
+      {
+        "name": "MYSQL_USER",
+        "default": "",
+        "description": "MySQL user",
+        "required": false
+      },
+      {
+        "name": "MYSQL_PASSWORD",
+        "default": "",
+        "description": "MySQL password",
+        "required": false
+      }
+    ],
     "volumes": [],
     "ports": [
-  {
-    "container": "8080",
-    "host": "8080",
-    "protocol": "tcp",
-    "description": "Container Port: 8080"
-  }
-]
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Container Port: 8080"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -89,20 +89,29 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8090"
+      "port_map": "8090",
+      "volume_mappings": {
+        "guacamole_mysql": "/DATA/AppData/$AppID/mysql"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64"
-]
+        "amd64"
+      ],
+      "volume_mappings": {
+        "guacamole_mysql": "mysql"
+      }
     },
     "dockge": {
       "supported": true,
@@ -115,7 +124,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "guacamole_mysql": "mysql"
+      }
     }
   },
   "tags": [

@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-wg-easy-v15",
     "default_port": "51821",
@@ -42,53 +42,62 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/etc/wireguard",
-    "description": "Container Path: /etc/wireguard"
-  }
-],
+      {
+        "container": "/etc/wireguard",
+        "description": "Container Path: /etc/wireguard"
+      }
+    ],
     "ports": [
-  {
-    "container": "51820",
-    "host": "51820",
-    "protocol": "tcp",
-    "description": "Container Port: 51820"
-  },
-  {
-    "container": "51821",
-    "host": "51821",
-    "protocol": "tcp",
-    "description": "Container Port: 51821"
-  }
-]
+      {
+        "container": "51820",
+        "host": "51820",
+        "protocol": "tcp",
+        "description": "Container Port: 51820"
+      },
+      {
+        "container": "51821",
+        "host": "51821",
+        "protocol": "tcp",
+        "description": "Container Port: 51821"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-wg-easy-v15-to-bigbearcasaos/5071#p-7701-why-a-new-version-4"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-wg-easy-v15-to-bigbearcasaos/5071#p-7701-why-a-new-version-4"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "51821"
+      "port_map": "51821",
+      "volume_mappings": {
+        "wg-easy-v15_data": "/DATA/AppData/$AppID/data"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "wg-easy-v15_data": "data"
+      }
     },
     "dockge": {
       "supported": true,
@@ -101,7 +110,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "wg-easy-v15_data": "data"
+      }
     }
   },
   "tags": [

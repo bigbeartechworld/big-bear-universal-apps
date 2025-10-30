@@ -81,7 +81,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8056"
+      "port_map": "8056",
+      "volume_mappings": {
+        "jfa-go_.config_jfa-go": "/DATA/AppData/$AppID/.config/jfa-go",
+        "jfa-go_jellyfin": "/DATA/AppData/$AppID/jellyfin"
+      }
     },
     "portainer": {
       "supported": true,
@@ -98,7 +102,11 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "jfa-go_.config_jfa-go": ".config/jfa-go",
+        "jfa-go_jellyfin": "jellyfin"
+      }
     },
     "dockge": {
       "supported": true,
@@ -111,7 +119,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "jfa-go_.config_jfa-go": ".config/jfa-go",
+        "jfa-go_jellyfin": "jellyfin"
+      }
     }
   },
   "tags": [

@@ -121,7 +121,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8005"
+      "port_map": "8005",
+      "volume_mappings": {
+        "warracker_uploads": "/DATA/AppData/$AppID/uploads",
+        "warracker_warrackerdb": "/DATA/AppData/$AppID/warrackerdb"
+      }
     },
     "portainer": {
       "supported": true,
@@ -138,7 +142,11 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "warracker_uploads": "uploads",
+        "warracker_warrackerdb": "warrackerdb"
+      }
     },
     "dockge": {
       "supported": true,
@@ -151,7 +159,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "warracker_uploads": "uploads",
+        "warracker_warrackerdb": "warrackerdb"
+      }
     }
   },
   "tags": [

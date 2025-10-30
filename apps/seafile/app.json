@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-seafile",
     "default_port": "8080",
@@ -41,91 +41,102 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "DB_HOST",
-    "default": "",
-    "description": "Database host",
-    "required": false
-  },
-  {
-    "name": "DB_ROOT_PASSWD",
-    "default": "",
-    "description": "Database root password",
-    "required": false
-  },
-  {
-    "name": "TIME_ZONE",
-    "default": "",
-    "description": "Timezone",
-    "required": false
-  },
-  {
-    "name": "SEAFILE_ADMIN_EMAIL",
-    "default": "",
-    "description": "Seafile admin email",
-    "required": false
-  },
-  {
-    "name": "SEAFILE_ADMIN_PASSWORD",
-    "default": "",
-    "description": "Seafile admin password",
-    "required": false
-  },
-  {
-    "name": "SEAFILE_SERVER_LETSENCRYPT",
-    "default": "",
-    "description": "Seafile server Let's Encrypt",
-    "required": false
-  },
-  {
-    "name": "SEAFILE_SERVER_HOSTNAME",
-    "default": "",
-    "description": "Seafile server hostname",
-    "required": false
-  }
-],
+      {
+        "name": "DB_HOST",
+        "default": "",
+        "description": "Database host",
+        "required": false
+      },
+      {
+        "name": "DB_ROOT_PASSWD",
+        "default": "",
+        "description": "Database root password",
+        "required": false
+      },
+      {
+        "name": "TIME_ZONE",
+        "default": "",
+        "description": "Timezone",
+        "required": false
+      },
+      {
+        "name": "SEAFILE_ADMIN_EMAIL",
+        "default": "",
+        "description": "Seafile admin email",
+        "required": false
+      },
+      {
+        "name": "SEAFILE_ADMIN_PASSWORD",
+        "default": "",
+        "description": "Seafile admin password",
+        "required": false
+      },
+      {
+        "name": "SEAFILE_SERVER_LETSENCRYPT",
+        "default": "",
+        "description": "Seafile server Let's Encrypt",
+        "required": false
+      },
+      {
+        "name": "SEAFILE_SERVER_HOSTNAME",
+        "default": "",
+        "description": "Seafile server hostname",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/var/www/html/storage",
-    "description": "Container Path: /var/www/html/storage"
-  }
-],
+      {
+        "container": "/var/www/html/storage",
+        "description": "Container Path: /var/www/html/storage"
+      }
+    ],
     "ports": [
-  {
-    "container": "80",
-    "host": "80",
-    "protocol": "tcp",
-    "description": "Container Port: 80"
-  }
-]
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp",
+        "description": "Container Port: 80"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-seafile-to-bigbearcasaos/1011#instructions-3\n"
-  }
-}
+      "before_install": {
+        "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-seafile-to-bigbearcasaos/1011#instructions-3\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080"
+      "port_map": "8080",
+      "volume_mappings": {
+        "seafile_mysql": "/DATA/AppData/$AppID/mysql",
+        "seafile_shared": "/DATA/AppData/$AppID/shared"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "seafile_mysql": "mysql",
+        "seafile_shared": "shared"
+      }
     },
     "dockge": {
       "supported": true,
@@ -138,7 +149,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "seafile_mysql": "mysql",
+        "seafile_shared": "shared"
+      }
     }
   },
   "tags": [

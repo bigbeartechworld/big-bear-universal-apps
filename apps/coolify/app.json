@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-coolify",
     "default_port": "8000",
@@ -41,392 +41,417 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "APP_ID",
-    "default": "",
-    "description": "App ID",
-    "required": false
-  },
-  {
-    "name": "APP_ENV",
-    "default": "",
-    "description": "App environment",
-    "required": false
-  },
-  {
-    "name": "APP_DEBUG",
-    "default": "",
-    "description": "App debug",
-    "required": false
-  },
-  {
-    "name": "APP_NAME",
-    "default": "",
-    "description": "App name",
-    "required": false
-  },
-  {
-    "name": "APP_KEY",
-    "default": "",
-    "description": "App key",
-    "required": false
-  },
-  {
-    "name": "APP_URL",
-    "default": "",
-    "description": "App URL",
-    "required": false
-  },
-  {
-    "name": "DB_CONNECTION",
-    "default": "",
-    "description": "Database connection",
-    "required": false
-  },
-  {
-    "name": "DB_HOST",
-    "default": "",
-    "description": "Database host",
-    "required": false
-  },
-  {
-    "name": "DB_PORT",
-    "default": "",
-    "description": "Database port",
-    "required": false
-  },
-  {
-    "name": "DB_DATABASE",
-    "default": "",
-    "description": "Database name",
-    "required": false
-  },
-  {
-    "name": "DB_USERNAME",
-    "default": "",
-    "description": "Database user",
-    "required": false
-  },
-  {
-    "name": "DB_PASSWORD",
-    "default": "",
-    "description": "Database password",
-    "required": false
-  },
-  {
-    "name": "QUEUE_CONNECTION",
-    "default": "",
-    "description": "Queue connection",
-    "required": false
-  },
-  {
-    "name": "REDIS_HOST",
-    "default": "",
-    "description": "Redis host",
-    "required": false
-  },
-  {
-    "name": "REDIS_PASSWORD",
-    "default": "",
-    "description": "Redis password",
-    "required": false
-  },
-  {
-    "name": "HORIZON_BALANCE",
-    "default": "",
-    "description": "Horizon balance",
-    "required": false
-  },
-  {
-    "name": "HORIZON_MAX_PROCESSES",
-    "default": "",
-    "description": "Horizon max processes",
-    "required": false
-  },
-  {
-    "name": "HORIZON_BALANCE_MAX_SHIFT",
-    "default": "",
-    "description": "Horizon balance max shift",
-    "required": false
-  },
-  {
-    "name": "HORIZON_BALANCE_COOLDOWN",
-    "default": "",
-    "description": "Horizon balance cooldown",
-    "required": false
-  },
-  {
-    "name": "SSL_MODE",
-    "default": "",
-    "description": "SSL mode",
-    "required": false
-  },
-  {
-    "name": "PHP_PM_CONTROL",
-    "default": "",
-    "description": "PHP PM control",
-    "required": false
-  },
-  {
-    "name": "PHP_PM_START_SERVERS",
-    "default": "",
-    "description": "PHP PM start servers",
-    "required": false
-  },
-  {
-    "name": "PHP_PM_MIN_SPARE_SERVERS",
-    "default": "",
-    "description": "PHP PM min spare servers",
-    "required": false
-  },
-  {
-    "name": "PHP_PM_MAX_SPARE_SERVERS",
-    "default": "",
-    "description": "PHP PM max spare servers",
-    "required": false
-  },
-  {
-    "name": "PUSHER_HOST",
-    "default": "",
-    "description": "Pusher host",
-    "required": false
-  },
-  {
-    "name": "PUSHER_BACKEND_HOST",
-    "default": "",
-    "description": "Pusher backend host",
-    "required": false
-  },
-  {
-    "name": "PUSHER_PORT",
-    "default": "",
-    "description": "Pusher port",
-    "required": false
-  },
-  {
-    "name": "PUSHER_BACKEND_PORT",
-    "default": "",
-    "description": "Pusher backend port",
-    "required": false
-  },
-  {
-    "name": "PUSHER_SCHEME",
-    "default": "",
-    "description": "Pusher scheme",
-    "required": false
-  },
-  {
-    "name": "PUSHER_APP_ID",
-    "default": "",
-    "description": "Pusher app ID",
-    "required": false
-  },
-  {
-    "name": "PUSHER_APP_KEY",
-    "default": "",
-    "description": "Pusher app key",
-    "required": false
-  },
-  {
-    "name": "PUSHER_APP_SECRET",
-    "default": "",
-    "description": "Pusher app secret",
-    "required": false
-  },
-  {
-    "name": "AUTOUPDATE",
-    "default": "",
-    "description": "Autoupdate",
-    "required": false
-  },
-  {
-    "name": "SELF_HOSTED",
-    "default": "",
-    "description": "Self hosted",
-    "required": false
-  },
-  {
-    "name": "SSH_MUX_PERSIST_TIME",
-    "default": "",
-    "description": "SSH multiplexing persist time",
-    "required": false
-  },
-  {
-    "name": "FEEDBACK_DISCORD_WEBHOOK",
-    "default": "",
-    "description": "Feedback Discord webhook",
-    "required": false
-  },
-  {
-    "name": "WAITLIST",
-    "default": "",
-    "description": "Waitlist",
-    "required": false
-  },
-  {
-    "name": "SUBSCRIPTION_PROVIDER",
-    "default": "",
-    "description": "Subscription provider",
-    "required": false
-  },
-  {
-    "name": "STRIPE_API_KEY",
-    "default": "",
-    "description": "Stripe API key",
-    "required": false
-  },
-  {
-    "name": "STRIPE_WEBHOOK_SECRET",
-    "default": "",
-    "description": "Stripe webhook secret",
-    "required": false
-  },
-  {
-    "name": "STRIPE_PRICE_ID_BASIC_MONTHLY",
-    "default": "",
-    "description": "Stripe price ID basic monthly",
-    "required": false
-  },
-  {
-    "name": "STRIPE_PRICE_ID_BASIC_YEARLY",
-    "default": "",
-    "description": "Stripe price ID basic yearly",
-    "required": false
-  },
-  {
-    "name": "STRIPE_PRICE_ID_PRO_MONTHLY",
-    "default": "",
-    "description": "Stripe price ID pro monthly",
-    "required": false
-  },
-  {
-    "name": "STRIPE_PRICE_ID_PRO_YEARLY",
-    "default": "",
-    "description": "Stripe price ID pro yearly",
-    "required": false
-  },
-  {
-    "name": "STRIPE_PRICE_ID_ULTIMATE_MONTHLY",
-    "default": "",
-    "description": "Stripe price ID ultimate monthly",
-    "required": false
-  },
-  {
-    "name": "STRIPE_PRICE_ID_ULTIMATE_YEARLY",
-    "default": "",
-    "description": "Stripe price ID ultimate yearly",
-    "required": false
-  },
-  {
-    "name": "STRIPE_PRICE_ID_DYNAMIC_MONTHLY",
-    "default": "",
-    "description": "Stripe price ID dynamic monthly",
-    "required": false
-  },
-  {
-    "name": "STRIPE_PRICE_ID_DYNAMIC_YEARLY",
-    "default": "",
-    "description": "Stripe price ID dynamic yearly",
-    "required": false
-  },
-  {
-    "name": "STRIPE_PRICE_ID_BASIC_MONTHLY_OLD",
-    "default": "",
-    "description": "Stripe price ID basic monthly old",
-    "required": false
-  },
-  {
-    "name": "STRIPE_PRICE_ID_BASIC_YEARLY_OLD",
-    "default": "",
-    "description": "Stripe price ID basic yearly old",
-    "required": false
-  },
-  {
-    "name": "STRIPE_PRICE_ID_PRO_MONTHLY_OLD",
-    "default": "",
-    "description": "Stripe price ID pro monthly old",
-    "required": false
-  },
-  {
-    "name": "STRIPE_PRICE_ID_PRO_YEARLY_OLD",
-    "default": "",
-    "description": "Stripe price ID pro yearly old",
-    "required": false
-  },
-  {
-    "name": "STRIPE_PRICE_ID_ULTIMATE_MONTHLY_OLD",
-    "default": "",
-    "description": "Stripe price ID ultimate monthly old",
-    "required": false
-  },
-  {
-    "name": "STRIPE_PRICE_ID_ULTIMATE_YEARLY_OLD",
-    "default": "",
-    "description": "Stripe price ID ultimate yearly old",
-    "required": false
-  },
-  {
-    "name": "STRIPE_EXCLUDED_PLANS",
-    "default": "",
-    "description": "Stripe excluded plans",
-    "required": false
-  }
-],
+      {
+        "name": "APP_ID",
+        "default": "",
+        "description": "App ID",
+        "required": false
+      },
+      {
+        "name": "APP_ENV",
+        "default": "",
+        "description": "App environment",
+        "required": false
+      },
+      {
+        "name": "APP_DEBUG",
+        "default": "",
+        "description": "App debug",
+        "required": false
+      },
+      {
+        "name": "APP_NAME",
+        "default": "",
+        "description": "App name",
+        "required": false
+      },
+      {
+        "name": "APP_KEY",
+        "default": "",
+        "description": "App key",
+        "required": false
+      },
+      {
+        "name": "APP_URL",
+        "default": "",
+        "description": "App URL",
+        "required": false
+      },
+      {
+        "name": "DB_CONNECTION",
+        "default": "",
+        "description": "Database connection",
+        "required": false
+      },
+      {
+        "name": "DB_HOST",
+        "default": "",
+        "description": "Database host",
+        "required": false
+      },
+      {
+        "name": "DB_PORT",
+        "default": "",
+        "description": "Database port",
+        "required": false
+      },
+      {
+        "name": "DB_DATABASE",
+        "default": "",
+        "description": "Database name",
+        "required": false
+      },
+      {
+        "name": "DB_USERNAME",
+        "default": "",
+        "description": "Database user",
+        "required": false
+      },
+      {
+        "name": "DB_PASSWORD",
+        "default": "",
+        "description": "Database password",
+        "required": false
+      },
+      {
+        "name": "QUEUE_CONNECTION",
+        "default": "",
+        "description": "Queue connection",
+        "required": false
+      },
+      {
+        "name": "REDIS_HOST",
+        "default": "",
+        "description": "Redis host",
+        "required": false
+      },
+      {
+        "name": "REDIS_PASSWORD",
+        "default": "",
+        "description": "Redis password",
+        "required": false
+      },
+      {
+        "name": "HORIZON_BALANCE",
+        "default": "",
+        "description": "Horizon balance",
+        "required": false
+      },
+      {
+        "name": "HORIZON_MAX_PROCESSES",
+        "default": "",
+        "description": "Horizon max processes",
+        "required": false
+      },
+      {
+        "name": "HORIZON_BALANCE_MAX_SHIFT",
+        "default": "",
+        "description": "Horizon balance max shift",
+        "required": false
+      },
+      {
+        "name": "HORIZON_BALANCE_COOLDOWN",
+        "default": "",
+        "description": "Horizon balance cooldown",
+        "required": false
+      },
+      {
+        "name": "SSL_MODE",
+        "default": "",
+        "description": "SSL mode",
+        "required": false
+      },
+      {
+        "name": "PHP_PM_CONTROL",
+        "default": "",
+        "description": "PHP PM control",
+        "required": false
+      },
+      {
+        "name": "PHP_PM_START_SERVERS",
+        "default": "",
+        "description": "PHP PM start servers",
+        "required": false
+      },
+      {
+        "name": "PHP_PM_MIN_SPARE_SERVERS",
+        "default": "",
+        "description": "PHP PM min spare servers",
+        "required": false
+      },
+      {
+        "name": "PHP_PM_MAX_SPARE_SERVERS",
+        "default": "",
+        "description": "PHP PM max spare servers",
+        "required": false
+      },
+      {
+        "name": "PUSHER_HOST",
+        "default": "",
+        "description": "Pusher host",
+        "required": false
+      },
+      {
+        "name": "PUSHER_BACKEND_HOST",
+        "default": "",
+        "description": "Pusher backend host",
+        "required": false
+      },
+      {
+        "name": "PUSHER_PORT",
+        "default": "",
+        "description": "Pusher port",
+        "required": false
+      },
+      {
+        "name": "PUSHER_BACKEND_PORT",
+        "default": "",
+        "description": "Pusher backend port",
+        "required": false
+      },
+      {
+        "name": "PUSHER_SCHEME",
+        "default": "",
+        "description": "Pusher scheme",
+        "required": false
+      },
+      {
+        "name": "PUSHER_APP_ID",
+        "default": "",
+        "description": "Pusher app ID",
+        "required": false
+      },
+      {
+        "name": "PUSHER_APP_KEY",
+        "default": "",
+        "description": "Pusher app key",
+        "required": false
+      },
+      {
+        "name": "PUSHER_APP_SECRET",
+        "default": "",
+        "description": "Pusher app secret",
+        "required": false
+      },
+      {
+        "name": "AUTOUPDATE",
+        "default": "",
+        "description": "Autoupdate",
+        "required": false
+      },
+      {
+        "name": "SELF_HOSTED",
+        "default": "",
+        "description": "Self hosted",
+        "required": false
+      },
+      {
+        "name": "SSH_MUX_PERSIST_TIME",
+        "default": "",
+        "description": "SSH multiplexing persist time",
+        "required": false
+      },
+      {
+        "name": "FEEDBACK_DISCORD_WEBHOOK",
+        "default": "",
+        "description": "Feedback Discord webhook",
+        "required": false
+      },
+      {
+        "name": "WAITLIST",
+        "default": "",
+        "description": "Waitlist",
+        "required": false
+      },
+      {
+        "name": "SUBSCRIPTION_PROVIDER",
+        "default": "",
+        "description": "Subscription provider",
+        "required": false
+      },
+      {
+        "name": "STRIPE_API_KEY",
+        "default": "",
+        "description": "Stripe API key",
+        "required": false
+      },
+      {
+        "name": "STRIPE_WEBHOOK_SECRET",
+        "default": "",
+        "description": "Stripe webhook secret",
+        "required": false
+      },
+      {
+        "name": "STRIPE_PRICE_ID_BASIC_MONTHLY",
+        "default": "",
+        "description": "Stripe price ID basic monthly",
+        "required": false
+      },
+      {
+        "name": "STRIPE_PRICE_ID_BASIC_YEARLY",
+        "default": "",
+        "description": "Stripe price ID basic yearly",
+        "required": false
+      },
+      {
+        "name": "STRIPE_PRICE_ID_PRO_MONTHLY",
+        "default": "",
+        "description": "Stripe price ID pro monthly",
+        "required": false
+      },
+      {
+        "name": "STRIPE_PRICE_ID_PRO_YEARLY",
+        "default": "",
+        "description": "Stripe price ID pro yearly",
+        "required": false
+      },
+      {
+        "name": "STRIPE_PRICE_ID_ULTIMATE_MONTHLY",
+        "default": "",
+        "description": "Stripe price ID ultimate monthly",
+        "required": false
+      },
+      {
+        "name": "STRIPE_PRICE_ID_ULTIMATE_YEARLY",
+        "default": "",
+        "description": "Stripe price ID ultimate yearly",
+        "required": false
+      },
+      {
+        "name": "STRIPE_PRICE_ID_DYNAMIC_MONTHLY",
+        "default": "",
+        "description": "Stripe price ID dynamic monthly",
+        "required": false
+      },
+      {
+        "name": "STRIPE_PRICE_ID_DYNAMIC_YEARLY",
+        "default": "",
+        "description": "Stripe price ID dynamic yearly",
+        "required": false
+      },
+      {
+        "name": "STRIPE_PRICE_ID_BASIC_MONTHLY_OLD",
+        "default": "",
+        "description": "Stripe price ID basic monthly old",
+        "required": false
+      },
+      {
+        "name": "STRIPE_PRICE_ID_BASIC_YEARLY_OLD",
+        "default": "",
+        "description": "Stripe price ID basic yearly old",
+        "required": false
+      },
+      {
+        "name": "STRIPE_PRICE_ID_PRO_MONTHLY_OLD",
+        "default": "",
+        "description": "Stripe price ID pro monthly old",
+        "required": false
+      },
+      {
+        "name": "STRIPE_PRICE_ID_PRO_YEARLY_OLD",
+        "default": "",
+        "description": "Stripe price ID pro yearly old",
+        "required": false
+      },
+      {
+        "name": "STRIPE_PRICE_ID_ULTIMATE_MONTHLY_OLD",
+        "default": "",
+        "description": "Stripe price ID ultimate monthly old",
+        "required": false
+      },
+      {
+        "name": "STRIPE_PRICE_ID_ULTIMATE_YEARLY_OLD",
+        "default": "",
+        "description": "Stripe price ID ultimate yearly old",
+        "required": false
+      },
+      {
+        "name": "STRIPE_EXCLUDED_PLANS",
+        "default": "",
+        "description": "Stripe excluded plans",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/var/www/html/storage/app/ssh",
-    "description": "Container path /var/www/html/storage/app/ssh"
-  },
-  {
-    "container": "/var/www/html/storage/app/applications",
-    "description": "Container path /var/www/html/storage/app/applications"
-  },
-  {
-    "container": "/var/www/html/storage/app/databases",
-    "description": "Container path /var/www/html/storage/app/databases"
-  },
-  {
-    "container": "/var/www/html/storage/app/services",
-    "description": "Container path /var/www/html/storage/app/services"
-  },
-  {
-    "container": "/var/www/html/storage/app/backups",
-    "description": "Container path /var/www/html/storage/app/backups"
-  },
-  {
-    "container": "/var/www/html/storage/app/webhooks-during-maintenance",
-    "description": "Container path /var/www/html/storage/app/webhooks-during-maintenance"
-  }
-],
+      {
+        "container": "/var/www/html/storage/app/ssh",
+        "description": "Container path /var/www/html/storage/app/ssh"
+      },
+      {
+        "container": "/var/www/html/storage/app/applications",
+        "description": "Container path /var/www/html/storage/app/applications"
+      },
+      {
+        "container": "/var/www/html/storage/app/databases",
+        "description": "Container path /var/www/html/storage/app/databases"
+      },
+      {
+        "container": "/var/www/html/storage/app/services",
+        "description": "Container path /var/www/html/storage/app/services"
+      },
+      {
+        "container": "/var/www/html/storage/app/backups",
+        "description": "Container path /var/www/html/storage/app/backups"
+      },
+      {
+        "container": "/var/www/html/storage/app/webhooks-during-maintenance",
+        "description": "Container path /var/www/html/storage/app/webhooks-during-maintenance"
+      }
+    ],
     "ports": []
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-coolify-to-casaos/2186?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-coolify-to-casaos/2186?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8000"
+      "port_map": "8000",
+      "volume_mappings": {
+        "coolify_applications": "/DATA/AppData/$AppID/applications",
+        "coolify_backups": "/DATA/AppData/$AppID/backups",
+        "coolify_databases": "/DATA/AppData/$AppID/databases",
+        "coolify_logs": "/DATA/AppData/$AppID/logs",
+        "coolify_pgdata": "/DATA/AppData/$AppID/pgdata",
+        "coolify_redis": "/DATA/AppData/$AppID/redis",
+        "coolify_services": "/DATA/AppData/$AppID/services",
+        "coolify_ssh": "/DATA/AppData/$AppID/ssh",
+        "coolify_webhooks-during-maintenance": "/DATA/AppData/$AppID/webhooks-during-maintenance"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "coolify_applications": "applications",
+        "coolify_backups": "backups",
+        "coolify_databases": "databases",
+        "coolify_logs": "logs",
+        "coolify_pgdata": "pgdata",
+        "coolify_redis": "redis",
+        "coolify_services": "services",
+        "coolify_ssh": "ssh",
+        "coolify_webhooks-during-maintenance": "webhooks-during-maintenance"
+      }
     },
     "dockge": {
       "supported": true,
@@ -439,7 +464,18 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "coolify_applications": "applications",
+        "coolify_backups": "backups",
+        "coolify_databases": "databases",
+        "coolify_logs": "logs",
+        "coolify_pgdata": "pgdata",
+        "coolify_redis": "redis",
+        "coolify_services": "services",
+        "coolify_ssh": "ssh",
+        "coolify_webhooks-during-maintenance": "webhooks-during-maintenance"
+      }
     }
   },
   "tags": [

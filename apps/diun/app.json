@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-diun",
     "default_port": "",
@@ -41,47 +41,47 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "TZ",
-    "default": "",
-    "description": "Timezone",
-    "required": false
-  },
-  {
-    "name": "DIUN_WATCH_WORKERS",
-    "default": "",
-    "description": "Number of workers",
-    "required": false
-  },
-  {
-    "name": "DIUN_WATCH_SCHEDULE",
-    "default": "",
-    "description": "Watch schedule",
-    "required": false
-  },
-  {
-    "name": "DIUN_WATCH_JITTER",
-    "default": "",
-    "description": "Watch jitter",
-    "required": false
-  },
-  {
-    "name": "DIUN_PROVIDERS_DOCKER",
-    "default": "",
-    "description": "Enable Docker provider",
-    "required": false
-  }
-],
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Timezone",
+        "required": false
+      },
+      {
+        "name": "DIUN_WATCH_WORKERS",
+        "default": "",
+        "description": "Number of workers",
+        "required": false
+      },
+      {
+        "name": "DIUN_WATCH_SCHEDULE",
+        "default": "",
+        "description": "Watch schedule",
+        "required": false
+      },
+      {
+        "name": "DIUN_WATCH_JITTER",
+        "default": "",
+        "description": "Watch jitter",
+        "required": false
+      },
+      {
+        "name": "DIUN_PROVIDERS_DOCKER",
+        "default": "",
+        "description": "Enable Docker provider",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/data",
-    "description": "Container Path: /data"
-  },
-  {
-    "container": "/var/run/docker.sock",
-    "description": "Container Path: /var/run/docker.sock"
-  }
-],
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      },
+      {
+        "container": "/var/run/docker.sock",
+        "description": "Container Path: /var/run/docker.sock"
+      }
+    ],
     "ports": []
   },
   "ui": {
@@ -92,21 +92,30 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": ""
+      "port_map": "",
+      "volume_mappings": {
+        "diun_data": "/DATA/AppData/$AppID/data"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "diun_data": "data"
+      }
     },
     "dockge": {
       "supported": true,
@@ -119,7 +128,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "diun_data": "data"
+      }
     }
   },
   "tags": [

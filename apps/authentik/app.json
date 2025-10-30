@@ -76,7 +76,14 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "9443"
+      "port_map": "9443",
+      "volume_mappings": {
+        "authentik_data_authentik-certs": "/DATA/AppData/$AppID/data/authentik-certs",
+        "authentik_data_authentik-custom-templates": "/DATA/AppData/$AppID/data/authentik-custom-templates",
+        "authentik_data_authentik-media": "/DATA/AppData/$AppID/data/authentik-media",
+        "authentik_data_postgres": "/DATA/AppData/$AppID/data/postgres",
+        "authentik_data_redis": "/DATA/AppData/$AppID/data/redis"
+      }
     },
     "portainer": {
       "supported": true,
@@ -93,7 +100,14 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "authentik_data_authentik-certs": "data/authentik-certs",
+        "authentik_data_authentik-custom-templates": "data/authentik-custom-templates",
+        "authentik_data_authentik-media": "data/authentik-media",
+        "authentik_data_postgres": "data/postgres",
+        "authentik_data_redis": "data/redis"
+      }
     },
     "dockge": {
       "supported": true,
@@ -106,7 +120,14 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "authentik_data_authentik-certs": "data/authentik-certs",
+        "authentik_data_authentik-custom-templates": "data/authentik-custom-templates",
+        "authentik_data_authentik-media": "data/authentik-media",
+        "authentik_data_postgres": "data/postgres",
+        "authentik_data_redis": "data/redis"
+      }
     }
   },
   "tags": [

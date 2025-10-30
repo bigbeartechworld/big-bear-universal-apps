@@ -59,7 +59,10 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "5000"
+      "port_map": "5000",
+      "volume_mappings": {
+        "changedetection_datastore": "/DATA/AppData/$AppID/datastore"
+      }
     },
     "portainer": {
       "supported": true,
@@ -76,7 +79,10 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "changedetection_datastore": "datastore"
+      }
     },
     "dockge": {
       "supported": true,
@@ -89,7 +95,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "changedetection_datastore": "datastore"
+      }
     }
   },
   "tags": [

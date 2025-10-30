@@ -101,7 +101,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3280"
+      "port_map": "3280",
+      "volume_mappings": {
+        "wishlist_data": "/DATA/AppData/$AppID/data",
+        "wishlist_uploads": "/DATA/AppData/$AppID/uploads"
+      }
     },
     "portainer": {
       "supported": true,
@@ -118,7 +122,11 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "wishlist_data": "data",
+        "wishlist_uploads": "uploads"
+      }
     },
     "dockge": {
       "supported": true,
@@ -131,7 +139,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "wishlist_data": "data",
+        "wishlist_uploads": "uploads"
+      }
     }
   },
   "tags": [

@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-rallly",
     "default_port": "3000",
@@ -41,79 +41,79 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "DATABASE_URL",
-    "default": "",
-    "description": "Database URL: postgres://rallly:f87c7126-f816-47ef-9193-2e5eec763fcd@big-bear-rallly-db/big-bear-rallly",
-    "required": false
-  },
-  {
-    "name": "SECRET_PASSWORD",
-    "default": "",
-    "description": "Secret password for application security",
-    "required": false
-  },
-  {
-    "name": "NEXT_PUBLIC_BASE_URL",
-    "default": "",
-    "description": "Frontend URL: http",
-    "required": false
-  },
-  {
-    "name": "NOREPLY_EMAIL",
-    "default": "",
-    "description": "Email used for sending no-reply messages",
-    "required": false
-  },
-  {
-    "name": "SUPPORT_EMAIL",
-    "default": "",
-    "description": "Support contact email",
-    "required": false
-  },
-  {
-    "name": "SMTP_HOST",
-    "default": "",
-    "description": "SMTP server host",
-    "required": false
-  },
-  {
-    "name": "SMTP_PORT",
-    "default": "",
-    "description": "SMTP server port",
-    "required": false
-  },
-  {
-    "name": "SMTP_SECURE",
-    "default": "",
-    "description": "SMTP server security",
-    "required": false
-  },
-  {
-    "name": "SMTP_USER",
-    "default": "",
-    "description": "SMTP server username",
-    "required": false
-  },
-  {
-    "name": "SMTP_PWD",
-    "default": "",
-    "description": "SMTP server password",
-    "required": false
-  },
-  {
-    "name": "SMTP_TLS_ENABLED",
-    "default": "",
-    "description": "SMTP server TLS enabled",
-    "required": false
-  },
-  {
-    "name": "ALLOWED_EMAILS",
-    "default": "",
-    "description": "Allowed emails for the application",
-    "required": false
-  }
-],
+      {
+        "name": "DATABASE_URL",
+        "default": "",
+        "description": "Database URL: postgres://rallly:f87c7126-f816-47ef-9193-2e5eec763fcd@big-bear-rallly-db/big-bear-rallly",
+        "required": false
+      },
+      {
+        "name": "SECRET_PASSWORD",
+        "default": "",
+        "description": "Secret password for application security",
+        "required": false
+      },
+      {
+        "name": "NEXT_PUBLIC_BASE_URL",
+        "default": "",
+        "description": "Frontend URL: http",
+        "required": false
+      },
+      {
+        "name": "NOREPLY_EMAIL",
+        "default": "",
+        "description": "Email used for sending no-reply messages",
+        "required": false
+      },
+      {
+        "name": "SUPPORT_EMAIL",
+        "default": "",
+        "description": "Support contact email",
+        "required": false
+      },
+      {
+        "name": "SMTP_HOST",
+        "default": "",
+        "description": "SMTP server host",
+        "required": false
+      },
+      {
+        "name": "SMTP_PORT",
+        "default": "",
+        "description": "SMTP server port",
+        "required": false
+      },
+      {
+        "name": "SMTP_SECURE",
+        "default": "",
+        "description": "SMTP server security",
+        "required": false
+      },
+      {
+        "name": "SMTP_USER",
+        "default": "",
+        "description": "SMTP server username",
+        "required": false
+      },
+      {
+        "name": "SMTP_PWD",
+        "default": "",
+        "description": "SMTP server password",
+        "required": false
+      },
+      {
+        "name": "SMTP_TLS_ENABLED",
+        "default": "",
+        "description": "SMTP server TLS enabled",
+        "required": false
+      },
+      {
+        "name": "ALLOWED_EMAILS",
+        "default": "",
+        "description": "Allowed emails for the application",
+        "required": false
+      }
+    ],
     "volumes": [],
     "ports": []
   },
@@ -121,29 +121,38 @@
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-rallly-to-bigbearcasaos/1012#instructions-3\n"
-  }
-}
+      "before_install": {
+        "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-rallly-to-bigbearcasaos/1012#instructions-3\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3000"
+      "port_map": "3000",
+      "volume_mappings": {
+        "rallly_postgresql": "/DATA/AppData/$AppID/postgresql"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "rallly_postgresql": "postgresql"
+      }
     },
     "dockge": {
       "supported": true,
@@ -156,7 +165,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "rallly_postgresql": "postgresql"
+      }
     }
   },
   "tags": [

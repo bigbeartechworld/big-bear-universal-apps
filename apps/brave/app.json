@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "brave",
     "default_port": "6901",
@@ -41,19 +41,19 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "VNC_PW",
-    "default": "",
-    "description": "VNC Password",
-    "required": false
-  },
-  {
-    "name": "LAUNCH_URL",
-    "default": "",
-    "description": "Launch URL",
-    "required": false
-  }
-],
+      {
+        "name": "VNC_PW",
+        "default": "",
+        "description": "VNC Password",
+        "required": false
+      },
+      {
+        "name": "LAUNCH_URL",
+        "default": "",
+        "description": "Launch URL",
+        "required": false
+      }
+    ],
     "volumes": [],
     "ports": []
   },
@@ -61,29 +61,38 @@
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Username: kasm_user\nPassword: casaos\n"
-  }
-}
+      "before_install": {
+        "en_us": "Username: kasm_user\nPassword: casaos\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "6901"
+      "port_map": "6901",
+      "volume_mappings": {
+        "brave_Downloads": "/DATA/AppData/$AppID/Downloads"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "brave_Downloads": "Downloads"
+      }
     },
     "dockge": {
       "supported": true,

@@ -68,7 +68,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3000"
+      "port_map": "3000",
+      "volume_mappings": {
+        "semaphore_home": "/DATA/AppData/$AppID/home",
+        "semaphore_lib": "/DATA/AppData/$AppID/lib",
+        "semaphore_mysql": "/DATA/AppData/$AppID/mysql"
+      }
     },
     "portainer": {
       "supported": true,
@@ -85,7 +90,12 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "semaphore_home": "home",
+        "semaphore_lib": "lib",
+        "semaphore_mysql": "mysql"
+      }
     },
     "dockge": {
       "supported": true,
@@ -98,7 +108,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "semaphore_home": "home",
+        "semaphore_lib": "lib",
+        "semaphore_mysql": "mysql"
+      }
     }
   },
   "tags": [

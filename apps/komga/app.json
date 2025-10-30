@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-komga",
     "default_port": "25600",
@@ -41,59 +41,70 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "TZ",
-    "default": "",
-    "description": "Timezone",
-    "required": false
-  }
-],
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Timezone",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/config",
-    "description": "Container Path: /config"
-  },
-  {
-    "container": "/data",
-    "description": "Container Path: /data"
-  }
-],
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      }
+    ],
     "ports": [
-  {
-    "container": "25600",
-    "host": "25600",
-    "protocol": "tcp",
-    "description": "Container Port: 25600"
-  }
-]
+      {
+        "container": "25600",
+        "host": "25600",
+        "protocol": "tcp",
+        "description": "Container Port: 25600"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-komga-to-bigbearcasaos/1916#p-3567-documentation-4\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-komga-to-bigbearcasaos/1916#p-3567-documentation-4\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "25600"
+      "port_map": "25600",
+      "volume_mappings": {
+        "komga_config": "/DATA/AppData/$AppID/config",
+        "komga_data": "/DATA/AppData/$AppID/data"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "komga_config": "config",
+        "komga_data": "data"
+      }
     },
     "dockge": {
       "supported": true,
@@ -106,7 +117,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "komga_config": "config",
+        "komga_data": "data"
+      }
     }
   },
   "tags": [

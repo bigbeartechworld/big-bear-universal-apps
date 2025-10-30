@@ -76,7 +76,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "7200"
+      "port_map": "7200",
+      "volume_mappings": {
+        "ntfysh_cache": "/DATA/AppData/$AppID/cache",
+        "ntfysh_config": "/DATA/AppData/$AppID/config"
+      }
     },
     "portainer": {
       "supported": true,
@@ -94,7 +98,11 @@
         "amd64",
         "armv7",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "ntfysh_cache": "cache",
+        "ntfysh_config": "config"
+      }
     },
     "dockge": {
       "supported": true,
@@ -107,7 +115,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "ntfysh_cache": "cache",
+        "ntfysh_config": "config"
+      }
     }
   },
   "tags": [

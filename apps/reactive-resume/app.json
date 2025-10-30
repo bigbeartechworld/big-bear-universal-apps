@@ -56,7 +56,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3000"
+      "port_map": "3000",
+      "volume_mappings": {
+        "reactive-resume_minio_data": "/DATA/AppData/$AppID/minio/data",
+        "reactive-resume_pg_data": "/DATA/AppData/$AppID/pg/data"
+      }
     },
     "portainer": {
       "supported": true,
@@ -73,7 +77,11 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "reactive-resume_minio_data": "minio/data",
+        "reactive-resume_pg_data": "pg/data"
+      }
     },
     "dockge": {
       "supported": true,
@@ -86,7 +94,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "reactive-resume_minio_data": "minio/data",
+        "reactive-resume_pg_data": "pg/data"
+      }
     }
   },
   "tags": [

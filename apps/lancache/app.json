@@ -30,8 +30,8 @@
   },
   "technical": {
     "architectures": [
-  "amd64"
-],
+      "amd64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "8080",
@@ -41,29 +41,29 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/data/cache",
-    "description": "Container Path: /data/cache"
-  },
-  {
-    "container": "/data/logs",
-    "description": "Container Path: /data/logs"
-  }
-],
+      {
+        "container": "/data/cache",
+        "description": "Container Path: /data/cache"
+      },
+      {
+        "container": "/data/logs",
+        "description": "Container Path: /data/logs"
+      }
+    ],
     "ports": [
-  {
-    "container": "80",
-    "host": "80",
-    "protocol": "tcp",
-    "description": "Container Port: 80"
-  },
-  {
-    "container": "443",
-    "host": "443",
-    "protocol": "tcp",
-    "description": "Container Port: 443"
-  }
-]
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp",
+        "description": "Container Port: 80"
+      },
+      {
+        "container": "443",
+        "host": "443",
+        "protocol": "tcp",
+        "description": "Container Port: 443"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -73,20 +73,31 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080"
+      "port_map": "8080",
+      "volume_mappings": {
+        "lancache_cache": "/DATA/AppData/$AppID/cache",
+        "lancache_logs": "/DATA/AppData/$AppID/logs"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64"
-]
+        "amd64"
+      ],
+      "volume_mappings": {
+        "lancache_cache": "cache",
+        "lancache_logs": "logs"
+      }
     },
     "dockge": {
       "supported": true,
@@ -99,7 +110,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "lancache_cache": "cache",
+        "lancache_logs": "logs"
+      }
     }
   },
   "tags": [

@@ -95,7 +95,10 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "1337"
+      "port_map": "1337",
+      "volume_mappings": {
+        "nightscout_mongo-data": "/DATA/AppData/$AppID/mongo-data"
+      }
     },
     "portainer": {
       "supported": true,
@@ -112,7 +115,10 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "nightscout_mongo-data": "mongo-data"
+      }
     },
     "dockge": {
       "supported": true,
@@ -125,7 +131,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "nightscout_mongo-data": "mongo-data"
+      }
     }
   },
   "tags": [

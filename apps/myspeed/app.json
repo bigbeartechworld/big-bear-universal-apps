@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "5216",
@@ -42,19 +42,19 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/myspeed/data",
-    "description": "Container Path: /myspeed/data"
-  }
-],
+      {
+        "container": "/myspeed/data",
+        "description": "Container Path: /myspeed/data"
+      }
+    ],
     "ports": [
-  {
-    "container": "5216",
-    "host": "5216",
-    "protocol": "tcp",
-    "description": "Container Port: 5216"
-  }
-]
+      {
+        "container": "5216",
+        "host": "5216",
+        "protocol": "tcp",
+        "description": "Container Port: 5216"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -64,21 +64,30 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "5216"
+      "port_map": "5216",
+      "volume_mappings": {
+        "myspeed_data": "/DATA/AppData/$AppID/data"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "myspeed_data": "data"
+      }
     },
     "dockge": {
       "supported": true,
@@ -91,7 +100,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "myspeed_data": "data"
+      }
     }
   },
   "tags": [

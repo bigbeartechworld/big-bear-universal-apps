@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-syncthing",
     "default_port": "8384",
@@ -42,23 +42,23 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/var/syncthing",
-    "description": "Container Path: /var/syncthing"
-  },
-  {
-    "container": "/media/data/syncthing",
-    "description": "Container Path: /media/data/syncthing"
-  }
-],
+      {
+        "container": "/var/syncthing",
+        "description": "Container Path: /var/syncthing"
+      },
+      {
+        "container": "/media/data/syncthing",
+        "description": "Container Path: /media/data/syncthing"
+      }
+    ],
     "ports": [
-  {
-    "container": "8384",
-    "host": "8384",
-    "protocol": "tcp",
-    "description": "Container Port: 8384"
-  }
-]
+      {
+        "container": "8384",
+        "host": "8384",
+        "protocol": "tcp",
+        "description": "Container Port: 8384"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -68,21 +68,32 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8384"
+      "port_map": "8384",
+      "volume_mappings": {
+        "syncthing_data": "/DATA/AppData/$AppID/data",
+        "syncthing_media_data_syncthing": "/DATA/AppData/$AppID/media/data/syncthing"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "syncthing_data": "data",
+        "syncthing_media_data_syncthing": "media/data/syncthing"
+      }
     },
     "dockge": {
       "supported": true,
@@ -95,7 +106,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "syncthing_data": "data",
+        "syncthing_media_data_syncthing": "media/data/syncthing"
+      }
     }
   },
   "tags": [
