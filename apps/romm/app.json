@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-romm",
     "default_port": "1080",
@@ -41,167 +41,188 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "DB_HOST",
-    "default": "",
-    "description": "Database Host: romm_db",
-    "required": false
-  },
-  {
-    "name": "DB_PORT",
-    "default": "",
-    "description": "Database Port: 3306",
-    "required": false
-  },
-  {
-    "name": "DB_USER",
-    "default": "",
-    "description": "Database User: romm-user",
-    "required": false
-  },
-  {
-    "name": "DB_NAME",
-    "default": "",
-    "description": "Database Name: romm",
-    "required": false
-  },
-  {
-    "name": "DB_PASSWD",
-    "default": "",
-    "description": "Database Password: casaos",
-    "required": false
-  },
-  {
-    "name": "IGDB_CLIENT_ID",
-    "default": "",
-    "description": "IGDB Client ID (Optional): Generate an ID and SECRET in IGDB",
-    "required": false
-  },
-  {
-    "name": "IGDB_CLIENT_SECRET",
-    "default": "",
-    "description": "IGDB Client Secret (Optional): https://api-docs.igdb.com/#account-creation",
-    "required": false
-  },
-  {
-    "name": "MOBYGAMES_API_KEY",
-    "default": "",
-    "description": "MobyGames API Key (Optional): Generate at https://www.mobygames.com/info/api/",
-    "required": false
-  },
-  {
-    "name": "STEAMGRIDDB_API_KEY",
-    "default": "",
-    "description": "SteamGridDB API Key (Optional): See https://github.com/rommapp/romm/wiki/Generate-API-Keys#steamgriddb",
-    "required": false
-  },
-  {
-    "name": "SCREENSCRAPER_USER",
-    "default": "",
-    "description": "ScreenScraper User (Optional): ScreenScraper username",
-    "required": false
-  },
-  {
-    "name": "SCREENSCRAPER_PASSWORD",
-    "default": "",
-    "description": "ScreenScraper Password (Optional): ScreenScraper password",
-    "required": false
-  },
-  {
-    "name": "RETROACHIEVEMENTS_API_KEY",
-    "default": "",
-    "description": "RetroAchievements API Key (Optional): RetroAchievements API key",
-    "required": false
-  },
-  {
-    "name": "HASHEOUS_API_ENABLED",
-    "default": "",
-    "description": "Hasheous API Enabled (Optional): Enable Hasheous API integration",
-    "required": false
-  },
-  {
-    "name": "ROMM_AUTH_SECRET_KEY",
-    "default": "",
-    "description": "Authentication Secret Key: <secret key>",
-    "required": false
-  },
-  {
-    "name": "ENABLE_RESCAN_ON_FILESYSTEM_CHANGE",
-    "default": "",
-    "description": "Rescan On Filesystem Change: true",
-    "required": false
-  },
-  {
-    "name": "ENABLE_SCHEDULED_RESCAN",
-    "default": "",
-    "description": "Scheduled Rescan: true",
-    "required": false
-  },
-  {
-    "name": "ENABLE_SCHEDULED_UPDATE_SWITCH_TITLEDB",
-    "default": "",
-    "description": "Scheduled Update Switch TitleDB: true",
-    "required": false
-  }
-],
+      {
+        "name": "DB_HOST",
+        "default": "",
+        "description": "Database Host: romm_db",
+        "required": false
+      },
+      {
+        "name": "DB_PORT",
+        "default": "",
+        "description": "Database Port: 3306",
+        "required": false
+      },
+      {
+        "name": "DB_USER",
+        "default": "",
+        "description": "Database User: romm-user",
+        "required": false
+      },
+      {
+        "name": "DB_NAME",
+        "default": "",
+        "description": "Database Name: romm",
+        "required": false
+      },
+      {
+        "name": "DB_PASSWD",
+        "default": "",
+        "description": "Database Password: casaos",
+        "required": false
+      },
+      {
+        "name": "IGDB_CLIENT_ID",
+        "default": "",
+        "description": "IGDB Client ID (Optional): Generate an ID and SECRET in IGDB",
+        "required": false
+      },
+      {
+        "name": "IGDB_CLIENT_SECRET",
+        "default": "",
+        "description": "IGDB Client Secret (Optional): https://api-docs.igdb.com/#account-creation",
+        "required": false
+      },
+      {
+        "name": "MOBYGAMES_API_KEY",
+        "default": "",
+        "description": "MobyGames API Key (Optional): Generate at https://www.mobygames.com/info/api/",
+        "required": false
+      },
+      {
+        "name": "STEAMGRIDDB_API_KEY",
+        "default": "",
+        "description": "SteamGridDB API Key (Optional): See https://github.com/rommapp/romm/wiki/Generate-API-Keys#steamgriddb",
+        "required": false
+      },
+      {
+        "name": "SCREENSCRAPER_USER",
+        "default": "",
+        "description": "ScreenScraper User (Optional): ScreenScraper username",
+        "required": false
+      },
+      {
+        "name": "SCREENSCRAPER_PASSWORD",
+        "default": "",
+        "description": "ScreenScraper Password (Optional): ScreenScraper password",
+        "required": false
+      },
+      {
+        "name": "RETROACHIEVEMENTS_API_KEY",
+        "default": "",
+        "description": "RetroAchievements API Key (Optional): RetroAchievements API key",
+        "required": false
+      },
+      {
+        "name": "HASHEOUS_API_ENABLED",
+        "default": "",
+        "description": "Hasheous API Enabled (Optional): Enable Hasheous API integration",
+        "required": false
+      },
+      {
+        "name": "ROMM_AUTH_SECRET_KEY",
+        "default": "",
+        "description": "Authentication Secret Key: <secret key>",
+        "required": false
+      },
+      {
+        "name": "ENABLE_RESCAN_ON_FILESYSTEM_CHANGE",
+        "default": "",
+        "description": "Rescan On Filesystem Change: true",
+        "required": false
+      },
+      {
+        "name": "ENABLE_SCHEDULED_RESCAN",
+        "default": "",
+        "description": "Scheduled Rescan: true",
+        "required": false
+      },
+      {
+        "name": "ENABLE_SCHEDULED_UPDATE_SWITCH_TITLEDB",
+        "default": "",
+        "description": "Scheduled Update Switch TitleDB: true",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/romm/resources",
-    "description": "Container Path: /romm/resources"
-  },
-  {
-    "container": "/romm/library",
-    "description": "Container Path: /romm/library"
-  },
-  {
-    "container": "/romm/assets",
-    "description": "Container Path: /romm/assets"
-  },
-  {
-    "container": "/romm/config",
-    "description": "Container Path: /romm/config"
-  },
-  {
-    "container": "/romm/logs",
-    "description": "Container Path: /romm/logs"
-  }
-],
+      {
+        "container": "/romm/resources",
+        "description": "Container Path: /romm/resources"
+      },
+      {
+        "container": "/romm/library",
+        "description": "Container Path: /romm/library"
+      },
+      {
+        "container": "/romm/assets",
+        "description": "Container Path: /romm/assets"
+      },
+      {
+        "container": "/romm/config",
+        "description": "Container Path: /romm/config"
+      },
+      {
+        "container": "/romm/logs",
+        "description": "Container Path: /romm/logs"
+      }
+    ],
     "ports": [
-  {
-    "container": "8080",
-    "host": "8080",
-    "protocol": "tcp",
-    "description": "Container Port: 8080"
-  }
-]
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Container Port: 8080"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Run this script before installing the big-bear-romm application:\n\n```\nbash -c \"$(wget -qLO - https://raw.githubusercontent.com/bigbeartechworld/big-bear-scripts/master/generate-romm-config/run.sh)\"\n```\n\nAfter running this script, you need to restart the container.\n"
-  }
-}
+      "before_install": {
+        "en_us": "Run this script before installing the big-bear-romm application:\n\n```\nbash -c \"$(wget -qLO - https://raw.githubusercontent.com/bigbeartechworld/big-bear-scripts/master/generate-romm-config/run.sh)\"\n```\n\nAfter running this script, you need to restart the container.\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "1080"
+      "port_map": "1080",
+      "volume_mappings": {
+        "romm_assets": "/DATA/AppData/$AppID/assets",
+        "romm_config": "/DATA/AppData/$AppID/config",
+        "romm_library": "/DATA/AppData/$AppID/library",
+        "romm_logs": "/DATA/AppData/$AppID/logs",
+        "romm_mysql": "/DATA/AppData/$AppID/mysql",
+        "romm_redis-data": "/DATA/AppData/$AppID/redis-data",
+        "romm_resources": "/DATA/AppData/$AppID/resources"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "romm_assets": "assets",
+        "romm_config": "config",
+        "romm_library": "library",
+        "romm_logs": "logs",
+        "romm_mysql": "mysql",
+        "romm_redis-data": "redis-data",
+        "romm_resources": "resources"
+      }
     },
     "dockge": {
       "supported": true,
@@ -214,7 +235,16 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "romm_assets": "assets",
+        "romm_config": "config",
+        "romm_library": "library",
+        "romm_logs": "logs",
+        "romm_mysql": "mysql",
+        "romm_redis-data": "redis-data",
+        "romm_resources": "resources"
+      }
     }
   },
   "tags": [

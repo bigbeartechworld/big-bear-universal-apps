@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-invoice-ninja-web",
     "default_port": "8080",
@@ -42,51 +42,72 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/etc/nginx/conf.d/default.conf",
-    "description": "Container Path: /etc/nginx/conf.d/default.conf"
-  },
-  {
-    "container": "/var/www/app/public",
-    "description": "Container Path: /var/www/app/public"
-  }
-],
+      {
+        "container": "/etc/nginx/conf.d/default.conf",
+        "description": "Container Path: /etc/nginx/conf.d/default.conf"
+      },
+      {
+        "container": "/var/www/app/public",
+        "description": "Container Path: /var/www/app/public"
+      }
+    ],
     "ports": [
-  {
-    "container": "80",
-    "host": "80",
-    "protocol": "tcp",
-    "description": "Container Port: 80"
-  }
-]
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp",
+        "description": "Container Port: 80"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-invoice-ninja-to-bigbearcasaos/1697?u=dragonfire1119#p-3214-instructions-3\n"
-  }
-}
+      "before_install": {
+        "en_us": "Before you install read this: https://community.bigbeartechworld.com/t/added-invoice-ninja-to-bigbearcasaos/1697?u=dragonfire1119#p-3214-instructions-3\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080"
+      "port_map": "8080",
+      "volume_mappings": {
+        "invoice-ninja_data": "/DATA/AppData/$AppID/data",
+        "invoice-ninja_data_mysql": "/DATA/AppData/$AppID/data/mysql",
+        "invoice-ninja_data_nginx_invoice-ninja.conf": "/DATA/AppData/$AppID/data/nginx/invoice-ninja.conf",
+        "invoice-ninja_data_php_php-cli.ini": "/DATA/AppData/$AppID/data/php/php-cli.ini",
+        "invoice-ninja_data_php_php.ini": "/DATA/AppData/$AppID/data/php/php.ini",
+        "invoice-ninja_data_public": "/DATA/AppData/$AppID/data/public",
+        "invoice-ninja_data_storage": "/DATA/AppData/$AppID/data/storage"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "invoice-ninja_data": "data",
+        "invoice-ninja_data_mysql": "data/mysql",
+        "invoice-ninja_data_nginx_invoice-ninja.conf": "data/nginx/invoice-ninja.conf",
+        "invoice-ninja_data_php_php-cli.ini": "data/php/php-cli.ini",
+        "invoice-ninja_data_php_php.ini": "data/php/php.ini",
+        "invoice-ninja_data_public": "data/public",
+        "invoice-ninja_data_storage": "data/storage"
+      }
     },
     "dockge": {
       "supported": true,
@@ -99,7 +120,16 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "invoice-ninja_data": "data",
+        "invoice-ninja_data_mysql": "data/mysql",
+        "invoice-ninja_data_nginx_invoice-ninja.conf": "data/nginx/invoice-ninja.conf",
+        "invoice-ninja_data_php_php-cli.ini": "data/php/php-cli.ini",
+        "invoice-ninja_data_php_php.ini": "data/php/php.ini",
+        "invoice-ninja_data_public": "data/public",
+        "invoice-ninja_data_storage": "data/storage"
+      }
     }
   },
   "tags": [

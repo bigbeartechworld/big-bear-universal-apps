@@ -105,7 +105,11 @@
         "amd64",
         "arm64",
         "arm"
-      ]
+      ],
+      "volume_mappings": {
+        "adguard-home_data_conf": "data/conf",
+        "adguard-home_data_work": "data/work"
+      }
     },
     "dockge": {
       "supported": true,
@@ -118,7 +122,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "adguard-home_data_conf": "data/conf",
+        "adguard-home_data_work": "data/work"
+      }
     }
   },
   "tags": [

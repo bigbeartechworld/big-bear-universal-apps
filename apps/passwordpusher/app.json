@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-pwpush",
     "default_port": "5100",
@@ -41,67 +41,78 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "PWP__PW__EXPIRE_AFTER_DAYS_DEFAULT",
-    "default": "",
-    "description": "Password Expire After Days Default",
-    "required": false
-  },
-  {
-    "name": "PWP__PW__EXPIRE_AFTER_VIEWS_MIN",
-    "default": "",
-    "description": "Password Expire After Views Min",
-    "required": false
-  },
-  {
-    "name": "PWP__PW__RETRIEVAL_STEP_DEFAULT",
-    "default": "",
-    "description": "Password Retrieval Step Default",
-    "required": false
-  }
-],
+      {
+        "name": "PWP__PW__EXPIRE_AFTER_DAYS_DEFAULT",
+        "default": "",
+        "description": "Password Expire After Days Default",
+        "required": false
+      },
+      {
+        "name": "PWP__PW__EXPIRE_AFTER_VIEWS_MIN",
+        "default": "",
+        "description": "Password Expire After Views Min",
+        "required": false
+      },
+      {
+        "name": "PWP__PW__RETRIEVAL_STEP_DEFAULT",
+        "default": "",
+        "description": "Password Retrieval Step Default",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/opt/PasswordPusher/storage",
-    "description": "Container Path: /opt/PasswordPusher/storage"
-  }
-],
+      {
+        "container": "/opt/PasswordPusher/storage",
+        "description": "Container Path: /opt/PasswordPusher/storage"
+      }
+    ],
     "ports": [
-  {
-    "container": "5100",
-    "host": "5100",
-    "protocol": "tcp",
-    "description": "Container Port: 5100"
-  }
-]
+      {
+        "container": "5100",
+        "host": "5100",
+        "protocol": "tcp",
+        "description": "Container Port: 5100"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-password-pusher-to-bigbearcasaos/1508?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-password-pusher-to-bigbearcasaos/1508?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "5100"
+      "port_map": "5100",
+      "volume_mappings": {
+        "passwordpusher_mysql": "/DATA/AppData/$AppID/mysql",
+        "passwordpusher_storage": "/DATA/AppData/$AppID/storage"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "passwordpusher_mysql": "mysql",
+        "passwordpusher_storage": "storage"
+      }
     },
     "dockge": {
       "supported": true,
@@ -114,7 +125,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "passwordpusher_mysql": "mysql",
+        "passwordpusher_storage": "storage"
+      }
     }
   },
   "tags": [

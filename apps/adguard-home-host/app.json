@@ -89,7 +89,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "80"
+      "port_map": "80",
+      "volume_mappings": {
+        "adguard-home-host_data_conf": "/DATA/AppData/$AppID/data/conf",
+        "adguard-home-host_data_work": "/DATA/AppData/$AppID/data/work"
+      }
     },
     "portainer": {
       "supported": true,
@@ -107,7 +111,11 @@
         "amd64",
         "arm64",
         "arm"
-      ]
+      ],
+      "volume_mappings": {
+        "adguard-home-host_data_conf": "data/conf",
+        "adguard-home-host_data_work": "data/work"
+      }
     },
     "dockge": {
       "supported": true,
@@ -120,7 +128,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "adguard-home-host_data_conf": "data/conf",
+        "adguard-home-host_data_work": "data/work"
+      }
     }
   },
   "tags": [

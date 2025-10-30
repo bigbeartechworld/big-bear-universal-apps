@@ -132,7 +132,11 @@ The `app.json` file is the source of truth for all app metadata and configuratio
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "jellyseerr_data_config": "config",
+        "jellyseerr_data_cache": "cache/data"
+      }
     }
   },
   "tags": [
@@ -211,6 +215,35 @@ The universal format is converted to platform-specific formats:
 - Creates umbrel-app.yml manifest
 - Uses clean docker-compose.yml
 - Adds gallery images and icon
+- Supports volume mapping overrides via `compatibility.umbrel.volume_mappings`
+
+#### Volume Mapping Overrides
+
+By default, named volumes are converted automatically:
+- App name prefix is removed: `jellyseerr_data` → `data`
+- Underscores become slashes: `data_config` → `data/config`
+
+To preserve specific paths for backward compatibility, add volume mapping overrides:
+
+```json
+"compatibility": {
+  "umbrel": {
+    "supported": true,
+    "manifest_version": 1,
+    "volume_mappings": {
+      "appname_data_config": "config",
+      "appname_media_movies": "media/movies",
+      "appname_cache": "data/cache"
+    }
+  }
+}
+```
+
+**Use cases for overrides:**
+- Migrating existing apps with established data paths
+- Complex multi-level directory structures
+- When automatic conversion produces unexpected paths
+- Ensuring exact path compatibility with existing Umbrel deployments
 
 ## Validation
 

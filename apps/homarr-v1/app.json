@@ -68,7 +68,10 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "7575"
+      "port_map": "7575",
+      "volume_mappings": {
+        "homarr-v1_appdata": "/DATA/AppData/$AppID/appdata"
+      }
     },
     "portainer": {
       "supported": true,
@@ -85,7 +88,10 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "homarr-v1_appdata": "appdata"
+      }
     },
     "dockge": {
       "supported": true,
@@ -98,7 +104,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "homarr-v1_appdata": "appdata"
+      }
     }
   },
   "tags": [

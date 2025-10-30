@@ -64,7 +64,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3000"
+      "port_map": "3000",
+      "volume_mappings": {
+        "linkwarden_data_linkwarden": "/DATA/AppData/$AppID/data/linkwarden",
+        "linkwarden_data_postgres": "/DATA/AppData/$AppID/data/postgres"
+      }
     },
     "portainer": {
       "supported": true,
@@ -81,7 +85,11 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "linkwarden_data_linkwarden": "data/linkwarden",
+        "linkwarden_data_postgres": "data/postgres"
+      }
     },
     "dockge": {
       "supported": true,
@@ -94,7 +102,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "linkwarden_data_linkwarden": "data/linkwarden",
+        "linkwarden_data_postgres": "data/postgres"
+      }
     }
   },
   "tags": [

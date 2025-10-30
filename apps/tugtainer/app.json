@@ -108,7 +108,10 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "9412"
+      "port_map": "9412",
+      "volume_mappings": {
+        "tugtainer_data": "/DATA/AppData/$AppID/data"
+      }
     },
     "portainer": {
       "supported": true,
@@ -124,7 +127,10 @@
       "tipi_version": 1,
       "supported_architectures": [
         "amd64"
-      ]
+      ],
+      "volume_mappings": {
+        "tugtainer_data": "data"
+      }
     },
     "dockge": {
       "supported": true,
@@ -137,7 +143,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "tugtainer_data": "data"
+      }
     }
   },
   "tags": [

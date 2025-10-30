@@ -69,7 +69,10 @@
     "casaos": {
       "supported": true,
       "port_map": "3000",
-      "folder_name": "homepage"
+      "folder_name": "homepage",
+      "volume_mappings": {
+        "Homepage_config": "/DATA/AppData/$AppID/Homepage/config"
+      }
     },
     "portainer": {
       "supported": true,
@@ -88,7 +91,10 @@
         "amd64",
         "arm64"
       ],
-      "folder_name": "homepage"
+      "folder_name": "homepage",
+      "volume_mappings": {
+        "Homepage_config": "Homepage/config"
+      }
     },
     "dockge": {
       "supported": true,
@@ -104,7 +110,10 @@
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
-      "folder_name": "big-bear-umbrel-homepage"
+      "folder_name": "big-bear-umbrel-homepage",
+      "volume_mappings": {
+        "Homepage_config": "Homepage/config"
+      }
     }
   },
   "tags": [

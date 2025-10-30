@@ -81,7 +81,10 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "5800"
+      "port_map": "5800",
+      "volume_mappings": {
+        "jlesage-firefox_config": "/DATA/AppData/$AppID/config"
+      }
     },
     "portainer": {
       "supported": true,
@@ -98,7 +101,10 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "jlesage-firefox_config": "config"
+      }
     },
     "dockge": {
       "supported": true,
@@ -111,7 +117,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "jlesage-firefox_config": "config"
+      }
     }
   },
   "tags": [

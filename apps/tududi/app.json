@@ -91,7 +91,10 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "9292"
+      "port_map": "9292",
+      "volume_mappings": {
+        "tududi_tududi_db": "/DATA/AppData/$AppID/tududi/db"
+      }
     },
     "portainer": {
       "supported": true,
@@ -107,7 +110,10 @@
       "tipi_version": 1,
       "supported_architectures": [
         "amd64"
-      ]
+      ],
+      "volume_mappings": {
+        "tududi_tududi_db": "tududi/db"
+      }
     },
     "dockge": {
       "supported": true,
@@ -120,7 +126,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "tududi_tududi_db": "tududi/db"
+      }
     }
   },
   "tags": [

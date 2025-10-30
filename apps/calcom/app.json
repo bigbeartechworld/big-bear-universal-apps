@@ -207,7 +207,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3000"
+      "port_map": "3000",
+      "volume_mappings": {
+        "calcom_config": "/DATA/AppData/$AppID/config",
+        "calcom_data_db": "/DATA/AppData/$AppID/data/db"
+      }
     },
     "portainer": {
       "supported": true,
@@ -224,7 +228,11 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "calcom_config": "config",
+        "calcom_data_db": "data/db"
+      }
     },
     "dockge": {
       "supported": true,
@@ -237,7 +245,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "calcom_config": "config",
+        "calcom_data_db": "data/db"
+      }
     }
   },
   "tags": [

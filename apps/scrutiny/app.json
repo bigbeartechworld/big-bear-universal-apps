@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-scrutiny",
     "default_port": "38080",
@@ -42,33 +42,33 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/opt/scrutiny/config",
-    "description": "Container Path: /opt/scrutiny/config"
-  },
-  {
-    "container": "/opt/scrutiny/influxdb",
-    "description": "Container Path: /opt/scrutiny/influxdb"
-  },
-  {
-    "container": "/run/udev",
-    "description": "Container Path: /run/udev"
-  }
-],
+      {
+        "container": "/opt/scrutiny/config",
+        "description": "Container Path: /opt/scrutiny/config"
+      },
+      {
+        "container": "/opt/scrutiny/influxdb",
+        "description": "Container Path: /opt/scrutiny/influxdb"
+      },
+      {
+        "container": "/run/udev",
+        "description": "Container Path: /run/udev"
+      }
+    ],
     "ports": [
-  {
-    "container": "8080",
-    "host": "8080",
-    "protocol": "tcp",
-    "description": "Container Port: 8080"
-  },
-  {
-    "container": "8086",
-    "host": "8086",
-    "protocol": "tcp",
-    "description": "Container Port: 8086"
-  }
-]
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Container Port: 8080"
+      },
+      {
+        "container": "8086",
+        "host": "8086",
+        "protocol": "tcp",
+        "description": "Container Port: 8086"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -78,21 +78,32 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "38080"
+      "port_map": "38080",
+      "volume_mappings": {
+        "scrutiny_config": "/DATA/AppData/$AppID/config",
+        "scrutiny_influxdb": "/DATA/AppData/$AppID/influxdb"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "scrutiny_config": "config",
+        "scrutiny_influxdb": "influxdb"
+      }
     },
     "dockge": {
       "supported": true,
@@ -105,7 +116,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "scrutiny_config": "config",
+        "scrutiny_influxdb": "influxdb"
+      }
     }
   },
   "tags": [

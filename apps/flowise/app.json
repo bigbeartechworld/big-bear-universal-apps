@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-flowise",
     "default_port": "8009",
@@ -41,127 +41,136 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "PORT",
-    "default": "",
-    "description": "Container Port: 8009",
-    "required": false
-  },
-  {
-    "name": "FLOWISE_USERNAME",
-    "default": "",
-    "description": "Username: bigbear",
-    "required": false
-  },
-  {
-    "name": "FLOWISE_PASSWORD",
-    "default": "",
-    "description": "Password: b0f91e4c-9d4b-4375-bc9b-9b57667ce7ab",
-    "required": false
-  },
-  {
-    "name": "FLOWISE_SECRETKEY_OVERWRITE",
-    "default": "",
-    "description": "Secretkey Overwrite: true",
-    "required": false
-  },
-  {
-    "name": "LANGCHAIN_ENDPOINT",
-    "default": "",
-    "description": "Langchain Endpoint: ",
-    "required": false
-  },
-  {
-    "name": "LANGCHAIN_API_KEY",
-    "default": "",
-    "description": "Langchain API Key: ",
-    "required": false
-  },
-  {
-    "name": "LANGCHAIN_PROJECT",
-    "default": "",
-    "description": "Langchain Project: ",
-    "required": false
-  },
-  {
-    "name": "LANGCHAIN_TRACING_V2",
-    "default": "",
-    "description": "Langchain Tracing V2: ",
-    "required": false
-  },
-  {
-    "name": "DISABLE_FLOWISE_TELEMETRY",
-    "default": "",
-    "description": "Disable Flowise Telemetry: true",
-    "required": false
-  },
-  {
-    "name": "DATABASE_PATH",
-    "default": "",
-    "description": "Database Path: /root/.flowise",
-    "required": false
-  },
-  {
-    "name": "APIKEY_PATH",
-    "default": "",
-    "description": "Apikey Path: /root/.flowise",
-    "required": false
-  },
-  {
-    "name": "SECRETKEY_PATH",
-    "default": "",
-    "description": "Secretkey Path: /root/.flowise/logs",
-    "required": false
-  },
-  {
-    "name": "LOG_PATH",
-    "default": "",
-    "description": "Log Path: /root/.flowise",
-    "required": false
-  }
-],
+      {
+        "name": "PORT",
+        "default": "",
+        "description": "Container Port: 8009",
+        "required": false
+      },
+      {
+        "name": "FLOWISE_USERNAME",
+        "default": "",
+        "description": "Username: bigbear",
+        "required": false
+      },
+      {
+        "name": "FLOWISE_PASSWORD",
+        "default": "",
+        "description": "Password: b0f91e4c-9d4b-4375-bc9b-9b57667ce7ab",
+        "required": false
+      },
+      {
+        "name": "FLOWISE_SECRETKEY_OVERWRITE",
+        "default": "",
+        "description": "Secretkey Overwrite: true",
+        "required": false
+      },
+      {
+        "name": "LANGCHAIN_ENDPOINT",
+        "default": "",
+        "description": "Langchain Endpoint: ",
+        "required": false
+      },
+      {
+        "name": "LANGCHAIN_API_KEY",
+        "default": "",
+        "description": "Langchain API Key: ",
+        "required": false
+      },
+      {
+        "name": "LANGCHAIN_PROJECT",
+        "default": "",
+        "description": "Langchain Project: ",
+        "required": false
+      },
+      {
+        "name": "LANGCHAIN_TRACING_V2",
+        "default": "",
+        "description": "Langchain Tracing V2: ",
+        "required": false
+      },
+      {
+        "name": "DISABLE_FLOWISE_TELEMETRY",
+        "default": "",
+        "description": "Disable Flowise Telemetry: true",
+        "required": false
+      },
+      {
+        "name": "DATABASE_PATH",
+        "default": "",
+        "description": "Database Path: /root/.flowise",
+        "required": false
+      },
+      {
+        "name": "APIKEY_PATH",
+        "default": "",
+        "description": "Apikey Path: /root/.flowise",
+        "required": false
+      },
+      {
+        "name": "SECRETKEY_PATH",
+        "default": "",
+        "description": "Secretkey Path: /root/.flowise/logs",
+        "required": false
+      },
+      {
+        "name": "LOG_PATH",
+        "default": "",
+        "description": "Log Path: /root/.flowise",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/root/.flowise",
-    "description": "Container Path: /root/.flowise"
-  }
-],
+      {
+        "container": "/root/.flowise",
+        "description": "Container Path: /root/.flowise"
+      }
+    ],
     "ports": [
-  {
-    "container": "8009",
-    "host": "8009",
-    "protocol": "tcp",
-    "description": "Container Port: 8009"
-  }
-]
+      {
+        "container": "8009",
+        "host": "8009",
+        "protocol": "tcp",
+        "description": "Container Port: 8009"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-flowise-to-bigbearcasaos/1989?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-flowise-to-bigbearcasaos/1989?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8009"
+      "port_map": "8009",
+      "volume_mappings": {
+        "flowise_data": "/DATA/AppData/$AppID/data"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "flowise_data": "data"
+      }
     },
     "dockge": {
       "supported": true,
@@ -174,7 +183,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "flowise_data": "data"
+      }
     }
   },
   "tags": [

@@ -138,7 +138,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080"
+      "port_map": "8080",
+      "volume_mappings": {
+        "speedtest-tracker_config": "/DATA/AppData/$AppID/config",
+        "speedtest-tracker_mysql": "/DATA/AppData/$AppID/mysql",
+        "speedtest-tracker_web": "/DATA/AppData/$AppID/web"
+      }
     },
     "portainer": {
       "supported": true,
@@ -156,7 +161,12 @@
         "amd64",
         "armv7",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "speedtest-tracker_config": "config",
+        "speedtest-tracker_mysql": "mysql",
+        "speedtest-tracker_web": "web"
+      }
     },
     "dockge": {
       "supported": true,
@@ -169,7 +179,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "speedtest-tracker_config": "config",
+        "speedtest-tracker_mysql": "mysql",
+        "speedtest-tracker_web": "web"
+      }
     }
   },
   "tags": [

@@ -99,7 +99,10 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "1411"
+      "port_map": "1411",
+      "volume_mappings": {
+        "pocketid_data": "/DATA/AppData/$AppID/data"
+      }
     },
     "portainer": {
       "supported": true,
@@ -116,7 +119,10 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "pocketid_data": "data"
+      }
     },
     "dockge": {
       "supported": true,
@@ -129,7 +135,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "pocketid_data": "data"
+      }
     }
   },
   "tags": [

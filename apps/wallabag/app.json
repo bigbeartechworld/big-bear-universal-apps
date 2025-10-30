@@ -150,7 +150,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080"
+      "port_map": "8080",
+      "volume_mappings": {
+        "wallabag_images": "/DATA/AppData/$AppID/images",
+        "wallabag_mysql": "/DATA/AppData/$AppID/mysql"
+      }
     },
     "portainer": {
       "supported": true,
@@ -167,7 +171,11 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "wallabag_images": "images",
+        "wallabag_mysql": "mysql"
+      }
     },
     "dockge": {
       "supported": true,
@@ -180,7 +188,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "wallabag_images": "images",
+        "wallabag_mysql": "mysql"
+      }
     }
   },
   "tags": [

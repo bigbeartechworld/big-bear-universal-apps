@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "vikunja",
     "default_port": "8081",
@@ -41,63 +41,63 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "VIKUNJA_DATABASE_HOST",
-    "default": "",
-    "description": "Database host",
-    "required": false
-  },
-  {
-    "name": "VIKUNJA_DATABASE_PASSWORD",
-    "default": "",
-    "description": "Database password",
-    "required": false
-  },
-  {
-    "name": "VIKUNJA_DATABASE_TYPE",
-    "default": "",
-    "description": "Database type",
-    "required": false
-  },
-  {
-    "name": "VIKUNJA_DATABASE_USER",
-    "default": "",
-    "description": "Database user",
-    "required": false
-  },
-  {
-    "name": "VIKUNJA_DATABASE_DATABASE",
-    "default": "",
-    "description": "Database name",
-    "required": false
-  },
-  {
-    "name": "VIKUNJA_SERVICE_JWTSECRET",
-    "default": "",
-    "description": "JWT secret",
-    "required": false
-  },
-  {
-    "name": "VIKUNJA_SERVICE_FRONTENDURL",
-    "default": "",
-    "description": "Frontend URL",
-    "required": false
-  }
-],
+      {
+        "name": "VIKUNJA_DATABASE_HOST",
+        "default": "",
+        "description": "Database host",
+        "required": false
+      },
+      {
+        "name": "VIKUNJA_DATABASE_PASSWORD",
+        "default": "",
+        "description": "Database password",
+        "required": false
+      },
+      {
+        "name": "VIKUNJA_DATABASE_TYPE",
+        "default": "",
+        "description": "Database type",
+        "required": false
+      },
+      {
+        "name": "VIKUNJA_DATABASE_USER",
+        "default": "",
+        "description": "Database user",
+        "required": false
+      },
+      {
+        "name": "VIKUNJA_DATABASE_DATABASE",
+        "default": "",
+        "description": "Database name",
+        "required": false
+      },
+      {
+        "name": "VIKUNJA_SERVICE_JWTSECRET",
+        "default": "",
+        "description": "JWT secret",
+        "required": false
+      },
+      {
+        "name": "VIKUNJA_SERVICE_FRONTENDURL",
+        "default": "",
+        "description": "Frontend URL",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/app/vikunja/files",
-    "description": "Container Path: /app/vikunja/files"
-  }
-],
+      {
+        "container": "/app/vikunja/files",
+        "description": "Container Path: /app/vikunja/files"
+      }
+    ],
     "ports": [
-  {
-    "container": "3456",
-    "host": "3456",
-    "protocol": "tcp",
-    "description": "Container Port: 3456"
-  }
-]
+      {
+        "container": "3456",
+        "host": "3456",
+        "protocol": "tcp",
+        "description": "Container Port: 3456"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -107,21 +107,32 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8081"
+      "port_map": "8081",
+      "volume_mappings": {
+        "vikunja_files": "/DATA/AppData/$AppID/files",
+        "vikunja_mysql": "/DATA/AppData/$AppID/mysql"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "vikunja_files": "files",
+        "vikunja_mysql": "mysql"
+      }
     },
     "dockge": {
       "supported": true,
@@ -134,7 +145,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "vikunja_files": "files",
+        "vikunja_mysql": "mysql"
+      }
     }
   },
   "tags": [

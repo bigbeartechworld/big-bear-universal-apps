@@ -30,10 +30,10 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "armv7",
-  "arm64"
-],
+      "amd64",
+      "armv7",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "8088",
@@ -42,119 +42,119 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "PUID",
-    "default": "",
-    "description": "Process UID",
-    "required": false
-  },
-  {
-    "name": "PGID",
-    "default": "",
-    "description": "Process GID",
-    "required": false
-  },
-  {
-    "name": "MANAGE_HTTP_PORT",
-    "default": "",
-    "description": "Management HTTP Port",
-    "required": false
-  },
-  {
-    "name": "MANAGE_HTTPS_PORT",
-    "default": "",
-    "description": "Management HTTPS Port",
-    "required": false
-  },
-  {
-    "name": "PORTAL_HTTP_PORT",
-    "default": "",
-    "description": "User Portal HTTP Port",
-    "required": false
-  },
-  {
-    "name": "PORTAL_HTTPS_PORT",
-    "default": "",
-    "description": "User Portal HTTPS Port",
-    "required": false
-  },
-  {
-    "name": "PORT_APP_DISCOVERY",
-    "default": "",
-    "description": "App Discovery Port",
-    "required": false
-  },
-  {
-    "name": "PORT_ADOPT_V1",
-    "default": "",
-    "description": "Adopt V1 Port",
-    "required": false
-  },
-  {
-    "name": "PORT_UPGRADE_V1",
-    "default": "",
-    "description": "Upgrade V1 Port",
-    "required": false
-  },
-  {
-    "name": "PORT_MANAGER_V1",
-    "default": "",
-    "description": "Manager V1 Port",
-    "required": false
-  },
-  {
-    "name": "PORT_MANAGER_V2",
-    "default": "",
-    "description": "Manager V2 Port",
-    "required": false
-  },
-  {
-    "name": "PORT_DISCOVERY",
-    "default": "",
-    "description": "Discovery Port",
-    "required": false
-  },
-  {
-    "name": "SHOW_SERVER_LOGS",
-    "default": "",
-    "description": "Show Server Logs",
-    "required": false
-  },
-  {
-    "name": "SHOW_MONGODB_LOGS",
-    "default": "",
-    "description": "Show MongoDB Logs",
-    "required": false
-  },
-  {
-    "name": "SSL_CERT_NAME",
-    "default": "",
-    "description": "SSL Certificate Name",
-    "required": false
-  },
-  {
-    "name": "SSL_KEY_NAME",
-    "default": "",
-    "description": "SSL Key Name",
-    "required": false
-  },
-  {
-    "name": "TZ",
-    "default": "",
-    "description": "Timezone",
-    "required": false
-  }
-],
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Process UID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Process GID",
+        "required": false
+      },
+      {
+        "name": "MANAGE_HTTP_PORT",
+        "default": "",
+        "description": "Management HTTP Port",
+        "required": false
+      },
+      {
+        "name": "MANAGE_HTTPS_PORT",
+        "default": "",
+        "description": "Management HTTPS Port",
+        "required": false
+      },
+      {
+        "name": "PORTAL_HTTP_PORT",
+        "default": "",
+        "description": "User Portal HTTP Port",
+        "required": false
+      },
+      {
+        "name": "PORTAL_HTTPS_PORT",
+        "default": "",
+        "description": "User Portal HTTPS Port",
+        "required": false
+      },
+      {
+        "name": "PORT_APP_DISCOVERY",
+        "default": "",
+        "description": "App Discovery Port",
+        "required": false
+      },
+      {
+        "name": "PORT_ADOPT_V1",
+        "default": "",
+        "description": "Adopt V1 Port",
+        "required": false
+      },
+      {
+        "name": "PORT_UPGRADE_V1",
+        "default": "",
+        "description": "Upgrade V1 Port",
+        "required": false
+      },
+      {
+        "name": "PORT_MANAGER_V1",
+        "default": "",
+        "description": "Manager V1 Port",
+        "required": false
+      },
+      {
+        "name": "PORT_MANAGER_V2",
+        "default": "",
+        "description": "Manager V2 Port",
+        "required": false
+      },
+      {
+        "name": "PORT_DISCOVERY",
+        "default": "",
+        "description": "Discovery Port",
+        "required": false
+      },
+      {
+        "name": "SHOW_SERVER_LOGS",
+        "default": "",
+        "description": "Show Server Logs",
+        "required": false
+      },
+      {
+        "name": "SHOW_MONGODB_LOGS",
+        "default": "",
+        "description": "Show MongoDB Logs",
+        "required": false
+      },
+      {
+        "name": "SSL_CERT_NAME",
+        "default": "",
+        "description": "SSL Certificate Name",
+        "required": false
+      },
+      {
+        "name": "SSL_KEY_NAME",
+        "default": "",
+        "description": "SSL Key Name",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Timezone",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/opt/tplink/EAPController/data",
-    "description": "Container Path: /opt/tplink/EAPController/data"
-  },
-  {
-    "container": "/opt/tplink/EAPController/logs",
-    "description": "Container Path: /opt/tplink/EAPController/logs"
-  }
-],
+      {
+        "container": "/opt/tplink/EAPController/data",
+        "description": "Container Path: /opt/tplink/EAPController/data"
+      },
+      {
+        "container": "/opt/tplink/EAPController/logs",
+        "description": "Container Path: /opt/tplink/EAPController/logs"
+      }
+    ],
     "ports": []
   },
   "ui": {
@@ -165,22 +165,33 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8088"
+      "port_map": "8088",
+      "volume_mappings": {
+        "tp-link-omada-controller_data": "/DATA/AppData/$AppID/data",
+        "tp-link-omada-controller_logs": "/DATA/AppData/$AppID/logs"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "armv7",
-  "arm64"
-]
+        "amd64",
+        "armv7",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "tp-link-omada-controller_data": "data",
+        "tp-link-omada-controller_logs": "logs"
+      }
     },
     "dockge": {
       "supported": true,
@@ -193,7 +204,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "tp-link-omada-controller_data": "data",
+        "tp-link-omada-controller_logs": "logs"
+      }
     }
   },
   "tags": [

@@ -30,8 +30,8 @@
   },
   "technical": {
     "architectures": [
-  "amd64"
-],
+      "amd64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "",
@@ -41,11 +41,11 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/secrets",
-    "description": "Container Path: /secrets"
-  }
-],
+      {
+        "container": "/secrets",
+        "description": "Container Path: /secrets"
+      }
+    ],
     "ports": []
   },
   "ui": {
@@ -56,20 +56,29 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": ""
+      "port_map": "",
+      "volume_mappings": {
+        "playitgg_secrets": "/DATA/AppData/$AppID/secrets"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64"
-]
+        "amd64"
+      ],
+      "volume_mappings": {
+        "playitgg_secrets": "secrets"
+      }
     },
     "dockge": {
       "supported": true,
@@ -82,7 +91,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "playitgg_secrets": "secrets"
+      }
     }
   },
   "tags": [

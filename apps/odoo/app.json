@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-odoo",
     "default_port": "8069",
@@ -41,71 +41,84 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "HOST",
-    "default": "",
-    "description": "Container Host: big-bear-odoo-db",
-    "required": false
-  },
-  {
-    "name": "USER",
-    "default": "",
-    "description": "Container User: odoo",
-    "required": false
-  },
-  {
-    "name": "PASSWORD",
-    "default": "",
-    "description": "Container Password: a8d785b6-bc00-49cc-8675-d404093d1507",
-    "required": false
-  }
-],
+      {
+        "name": "HOST",
+        "default": "",
+        "description": "Container Host: big-bear-odoo-db",
+        "required": false
+      },
+      {
+        "name": "USER",
+        "default": "",
+        "description": "Container User: odoo",
+        "required": false
+      },
+      {
+        "name": "PASSWORD",
+        "default": "",
+        "description": "Container Password: a8d785b6-bc00-49cc-8675-d404093d1507",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/etc/odoo",
-    "description": "Container Path: /etc/odoo"
-  },
-  {
-    "container": "/mnt/extra-addons",
-    "description": "Container Path: /mnt/extra-addons"
-  }
-],
+      {
+        "container": "/etc/odoo",
+        "description": "Container Path: /etc/odoo"
+      },
+      {
+        "container": "/mnt/extra-addons",
+        "description": "Container Path: /mnt/extra-addons"
+      }
+    ],
     "ports": [
-  {
-    "container": "8069",
-    "host": "8069",
-    "protocol": "tcp",
-    "description": "Container Port: 8069"
-  }
-]
+      {
+        "container": "8069",
+        "host": "8069",
+        "protocol": "tcp",
+        "description": "Container Port: 8069"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Documentation: https://community.bigbeartechworld.com/t/added-odoo-to-bigbearcasaos/1115?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Documentation: https://community.bigbeartechworld.com/t/added-odoo-to-bigbearcasaos/1115?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8069"
+      "port_map": "8069",
+      "volume_mappings": {
+        "odoo_data_addons": "/DATA/AppData/$AppID/data/addons",
+        "odoo_data_etc": "/DATA/AppData/$AppID/data/etc",
+        "odoo_data_postgresql": "/DATA/AppData/$AppID/data/postgresql"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "odoo_data_addons": "data/addons",
+        "odoo_data_etc": "data/etc",
+        "odoo_data_postgresql": "data/postgresql"
+      }
     },
     "dockge": {
       "supported": true,
@@ -118,7 +131,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "odoo_data_addons": "data/addons",
+        "odoo_data_etc": "data/etc",
+        "odoo_data_postgresql": "data/postgresql"
+      }
     }
   },
   "tags": [

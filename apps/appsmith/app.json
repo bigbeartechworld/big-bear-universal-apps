@@ -70,7 +70,10 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "1080"
+      "port_map": "1080",
+      "volume_mappings": {
+        "appsmith_stacks": "/DATA/AppData/$AppID/stacks"
+      }
     },
     "portainer": {
       "supported": true,
@@ -87,7 +90,10 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "appsmith_stacks": "stacks"
+      }
     },
     "dockge": {
       "supported": true,
@@ -100,7 +106,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "appsmith_stacks": "stacks"
+      }
     }
   },
   "tags": [

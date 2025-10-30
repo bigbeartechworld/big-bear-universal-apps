@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-onedev",
     "default_port": "6610",
@@ -42,29 +42,29 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/opt/onedev",
-    "description": "Data directory for OneDev"
-  },
-  {
-    "container": "/var/run/docker.sock",
-    "description": "Docker socket for OneDev"
-  }
-],
+      {
+        "container": "/opt/onedev",
+        "description": "Data directory for OneDev"
+      },
+      {
+        "container": "/var/run/docker.sock",
+        "description": "Docker socket for OneDev"
+      }
+    ],
     "ports": [
-  {
-    "container": null,
-    "host": null,
-    "protocol": "tcp",
-    "description": "OneDev web interface"
-  },
-  {
-    "container": null,
-    "host": null,
-    "protocol": "tcp",
-    "description": "OneDev SSH interface"
-  }
-]
+      {
+        "container": null,
+        "host": null,
+        "protocol": "tcp",
+        "description": "OneDev web interface"
+      },
+      {
+        "container": null,
+        "host": null,
+        "protocol": "tcp",
+        "description": "OneDev SSH interface"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -74,21 +74,32 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "6610"
+      "port_map": "6610",
+      "volume_mappings": {
+        "onedev_data": "/DATA/AppData/$AppID/data",
+        "onedev_postgres_data": "/DATA/AppData/$AppID/postgres/data"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "onedev_data": "data",
+        "onedev_postgres_data": "postgres/data"
+      }
     },
     "dockge": {
       "supported": true,
@@ -101,7 +112,11 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "onedev_data": "data",
+        "onedev_postgres_data": "postgres/data"
+      }
     }
   },
   "tags": [

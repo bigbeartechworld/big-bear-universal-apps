@@ -107,7 +107,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "2283"
+      "port_map": "2283",
+      "volume_mappings": {
+        "immich_model-cache": "/DATA/AppData/$AppID/model-cache",
+        "immich_pgdata": "/DATA/AppData/$AppID/pgdata",
+        "immich_upload": "/DATA/AppData/$AppID/upload"
+      }
     },
     "portainer": {
       "supported": true,
@@ -124,7 +129,12 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "immich_model-cache": "model-cache",
+        "immich_pgdata": "pgdata",
+        "immich_upload": "upload"
+      }
     },
     "dockge": {
       "supported": true,
@@ -137,7 +147,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "immich_model-cache": "model-cache",
+        "immich_pgdata": "pgdata",
+        "immich_upload": "upload"
+      }
     }
   },
   "tags": [

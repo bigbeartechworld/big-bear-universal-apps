@@ -57,7 +57,10 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8095"
+      "port_map": "8095",
+      "volume_mappings": {
+        "music-assistant_data": "/DATA/AppData/$AppID/data"
+      }
     },
     "portainer": {
       "supported": true,
@@ -74,7 +77,10 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "music-assistant_data": "data"
+      }
     },
     "dockge": {
       "supported": true,
@@ -87,7 +93,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "music-assistant_data": "data"
+      }
     }
   },
   "tags": [

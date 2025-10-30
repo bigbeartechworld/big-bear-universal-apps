@@ -86,7 +86,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8000"
+      "port_map": "8000",
+      "volume_mappings": {
+        "genmon_etc_genmon": "/DATA/AppData/$AppID/etc/genmon",
+        "genmon_git_genmon": "/DATA/AppData/$AppID/git/genmon",
+        "genmon_var_log": "/DATA/AppData/$AppID/var/log"
+      }
     },
     "portainer": {
       "supported": true,
@@ -103,7 +108,12 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "genmon_etc_genmon": "etc/genmon",
+        "genmon_git_genmon": "git/genmon",
+        "genmon_var_log": "var/log"
+      }
     },
     "dockge": {
       "supported": true,
@@ -116,7 +126,12 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "genmon_etc_genmon": "etc/genmon",
+        "genmon_git_genmon": "git/genmon",
+        "genmon_var_log": "var/log"
+      }
     }
   },
   "tags": [

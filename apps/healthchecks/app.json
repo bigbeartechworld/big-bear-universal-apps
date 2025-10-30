@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-healthchecks",
     "default_port": "8000",
@@ -41,159 +41,159 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "PUID",
-    "default": "",
-    "description": "Process UID",
-    "required": false
-  },
-  {
-    "name": "PGID",
-    "default": "",
-    "description": "Process GID",
-    "required": false
-  },
-  {
-    "name": "TZ",
-    "default": "",
-    "description": "Timezone",
-    "required": false
-  },
-  {
-    "name": "SITE_ROOT",
-    "default": "",
-    "description": "Site root",
-    "required": false
-  },
-  {
-    "name": "SITE_NAME",
-    "default": "",
-    "description": "Site name",
-    "required": false
-  },
-  {
-    "name": "SUPERUSER_EMAIL",
-    "default": "",
-    "description": "Superuser email",
-    "required": false
-  },
-  {
-    "name": "SUPERUSER_PASSWORD",
-    "default": "",
-    "description": "Superuser password",
-    "required": false
-  },
-  {
-    "name": "ALLOWED_HOSTS",
-    "default": "",
-    "description": "Allowed hosts",
-    "required": false
-  },
-  {
-    "name": "APPRISE_ENABLED",
-    "default": "",
-    "description": "Apprise enabled",
-    "required": false
-  },
-  {
-    "name": "CSRF_TRUSTED_ORIGINS",
-    "default": "",
-    "description": "CSRF trusted origins",
-    "required": false
-  },
-  {
-    "name": "DEBUG",
-    "default": "",
-    "description": "Debug",
-    "required": false
-  },
-  {
-    "name": "DEFAULT_FROM_EMAIL",
-    "default": "",
-    "description": "Default from email",
-    "required": false
-  },
-  {
-    "name": "EMAIL_HOST",
-    "default": "",
-    "description": "Email host",
-    "required": false
-  },
-  {
-    "name": "EMAIL_PORT",
-    "default": "",
-    "description": "Email port",
-    "required": false
-  },
-  {
-    "name": "EMAIL_HOST_USER",
-    "default": "",
-    "description": "Email host user",
-    "required": false
-  },
-  {
-    "name": "EMAIL_HOST_PASSWORD",
-    "default": "",
-    "description": "Email host password",
-    "required": false
-  },
-  {
-    "name": "EMAIL_USE_TLS",
-    "default": "",
-    "description": "Email use TLS",
-    "required": false
-  },
-  {
-    "name": "INTEGRATIONS_ALLOW_PRIVATE_IPS",
-    "default": "",
-    "description": "Integrations allow private IPs",
-    "required": false
-  },
-  {
-    "name": "PING_EMAIL_DOMAIN",
-    "default": "",
-    "description": "Ping email domain",
-    "required": false
-  },
-  {
-    "name": "RP_ID",
-    "default": "",
-    "description": "RP ID",
-    "required": false
-  },
-  {
-    "name": "SECRET_KEY",
-    "default": "",
-    "description": "Secret key",
-    "required": false
-  },
-  {
-    "name": "SITE_LOGO_URL",
-    "default": "",
-    "description": "Site logo URL",
-    "required": false
-  }
-],
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Process UID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Process GID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Timezone",
+        "required": false
+      },
+      {
+        "name": "SITE_ROOT",
+        "default": "",
+        "description": "Site root",
+        "required": false
+      },
+      {
+        "name": "SITE_NAME",
+        "default": "",
+        "description": "Site name",
+        "required": false
+      },
+      {
+        "name": "SUPERUSER_EMAIL",
+        "default": "",
+        "description": "Superuser email",
+        "required": false
+      },
+      {
+        "name": "SUPERUSER_PASSWORD",
+        "default": "",
+        "description": "Superuser password",
+        "required": false
+      },
+      {
+        "name": "ALLOWED_HOSTS",
+        "default": "",
+        "description": "Allowed hosts",
+        "required": false
+      },
+      {
+        "name": "APPRISE_ENABLED",
+        "default": "",
+        "description": "Apprise enabled",
+        "required": false
+      },
+      {
+        "name": "CSRF_TRUSTED_ORIGINS",
+        "default": "",
+        "description": "CSRF trusted origins",
+        "required": false
+      },
+      {
+        "name": "DEBUG",
+        "default": "",
+        "description": "Debug",
+        "required": false
+      },
+      {
+        "name": "DEFAULT_FROM_EMAIL",
+        "default": "",
+        "description": "Default from email",
+        "required": false
+      },
+      {
+        "name": "EMAIL_HOST",
+        "default": "",
+        "description": "Email host",
+        "required": false
+      },
+      {
+        "name": "EMAIL_PORT",
+        "default": "",
+        "description": "Email port",
+        "required": false
+      },
+      {
+        "name": "EMAIL_HOST_USER",
+        "default": "",
+        "description": "Email host user",
+        "required": false
+      },
+      {
+        "name": "EMAIL_HOST_PASSWORD",
+        "default": "",
+        "description": "Email host password",
+        "required": false
+      },
+      {
+        "name": "EMAIL_USE_TLS",
+        "default": "",
+        "description": "Email use TLS",
+        "required": false
+      },
+      {
+        "name": "INTEGRATIONS_ALLOW_PRIVATE_IPS",
+        "default": "",
+        "description": "Integrations allow private IPs",
+        "required": false
+      },
+      {
+        "name": "PING_EMAIL_DOMAIN",
+        "default": "",
+        "description": "Ping email domain",
+        "required": false
+      },
+      {
+        "name": "RP_ID",
+        "default": "",
+        "description": "RP ID",
+        "required": false
+      },
+      {
+        "name": "SECRET_KEY",
+        "default": "",
+        "description": "Secret key",
+        "required": false
+      },
+      {
+        "name": "SITE_LOGO_URL",
+        "default": "",
+        "description": "Site logo URL",
+        "required": false
+      }
+    ],
     "volumes": [
-  {
-    "container": "/config",
-    "description": "Container Path: /config"
-  }
-],
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
     "ports": [
-  {
-    "container": "8000",
-    "host": "8000",
-    "protocol": "tcp",
-    "description": "Container Port: 8000"
-  },
-  {
-    "container": "2525",
-    "host": "2525",
-    "protocol": "tcp",
-    "description": "Container Port: 2525"
-  }
-]
+      {
+        "container": "8000",
+        "host": "8000",
+        "protocol": "tcp",
+        "description": "Container Port: 8000"
+      },
+      {
+        "container": "2525",
+        "host": "2525",
+        "protocol": "tcp",
+        "description": "Container Port: 2525"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -203,21 +203,30 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8000"
+      "port_map": "8000",
+      "volume_mappings": {
+        "healthchecks_config": "/DATA/AppData/$AppID/config"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "healthchecks_config": "config"
+      }
     },
     "dockge": {
       "supported": true,
@@ -230,7 +239,10 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "volume_mappings": {
+        "healthchecks_config": "config"
+      }
     }
   },
   "tags": [

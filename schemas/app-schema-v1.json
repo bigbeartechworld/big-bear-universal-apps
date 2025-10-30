@@ -376,6 +376,13 @@
             "youtube": {
               "type": "string",
               "description": "Platform-specific YouTube video URL"
+            },
+            "volume_mappings": {
+              "type": "object",
+              "description": "Custom volume path mappings for Runtipi. Maps named volume names to Runtipi data directory paths (e.g., {'app_data_config': 'data/config'}).",
+              "additionalProperties": {
+                "type": "string"
+              }
             }
           }
         },
@@ -436,6 +443,13 @@
             "youtube": {
               "type": "string",
               "description": "Platform-specific YouTube video URL"
+            },
+            "volume_mappings": {
+              "type": "object",
+              "description": "Custom volume path mappings for Umbrel. Maps named volume names to Umbrel data directory paths (e.g., {'audiobookshelf_media_data_books_spoken': 'media/data/books/spoken'}). Used to preserve backward compatibility with existing Umbrel app structures or specify custom hierarchical paths.",
+              "additionalProperties": {
+                "type": "string"
+              }
             }
           }
         }
