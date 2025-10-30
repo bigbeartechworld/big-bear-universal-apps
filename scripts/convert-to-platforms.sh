@@ -1335,6 +1335,8 @@ convert_to_cosmos() {
     
     # Create cosmos-compose.json with routes
     local cosmos_port="${PORT_COSMOS:-$APP_DEFAULT_PORT}"
+    # Ensure port is a single value (take first port if multiple)
+    cosmos_port=$(echo "$cosmos_port" | head -1 | tr -d '\n\r')
     local routes=""
     if [[ -n "$cosmos_port" ]]; then
         routes="\"routes\": [
