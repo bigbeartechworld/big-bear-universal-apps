@@ -308,7 +308,17 @@ finalize_portainer_master_template() {
 }
 EOF
     rm -f "${master_file}.bak"
-    print_success "Finalized Portainer master template"
+    
+    # Validate JSON syntax
+    if ! jq empty "$master_file" 2>/dev/null; then
+        print_error "Generated Portainer templates.json is invalid JSON!"
+        print_error "Validation error:"
+        jq empty "$master_file" 2>&1 | head -5
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    print_success "Finalized Portainer master template ($(jq '.templates | length' "$master_file") templates)"
 }
 
 # Create a placeholder logo.jpg image
@@ -803,8 +813,20 @@ $env_json
 EOF
 )
     
-    # Save individual template
-    echo "{\"version\": \"3\", \"templates\": [$template_entry]}" > "$output_dir/template.json"
+    # Save individual template and validate JSON
+    local temp_template="{\"version\": \"3\", \"templates\": [$template_entry]}"
+    echo "$temp_template" > "$output_dir/template.json"
+    
+    # Validate individual template JSON
+    if ! jq empty "$output_dir/template.json" 2>/dev/null; then
+        print_error "Generated template for $app_name has invalid JSON!"
+        print_error "Validation error:"
+        jq empty "$output_dir/template.json" 2>&1
+        print_error "Template entry that failed:"
+        echo "$template_entry" | head -20
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
     
     # Append to master template
     echo "$template_entry," >> "$master_file"
