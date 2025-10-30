@@ -290,7 +290,7 @@ jobs:
           TEST_COMMAND=""
           
           case "${{ matrix.platform }}" in
-            casaos|runtipi|umbrel)
+            casaos|runtipi|umbrel|cosmos|dockge|portainer)
               # These platforms have test suites
               if [ -f "package.json" ] && grep -q '"test"' package.json; then
                 HAS_TESTS=true
@@ -306,11 +306,6 @@ jobs:
                   TEST_COMMAND="npm install && npm test"
                 fi
               fi
-              ;;
-            portainer|dockge|cosmos)
-              echo "ℹ️ No test suite available for ${{ matrix.platform }} - skipping tests"
-              echo "test_status=skipped" >> $GITHUB_OUTPUT
-              exit 0
               ;;
           esac
           
