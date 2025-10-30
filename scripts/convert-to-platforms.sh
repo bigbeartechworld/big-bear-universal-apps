@@ -217,12 +217,15 @@ load_app_metadata() {
     
     if [[ ! -f "$app_json" ]]; then
         print_error "app.json not found in $app_dir"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         return 1
     fi
     
     # Validate JSON syntax
     if ! jq empty "$app_json" 2>/dev/null; then
         print_error "Invalid JSON in $app_json"
+        jq empty "$app_json" 2>&1 | head -5
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         return 1
     fi
     
@@ -279,6 +282,31 @@ load_app_metadata() {
     export PORT_COSMOS=$(jq -r '.compatibility.cosmos.port // empty' "$app_json")
     export PORT_UMBREL=$(jq -r '.compatibility.umbrel.port // empty' "$app_json")
     export COMPAT_UMBREL=$(jq -r '.compatibility.umbrel.supported // true' "$app_json")
+    
+    # Validate required fields
+    if [[ -z "$APP_ID" ]] || [[ "$APP_ID" == "null" ]]; then
+        print_error "Missing required field: metadata.id in $app_json"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if [[ -z "$APP_NAME" ]] || [[ "$APP_NAME" == "null" ]]; then
+        print_error "Missing required field: metadata.name in $app_json"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if [[ -z "$APP_VERSION" ]] || [[ "$APP_VERSION" == "null" ]]; then
+        print_error "Missing required field: metadata.version in $app_json"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if [[ -z "$APP_MAIN_IMAGE" ]] || [[ "$APP_MAIN_IMAGE" == "null" ]]; then
+        print_error "Missing required field: technical.main_image in $app_json"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
 }
 
 # Get folder name for a specific platform (with override support)
@@ -361,22 +389,35 @@ validate_app() {
     
     if [[ ! -d "$app_dir" ]]; then
         print_error "App directory not found: $app_dir"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         return 1
     fi
     
     if [[ ! -f "$app_dir/app.json" ]]; then
         print_error "app.json not found for $app_name"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         return 1
     fi
     
     if [[ ! -f "$app_dir/docker-compose.yml" ]]; then
         print_error "docker-compose.yml not found for $app_name"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         return 1
     fi
     
     # Validate JSON syntax
     if ! jq empty "$app_dir/app.json" 2>/dev/null; then
         print_error "Invalid JSON in app.json for $app_name"
+        jq empty "$app_dir/app.json" 2>&1 | head -5
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    # Validate YAML syntax for docker-compose.yml
+    if ! validate_yaml_syntax "$app_dir/docker-compose.yml"; then
+        print_error "Invalid YAML in docker-compose.yml for $app_name"
+        yq eval '.' "$app_dir/docker-compose.yml" 2>&1 | head -10
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         return 1
     fi
     
@@ -758,6 +799,15 @@ convert_to_portainer() {
     
     # Create docker-compose with named volumes
     adjust_compose_for_platform "$app_dir/docker-compose.yml" "$output_dir/docker-compose.yml" "portainer" "$app_name"
+    
+    # Validate docker-compose.yml
+    if ! validate_yaml_syntax "$output_dir/docker-compose.yml"; then
+        print_error "Generated docker-compose.yml for $app_name (Portainer) has invalid YAML!"
+        print_error "File: $output_dir/docker-compose.yml"
+        yq eval '.' "$output_dir/docker-compose.yml" 2>&1 | head -10
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
     
     # Get template ID
     local template_id
@@ -1428,6 +1478,7 @@ convert_to_umbrel() {
     # Validate app_name is not empty
     if [[ -z "$app_name" ]]; then
         print_error "Cannot convert to Umbrel: app_name is empty"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         return 1
     fi
     
@@ -1442,6 +1493,7 @@ convert_to_umbrel() {
     # Final validation: ensure folder_name is valid
     if [[ -z "$folder_name" ]] || [[ "$folder_name" == "null" ]]; then
         print_error "Cannot convert $app_name to Umbrel: invalid folder_name"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         return 1
     fi
     
@@ -1718,6 +1770,7 @@ EOF
         print_error "folder_name was: '$folder_name'"
         print_error "Contents of umbrel-app.yml:"
         head -20 "$output_dir/umbrel-app.yml" | sed 's/^/  /'
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         rm -rf "$output_dir"
         return 1
     fi
