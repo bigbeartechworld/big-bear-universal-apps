@@ -720,10 +720,33 @@ convert_to_portainer() {
         echo "2" > "$OUTPUT_DIR/portainer/.template_id_counter"
     fi
     
-    # Escape JSON strings
-    local title_json="${APP_NAME//\"/\\\"}"
-    local desc_json="${APP_DESCRIPTION//\"/\\\"}"
-    local tag_json="${APP_TAGLINE//\"/\\\"}"
+    # Escape JSON strings - order matters! Backslashes first, then quotes, then control chars
+    local title_json="${APP_NAME}"
+    local desc_json="${APP_DESCRIPTION}"
+    local tag_json="${APP_TAGLINE}"
+    
+    # Escape backslashes first
+    title_json="${title_json//\\/\\\\}"
+    desc_json="${desc_json//\\/\\\\}"
+    tag_json="${tag_json//\\/\\\\}"
+    
+    # Then escape quotes
+    title_json="${title_json//\"/\\\"}"
+    desc_json="${desc_json//\"/\\\"}"
+    tag_json="${tag_json//\"/\\\"}"
+    
+    # Then escape control characters
+    title_json="${title_json//$'\n'/\\n}"
+    title_json="${title_json//$'\r'/\\r}"
+    title_json="${title_json//$'\t'/\\t}"
+    
+    desc_json="${desc_json//$'\n'/\\n}"
+    desc_json="${desc_json//$'\r'/\\r}"
+    desc_json="${desc_json//$'\t'/\\t}"
+    
+    tag_json="${tag_json//$'\n'/\\n}"
+    tag_json="${tag_json//$'\r'/\\r}"
+    tag_json="${tag_json//$'\t'/\\t}"
     
     # Build environment variables JSON
     local env_json=""
@@ -732,9 +755,23 @@ convert_to_portainer() {
         local env_name=$(echo "$APP_ENV_VARS" | jq -r ".[$i].name")
         local env_default=$(echo "$APP_ENV_VARS" | jq -r ".[$i].default // \"\"")
         local env_desc=$(echo "$APP_ENV_VARS" | jq -r ".[$i].description")
+        
+        # Escape backslashes first
         env_default="${env_default//\\/\\\\}"
+        env_desc="${env_desc//\\/\\\\}"
+        
+        # Then escape quotes
         env_default="${env_default//\"/\\\"}"
         env_desc="${env_desc//\"/\\\"}"
+        
+        # Then escape control characters
+        env_default="${env_default//$'\n'/\\n}"
+        env_default="${env_default//$'\r'/\\r}"
+        env_default="${env_default//$'\t'/\\t}"
+        
+        env_desc="${env_desc//$'\n'/\\n}"
+        env_desc="${env_desc//$'\r'/\\r}"
+        env_desc="${env_desc//$'\t'/\\t}"
         
         if [[ $i -gt 0 ]]; then
             env_json+=",
