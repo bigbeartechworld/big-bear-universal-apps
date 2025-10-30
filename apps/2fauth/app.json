@@ -22,7 +22,7 @@
     "logo": "https://user-images.githubusercontent.com/1289128/276442834-bdb528d0-78fa-4155-ba15-7165d88b9836.png"
   },
   "resources": {
-    "youtube": "https://youtu.be/yCnjxSryD_U",
+    "youtube": "",
     "documentation": "",
     "repository": "",
     "issues": "",
@@ -74,7 +74,8 @@
       "port_map": "8000",
       "volume_mappings": {
         "2fauth_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "youtube": "https://youtu.be/yCnjxSryD_U"
     },
     "portainer": {
       "supported": true,
