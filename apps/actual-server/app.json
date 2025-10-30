@@ -66,7 +66,7 @@
       "supported": true,
       "port_map": "5006",
       "volume_mappings": {
-        "actual-server_data": "/DATA/AppData/$AppID/data"
+        "actual-server_data": "/DATA/AppData/$AppID"
       }
     },
     "portainer": {
