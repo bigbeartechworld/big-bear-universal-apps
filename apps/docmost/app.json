@@ -101,7 +101,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3000"
+      "port_map": "3000",
+      "volume_mappings": {
+        "docmost_data_pgdata": "/DATA/AppData/$AppID/data/pgdata",
+        "docmost_data_redis": "/DATA/AppData/$AppID/data/redis",
+        "docmost_data_storage": "/DATA/AppData/$AppID/data/storage"
+      }
     },
     "portainer": {
       "supported": true,
@@ -110,7 +115,12 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "docmost_data_pgdata": "data/pgdata",
+        "docmost_data_redis": "data/redis",
+        "docmost_data_storage": "data/storage"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -118,16 +128,31 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "docmost_data_pgdata": "data/pgdata",
+        "docmost_data_redis": "data/redis",
+        "docmost_data_storage": "data/storage"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "docmost_data_pgdata": "data/pgdata",
+        "docmost_data_redis": "data/redis",
+        "docmost_data_storage": "data/storage"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "docmost_data_pgdata": "data/pgdata",
+        "docmost_data_redis": "data/redis",
+        "docmost_data_storage": "data/storage"
+      }
     },
     "umbrel": {
       "supported": true,

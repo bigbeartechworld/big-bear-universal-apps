@@ -75,7 +75,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "5678"
+      "port_map": "5678",
+      "volume_mappings": {
+        "n8n_.n8n": "/DATA/AppData/$AppID/.n8n",
+        "n8n_db_init-data.sh": "/DATA/AppData/$AppID/db/init-data.sh",
+        "n8n_pgdata": "/DATA/AppData/$AppID/pgdata"
+      }
     },
     "portainer": {
       "supported": true,
@@ -84,7 +89,12 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "n8n_.n8n": ".n8n",
+        "n8n_db_init-data.sh": "db/init-data.sh",
+        "n8n_pgdata": "pgdata"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -92,16 +102,31 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "n8n_.n8n": ".n8n",
+        "n8n_db_init-data.sh": "db/init-data.sh",
+        "n8n_pgdata": "pgdata"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "n8n_.n8n": ".n8n",
+        "n8n_db_init-data.sh": "db/init-data.sh",
+        "n8n_pgdata": "pgdata"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "n8n_.n8n": ".n8n",
+        "n8n_db_init-data.sh": "db/init-data.sh",
+        "n8n_pgdata": "pgdata"
+      }
     },
     "umbrel": {
       "supported": true,

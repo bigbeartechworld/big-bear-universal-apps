@@ -101,7 +101,14 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8888"
+      "port_map": "8888",
+      "volume_mappings": {
+        "viseron_config": "/DATA/AppData/$AppID/config",
+        "viseron_event_clips": "/DATA/AppData/$AppID/event/clips",
+        "viseron_segments": "/DATA/AppData/$AppID/segments",
+        "viseron_snapshots": "/DATA/AppData/$AppID/snapshots",
+        "viseron_thumbnails": "/DATA/AppData/$AppID/thumbnails"
+      }
     },
     "portainer": {
       "supported": true,
@@ -110,7 +117,14 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "viseron_config": "config",
+        "viseron_event_clips": "event/clips",
+        "viseron_segments": "segments",
+        "viseron_snapshots": "snapshots",
+        "viseron_thumbnails": "thumbnails"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -118,16 +132,37 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "viseron_config": "config",
+        "viseron_event_clips": "event/clips",
+        "viseron_segments": "segments",
+        "viseron_snapshots": "snapshots",
+        "viseron_thumbnails": "thumbnails"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "viseron_config": "config",
+        "viseron_event_clips": "event/clips",
+        "viseron_segments": "segments",
+        "viseron_snapshots": "snapshots",
+        "viseron_thumbnails": "thumbnails"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "viseron_config": "config",
+        "viseron_event_clips": "event/clips",
+        "viseron_segments": "segments",
+        "viseron_snapshots": "snapshots",
+        "viseron_thumbnails": "thumbnails"
+      }
     },
     "umbrel": {
       "supported": true,

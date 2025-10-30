@@ -72,7 +72,13 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "9000"
+      "port_map": "9000",
+      "volume_mappings": {
+        "libredesk_config": "/DATA/AppData/$AppID/config",
+        "libredesk_data_postgres": "/DATA/AppData/$AppID/data/postgres",
+        "libredesk_data_redis": "/DATA/AppData/$AppID/data/redis",
+        "libredesk_uploads": "/DATA/AppData/$AppID/uploads"
+      }
     },
     "portainer": {
       "supported": true,
@@ -81,7 +87,13 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "libredesk_config": "config",
+        "libredesk_data_postgres": "data/postgres",
+        "libredesk_data_redis": "data/redis",
+        "libredesk_uploads": "uploads"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -89,16 +101,34 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "libredesk_config": "config",
+        "libredesk_data_postgres": "data/postgres",
+        "libredesk_data_redis": "data/redis",
+        "libredesk_uploads": "uploads"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "libredesk_config": "config",
+        "libredesk_data_postgres": "data/postgres",
+        "libredesk_data_redis": "data/redis",
+        "libredesk_uploads": "uploads"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "libredesk_config": "config",
+        "libredesk_data_postgres": "data/postgres",
+        "libredesk_data_redis": "data/redis",
+        "libredesk_uploads": "uploads"
+      }
     },
     "umbrel": {
       "supported": true,

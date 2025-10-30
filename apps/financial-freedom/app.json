@@ -257,7 +257,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8443"
+      "port_map": "8443",
+      "volume_mappings": {
+        "financial-freedom_logs": "/DATA/AppData/$AppID/logs",
+        "financial-freedom_mariadb": "/DATA/AppData/$AppID/mariadb",
+        "financial-freedom_sessions": "/DATA/AppData/$AppID/sessions"
+      }
     },
     "portainer": {
       "supported": true,
@@ -266,7 +271,12 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "financial-freedom_logs": "logs",
+        "financial-freedom_mariadb": "mariadb",
+        "financial-freedom_sessions": "sessions"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -274,16 +284,31 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "financial-freedom_logs": "logs",
+        "financial-freedom_mariadb": "mariadb",
+        "financial-freedom_sessions": "sessions"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "financial-freedom_logs": "logs",
+        "financial-freedom_mariadb": "mariadb",
+        "financial-freedom_sessions": "sessions"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "financial-freedom_logs": "logs",
+        "financial-freedom_mariadb": "mariadb",
+        "financial-freedom_sessions": "sessions"
+      }
     },
     "umbrel": {
       "supported": true,

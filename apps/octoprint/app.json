@@ -64,7 +64,10 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "1080"
+      "port_map": "1080",
+      "volume_mappings": {
+        "octoprint_octoprint": "/DATA/AppData/$AppID/octoprint"
+      }
     },
     "portainer": {
       "supported": true,
@@ -73,7 +76,10 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "octoprint_octoprint": "octoprint"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -81,16 +87,25 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "octoprint_octoprint": "octoprint"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "octoprint_octoprint": "octoprint"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "octoprint_octoprint": "octoprint"
+      }
     },
     "umbrel": {
       "supported": true,

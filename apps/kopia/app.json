@@ -84,7 +84,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "51515"
+      "port_map": "51515",
+      "volume_mappings": {
+        "kopia_config": "/DATA/AppData/$AppID/config",
+        "kopia_home": "/DATA/AppData/$AppID/home",
+        "kopia_repository": "/DATA/AppData/$AppID/repository"
+      }
     },
     "portainer": {
       "supported": true,
@@ -93,7 +98,12 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "kopia_config": "config",
+        "kopia_home": "home",
+        "kopia_repository": "repository"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -101,16 +111,31 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "kopia_config": "config",
+        "kopia_home": "home",
+        "kopia_repository": "repository"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "kopia_config": "config",
+        "kopia_home": "home",
+        "kopia_repository": "repository"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "kopia_config": "config",
+        "kopia_home": "home",
+        "kopia_repository": "repository"
+      }
     },
     "umbrel": {
       "supported": true,

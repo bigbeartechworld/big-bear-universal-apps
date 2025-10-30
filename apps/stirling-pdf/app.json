@@ -121,7 +121,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080"
+      "port_map": "8080",
+      "volume_mappings": {
+        "stirling-pdf_configs": "/DATA/AppData/$AppID/configs",
+        "stirling-pdf_tessdata": "/DATA/AppData/$AppID/tessdata"
+      }
     },
     "portainer": {
       "supported": true,
@@ -130,7 +134,11 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "stirling-pdf_configs": "configs",
+        "stirling-pdf_tessdata": "tessdata"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -138,16 +146,28 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "stirling-pdf_configs": "configs",
+        "stirling-pdf_tessdata": "tessdata"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "stirling-pdf_configs": "configs",
+        "stirling-pdf_tessdata": "tessdata"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "stirling-pdf_configs": "configs",
+        "stirling-pdf_tessdata": "tessdata"
+      }
     },
     "umbrel": {
       "supported": true,

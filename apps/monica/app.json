@@ -64,7 +64,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080"
+      "port_map": "8080",
+      "volume_mappings": {
+        "monica_mysql": "/DATA/AppData/$AppID/mysql",
+        "monica_storage": "/DATA/AppData/$AppID/storage"
+      }
     },
     "portainer": {
       "supported": true,
@@ -73,7 +77,11 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "monica_mysql": "mysql",
+        "monica_storage": "storage"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -81,16 +89,28 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "monica_mysql": "mysql",
+        "monica_storage": "storage"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "monica_mysql": "mysql",
+        "monica_storage": "storage"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "monica_mysql": "mysql",
+        "monica_storage": "storage"
+      }
     },
     "umbrel": {
       "supported": true,

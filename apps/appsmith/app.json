@@ -70,7 +70,10 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "1080"
+      "port_map": "1080",
+      "volume_mappings": {
+        "appsmith_stacks": "/DATA/AppData/$AppID/stacks"
+      }
     },
     "portainer": {
       "supported": true,
@@ -79,7 +82,10 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "appsmith_stacks": "stacks"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -87,16 +93,25 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "appsmith_stacks": "stacks"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "appsmith_stacks": "stacks"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "appsmith_stacks": "stacks"
+      }
     },
     "umbrel": {
       "supported": true,

@@ -68,7 +68,10 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "7575"
+      "port_map": "7575",
+      "volume_mappings": {
+        "homarr-v1_appdata": "/DATA/AppData/$AppID/appdata"
+      }
     },
     "portainer": {
       "supported": true,
@@ -77,7 +80,10 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "homarr-v1_appdata": "appdata"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -85,16 +91,25 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "homarr-v1_appdata": "appdata"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "homarr-v1_appdata": "appdata"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "homarr-v1_appdata": "appdata"
+      }
     },
     "umbrel": {
       "supported": true,

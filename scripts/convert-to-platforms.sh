@@ -815,6 +815,9 @@ convert_to_runtipi() {
     local volume_names=$(yq eval '.volumes | keys | .[]' "$compose_file" 2>/dev/null || echo "")
     
     if [[ -n "$volume_names" ]]; then
+        # Load platform-specific volume mappings from app.json if they exist
+        local volume_mappings_json=$(jq -c '.compatibility.runtipi.volume_mappings // {}' "$app_dir/app.json" 2>/dev/null)
+        
         # Get all service names
         local all_services=$(yq eval '.services | keys | .[]' "$compose_file")
         
@@ -836,8 +839,20 @@ convert_to_runtipi() {
                     if [[ -n "$vol_source" && "$vol_source" != "null" ]]; then
                         # Long-form syntax
                         if [[ "$vol_source" == "$vol_name" ]]; then
+                            # Check if there's a custom mapping for this volume
+                            local custom_mapping=$(echo "$volume_mappings_json" | jq -r --arg vol "$vol_name" '.[$vol] // empty')
+                            
+                            local runtipi_source
+                            if [[ -n "$custom_mapping" && "$custom_mapping" != "null" ]]; then
+                                # Use the custom mapping from app.json
+                                runtipi_source="\${APP_DATA_DIR}/${custom_mapping}"
+                            else
+                                # Fall back to default conversion logic
+                                runtipi_source="\${APP_DATA_DIR}/data/${vol_name}"
+                            fi
+                            
                             # This is a named volume reference, convert to ${APP_DATA_DIR}
-                            yq eval ".services.$service_name.volumes[$j].source = \"\${APP_DATA_DIR}/data/${vol_name}\"" -i "$compose_file"
+                            yq eval ".services.$service_name.volumes[$j].source = \"$runtipi_source\"" -i "$compose_file"
                         fi
                     else
                         # Short-form syntax
@@ -857,8 +872,17 @@ convert_to_runtipi() {
                                 container_path="${container_path%:rw}"
                             fi
                             
-                            # Convert to ${APP_DATA_DIR} format
-                            local runtipi_path="\${APP_DATA_DIR}/data/${vol_name}:${container_path}${mount_options}"
+                            # Check if there's a custom mapping for this volume
+                            local custom_mapping=$(echo "$volume_mappings_json" | jq -r --arg vol "$vol_name" '.[$vol] // empty')
+                            
+                            local runtipi_path
+                            if [[ -n "$custom_mapping" && "$custom_mapping" != "null" ]]; then
+                                # Use the custom mapping from app.json
+                                runtipi_path="\${APP_DATA_DIR}/${custom_mapping}:${container_path}${mount_options}"
+                            else
+                                # Fall back to default conversion logic
+                                runtipi_path="\${APP_DATA_DIR}/data/${vol_name}:${container_path}${mount_options}"
+                            fi
                             
                             # Replace the volume entry
                             yq eval ".services.$service_name.volumes[$j] = \"$runtipi_path\"" -i "$compose_file"

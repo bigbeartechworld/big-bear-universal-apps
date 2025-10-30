@@ -223,7 +223,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "2342"
+      "port_map": "2342",
+      "volume_mappings": {
+        "photoprism_mysql": "/DATA/AppData/$AppID/mysql",
+        "photoprism_originals": "/DATA/AppData/$AppID/originals",
+        "photoprism_storage": "/DATA/AppData/$AppID/storage"
+      }
     },
     "portainer": {
       "supported": true,
@@ -232,7 +237,12 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "photoprism_mysql": "mysql",
+        "photoprism_originals": "originals",
+        "photoprism_storage": "storage"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -240,16 +250,31 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "photoprism_mysql": "mysql",
+        "photoprism_originals": "originals",
+        "photoprism_storage": "storage"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "photoprism_mysql": "mysql",
+        "photoprism_originals": "originals",
+        "photoprism_storage": "storage"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "photoprism_mysql": "mysql",
+        "photoprism_originals": "originals",
+        "photoprism_storage": "storage"
+      }
     },
     "umbrel": {
       "supported": true,

@@ -69,7 +69,10 @@
     "casaos": {
       "supported": true,
       "port_map": "3000",
-      "folder_name": "homepage"
+      "folder_name": "homepage",
+      "volume_mappings": {
+        "Homepage_config": "/DATA/AppData/$AppID/Homepage/config"
+      }
     },
     "portainer": {
       "supported": true,
@@ -79,7 +82,10 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "folder_name": "homepage"
+      "folder_name": "homepage",
+      "volume_mappings": {
+        "Homepage_config": "Homepage/config"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -88,18 +94,27 @@
         "amd64",
         "arm64"
       ],
-      "folder_name": "homepage"
+      "folder_name": "homepage",
+      "volume_mappings": {
+        "Homepage_config": "Homepage/config"
+      }
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "folder_name": "homepage"
+      "folder_name": "homepage",
+      "volume_mappings": {
+        "Homepage_config": "Homepage/config"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "folder_name": "homepage"
+      "folder_name": "homepage",
+      "volume_mappings": {
+        "Homepage_config": "Homepage/config"
+      }
     },
     "umbrel": {
       "supported": true,

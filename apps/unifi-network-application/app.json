@@ -189,7 +189,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8443"
+      "port_map": "8443",
+      "volume_mappings": {
+        "unifi-network-application_config": "/DATA/AppData/$AppID/config",
+        "unifi-network-application_db_data": "/DATA/AppData/$AppID/db/data",
+        "unifi-network-application_db_init-mongo.js": "/DATA/AppData/$AppID/db/init-mongo.js"
+      }
     },
     "portainer": {
       "supported": true,
@@ -198,7 +203,12 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "unifi-network-application_config": "config",
+        "unifi-network-application_db_data": "db/data",
+        "unifi-network-application_db_init-mongo.js": "db/init-mongo.js"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -206,16 +216,31 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "unifi-network-application_config": "config",
+        "unifi-network-application_db_data": "db/data",
+        "unifi-network-application_db_init-mongo.js": "db/init-mongo.js"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "unifi-network-application_config": "config",
+        "unifi-network-application_db_data": "db/data",
+        "unifi-network-application_db_init-mongo.js": "db/init-mongo.js"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "unifi-network-application_config": "config",
+        "unifi-network-application_db_data": "db/data",
+        "unifi-network-application_db_init-mongo.js": "db/init-mongo.js"
+      }
     },
     "umbrel": {
       "supported": true,

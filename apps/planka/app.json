@@ -76,7 +76,13 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3000"
+      "port_map": "3000",
+      "volume_mappings": {
+        "planka_attachments": "/DATA/AppData/$AppID/attachments",
+        "planka_postgresql": "/DATA/AppData/$AppID/postgresql",
+        "planka_project-background-images": "/DATA/AppData/$AppID/project-background-images",
+        "planka_user-avatars": "/DATA/AppData/$AppID/user-avatars"
+      }
     },
     "portainer": {
       "supported": true,
@@ -85,7 +91,13 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "planka_attachments": "attachments",
+        "planka_postgresql": "postgresql",
+        "planka_project-background-images": "project-background-images",
+        "planka_user-avatars": "user-avatars"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -93,16 +105,34 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "planka_attachments": "attachments",
+        "planka_postgresql": "postgresql",
+        "planka_project-background-images": "project-background-images",
+        "planka_user-avatars": "user-avatars"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "planka_attachments": "attachments",
+        "planka_postgresql": "postgresql",
+        "planka_project-background-images": "project-background-images",
+        "planka_user-avatars": "user-avatars"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "planka_attachments": "attachments",
+        "planka_postgresql": "postgresql",
+        "planka_project-background-images": "project-background-images",
+        "planka_user-avatars": "user-avatars"
+      }
     },
     "umbrel": {
       "supported": true,

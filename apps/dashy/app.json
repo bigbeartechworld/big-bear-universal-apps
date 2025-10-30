@@ -72,7 +72,10 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "4000"
+      "port_map": "4000",
+      "volume_mappings": {
+        "dashy_public": "/DATA/AppData/$AppID/public"
+      }
     },
     "portainer": {
       "supported": true,
@@ -81,7 +84,10 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "dashy_public": "public"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -90,16 +96,25 @@
         "amd64",
         "armv7",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "dashy_public": "public"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "dashy_public": "public"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "dashy_public": "public"
+      }
     },
     "umbrel": {
       "supported": true,

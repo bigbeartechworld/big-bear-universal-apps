@@ -21,9 +21,9 @@ on:
         required: false
         type: string
       platforms:
-        description: 'Platforms to sync (comma-separated: portainer,runtipi,dockge,cosmos,umbrel)'
+        description: 'Platforms to sync (comma-separated: casaos,portainer,runtipi,dockge,cosmos,umbrel)'
         required: false
-        default: 'all'
+        default: 'casaos,portainer,dockge'
         type: string
       sync:
         description: 'Sync to platform repositories'

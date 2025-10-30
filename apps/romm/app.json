@@ -187,7 +187,16 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "1080"
+      "port_map": "1080",
+      "volume_mappings": {
+        "romm_assets": "/DATA/AppData/$AppID/assets",
+        "romm_config": "/DATA/AppData/$AppID/config",
+        "romm_library": "/DATA/AppData/$AppID/library",
+        "romm_logs": "/DATA/AppData/$AppID/logs",
+        "romm_mysql": "/DATA/AppData/$AppID/mysql",
+        "romm_redis-data": "/DATA/AppData/$AppID/redis-data",
+        "romm_resources": "/DATA/AppData/$AppID/resources"
+      }
     },
     "portainer": {
       "supported": true,
@@ -196,7 +205,16 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "romm_assets": "assets",
+        "romm_config": "config",
+        "romm_library": "library",
+        "romm_logs": "logs",
+        "romm_mysql": "mysql",
+        "romm_redis-data": "redis-data",
+        "romm_resources": "resources"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -204,16 +222,43 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "romm_assets": "assets",
+        "romm_config": "config",
+        "romm_library": "library",
+        "romm_logs": "logs",
+        "romm_mysql": "mysql",
+        "romm_redis-data": "redis-data",
+        "romm_resources": "resources"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "romm_assets": "assets",
+        "romm_config": "config",
+        "romm_library": "library",
+        "romm_logs": "logs",
+        "romm_mysql": "mysql",
+        "romm_redis-data": "redis-data",
+        "romm_resources": "resources"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "romm_assets": "assets",
+        "romm_config": "config",
+        "romm_library": "library",
+        "romm_logs": "logs",
+        "romm_mysql": "mysql",
+        "romm_redis-data": "redis-data",
+        "romm_resources": "resources"
+      }
     },
     "umbrel": {
       "supported": true,

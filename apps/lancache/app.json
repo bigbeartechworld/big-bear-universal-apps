@@ -73,7 +73,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080"
+      "port_map": "8080",
+      "volume_mappings": {
+        "lancache_cache": "/DATA/AppData/$AppID/cache",
+        "lancache_logs": "/DATA/AppData/$AppID/logs"
+      }
     },
     "portainer": {
       "supported": true,
@@ -82,23 +86,39 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "lancache_cache": "cache",
+        "lancache_logs": "logs"
+      }
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
         "amd64"
-      ]
+      ],
+      "volume_mappings": {
+        "lancache_cache": "cache",
+        "lancache_logs": "logs"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "lancache_cache": "cache",
+        "lancache_logs": "logs"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "lancache_cache": "cache",
+        "lancache_logs": "logs"
+      }
     },
     "umbrel": {
       "supported": true,

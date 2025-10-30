@@ -207,7 +207,14 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "1180"
+      "port_map": "1180",
+      "volume_mappings": {
+        "pterodactyl-panel_certs_": "/DATA/AppData/$AppID/certs/",
+        "pterodactyl-panel_database": "/DATA/AppData/$AppID/database",
+        "pterodactyl-panel_logs_": "/DATA/AppData/$AppID/logs/",
+        "pterodactyl-panel_nginx_": "/DATA/AppData/$AppID/nginx/",
+        "pterodactyl-panel_var_": "/DATA/AppData/$AppID/var/"
+      }
     },
     "portainer": {
       "supported": true,
@@ -216,7 +223,14 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "pterodactyl-panel_certs_": "certs/",
+        "pterodactyl-panel_database": "database",
+        "pterodactyl-panel_logs_": "logs/",
+        "pterodactyl-panel_nginx_": "nginx/",
+        "pterodactyl-panel_var_": "var/"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -224,16 +238,37 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "pterodactyl-panel_certs_": "certs/",
+        "pterodactyl-panel_database": "database",
+        "pterodactyl-panel_logs_": "logs/",
+        "pterodactyl-panel_nginx_": "nginx/",
+        "pterodactyl-panel_var_": "var/"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "pterodactyl-panel_certs_": "certs/",
+        "pterodactyl-panel_database": "database",
+        "pterodactyl-panel_logs_": "logs/",
+        "pterodactyl-panel_nginx_": "nginx/",
+        "pterodactyl-panel_var_": "var/"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "pterodactyl-panel_certs_": "certs/",
+        "pterodactyl-panel_database": "database",
+        "pterodactyl-panel_logs_": "logs/",
+        "pterodactyl-panel_nginx_": "nginx/",
+        "pterodactyl-panel_var_": "var/"
+      }
     },
     "umbrel": {
       "supported": true,

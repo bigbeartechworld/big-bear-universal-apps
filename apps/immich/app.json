@@ -107,7 +107,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "2283"
+      "port_map": "2283",
+      "volume_mappings": {
+        "immich_model-cache": "/DATA/AppData/$AppID/model-cache",
+        "immich_pgdata": "/DATA/AppData/$AppID/pgdata",
+        "immich_upload": "/DATA/AppData/$AppID/upload"
+      }
     },
     "portainer": {
       "supported": true,
@@ -116,7 +121,12 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "immich_model-cache": "model-cache",
+        "immich_pgdata": "pgdata",
+        "immich_upload": "upload"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -124,16 +134,31 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "immich_model-cache": "model-cache",
+        "immich_pgdata": "pgdata",
+        "immich_upload": "upload"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "immich_model-cache": "model-cache",
+        "immich_pgdata": "pgdata",
+        "immich_upload": "upload"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "immich_model-cache": "model-cache",
+        "immich_pgdata": "pgdata",
+        "immich_upload": "upload"
+      }
     },
     "umbrel": {
       "supported": true,

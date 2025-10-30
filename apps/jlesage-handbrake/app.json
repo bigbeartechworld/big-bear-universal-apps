@@ -87,7 +87,13 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "5800"
+      "port_map": "5800",
+      "volume_mappings": {
+        "jlesage-handbrake_config": "/DATA/AppData/$AppID/config",
+        "jlesage-handbrake_output": "/DATA/AppData/$AppID/output",
+        "jlesage-handbrake_storage": "/DATA/AppData/$AppID/storage",
+        "jlesage-handbrake_watch": "/DATA/AppData/$AppID/watch"
+      }
     },
     "portainer": {
       "supported": true,
@@ -96,7 +102,13 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "jlesage-handbrake_config": "config",
+        "jlesage-handbrake_output": "output",
+        "jlesage-handbrake_storage": "storage",
+        "jlesage-handbrake_watch": "watch"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -104,16 +116,34 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "jlesage-handbrake_config": "config",
+        "jlesage-handbrake_output": "output",
+        "jlesage-handbrake_storage": "storage",
+        "jlesage-handbrake_watch": "watch"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "jlesage-handbrake_config": "config",
+        "jlesage-handbrake_output": "output",
+        "jlesage-handbrake_storage": "storage",
+        "jlesage-handbrake_watch": "watch"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "jlesage-handbrake_config": "config",
+        "jlesage-handbrake_output": "output",
+        "jlesage-handbrake_storage": "storage",
+        "jlesage-handbrake_watch": "watch"
+      }
     },
     "umbrel": {
       "supported": true,

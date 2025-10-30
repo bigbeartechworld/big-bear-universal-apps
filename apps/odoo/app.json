@@ -91,7 +91,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8069"
+      "port_map": "8069",
+      "volume_mappings": {
+        "odoo_data_addons": "/DATA/AppData/$AppID/data/addons",
+        "odoo_data_etc": "/DATA/AppData/$AppID/data/etc",
+        "odoo_data_postgresql": "/DATA/AppData/$AppID/data/postgresql"
+      }
     },
     "portainer": {
       "supported": true,
@@ -100,7 +105,12 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "odoo_data_addons": "data/addons",
+        "odoo_data_etc": "data/etc",
+        "odoo_data_postgresql": "data/postgresql"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -108,16 +118,31 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "odoo_data_addons": "data/addons",
+        "odoo_data_etc": "data/etc",
+        "odoo_data_postgresql": "data/postgresql"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "odoo_data_addons": "data/addons",
+        "odoo_data_etc": "data/etc",
+        "odoo_data_postgresql": "data/postgresql"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "odoo_data_addons": "data/addons",
+        "odoo_data_etc": "data/etc",
+        "odoo_data_postgresql": "data/postgresql"
+      }
     },
     "umbrel": {
       "supported": true,

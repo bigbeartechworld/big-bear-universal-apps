@@ -78,7 +78,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3000"
+      "port_map": "3000",
+      "volume_mappings": {
+        "plant-it_certificates": "/DATA/AppData/$AppID/certificates",
+        "plant-it_mysql": "/DATA/AppData/$AppID/mysql",
+        "plant-it_upload-dir": "/DATA/AppData/$AppID/upload-dir"
+      }
     },
     "portainer": {
       "supported": true,
@@ -87,7 +92,12 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "plant-it_certificates": "certificates",
+        "plant-it_mysql": "mysql",
+        "plant-it_upload-dir": "upload-dir"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -95,16 +105,31 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "plant-it_certificates": "certificates",
+        "plant-it_mysql": "mysql",
+        "plant-it_upload-dir": "upload-dir"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "plant-it_certificates": "certificates",
+        "plant-it_mysql": "mysql",
+        "plant-it_upload-dir": "upload-dir"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "plant-it_certificates": "certificates",
+        "plant-it_mysql": "mysql",
+        "plant-it_upload-dir": "upload-dir"
+      }
     },
     "umbrel": {
       "supported": true,

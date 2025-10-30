@@ -90,7 +90,10 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8001"
+      "port_map": "8001",
+      "volume_mappings": {
+        "ihatemoney_mysql": "/DATA/AppData/$AppID/mysql"
+      }
     },
     "portainer": {
       "supported": true,
@@ -99,7 +102,10 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "ihatemoney_mysql": "mysql"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -107,16 +113,25 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "ihatemoney_mysql": "mysql"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "ihatemoney_mysql": "mysql"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "ihatemoney_mysql": "mysql"
+      }
     },
     "umbrel": {
       "supported": true,

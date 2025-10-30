@@ -118,7 +118,12 @@
     "casaos": {
       "supported": true,
       "port_map": "4000",
-      "folder_name": "maybe-finance"
+      "folder_name": "maybe-finance",
+      "volume_mappings": {
+        "MaybeFinance_app-storage": "/DATA/AppData/$AppID/MaybeFinance/app-storage",
+        "MaybeFinance_postgres-data": "/DATA/AppData/$AppID/MaybeFinance/postgres-data",
+        "MaybeFinance_redis-data": "/DATA/AppData/$AppID/MaybeFinance/redis-data"
+      }
     },
     "portainer": {
       "supported": true,
@@ -128,7 +133,12 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "folder_name": "maybe-finance"
+      "folder_name": "maybe-finance",
+      "volume_mappings": {
+        "MaybeFinance_app-storage": "MaybeFinance/app-storage",
+        "MaybeFinance_postgres-data": "MaybeFinance/postgres-data",
+        "MaybeFinance_redis-data": "MaybeFinance/redis-data"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -137,18 +147,33 @@
         "amd64",
         "arm64"
       ],
-      "folder_name": "maybe-finance"
+      "folder_name": "maybe-finance",
+      "volume_mappings": {
+        "MaybeFinance_app-storage": "MaybeFinance/app-storage",
+        "MaybeFinance_postgres-data": "MaybeFinance/postgres-data",
+        "MaybeFinance_redis-data": "MaybeFinance/redis-data"
+      }
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "folder_name": "maybe-finance"
+      "folder_name": "maybe-finance",
+      "volume_mappings": {
+        "MaybeFinance_app-storage": "MaybeFinance/app-storage",
+        "MaybeFinance_postgres-data": "MaybeFinance/postgres-data",
+        "MaybeFinance_redis-data": "MaybeFinance/redis-data"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "folder_name": "maybe-finance"
+      "folder_name": "maybe-finance",
+      "volume_mappings": {
+        "MaybeFinance_app-storage": "MaybeFinance/app-storage",
+        "MaybeFinance_postgres-data": "MaybeFinance/postgres-data",
+        "MaybeFinance_redis-data": "MaybeFinance/redis-data"
+      }
     },
     "umbrel": {
       "supported": true,

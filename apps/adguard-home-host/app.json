@@ -89,7 +89,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "80"
+      "port_map": "80",
+      "volume_mappings": {
+        "adguard-home-host_data_conf": "/DATA/AppData/$AppID/data/conf",
+        "adguard-home-host_data_work": "/DATA/AppData/$AppID/data/work"
+      }
     },
     "portainer": {
       "supported": true,
@@ -98,7 +102,11 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "adguard-home-host_data_conf": "data/conf",
+        "adguard-home-host_data_work": "data/work"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -107,16 +115,28 @@
         "amd64",
         "arm64",
         "arm"
-      ]
+      ],
+      "volume_mappings": {
+        "adguard-home-host_data_conf": "data/conf",
+        "adguard-home-host_data_work": "data/work"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "adguard-home-host_data_conf": "data/conf",
+        "adguard-home-host_data_work": "data/work"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "adguard-home-host_data_conf": "data/conf",
+        "adguard-home-host_data_work": "data/work"
+      }
     },
     "umbrel": {
       "supported": true,

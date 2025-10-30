@@ -207,7 +207,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3000"
+      "port_map": "3000",
+      "volume_mappings": {
+        "calcom_config": "/DATA/AppData/$AppID/config",
+        "calcom_data_db": "/DATA/AppData/$AppID/data/db"
+      }
     },
     "portainer": {
       "supported": true,
@@ -216,7 +220,11 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "calcom_config": "config",
+        "calcom_data_db": "data/db"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -224,16 +232,28 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "calcom_config": "config",
+        "calcom_data_db": "data/db"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "calcom_config": "config",
+        "calcom_data_db": "data/db"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "calcom_config": "config",
+        "calcom_data_db": "data/db"
+      }
     },
     "umbrel": {
       "supported": true,

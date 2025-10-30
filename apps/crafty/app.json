@@ -109,7 +109,14 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8443"
+      "port_map": "8443",
+      "volume_mappings": {
+        "crafty_data_backups": "/DATA/AppData/$AppID/data/backups",
+        "crafty_data_config": "/DATA/AppData/$AppID/data/config",
+        "crafty_data_import": "/DATA/AppData/$AppID/data/import",
+        "crafty_data_logs": "/DATA/AppData/$AppID/data/logs",
+        "crafty_data_servers": "/DATA/AppData/$AppID/data/servers"
+      }
     },
     "portainer": {
       "supported": true,
@@ -118,7 +125,14 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "crafty_data_backups": "data/backups",
+        "crafty_data_config": "data/config",
+        "crafty_data_import": "data/import",
+        "crafty_data_logs": "data/logs",
+        "crafty_data_servers": "data/servers"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -126,16 +140,37 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "crafty_data_backups": "data/backups",
+        "crafty_data_config": "data/config",
+        "crafty_data_import": "data/import",
+        "crafty_data_logs": "data/logs",
+        "crafty_data_servers": "data/servers"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "crafty_data_backups": "data/backups",
+        "crafty_data_config": "data/config",
+        "crafty_data_import": "data/import",
+        "crafty_data_logs": "data/logs",
+        "crafty_data_servers": "data/servers"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "crafty_data_backups": "data/backups",
+        "crafty_data_config": "data/config",
+        "crafty_data_import": "data/import",
+        "crafty_data_logs": "data/logs",
+        "crafty_data_servers": "data/servers"
+      }
     },
     "umbrel": {
       "supported": true,

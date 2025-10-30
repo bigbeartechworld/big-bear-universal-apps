@@ -71,7 +71,13 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "5000"
+      "port_map": "5000",
+      "volume_mappings": {
+        "ayon_addons": "/DATA/AppData/$AppID/addons",
+        "ayon_postgres": "/DATA/AppData/$AppID/postgres",
+        "ayon_redis": "/DATA/AppData/$AppID/redis",
+        "ayon_storage": "/DATA/AppData/$AppID/storage"
+      }
     },
     "portainer": {
       "supported": true,
@@ -80,23 +86,47 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "ayon_addons": "addons",
+        "ayon_postgres": "postgres",
+        "ayon_redis": "redis",
+        "ayon_storage": "storage"
+      }
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
         "amd64"
-      ]
+      ],
+      "volume_mappings": {
+        "ayon_addons": "addons",
+        "ayon_postgres": "postgres",
+        "ayon_redis": "redis",
+        "ayon_storage": "storage"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "ayon_addons": "addons",
+        "ayon_postgres": "postgres",
+        "ayon_redis": "redis",
+        "ayon_storage": "storage"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "ayon_addons": "addons",
+        "ayon_postgres": "postgres",
+        "ayon_redis": "redis",
+        "ayon_storage": "storage"
+      }
     },
     "umbrel": {
       "supported": true,

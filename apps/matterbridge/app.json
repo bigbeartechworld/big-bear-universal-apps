@@ -66,7 +66,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8283"
+      "port_map": "8283",
+      "volume_mappings": {
+        "matterbridge_.matterbridge": "/DATA/AppData/$AppID/.matterbridge",
+        "matterbridge_Matterbridge": "/DATA/AppData/$AppID/Matterbridge"
+      }
     },
     "portainer": {
       "supported": true,
@@ -75,7 +79,11 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "matterbridge_.matterbridge": ".matterbridge",
+        "matterbridge_Matterbridge": "Matterbridge"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -84,16 +92,28 @@
         "amd64",
         "arm64",
         "arm"
-      ]
+      ],
+      "volume_mappings": {
+        "matterbridge_.matterbridge": ".matterbridge",
+        "matterbridge_Matterbridge": "Matterbridge"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "matterbridge_.matterbridge": ".matterbridge",
+        "matterbridge_Matterbridge": "Matterbridge"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "matterbridge_.matterbridge": ".matterbridge",
+        "matterbridge_Matterbridge": "Matterbridge"
+      }
     },
     "umbrel": {
       "supported": true,

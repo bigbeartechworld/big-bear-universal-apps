@@ -78,7 +78,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "38080"
+      "port_map": "38080",
+      "volume_mappings": {
+        "scrutiny_config": "/DATA/AppData/$AppID/config",
+        "scrutiny_influxdb": "/DATA/AppData/$AppID/influxdb"
+      }
     },
     "portainer": {
       "supported": true,
@@ -87,7 +91,11 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "scrutiny_config": "config",
+        "scrutiny_influxdb": "influxdb"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -95,16 +103,28 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "scrutiny_config": "config",
+        "scrutiny_influxdb": "influxdb"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "scrutiny_config": "config",
+        "scrutiny_influxdb": "influxdb"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "scrutiny_config": "config",
+        "scrutiny_influxdb": "influxdb"
+      }
     },
     "umbrel": {
       "supported": true,

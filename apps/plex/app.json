@@ -65,7 +65,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "32400"
+      "port_map": "32400",
+      "volume_mappings": {
+        "plex_config": "/DATA/AppData/$AppID/config",
+        "plex_movies": "/DATA/AppData/$AppID/movies",
+        "plex_tv": "/DATA/AppData/$AppID/tv"
+      }
     },
     "portainer": {
       "supported": true,
@@ -74,7 +79,12 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "plex_config": "config",
+        "plex_movies": "movies",
+        "plex_tv": "tv"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -82,16 +92,31 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "plex_config": "config",
+        "plex_movies": "movies",
+        "plex_tv": "tv"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "plex_config": "config",
+        "plex_movies": "movies",
+        "plex_tv": "tv"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "plex_config": "config",
+        "plex_movies": "movies",
+        "plex_tv": "tv"
+      }
     },
     "umbrel": {
       "supported": true,

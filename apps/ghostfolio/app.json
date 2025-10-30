@@ -132,7 +132,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3333"
+      "port_map": "3333",
+      "volume_mappings": {
+        "ghostfolio_data_db": "/DATA/AppData/$AppID/data/db",
+        "ghostfolio_data_redis": "/DATA/AppData/$AppID/data/redis"
+      }
     },
     "portainer": {
       "supported": true,
@@ -141,7 +145,11 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "ghostfolio_data_db": "data/db",
+        "ghostfolio_data_redis": "data/redis"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -149,16 +157,28 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "ghostfolio_data_db": "data/db",
+        "ghostfolio_data_redis": "data/redis"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "ghostfolio_data_db": "data/db",
+        "ghostfolio_data_redis": "data/redis"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "ghostfolio_data_db": "data/db",
+        "ghostfolio_data_redis": "data/redis"
+      }
     },
     "umbrel": {
       "supported": true,

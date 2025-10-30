@@ -121,7 +121,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8005"
+      "port_map": "8005",
+      "volume_mappings": {
+        "warracker_uploads": "/DATA/AppData/$AppID/uploads",
+        "warracker_warrackerdb": "/DATA/AppData/$AppID/warrackerdb"
+      }
     },
     "portainer": {
       "supported": true,
@@ -130,7 +134,11 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "warracker_uploads": "uploads",
+        "warracker_warrackerdb": "warrackerdb"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -138,16 +146,28 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "warracker_uploads": "uploads",
+        "warracker_warrackerdb": "warrackerdb"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "warracker_uploads": "uploads",
+        "warracker_warrackerdb": "warrackerdb"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "warracker_uploads": "uploads",
+        "warracker_warrackerdb": "warrackerdb"
+      }
     },
     "umbrel": {
       "supported": true,

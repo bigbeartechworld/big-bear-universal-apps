@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-audiobookshelf",
     "default_port": "8080",
@@ -42,31 +42,31 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "audiobooks",
-    "description": "Audiobooks"
-  },
-  {
-    "container": "podcasts",
-    "description": "Podcasts"
-  },
-  {
-    "container": "config",
-    "description": "Configuration"
-  },
-  {
-    "container": "metadata",
-    "description": "Metadata"
-  }
-],
+      {
+        "container": "audiobooks",
+        "description": "Audiobooks"
+      },
+      {
+        "container": "podcasts",
+        "description": "Podcasts"
+      },
+      {
+        "container": "config",
+        "description": "Configuration"
+      },
+      {
+        "container": "metadata",
+        "description": "Metadata"
+      }
+    ],
     "ports": [
-  {
-    "container": null,
-    "host": null,
-    "protocol": "tcp",
-    "description": "Web Interface"
-  }
-]
+      {
+        "container": null,
+        "host": null,
+        "protocol": "tcp",
+        "description": "Web Interface"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -76,30 +76,63 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080"
+      "port_map": "8080",
+      "volume_mappings": {
+        "audiobookshelf_data_config": "/DATA/AppData/$AppID/data/config",
+        "audiobookshelf_data_metadata": "/DATA/AppData/$AppID/data/metadata",
+        "audiobookshelf_media_data_books_spoken": "/DATA/AppData/$AppID/media/data/books/spoken",
+        "audiobookshelf_media_data_podcasts": "/DATA/AppData/$AppID/media/data/podcasts"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
-      "administrator_only": false
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "volume_mappings": {
+        "audiobookshelf_data_config": "data/config",
+        "audiobookshelf_data_metadata": "data/metadata",
+        "audiobookshelf_media_data_books_spoken": "media/data/books/spoken",
+        "audiobookshelf_media_data_podcasts": "media/data/podcasts"
+      }
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "audiobookshelf_data_config": "data/config",
+        "audiobookshelf_data_metadata": "data/metadata",
+        "audiobookshelf_media_data_books_spoken": "media/data/books/spoken",
+        "audiobookshelf_media_data_podcasts": "media/data/podcasts"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "audiobookshelf_data_config": "data/config",
+        "audiobookshelf_data_metadata": "data/metadata",
+        "audiobookshelf_media_data_books_spoken": "media/data/books/spoken",
+        "audiobookshelf_media_data_podcasts": "media/data/podcasts"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "audiobookshelf_data_config": "data/config",
+        "audiobookshelf_data_metadata": "data/metadata",
+        "audiobookshelf_media_data_books_spoken": "media/data/books/spoken",
+        "audiobookshelf_media_data_podcasts": "media/data/podcasts"
+      }
     },
     "umbrel": {
       "supported": true,

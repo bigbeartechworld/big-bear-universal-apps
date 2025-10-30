@@ -119,7 +119,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080"
+      "port_map": "8080",
+      "volume_mappings": {
+        "pihole-updatelists_dnsmasq.d": "/DATA/AppData/$AppID/dnsmasq.d",
+        "pihole-updatelists_etc": "/DATA/AppData/$AppID/etc",
+        "pihole-updatelists_etc_pihole-updatelists": "/DATA/AppData/$AppID/etc/pihole-updatelists"
+      }
     },
     "portainer": {
       "supported": true,
@@ -128,7 +133,12 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "pihole-updatelists_dnsmasq.d": "dnsmasq.d",
+        "pihole-updatelists_etc": "etc",
+        "pihole-updatelists_etc_pihole-updatelists": "etc/pihole-updatelists"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -136,16 +146,31 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "pihole-updatelists_dnsmasq.d": "dnsmasq.d",
+        "pihole-updatelists_etc": "etc",
+        "pihole-updatelists_etc_pihole-updatelists": "etc/pihole-updatelists"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "pihole-updatelists_dnsmasq.d": "dnsmasq.d",
+        "pihole-updatelists_etc": "etc",
+        "pihole-updatelists_etc_pihole-updatelists": "etc/pihole-updatelists"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "pihole-updatelists_dnsmasq.d": "dnsmasq.d",
+        "pihole-updatelists_etc": "etc",
+        "pihole-updatelists_etc_pihole-updatelists": "etc/pihole-updatelists"
+      }
     },
     "umbrel": {
       "supported": true,

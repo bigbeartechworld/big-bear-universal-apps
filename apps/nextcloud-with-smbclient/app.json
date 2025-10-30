@@ -133,7 +133,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "7580"
+      "port_map": "7580",
+      "volume_mappings": {
+        "nextcloud-with-smbclient_html": "/DATA/AppData/$AppID/html",
+        "nextcloud-with-smbclient_pgdata": "/DATA/AppData/$AppID/pgdata",
+        "nextcloud-with-smbclient_redis": "/DATA/AppData/$AppID/redis"
+      }
     },
     "portainer": {
       "supported": true,
@@ -142,7 +147,12 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "nextcloud-with-smbclient_html": "html",
+        "nextcloud-with-smbclient_pgdata": "pgdata",
+        "nextcloud-with-smbclient_redis": "redis"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -150,16 +160,31 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "nextcloud-with-smbclient_html": "html",
+        "nextcloud-with-smbclient_pgdata": "pgdata",
+        "nextcloud-with-smbclient_redis": "redis"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "nextcloud-with-smbclient_html": "html",
+        "nextcloud-with-smbclient_pgdata": "pgdata",
+        "nextcloud-with-smbclient_redis": "redis"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "nextcloud-with-smbclient_html": "html",
+        "nextcloud-with-smbclient_pgdata": "pgdata",
+        "nextcloud-with-smbclient_redis": "redis"
+      }
     },
     "umbrel": {
       "supported": true,

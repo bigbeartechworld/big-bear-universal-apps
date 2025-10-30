@@ -64,7 +64,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "1616"
+      "port_map": "1616",
+      "volume_mappings": {
+        "pd3f_cache": "/DATA/AppData/$AppID/cache",
+        "pd3f_to-ocr": "/DATA/AppData/$AppID/to-ocr",
+        "pd3f_uploads": "/DATA/AppData/$AppID/uploads"
+      }
     },
     "portainer": {
       "supported": true,
@@ -73,7 +78,12 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "pd3f_cache": "cache",
+        "pd3f_to-ocr": "to-ocr",
+        "pd3f_uploads": "uploads"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -81,16 +91,31 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "pd3f_cache": "cache",
+        "pd3f_to-ocr": "to-ocr",
+        "pd3f_uploads": "uploads"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "pd3f_cache": "cache",
+        "pd3f_to-ocr": "to-ocr",
+        "pd3f_uploads": "uploads"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "pd3f_cache": "cache",
+        "pd3f_to-ocr": "to-ocr",
+        "pd3f_uploads": "uploads"
+      }
     },
     "umbrel": {
       "supported": true,

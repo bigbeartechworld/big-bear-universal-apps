@@ -56,7 +56,10 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": ""
+      "port_map": "",
+      "volume_mappings": {
+        "playitgg_secrets": "/DATA/AppData/$AppID/secrets"
+      }
     },
     "portainer": {
       "supported": true,
@@ -65,23 +68,35 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "playitgg_secrets": "secrets"
+      }
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
         "amd64"
-      ]
+      ],
+      "volume_mappings": {
+        "playitgg_secrets": "secrets"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "playitgg_secrets": "secrets"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "playitgg_secrets": "secrets"
+      }
     },
     "umbrel": {
       "supported": true,

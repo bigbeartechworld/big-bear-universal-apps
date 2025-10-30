@@ -72,7 +72,10 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "12345"
+      "port_map": "12345",
+      "volume_mappings": {
+        "tianji_pgdata": "/DATA/AppData/$AppID/pgdata"
+      }
     },
     "portainer": {
       "supported": true,
@@ -81,7 +84,10 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "tianji_pgdata": "pgdata"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -89,16 +95,25 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "tianji_pgdata": "pgdata"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "tianji_pgdata": "pgdata"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "tianji_pgdata": "pgdata"
+      }
     },
     "umbrel": {
       "supported": true,

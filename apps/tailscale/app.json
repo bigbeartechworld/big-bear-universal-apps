@@ -131,7 +131,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": ""
+      "port_map": "",
+      "volume_mappings": {
+        "tailscale_config": "/DATA/AppData/$AppID/config",
+        "tailscale_state": "/DATA/AppData/$AppID/state",
+        "tailscale_shared": "/DATA/AppData/$AppID/shared"
+      }
     },
     "portainer": {
       "supported": true,
@@ -140,7 +145,12 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "tailscale_config": "config",
+        "tailscale_state": "state",
+        "tailscale_shared": "shared"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -148,16 +158,31 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "tailscale_config": "config",
+        "tailscale_state": "state",
+        "tailscale_shared": "shared"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "tailscale_config": "config",
+        "tailscale_state": "state",
+        "tailscale_shared": "shared"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "tailscale_config": "config",
+        "tailscale_state": "state",
+        "tailscale_shared": "shared"
+      }
     },
     "umbrel": {
       "supported": true,

@@ -84,7 +84,15 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "7400"
+      "port_map": "7400",
+      "volume_mappings": {
+        "onlyoffice_onlyoffice_data": "/DATA/AppData/$AppID/onlyoffice/data",
+        "onlyoffice_onlyoffice_db": "/DATA/AppData/$AppID/onlyoffice/db",
+        "onlyoffice_onlyoffice_lib": "/DATA/AppData/$AppID/onlyoffice/lib",
+        "onlyoffice_onlyoffice_logs": "/DATA/AppData/$AppID/onlyoffice/logs",
+        "onlyoffice_onlyoffice_rabbitmq": "/DATA/AppData/$AppID/onlyoffice/rabbitmq",
+        "onlyoffice_onlyoffice_redis": "/DATA/AppData/$AppID/onlyoffice/redis"
+      }
     },
     "portainer": {
       "supported": true,
@@ -93,7 +101,15 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "onlyoffice_onlyoffice_data": "onlyoffice/data",
+        "onlyoffice_onlyoffice_db": "onlyoffice/db",
+        "onlyoffice_onlyoffice_lib": "onlyoffice/lib",
+        "onlyoffice_onlyoffice_logs": "onlyoffice/logs",
+        "onlyoffice_onlyoffice_rabbitmq": "onlyoffice/rabbitmq",
+        "onlyoffice_onlyoffice_redis": "onlyoffice/redis"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -101,16 +117,40 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "onlyoffice_onlyoffice_data": "onlyoffice/data",
+        "onlyoffice_onlyoffice_db": "onlyoffice/db",
+        "onlyoffice_onlyoffice_lib": "onlyoffice/lib",
+        "onlyoffice_onlyoffice_logs": "onlyoffice/logs",
+        "onlyoffice_onlyoffice_rabbitmq": "onlyoffice/rabbitmq",
+        "onlyoffice_onlyoffice_redis": "onlyoffice/redis"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "onlyoffice_onlyoffice_data": "onlyoffice/data",
+        "onlyoffice_onlyoffice_db": "onlyoffice/db",
+        "onlyoffice_onlyoffice_lib": "onlyoffice/lib",
+        "onlyoffice_onlyoffice_logs": "onlyoffice/logs",
+        "onlyoffice_onlyoffice_rabbitmq": "onlyoffice/rabbitmq",
+        "onlyoffice_onlyoffice_redis": "onlyoffice/redis"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "onlyoffice_onlyoffice_data": "onlyoffice/data",
+        "onlyoffice_onlyoffice_db": "onlyoffice/db",
+        "onlyoffice_onlyoffice_lib": "onlyoffice/lib",
+        "onlyoffice_onlyoffice_logs": "onlyoffice/logs",
+        "onlyoffice_onlyoffice_rabbitmq": "onlyoffice/rabbitmq",
+        "onlyoffice_onlyoffice_redis": "onlyoffice/redis"
+      }
     },
     "umbrel": {
       "supported": true,

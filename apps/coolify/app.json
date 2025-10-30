@@ -412,7 +412,18 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8000"
+      "port_map": "8000",
+      "volume_mappings": {
+        "coolify_applications": "/DATA/AppData/$AppID/applications",
+        "coolify_backups": "/DATA/AppData/$AppID/backups",
+        "coolify_databases": "/DATA/AppData/$AppID/databases",
+        "coolify_logs": "/DATA/AppData/$AppID/logs",
+        "coolify_pgdata": "/DATA/AppData/$AppID/pgdata",
+        "coolify_redis": "/DATA/AppData/$AppID/redis",
+        "coolify_services": "/DATA/AppData/$AppID/services",
+        "coolify_ssh": "/DATA/AppData/$AppID/ssh",
+        "coolify_webhooks-during-maintenance": "/DATA/AppData/$AppID/webhooks-during-maintenance"
+      }
     },
     "portainer": {
       "supported": true,
@@ -421,7 +432,18 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "volume_mappings": {
+        "coolify_applications": "applications",
+        "coolify_backups": "backups",
+        "coolify_databases": "databases",
+        "coolify_logs": "logs",
+        "coolify_pgdata": "pgdata",
+        "coolify_redis": "redis",
+        "coolify_services": "services",
+        "coolify_ssh": "ssh",
+        "coolify_webhooks-during-maintenance": "webhooks-during-maintenance"
+      }
     },
     "runtipi": {
       "supported": true,
@@ -429,16 +451,49 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "volume_mappings": {
+        "coolify_applications": "applications",
+        "coolify_backups": "backups",
+        "coolify_databases": "databases",
+        "coolify_logs": "logs",
+        "coolify_pgdata": "pgdata",
+        "coolify_redis": "redis",
+        "coolify_services": "services",
+        "coolify_ssh": "ssh",
+        "coolify_webhooks-during-maintenance": "webhooks-during-maintenance"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "volume_mappings": {
+        "coolify_applications": "applications",
+        "coolify_backups": "backups",
+        "coolify_databases": "databases",
+        "coolify_logs": "logs",
+        "coolify_pgdata": "pgdata",
+        "coolify_redis": "redis",
+        "coolify_services": "services",
+        "coolify_ssh": "ssh",
+        "coolify_webhooks-during-maintenance": "webhooks-during-maintenance"
+      }
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "volume_mappings": {
+        "coolify_applications": "applications",
+        "coolify_backups": "backups",
+        "coolify_databases": "databases",
+        "coolify_logs": "logs",
+        "coolify_pgdata": "pgdata",
+        "coolify_redis": "redis",
+        "coolify_services": "services",
+        "coolify_ssh": "ssh",
+        "coolify_webhooks-during-maintenance": "webhooks-during-maintenance"
+      }
     },
     "umbrel": {
       "supported": true,
