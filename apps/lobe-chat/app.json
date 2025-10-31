@@ -90,7 +90,8 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3210"
+      "port_map": "3210",
+      "port": "3210"
     },
     "portainer": {
       "supported": true,
@@ -99,7 +100,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3210"
     },
     "runtipi": {
       "supported": true,
@@ -107,20 +109,24 @@
       "supported_architectures": [
         "amd64",
         "arm64"
-      ]
+      ],
+      "port": "3210"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3210"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3210"
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "port": "10090"
     }
   },
   "tags": [

@@ -91,7 +91,8 @@
         "genmon_etc_genmon": "/DATA/AppData/$AppID/etc/genmon",
         "genmon_git_genmon": "/DATA/AppData/$AppID/git/genmon",
         "genmon_var_log": "/DATA/AppData/$AppID/var/log"
-      }
+      },
+      "port": "8000"
     },
     "portainer": {
       "supported": true,
@@ -100,7 +101,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "20022"
     },
     "runtipi": {
       "supported": true,
@@ -113,16 +115,19 @@
         "genmon_etc_genmon": "etc/genmon",
         "genmon_git_genmon": "git/genmon",
         "genmon_var_log": "var/log"
-      }
+      },
+      "port": "8004"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "20022"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "20022"
     },
     "umbrel": {
       "supported": true,
@@ -131,7 +136,8 @@
         "genmon_etc_genmon": "etc/genmon",
         "genmon_git_genmon": "git/genmon",
         "genmon_var_log": "var/log"
-      }
+      },
+      "port": "20022"
     }
   },
   "tags": [

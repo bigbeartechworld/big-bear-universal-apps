@@ -169,7 +169,8 @@
       "volume_mappings": {
         "tp-link-omada-controller_data": "/DATA/AppData/$AppID/data",
         "tp-link-omada-controller_logs": "/DATA/AppData/$AppID/logs"
-      }
+      },
+      "port": "8088"
     },
     "portainer": {
       "supported": true,
@@ -191,7 +192,8 @@
       "volume_mappings": {
         "tp-link-omada-controller_data": "data",
         "tp-link-omada-controller_logs": "logs"
-      }
+      },
+      "port": "8135"
     },
     "dockge": {
       "supported": true,
@@ -208,7 +210,8 @@
       "volume_mappings": {
         "tp-link-omada-controller_data": "data",
         "tp-link-omada-controller_logs": "logs"
-      }
+      },
+      "port": "8088"
     }
   },
   "tags": [

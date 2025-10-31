@@ -158,7 +158,8 @@
         "tailscale_config": "config",
         "tailscale_state": "state",
         "tailscale_shared": "shared"
-      }
+      },
+      "port": "8133"
     },
     "dockge": {
       "supported": true,
@@ -176,7 +177,8 @@
         "tailscale_config": "config",
         "tailscale_state": "state",
         "tailscale_shared": "shared"
-      }
+      },
+      "port": "10167"
     }
   },
   "tags": [

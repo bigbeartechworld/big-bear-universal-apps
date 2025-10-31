@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-immich-kiosk",
     "default_port": "3000",
@@ -41,78 +41,85 @@
   },
   "deployment": {
     "environment_variables": [
-  {
-    "name": "LANG",
-    "default": "",
-    "description": "Sets the language and timezone for the container",
-    "required": false
-  },
-  {
-    "name": "TZ",
-    "default": "",
-    "description": "Sets the language and timezone for the container",
-    "required": false
-  },
-  {
-    "name": "KIOSK_IMMICH_API_KEY",
-    "default": "",
-    "description": "Sets the Immich API key for the container",
-    "required": false
-  },
-  {
-    "name": "KIOSK_IMMICH_URL",
-    "default": "",
-    "description": "Sets the Immich server URL for the container",
-    "required": false
-  },
-  {
-    "name": "KIOSK_IMMICH_EXTERNAL_URL",
-    "default": "",
-    "description": "Sets the Immich external URL for the container",
-    "required": false
-  }
-],
+      {
+        "name": "LANG",
+        "default": "",
+        "description": "Sets the language and timezone for the container",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Sets the language and timezone for the container",
+        "required": false
+      },
+      {
+        "name": "KIOSK_IMMICH_API_KEY",
+        "default": "",
+        "description": "Sets the Immich API key for the container",
+        "required": false
+      },
+      {
+        "name": "KIOSK_IMMICH_URL",
+        "default": "",
+        "description": "Sets the Immich server URL for the container",
+        "required": false
+      },
+      {
+        "name": "KIOSK_IMMICH_EXTERNAL_URL",
+        "default": "",
+        "description": "Sets the Immich external URL for the container",
+        "required": false
+      }
+    ],
     "volumes": [],
     "ports": [
-  {
-    "container": "3000",
-    "host": "3000",
-    "protocol": "tcp",
-    "description": "Container Port: 3000"
-  }
-]
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp",
+        "description": "Container Port: 3000"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-immich-kiosk-to-bigbearcasaos/3513?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-immich-kiosk-to-bigbearcasaos/3513?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3000"
+      "port_map": "3000",
+      "port": "3000"
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
-      "administrator_only": false
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "3000"
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "port": "3009"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3000"
     },
     "cosmos": {
       "supported": true,
@@ -121,7 +128,8 @@
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "port": "10072"
     }
   },
   "tags": [

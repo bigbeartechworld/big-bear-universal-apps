@@ -96,7 +96,8 @@
         "odoo_data_addons": "/DATA/AppData/$AppID/data/addons",
         "odoo_data_etc": "/DATA/AppData/$AppID/data/etc",
         "odoo_data_postgresql": "/DATA/AppData/$AppID/data/postgresql"
-      }
+      },
+      "port": "8069"
     },
     "portainer": {
       "supported": true,
@@ -105,7 +106,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8069"
     },
     "runtipi": {
       "supported": true,
@@ -118,16 +120,19 @@
         "odoo_data_addons": "data/addons",
         "odoo_data_etc": "data/etc",
         "odoo_data_postgresql": "data/postgresql"
-      }
+      },
+      "port": "8069"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8069"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8069"
     },
     "umbrel": {
       "supported": true,
@@ -136,7 +141,8 @@
         "odoo_data_addons": "data/addons",
         "odoo_data_etc": "data/etc",
         "odoo_data_postgresql": "data/postgresql"
-      }
+      },
+      "port": "10120"
     }
   },
   "tags": [

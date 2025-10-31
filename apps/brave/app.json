@@ -72,7 +72,8 @@
       "port_map": "6901",
       "volume_mappings": {
         "brave_Downloads": "/DATA/AppData/$AppID/Downloads"
-      }
+      },
+      "port": "6901"
     },
     "portainer": {
       "supported": true,
@@ -81,7 +82,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "6901"
     },
     "runtipi": {
       "supported": true,
@@ -92,16 +94,19 @@
       ],
       "volume_mappings": {
         "brave_Downloads": "Downloads"
-      }
+      },
+      "port": "6901"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "6901"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "6901"
     },
     "umbrel": {
       "supported": false,

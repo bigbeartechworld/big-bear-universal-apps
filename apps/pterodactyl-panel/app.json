@@ -214,7 +214,8 @@
         "pterodactyl-panel_logs_": "/DATA/AppData/$AppID/logs/",
         "pterodactyl-panel_nginx_": "/DATA/AppData/$AppID/nginx/",
         "pterodactyl-panel_var_": "/DATA/AppData/$AppID/var/"
-      }
+      },
+      "port": "1180"
     },
     "portainer": {
       "supported": true,
@@ -223,7 +224,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "1180"
     },
     "runtipi": {
       "supported": true,
@@ -238,16 +240,19 @@
         "pterodactyl-panel_logs_": "logs/",
         "pterodactyl-panel_nginx_": "nginx/",
         "pterodactyl-panel_var_": "var/"
-      }
+      },
+      "port": "1180"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "1180"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "1180"
     },
     "umbrel": {
       "supported": true,
@@ -258,7 +263,8 @@
         "pterodactyl-panel_logs_": "logs/",
         "pterodactyl-panel_nginx_": "nginx/",
         "pterodactyl-panel_var_": "var/"
-      }
+      },
+      "port": "10149"
     }
   },
   "tags": [

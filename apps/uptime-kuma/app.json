@@ -67,7 +67,8 @@
       "port_map": "3001",
       "volume_mappings": {
         "uptime-kuma_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "3001"
     },
     "portainer": {
       "supported": true,
@@ -76,7 +77,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3001"
     },
     "runtipi": {
       "supported": true,
@@ -87,23 +89,27 @@
       ],
       "volume_mappings": {
         "uptime-kuma_data": "data"
-      }
+      },
+      "port": "3024"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3001"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3001"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "uptime-kuma_data": "data"
-      }
+      },
+      "port": "10178"
     }
   },
   "tags": [

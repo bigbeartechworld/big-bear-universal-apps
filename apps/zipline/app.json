@@ -77,7 +77,8 @@
         "zipline_postgres": "/DATA/AppData/$AppID/postgres",
         "zipline_public": "/DATA/AppData/$AppID/public",
         "zipline_uploads": "/DATA/AppData/$AppID/uploads"
-      }
+      },
+      "port": "3000"
     },
     "portainer": {
       "supported": true,
@@ -86,7 +87,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3000"
     },
     "runtipi": {
       "supported": true,
@@ -99,16 +101,19 @@
         "zipline_postgres": "postgres",
         "zipline_public": "public",
         "zipline_uploads": "uploads"
-      }
+      },
+      "port": "3026"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,
@@ -117,7 +122,8 @@
         "zipline_postgres": "postgres",
         "zipline_public": "public",
         "zipline_uploads": "uploads"
-      }
+      },
+      "port": "10190"
     }
   },
   "tags": [

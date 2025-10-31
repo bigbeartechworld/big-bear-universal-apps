@@ -68,7 +68,8 @@
       "port_map": "1880",
       "volume_mappings": {
         "node-red_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "1880"
     },
     "portainer": {
       "supported": true,
@@ -89,7 +90,8 @@
       ],
       "volume_mappings": {
         "node-red_data": "data"
-      }
+      },
+      "port": "1880"
     },
     "dockge": {
       "supported": true,
@@ -98,14 +100,16 @@
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "1880"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "node-red_data": "data"
-      }
+      },
+      "port": "1880"
     }
   },
   "tags": [

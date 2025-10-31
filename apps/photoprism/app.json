@@ -228,7 +228,8 @@
         "photoprism_mysql": "/DATA/AppData/$AppID/mysql",
         "photoprism_originals": "/DATA/AppData/$AppID/originals",
         "photoprism_storage": "/DATA/AppData/$AppID/storage"
-      }
+      },
+      "port": "2342"
     },
     "portainer": {
       "supported": true,
@@ -237,7 +238,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "2342"
     },
     "runtipi": {
       "supported": true,
@@ -250,16 +252,19 @@
         "photoprism_mysql": "mysql",
         "photoprism_originals": "originals",
         "photoprism_storage": "storage"
-      }
+      },
+      "port": "2342"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "2342"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "2342"
     },
     "umbrel": {
       "supported": true,
@@ -268,7 +273,8 @@
         "photoprism_mysql": "mysql",
         "photoprism_originals": "originals",
         "photoprism_storage": "storage"
-      }
+      },
+      "port": "10132"
     }
   },
   "tags": [

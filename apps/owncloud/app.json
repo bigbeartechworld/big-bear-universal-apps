@@ -146,7 +146,8 @@
         "owncloud_data": "/DATA/AppData/$AppID/data",
         "owncloud_mysql": "/DATA/AppData/$AppID/mysql",
         "owncloud_redis": "/DATA/AppData/$AppID/redis"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -155,7 +156,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -168,16 +170,19 @@
         "owncloud_data": "data",
         "owncloud_mysql": "mysql",
         "owncloud_redis": "redis"
-      }
+      },
+      "port": "8116"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,
@@ -186,7 +191,8 @@
         "owncloud_data": "data",
         "owncloud_mysql": "mysql",
         "owncloud_redis": "redis"
-      }
+      },
+      "port": "10126"
     }
   },
   "tags": [

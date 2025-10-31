@@ -82,7 +82,8 @@
         "audiobookshelf_data_metadata": "/DATA/AppData/$AppID/data/metadata",
         "audiobookshelf_media_data_books_spoken": "/DATA/AppData/$AppID/media/data/books/spoken",
         "audiobookshelf_media_data_podcasts": "/DATA/AppData/$AppID/media/data/podcasts"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -91,7 +92,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -105,16 +107,19 @@
         "audiobookshelf_data_metadata": "data/metadata",
         "audiobookshelf_media_data_books_spoken": "media/data/books/spoken",
         "audiobookshelf_media_data_podcasts": "media/data/podcasts"
-      }
+      },
+      "port": "8082"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,
@@ -124,7 +129,8 @@
         "audiobookshelf_media_data_podcasts": "media/data/podcasts",
         "audiobookshelf_data_config": "data/config",
         "audiobookshelf_data_metadata": "data/metadata"
-      }
+      },
+      "port": "10006"
     }
   },
   "tags": [

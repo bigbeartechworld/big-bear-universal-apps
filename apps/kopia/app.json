@@ -89,7 +89,8 @@
         "kopia_config": "/DATA/AppData/$AppID/config",
         "kopia_home": "/DATA/AppData/$AppID/home",
         "kopia_repository": "/DATA/AppData/$AppID/repository"
-      }
+      },
+      "port": "51515"
     },
     "portainer": {
       "supported": true,
@@ -98,7 +99,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "51515"
     },
     "runtipi": {
       "supported": true,
@@ -111,16 +113,19 @@
         "kopia_config": "config",
         "kopia_home": "home",
         "kopia_repository": "repository"
-      }
+      },
+      "port": "51515"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "51515"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "51515"
     },
     "umbrel": {
       "supported": true,
@@ -129,7 +134,8 @@
         "kopia_config": "config",
         "kopia_home": "home",
         "kopia_repository": "repository"
-      }
+      },
+      "port": "51515"
     }
   },
   "tags": [

@@ -108,7 +108,8 @@
         "viseron_segments": "/DATA/AppData/$AppID/segments",
         "viseron_snapshots": "/DATA/AppData/$AppID/snapshots",
         "viseron_thumbnails": "/DATA/AppData/$AppID/thumbnails"
-      }
+      },
+      "port": "8888"
     },
     "portainer": {
       "supported": true,
@@ -117,7 +118,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8888"
     },
     "runtipi": {
       "supported": true,
@@ -132,16 +134,19 @@
         "viseron_segments": "segments",
         "viseron_snapshots": "snapshots",
         "viseron_thumbnails": "thumbnails"
-      }
+      },
+      "port": "8890"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8888"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8888"
     },
     "umbrel": {
       "supported": true,
@@ -152,7 +157,8 @@
         "viseron_segments": "segments",
         "viseron_snapshots": "snapshots",
         "viseron_thumbnails": "thumbnails"
-      }
+      },
+      "port": "10180"
     }
   },
   "tags": [

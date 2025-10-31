@@ -82,7 +82,8 @@
         "planka_postgresql": "/DATA/AppData/$AppID/postgresql",
         "planka_project-background-images": "/DATA/AppData/$AppID/project-background-images",
         "planka_user-avatars": "/DATA/AppData/$AppID/user-avatars"
-      }
+      },
+      "port": "3000"
     },
     "portainer": {
       "supported": true,
@@ -91,7 +92,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3000"
     },
     "runtipi": {
       "supported": true,
@@ -105,16 +107,19 @@
         "planka_postgresql": "postgresql",
         "planka_project-background-images": "project-background-images",
         "planka_user-avatars": "user-avatars"
-      }
+      },
+      "port": "3017"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,
@@ -124,7 +129,8 @@
         "planka_postgresql": "postgresql",
         "planka_project-background-images": "project-background-images",
         "planka_user-avatars": "user-avatars"
-      }
+      },
+      "port": "10139"
     }
   },
   "tags": [

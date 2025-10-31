@@ -67,7 +67,8 @@
       "port_map": "9997",
       "volume_mappings": {
         "erugo_storage": "/DATA/AppData/$AppID/storage"
-      }
+      },
+      "port": "9997"
     },
     "portainer": {
       "supported": true,
@@ -76,7 +77,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "9997"
     },
     "runtipi": {
       "supported": true,
@@ -87,23 +89,27 @@
       ],
       "volume_mappings": {
         "erugo_storage": "storage"
-      }
+      },
+      "port": "9997"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "9997"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "9997"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "erugo_storage": "storage"
-      }
+      },
+      "port": "10041"
     }
   },
   "tags": [

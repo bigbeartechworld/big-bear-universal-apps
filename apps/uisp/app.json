@@ -84,7 +84,8 @@
       "port_map": "10443",
       "volume_mappings": {
         "uisp_config": "/DATA/AppData/$AppID/config"
-      }
+      },
+      "port": "10443"
     },
     "portainer": {
       "supported": true,
@@ -93,7 +94,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -104,23 +106,27 @@
       ],
       "volume_mappings": {
         "uisp_config": "config"
-      }
+      },
+      "port": "10446"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "uisp_config": "config"
-      }
+      },
+      "port": "10174"
     }
   },
   "tags": [

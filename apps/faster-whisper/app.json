@@ -66,7 +66,8 @@
       "port_map": "7575",
       "volume_mappings": {
         "faster-whisper_config": "/DATA/AppData/$AppID/config"
-      }
+      },
+      "port": "7575"
     },
     "portainer": {
       "supported": true,
@@ -75,7 +76,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "10300"
     },
     "runtipi": {
       "supported": true,
@@ -85,23 +87,27 @@
       ],
       "volume_mappings": {
         "faster-whisper_config": "config"
-      }
+      },
+      "port": "7575"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "10300"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "10300"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "faster-whisper_config": "config"
-      }
+      },
+      "port": "10300"
     }
   },
   "tags": [

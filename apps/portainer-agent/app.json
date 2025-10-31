@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "",
@@ -42,32 +42,32 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/var/run/docker.sock",
-    "description": "Access to Docker socket"
-  },
-  {
-    "container": "/var/lib/docker/volumes",
-    "description": "Access to Docker volumes"
-  }
-],
+      {
+        "container": "/var/run/docker.sock",
+        "description": "Access to Docker socket"
+      },
+      {
+        "container": "/var/lib/docker/volumes",
+        "description": "Access to Docker volumes"
+      }
+    ],
     "ports": [
-  {
-    "container": "9001",
-    "host": "9001",
-    "protocol": "tcp",
-    "description": "The Portainer Agent Port"
-  }
-]
+      {
+        "container": "9001",
+        "host": "9001",
+        "protocol": "tcp",
+        "description": "The Portainer Agent Port"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "The Portainer Agent is reachable on port 9001. You will need Portainer Server running to connect to the Portainer Agent.\n"
-  }
-}
+      "before_install": {
+        "en_us": "The Portainer Agent is reachable on port 9001. You will need Portainer Server running to connect to the Portainer Agent.\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -77,29 +77,37 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
-      "administrator_only": false
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "9001"
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "port": "8124"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "9001"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "9001"
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "port": "10145"
     }
   },
   "tags": [

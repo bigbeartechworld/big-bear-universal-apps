@@ -245,6 +245,44 @@ To preserve specific paths for backward compatibility, add volume mapping overri
 - When automatic conversion produces unexpected paths
 - Ensuring exact path compatibility with existing Umbrel deployments
 
+#### Port Override Support
+
+By default, all platforms use the port specified in `technical.default_port`. However, you can override the port for specific platforms to maintain backward compatibility with existing deployments:
+
+```json
+"compatibility": {
+  "casaos": {
+    "supported": true,
+    "port": "3000"
+  },
+  "runtipi": {
+    "supported": true,
+    "port": "3000"
+  },
+  "umbrel": {
+    "supported": true,
+    "port": "10123"
+  },
+  "cosmos": {
+    "supported": true,
+    "port": "8080"
+  }
+}
+```
+
+**Platform-specific behavior:**
+- **CasaOS**: Uses `port` value directly for `port_map` in x-casaos metadata
+- **Runtipi**: Uses `port` value, but still remaps ports < 1000 (e.g., 80 → 8080)
+- **Umbrel**: Uses `port` value and skips automatic 10000+ remapping
+- **Cosmos**: Uses `port` value in route target URLs
+- **Portainer/Dockge**: Uses `port` value in templates
+
+**Use cases for port overrides:**
+- Preserving existing port assignments when migrating to universal format
+- Avoiding port conflicts across different platforms
+- Meeting platform-specific port requirements (e.g., Umbrel 10000+ range)
+- Maintaining consistency with existing user deployments
+
 ## Validation
 
 Apps can be validated using JSON Schema validation against `schemas/app-schema-v1.json`.
@@ -256,3 +294,4 @@ Required validations:
 - ✅ URLs are valid
 - ✅ Architectures are valid values
 - ✅ docker-compose.yml exists and is valid YAML
+

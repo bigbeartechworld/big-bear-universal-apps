@@ -423,7 +423,8 @@
         "coolify_services": "/DATA/AppData/$AppID/services",
         "coolify_ssh": "/DATA/AppData/$AppID/ssh",
         "coolify_webhooks-during-maintenance": "/DATA/AppData/$AppID/webhooks-during-maintenance"
-      }
+      },
+      "port": "8000"
     },
     "portainer": {
       "supported": true,
@@ -432,7 +433,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8000\n5432\n6379\n6001"
     },
     "runtipi": {
       "supported": true,
@@ -451,16 +453,19 @@
         "coolify_services": "services",
         "coolify_ssh": "ssh",
         "coolify_webhooks-during-maintenance": "webhooks-during-maintenance"
-      }
+      },
+      "port": "8001"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8000\n5432\n6379\n6001"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8000\n5432\n6379\n6001"
     },
     "umbrel": {
       "supported": true,
@@ -475,7 +480,8 @@
         "coolify_services": "services",
         "coolify_ssh": "ssh",
         "coolify_webhooks-during-maintenance": "webhooks-during-maintenance"
-      }
+      },
+      "port": "10027"
     }
   },
   "tags": [

@@ -71,7 +71,8 @@
       "port_map": "7575",
       "volume_mappings": {
         "homarr-v1_appdata": "/DATA/AppData/$AppID/appdata"
-      }
+      },
+      "port": "7575"
     },
     "portainer": {
       "supported": true,
@@ -80,7 +81,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "7575"
     },
     "runtipi": {
       "supported": true,
@@ -91,11 +93,13 @@
       ],
       "volume_mappings": {
         "homarr-v1_appdata": "appdata"
-      }
+      },
+      "port": "7577"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "7575"
     },
     "cosmos": {
       "supported": true,
@@ -107,7 +111,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "homarr-v1_appdata": "appdata"
-      }
+      },
+      "port": "10064"
     }
   },
   "tags": [

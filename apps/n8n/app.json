@@ -80,7 +80,8 @@
         "n8n_.n8n": "/DATA/AppData/$AppID/.n8n",
         "n8n_db_init-data.sh": "/DATA/AppData/$AppID/db/init-data.sh",
         "n8n_pgdata": "/DATA/AppData/$AppID/pgdata"
-      }
+      },
+      "port": "5678"
     },
     "portainer": {
       "supported": true,
@@ -89,7 +90,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "5678"
     },
     "runtipi": {
       "supported": true,
@@ -102,16 +104,19 @@
         "n8n_.n8n": ".n8n",
         "n8n_db_init-data.sh": "db/init-data.sh",
         "n8n_pgdata": "pgdata"
-      }
+      },
+      "port": "5678"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "5678"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "5678"
     },
     "umbrel": {
       "supported": true,
@@ -120,7 +125,8 @@
         "n8n_.n8n": ".n8n",
         "n8n_db_init-data.sh": "db/init-data.sh",
         "n8n_pgdata": "pgdata"
-      }
+      },
+      "port": "10104"
     }
   },
   "tags": [

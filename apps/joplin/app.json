@@ -121,7 +121,8 @@
       "port_map": "22300",
       "volume_mappings": {
         "joplin_postgresql_data": "/DATA/AppData/$AppID/postgresql/data"
-      }
+      },
+      "port": "22300"
     },
     "portainer": {
       "supported": true,
@@ -130,7 +131,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "22300"
     },
     "runtipi": {
       "supported": true,
@@ -141,23 +143,27 @@
       ],
       "volume_mappings": {
         "joplin_postgresql_data": "postgresql/data"
-      }
+      },
+      "port": "22300"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "22300"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "22300"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "joplin_postgresql_data": "postgresql/data"
-      }
+      },
+      "port": "22300"
     }
   },
   "tags": [

@@ -74,7 +74,8 @@
       "port_map": "80",
       "volume_mappings": {
         "poste-io_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "80"
     },
     "portainer": {
       "supported": true,
@@ -94,7 +95,8 @@
       ],
       "volume_mappings": {
         "poste-io_data": "data"
-      }
+      },
+      "port": "8125"
     },
     "dockge": {
       "supported": true,
@@ -110,7 +112,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "poste-io_data": "data"
-      }
+      },
+      "port": "10445"
     }
   },
   "tags": [

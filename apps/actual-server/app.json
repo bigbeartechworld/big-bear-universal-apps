@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "5006",
@@ -42,19 +42,19 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/data",
-    "description": "Container Path: /data"
-  }
-],
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      }
+    ],
     "ports": [
-  {
-    "container": "5006",
-    "host": "5006",
-    "protocol": "tcp",
-    "description": "Container Port: 5006"
-  }
-]
+      {
+        "container": "5006",
+        "host": "5006",
+        "protocol": "tcp",
+        "description": "Container Port: 5006"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -67,40 +67,49 @@
       "port_map": "5006",
       "volume_mappings": {
         "actual-server_data": "/DATA/AppData/$AppID"
-      }
+      },
+      "port": "5006"
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
-      "administrator_only": false
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "5006"
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-],
+        "amd64",
+        "arm64"
+      ],
       "volume_mappings": {
         "actual-server_data": "data"
-      }
+      },
+      "port": "5006"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "5006"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "5006"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "actual-server_data": "data"
-      }
+      },
+      "port": "10001"
     }
   },
   "tags": [

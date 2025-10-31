@@ -136,7 +136,8 @@
       "volume_mappings": {
         "ghostfolio_data_db": "/DATA/AppData/$AppID/data/db",
         "ghostfolio_data_redis": "/DATA/AppData/$AppID/data/redis"
-      }
+      },
+      "port": "3333"
     },
     "portainer": {
       "supported": true,
@@ -145,7 +146,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3333"
     },
     "runtipi": {
       "supported": true,
@@ -157,16 +159,19 @@
       "volume_mappings": {
         "ghostfolio_data_db": "data/db",
         "ghostfolio_data_redis": "data/redis"
-      }
+      },
+      "port": "3334"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3333"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3333"
     },
     "umbrel": {
       "supported": true,
@@ -174,7 +179,8 @@
       "volume_mappings": {
         "ghostfolio_data_db": "data/db",
         "ghostfolio_data_redis": "data/redis"
-      }
+      },
+      "port": "10055"
     }
   },
   "tags": [

@@ -312,7 +312,8 @@
       "port_map": "8888",
       "volume_mappings": {
         "microbin_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "8888"
     },
     "portainer": {
       "supported": true,
@@ -321,7 +322,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8888"
     },
     "runtipi": {
       "supported": true,
@@ -332,11 +334,13 @@
       ],
       "volume_mappings": {
         "microbin_data": "data"
-      }
+      },
+      "port": "8889"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8888"
     },
     "cosmos": {
       "supported": true,
@@ -348,7 +352,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "microbin_data": "data"
-      }
+      },
+      "port": "10097"
     }
   },
   "tags": [

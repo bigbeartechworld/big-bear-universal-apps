@@ -112,7 +112,8 @@
         "immich_model-cache": "/DATA/AppData/$AppID/model-cache",
         "immich_pgdata": "/DATA/AppData/$AppID/pgdata",
         "immich_upload": "/DATA/AppData/$AppID/upload"
-      }
+      },
+      "port": "2283"
     },
     "portainer": {
       "supported": true,
@@ -121,7 +122,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "2283"
     },
     "runtipi": {
       "supported": true,
@@ -134,16 +136,19 @@
         "immich_model-cache": "model-cache",
         "immich_pgdata": "pgdata",
         "immich_upload": "upload"
-      }
+      },
+      "port": "2283"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "2283"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "2283"
     },
     "umbrel": {
       "supported": true,
@@ -152,7 +157,8 @@
         "immich_model-cache": "model-cache",
         "immich_pgdata": "pgdata",
         "immich_upload": "upload"
-      }
+      },
+      "port": "10070"
     }
   },
   "tags": [

@@ -84,7 +84,8 @@
       "port_map": "3000",
       "volume_mappings": {
         "firefox_config": "/DATA/AppData/$AppID/config"
-      }
+      },
+      "port": "6902"
     },
     "portainer": {
       "supported": true,
@@ -93,7 +94,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "6902"
     },
     "runtipi": {
       "supported": true,
@@ -104,23 +106,27 @@
       ],
       "volume_mappings": {
         "firefox_config": "config"
-      }
+      },
+      "port": "6904"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "6902"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "6902"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "firefox_config": "config"
-      }
+      },
+      "port": "10048"
     }
   },
   "tags": [

@@ -69,7 +69,8 @@
         "pd3f_cache": "/DATA/AppData/$AppID/cache",
         "pd3f_to-ocr": "/DATA/AppData/$AppID/to-ocr",
         "pd3f_uploads": "/DATA/AppData/$AppID/uploads"
-      }
+      },
+      "port": "1616"
     },
     "portainer": {
       "supported": true,
@@ -78,7 +79,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "1616"
     },
     "runtipi": {
       "supported": true,
@@ -91,16 +93,19 @@
         "pd3f_cache": "cache",
         "pd3f_to-ocr": "to-ocr",
         "pd3f_uploads": "uploads"
-      }
+      },
+      "port": "1616"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "1616"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "1616"
     },
     "umbrel": {
       "supported": true,
@@ -109,7 +114,8 @@
         "pd3f_cache": "cache",
         "pd3f_to-ocr": "to-ocr",
         "pd3f_uploads": "uploads"
-      }
+      },
+      "port": "10129"
     }
   },
   "tags": [

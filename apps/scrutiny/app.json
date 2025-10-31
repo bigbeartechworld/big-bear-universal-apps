@@ -82,7 +82,8 @@
       "volume_mappings": {
         "scrutiny_config": "/DATA/AppData/$AppID/config",
         "scrutiny_influxdb": "/DATA/AppData/$AppID/influxdb"
-      }
+      },
+      "port": "38080"
     },
     "portainer": {
       "supported": true,
@@ -91,7 +92,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "38080"
     },
     "runtipi": {
       "supported": true,
@@ -103,16 +105,19 @@
       "volume_mappings": {
         "scrutiny_config": "config",
         "scrutiny_influxdb": "influxdb"
-      }
+      },
+      "port": "38080"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "38080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "38080"
     },
     "umbrel": {
       "supported": true,
@@ -120,7 +125,8 @@
       "volume_mappings": {
         "scrutiny_config": "config",
         "scrutiny_influxdb": "influxdb"
-      }
+      },
+      "port": "38080"
     }
   },
   "tags": [

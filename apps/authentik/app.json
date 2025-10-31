@@ -83,7 +83,8 @@
         "authentik_data_authentik-media": "/DATA/AppData/$AppID/data/authentik-media",
         "authentik_data_postgres": "/DATA/AppData/$AppID/data/postgres",
         "authentik_data_redis": "/DATA/AppData/$AppID/data/redis"
-      }
+      },
+      "port": "9443"
     },
     "portainer": {
       "supported": true,
@@ -92,7 +93,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "9443"
     },
     "runtipi": {
       "supported": true,
@@ -107,16 +109,19 @@
         "authentik_data_authentik-media": "data/authentik-media",
         "authentik_data_postgres": "data/postgres",
         "authentik_data_redis": "data/redis"
-      }
+      },
+      "port": "9443"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "9443"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "9443"
     },
     "umbrel": {
       "supported": true,
@@ -127,7 +132,8 @@
         "authentik_data_authentik-media": "data/authentik-media",
         "authentik_data_postgres": "data/postgres",
         "authentik_data_redis": "data/redis"
-      }
+      },
+      "port": "10007"
     }
   },
   "tags": [

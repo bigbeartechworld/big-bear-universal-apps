@@ -94,7 +94,8 @@
       "port_map": "9292",
       "volume_mappings": {
         "tududi_tududi_db": "/DATA/AppData/$AppID/tududi/db"
-      }
+      },
+      "port": "9292"
     },
     "portainer": {
       "supported": true,
@@ -103,7 +104,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "9292"
     },
     "runtipi": {
       "supported": true,
@@ -113,23 +115,27 @@
       ],
       "volume_mappings": {
         "tududi_tududi_db": "tududi/db"
-      }
+      },
+      "port": "9292"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "9292"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "9292"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "tududi_tududi_db": "tududi/db"
-      }
+      },
+      "port": "10172"
     }
   },
   "tags": [

@@ -170,6 +170,28 @@ check_dependencies() {
     fi
 }
 
+# Validate JSON syntax
+validate_json_syntax() {
+    local file="$1"
+    
+    if ! jq empty "$file" 2>/dev/null; then
+        return 1
+    fi
+    
+    return 0
+}
+
+# Validate YAML syntax
+validate_yaml_syntax() {
+    local file="$1"
+    
+    if ! yq eval '.' "$file" > /dev/null 2>&1; then
+        return 1
+    fi
+    
+    return 0
+}
+
 # Initialize output directories
 init_directories() {
     if [[ "$DRY_RUN" == "true" ]]; then
@@ -195,12 +217,15 @@ load_app_metadata() {
     
     if [[ ! -f "$app_json" ]]; then
         print_error "app.json not found in $app_dir"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         return 1
     fi
     
     # Validate JSON syntax
     if ! jq empty "$app_json" 2>/dev/null; then
         print_error "Invalid JSON in $app_json"
+        jq empty "$app_json" 2>&1 | head -5
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         return 1
     fi
     
@@ -248,7 +273,40 @@ load_app_metadata() {
     export COMPAT_RUNTIPI=$(jq -r '.compatibility.runtipi.supported // true' "$app_json")
     export COMPAT_DOCKGE=$(jq -r '.compatibility.dockge.supported // true' "$app_json")
     export COMPAT_COSMOS=$(jq -r '.compatibility.cosmos.supported // true' "$app_json")
+    
+    # Platform-specific port overrides
+    export PORT_CASAOS=$(jq -r '.compatibility.casaos.port // empty' "$app_json")
+    export PORT_PORTAINER=$(jq -r '.compatibility.portainer.port // empty' "$app_json")
+    export PORT_RUNTIPI=$(jq -r '.compatibility.runtipi.port // empty' "$app_json")
+    export PORT_DOCKGE=$(jq -r '.compatibility.dockge.port // empty' "$app_json")
+    export PORT_COSMOS=$(jq -r '.compatibility.cosmos.port // empty' "$app_json")
+    export PORT_UMBREL=$(jq -r '.compatibility.umbrel.port // empty' "$app_json")
     export COMPAT_UMBREL=$(jq -r '.compatibility.umbrel.supported // true' "$app_json")
+    
+    # Validate required fields
+    if [[ -z "$APP_ID" ]] || [[ "$APP_ID" == "null" ]]; then
+        print_error "Missing required field: metadata.id in $app_json"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if [[ -z "$APP_NAME" ]] || [[ "$APP_NAME" == "null" ]]; then
+        print_error "Missing required field: metadata.name in $app_json"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if [[ -z "$APP_VERSION" ]] || [[ "$APP_VERSION" == "null" ]]; then
+        print_error "Missing required field: metadata.version in $app_json"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if [[ -z "$APP_MAIN_IMAGE" ]] || [[ "$APP_MAIN_IMAGE" == "null" ]]; then
+        print_error "Missing required field: technical.main_image in $app_json"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
 }
 
 # Get folder name for a specific platform (with override support)
@@ -300,7 +358,17 @@ finalize_portainer_master_template() {
 }
 EOF
     rm -f "${master_file}.bak"
-    print_success "Finalized Portainer master template"
+    
+    # Validate JSON syntax
+    if ! jq empty "$master_file" 2>/dev/null; then
+        print_error "Generated Portainer templates.json is invalid JSON!"
+        print_error "Validation error:"
+        jq empty "$master_file" 2>&1 | head -5
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    print_success "Finalized Portainer master template ($(jq '.templates | length' "$master_file") templates)"
 }
 
 # Create a placeholder logo.jpg image
@@ -321,22 +389,35 @@ validate_app() {
     
     if [[ ! -d "$app_dir" ]]; then
         print_error "App directory not found: $app_dir"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         return 1
     fi
     
     if [[ ! -f "$app_dir/app.json" ]]; then
         print_error "app.json not found for $app_name"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         return 1
     fi
     
     if [[ ! -f "$app_dir/docker-compose.yml" ]]; then
         print_error "docker-compose.yml not found for $app_name"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         return 1
     fi
     
     # Validate JSON syntax
     if ! jq empty "$app_dir/app.json" 2>/dev/null; then
         print_error "Invalid JSON in app.json for $app_name"
+        jq empty "$app_dir/app.json" 2>&1 | head -5
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    # Validate YAML syntax for docker-compose.yml
+    if ! validate_yaml_syntax "$app_dir/docker-compose.yml"; then
+        print_error "Invalid YAML in docker-compose.yml for $app_name"
+        yq eval '.' "$app_dir/docker-compose.yml" 2>&1 | head -10
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         return 1
     fi
     
@@ -356,21 +437,52 @@ adjust_compose_for_platform() {
             cp "$input_file" "$output_file"
             # Will add x-casaos extensions in convert_to_casaos function
             ;;
-        portainer)
-            # Just copy the compose file for now
-            # TODO: Add support for converting relative paths to named volumes
+        portainer|dockge|cosmos)
+            # Copy the compose file and add big-bear- prefix to volume names
             cp "$input_file" "$output_file"
+            add_bigbear_volume_prefix "$output_file"
             ;;
         runtipi)
             # Copy compose, add runtipi.managed label and tipi_main_network
             cp "$input_file" "$output_file"
             # Will be modified in convert_to_runtipi function
             ;;
-        dockge|cosmos|umbrel)
+        umbrel)
             # Use clean compose as-is
             cp "$input_file" "$output_file"
             ;;
     esac
+}
+
+# Add big-bear- prefix to all named volumes
+add_bigbear_volume_prefix() {
+    local compose_file="$1"
+    
+    # Get list of named volumes
+    local volume_names=$(yq eval '.volumes | keys | .[]' "$compose_file" 2>/dev/null || echo "")
+    
+    if [[ -z "$volume_names" ]]; then
+        return
+    fi
+    
+    # For each volume, add big-bear- prefix using sed
+    while IFS= read -r vol_name; do
+        [[ -z "$vol_name" ]] && continue
+        
+        local new_vol_name="big-bear-${vol_name}"
+        
+        # Use sed to replace all occurrences
+        # 1. Replace in volumes section keys
+        sed -i.bak "s/^  ${vol_name}:/  ${new_vol_name}:/g" "$compose_file"
+        # 2. Replace volume name values
+        sed -i.bak "s/name: ${vol_name}$/name: ${new_vol_name}/g" "$compose_file"
+        # 3. Replace in service volume references (short form: - vol_name:)
+        sed -i.bak "s/- ${vol_name}:/- ${new_vol_name}:/g" "$compose_file"
+        # 4. Replace in service volume references (long form: source: vol_name)
+        sed -i.bak "s/source: ${vol_name}$/source: ${new_vol_name}/g" "$compose_file"
+        
+        rm -f "$compose_file.bak"
+    done <<< "$volume_names"
 }
 
 # Convert to CasaOS format
@@ -427,7 +539,10 @@ convert_to_casaos() {
     
     yq eval ".x-casaos.title.en_us = \"$APP_NAME\"" -i "$compose_file"
     yq eval ".x-casaos.category = \"$APP_CATEGORY\"" -i "$compose_file"
-    yq eval ".x-casaos.port_map = \"$APP_DEFAULT_PORT\"" -i "$compose_file"
+    
+    # Use platform-specific port if defined, otherwise use default
+    local casaos_port="${PORT_CASAOS:-$APP_DEFAULT_PORT}"
+    yq eval ".x-casaos.port_map = \"$casaos_port\"" -i "$compose_file"
     
     # Add descriptive comments to x-casaos section using perl (works on both macOS and Linux)
     # Add comment before architectures
@@ -646,6 +761,23 @@ convert_to_casaos() {
 }
 EOF
     
+    # Validate generated files
+    if ! validate_yaml_syntax "$compose_file"; then
+        print_error "Generated docker-compose.yml for $app_name (CasaOS) has invalid YAML!"
+        print_error "File: $compose_file"
+        yq eval '.' "$compose_file" 2>&1 | head -10
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if ! jq empty "$output_dir/config.json" 2>/dev/null; then
+        print_error "Generated config.json for $app_name (CasaOS) has invalid JSON!"
+        print_error "Validation error:"
+        jq empty "$output_dir/config.json" 2>&1
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
     print_success "Converted $app_name for CasaOS"
 }
 
@@ -668,6 +800,15 @@ convert_to_portainer() {
     # Create docker-compose with named volumes
     adjust_compose_for_platform "$app_dir/docker-compose.yml" "$output_dir/docker-compose.yml" "portainer" "$app_name"
     
+    # Validate docker-compose.yml
+    if ! validate_yaml_syntax "$output_dir/docker-compose.yml"; then
+        print_error "Generated docker-compose.yml for $app_name (Portainer) has invalid YAML!"
+        print_error "File: $output_dir/docker-compose.yml"
+        yq eval '.' "$output_dir/docker-compose.yml" 2>&1 | head -10
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
     # Get template ID
     local template_id
     if [[ -f "$OUTPUT_DIR/portainer/.template_id_counter" ]]; then
@@ -678,10 +819,33 @@ convert_to_portainer() {
         echo "2" > "$OUTPUT_DIR/portainer/.template_id_counter"
     fi
     
-    # Escape JSON strings
-    local title_json="${APP_NAME//\"/\\\"}"
-    local desc_json="${APP_DESCRIPTION//\"/\\\"}"
-    local tag_json="${APP_TAGLINE//\"/\\\"}"
+    # Escape JSON strings - order matters! Backslashes first, then quotes, then control chars
+    local title_json="${APP_NAME}"
+    local desc_json="${APP_DESCRIPTION}"
+    local tag_json="${APP_TAGLINE}"
+    
+    # Escape backslashes first
+    title_json="${title_json//\\/\\\\}"
+    desc_json="${desc_json//\\/\\\\}"
+    tag_json="${tag_json//\\/\\\\}"
+    
+    # Then escape quotes
+    title_json="${title_json//\"/\\\"}"
+    desc_json="${desc_json//\"/\\\"}"
+    tag_json="${tag_json//\"/\\\"}"
+    
+    # Then escape control characters
+    title_json="${title_json//$'\n'/\\n}"
+    title_json="${title_json//$'\r'/\\r}"
+    title_json="${title_json//$'\t'/\\t}"
+    
+    desc_json="${desc_json//$'\n'/\\n}"
+    desc_json="${desc_json//$'\r'/\\r}"
+    desc_json="${desc_json//$'\t'/\\t}"
+    
+    tag_json="${tag_json//$'\n'/\\n}"
+    tag_json="${tag_json//$'\r'/\\r}"
+    tag_json="${tag_json//$'\t'/\\t}"
     
     # Build environment variables JSON
     local env_json=""
@@ -690,9 +854,23 @@ convert_to_portainer() {
         local env_name=$(echo "$APP_ENV_VARS" | jq -r ".[$i].name")
         local env_default=$(echo "$APP_ENV_VARS" | jq -r ".[$i].default // \"\"")
         local env_desc=$(echo "$APP_ENV_VARS" | jq -r ".[$i].description")
+        
+        # Escape backslashes first
         env_default="${env_default//\\/\\\\}"
+        env_desc="${env_desc//\\/\\\\}"
+        
+        # Then escape quotes
         env_default="${env_default//\"/\\\"}"
         env_desc="${env_desc//\"/\\\"}"
+        
+        # Then escape control characters
+        env_default="${env_default//$'\n'/\\n}"
+        env_default="${env_default//$'\r'/\\r}"
+        env_default="${env_default//$'\t'/\\t}"
+        
+        env_desc="${env_desc//$'\n'/\\n}"
+        env_desc="${env_desc//$'\r'/\\r}"
+        env_desc="${env_desc//$'\t'/\\t}"
         
         if [[ $i -gt 0 ]]; then
             env_json+=",
@@ -724,8 +902,20 @@ $env_json
 EOF
 )
     
-    # Save individual template
-    echo "{\"version\": \"3\", \"templates\": [$template_entry]}" > "$output_dir/template.json"
+    # Save individual template and validate JSON
+    local temp_template="{\"version\": \"3\", \"templates\": [$template_entry]}"
+    echo "$temp_template" > "$output_dir/template.json"
+    
+    # Validate individual template JSON
+    if ! jq empty "$output_dir/template.json" 2>/dev/null; then
+        print_error "Generated template for $app_name has invalid JSON!"
+        print_error "Validation error:"
+        jq empty "$output_dir/template.json" 2>&1
+        print_error "Template entry that failed:"
+        echo "$template_entry" | head -20
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
     
     # Append to master template
     echo "$template_entry," >> "$master_file"
@@ -978,10 +1168,10 @@ convert_to_runtipi() {
         fi
     done <<< "$all_services"
     
-    # Determine port
-    local runtipi_port="${APP_DEFAULT_PORT:-8080}"
-    # Only process port if it's a valid number
-    if [[ "$runtipi_port" =~ ^[0-9]+$ ]] && [[ "$runtipi_port" -le 999 ]]; then
+    # Determine port - use platform-specific port if defined, otherwise use default
+    local runtipi_port="${PORT_RUNTIPI:-${APP_DEFAULT_PORT:-8080}}"
+    # Only process port if it's a valid number and no platform-specific port is set
+    if [[ -z "$PORT_RUNTIPI" ]] && [[ "$runtipi_port" =~ ^[0-9]+$ ]] && [[ "$runtipi_port" -le 999 ]]; then
         case "$runtipi_port" in
             80) runtipi_port=8080 ;;
             443) runtipi_port=8443 ;;
@@ -1057,6 +1247,31 @@ EOF
         create_placeholder_logo "$output_dir/metadata/logo.jpg"
     fi
     
+    # Validate generated files
+    if ! validate_yaml_syntax "$compose_file"; then
+        print_error "Generated docker-compose.yml for $app_name (Runtipi) has invalid YAML!"
+        print_error "File: $compose_file"
+        yq eval '.' "$compose_file" 2>&1 | head -10
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if ! jq empty "$output_dir/docker-compose.json" 2>/dev/null; then
+        print_error "Generated docker-compose.json for $app_name (Runtipi) has invalid JSON!"
+        print_error "Validation error:"
+        jq empty "$output_dir/docker-compose.json" 2>&1
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if ! jq empty "$output_dir/config.json" 2>/dev/null; then
+        print_error "Generated config.json for $app_name (Runtipi) has invalid JSON!"
+        print_error "Validation error:"
+        jq empty "$output_dir/config.json" 2>&1
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
     print_success "Converted $app_name for Runtipi"
 }
 
@@ -1075,16 +1290,44 @@ convert_to_dockge() {
     
     mkdir -p "$output_dir"
     
-    # Copy compose as-is
-    cp "$app_dir/docker-compose.yml" "$output_dir/compose.yaml"
+    # Copy compose and add big-bear- prefix to volumes
+    adjust_compose_for_platform "$app_dir/docker-compose.yml" "$output_dir/compose.yaml" "dockge" "$app_name"
+    
+    # Escape JSON strings - order matters! Backslashes first, then quotes, then control chars
+    local name_json="${APP_NAME}"
+    local desc_json="${APP_DESCRIPTION}"
+    local author_json="${APP_AUTHOR}"
+    
+    # Escape backslashes first
+    name_json="${name_json//\\/\\\\}"
+    desc_json="${desc_json//\\/\\\\}"
+    author_json="${author_json//\\/\\\\}"
+    
+    # Then escape quotes
+    name_json="${name_json//\"/\\\"}"
+    desc_json="${desc_json//\"/\\\"}"
+    author_json="${author_json//\"/\\\"}"
+    
+    # Then escape control characters
+    name_json="${name_json//$'\n'/\\n}"
+    name_json="${name_json//$'\r'/\\r}"
+    name_json="${name_json//$'\t'/\\t}"
+    
+    desc_json="${desc_json//$'\n'/\\n}"
+    desc_json="${desc_json//$'\r'/\\r}"
+    desc_json="${desc_json//$'\t'/\\t}"
+    
+    author_json="${author_json//$'\n'/\\n}"
+    author_json="${author_json//$'\r'/\\r}"
+    author_json="${author_json//$'\t'/\\t}"
     
     # Create metadata.json
     cat > "$output_dir/metadata.json" << EOF
 {
-  "name": "$APP_NAME",
-  "description": "$APP_DESCRIPTION",
+  "name": "$name_json",
+  "description": "$desc_json",
   "version": "$APP_VERSION",
-  "author": "$APP_AUTHOR",
+  "author": "$author_json",
   "icon": "$APP_ICON",
   "category": "$APP_CATEGORY",
   "port": "$APP_DEFAULT_PORT",
@@ -1092,6 +1335,23 @@ convert_to_dockge() {
   "source": "$APP_REPOSITORY"
 }
 EOF
+    
+    # Validate generated files
+    if ! validate_yaml_syntax "$output_dir/compose.yaml"; then
+        print_error "Generated compose.yaml for $app_name (Dockge) has invalid YAML!"
+        print_error "File: $output_dir/compose.yaml"
+        yq eval '.' "$output_dir/compose.yaml" 2>&1 | head -10
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if ! jq empty "$output_dir/metadata.json" 2>/dev/null; then
+        print_error "Generated metadata.json for $app_name (Dockge) has invalid JSON!"
+        print_error "Validation error:"
+        jq empty "$output_dir/metadata.json" 2>&1
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
     
     print_success "Converted $app_name for Dockge"
 }
@@ -1111,15 +1371,30 @@ convert_to_cosmos() {
     
     mkdir -p "$output_dir"
     
+    # Create temporary compose file with big-bear- prefix
+    local temp_compose=$(mktemp)
+    adjust_compose_for_platform "$app_dir/docker-compose.yml" "$temp_compose" "cosmos" "$app_name"
+    
+    # Escape APP_NAME for JSON in routes
+    local name_for_routes="${APP_NAME}"
+    name_for_routes="${name_for_routes//\\/\\\\}"
+    name_for_routes="${name_for_routes//\"/\\\"}"
+    name_for_routes="${name_for_routes//$'\n'/\\n}"
+    name_for_routes="${name_for_routes//$'\r'/\\r}"
+    name_for_routes="${name_for_routes//$'\t'/\\t}"
+    
     # Create cosmos-compose.json with routes
+    local cosmos_port="${PORT_COSMOS:-$APP_DEFAULT_PORT}"
+    # Ensure port is a single value (take first port if multiple)
+    cosmos_port=$(echo "$cosmos_port" | head -1 | tr -d '\n\r')
     local routes=""
-    if [[ -n "$APP_DEFAULT_PORT" ]]; then
+    if [[ -n "$cosmos_port" ]]; then
         routes="\"routes\": [
         {
-          \"name\": \"$APP_NAME\",
+          \"name\": \"$name_for_routes\",
           \"description\": \"Web UI\",
           \"useHost\": true,
-          \"target\": \"http://$app_name:$APP_DEFAULT_PORT\",
+          \"target\": \"http://$app_name:$cosmos_port\",
           \"mode\": \"SERVAPP\",
           \"Timeout\": 14400000,
           \"ThrottlePerMinute\": 12000,
@@ -1134,22 +1409,63 @@ convert_to_cosmos() {
   "cosmos-installer": {
     $routes
     "services": {
-      "$app_name": $(yq eval -o=json ".services.[\"$APP_MAIN_SERVICE\"] // (.services | to_entries[0].value)" "$app_dir/docker-compose.yml")
+      "$app_name": $(yq eval -o=json ".services.[\"$APP_MAIN_SERVICE\"] // (.services | to_entries[0].value)" "$temp_compose")
     }
   }
 }
 EOF
     
+    # Clean up temporary file
+    rm -f "$temp_compose"
+    
+    # Escape JSON strings - order matters! Backslashes first, then quotes, then control chars
+    local name_json="${APP_NAME}"
+    local desc_json="${APP_DESCRIPTION}"
+    
+    # Escape backslashes first
+    name_json="${name_json//\\/\\\\}"
+    desc_json="${desc_json//\\/\\\\}"
+    
+    # Then escape quotes
+    name_json="${name_json//\"/\\\"}"
+    desc_json="${desc_json//\"/\\\"}"
+    
+    # Then escape control characters
+    name_json="${name_json//$'\n'/\\n}"
+    name_json="${name_json//$'\r'/\\r}"
+    name_json="${name_json//$'\t'/\\t}"
+    
+    desc_json="${desc_json//$'\n'/\\n}"
+    desc_json="${desc_json//$'\r'/\\r}"
+    desc_json="${desc_json//$'\t'/\\t}"
+    
     # Create description.json
     cat > "$output_dir/description.json" << EOF
 {
-  "name": "$APP_NAME",
-  "description": "$APP_DESCRIPTION",
+  "name": "$name_json",
+  "description": "$desc_json",
   "url": "$APP_HOMEPAGE",
-  "longDescription": "$APP_DESCRIPTION",
+  "longDescription": "$desc_json",
   "tags": $(echo "$APP_TAGS" | jq -c '.')
 }
 EOF
+    
+    # Validate generated files
+    if ! jq empty "$output_dir/cosmos-compose.json" 2>/dev/null; then
+        print_error "Generated cosmos-compose.json for $app_name (Cosmos) has invalid JSON!"
+        print_error "Validation error:"
+        jq empty "$output_dir/cosmos-compose.json" 2>&1
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if ! jq empty "$output_dir/description.json" 2>/dev/null; then
+        print_error "Generated description.json for $app_name (Cosmos) has invalid JSON!"
+        print_error "Validation error:"
+        jq empty "$output_dir/description.json" 2>&1
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
     
     print_success "Converted $app_name for Cosmos"
 }
@@ -1162,6 +1478,7 @@ convert_to_umbrel() {
     # Validate app_name is not empty
     if [[ -z "$app_name" ]]; then
         print_error "Cannot convert to Umbrel: app_name is empty"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         return 1
     fi
     
@@ -1176,6 +1493,7 @@ convert_to_umbrel() {
     # Final validation: ensure folder_name is valid
     if [[ -z "$folder_name" ]] || [[ "$folder_name" == "null" ]]; then
         print_error "Cannot convert $app_name to Umbrel: invalid folder_name"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         return 1
     fi
     
@@ -1204,36 +1522,48 @@ convert_to_umbrel() {
     # Umbrel base port for safer port allocation (avoids common 8000s conflicts)
     local UMBREL_BASE_PORT=10000
     
+    # Check if platform-specific port override exists
+    local use_port_override=false
+    if [[ -n "$PORT_UMBREL" ]]; then
+        use_port_override=true
+    fi
+    
     # Extract ports from docker-compose.yml if available
     # For Umbrel we need TWO ports:
     # 1. host_port (umbrel-app.yml "port" field) - unique public port
     # 2. container_port (APP_PORT in docker-compose.yml) - internal port app listens on
-    local host_port="$APP_DEFAULT_PORT"
+    local host_port="${PORT_UMBREL:-$APP_DEFAULT_PORT}"
     local container_port="$APP_DEFAULT_PORT"
     local port_spec=$(yq eval '.services[].ports[0]' "$app_dir/docker-compose.yml" 2>/dev/null | head -1)
     
     if [[ -n "$port_spec" && "$port_spec" != "null" ]]; then
         if [[ "$port_spec" =~ ^[0-9]+:[0-9]+$ ]]; then
             # Format: "host:container" - extract both sides
-            host_port=$(echo "$port_spec" | cut -d':' -f1)
+            if [[ "$use_port_override" == false ]]; then
+                host_port=$(echo "$port_spec" | cut -d':' -f1)
+            fi
             container_port=$(echo "$port_spec" | cut -d':' -f2)
         elif [[ "$port_spec" =~ ^[0-9]+$ ]]; then
             # Format: just the port number - use for both
-            host_port="$port_spec"
+            if [[ "$use_port_override" == false ]]; then
+                host_port="$port_spec"
+            fi
             container_port="$port_spec"
         else
             # Complex format (e.g., "8080:8000/tcp")
             local clean_spec=$(echo "$port_spec" | sed 's|/.*||')
             if [[ "$clean_spec" =~ : ]]; then
-                host_port=$(echo "$clean_spec" | cut -d':' -f1)
+                if [[ "$use_port_override" == false ]]; then
+                    host_port=$(echo "$clean_spec" | cut -d':' -f1)
+                fi
                 container_port=$(echo "$clean_spec" | cut -d':' -f2)
             fi
         fi
     fi
     
-    # Remap host_port to safer 10000+ range to avoid common port conflicts
+    # Remap host_port to safer 10000+ range to avoid common port conflicts (unless port override is set)
     # Keep container_port as-is (internal app port)
-    if [[ "$host_port" =~ ^[0-9]+$ ]] && [[ "$host_port" -lt "$UMBREL_BASE_PORT" ]]; then
+    if [[ "$use_port_override" == false ]] && [[ "$host_port" =~ ^[0-9]+$ ]] && [[ "$host_port" -lt "$UMBREL_BASE_PORT" ]]; then
         # Calculate sequential port from base
         local port_map_file="$OUTPUT_DIR/umbrel/.port_sequence"
         if [[ ! -f "$port_map_file" ]]; then
@@ -1350,9 +1680,13 @@ convert_to_umbrel() {
             rm -f "$output_dir/docker-compose.yml.bak"
         done <<< "$named_volumes"
         
-        # Remove any quotes around paths that contain slashes (they get auto-quoted by sed)
-        # This handles paths like "media/data/books" that get quoted as "${APP_DATA_DIR}/"media/data/books"
+        # Remove any quotes around paths that contain slashes
+        # Pattern 1: Remove quotes immediately after the path: ${APP_DATA_DIR}/"path" -> ${APP_DATA_DIR}/path
         sed -i.bak 's|\${APP_DATA_DIR}/"\([^"]*\)"|\${APP_DATA_DIR}/\1|g' "$output_dir/docker-compose.yml"
+        # Pattern 2: Remove trailing quotes before comments: /path" # comment -> /path # comment
+        sed -i.bak 's|\(\${APP_DATA_DIR}/[^"]*\)" #|\1 #|g' "$output_dir/docker-compose.yml"
+        # Pattern 3: Remove trailing quotes at end of line: /path" -> /path
+        sed -i.bak 's|\(\${APP_DATA_DIR}/[^"]*\)"$|\1|g' "$output_dir/docker-compose.yml"
         rm -f "$output_dir/docker-compose.yml.bak"
         
         # Remove the volumes section entirely
@@ -1436,6 +1770,7 @@ EOF
         print_error "folder_name was: '$folder_name'"
         print_error "Contents of umbrel-app.yml:"
         head -20 "$output_dir/umbrel-app.yml" | sed 's/^/  /'
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         rm -rf "$output_dir"
         return 1
     fi
@@ -1448,6 +1783,23 @@ EOF
     # Create data directory with .gitkeep (standard Umbrel app structure)
     mkdir -p "$output_dir/data"
     touch "$output_dir/data/.gitkeep"
+    
+    # Validate generated files
+    if ! validate_yaml_syntax "$output_dir/docker-compose.yml"; then
+        print_error "Generated docker-compose.yml for $app_name (Umbrel) has invalid YAML!"
+        print_error "File: $output_dir/docker-compose.yml"
+        yq eval '.' "$output_dir/docker-compose.yml" 2>&1 | head -10
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if ! validate_yaml_syntax "$output_dir/umbrel-app.yml"; then
+        print_error "Generated umbrel-app.yml for $app_name (Umbrel) has invalid YAML!"
+        print_error "File: $output_dir/umbrel-app.yml"
+        yq eval '.' "$output_dir/umbrel-app.yml" 2>&1 | head -10
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
     
     print_success "Converted $app_name for Umbrel"
 }
