@@ -1,19 +1,29 @@
 name: Renovate Automerge
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize, reopened]
 
 jobs:
   check-version-bump:
-    if: contains(github.head_ref, 'renovate/')
+    # Security: Only run for renovate branches from the same repository (not forks)
+    if: |
+      contains(github.head_ref, 'renovate/') &&
+      github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout base branch
+        uses: actions/checkout@v4.3.0
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout PR branch
         uses: actions/checkout@v4.3.0
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          path: pr-branch
+          token: ${{ secrets.PLATFORM_SYNC_TOKEN }}
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -106,7 +116,11 @@ jobs:
       - name: Update app.json versions
         id: update-versions
         run: |
-          # Get list of changed files
+          # Copy the update script from base branch to pr-branch (trusted code)
+          cp .github/scripts/update-app-version.js pr-branch/.github/scripts/update-app-version.js
+          
+          # Work in PR branch directory
+          cd pr-branch
           git fetch origin ${{ github.base_ref }}
           CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep 'docker-compose.yml' || true)
           
@@ -122,12 +136,13 @@ jobs:
           # Export for the node script
           export CHANGED_FILES
           
-          # Run the update script
+          # Run the update script (using base branch version for security)
           bun .github/scripts/update-app-version.js
 
       - name: Commit app.json version updates
         if: steps.update-versions.outputs.has_changes == 'true'
         run: |
+          cd pr-branch
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
