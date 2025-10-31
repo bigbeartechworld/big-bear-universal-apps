@@ -36,7 +36,7 @@
     "platform": "linux",
     "main_service": "big-bear-invoice-ninja-web",
     "default_port": "8080",
-    "main_image": "invoiceninja/invoiceninja",
+    "main_image": "nginx",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {
