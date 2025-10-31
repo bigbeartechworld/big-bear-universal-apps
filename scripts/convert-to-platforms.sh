@@ -1415,9 +1415,6 @@ convert_to_cosmos() {
 }
 EOF
     
-    # Clean up temporary file
-    rm -f "$temp_compose"
-    
     # Escape JSON strings - order matters! Backslashes first, then quotes, then control chars
     local name_json="${APP_NAME}"
     local desc_json="${APP_DESCRIPTION}"
@@ -1450,6 +1447,61 @@ EOF
 }
 EOF
     
+    # Create config.json with version and image info
+    cat > "$output_dir/config.json" << EOF
+{
+  "id": "$app_name",
+  "version": "$APP_VERSION",
+  "image": "$APP_MAIN_IMAGE",
+  "youtube": "${APP_YOUTUBE:-}",
+  "docs_link": "${APP_DOCUMENTATION:-}",
+  "big_bear_cosmos_youtube": ""
+}
+EOF
+    
+    # Create docker-compose.yml for Cosmos
+    # Start with the temp compose and prepend cosmos-installer
+    {
+        echo "cosmos-installer: null"
+        cat "$temp_compose"
+        echo "minVersion: 0.14.0"
+    } > "$output_dir/docker-compose.yml"
+    
+    # Clean up temporary file - do this AFTER using it for docker-compose.yml
+    rm -f "$temp_compose"
+    
+    # Download icon
+    if [[ -n "$APP_ICON" ]]; then
+        if curl -fsSL "$APP_ICON" -o "$output_dir/icon_temp" 2>/dev/null; then
+            # Try to convert to PNG if ImageMagick is available
+            if command -v convert &> /dev/null; then
+                if convert "$output_dir/icon_temp" "$output_dir/icon.png" 2>/dev/null; then
+                    rm -f "$output_dir/icon_temp"
+                else
+                    # If conversion fails, just rename to .png
+                    mv "$output_dir/icon_temp" "$output_dir/icon.png"
+                fi
+            else
+                # No ImageMagick, just rename to .png
+                mv "$output_dir/icon_temp" "$output_dir/icon.png"
+            fi
+        else
+            # If download fails, create placeholder
+            if command -v convert &> /dev/null; then
+                convert -size 512x512 xc:gray "$output_dir/icon.png" 2>/dev/null || touch "$output_dir/icon.png"
+            else
+                touch "$output_dir/icon.png"
+            fi
+        fi
+    else
+        # No icon URL, create placeholder
+        if command -v convert &> /dev/null; then
+            convert -size 512x512 xc:gray "$output_dir/icon.png" 2>/dev/null || touch "$output_dir/icon.png"
+        else
+            touch "$output_dir/icon.png"
+        fi
+    fi
+    
     # Validate generated files
     if ! jq empty "$output_dir/cosmos-compose.json" 2>/dev/null; then
         print_error "Generated cosmos-compose.json for $app_name (Cosmos) has invalid JSON!"
@@ -1467,7 +1519,21 @@ EOF
         return 1
     fi
     
-    print_success "Converted $app_name for Cosmos"
+    if ! jq empty "$output_dir/config.json" 2>/dev/null; then
+        print_error "Generated config.json for $app_name (Cosmos) has invalid JSON!"
+        print_error "Validation error:"
+        jq empty "$output_dir/config.json" 2>&1
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if ! yq eval '.' "$output_dir/docker-compose.yml" > /dev/null 2>&1; then
+        print_error "Generated docker-compose.yml for $app_name (Cosmos) has invalid YAML!"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    print_success "Converted $app_name for Cosmos (config.json, description.json, docker-compose.yml, cosmos-compose.json)"
 }
 
 # Convert to Umbrel format
