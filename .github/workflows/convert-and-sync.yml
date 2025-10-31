@@ -278,6 +278,24 @@ jobs:
             sync
           draft: ${{ github.event.inputs.create_draft == 'true' }}
 
+      - name: Setup pnpm
+        if: steps.check-platform.outputs.should_sync == 'true' && steps.create-pr.outputs.pull-request-number && github.event.inputs.skip_tests != 'true'
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Setup Bun
+        if: steps.check-platform.outputs.should_sync == 'true' && steps.create-pr.outputs.pull-request-number && github.event.inputs.skip_tests != 'true'
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Setup Node.js
+        if: steps.check-platform.outputs.should_sync == 'true' && steps.create-pr.outputs.pull-request-number && github.event.inputs.skip_tests != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Run platform tests
         if: steps.check-platform.outputs.should_sync == 'true' && steps.create-pr.outputs.pull-request-number && github.event.inputs.skip_tests != 'true'
         id: run-tests
