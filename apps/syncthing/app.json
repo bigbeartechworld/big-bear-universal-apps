@@ -72,7 +72,8 @@
       "volume_mappings": {
         "syncthing_data": "/DATA/AppData/$AppID/data",
         "syncthing_media_data_syncthing": "/DATA/AppData/$AppID/media/data/syncthing"
-      }
+      },
+      "port": "8384"
     },
     "portainer": {
       "supported": true,
@@ -81,7 +82,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8384"
     },
     "runtipi": {
       "supported": true,
@@ -93,16 +95,19 @@
       "volume_mappings": {
         "syncthing_data": "data",
         "syncthing_media_data_syncthing": "media/data/syncthing"
-      }
+      },
+      "port": "8384"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8384"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8384"
     },
     "umbrel": {
       "supported": true,
@@ -110,7 +115,8 @@
       "volume_mappings": {
         "syncthing_data": "data",
         "syncthing_media_data_syncthing": "media/data/syncthing"
-      }
+      },
+      "port": "10166"
     }
   },
   "tags": [

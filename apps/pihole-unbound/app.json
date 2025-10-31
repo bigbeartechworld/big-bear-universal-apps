@@ -90,7 +90,8 @@
       "volume_mappings": {
         "pihole-unbound_dnsmasq.d": "/DATA/AppData/$AppID/dnsmasq.d",
         "pihole-unbound_etc": "/DATA/AppData/$AppID/etc"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -99,7 +100,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -111,16 +113,19 @@
       "volume_mappings": {
         "pihole-unbound_dnsmasq.d": "dnsmasq.d",
         "pihole-unbound_etc": "etc"
-      }
+      },
+      "port": "8119"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,
@@ -128,7 +133,8 @@
       "volume_mappings": {
         "pihole-unbound_dnsmasq.d": "dnsmasq.d",
         "pihole-unbound_etc": "etc"
-      }
+      },
+      "port": "10135"
     }
   },
   "tags": [

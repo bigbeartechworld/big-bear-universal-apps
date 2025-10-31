@@ -114,7 +114,8 @@
         "lyrionmusicserver_config": "/DATA/AppData/$AppID/config",
         "lyrionmusicserver_music": "/DATA/AppData/$AppID/music",
         "lyrionmusicserver_playlists": "/DATA/AppData/$AppID/playlists"
-      }
+      },
+      "port": "9000"
     },
     "portainer": {
       "supported": true,
@@ -123,7 +124,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "9000"
     },
     "runtipi": {
       "supported": true,
@@ -136,16 +138,19 @@
         "lyrionmusicserver_config": "config",
         "lyrionmusicserver_music": "music",
         "lyrionmusicserver_playlists": "playlists"
-      }
+      },
+      "port": "9002"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "9000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "9000"
     },
     "umbrel": {
       "supported": true,
@@ -154,7 +159,8 @@
         "lyrionmusicserver_config": "config",
         "lyrionmusicserver_music": "music",
         "lyrionmusicserver_playlists": "playlists"
-      }
+      },
+      "port": "10092"
     }
   },
   "tags": [

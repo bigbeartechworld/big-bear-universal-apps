@@ -77,7 +77,8 @@
         "ayon_postgres": "/DATA/AppData/$AppID/postgres",
         "ayon_redis": "/DATA/AppData/$AppID/redis",
         "ayon_storage": "/DATA/AppData/$AppID/storage"
-      }
+      },
+      "port": "5000"
     },
     "portainer": {
       "supported": true,
@@ -86,7 +87,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "5000"
     },
     "runtipi": {
       "supported": true,
@@ -99,16 +101,19 @@
         "ayon_postgres": "postgres",
         "ayon_redis": "redis",
         "ayon_storage": "storage"
-      }
+      },
+      "port": "5000"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "5000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "5000"
     },
     "umbrel": {
       "supported": true,
@@ -118,7 +123,8 @@
         "ayon_postgres": "postgres",
         "ayon_redis": "redis",
         "ayon_storage": "storage"
-      }
+      },
+      "port": "10008"
     }
   },
   "tags": [

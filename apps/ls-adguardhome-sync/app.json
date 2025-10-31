@@ -146,7 +146,8 @@
       "port_map": "8080",
       "volume_mappings": {
         "ls-adguardhome-sync_config": "/DATA/AppData/$AppID/config"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -155,7 +156,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -166,23 +168,27 @@
       ],
       "volume_mappings": {
         "ls-adguardhome-sync_config": "config"
-      }
+      },
+      "port": "8106"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "ls-adguardhome-sync_config": "config"
-      }
+      },
+      "port": "10091"
     }
   },
   "tags": [

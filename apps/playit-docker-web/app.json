@@ -78,7 +78,8 @@
       "port_map": "8008",
       "volume_mappings": {
         "playit-docker-web_config": "/DATA/AppData/$AppID/config"
-      }
+      },
+      "port": "8008"
     },
     "portainer": {
       "supported": true,
@@ -98,7 +99,8 @@
       ],
       "volume_mappings": {
         "playit-docker-web_config": "config"
-      }
+      },
+      "port": "8010"
     },
     "dockge": {
       "supported": true,
@@ -114,7 +116,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "playit-docker-web_config": "config"
-      }
+      },
+      "port": "8008"
     }
   },
   "tags": [

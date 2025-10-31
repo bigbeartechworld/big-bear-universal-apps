@@ -117,7 +117,8 @@
         "plex-nvidia_config": "/DATA/AppData/$AppID/config",
         "plex-nvidia_movies": "/DATA/AppData/$AppID/movies",
         "plex-nvidia_tv": "/DATA/AppData/$AppID/tv"
-      }
+      },
+      "port": "32400"
     },
     "portainer": {
       "supported": true,
@@ -139,7 +140,8 @@
         "plex-nvidia_config": "config",
         "plex-nvidia_movies": "movies",
         "plex-nvidia_tv": "tv"
-      }
+      },
+      "port": "32401"
     },
     "dockge": {
       "supported": true,
@@ -157,7 +159,8 @@
         "plex-nvidia_config": "config",
         "plex-nvidia_movies": "movies",
         "plex-nvidia_tv": "tv"
-      }
+      },
+      "port": "10447"
     }
   },
   "tags": [

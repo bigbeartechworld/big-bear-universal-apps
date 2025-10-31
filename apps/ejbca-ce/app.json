@@ -83,7 +83,8 @@
       "port_map": "8443",
       "volume_mappings": {
         "ejbca-ce_persistent": "/DATA/AppData/$AppID/persistent"
-      }
+      },
+      "port": "8443"
     },
     "portainer": {
       "supported": true,
@@ -92,7 +93,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -102,23 +104,27 @@
       ],
       "volume_mappings": {
         "ejbca-ce_persistent": "persistent"
-      }
+      },
+      "port": "8444"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "ejbca-ce_persistent": "persistent"
-      }
+      },
+      "port": "10040"
     }
   },
   "tags": [

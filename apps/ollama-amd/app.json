@@ -67,7 +67,8 @@
       "port_map": "11434",
       "volume_mappings": {
         "ollama-amd_.ollama": "/DATA/AppData/$AppID/.ollama"
-      }
+      },
+      "port": "11434"
     },
     "portainer": {
       "supported": true,
@@ -76,7 +77,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "11434"
     },
     "runtipi": {
       "supported": true,
@@ -87,23 +89,27 @@
       ],
       "volume_mappings": {
         "ollama-amd_.ollama": ".ollama"
-      }
+      },
+      "port": "11434"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "11434"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "11434"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "ollama-amd_.ollama": ".ollama"
-      }
+      },
+      "port": "11434"
     }
   },
   "tags": [

@@ -68,7 +68,8 @@
       "port_map": "8123",
       "volume_mappings": {
         "home-assistant_config": "/DATA/AppData/$AppID/config"
-      }
+      },
+      "port": "8123"
     },
     "portainer": {
       "supported": true,
@@ -88,7 +89,8 @@
       ],
       "volume_mappings": {
         "home-assistant_config": "config"
-      }
+      },
+      "port": "8123"
     },
     "dockge": {
       "supported": true,
@@ -104,7 +106,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "home-assistant_config": "config"
-      }
+      },
+      "port": "8123"
     }
   },
   "tags": [

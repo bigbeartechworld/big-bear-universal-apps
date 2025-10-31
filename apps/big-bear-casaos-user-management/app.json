@@ -109,7 +109,8 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "5000"
+      "port_map": "5000",
+      "port": "5000"
     },
     "portainer": {
       "supported": false,

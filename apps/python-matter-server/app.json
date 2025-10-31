@@ -64,7 +64,8 @@
       "port_map": "5080",
       "volume_mappings": {
         "python-matter-server_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "port": "5080"
     },
     "portainer": {
       "supported": true,
@@ -84,7 +85,8 @@
       ],
       "volume_mappings": {
         "python-matter-server_data": "data"
-      }
+      },
+      "port": "5080"
     },
     "dockge": {
       "supported": true,
@@ -100,7 +102,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "python-matter-server_data": "data"
-      }
+      },
+      "port": "5080"
     }
   },
   "tags": [

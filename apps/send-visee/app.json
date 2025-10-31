@@ -105,7 +105,8 @@
       "volume_mappings": {
         "send-visee_redis": "/DATA/AppData/$AppID/redis",
         "send-visee_uploads": "/DATA/AppData/$AppID/uploads"
-      }
+      },
+      "port": "1443"
     },
     "portainer": {
       "supported": true,
@@ -114,7 +115,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "1443"
     },
     "runtipi": {
       "supported": true,
@@ -126,11 +128,13 @@
       "volume_mappings": {
         "send-visee_redis": "redis",
         "send-visee_uploads": "uploads"
-      }
+      },
+      "port": "1443"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "1443"
     },
     "cosmos": {
       "supported": true,
@@ -143,7 +147,8 @@
       "volume_mappings": {
         "send-visee_redis": "redis",
         "send-visee_uploads": "uploads"
-      }
+      },
+      "port": "10160"
     }
   },
   "tags": [

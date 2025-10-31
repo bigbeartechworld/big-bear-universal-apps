@@ -68,7 +68,8 @@
       "volume_mappings": {
         "jellystat_backup-data": "/DATA/AppData/$AppID/backup-data",
         "jellystat_postgres-data": "/DATA/AppData/$AppID/postgres-data"
-      }
+      },
+      "port": "3000"
     },
     "portainer": {
       "supported": true,
@@ -77,7 +78,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3000"
     },
     "runtipi": {
       "supported": true,
@@ -89,16 +91,19 @@
       "volume_mappings": {
         "jellystat_backup-data": "backup-data",
         "jellystat_postgres-data": "postgres-data"
-      }
+      },
+      "port": "3010"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,
@@ -106,7 +111,8 @@
       "volume_mappings": {
         "jellystat_backup-data": "backup-data",
         "jellystat_postgres-data": "postgres-data"
-      }
+      },
+      "port": "10077"
     }
   },
   "tags": [

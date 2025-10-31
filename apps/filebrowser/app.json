@@ -109,7 +109,8 @@
       "volume_mappings": {
         "filebrowser_data_config": "/DATA/AppData/$AppID/data/config",
         "filebrowser_data_db": "/DATA/AppData/$AppID/data/db"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -118,7 +119,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -130,16 +132,19 @@
       "volume_mappings": {
         "filebrowser_data_config": "data/config",
         "filebrowser_data_db": "data/db"
-      }
+      },
+      "port": "8094"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,
@@ -147,7 +152,8 @@
       "volume_mappings": {
         "filebrowser_data_config": "data/config",
         "filebrowser_data_db": "data/db"
-      }
+      },
+      "port": "10046"
     }
   },
   "tags": [

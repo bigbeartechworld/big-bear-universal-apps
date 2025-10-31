@@ -82,7 +82,8 @@
         "kavita_media_data_books": "/DATA/AppData/$AppID/media/data/books",
         "kavita_media_data_comics": "/DATA/AppData/$AppID/media/data/comics",
         "kavita_media_data_manga": "/DATA/AppData/$AppID/media/data/manga"
-      }
+      },
+      "port": "5000"
     },
     "portainer": {
       "supported": true,
@@ -91,7 +92,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "5000"
     },
     "runtipi": {
       "supported": true,
@@ -105,16 +107,19 @@
         "kavita_media_data_books": "media/data/books",
         "kavita_media_data_comics": "media/data/comics",
         "kavita_media_data_manga": "media/data/manga"
-      }
+      },
+      "port": "5004"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "5000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "5000"
     },
     "umbrel": {
       "supported": true,
@@ -124,7 +129,8 @@
         "kavita_media_data_books": "media/data/books",
         "kavita_media_data_comics": "media/data/comics",
         "kavita_media_data_manga": "media/data/manga"
-      }
+      },
+      "port": "10082"
     }
   },
   "tags": [

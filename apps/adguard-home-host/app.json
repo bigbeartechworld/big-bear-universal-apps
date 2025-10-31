@@ -93,7 +93,8 @@
       "volume_mappings": {
         "adguard-home-host_data_conf": "/DATA/AppData/$AppID/data/conf",
         "adguard-home-host_data_work": "/DATA/AppData/$AppID/data/work"
-      }
+      },
+      "port": "80"
     },
     "portainer": {
       "supported": true,
@@ -115,7 +116,8 @@
       "volume_mappings": {
         "adguard-home-host_data_conf": "data/conf",
         "adguard-home-host_data_work": "data/work"
-      }
+      },
+      "port": "8081"
     },
     "dockge": {
       "supported": true,
@@ -132,7 +134,8 @@
       "volume_mappings": {
         "adguard-home-host_data_conf": "data/conf",
         "adguard-home-host_data_work": "data/work"
-      }
+      },
+      "port": "8080"
     }
   },
   "tags": [

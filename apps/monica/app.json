@@ -68,7 +68,8 @@
       "volume_mappings": {
         "monica_mysql": "/DATA/AppData/$AppID/mysql",
         "monica_storage": "/DATA/AppData/$AppID/storage"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -77,7 +78,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -89,16 +91,19 @@
       "volume_mappings": {
         "monica_mysql": "mysql",
         "monica_storage": "storage"
-      }
+      },
+      "port": "8108"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,
@@ -106,7 +111,8 @@
       "volume_mappings": {
         "monica_mysql": "mysql",
         "monica_storage": "storage"
-      }
+      },
+      "port": "10100"
     }
   },
   "tags": [

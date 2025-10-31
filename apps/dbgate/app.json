@@ -67,7 +67,8 @@
       "port_map": "3000",
       "volume_mappings": {
         "dbgate_config": "/DATA/AppData/$AppID/config"
-      }
+      },
+      "port": "3000"
     },
     "portainer": {
       "supported": true,
@@ -76,7 +77,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3000"
     },
     "runtipi": {
       "supported": true,
@@ -87,23 +89,27 @@
       ],
       "volume_mappings": {
         "dbgate_config": "config"
-      }
+      },
+      "port": "3006"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "dbgate_config": "config"
-      }
+      },
+      "port": "10033"
     }
   },
   "tags": [

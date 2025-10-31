@@ -30,8 +30,8 @@
   },
   "technical": {
     "architectures": [
-  "amd64"
-],
+      "amd64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "64738",
@@ -42,13 +42,13 @@
     "environment_variables": [],
     "volumes": [],
     "ports": [
-  {
-    "container": "64738",
-    "host": "64738",
-    "protocol": "tcp",
-    "description": "Container Port: 64738"
-  }
-]
+      {
+        "container": "64738",
+        "host": "64738",
+        "protocol": "tcp",
+        "description": "Container Port: 64738"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
@@ -58,33 +58,42 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "64738"
+      "port_map": "64738",
+      "port": "64738"
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
-      "administrator_only": false
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "64738"
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64"
-]
+        "amd64"
+      ],
+      "port": "64738"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "64738"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "64738"
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "port": "64738"
     }
   },
   "tags": [

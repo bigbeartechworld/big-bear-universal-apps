@@ -196,7 +196,8 @@
         "romm_mysql": "/DATA/AppData/$AppID/mysql",
         "romm_redis-data": "/DATA/AppData/$AppID/redis-data",
         "romm_resources": "/DATA/AppData/$AppID/resources"
-      }
+      },
+      "port": "1080"
     },
     "portainer": {
       "supported": true,
@@ -205,7 +206,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "1080\n3306"
     },
     "runtipi": {
       "supported": true,
@@ -222,16 +224,19 @@
         "romm_mysql": "mysql",
         "romm_redis-data": "redis-data",
         "romm_resources": "resources"
-      }
+      },
+      "port": "1083"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "1080\n3306"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "1080\n3306"
     },
     "umbrel": {
       "supported": true,
@@ -244,7 +249,8 @@
         "romm_mysql": "mysql",
         "romm_redis-data": "redis-data",
         "romm_resources": "resources"
-      }
+      },
+      "port": "10157"
     }
   },
   "tags": [

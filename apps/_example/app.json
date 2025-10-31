@@ -100,31 +100,58 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080"
+      "port_map": "8080",
+      "port": "8080",
+      "comment_port": "Optional: Override the default port for this platform. If not specified, uses technical.default_port",
+      "volume_mappings": {
+        "comment": "Optional: Platform-specific volume path overrides",
+        "example_app_data": "/DATA/AppData/$AppID/data",
+        "example_app_config": "/DATA/AppData/$AppID/config"
+      }
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
       "categories": ["Utilities", "selfhosted"],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080",
+      "comment_port": "Optional: Override the default port for this platform"
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
-      "supported_architectures": ["amd64", "arm64"]
+      "supported_architectures": ["amd64", "arm64"],
+      "port": "8080",
+      "comment_port": "Optional: Override the default port. Runtipi will still remap if port is < 1000",
+      "volume_mappings": {
+        "comment": "Optional: Platform-specific volume path overrides",
+        "example_app_data": "example-app/data",
+        "example_app_config": "example-app/config"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080",
+      "comment_port": "Optional: Override the default port for this platform"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080",
+      "comment_port": "Optional: Override the default port used in route targets"
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "port": "10080",
+      "comment_port": "Optional: Override the default port. Umbrel typically uses 10000+ range to avoid conflicts",
+      "volume_mappings": {
+        "comment": "Optional: Platform-specific volume path overrides",
+        "example_app_data": "example-app/data",
+        "example_app_config": "example-app/config"
+      }
     }
   },
   "tags": [

@@ -158,7 +158,8 @@
         "immich-aio-alpine_config": "/DATA/AppData/$AppID/config",
         "immich-aio-alpine_pgdata": "/DATA/AppData/$AppID/pgdata",
         "immich-aio-alpine_photos": "/DATA/AppData/$AppID/photos"
-      }
+      },
+      "port": "2283"
     },
     "portainer": {
       "supported": true,
@@ -167,7 +168,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "2283"
     },
     "runtipi": {
       "supported": true,
@@ -180,16 +182,19 @@
         "immich-aio-alpine_config": "config",
         "immich-aio-alpine_pgdata": "pgdata",
         "immich-aio-alpine_photos": "photos"
-      }
+      },
+      "port": "2284"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "2283"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "2283"
     },
     "umbrel": {
       "supported": true,
@@ -198,7 +203,8 @@
         "immich-aio-alpine_config": "config",
         "immich-aio-alpine_pgdata": "pgdata",
         "immich-aio-alpine_photos": "photos"
-      }
+      },
+      "port": "10071"
     }
   },
   "tags": [

@@ -80,7 +80,8 @@
       "volume_mappings": {
         "ntfysh_cache": "/DATA/AppData/$AppID/cache",
         "ntfysh_config": "/DATA/AppData/$AppID/config"
-      }
+      },
+      "port": "7200"
     },
     "portainer": {
       "supported": true,
@@ -102,7 +103,8 @@
       "volume_mappings": {
         "ntfysh_cache": "cache",
         "ntfysh_config": "config"
-      }
+      },
+      "port": "7200"
     },
     "dockge": {
       "supported": true,
@@ -111,7 +113,8 @@
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "7200"
     },
     "umbrel": {
       "supported": true,
@@ -119,7 +122,8 @@
       "volume_mappings": {
         "ntfysh_cache": "cache",
         "ntfysh_config": "config"
-      }
+      },
+      "port": "10116"
     }
   },
   "tags": [

@@ -96,7 +96,8 @@
       "port_map": "8080",
       "volume_mappings": {
         "write-freely_data_config": "/DATA/AppData/$AppID/data/config"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -105,7 +106,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "70"
     },
     "runtipi": {
       "supported": true,
@@ -116,23 +118,27 @@
       ],
       "volume_mappings": {
         "write-freely_data_config": "data/config"
-      }
+      },
+      "port": "8143"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "70"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "70"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "write-freely_data_config": "data/config"
-      }
+      },
+      "port": "10188"
     }
   },
   "tags": [

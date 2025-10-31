@@ -73,7 +73,8 @@
       "port_map": "3000",
       "volume_mappings": {
         "obsidian_config": "/DATA/AppData/$AppID/config"
-      }
+      },
+      "port": "3000"
     },
     "portainer": {
       "supported": true,
@@ -82,7 +83,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3000"
     },
     "runtipi": {
       "supported": true,
@@ -93,23 +95,27 @@
       ],
       "volume_mappings": {
         "obsidian_config": "config"
-      }
+      },
+      "port": "3013"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "obsidian_config": "config"
-      }
+      },
+      "port": "10117"
     }
   },
   "tags": [

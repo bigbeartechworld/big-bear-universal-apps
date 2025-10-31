@@ -83,7 +83,8 @@
       "volume_mappings": {
         "wallos_db": "/DATA/AppData/$AppID/db",
         "wallos_logos": "/DATA/AppData/$AppID/logos"
-      }
+      },
+      "port": "8282"
     },
     "portainer": {
       "supported": true,
@@ -92,7 +93,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8282"
     },
     "runtipi": {
       "supported": true,
@@ -104,16 +106,19 @@
       "volume_mappings": {
         "wallos_db": "db",
         "wallos_logos": "logos"
-      }
+      },
+      "port": "8282"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8282"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8282"
     },
     "umbrel": {
       "supported": true,
@@ -121,7 +126,8 @@
       "volume_mappings": {
         "wallos_db": "db",
         "wallos_logos": "logos"
-      }
+      },
+      "port": "10182"
     }
   },
   "tags": [

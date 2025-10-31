@@ -98,7 +98,8 @@
       "port_map": "1337",
       "volume_mappings": {
         "nightscout_mongo-data": "/DATA/AppData/$AppID/mongo-data"
-      }
+      },
+      "port": "1337"
     },
     "portainer": {
       "supported": true,
@@ -107,7 +108,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "1337"
     },
     "runtipi": {
       "supported": true,
@@ -118,23 +120,27 @@
       ],
       "volume_mappings": {
         "nightscout_mongo-data": "mongo-data"
-      }
+      },
+      "port": "1337"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "1337"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "1337"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "nightscout_mongo-data": "mongo-data"
-      }
+      },
+      "port": "10111"
     }
   },
   "tags": [

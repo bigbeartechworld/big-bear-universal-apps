@@ -30,9 +30,9 @@
   },
   "technical": {
     "architectures": [
-  "amd64",
-  "arm64"
-],
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "big-bear-fastfetch",
     "default_port": "7681",
@@ -42,72 +42,81 @@
   "deployment": {
     "environment_variables": [],
     "volumes": [
-  {
-    "container": "/proc",
-    "description": "Container Path: /proc"
-  },
-  {
-    "container": "/sys",
-    "description": "Container Path: /sys"
-  },
-  {
-    "container": "/dev",
-    "description": "Container Path: /dev"
-  },
-  {
-    "container": "/etc/localtime",
-    "description": "Container Path: /etc/localtime"
-  }
-],
+      {
+        "container": "/proc",
+        "description": "Container Path: /proc"
+      },
+      {
+        "container": "/sys",
+        "description": "Container Path: /sys"
+      },
+      {
+        "container": "/dev",
+        "description": "Container Path: /dev"
+      },
+      {
+        "container": "/etc/localtime",
+        "description": "Container Path: /etc/localtime"
+      }
+    ],
     "ports": [
-  {
-    "container": "7681",
-    "host": "7681",
-    "protocol": "tcp",
-    "description": "Container Port: 7681"
-  }
-]
+      {
+        "container": "7681",
+        "host": "7681",
+        "protocol": "tcp",
+        "description": "Container Port: 7681"
+      }
+    ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
     "tips": {
-  "before_install": {
-    "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-fastfetch-to-bigbearcasaos/1579?u=dragonfire1119\n"
-  }
-}
+      "before_install": {
+        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-fastfetch-to-bigbearcasaos/1579?u=dragonfire1119\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "7681"
+      "port_map": "7681",
+      "port": "7681"
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["BigBearCasaOS", "selfhosted"],
-      "administrator_only": false
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "7681"
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
-  "amd64",
-  "arm64"
-]
+        "amd64",
+        "arm64"
+      ],
+      "port": "7682"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "7681"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "7681"
     },
     "umbrel": {
       "supported": true,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "port": "10045"
     }
   },
   "tags": [

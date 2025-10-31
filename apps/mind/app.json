@@ -75,7 +75,8 @@
       "port_map": "8080",
       "volume_mappings": {
         "mind_db": "/DATA/AppData/$AppID/db"
-      }
+      },
+      "port": "8080"
     },
     "portainer": {
       "supported": true,
@@ -84,7 +85,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8080"
     },
     "runtipi": {
       "supported": true,
@@ -96,23 +98,27 @@
       ],
       "volume_mappings": {
         "mind_db": "db"
-      }
+      },
+      "port": "8107"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8080"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "mind_db": "db"
-      }
+      },
+      "port": "10098"
     }
   },
   "tags": [

@@ -93,7 +93,8 @@
       "port_map": "8001",
       "volume_mappings": {
         "ihatemoney_mysql": "/DATA/AppData/$AppID/mysql"
-      }
+      },
+      "port": "8001"
     },
     "portainer": {
       "supported": true,
@@ -102,7 +103,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8001\n3306"
     },
     "runtipi": {
       "supported": true,
@@ -113,23 +115,27 @@
       ],
       "volume_mappings": {
         "ihatemoney_mysql": "mysql"
-      }
+      },
+      "port": "8006"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8001\n3306"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8001\n3306"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "ihatemoney_mysql": "mysql"
-      }
+      },
+      "port": "10069"
     }
   },
   "tags": [

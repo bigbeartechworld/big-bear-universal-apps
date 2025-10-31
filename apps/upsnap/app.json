@@ -79,7 +79,8 @@
       "port_map": "8090",
       "volume_mappings": {
         "upsnap_pb_data": "/DATA/AppData/$AppID/pb/data"
-      }
+      },
+      "port": "8090"
     },
     "portainer": {
       "supported": true,
@@ -99,7 +100,8 @@
       ],
       "volume_mappings": {
         "upsnap_pb_data": "pb/data"
-      }
+      },
+      "port": "8139"
     },
     "dockge": {
       "supported": true,
@@ -115,7 +117,8 @@
       "manifest_version": 1,
       "volume_mappings": {
         "upsnap_pb_data": "pb/data"
-      }
+      },
+      "port": "8090"
     }
   },
   "tags": [

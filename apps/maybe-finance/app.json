@@ -123,7 +123,8 @@
         "MaybeFinance_app-storage": "/DATA/AppData/$AppID/app-storage",
         "MaybeFinance_postgres-data": "/DATA/AppData/$AppID/postgres-data",
         "MaybeFinance_redis-data": "/DATA/AppData/$AppID/redis-data"
-      }
+      },
+      "port": "4000"
     },
     "portainer": {
       "supported": true,

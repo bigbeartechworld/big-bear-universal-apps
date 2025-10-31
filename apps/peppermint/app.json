@@ -58,7 +58,8 @@
       "port_map": "3000",
       "volume_mappings": {
         "peppermint_postgres_data": "/DATA/AppData/$AppID/postgres/data"
-      }
+      },
+      "port": "3000"
     },
     "portainer": {
       "supported": true,
@@ -67,7 +68,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3000\n5432"
     },
     "runtipi": {
       "supported": true,
@@ -77,23 +79,27 @@
       ],
       "volume_mappings": {
         "peppermint_postgres_data": "postgres/data"
-      }
+      },
+      "port": "3015"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3000\n5432"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000\n5432"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "peppermint_postgres_data": "postgres/data"
-      }
+      },
+      "port": "10131"
     }
   },
   "tags": [

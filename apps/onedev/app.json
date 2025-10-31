@@ -78,7 +78,8 @@
       "volume_mappings": {
         "onedev_data": "/DATA/AppData/$AppID/data",
         "onedev_postgres_data": "/DATA/AppData/$AppID/postgres/data"
-      }
+      },
+      "port": "6610"
     },
     "portainer": {
       "supported": true,
@@ -87,7 +88,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "6610"
     },
     "runtipi": {
       "supported": true,
@@ -99,16 +101,19 @@
       "volume_mappings": {
         "onedev_data": "data",
         "onedev_postgres_data": "postgres/data"
-      }
+      },
+      "port": "6610"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "6610"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "6610"
     },
     "umbrel": {
       "supported": true,
@@ -116,7 +121,8 @@
       "volume_mappings": {
         "onedev_data": "data",
         "onedev_postgres_data": "postgres/data"
-      }
+      },
+      "port": "10121"
     }
   },
   "tags": [

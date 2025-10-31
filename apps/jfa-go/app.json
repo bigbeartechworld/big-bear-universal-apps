@@ -85,7 +85,8 @@
       "volume_mappings": {
         "jfa-go_.config_jfa-go": "/DATA/AppData/$AppID/.config/jfa-go",
         "jfa-go_jellyfin": "/DATA/AppData/$AppID/jellyfin"
-      }
+      },
+      "port": "8056"
     },
     "portainer": {
       "supported": true,
@@ -94,7 +95,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "8056"
     },
     "runtipi": {
       "supported": true,
@@ -106,11 +108,13 @@
       "volume_mappings": {
         "jfa-go_.config_jfa-go": ".config/jfa-go",
         "jfa-go_jellyfin": "jellyfin"
-      }
+      },
+      "port": "8056"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "8056"
     },
     "cosmos": {
       "supported": true,
@@ -123,7 +127,8 @@
       "volume_mappings": {
         "jfa-go_.config_jfa-go": ".config/jfa-go",
         "jfa-go_jellyfin": "jellyfin"
-      }
+      },
+      "port": "10078"
     }
   },
   "tags": [

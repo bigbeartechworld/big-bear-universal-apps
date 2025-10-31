@@ -73,7 +73,8 @@
         "semaphore_home": "/DATA/AppData/$AppID/home",
         "semaphore_lib": "/DATA/AppData/$AppID/lib",
         "semaphore_mysql": "/DATA/AppData/$AppID/mysql"
-      }
+      },
+      "port": "3000"
     },
     "portainer": {
       "supported": true,
@@ -82,7 +83,8 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false
+      "administrator_only": false,
+      "port": "3000"
     },
     "runtipi": {
       "supported": true,
@@ -95,16 +97,19 @@
         "semaphore_home": "home",
         "semaphore_lib": "lib",
         "semaphore_mysql": "mysql"
-      }
+      },
+      "port": "3022"
     },
     "dockge": {
       "supported": true,
-      "file_based": true
+      "file_based": true,
+      "port": "3000"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,
@@ -113,7 +118,8 @@
         "semaphore_home": "home",
         "semaphore_lib": "lib",
         "semaphore_mysql": "mysql"
-      }
+      },
+      "port": "10159"
     }
   },
   "tags": [
