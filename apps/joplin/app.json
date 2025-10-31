@@ -36,7 +36,7 @@
     "platform": "linux",
     "main_service": "big-bear-joplin",
     "default_port": "22300",
-    "main_image": "joplin/server:3.3.13",
+    "main_image": "joplin/server",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {

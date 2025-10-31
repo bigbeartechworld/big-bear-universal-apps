@@ -36,7 +36,7 @@
     "platform": "linux",
     "main_service": "app",
     "default_port": "1080",
-    "main_image": "appsmith/appsmith-ee",
+    "main_image": "appsmith/appsmith-ce",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {

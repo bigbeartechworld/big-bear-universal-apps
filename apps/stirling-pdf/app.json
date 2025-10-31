@@ -36,7 +36,7 @@
     "platform": "linux",
     "main_service": "big-bear-stirling-pdf",
     "default_port": "8080",
-    "main_image": "stirlingpdf/stirlingpdf",
+    "main_image": "stirlingtools/stirling-pdf",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {
