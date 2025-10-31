@@ -37,7 +37,7 @@
     "platform": "linux",
     "main_service": "app",
     "default_port": "9011",
-    "main_image": "minio/minio",
+    "main_image": "bigbeartechworld/big-bear-minio",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {
