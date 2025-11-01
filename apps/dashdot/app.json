@@ -31,7 +31,7 @@
   "technical": {
     "architectures": [
       "amd64",
-      "armv7",
+      "arm/v7",
       "arm64"
     ],
     "platform": "linux",

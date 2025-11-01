@@ -1436,6 +1436,9 @@ EOF
     desc_json="${desc_json//$'\r'/\\r}"
     desc_json="${desc_json//$'\t'/\\t}"
     
+    # Use icon URL or logo URL for image and icon fields
+    image_url="${APP_ICON:-${APP_LOGO:-https://via.placeholder.com/512}}"
+    
     # Create description.json
     cat > "$output_dir/description.json" << EOF
 {
@@ -1443,7 +1446,11 @@ EOF
   "description": "$desc_json",
   "url": "$APP_HOMEPAGE",
   "longDescription": "$desc_json",
-  "tags": $(echo "$APP_TAGS" | jq -c '.')
+  "tags": $(echo "$APP_TAGS" | jq -c '.'),
+  "repository": "${APP_REPOSITORY:-https://github.com/bigbeartechworld}",
+  "image": "$image_url",
+  "supported_architectures": $(echo "$APP_ARCHITECTURES" | jq -c '.'),
+  "icon": "$image_url"
 }
 EOF
     
