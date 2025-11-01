@@ -7,10 +7,10 @@
     "tagline": "TP-Link Omada Controller",
     "version": "5.15",
     "author": "BigBearTechWorld",
-    "developer": "",
+    "developer": "mbentley",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/mbentley/omada-controller",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:21Z",
     "updated": "2025-10-27T02:42:21Z"
@@ -182,7 +182,7 @@
       "administrator_only": false
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "tipi_version": 1,
       "supported_architectures": [
         "amd64",
@@ -200,12 +200,12 @@
       "file_based": true
     },
     "cosmos": {
-      "supported": true,
+      "supported": false,
       "servapp": true,
       "routes_required": true
     },
     "umbrel": {
-      "supported": true,
+      "supported": false,
       "manifest_version": 1,
       "volume_mappings": {
         "tp-link-omada-controller_data": "data",

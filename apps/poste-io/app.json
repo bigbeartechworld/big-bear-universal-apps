@@ -10,7 +10,7 @@
     "developer": "analogic",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/analogic/poste.io",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:14Z",
     "updated": "2025-10-27T02:42:14Z"
@@ -38,7 +38,7 @@
     ],
     "platform": "linux",
     "main_service": "big-bear-poste-io",
-    "default_port": "80",
+    "default_port": "8080",
     "main_image": "analogic/poste.io",
     "compose_file": "docker-compose.yml"
   },
@@ -87,7 +87,7 @@
       "administrator_only": false
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "tipi_version": 1,
       "supported_architectures": [
         "amd64",
@@ -103,12 +103,12 @@
       "file_based": true
     },
     "cosmos": {
-      "supported": true,
+      "supported": false,
       "servapp": true,
       "routes_required": true
     },
     "umbrel": {
-      "supported": true,
+      "supported": false,
       "manifest_version": 1,
       "volume_mappings": {
         "poste-io_data": "data"

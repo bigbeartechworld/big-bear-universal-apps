@@ -10,7 +10,7 @@
     "developer": "tailscale",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/tailscale/tailscale",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:20Z",
     "updated": "2025-11-02T21:15:05.722Z"

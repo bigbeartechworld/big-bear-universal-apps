@@ -10,7 +10,7 @@
     "developer": "music-assistant",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/music-assistant/server",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:02Z",
     "updated": "2025-10-29T01:57:44.252Z"
@@ -73,7 +73,7 @@
       "administrator_only": false
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "tipi_version": 1,
       "supported_architectures": [
         "amd64",
@@ -89,12 +89,12 @@
       "file_based": true
     },
     "cosmos": {
-      "supported": true,
+      "supported": false,
       "servapp": true,
       "routes_required": true
     },
     "umbrel": {
-      "supported": true,
+      "supported": false,
       "manifest_version": 1,
       "volume_mappings": {
         "music-assistant_data": "data"

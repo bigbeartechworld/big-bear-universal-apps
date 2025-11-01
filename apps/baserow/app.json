@@ -7,10 +7,10 @@
     "tagline": "Baserow",
     "version": "1.35.3",
     "author": "BigBearTechWorld",
-    "developer": "",
+    "developer": "baserow",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/baserow/baserow",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:37Z",
     "updated": "2025-10-27T02:41:37Z"

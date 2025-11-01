@@ -7,10 +7,10 @@
     "tagline": "Low-code programming for event-driven applications",
     "version": "4.1.1",
     "author": "BigBearTechWorld",
-    "developer": "",
+    "developer": "nodered",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/nodered/node-red",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:05Z",
     "updated": "2025-10-27T02:42:05Z"

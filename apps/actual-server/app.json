@@ -7,10 +7,10 @@
     "tagline": "Local-first OpenSource Budget tool",
     "version": "25.10.0",
     "author": "BigBearCommunity",
-    "developer": "",
+    "developer": "actualbudget",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/actualbudget/actual-server",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:35Z",
     "updated": "2025-10-27T02:41:35Z"
