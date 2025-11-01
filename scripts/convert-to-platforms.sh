@@ -809,6 +809,12 @@ convert_to_portainer() {
         return 1
     fi
     
+    # Ensure logo URL has proper extension, use placeholder if empty or invalid
+    local logo_url="$APP_ICON"
+    if [[ -z "$logo_url" ]] || ! [[ "$logo_url" =~ \.(png|jpg|jpeg|svg|webp|gif)$ ]]; then
+        logo_url="https://via.placeholder.com/512.png"
+    fi
+    
     # Get template ID
     local template_id
     if [[ -f "$OUTPUT_DIR/portainer/.template_id_counter" ]]; then
@@ -890,7 +896,7 @@ convert_to_portainer() {
       "note": "$tag_json",
       "categories": ["$APP_CATEGORY", "selfhosted"],
       "platform": "linux",
-      "logo": "$APP_ICON",
+      "logo": "$logo_url",
       "repository": {
         "url": "https://github.com/bigbeartechworld/big-bear-portainer",
         "stackfile": "Apps/$app_name/docker-compose.yml"
@@ -975,6 +981,27 @@ convert_to_runtipi() {
     local all_services=$(yq eval '.services | keys | .[]' "$compose_file")
     while IFS= read -r service_name; do
         [[ -z "$service_name" ]] && continue
+        
+        # Convert labels from array to object format if needed for this service
+        local labels_type=$(yq eval ".services[\"$service_name\"].labels | type" "$compose_file" 2>/dev/null || echo "null")
+        if [[ "$labels_type" == "!!seq" ]]; then
+            # Convert array format (- key=value) to object format (key: value)
+            local temp_labels=$(yq eval ".services[\"$service_name\"].labels[]" "$compose_file" 2>/dev/null || echo "")
+            if [[ -n "$temp_labels" ]]; then
+                yq eval ".services[\"$service_name\"].labels = {}" -i "$compose_file"
+                while IFS= read -r label; do
+                    if [[ -n "$label" && "$label" =~ = ]]; then
+                        local key=$(echo "$label" | cut -d= -f1)
+                        local value=$(echo "$label" | cut -d= -f2-)
+                        if [[ -n "$key" ]]; then
+                            yq eval ".services[\"$service_name\"].labels[\"$key\"] = \"$value\"" -i "$compose_file" 2>/dev/null || true
+                        fi
+                    fi
+                done <<< "$temp_labels"
+            fi
+        fi
+        
+        # Now add the runtipi.managed label
         yq eval ".services[\"$service_name\"].labels[\"runtipi.managed\"] = \"true\"" -i "$compose_file" 2>/dev/null || true
     done <<< "$all_services"
     
@@ -1329,6 +1356,7 @@ convert_to_dockge() {
   "version": "$APP_VERSION",
   "author": "$author_json",
   "icon": "$APP_ICON",
+  "image": "$APP_MAIN_IMAGE",
   "category": "$APP_CATEGORY",
   "port": "$APP_DEFAULT_PORT",
   "documentation": "$APP_DOCS",
