@@ -5,7 +5,7 @@
     "name": "Ansible Semaphore",
     "description": "Ansible Semaphore is a modern UI for Ansible. It lets you easily run Ansible playbooks, get notifications about fails, control access to deployment system.",
     "tagline": "Ansible Semaphore",
-    "version": "v2.16.36",
+    "version": "v2.16.37",
     "author": "BigBearTechWorld",
     "developer": "semaphore",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:18Z",
-    "updated": "2025-11-01T03:07:51.090Z"
+    "updated": "2025-11-01T03:09:02.911Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/semaphore-ui.png",
