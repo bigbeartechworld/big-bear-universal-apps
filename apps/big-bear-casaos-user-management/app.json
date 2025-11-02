@@ -39,7 +39,7 @@
     ],
     "platform": "linux",
     "main_service": "big-bear-casaos-user-management",
-    "default_port": "5001",
+    "default_port": "5000",
     "main_image": "bigbeartechworld/big-bear-casaos-user-management",
     "compose_file": "docker-compose.yml"
   },
