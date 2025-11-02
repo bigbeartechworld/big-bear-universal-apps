@@ -10,7 +10,7 @@
     "developer": "systran",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/faster-whisper",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:46Z",
     "updated": "2025-10-27T02:41:46Z"

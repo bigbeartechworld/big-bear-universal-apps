@@ -10,7 +10,7 @@
     "developer": "portainer",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/portainer/agent",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:14Z",
     "updated": "2025-10-27T02:42:14Z"

@@ -10,7 +10,7 @@
     "developer": "stirlingtools",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/stirlingtools/stirling-pdf",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:19Z",
     "updated": "2025-10-27T02:42:19Z"
@@ -36,7 +36,7 @@
     "platform": "linux",
     "main_service": "big-bear-stirling-pdf",
     "default_port": "8080",
-    "main_image": "stirlingpdf/stirlingpdf",
+    "main_image": "stirlingtools/stirling-pdf",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {

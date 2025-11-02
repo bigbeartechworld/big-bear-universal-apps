@@ -10,7 +10,7 @@
     "developer": "koush",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/koush/scrypted",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:17Z",
     "updated": "2025-10-27T02:42:17Z"
@@ -31,7 +31,6 @@
   "technical": {
     "architectures": [
       "amd64",
-      "armv7",
       "arm64"
     ],
     "platform": "linux",
@@ -88,7 +87,7 @@
       "port": "10444"
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "tipi_version": 1,
       "supported_architectures": [
         "amd64",
@@ -106,13 +105,13 @@
       "port": "10444"
     },
     "cosmos": {
-      "supported": true,
+      "supported": false,
       "servapp": true,
       "routes_required": true,
       "port": "10444"
     },
     "umbrel": {
-      "supported": true,
+      "supported": false,
       "manifest_version": 1,
       "volume_mappings": {
         "scrypted_data": "data"

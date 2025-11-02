@@ -10,7 +10,7 @@
     "developer": "mattermost",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/mattermost/focalboard",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:48Z",
     "updated": "2025-10-27T02:41:48Z"

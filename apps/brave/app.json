@@ -10,7 +10,7 @@
     "developer": "kasmweb",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/kasmweb/brave",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:38Z",
     "updated": "2025-10-27T02:41:38Z"
@@ -110,7 +110,8 @@
     },
     "umbrel": {
       "supported": false,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "port": "64741"
     }
   },
   "tags": [

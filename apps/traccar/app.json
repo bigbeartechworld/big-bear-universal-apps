@@ -10,7 +10,7 @@
     "developer": "traccar",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/traccar/traccar",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:21Z",
     "updated": "2025-10-27T02:42:21Z"

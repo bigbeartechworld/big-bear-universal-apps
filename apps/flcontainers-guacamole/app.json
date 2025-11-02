@@ -7,10 +7,10 @@
     "tagline": "Fully packaged Multi-Arch Guacamole.",
     "version": "1.6.0",
     "author": "BigBearTechWorld",
-    "developer": "",
+    "developer": "flcontainers",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/flcontainers/guacamole",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:48Z",
     "updated": "2025-10-27T02:41:48Z"

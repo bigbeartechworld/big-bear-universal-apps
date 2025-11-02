@@ -10,7 +10,7 @@
     "developer": "minio",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/bigbeartechworld/big-bear-minio",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:01Z",
     "updated": "2025-10-27T02:42:01Z"
@@ -31,13 +31,12 @@
   "technical": {
     "architectures": [
       "amd64",
-      "armv7",
       "arm64"
     ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "9011",
-    "main_image": "minio/minio",
+    "main_image": "bigbeartechworld/big-bear-minio",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {

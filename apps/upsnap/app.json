@@ -10,7 +10,7 @@
     "developer": "seriousm4x",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/seriousm4x/upsnap",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:23Z",
     "updated": "2025-10-27T02:42:23Z"
@@ -92,7 +92,7 @@
       "administrator_only": false
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "tipi_version": 1,
       "supported_architectures": [
         "amd64",
@@ -108,12 +108,12 @@
       "file_based": true
     },
     "cosmos": {
-      "supported": true,
+      "supported": false,
       "servapp": true,
       "routes_required": true
     },
     "umbrel": {
-      "supported": true,
+      "supported": false,
       "manifest_version": 1,
       "volume_mappings": {
         "upsnap_pb_data": "pb/data"

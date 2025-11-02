@@ -10,7 +10,7 @@
     "developer": "Ubiquiti",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/unifi-network-application",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:23Z",
     "updated": "2025-10-27T02:42:23Z"

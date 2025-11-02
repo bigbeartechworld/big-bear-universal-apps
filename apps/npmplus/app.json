@@ -10,7 +10,7 @@
     "developer": "zoeyvid",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/zoeyvid/npmplus",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:05Z",
     "updated": "2025-10-27T02:42:05Z"
@@ -80,7 +80,7 @@
       "administrator_only": false
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "tipi_version": 1,
       "supported_architectures": [
         "amd64",
@@ -96,12 +96,12 @@
       "file_based": true
     },
     "cosmos": {
-      "supported": true,
+      "supported": false,
       "servapp": true,
       "routes_required": true
     },
     "umbrel": {
-      "supported": true,
+      "supported": false,
       "manifest_version": 1,
       "volume_mappings": {
         "npmplus_data": "data"

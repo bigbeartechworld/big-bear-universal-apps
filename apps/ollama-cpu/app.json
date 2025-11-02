@@ -10,7 +10,7 @@
     "developer": "ollama",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/ollama/ollama",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:07Z",
     "updated": "2025-11-02T00:36:39.630Z"

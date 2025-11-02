@@ -10,7 +10,7 @@
     "developer": "immich",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/immich-app/immich-server",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:54Z",
     "updated": "2025-11-01T01:53:38.602Z"
