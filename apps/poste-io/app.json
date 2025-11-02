@@ -113,7 +113,7 @@
       "volume_mappings": {
         "poste-io_data": "data"
       },
-      "port": "10445"
+      "port": "8082"
     }
   },
   "tags": [

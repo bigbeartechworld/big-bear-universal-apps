@@ -169,7 +169,8 @@
         "MaybeFinance_app-storage": "MaybeFinance/app-storage",
         "MaybeFinance_postgres-data": "MaybeFinance/postgres-data",
         "MaybeFinance_redis-data": "MaybeFinance/redis-data"
-      }
+      },
+      "port": "64743"
     }
   },
   "tags": [

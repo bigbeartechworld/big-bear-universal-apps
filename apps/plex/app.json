@@ -113,7 +113,7 @@
         "plex_movies": "movies",
         "plex_tv": "tv"
       },
-      "port": "32400"
+      "port": "32401"
     }
   },
   "tags": [

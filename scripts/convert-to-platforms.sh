@@ -268,11 +268,11 @@ load_app_metadata() {
     export APP_TAGS=$(jq -c '.tags // []' "$app_json")
     
     # Platform compatibility flags
-    export COMPAT_CASAOS=$(jq -r '.compatibility.casaos.supported // true' "$app_json")
-    export COMPAT_PORTAINER=$(jq -r '.compatibility.portainer.supported // true' "$app_json")
-    export COMPAT_RUNTIPI=$(jq -r '.compatibility.runtipi.supported // true' "$app_json")
-    export COMPAT_DOCKGE=$(jq -r '.compatibility.dockge.supported // true' "$app_json")
-    export COMPAT_COSMOS=$(jq -r '.compatibility.cosmos.supported // true' "$app_json")
+    export COMPAT_CASAOS=$(jq -r 'if .compatibility.casaos.supported == null then "true" else (.compatibility.casaos.supported | tostring) end' "$app_json")
+    export COMPAT_PORTAINER=$(jq -r 'if .compatibility.portainer.supported == null then "true" else (.compatibility.portainer.supported | tostring) end' "$app_json")
+    export COMPAT_RUNTIPI=$(jq -r 'if .compatibility.runtipi.supported == null then "true" else (.compatibility.runtipi.supported | tostring) end' "$app_json")
+    export COMPAT_DOCKGE=$(jq -r 'if .compatibility.dockge.supported == null then "true" else (.compatibility.dockge.supported | tostring) end' "$app_json")
+    export COMPAT_COSMOS=$(jq -r 'if .compatibility.cosmos.supported == null then "true" else (.compatibility.cosmos.supported | tostring) end' "$app_json")
     
     # Platform-specific port overrides
     export PORT_CASAOS=$(jq -r '.compatibility.casaos.port // empty' "$app_json")
@@ -281,7 +281,7 @@ load_app_metadata() {
     export PORT_DOCKGE=$(jq -r '.compatibility.dockge.port // empty' "$app_json")
     export PORT_COSMOS=$(jq -r '.compatibility.cosmos.port // empty' "$app_json")
     export PORT_UMBREL=$(jq -r '.compatibility.umbrel.port // empty' "$app_json")
-    export COMPAT_UMBREL=$(jq -r '.compatibility.umbrel.supported // true' "$app_json")
+    export COMPAT_UMBREL=$(jq -r 'if .compatibility.umbrel.supported == null then "true" else (.compatibility.umbrel.supported | tostring) end' "$app_json")
     
     # Validate required fields
     if [[ -z "$APP_ID" ]] || [[ "$APP_ID" == "null" ]]; then
@@ -1939,48 +1939,126 @@ convert_app() {
                 if [[ "$COMPAT_CASAOS" == "true" ]]; then
                     convert_to_casaos "$app_name" "$app_dir"
                     platforms_converted=$((platforms_converted + 1))
-                elif [[ "$VERBOSE" == "true" ]]; then
-                    print_info "$app_name: Skipping CasaOS (not supported)"
+                else
+                    # Delete the directory if it exists and app is not supported
+                    local folder_name=$(get_platform_folder_name "$app_dir" "casaos")
+                    if [[ "$folder_name" == "$app_name" ]] || [[ -z "$folder_name" ]] || [[ "$folder_name" == "null" ]]; then
+                        folder_name="$app_name"
+                    fi
+                    local output_dir="$OUTPUT_DIR/casaos/$folder_name"
+                    if [[ -d "$output_dir" ]]; then
+                        rm -rf "$output_dir"
+                        if [[ "$VERBOSE" == "true" ]]; then
+                            print_info "$app_name: Removed unsupported CasaOS app directory"
+                        fi
+                    elif [[ "$VERBOSE" == "true" ]]; then
+                        print_info "$app_name: Skipping CasaOS (not supported)"
+                    fi
                 fi
                 ;;
             portainer)
                 if [[ "$COMPAT_PORTAINER" == "true" ]]; then
                     convert_to_portainer "$app_name" "$app_dir"
                     platforms_converted=$((platforms_converted + 1))
-                elif [[ "$VERBOSE" == "true" ]]; then
-                    print_info "$app_name: Skipping Portainer (not supported)"
+                else
+                    # Delete the directory if it exists and app is not supported
+                    local folder_name=$(get_platform_folder_name "$app_dir" "portainer")
+                    if [[ "$folder_name" == "$app_name" ]] || [[ -z "$folder_name" ]] || [[ "$folder_name" == "null" ]]; then
+                        folder_name="$app_name"
+                    fi
+                    local output_dir="$OUTPUT_DIR/portainer/$folder_name"
+                    if [[ -d "$output_dir" ]]; then
+                        rm -rf "$output_dir"
+                        if [[ "$VERBOSE" == "true" ]]; then
+                            print_info "$app_name: Removed unsupported Portainer app directory"
+                        fi
+                    elif [[ "$VERBOSE" == "true" ]]; then
+                        print_info "$app_name: Skipping Portainer (not supported)"
+                    fi
                 fi
                 ;;
             runtipi)
                 if [[ "$COMPAT_RUNTIPI" == "true" ]]; then
                     convert_to_runtipi "$app_name" "$app_dir"
                     platforms_converted=$((platforms_converted + 1))
-                elif [[ "$VERBOSE" == "true" ]]; then
-                    print_info "$app_name: Skipping Runtipi (not supported)"
+                else
+                    # Delete the directory if it exists and app is not supported
+                    local folder_name=$(get_platform_folder_name "$app_dir" "runtipi")
+                    if [[ "$folder_name" == "$app_name" ]] || [[ -z "$folder_name" ]] || [[ "$folder_name" == "null" ]]; then
+                        folder_name="$app_name"
+                    fi
+                    local output_dir="$OUTPUT_DIR/runtipi/$folder_name"
+                    if [[ -d "$output_dir" ]]; then
+                        rm -rf "$output_dir"
+                        if [[ "$VERBOSE" == "true" ]]; then
+                            print_info "$app_name: Removed unsupported Runtipi app directory"
+                        fi
+                    elif [[ "$VERBOSE" == "true" ]]; then
+                        print_info "$app_name: Skipping Runtipi (not supported)"
+                    fi
                 fi
                 ;;
             dockge)
                 if [[ "$COMPAT_DOCKGE" == "true" ]]; then
                     convert_to_dockge "$app_name" "$app_dir"
                     platforms_converted=$((platforms_converted + 1))
-                elif [[ "$VERBOSE" == "true" ]]; then
-                    print_info "$app_name: Skipping Dockge (not supported)"
+                else
+                    # Delete the directory if it exists and app is not supported
+                    local folder_name=$(get_platform_folder_name "$app_dir" "dockge")
+                    if [[ "$folder_name" == "$app_name" ]] || [[ -z "$folder_name" ]] || [[ "$folder_name" == "null" ]]; then
+                        folder_name="$app_name"
+                    fi
+                    local output_dir="$OUTPUT_DIR/dockge/$folder_name"
+                    if [[ -d "$output_dir" ]]; then
+                        rm -rf "$output_dir"
+                        if [[ "$VERBOSE" == "true" ]]; then
+                            print_info "$app_name: Removed unsupported Dockge app directory"
+                        fi
+                    elif [[ "$VERBOSE" == "true" ]]; then
+                        print_info "$app_name: Skipping Dockge (not supported)"
+                    fi
                 fi
                 ;;
             cosmos)
                 if [[ "$COMPAT_COSMOS" == "true" ]]; then
                     convert_to_cosmos "$app_name" "$app_dir"
                     platforms_converted=$((platforms_converted + 1))
-                elif [[ "$VERBOSE" == "true" ]]; then
-                    print_info "$app_name: Skipping Cosmos (not supported)"
+                else
+                    # Delete the directory if it exists and app is not supported
+                    local folder_name=$(get_platform_folder_name "$app_dir" "cosmos")
+                    if [[ "$folder_name" == "$app_name" ]] || [[ -z "$folder_name" ]] || [[ "$folder_name" == "null" ]]; then
+                        folder_name="$app_name"
+                    fi
+                    local output_dir="$OUTPUT_DIR/cosmos/$folder_name"
+                    if [[ -d "$output_dir" ]]; then
+                        rm -rf "$output_dir"
+                        if [[ "$VERBOSE" == "true" ]]; then
+                            print_info "$app_name: Removed unsupported Cosmos app directory"
+                        fi
+                    elif [[ "$VERBOSE" == "true" ]]; then
+                        print_info "$app_name: Skipping Cosmos (not supported)"
+                    fi
                 fi
                 ;;
             umbrel)
                 if [[ "$COMPAT_UMBREL" == "true" ]]; then
                     convert_to_umbrel "$app_name" "$app_dir"
                     platforms_converted=$((platforms_converted + 1))
-                elif [[ "$VERBOSE" == "true" ]]; then
-                    print_info "$app_name: Skipping Umbrel (not supported)"
+                else
+                    # Delete the directory if it exists and app is not supported
+                    local folder_name=$(get_platform_folder_name "$app_dir" "umbrel")
+                    if [[ "$folder_name" == "$app_name" ]] || [[ -z "$folder_name" ]] || [[ "$folder_name" == "null" ]]; then
+                        folder_name="big-bear-umbrel-$app_name"
+                    fi
+                    local output_dir="$OUTPUT_DIR/umbrel/$folder_name"
+                    if [[ -d "$output_dir" ]]; then
+                        rm -rf "$output_dir"
+                        if [[ "$VERBOSE" == "true" ]]; then
+                            print_info "$app_name: Removed unsupported Umbrel app directory"
+                        fi
+                    elif [[ "$VERBOSE" == "true" ]]; then
+                        print_info "$app_name: Skipping Umbrel (not supported)"
+                    fi
                 fi
                 ;;
             *)

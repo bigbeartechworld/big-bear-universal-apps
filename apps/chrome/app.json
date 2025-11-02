@@ -110,7 +110,8 @@
     },
     "umbrel": {
       "supported": false,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "port": "64742"
     }
   },
   "tags": [
