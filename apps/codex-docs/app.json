@@ -7,10 +7,10 @@
     "tagline": "CodeX Docs",
     "version": "v2.2",
     "author": "BigBearTechWorld",
-    "developer": "",
+    "developer": "codex-team",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/codex-team/codex.docs",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:41Z",
     "updated": "2025-10-29T01:57:44.275Z"

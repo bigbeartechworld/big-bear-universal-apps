@@ -10,7 +10,7 @@
     "developer": "AdGuardTeam",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/adguard/adguardhome",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:35Z",
     "updated": "2025-11-02T17:34:21.607Z"
@@ -35,8 +35,7 @@
   "technical": {
     "architectures": [
       "amd64",
-      "arm64",
-      "armv7"
+      "arm64"
     ],
     "platform": "linux",
     "main_service": "app",

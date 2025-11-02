@@ -10,7 +10,7 @@
     "developer": "plexinc",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/plex",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:13Z",
     "updated": "2025-10-27T02:42:13Z"
@@ -83,7 +83,7 @@
       "administrator_only": false
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "tipi_version": 1,
       "supported_architectures": [
         "amd64",
@@ -101,19 +101,19 @@
       "file_based": true
     },
     "cosmos": {
-      "supported": true,
+      "supported": false,
       "servapp": true,
       "routes_required": true
     },
     "umbrel": {
-      "supported": true,
+      "supported": false,
       "manifest_version": 1,
       "volume_mappings": {
         "plex_config": "config",
         "plex_movies": "movies",
         "plex_tv": "tv"
       },
-      "port": "32400"
+      "port": "32401"
     }
   },
   "tags": [

@@ -7,10 +7,10 @@
     "tagline": "A simple HTTP-based pub-sub notification service",
     "version": "v2.14.0",
     "author": "BigBearTechWorld",
-    "developer": "",
+    "developer": "binwiederhier",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/binwiederhier/ntfy",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:05Z",
     "updated": "2025-10-29T01:57:44.244Z"
@@ -31,7 +31,6 @@
   "technical": {
     "architectures": [
       "amd64",
-      "armv7",
       "arm64"
     ],
     "platform": "linux",

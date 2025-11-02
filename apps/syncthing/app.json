@@ -10,7 +10,7 @@
     "developer": "syncthing",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/syncthing/syncthing",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:20Z",
     "updated": "2025-10-27T02:42:20Z"

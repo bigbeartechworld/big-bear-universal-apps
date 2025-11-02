@@ -10,7 +10,7 @@
     "developer": "joplin",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/joplin/server",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:56Z",
     "updated": "2025-10-27T02:41:56Z"
@@ -36,7 +36,7 @@
     "platform": "linux",
     "main_service": "big-bear-joplin",
     "default_port": "22300",
-    "main_image": "joplin/server:3.3.13",
+    "main_image": "joplin/server",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {

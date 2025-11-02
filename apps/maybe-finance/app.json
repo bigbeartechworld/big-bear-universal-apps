@@ -10,7 +10,7 @@
     "developer": "Maybe Finance",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/maybe-finance/maybe",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:00Z",
     "updated": "2025-10-27T02:42:00Z"
@@ -169,7 +169,8 @@
         "MaybeFinance_app-storage": "MaybeFinance/app-storage",
         "MaybeFinance_postgres-data": "MaybeFinance/postgres-data",
         "MaybeFinance_redis-data": "MaybeFinance/redis-data"
-      }
+      },
+      "port": "64743"
     }
   },
   "tags": [

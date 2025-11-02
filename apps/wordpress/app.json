@@ -10,7 +10,7 @@
     "developer": "Automattic",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/wordpress",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:26Z",
     "updated": "2025-10-27T02:42:26Z"
@@ -31,8 +31,7 @@
   "technical": {
     "architectures": [
       "amd64",
-      "arm64",
-      "armv7"
+      "arm64"
     ],
     "platform": "linux",
     "main_service": "app",

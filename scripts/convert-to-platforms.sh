@@ -268,11 +268,11 @@ load_app_metadata() {
     export APP_TAGS=$(jq -c '.tags // []' "$app_json")
     
     # Platform compatibility flags
-    export COMPAT_CASAOS=$(jq -r '.compatibility.casaos.supported // true' "$app_json")
-    export COMPAT_PORTAINER=$(jq -r '.compatibility.portainer.supported // true' "$app_json")
-    export COMPAT_RUNTIPI=$(jq -r '.compatibility.runtipi.supported // true' "$app_json")
-    export COMPAT_DOCKGE=$(jq -r '.compatibility.dockge.supported // true' "$app_json")
-    export COMPAT_COSMOS=$(jq -r '.compatibility.cosmos.supported // true' "$app_json")
+    export COMPAT_CASAOS=$(jq -r 'if .compatibility.casaos.supported == null then "true" else (.compatibility.casaos.supported | tostring) end' "$app_json")
+    export COMPAT_PORTAINER=$(jq -r 'if .compatibility.portainer.supported == null then "true" else (.compatibility.portainer.supported | tostring) end' "$app_json")
+    export COMPAT_RUNTIPI=$(jq -r 'if .compatibility.runtipi.supported == null then "true" else (.compatibility.runtipi.supported | tostring) end' "$app_json")
+    export COMPAT_DOCKGE=$(jq -r 'if .compatibility.dockge.supported == null then "true" else (.compatibility.dockge.supported | tostring) end' "$app_json")
+    export COMPAT_COSMOS=$(jq -r 'if .compatibility.cosmos.supported == null then "true" else (.compatibility.cosmos.supported | tostring) end' "$app_json")
     
     # Platform-specific port overrides
     export PORT_CASAOS=$(jq -r '.compatibility.casaos.port // empty' "$app_json")
@@ -281,7 +281,7 @@ load_app_metadata() {
     export PORT_DOCKGE=$(jq -r '.compatibility.dockge.port // empty' "$app_json")
     export PORT_COSMOS=$(jq -r '.compatibility.cosmos.port // empty' "$app_json")
     export PORT_UMBREL=$(jq -r '.compatibility.umbrel.port // empty' "$app_json")
-    export COMPAT_UMBREL=$(jq -r '.compatibility.umbrel.supported // true' "$app_json")
+    export COMPAT_UMBREL=$(jq -r 'if .compatibility.umbrel.supported == null then "true" else (.compatibility.umbrel.supported | tostring) end' "$app_json")
     
     # Validate required fields
     if [[ -z "$APP_ID" ]] || [[ "$APP_ID" == "null" ]]; then
@@ -809,6 +809,12 @@ convert_to_portainer() {
         return 1
     fi
     
+    # Ensure logo URL has proper extension, use placeholder if empty or invalid
+    local logo_url="$APP_ICON"
+    if [[ -z "$logo_url" ]] || ! [[ "$logo_url" =~ \.(png|jpg|jpeg|svg|webp|gif)$ ]]; then
+        logo_url="https://via.placeholder.com/512.png"
+    fi
+    
     # Get template ID
     local template_id
     if [[ -f "$OUTPUT_DIR/portainer/.template_id_counter" ]]; then
@@ -890,7 +896,7 @@ convert_to_portainer() {
       "note": "$tag_json",
       "categories": ["$APP_CATEGORY", "selfhosted"],
       "platform": "linux",
-      "logo": "$APP_ICON",
+      "logo": "$logo_url",
       "repository": {
         "url": "https://github.com/bigbeartechworld/big-bear-portainer",
         "stackfile": "Apps/$app_name/docker-compose.yml"
@@ -975,6 +981,27 @@ convert_to_runtipi() {
     local all_services=$(yq eval '.services | keys | .[]' "$compose_file")
     while IFS= read -r service_name; do
         [[ -z "$service_name" ]] && continue
+        
+        # Convert labels from array to object format if needed for this service
+        local labels_type=$(yq eval ".services[\"$service_name\"].labels | type" "$compose_file" 2>/dev/null || echo "null")
+        if [[ "$labels_type" == "!!seq" ]]; then
+            # Convert array format (- key=value) to object format (key: value)
+            local temp_labels=$(yq eval ".services[\"$service_name\"].labels[]" "$compose_file" 2>/dev/null || echo "")
+            if [[ -n "$temp_labels" ]]; then
+                yq eval ".services[\"$service_name\"].labels = {}" -i "$compose_file"
+                while IFS= read -r label; do
+                    if [[ -n "$label" && "$label" =~ = ]]; then
+                        local key=$(echo "$label" | cut -d= -f1)
+                        local value=$(echo "$label" | cut -d= -f2-)
+                        if [[ -n "$key" ]]; then
+                            yq eval ".services[\"$service_name\"].labels[\"$key\"] = \"$value\"" -i "$compose_file" 2>/dev/null || true
+                        fi
+                    fi
+                done <<< "$temp_labels"
+            fi
+        fi
+        
+        # Now add the runtipi.managed label
         yq eval ".services[\"$service_name\"].labels[\"runtipi.managed\"] = \"true\"" -i "$compose_file" 2>/dev/null || true
     done <<< "$all_services"
     
@@ -1329,6 +1356,7 @@ convert_to_dockge() {
   "version": "$APP_VERSION",
   "author": "$author_json",
   "icon": "$APP_ICON",
+  "image": "$APP_MAIN_IMAGE",
   "category": "$APP_CATEGORY",
   "port": "$APP_DEFAULT_PORT",
   "documentation": "$APP_DOCS",
@@ -1415,9 +1443,6 @@ convert_to_cosmos() {
 }
 EOF
     
-    # Clean up temporary file
-    rm -f "$temp_compose"
-    
     # Escape JSON strings - order matters! Backslashes first, then quotes, then control chars
     local name_json="${APP_NAME}"
     local desc_json="${APP_DESCRIPTION}"
@@ -1439,6 +1464,9 @@ EOF
     desc_json="${desc_json//$'\r'/\\r}"
     desc_json="${desc_json//$'\t'/\\t}"
     
+    # Use icon URL or logo URL for image and icon fields
+    image_url="${APP_ICON:-${APP_LOGO:-https://via.placeholder.com/512}}"
+    
     # Create description.json
     cat > "$output_dir/description.json" << EOF
 {
@@ -1446,9 +1474,68 @@ EOF
   "description": "$desc_json",
   "url": "$APP_HOMEPAGE",
   "longDescription": "$desc_json",
-  "tags": $(echo "$APP_TAGS" | jq -c '.')
+  "tags": $(echo "$APP_TAGS" | jq -c '.'),
+  "repository": "${APP_REPOSITORY:-https://github.com/bigbeartechworld}",
+  "image": "$image_url",
+  "supported_architectures": $(echo "$APP_ARCHITECTURES" | jq -c '.'),
+  "icon": "$image_url"
 }
 EOF
+    
+    # Create config.json with version and image info
+    cat > "$output_dir/config.json" << EOF
+{
+  "id": "$app_name",
+  "version": "$APP_VERSION",
+  "image": "$APP_MAIN_IMAGE",
+  "youtube": "${APP_YOUTUBE:-}",
+  "docs_link": "${APP_DOCUMENTATION:-}",
+  "big_bear_cosmos_youtube": ""
+}
+EOF
+    
+    # Create docker-compose.yml for Cosmos
+    # Start with the temp compose and prepend cosmos-installer
+    {
+        echo "cosmos-installer: null"
+        cat "$temp_compose"
+        echo "minVersion: 0.14.0"
+    } > "$output_dir/docker-compose.yml"
+    
+    # Clean up temporary file - do this AFTER using it for docker-compose.yml
+    rm -f "$temp_compose"
+    
+    # Download icon
+    if [[ -n "$APP_ICON" ]]; then
+        if curl -fsSL "$APP_ICON" -o "$output_dir/icon_temp" 2>/dev/null; then
+            # Try to convert to PNG if ImageMagick is available
+            if command -v convert &> /dev/null; then
+                if convert "$output_dir/icon_temp" "$output_dir/icon.png" 2>/dev/null; then
+                    rm -f "$output_dir/icon_temp"
+                else
+                    # If conversion fails, just rename to .png
+                    mv "$output_dir/icon_temp" "$output_dir/icon.png"
+                fi
+            else
+                # No ImageMagick, just rename to .png
+                mv "$output_dir/icon_temp" "$output_dir/icon.png"
+            fi
+        else
+            # If download fails, create placeholder
+            if command -v convert &> /dev/null; then
+                convert -size 512x512 xc:gray "$output_dir/icon.png" 2>/dev/null || touch "$output_dir/icon.png"
+            else
+                touch "$output_dir/icon.png"
+            fi
+        fi
+    else
+        # No icon URL, create placeholder
+        if command -v convert &> /dev/null; then
+            convert -size 512x512 xc:gray "$output_dir/icon.png" 2>/dev/null || touch "$output_dir/icon.png"
+        else
+            touch "$output_dir/icon.png"
+        fi
+    fi
     
     # Validate generated files
     if ! jq empty "$output_dir/cosmos-compose.json" 2>/dev/null; then
@@ -1467,7 +1554,21 @@ EOF
         return 1
     fi
     
-    print_success "Converted $app_name for Cosmos"
+    if ! jq empty "$output_dir/config.json" 2>/dev/null; then
+        print_error "Generated config.json for $app_name (Cosmos) has invalid JSON!"
+        print_error "Validation error:"
+        jq empty "$output_dir/config.json" 2>&1
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    if ! yq eval '.' "$output_dir/docker-compose.yml" > /dev/null 2>&1; then
+        print_error "Generated docker-compose.yml for $app_name (Cosmos) has invalid YAML!"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    
+    print_success "Converted $app_name for Cosmos (config.json, description.json, docker-compose.yml, cosmos-compose.json)"
 }
 
 # Convert to Umbrel format
@@ -1838,48 +1939,126 @@ convert_app() {
                 if [[ "$COMPAT_CASAOS" == "true" ]]; then
                     convert_to_casaos "$app_name" "$app_dir"
                     platforms_converted=$((platforms_converted + 1))
-                elif [[ "$VERBOSE" == "true" ]]; then
-                    print_info "$app_name: Skipping CasaOS (not supported)"
+                else
+                    # Delete the directory if it exists and app is not supported
+                    local folder_name=$(get_platform_folder_name "$app_dir" "casaos")
+                    if [[ "$folder_name" == "$app_name" ]] || [[ -z "$folder_name" ]] || [[ "$folder_name" == "null" ]]; then
+                        folder_name="$app_name"
+                    fi
+                    local output_dir="$OUTPUT_DIR/casaos/$folder_name"
+                    if [[ -d "$output_dir" ]]; then
+                        rm -rf "$output_dir"
+                        if [[ "$VERBOSE" == "true" ]]; then
+                            print_info "$app_name: Removed unsupported CasaOS app directory"
+                        fi
+                    elif [[ "$VERBOSE" == "true" ]]; then
+                        print_info "$app_name: Skipping CasaOS (not supported)"
+                    fi
                 fi
                 ;;
             portainer)
                 if [[ "$COMPAT_PORTAINER" == "true" ]]; then
                     convert_to_portainer "$app_name" "$app_dir"
                     platforms_converted=$((platforms_converted + 1))
-                elif [[ "$VERBOSE" == "true" ]]; then
-                    print_info "$app_name: Skipping Portainer (not supported)"
+                else
+                    # Delete the directory if it exists and app is not supported
+                    local folder_name=$(get_platform_folder_name "$app_dir" "portainer")
+                    if [[ "$folder_name" == "$app_name" ]] || [[ -z "$folder_name" ]] || [[ "$folder_name" == "null" ]]; then
+                        folder_name="$app_name"
+                    fi
+                    local output_dir="$OUTPUT_DIR/portainer/$folder_name"
+                    if [[ -d "$output_dir" ]]; then
+                        rm -rf "$output_dir"
+                        if [[ "$VERBOSE" == "true" ]]; then
+                            print_info "$app_name: Removed unsupported Portainer app directory"
+                        fi
+                    elif [[ "$VERBOSE" == "true" ]]; then
+                        print_info "$app_name: Skipping Portainer (not supported)"
+                    fi
                 fi
                 ;;
             runtipi)
                 if [[ "$COMPAT_RUNTIPI" == "true" ]]; then
                     convert_to_runtipi "$app_name" "$app_dir"
                     platforms_converted=$((platforms_converted + 1))
-                elif [[ "$VERBOSE" == "true" ]]; then
-                    print_info "$app_name: Skipping Runtipi (not supported)"
+                else
+                    # Delete the directory if it exists and app is not supported
+                    local folder_name=$(get_platform_folder_name "$app_dir" "runtipi")
+                    if [[ "$folder_name" == "$app_name" ]] || [[ -z "$folder_name" ]] || [[ "$folder_name" == "null" ]]; then
+                        folder_name="$app_name"
+                    fi
+                    local output_dir="$OUTPUT_DIR/runtipi/$folder_name"
+                    if [[ -d "$output_dir" ]]; then
+                        rm -rf "$output_dir"
+                        if [[ "$VERBOSE" == "true" ]]; then
+                            print_info "$app_name: Removed unsupported Runtipi app directory"
+                        fi
+                    elif [[ "$VERBOSE" == "true" ]]; then
+                        print_info "$app_name: Skipping Runtipi (not supported)"
+                    fi
                 fi
                 ;;
             dockge)
                 if [[ "$COMPAT_DOCKGE" == "true" ]]; then
                     convert_to_dockge "$app_name" "$app_dir"
                     platforms_converted=$((platforms_converted + 1))
-                elif [[ "$VERBOSE" == "true" ]]; then
-                    print_info "$app_name: Skipping Dockge (not supported)"
+                else
+                    # Delete the directory if it exists and app is not supported
+                    local folder_name=$(get_platform_folder_name "$app_dir" "dockge")
+                    if [[ "$folder_name" == "$app_name" ]] || [[ -z "$folder_name" ]] || [[ "$folder_name" == "null" ]]; then
+                        folder_name="$app_name"
+                    fi
+                    local output_dir="$OUTPUT_DIR/dockge/$folder_name"
+                    if [[ -d "$output_dir" ]]; then
+                        rm -rf "$output_dir"
+                        if [[ "$VERBOSE" == "true" ]]; then
+                            print_info "$app_name: Removed unsupported Dockge app directory"
+                        fi
+                    elif [[ "$VERBOSE" == "true" ]]; then
+                        print_info "$app_name: Skipping Dockge (not supported)"
+                    fi
                 fi
                 ;;
             cosmos)
                 if [[ "$COMPAT_COSMOS" == "true" ]]; then
                     convert_to_cosmos "$app_name" "$app_dir"
                     platforms_converted=$((platforms_converted + 1))
-                elif [[ "$VERBOSE" == "true" ]]; then
-                    print_info "$app_name: Skipping Cosmos (not supported)"
+                else
+                    # Delete the directory if it exists and app is not supported
+                    local folder_name=$(get_platform_folder_name "$app_dir" "cosmos")
+                    if [[ "$folder_name" == "$app_name" ]] || [[ -z "$folder_name" ]] || [[ "$folder_name" == "null" ]]; then
+                        folder_name="$app_name"
+                    fi
+                    local output_dir="$OUTPUT_DIR/cosmos/$folder_name"
+                    if [[ -d "$output_dir" ]]; then
+                        rm -rf "$output_dir"
+                        if [[ "$VERBOSE" == "true" ]]; then
+                            print_info "$app_name: Removed unsupported Cosmos app directory"
+                        fi
+                    elif [[ "$VERBOSE" == "true" ]]; then
+                        print_info "$app_name: Skipping Cosmos (not supported)"
+                    fi
                 fi
                 ;;
             umbrel)
                 if [[ "$COMPAT_UMBREL" == "true" ]]; then
                     convert_to_umbrel "$app_name" "$app_dir"
                     platforms_converted=$((platforms_converted + 1))
-                elif [[ "$VERBOSE" == "true" ]]; then
-                    print_info "$app_name: Skipping Umbrel (not supported)"
+                else
+                    # Delete the directory if it exists and app is not supported
+                    local folder_name=$(get_platform_folder_name "$app_dir" "umbrel")
+                    if [[ "$folder_name" == "$app_name" ]] || [[ -z "$folder_name" ]] || [[ "$folder_name" == "null" ]]; then
+                        folder_name="big-bear-umbrel-$app_name"
+                    fi
+                    local output_dir="$OUTPUT_DIR/umbrel/$folder_name"
+                    if [[ -d "$output_dir" ]]; then
+                        rm -rf "$output_dir"
+                        if [[ "$VERBOSE" == "true" ]]; then
+                            print_info "$app_name: Removed unsupported Umbrel app directory"
+                        fi
+                    elif [[ "$VERBOSE" == "true" ]]; then
+                        print_info "$app_name: Skipping Umbrel (not supported)"
+                    fi
                 fi
                 ;;
             *)

@@ -10,7 +10,7 @@
     "developer": "bigbeartechworld",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/bigbeartechworld/big-bear-casaos-user-management",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:38Z",
     "updated": "2025-10-27T02:41:38Z"
@@ -140,7 +140,8 @@
     },
     "umbrel": {
       "supported": false,
-      "manifest_version": 1
+      "manifest_version": 1,
+      "port": "64740"
     }
   },
   "tags": [

@@ -10,7 +10,7 @@
     "developer": "Lissy93",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/lissy93/dashy",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:43Z",
     "updated": "2025-10-27T02:41:43Z"
@@ -31,7 +31,6 @@
   "technical": {
     "architectures": [
       "amd64",
-      "armv7",
       "arm64"
     ],
     "platform": "linux",

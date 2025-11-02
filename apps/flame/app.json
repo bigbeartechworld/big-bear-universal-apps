@@ -7,10 +7,10 @@
     "tagline": "Flame is a self-hosted startpage for your server. Manage your apps and bookmarks effortlessly with built-in editors.",
     "version": "multiarch2.3.1",
     "author": "BigBearCommunity",
-    "developer": "",
+    "developer": "pawelmalak",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/pawelmalak/flame",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:48Z",
     "updated": "2025-10-27T02:41:48Z"
@@ -31,7 +31,6 @@
   "technical": {
     "architectures": [
       "amd64",
-      "armv7",
       "arm64"
     ],
     "platform": "linux",

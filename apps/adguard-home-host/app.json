@@ -10,7 +10,7 @@
     "developer": "AdGuardTeam",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/adguard/adguardhome",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:35Z",
     "updated": "2025-11-02T17:34:21.606Z"
@@ -35,12 +35,11 @@
   "technical": {
     "architectures": [
       "amd64",
-      "arm64",
-      "armv7"
+      "arm64"
     ],
     "platform": "linux",
     "main_service": "big-bear-adguard-home-host",
-    "default_port": "80",
+    "default_port": "3080",
     "main_image": "adguard/adguardhome",
     "compose_file": "docker-compose.yml"
   },
@@ -106,7 +105,7 @@
       "administrator_only": false
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "tipi_version": 1,
       "supported_architectures": [
         "amd64",
@@ -124,12 +123,12 @@
       "file_based": true
     },
     "cosmos": {
-      "supported": true,
+      "supported": false,
       "servapp": true,
       "routes_required": true
     },
     "umbrel": {
-      "supported": true,
+      "supported": false,
       "manifest_version": 1,
       "volume_mappings": {
         "adguard-home-host_data_conf": "data/conf",

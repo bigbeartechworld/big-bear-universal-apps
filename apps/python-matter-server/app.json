@@ -7,10 +7,10 @@
     "tagline": "Python Matter Server",
     "version": "8.1.0",
     "author": "BigBearTechWorld",
-    "developer": "",
+    "developer": "home-assistant-libs",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/home-assistant-libs/python-matter-server",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:15Z",
     "updated": "2025-10-27T02:42:15Z"
@@ -77,7 +77,7 @@
       "administrator_only": false
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "tipi_version": 1,
       "supported_architectures": [
         "amd64",
@@ -93,12 +93,12 @@
       "file_based": true
     },
     "cosmos": {
-      "supported": true,
+      "supported": false,
       "servapp": true,
       "routes_required": true
     },
     "umbrel": {
-      "supported": true,
+      "supported": false,
       "manifest_version": 1,
       "volume_mappings": {
         "python-matter-server_data": "data"

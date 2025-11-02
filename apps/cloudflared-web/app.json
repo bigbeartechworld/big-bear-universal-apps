@@ -10,7 +10,7 @@
     "developer": "wisdomsky",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/wisdomsky/cloudflared-web",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:40Z",
     "updated": "2025-10-27T02:41:40Z"
@@ -119,7 +119,7 @@
       "administrator_only": false
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "tipi_version": 1,
       "supported_architectures": [
         "amd64",
@@ -132,12 +132,12 @@
       "file_based": true
     },
     "cosmos": {
-      "supported": true,
+      "supported": false,
       "servapp": true,
       "routes_required": true
     },
     "umbrel": {
-      "supported": true,
+      "supported": false,
       "manifest_version": 1,
       "port": "14333"
     }

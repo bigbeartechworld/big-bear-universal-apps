@@ -10,7 +10,7 @@
     "developer": "alexjustesen",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/speedtest-tracker",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:19Z",
     "updated": "2025-10-29T01:57:44.273Z"
@@ -31,7 +31,6 @@
   "technical": {
     "architectures": [
       "amd64",
-      "armv7",
       "arm64"
     ],
     "platform": "linux",

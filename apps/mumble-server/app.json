@@ -7,10 +7,10 @@
     "tagline": "Mumble Server",
     "version": "v1.4.230-6",
     "author": "BigBearTechWorld",
-    "developer": "",
+    "developer": "mumblevoip",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "",
+    "homepage": "https://hub.docker.com/r/mumblevoip/mumble-server",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:02Z",
     "updated": "2025-10-27T02:42:02Z"
