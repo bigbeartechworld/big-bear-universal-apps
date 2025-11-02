@@ -35,8 +35,7 @@
   "technical": {
     "architectures": [
       "amd64",
-      "arm64",
-      "arm/v7"
+      "arm64"
     ],
     "platform": "linux",
     "main_service": "big-bear-adguard-home-host",
