@@ -5,7 +5,7 @@
     "name": "Davis",
     "description": "A simple, fully translatable admin interface for sabre/dav based on Symfony 5 and Bootstrap 5, initially inspired by Baïkal. Provides user edition, calendar creation and sharing, and address book creation. The interface is simple and straightforward, responsive, and provides a light and a dark mode.",
     "tagline": "Davis",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "author": "BigBearTechWorld",
     "developer": "tchapi",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:43Z",
-    "updated": "2025-10-27T02:41:43Z"
+    "updated": "2025-11-02T00:37:41.635Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/davis/logo.png",
