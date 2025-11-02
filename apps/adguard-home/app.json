@@ -5,7 +5,7 @@
     "name": "AdGuard Home",
     "description": "AdGuard Home is a network-wide software for blocking ads and tracking. After you set it up, it'll cover all your home devices, and you won't need any client-side software for that. Learn more on our official Github repository.",
     "tagline": "Network-wide ads & trackers blocking DNS server.",
-    "version": "v0.107.68",
+    "version": "v0.107.69",
     "author": "BigBearTechWorld",
     "developer": "AdGuardTeam",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:35Z",
-    "updated": "2025-10-29T01:57:44.273Z"
+    "updated": "2025-11-02T17:34:21.607Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/adguard-home.png",
