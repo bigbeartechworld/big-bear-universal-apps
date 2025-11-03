@@ -276,6 +276,7 @@ jobs:
           labels: |
             automated
             sync
+            ${{ github.event_name == 'push' && 'automerge' || '' }}
           draft: ${{ github.event.inputs.create_draft == 'true' }}
 
       - name: Setup pnpm
@@ -382,7 +383,7 @@ jobs:
         working-directory: big-bear-${{ matrix.platform }}
 
       - name: Enable auto-merge
-        if: steps.check-platform.outputs.should_sync == 'true' && steps.create-pr.outputs.pull-request-number && github.event.inputs.auto_merge == 'true' && steps.run-tests.outputs.test_status == 'passed'
+        if: steps.check-platform.outputs.should_sync == 'true' && steps.create-pr.outputs.pull-request-number && steps.run-tests.outputs.test_status == 'passed' && (github.event.inputs.auto_merge == 'true' || github.event_name == 'push')
         run: |
           gh pr merge --auto --squash "${{ steps.create-pr.outputs.pull-request-number }}"
         env:
