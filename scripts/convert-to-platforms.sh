@@ -750,16 +750,20 @@ convert_to_casaos() {
     local platform_youtube=$(jq -r '.compatibility.casaos.youtube // ""' "$app_dir/app.json")
     local youtube_url="${platform_youtube:-$APP_YOUTUBE}"
     
-    # Create config.json for CasaOS
-    cat > "$output_dir/config.json" << EOF
-{
-  "id": "$APP_ID",
-  "version": "$APP_VERSION",
-  "image": "$APP_MAIN_IMAGE",
-  "youtube": "$youtube_url",
-  "docs_link": "$APP_DOCS"
-}
-EOF
+    # Create config.json for CasaOS using jq
+    jq -n \
+        --arg id "$APP_ID" \
+        --arg version "$APP_VERSION" \
+        --arg image "$APP_MAIN_IMAGE" \
+        --arg youtube "$youtube_url" \
+        --arg docs_link "$APP_DOCS" \
+        '{
+            id: $id,
+            version: $version,
+            image: $image,
+            youtube: $youtube,
+            docs_link: $docs_link
+        }' > "$output_dir/config.json"
     
     # Validate generated files
     if ! validate_yaml_syntax "$compose_file"; then
@@ -1206,54 +1210,61 @@ convert_to_runtipi() {
         esac
     fi
     
-    # Create docker-compose.json
-    cat > "$output_dir/docker-compose.json" << EOF
-{
-  "schemaVersion": 2,
-  "services": [
-    {
-      "name": "$app_name",
-      "image": "$APP_MAIN_IMAGE:$APP_VERSION",
-      "internalPort": $runtipi_port,
-      "isMain": true
-    }
-  ]
-}
-EOF
+    # Create docker-compose.json using jq
+    jq -n \
+        --arg name "$app_name" \
+        --arg image "$APP_MAIN_IMAGE:$APP_VERSION" \
+        --argjson port "$runtipi_port" \
+        '{
+            schemaVersion: 2,
+            services: [
+                {
+                    name: $name,
+                    image: $image,
+                    internalPort: $port,
+                    isMain: true
+                }
+            ]
+        }' > "$output_dir/docker-compose.json"
     
-    # Escape strings for JSON
-    local desc_escaped="${APP_DESCRIPTION//\\/\\\\}"
-    desc_escaped="${desc_escaped//\"/\\\"}"
-    desc_escaped="${desc_escaped//$'\n'/\\n}"
-    
-    local tag_escaped="${APP_TAGLINE//\\/\\\\}"
-    tag_escaped="${tag_escaped//\"/\\\"}"
-    
-    # Create config.json
+    # Create config.json using jq
     local current_timestamp=$(($(date +%s) * 1000))
-    cat > "$output_dir/config.json" << EOF
-{
-  "name": "$APP_NAME",
-  "available": true,
-  "port": $runtipi_port,
-  "exposable": true,
-  "dynamic_config": true,
-  "id": "$APP_ID",
-  "description": "$desc_escaped",
-  "tipi_version": 1,
-  "version": "$APP_VERSION",
-  "categories": ["$(echo "$APP_CATEGORY" | tr '[:upper:]' '[:lower:]')"],
-  "short_desc": "$tag_escaped",
-  "author": "$APP_DEVELOPER",
-  "source": "$APP_REPOSITORY",
-  "website": "$APP_HOMEPAGE",
-  "supported_architectures": $(echo "$APP_ARCHITECTURES" | jq -c '.'),
-  "created_at": $current_timestamp,
-  "updated_at": $current_timestamp,
-  "\$schema": "../app-info-schema.json",
-  "min_tipi_version": "4.5.0"
-}
-EOF
+    local category_lower=$(echo "$APP_CATEGORY" | tr '[:upper:]' '[:lower:]')
+    jq -n \
+        --arg name "$APP_NAME" \
+        --argjson port "$runtipi_port" \
+        --arg id "$APP_ID" \
+        --arg description "$APP_DESCRIPTION" \
+        --arg version "$APP_VERSION" \
+        --arg category "$category_lower" \
+        --arg short_desc "$APP_TAGLINE" \
+        --arg author "$APP_DEVELOPER" \
+        --arg source "$APP_REPOSITORY" \
+        --arg website "$APP_HOMEPAGE" \
+        --argjson architectures "$APP_ARCHITECTURES" \
+        --argjson created_at "$current_timestamp" \
+        --argjson updated_at "$current_timestamp" \
+        '{
+            name: $name,
+            available: true,
+            port: $port,
+            exposable: true,
+            dynamic_config: true,
+            id: $id,
+            description: $description,
+            tipi_version: 1,
+            version: $version,
+            categories: [$category],
+            short_desc: $short_desc,
+            author: $author,
+            source: $source,
+            website: $website,
+            supported_architectures: $architectures,
+            created_at: $created_at,
+            updated_at: $updated_at,
+            "$schema": "../app-info-schema.json",
+            min_tipi_version: "4.5.0"
+        }' > "$output_dir/config.json"
     
     # Create description
     echo "$APP_DESCRIPTION" > "$output_dir/metadata/description.md"
@@ -1320,49 +1331,30 @@ convert_to_dockge() {
     # Copy compose and add big-bear- prefix to volumes
     adjust_compose_for_platform "$app_dir/docker-compose.yml" "$output_dir/compose.yaml" "dockge" "$app_name"
     
-    # Escape JSON strings - order matters! Backslashes first, then quotes, then control chars
-    local name_json="${APP_NAME}"
-    local desc_json="${APP_DESCRIPTION}"
-    local author_json="${APP_AUTHOR}"
-    
-    # Escape backslashes first
-    name_json="${name_json//\\/\\\\}"
-    desc_json="${desc_json//\\/\\\\}"
-    author_json="${author_json//\\/\\\\}"
-    
-    # Then escape quotes
-    name_json="${name_json//\"/\\\"}"
-    desc_json="${desc_json//\"/\\\"}"
-    author_json="${author_json//\"/\\\"}"
-    
-    # Then escape control characters
-    name_json="${name_json//$'\n'/\\n}"
-    name_json="${name_json//$'\r'/\\r}"
-    name_json="${name_json//$'\t'/\\t}"
-    
-    desc_json="${desc_json//$'\n'/\\n}"
-    desc_json="${desc_json//$'\r'/\\r}"
-    desc_json="${desc_json//$'\t'/\\t}"
-    
-    author_json="${author_json//$'\n'/\\n}"
-    author_json="${author_json//$'\r'/\\r}"
-    author_json="${author_json//$'\t'/\\t}"
-    
-    # Create metadata.json
-    cat > "$output_dir/metadata.json" << EOF
-{
-  "name": "$name_json",
-  "description": "$desc_json",
-  "version": "$APP_VERSION",
-  "author": "$author_json",
-  "icon": "$APP_ICON",
-  "image": "$APP_MAIN_IMAGE",
-  "category": "$APP_CATEGORY",
-  "port": "$APP_DEFAULT_PORT",
-  "documentation": "$APP_DOCS",
-  "source": "$APP_REPOSITORY"
-}
-EOF
+    # Create metadata.json using jq to properly escape all strings
+    jq -n \
+        --arg name "$APP_NAME" \
+        --arg description "$APP_DESCRIPTION" \
+        --arg version "$APP_VERSION" \
+        --arg author "$APP_AUTHOR" \
+        --arg icon "$APP_ICON" \
+        --arg image "$APP_MAIN_IMAGE" \
+        --arg category "$APP_CATEGORY" \
+        --arg port "$APP_DEFAULT_PORT" \
+        --arg documentation "$APP_DOCS" \
+        --arg source "$APP_REPOSITORY" \
+        '{
+            name: $name,
+            description: $description,
+            version: $version,
+            author: $author,
+            icon: $icon,
+            image: $image,
+            category: $category,
+            port: $port,
+            documentation: $documentation,
+            source: $source
+        }' > "$output_dir/metadata.json"
     
     # Validate generated files
     if ! validate_yaml_syntax "$output_dir/compose.yaml"; then
@@ -1443,56 +1435,45 @@ convert_to_cosmos() {
 }
 EOF
     
-    # Escape JSON strings - order matters! Backslashes first, then quotes, then control chars
-    local name_json="${APP_NAME}"
-    local desc_json="${APP_DESCRIPTION}"
-    
-    # Escape backslashes first
-    name_json="${name_json//\\/\\\\}"
-    desc_json="${desc_json//\\/\\\\}"
-    
-    # Then escape quotes
-    name_json="${name_json//\"/\\\"}"
-    desc_json="${desc_json//\"/\\\"}"
-    
-    # Then escape control characters
-    name_json="${name_json//$'\n'/\\n}"
-    name_json="${name_json//$'\r'/\\r}"
-    name_json="${name_json//$'\t'/\\t}"
-    
-    desc_json="${desc_json//$'\n'/\\n}"
-    desc_json="${desc_json//$'\r'/\\r}"
-    desc_json="${desc_json//$'\t'/\\t}"
-    
     # Use icon URL or logo URL for image and icon fields
-    image_url="${APP_ICON:-${APP_LOGO:-https://via.placeholder.com/512}}"
+    local image_url="${APP_ICON:-${APP_LOGO:-https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/_example/logo.jpg}}"
     
-    # Create description.json
-    cat > "$output_dir/description.json" << EOF
-{
-  "name": "$name_json",
-  "description": "$desc_json",
-  "url": "$APP_HOMEPAGE",
-  "longDescription": "$desc_json",
-  "tags": $(echo "$APP_TAGS" | jq -c '.'),
-  "repository": "${APP_REPOSITORY:-https://github.com/bigbeartechworld}",
-  "image": "$image_url",
-  "supported_architectures": $(echo "$APP_ARCHITECTURES" | jq -c '.'),
-  "icon": "$image_url"
-}
-EOF
+    # Create description.json using jq to properly escape all strings
+    jq -n \
+        --arg name "$APP_NAME" \
+        --arg description "$APP_DESCRIPTION" \
+        --arg url "$APP_HOMEPAGE" \
+        --argjson tags "$APP_TAGS" \
+        --arg repository "${APP_REPOSITORY:-https://github.com/bigbeartechworld}" \
+        --arg image "$image_url" \
+        --argjson architectures "$APP_ARCHITECTURES" \
+        '{
+            name: $name,
+            description: $description,
+            url: $url,
+            longDescription: $description,
+            tags: $tags,
+            repository: $repository,
+            image: $image,
+            supported_architectures: $architectures,
+            icon: $image
+        }' > "$output_dir/description.json"
     
-    # Create config.json with version and image info
-    cat > "$output_dir/config.json" << EOF
-{
-  "id": "$app_name",
-  "version": "$APP_VERSION",
-  "image": "$APP_MAIN_IMAGE",
-  "youtube": "${APP_YOUTUBE:-}",
-  "docs_link": "${APP_DOCUMENTATION:-}",
-  "big_bear_cosmos_youtube": ""
-}
-EOF
+    # Create config.json using jq
+    jq -n \
+        --arg id "$app_name" \
+        --arg version "$APP_VERSION" \
+        --arg image "$APP_MAIN_IMAGE" \
+        --arg youtube "${APP_YOUTUBE:-}" \
+        --arg docs_link "${APP_DOCUMENTATION:-}" \
+        '{
+            id: $id,
+            version: $version,
+            image: $image,
+            youtube: $youtube,
+            docs_link: $docs_link,
+            big_bear_cosmos_youtube: ""
+        }' > "$output_dir/config.json"
     
     # Create docker-compose.yml for Cosmos
     # Start with the temp compose and prepend cosmos-installer
