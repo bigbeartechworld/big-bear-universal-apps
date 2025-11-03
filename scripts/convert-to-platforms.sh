@@ -812,7 +812,7 @@ convert_to_portainer() {
     # Ensure logo URL has proper extension, use placeholder if empty or invalid
     local logo_url="$APP_ICON"
     if [[ -z "$logo_url" ]] || ! [[ "$logo_url" =~ \.(png|jpg|jpeg|svg|webp|gif)$ ]]; then
-        logo_url="https://via.placeholder.com/512.png"
+        logo_url="https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/_example/logo.jpg"
     fi
     
     # Get template ID
