@@ -5,7 +5,7 @@
     "name": "Firefox",
     "description": "This Image contains a browser-accessible version of Firefox.",
     "tagline": "Firefox",
-    "version": "1143.0.4",
+    "version": "1144.0.2",
     "author": "BigBearTechWorld",
     "developer": "linuxserver",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/firefox",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:47Z",
-    "updated": "2025-10-30T01:56:25.772Z"
+    "updated": "2025-11-05T01:52:28.418Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/firefox.png",
