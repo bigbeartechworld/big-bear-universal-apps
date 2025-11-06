@@ -5,7 +5,7 @@
     "name": "Paperless-ngx",
     "description": "Paperless-ngx is a community-supported open-source document management system that transforms your physical documents into a searchable online archive so you can keep, well, less paper.",
     "tagline": "Paperless-ngx",
-    "version": "2.19.4",
+    "version": "2.19.5",
     "author": "BigBearTechWorld",
     "developer": "paperless-ngx",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/paperless-ngx/paperless-ngx",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:09Z",
-    "updated": "2025-11-04T01:41:54.897Z"
+    "updated": "2025-11-06T22:40:46.637Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/paperless-ngx.png",
