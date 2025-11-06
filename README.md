@@ -197,7 +197,7 @@ Validate apps against the JSON schema:
 | **DIUN** | Docker Image Update Notifier is a CLI application written in Go and delivered as a single executa... | `crazymax/diun` | 4.30.0 | N/A |  |  |
 | **Docker Cron Restart Notifier** | This Docker image is designed to automatically restart specified Docker containers and send notif... | `deduard/tools` | restart-notifier-latest | N/A |  |  |
 | **Dockge** | A fancy, easy-to-use and reactive docker `compose.yaml` stack-oriented manager | `louislam/dockge` | 1.5.0 | 5001 | [▶️](https://youtu.be/8Z6psh-t5iU) |  |
-| **Dockpeek** | A lightweight, self-hosted Docker dashboard that provides quick access to all running containers ... | `ghcr.io/dockpeek/dockpeek` | v1.7.1 | 3420 |  |  |
+| **Dockpeek** | A lightweight, self-hosted Docker dashboard that provides quick access to all running containers ... | `ghcr.io/dockpeek/dockpeek` | v1.7.2 | 3420 |  |  |
 | **Docmost** | Docmost is an open-source alternative to the likes of Notion and Confluence. Whether you're manag... | `docmost/docmost` | 0.23.2 | 3000 |  |  |
 | **Dozzle** | Dozzle is a real-time log viewer for docker containers. | `amir20/dozzle` | v8.14.6 | 8888 | [▶️](https://youtu.be/lLLNDcHNOuM) |  |
 | **EJBCA Community** | The open-source public key infrastructure (PKI) and certificate authority (CA) software EJBCA is ... | `keyfactor/ejbca-ce` | 9.1.1 | 8443 |  | [📖](https://doc.primekey.com/ejbca/ejbca-introduction) |
@@ -205,11 +205,11 @@ Validate apps against the JSON schema:
 | **Eufy Security WS** | eufy-security-ws is a small server wrapper around the eufy-security-client library to access it v... | `bropat/eufy-security-ws` | 1.9.3 | 3000 |  |  |
 | **Excalidraw** | Virtual whiteboard for sketching hand-drawn like diagrams | `excalidraw/excalidraw` | latest | 8000 | [▶️](https://youtu.be/T4K6RDhieIA) |  |
 | **FarmOS** | farmOS is a web-based application for farm management, planning, and record keeping. It is develo... | `farmos/farmos` | 3.4.5 | 8080 |  |  |
-| **Faster-whisper** | Faster-whisper is a reimplementation of OpenAI's Whisper model using CTranslate2, which is a fast... | `linuxserver/faster-whisper` | 2.5.0 | 7575 |  |  |
+| **Faster-whisper** | Faster-whisper is a reimplementation of OpenAI's Whisper model using CTranslate2, which is a fast... | `linuxserver/faster-whisper` | 3.0.1 | 7575 |  |  |
 | **Fastfetch** | Fastfetch is a neofetch-like tool for fetching system information and displaying it prettily. It ... | `bigbeartechworld/big-bear-fastfetch` | 0.0.4 | 7681 | [▶️](https://youtu.be/pVBMvIMzfpw) |  |
 | **Filebrowser** | Reliable and Performant File Management Desktop Sync and File Sharing Tool. | `filebrowser/filebrowser` | v2.45.0-s6 | 8080 |  |  |
 | **Financial Freedom** | Keep investors and their buyers out of your financial data. Own 100% of your data and start build... | `serversideup/financial-freedom` | v0.2.0-alpha1 | 8443 |  |  |
-| **Firefox** | This Image contains a browser-accessible version of Firefox. | `lscr.io/linuxserver/firefox` | 1143.0.4 | 3000 | [▶️](https://youtu.be/RPBshN5hGWQ) |  |
+| **Firefox** | This Image contains a browser-accessible version of Firefox. | `lscr.io/linuxserver/firefox` | 1144.0.2 | 3000 | [▶️](https://youtu.be/RPBshN5hGWQ) |  |
 | **Flame** | Flame is a self-hosted startpage for your server. Its design is heavily inspired by SUI. Flame is... | `pawelmalak/flame` | multiarch2.3.1 | 5005 | [▶️](https://youtu.be/p_P_jKmJRz8) |  |
 | **FlContainers Guacamole** | A Docker Container for Apache Guacamole, a client-less remote desktop gateway. It supports standa... | `flcontainers/guacamole` | 1.6.0 | 8080 |  |  |
 | **Flowise AI** | Flowise AI is an Open source UI visual tool to build your customized LLM orchestration flow & AI ... | `flowiseai/flowise` | 3.0.8 | 8009 |  |  |
@@ -228,15 +228,15 @@ Validate apps against the JSON schema:
 | **Healthchecks** | Healthchecks is a watchdog for your cron jobs. It's a web server that listens for pings from your... | `linuxserver/healthchecks` | 3.11.20250828 | 8000 |  |  |
 | **Homarr** | Simplify the management of your server with Homarr - a sleek, modern dashboard that puts all of y... | `ghcr.io/ajnart/homarr` | 0.16.0 | 7575 | [▶️](https://youtu.be/H4rzZNO47Uk) |  |
 | **Homarr v1** | Homarr v1 - A sleek, modern dashboard for your server. This is the latest major version (v1.x) fr... | `ghcr.io/homarr-labs/homarr` | v1.43.1 | 7575 |  | [📖](https://homarr.dev/docs) |
-| **Home Assistant** | Open source home automation that puts local control and privacy first. Powered by a worldwide com... | `ghcr.io/home-assistant/home-assistant` | 2025.10.4 | 8123 | [▶️](https://youtu.be/YnCpj5sND_A) |  |
+| **Home Assistant** | Open source home automation that puts local control and privacy first. Powered by a worldwide com... | `ghcr.io/home-assistant/home-assistant` | 2025.11.0 | 8123 | [▶️](https://youtu.be/YnCpj5sND_A) |  |
 | **HomeBridge** | HomeKit support for the impatient. | `homebridge/homebridge` | 2024-05-02 | 8581 |  |  |
-| **Homepage** | A modern, fully static, fast, secure fully proxied, highly customizable application dashboard wit... | `ghcr.io/gethomepage/homepage` | v1.6.0 | 3000 |  |  |
+| **Homepage** | A modern, fully static, fast, secure fully proxied, highly customizable application dashboard wit... | `ghcr.io/gethomepage/homepage` | v1.6.1 | 3000 |  |  |
 | **Homer** | A dead simple static HOMepage for your servER to keep your services on hand, from a simple yaml c... | `b4bz/homer` | v25.10.1 | 8080 |  |  |
 | **I Hate Money** | I hate money is a web application made to ease shared budget management. It keeps track of who bo... | `ihatemoney/ihatemoney` | 6.1.5 | 8001 | [▶️](https://youtu.be/aHz0Vh-KbXw) |  |
-| **Immich** | Self-hosted photo and video storage. | `ghcr.io/immich-app/immich-server` | v2.2.2 | 2283 | [▶️](https://youtu.be/ZIx2jDHYjjE) |  |
+| **Immich** | Self-hosted photo and video storage. | `ghcr.io/immich-app/immich-server` | v2.2.3 | 2283 | [▶️](https://youtu.be/ZIx2jDHYjjE) |  |
 | **Immich AIO Alpine** | AIO Alpine. Self-hosted photo and video storage. | `ghcr.io/imagegenius/immich` | 2.0.0-alpine | 2283 |  |  |
 | **Immich Kiosk** | Immich Kiosk is a lightweight slideshow for running on kiosk devices and browsers that uses Immic... | `ghcr.io/damongolding/immich-kiosk` | 0.26.1 | 3000 |  |  |
-| **Immich without machine learning** | Self-hosted photo and video storage. This does not include the machine learning part. | `ghcr.io/immich-app/immich-server` | v2.2.2 | 2283 | [▶️](https://youtu.be/ZIx2jDHYjjE) |  |
+| **Immich without machine learning** | Self-hosted photo and video storage. This does not include the machine learning part. | `ghcr.io/immich-app/immich-server` | v2.2.3 | 2283 | [▶️](https://youtu.be/ZIx2jDHYjjE) |  |
 | **Invoice Ninja** | Invoice Ninja is a free and open-source invoice and expense management system. It is a web-based ... | `invoiceninja/invoiceninja` | 5.12.28 | 8080 |  |  |
 | **IT Tools** | Collection of handy online tools for developers, with great UX as a web app. | `corentinth/it-tools` | 2023.11.2-7d94e11 | 8080 | [▶️](https://youtu.be/MlGypCrUJug) |  |
 | **Jellyseerr** | Jellyseerr is a free and open source software application for managing requests for your media li... | `fallenbagel/jellyseerr` | 2.7.3 | 5055 |  |  |
@@ -256,7 +256,7 @@ Validate apps against the JSON schema:
 | **LibreTranslate** | Free and Open Source Machine Translation API, entirely self-hosted. Unlike other APIs, it doesn't... | `libretranslate/libretranslate` | v1.7.3 | 5000 | [▶️](https://youtu.be/VJ5DrsuJ3oA) |  |
 | **LinkStack** | LinkStack is a link-in-bio tool that allows you to create a personalized and easily customizable ... | `linkstackorg/linkstack` | V4 | 10443 | [▶️](https://youtu.be/1KgFlCsItro) |  |
 | **Linkwarden** | ⚡️⚡️⚡️Self-hosted collaborative bookmark manager to collect, organize, and preserve webpages and ... | `ghcr.io/linkwarden/linkwarden` | v2.13.1 | 3000 | [▶️](https://youtu.be/KZXZAi9Vjs4) |  |
-| **LobeChat** | LobeChat is a open-source, extensible (Function Calling), high-performance chatbot framework. It ... | `lobehub/lobe-chat` | 1.142.8 | 3210 |  |  |
+| **LobeChat** | LobeChat is a open-source, extensible (Function Calling), high-performance chatbot framework. It ... | `lobehub/lobe-chat` | 1.142.9 | 3210 |  |  |
 | **LS Adguard Home Sync** | 🛡️ Synchronize AdGuard Home config to replicas. This is the LinuxServer version. | `linuxserver/adguardhome-sync` | 0.8.2 | 8080 |  |  |
 | **LyriOn Music Server** | Simplify the management of your server with Homarr - a sleek, modern dashboard that puts all of y... | `lmscommunity/lyrionmusicserver` | 9.1.0 | 9000 |  |  |
 | **Mailpit** | Mailpit is a multi-platform email testing tool & API for developers. | `axllent/mailpit` | v1.27 | 8025 | [▶️](https://youtu.be/2MY3S6csrVw) |  |
@@ -292,7 +292,7 @@ Validate apps against the JSON schema:
 | **Ollama - AMD** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.12.9-rocm | 11434 |  |  |
 | **Ollama - CPU** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.12.9 | 11434 |  |  |
 | **Ollama - NVIDIA** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.12.9 | 11434 |  |  |
-| **OneDev** | Self-hosted Git Server with Kanban and CI/CD | `1dev/server` | 13.0.9 | 6610 | [▶️](https://youtu.be/ps3JLYRB3SA) |  |
+| **OneDev** | Self-hosted Git Server with Kanban and CI/CD | `1dev/server` | 13.0.10 | 6610 | [▶️](https://youtu.be/ps3JLYRB3SA) |  |
 | **OnlyOffice** | Feature-rich web-based office suite with a vast range of collaborative capabilities | `onlyoffice/documentserver` | 9.1.0 | 7400 |  |  |
 | **Open WebUI** | Open WebUI is an extensible, feature-rich, and user-friendly self-hosted WebUI designed to operat... | `ghcr.io/open-webui/open-webui` | git-33e54a9 | 8080 |  |  |
 | **OpenVPN** | OpenVPN is an open-source commercial software that implements virtual private network (VPN) techn... | `openvpn/openvpn-as` | 2.13.1-d8cdeb9c-Ubuntu22 | 943 |  |  |
