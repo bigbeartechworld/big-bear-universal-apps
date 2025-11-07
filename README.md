@@ -175,7 +175,7 @@ Validate apps against the JSON schema:
 | **bookstack** | BookStack is a simple, self-hosted, easy-to-use platform for organising and storing information. ... | `lscr.io/linuxserver/bookstack` | 25.07.20250804 | 8080 | [▶️](https://youtu.be/_jW4RjJm-6A) |  |
 | **Brave** | This Image contains a browser-accessible version of Brave. | `kasmweb/brave` | 1.15.0-rolling | 6901 | [▶️](https://youtu.be/CJ2x-yCW-co) |  |
 | **btop** | A monitor of resources. Software made by Aristocratos at https://github.com/aristocratos/btop | `bigbeartechworld/big-bear-btop` | 0.1.5 | 7681 | [▶️](https://youtu.be/mD52bujMt68) |  |
-| **Budibase** | Low code platform for creating internal tools, workflows, and admin panels in minutes. Supports P... | `budibase/budibase` | 3.23.0 | 8080 |  |  |
+| **Budibase** | Low code platform for creating internal tools, workflows, and admin panels in minutes. Supports P... | `budibase/budibase` | 3.23.4 | 8080 |  |  |
 | **cAdvisor** | cAdvisor (Container Advisor) provides container users an understanding of the resource usage and ... | `gcr.io/cadvisor/cadvisor` | v0.52.1 | 8085 |  |  |
 | **Cal.com** | The open source Calendly successor. You are in charge of your own data, workflow, and appearance.... | `calcom/cal.com` | v5.8.2 | 3000 |  |  |
 | **Change Detection** | The best and simplest free open source website change detection, restock monitor and notification... | `ghcr.io/dgtlmoon/changedetection.io` | 0.50.39 | 5000 |  |  |
@@ -218,8 +218,8 @@ Validate apps against the JSON schema:
 | **Genmon** | Generac (and other models) Generator Monitoring using a Raspberry Pi and WiFi | `bigbeartechworld/big-bear-genmon` | 1.19.06 | 8000 | [▶️](https://youtu.be/b0_zuVVeIP4) |  |
 | **Ghost** | Ghost is a free and open source blogging platform written in JavaScript and distributed under the... | `ghost` | 6.5.3-alpine | 2368 | [▶️](https://youtu.be/oJZK9vH4W4Y) |  |
 | **Ghostfolio** | Open Source Wealth Management Software. Angular + NestJS + Prisma + Nx + TypeScript 🤍 | `ghostfolio/ghostfolio` | 2.214.0 | 3333 | [▶️](https://youtu.be/CNe4-8Vyhos) |  |
-| **Gitea Mirror** | Gitea Mirror is a modern web app for automatically mirroring repositories from GitHub to your sel... | `ghcr.io/raylabshq/gitea-mirror` | v3.8.11 | 4321 |  | [📖](https://community.bigbeartechworld.com/t/added-gitea-mirror-to-bigbearcasaos/3515?u=dragonfire1119#p-5962-documentation-6) |
-| **Gladys Assistant** | Gladys Assistant is a modern, privacy-first & open-source home automation software that runs anyw... | `gladysassistant/gladys` | v4.64.0 | 1080 | [▶️](https://youtu.be/l4GPomJMIT0) |  |
+| **Gitea Mirror** | Gitea Mirror is a modern web app for automatically mirroring repositories from GitHub to your sel... | `ghcr.io/raylabshq/gitea-mirror` | v3.9.0 | 4321 |  | [📖](https://community.bigbeartechworld.com/t/added-gitea-mirror-to-bigbearcasaos/3515?u=dragonfire1119#p-5962-documentation-6) |
+| **Gladys Assistant** | Gladys Assistant is a modern, privacy-first & open-source home automation software that runs anyw... | `gladysassistant/gladys` | v4.65.1 | 1080 | [▶️](https://youtu.be/l4GPomJMIT0) |  |
 | **Glances** | Glances is an open-source system cross-platform monitoring tool. It allows real-time monitoring o... | `nicolargo/glances` | 4.3.0.8-full | 61208 | [▶️](https://youtu.be/nwsVJ0QB0sM) |  |
 | **Gluetun** | Lightweight swiss-knife-like VPN client to multiple VPN service providers | `qmcgaw/gluetun` | v3.40.0 | N/A |  | [📖](https://community.bigbeartechworld.com/t/added-gluetun-to-big-bear-casaos/175) |
 | **GoAway** | GoAway is a lightweight DNS sinkhole that blocks ads, trackers, and malicious domains at the netw... | `pommee/goaway` | 0.62.12 | 8080 |  | [📖](https://community.bigbeartechworld.com/t/added-goaway-to-bigbearcasaos/4085) |
@@ -269,7 +269,7 @@ Validate apps against the JSON schema:
 | **Monica** | Monica is an open-source web application to organize and record your interactions with your loved... | `monica` | 4.1.2 | 8080 |  |  |
 | **Morphos** | Today we are forced to rely on third party services to convert files to other formats. This is a ... | `ghcr.io/danvergara/morphos-server` | 0.6.0 | 8080 | [▶️](https://youtu.be/dw7AEDbGqZY) |  |
 | **Mumble Server** | Mumble is a free, open source, low latency, high quality voice chat application. | `mumblevoip/mumble-server` | v1.4.230-6 | 64738 |  |  |
-| **Music Assistant** | Music Assistant is a music library manager for your offline and online music sources which can ea... | `ghcr.io/music-assistant/server` | 2.6.1 | 8095 |  |  |
+| **Music Assistant** | Music Assistant is a music library manager for your offline and online music sources which can ea... | `ghcr.io/music-assistant/server` | 2.6.2 | 8095 |  |  |
 | **MySpeed** | MySpeed is a speed test analysis software that records your internet speed for up to 30 days. | `germannewsmaker/myspeed` | 1.0.9 | 5216 | [▶️](https://youtu.be/7roj87Fytz0) |  |
 | **n8n** | Free and open fair-code licensed node based Workflow Automation Tool. | `n8nio/n8n` | 1.118.1 | 5678 |  |  |
 | **Ncdu** | Ncdu is a disk usage analyzer with an ncurses interface. It is designed to find space hogs on a r... | `bigbeartechworld/big-bear-ncdu` | 0.0.4 | 7681 | [▶️](https://youtu.be/5RCTglGRXss) |  |
@@ -298,7 +298,7 @@ Validate apps against the JSON schema:
 | **OpenVPN** | OpenVPN is an open-source commercial software that implements virtual private network (VPN) techn... | `openvpn/openvpn-as` | 2.13.1-d8cdeb9c-Ubuntu22 | 943 |  |  |
 | **OTEL LGTM** | An OpenTelemetry Backend in a Docker Image. | `grafana/otel-lgtm` | 0.11.14 | 3000 |  |  |
 | **ownCloud** | ownCloud offers file sharing and collaboration trusted by 200+ million users worldwide regardless... | `owncloud/server` | 10.16.0 | 8080 |  |  |
-| **Paperless-ngx** | Paperless-ngx is a community-supported open-source document management system that transforms you... | `ghcr.io/paperless-ngx/paperless-ngx` | 2.19.4 | 8000 |  |  |
+| **Paperless-ngx** | Paperless-ngx is a community-supported open-source document management system that transforms you... | `ghcr.io/paperless-ngx/paperless-ngx` | 2.19.5 | 8000 |  |  |
 | **Password Pusher** | Password Pusher is an open source application to communicate passwords over the web. Links to pas... | `pglombardo/pwpush` | 1.62.1 | 5100 | [▶️](https://youtu.be/U17LWqXfOmU) |  |
 | **PD3F** | pd3f is a PDF text extraction pipeline that is self-hosted, local-first and Docker-based. It reco... | `pd3f/pd3f` | latest | 1616 |  |  |
 | **Penpot** | Designers and developers can finally work in unison to build beautifully designed software experi... | `penpotapp/frontend` | 2.10.1 | 9001 |  |  |
@@ -313,10 +313,10 @@ Validate apps against the JSON schema:
 | **Planka** | The realtime kanban board for workgroups built with React and Redux. | `ghcr.io/plankanban/planka` | 1.26.3 | 3000 | [▶️](https://youtu.be/rsyU2cBbbSI) |  |
 | **Plant-it** | Plant-it is a self-hosted gardening companion app. Useful for keeping track of plant care, receiv... | `msdeluise/plant-it-server` | 0.10.0 | 3000 | [▶️](https://youtu.be/mUOAQRa17T4) |  |
 | **Playit Docker Web** | Playit.gg is a global proxy that allows anyone to host a server without port forwarding. We use t... | `wisdomsky/playit-docker-web` | 1.1 | 8008 |  |  |
-| **playit.gg** | playit.gg is a global proxy that allows anyone to host a server without port forwarding. We use t... | `dysta/playitgg` | 1.1.0 | N/A |  |  |
+| **playit.gg** | playit.gg is a global proxy that allows anyone to host a server without port forwarding. We use t... | `dysta/playitgg` | 1.2.0 | N/A |  |  |
 | **Plex** | Stream Movies & TV Shows | `linuxserver/plex` | 1.42.2 | 32400 |  |  |
 | **Plex with NVIDIA GPU** | Stream Movies & TV Shows with NVIDIA GPU | `linuxserver/plex` | 1.42.2 | 32400 |  |  |
-| **Pocket ID** | Simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to you... | `ghcr.io/pocket-id/pocket-id` | v1.14 | 1411 |  | [📖](https://pocket-id.org/docs/introduction) |
+| **Pocket ID** | Simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to you... | `ghcr.io/pocket-id/pocket-id` | v1.15 | 1411 |  | [📖](https://pocket-id.org/docs/introduction) |
 | **Portainer** | Irrespective of your industry, orchestration platform, or computing device, Portainer is the most... | `portainer/portainer-ce` | 2.35.0-alpine | 9443 | [▶️](https://youtu.be/GW4_OALLI_s) |  |
 | **Portainer Agent** | Portainer uses the Portainer Agent container to communicate with the Portainer Server instance an... | `portainer/agent` | 2.35.0 | N/A |  |  |
 | **Portracker** | A self-hosted, real-time port monitoring and discovery tool that automatically discovers and maps... | `mostafawahied/portracker` | 1.1 | 4999 |  |  |
@@ -337,18 +337,18 @@ Validate apps against the JSON schema:
 | **Send Visee** | A fork of Mozilla's Firefox Send. Mozilla discontinued Send, this fork is a community effort to k... | `registry.gitlab.com/timvisee/send` | v3.4.27 | 1443 |  |  |
 | **SFTPGO** | Full-featured and highly configurable SFTP, HTTP/S, FTP/S and WebDAV server - S3, Google Cloud St... | `drakkan/sftpgo` | v2.7 | 8080 |  |  |
 | **Spacedrive** | Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed files... | `ghcr.io/spacedriveapp/spacedrive/server` | 0.4.2 | 8080 |  |  |
-| **Speedtest Tracker** | A Docker image to check your internet speed using Ookla's Speedtest service. Build using Laravel ... | `linuxserver/speedtest-tracker` | 1.6.10 | 8080 | [▶️](https://youtu.be/TLjS8xNNwis) |  |
+| **Speedtest Tracker** | A Docker image to check your internet speed using Ookla's Speedtest service. Build using Laravel ... | `linuxserver/speedtest-tracker` | 1.6.11 | 8080 | [▶️](https://youtu.be/TLjS8xNNwis) |  |
 | **Stalwart Mail** | Stalwart Mail Server is an open-source mail server solution with JMAP, IMAP4, POP3, and SMTP supp... | `stalwartlabs/stalwart` | v0.14.1 | 8080 |  |  |
 | **Stirling-PDF** | Stirling PDF - Local hosted web based PDF editor | `stirlingtools/stirling-pdf` | 1.5.0 | 8080 | [▶️](https://youtu.be/ZoPSPDvOPdo) | [📖](https://community.bigbeartechworld.com/t/added-stirling-pdf-to-bigbearcasaos/2265#p-4248-documentation-3) |
 | **Syncthing** | Syncthing is a continuous file synchronization program. It synchronizes files between two or more... | `syncthing/syncthing` | 2.0 | 8384 |  |  |
 | **Tailscale** | Zero config VPN. Installs on any device in minutes, manages firewall rules for you, and works fro... | `tailscale/tailscale` | v1.90.6 | N/A |  |  |
 | **Tandoor** | Drop your collection of links and notes. Get Tandoor and never look back onto a time without reci... | `ghcr.io/tandoorrecipes/recipes` | 2.3.3 | 8080 | [▶️](https://youtu.be/f4-op1UOaWc) |  |
-| **Tianji** | During our observations of the website. We often need to use multiple applications together. For ... | `moonrailgun/tianji` | 1.30.4 | 12345 |  |  |
+| **Tianji** | During our observations of the website. We often need to use multiple applications together. For ... | `moonrailgun/tianji` | 1.30.5 | 12345 |  |  |
 | **TP-Link Omada Controller** | Docker image for TP-Link Omada Controller to control TP-Link Omada Hardware | `mbentley/omada-controller` | 5.15 | 8088 | [▶️](https://youtu.be/aECteVrkt6s) |  |
 | **Traccar** | Traccar GPS Tracking System in Docker image. | `traccar/traccar` | 6.10-ubuntu | 8080 | [▶️](https://youtu.be/zn_tu9r6g-w) |  |
 | **Trilium** | Build your personal knowledge base with Trilium Notes | `triliumnext/trilium` | v0.99.3 | 8080 | [▶️](https://youtu.be/h5ISPmUuBHs) |  |
 | **Tududi** | tududi is a task and project management web application built with Sinatra. It allows users to ef... | `chrisvel/tududi` | 0.85 | 9292 |  |  |
-| **Tugtainer** | Tugtainer is a self-hosted app for automating updates of your docker containers with a web UI. It... | `quenary/tugtainer` | v1.5.1 | 9412 |  |  |
+| **Tugtainer** | Tugtainer is a self-hosted app for automating updates of your docker containers with a web UI. It... | `quenary/tugtainer` | v1.5.2 | 9412 |  |  |
 | **UISP** | All-in-one docker image for Ubiquiti UISP (formerly UNMS). Supports x86_64 and ARM (Raspberry Pi). | `nico640/docker-unms` | 2.4.155.1 | 10443 |  |  |
 | **Umami** | Umami is a simple, fast, privacy-focused alternative to Google Analytics. | `ghcr.io/umami-software/umami` | postgresql-latest | 3000 | [▶️](https://youtu.be/4DEF5fNf8hU) |  |
 | **Umbrel OS** | Umbrel is a personal server OS that makes self-hosting accessible to everyone. | `dockurr/umbrel` | 1.4.0 | 8080 | [▶️](https://youtu.be/O03CH-YLdk0) |  |
