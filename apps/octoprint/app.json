@@ -5,7 +5,7 @@
     "name": "OctoPrint",
     "description": "OctoPrint is the snappy web interface for your 3D printer!",
     "tagline": "OctoPrint",
-    "version": "1.11.3",
+    "version": "1.11.4",
     "author": "BigBearTechWorld",
     "developer": "octoprint",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/octoprint/octoprint",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:06Z",
-    "updated": "2025-10-27T02:42:06Z"
+    "updated": "2025-11-08T08:56:21.482Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/octoprint.png",
