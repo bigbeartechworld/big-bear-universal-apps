@@ -5,7 +5,7 @@
     "name": "bookstack",
     "description": "BookStack is a simple, self-hosted, easy-to-use platform for organising and storing information. Default login admin@admin.com password password",
     "tagline": "BookStack",
-    "version": "25.07.20250804",
+    "version": "25.11.20251109",
     "author": "BigBearTechWorld",
     "developer": "Dan Brown",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/bookstack",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:38Z",
-    "updated": "2025-10-27T02:41:38Z"
+    "updated": "2025-11-12T19:18:06.538Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/bookstack.png",
