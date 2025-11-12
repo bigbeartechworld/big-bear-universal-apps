@@ -82,6 +82,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history to ensure latest changes
+          ref: ${{ github.ref }}
 
       - name: Install dependencies
         run: |
@@ -196,6 +199,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: big-bear-universal-apps
+          fetch-depth: 0
+          ref: ${{ github.ref }}
 
       - name: Checkout platform repository
         if: steps.check-platform.outputs.should_sync == 'true'
