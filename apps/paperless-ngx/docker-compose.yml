@@ -33,6 +33,7 @@ services:
       - paperless-ngx_paperless_media:/usr/src/paperless/media
       - paperless-ngx_paperless_export:/usr/src/paperless/export
       - paperless-ngx_paperless_consume:/usr/src/paperless/consume
+      - paperless-ngx_paperless_tmp:/tmp
     # Ports mapping between host and container
     ports:
       # Mapping port 8000 of the host to port 8000 of the container
@@ -123,4 +124,7 @@ volumes:
     driver: local
   paperless-ngx_redis:
     name: paperless-ngx_redis
+    driver: local
+  paperless-ngx_paperless_tmp:
+    name: paperless-ngx_paperless_tmp
     driver: local
