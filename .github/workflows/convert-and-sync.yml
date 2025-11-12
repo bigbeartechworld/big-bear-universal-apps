@@ -23,7 +23,7 @@ on:
       platforms:
         description: 'Platforms to sync (comma-separated: casaos,portainer,runtipi,dockge,cosmos,umbrel)'
         required: false
-        default: 'casaos,portainer,dockge'
+        default: 'casaos,portainer,runtipi,dockge,cosmos,umbrel'
         type: string
       sync:
         description: 'Sync to platform repositories'
@@ -337,7 +337,8 @@ jobs:
           echo "🧪 Running tests for ${{ matrix.platform }}..."
           echo "📝 Command: $TEST_COMMAND"
           
-          if eval "$TEST_COMMAND"; then
+          # Run tests and capture output
+          if eval "$TEST_COMMAND" 2>&1 | tee test-output.log; then
             echo "✅ All tests passed for ${{ matrix.platform }}"
             echo "test_status=passed" >> $GITHUB_OUTPUT
           else
@@ -345,6 +346,14 @@ jobs:
             echo "test_status=failed" >> $GITHUB_OUTPUT
             exit 1
           fi
+
+      - name: Upload test results on failure
+        if: steps.run-tests.outputs.test_status == 'failed'
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-output-${{ matrix.platform }}
+          path: big-bear-${{ matrix.platform }}/test-output.log
+          retention-days: 7
 
       - name: Set test status as skipped if tests are disabled
         if: steps.check-platform.outputs.should_sync == 'true' && steps.create-pr.outputs.pull-request-number && github.event.inputs.skip_tests == 'true'
@@ -375,9 +384,10 @@ jobs:
 
       - name: Close PR if tests failed
         if: steps.check-platform.outputs.should_sync == 'true' && steps.run-tests.outputs.test_status == 'failed'
+        continue-on-error: true
         run: |
           echo "❌ Tests failed - closing PR #${{ steps.create-pr.outputs.pull-request-number }}"
-          gh pr close "${{ steps.create-pr.outputs.pull-request-number }}" --comment "Closing this PR because tests failed. Please check the workflow logs and fix the issues."
+          gh pr close "${{ steps.create-pr.outputs.pull-request-number }}" --comment "Closing this PR because tests failed. Please check the [workflow logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) and fix the issues before retrying."
         env:
           GH_TOKEN: ${{ secrets.PLATFORM_SYNC_TOKEN }}
         working-directory: big-bear-${{ matrix.platform }}
