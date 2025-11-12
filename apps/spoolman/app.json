@@ -1,0 +1,151 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "spoolman",
+    "name": "Spoolman",
+    "description": "Keep track of your inventory of 3D-printer filament spools. Spoolman is a self-hosted web service designed to help you efficiently manage your 3D printer filament spools and monitor their usage.",
+    "tagline": "Filament spool inventory management for 3D printing",
+    "version": "0.22.1",
+    "author": "BigBearTechWorld",
+    "developer": "Donkie",
+    "category": "Utilities",
+    "license": "MIT",
+    "homepage": "https://github.com/Donkie/Spoolman",
+    "source": "big-bear-universal-apps",
+    "created": "2025-11-12T00:00:00Z",
+    "updated": "2025-11-12T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/spoolman.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/spoolman/screenshots-1.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/spoolman.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://community.bigbeartechworld.com/t/added-spoolman-to-bigbearuniversal-apps/5108#p-7792-documentation-4",
+    "repository": "https://github.com/Donkie/Spoolman",
+    "issues": "https://github.com/Donkie/Spoolman/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "7912",
+    "main_image": "ghcr.io/donkie/spoolman",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "TZ",
+        "default": "UTC",
+        "description": "Timezone for the application",
+        "required": false
+      },
+      {
+        "name": "SPOOLMAN_DB_TYPE",
+        "default": "sqlite",
+        "description": "Database type: sqlite, mysql, postgres, cockroachdb",
+        "required": false
+      },
+      {
+        "name": "SPOOLMAN_LOGGING_LEVEL",
+        "default": "INFO",
+        "description": "Logging level: DEBUG, INFO, WARNING, ERROR, CRITICAL",
+        "required": false
+      },
+      {
+        "name": "SPOOLMAN_AUTOMATIC_BACKUP",
+        "default": "TRUE",
+        "description": "Automatic nightly backup for SQLite databases",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/home/app/.local/share/spoolman",
+        "description": "Spoolman data directory (database and backups)"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8000",
+        "host": "7912",
+        "protocol": "tcp",
+        "description": "Web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "7912",
+      "volume_mappings": {
+        "spoolman_data": "/DATA/AppData/$AppID/data"
+      },
+      "port": "7912"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Utilities",
+        "selfhosted",
+        "3D Printing"
+      ],
+      "administrator_only": false,
+      "port": "7912"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "spoolman_data": "data"
+      },
+      "port": "7912"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "7912"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "7912"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "spoolman_data": "data"
+      },
+      "port": "7912"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "3d-printing",
+    "filament",
+    "inventory",
+    "klipper",
+    "octoprint"
+  ]
+}
