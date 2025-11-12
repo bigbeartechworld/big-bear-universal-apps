@@ -5,7 +5,7 @@
     "name": "Change Detection",
     "description": "The best and simplest free open source website change detection, restock monitor and notification service.",
     "tagline": "Website change detection.",
-    "version": "0.50.42",
+    "version": "0.50.43",
     "author": "BigBearTechWorld",
     "developer": "dgtlmoon",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/dgtlmoon/changedetection.io",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:39Z",
-    "updated": "2025-11-10T14:01:38.336Z"
+    "updated": "2025-11-12T12:58:07.621Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/changedetection.png",
