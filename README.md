@@ -163,7 +163,7 @@ Validate apps against the JSON schema:
 | **AdGuard Home** | AdGuard Home is a network-wide software for blocking ads and tracking. After you set it up, it'll... | `adguard/adguardhome` | v0.107.69 | 8080 | [▶️](https://youtu.be/6cu0kfP50Jg) |  |
 | **AdGuard Home (HOST)** | Use if you're going to use Adguard Home as a DHCP server. AdGuard Home is a network-wide software... | `adguard/adguardhome` | v0.107.69 | 3080 |  |  |
 | **Anse** | Anse is a fully optimized UI for AI Chats. Supercharged experience for multiple models such as Ch... | `ddiu8081/anse` | v1.1.11 | 8014 |  |  |
-| **Ansible Semaphore** | Ansible Semaphore is a modern UI for Ansible. It lets you easily run Ansible playbooks, get notif... | `semaphoreui/semaphore` | v2.16.43 | 3000 |  |  |
+| **Ansible Semaphore** | Ansible Semaphore is a modern UI for Ansible. It lets you easily run Ansible playbooks, get notif... | `semaphoreui/semaphore` | v2.16.45 | 3000 |  |  |
 | **Appsmith** | Low code project to build admin panels, internal tools, and dashboards, integrating 15+ databases. | `appsmith/appsmith-ce` | v1.73.1 | 1080 |  |  |
 | **Audiobookshelf** | Audiobookshelf is a self-hosted audiobook server for managing and playing your audiobooks. Audiob... | `ghcr.io/advplyr/audiobookshelf` | 2.30.0 | 8080 |  |  |
 | **Authentik** | Authentik is a self-hosted identity and access management platform that provides a secure and sca... | `ghcr.io/goauthentik/server` | 2025.10.1 | 9443 |  |  |
@@ -205,7 +205,7 @@ Validate apps against the JSON schema:
 | **Eufy Security WS** | eufy-security-ws is a small server wrapper around the eufy-security-client library to access it v... | `bropat/eufy-security-ws` | 1.9.3 | 3000 |  |  |
 | **Excalidraw** | Virtual whiteboard for sketching hand-drawn like diagrams | `excalidraw/excalidraw` | latest | 8000 | [▶️](https://youtu.be/T4K6RDhieIA) |  |
 | **FarmOS** | farmOS is a web-based application for farm management, planning, and record keeping. It is develo... | `farmos/farmos` | 3.4.5 | 8080 |  |  |
-| **Faster-whisper** | Faster-whisper is a reimplementation of OpenAI's Whisper model using CTranslate2, which is a fast... | `linuxserver/faster-whisper` | 3.0.1 | 7575 |  |  |
+| **Faster-whisper** | Faster-whisper is a reimplementation of OpenAI's Whisper model using CTranslate2, which is a fast... | `linuxserver/faster-whisper` | 3.0.2 | 7575 |  |  |
 | **Fastfetch** | Fastfetch is a neofetch-like tool for fetching system information and displaying it prettily. It ... | `bigbeartechworld/big-bear-fastfetch` | 0.0.4 | 7681 | [▶️](https://youtu.be/pVBMvIMzfpw) |  |
 | **Filebrowser** | Reliable and Performant File Management Desktop Sync and File Sharing Tool. | `filebrowser/filebrowser` | v2.45.0-s6 | 8080 |  |  |
 | **Financial Freedom** | Keep investors and their buyers out of your financial data. Own 100% of your data and start build... | `serversideup/financial-freedom` | v0.2.0-alpha1 | 8443 |  |  |
@@ -222,7 +222,7 @@ Validate apps against the JSON schema:
 | **Gladys Assistant** | Gladys Assistant is a modern, privacy-first & open-source home automation software that runs anyw... | `gladysassistant/gladys` | v4.65.1 | 1080 | [▶️](https://youtu.be/l4GPomJMIT0) |  |
 | **Glances** | Glances is an open-source system cross-platform monitoring tool. It allows real-time monitoring o... | `nicolargo/glances` | 4.3.0.8-full | 61208 | [▶️](https://youtu.be/nwsVJ0QB0sM) |  |
 | **Gluetun** | Lightweight swiss-knife-like VPN client to multiple VPN service providers | `qmcgaw/gluetun` | v3.40.0 | N/A |  | [📖](https://community.bigbeartechworld.com/t/added-gluetun-to-big-bear-casaos/175) |
-| **GoAway** | GoAway is a lightweight DNS sinkhole that blocks ads, trackers, and malicious domains at the netw... | `pommee/goaway` | 0.62.12 | 8080 |  | [📖](https://community.bigbeartechworld.com/t/added-goaway-to-bigbearcasaos/4085) |
+| **GoAway** | GoAway is a lightweight DNS sinkhole that blocks ads, trackers, and malicious domains at the netw... | `pommee/goaway` | 0.62.16 | 8080 |  | [📖](https://community.bigbeartechworld.com/t/added-goaway-to-bigbearcasaos/4085) |
 | **Gotify** | a simple server for sending and receiving messages | `gotify/server` | 2.7.3 | 8091 |  |  |
 | **Guacamole** | Apache Guacamole is a free and open-source, cross-platform, clientless remote desktop gateway mai... | `guacamole/guacamole` | 1.6.0 | 8090 | [▶️](https://youtu.be/6cu0kfP50Jg) |  |
 | **Healthchecks** | Healthchecks is a watchdog for your cron jobs. It's a web server that listens for pings from your... | `linuxserver/healthchecks` | 3.11.20250828 | 8000 |  |  |
@@ -235,7 +235,7 @@ Validate apps against the JSON schema:
 | **I Hate Money** | I hate money is a web application made to ease shared budget management. It keeps track of who bo... | `ihatemoney/ihatemoney` | 6.1.5 | 8001 | [▶️](https://youtu.be/aHz0Vh-KbXw) |  |
 | **Immich** | Self-hosted photo and video storage. | `ghcr.io/immich-app/immich-server` | v2.2.3 | 2283 | [▶️](https://youtu.be/ZIx2jDHYjjE) |  |
 | **Immich AIO Alpine** | AIO Alpine. Self-hosted photo and video storage. | `ghcr.io/imagegenius/immich` | 2.0.0-alpine | 2283 |  |  |
-| **Immich Kiosk** | Immich Kiosk is a lightweight slideshow for running on kiosk devices and browsers that uses Immic... | `ghcr.io/damongolding/immich-kiosk` | 0.26.1 | 3000 |  |  |
+| **Immich Kiosk** | Immich Kiosk is a lightweight slideshow for running on kiosk devices and browsers that uses Immic... | `ghcr.io/damongolding/immich-kiosk` | 0.27.1 | 3000 |  |  |
 | **Immich without machine learning** | Self-hosted photo and video storage. This does not include the machine learning part. | `ghcr.io/immich-app/immich-server` | v2.2.3 | 2283 | [▶️](https://youtu.be/ZIx2jDHYjjE) |  |
 | **Invoice Ninja** | Invoice Ninja is a free and open-source invoice and expense management system. It is a web-based ... | `invoiceninja/invoiceninja` | 5.12.30 | 8080 |  |  |
 | **IT Tools** | Collection of handy online tools for developers, with great UX as a web app. | `corentinth/it-tools` | 2023.11.2-7d94e11 | 8080 | [▶️](https://youtu.be/MlGypCrUJug) |  |
@@ -260,7 +260,7 @@ Validate apps against the JSON schema:
 | **LS Adguard Home Sync** | 🛡️ Synchronize AdGuard Home config to replicas. This is the LinuxServer version. | `linuxserver/adguardhome-sync` | 0.8.2 | 8080 |  |  |
 | **LyriOn Music Server** | Simplify the management of your server with Homarr - a sleek, modern dashboard that puts all of y... | `lmscommunity/lyrionmusicserver` | 9.1.0 | 9000 |  |  |
 | **Mailpit** | Mailpit is a multi-platform email testing tool & API for developers. | `axllent/mailpit` | v1.27 | 8025 | [▶️](https://youtu.be/2MY3S6csrVw) |  |
-| **Matterbridge** | Matterbridge is a Matter plugin manager that allows you to have all your Matter devices up and ru... | `luligu/matterbridge` | 3.3.6 | 8283 |  |  |
+| **Matterbridge** | Matterbridge is a Matter plugin manager that allows you to have all your Matter devices up and ru... | `luligu/matterbridge` | 3.3.7 | 8283 |  |  |
 | **Maybe Finance** | Maybe is a fully* open-source OS for your personal finances built by a small team alongside an in... | `ghcr.io/maybe-finance/maybe` | sha-347c0a790693031fdd3b32792b5b6792693d1805 | 4000 |  |  |
 | **Mealie** | Mealie is a self hosted recipe manager and meal planner with a RestAPI backend and a reactive fro... | `hkotel/mealie` | v3.4.0 | 9925 | [▶️](https://youtu.be/S4MfNLV2Uf4) |  |
 | **Microbin** | Self-hosted, encrypted pastebin alternative with configurable features. | `danielszabo99/microbin` | 2.0.4 | 8888 |  | [📖](https://github.com/szabodanika/microbin) |
@@ -332,12 +332,12 @@ Validate apps against the JSON schema:
 | **Rocket.Chat** | Rocket.Chat is an open-source fully customizable communications platform [...] | `rocket.chat` | 6.13.1 | 3000 |  |  |
 | **RomM** | ROM manager for organizing, enriching, and playing retro games, with support for 400+ platforms. | `rommapp/romm` | 4.3.2 | 1080 |  | [📖](https://github.com/rommapp/romm/wiki) |
 | **Scrutiny** | If you run a server with more than a couple of hard drives, you're probably already familiar with... | `ghcr.io/analogj/scrutiny` | master-omnibus | 38080 |  |  |
-| **Scrypted** | Scrypted is an open source video integration platform. Using various Plugins, Scrypted can receiv... | `koush/scrypted` | v0.144.0-noble-full | 10443 | [▶️](https://youtu.be/5uH0LaSyKTY) | [📖](https://community.bigbeartechworld.com/t/how-to-install-scrypted-on-casaos-using-bigbearcasaos/155) |
+| **Scrypted** | Scrypted is an open source video integration platform. Using various Plugins, Scrypted can receiv... | `koush/scrypted` | v0.144.1-noble-full | 10443 | [▶️](https://youtu.be/5uH0LaSyKTY) | [📖](https://community.bigbeartechworld.com/t/how-to-install-scrypted-on-casaos-using-bigbearcasaos/155) |
 | **seafile** | Seafile is an open source file sync and share platform, focusing on reliability and performance. ... | `seafileltd/seafile-mc` | 11.0.13 | 8080 |  |  |
 | **Send Visee** | A fork of Mozilla's Firefox Send. Mozilla discontinued Send, this fork is a community effort to k... | `registry.gitlab.com/timvisee/send` | v3.4.27 | 1443 |  |  |
 | **SFTPGO** | Full-featured and highly configurable SFTP, HTTP/S, FTP/S and WebDAV server - S3, Google Cloud St... | `drakkan/sftpgo` | v2.7 | 8080 |  |  |
 | **Spacedrive** | Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed files... | `ghcr.io/spacedriveapp/spacedrive/server` | 0.4.2 | 8080 |  |  |
-| **Speedtest Tracker** | A Docker image to check your internet speed using Ookla's Speedtest service. Build using Laravel ... | `linuxserver/speedtest-tracker` | 1.7.0 | 8080 | [▶️](https://youtu.be/TLjS8xNNwis) |  |
+| **Speedtest Tracker** | A Docker image to check your internet speed using Ookla's Speedtest service. Build using Laravel ... | `linuxserver/speedtest-tracker` | 1.7.1 | 8080 | [▶️](https://youtu.be/TLjS8xNNwis) |  |
 | **Stalwart Mail** | Stalwart Mail Server is an open-source mail server solution with JMAP, IMAP4, POP3, and SMTP supp... | `stalwartlabs/stalwart` | v0.14.1 | 8080 |  |  |
 | **Stirling-PDF** | Stirling PDF - Local hosted web based PDF editor | `stirlingtools/stirling-pdf` | 1.5.0 | 8080 | [▶️](https://youtu.be/ZoPSPDvOPdo) | [📖](https://community.bigbeartechworld.com/t/added-stirling-pdf-to-bigbearcasaos/2265#p-4248-documentation-3) |
 | **Syncthing** | Syncthing is a continuous file synchronization program. It synchronizes files between two or more... | `syncthing/syncthing` | 2.0 | 8384 |  |  |
@@ -365,7 +365,7 @@ Validate apps against the JSON schema:
 | **What's Up Docker** | Gets you notified when new versions of your Docker containers are available and lets you react th... | `fmartinou/whats-up-docker` | 6.6.1 | 3000 |  |  |
 | **Wireguard Easy 14 (Legacy)** | Access your homeserver from anywhere even on your mobile device. Wireguard-easy is a simple tool ... | `ghcr.io/wg-easy/wg-easy` | 15 | 51821 |  |  |
 | **WireGuard Easy v15** | WireGuard Easy v15 - Complete rewrite with new features and improved UI. Access your homeserver f... | `ghcr.io/wg-easy/wg-easy` | 15 | 51821 |  |  |
-| **Wishlist** | Wishlist is a self-hosted wishlist application that you can share with your friends and family. Y... | `ghcr.io/cmintey/wishlist` | v0.53.1 | 3280 |  |  |
+| **Wishlist** | Wishlist is a self-hosted wishlist application that you can share with your friends and family. Y... | `ghcr.io/cmintey/wishlist` | v0.53.2 | 3280 |  |  |
 | **WordPress** | Initially started as a blogging tool in 2003, it has evolved into a highly flexible CMS that powe... | `wordpress` | 6.8.3 | 8080 | [▶️](https://youtu.be/j5M4qlRCbYs) |  |
 | **Write Freely** | WriteFreely is a clean, minimalist publishing platform made for writers. Start a blog, share know... | `nephatrine/write-freely` | 0.16 | 8080 |  |  |
 | **Zigbee to MQTT bridge** | Zigbee to MQTT bridge, get rid of your proprietary Zigbee bridges | `koenkk/zigbee2mqtt` | 2.6.3 | 8080 |  |  |
