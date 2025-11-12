@@ -33,6 +33,7 @@ services:
       - paperless-ngx_paperless_media:/usr/src/paperless/media
       - paperless-ngx_paperless_export:/usr/src/paperless/export
       - paperless-ngx_paperless_consume:/usr/src/paperless/consume
+      - paperless-ngx_paperless_tmp:/tmp
     # Ports mapping between host and container
     ports:
       # Mapping port 8000 of the host to port 8000 of the container
@@ -95,6 +96,9 @@ services:
     container_name: big-bear-paperless-ngx-tika
     image: apache/tika:3.2.3.0
     restart: unless-stopped
+    # Volumes to be mounted to the container
+    volumes:
+      - paperless-ngx_tika_tmp:/tmp
     # The Tika service is connected to the big-bear-paperless-ngx-network
     # network.
     networks:
@@ -118,9 +122,15 @@ volumes:
   paperless-ngx_paperless_media:
     name: paperless-ngx_paperless_media
     driver: local
+  paperless-ngx_paperless_tmp:
+    name: paperless-ngx_paperless_tmp
+    driver: local
   paperless-ngx_postgres:
     name: paperless-ngx_postgres
     driver: local
   paperless-ngx_redis:
     name: paperless-ngx_redis
+    driver: local
+  paperless-ngx_tika_tmp:
+    name: paperless-ngx_tika_tmp
     driver: local

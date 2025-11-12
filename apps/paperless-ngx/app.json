@@ -114,6 +114,10 @@
       {
         "container": "/data",
         "description": "Container Path: /data"
+      },
+      {
+        "container": "/tmp",
+        "description": "Container Path: /tmp"
       }
     ],
     "ports": [
@@ -143,8 +147,10 @@
         "paperless-ngx_paperless_data": "/DATA/AppData/$AppID/paperless/data",
         "paperless-ngx_paperless_export": "/DATA/AppData/$AppID/paperless/export",
         "paperless-ngx_paperless_media": "/DATA/AppData/$AppID/paperless/media",
+        "paperless-ngx_paperless_tmp": "/DATA/AppData/$AppID/paperless/tmp",
         "paperless-ngx_postgres": "/DATA/AppData/$AppID/postgres",
-        "paperless-ngx_redis": "/DATA/AppData/$AppID/redis"
+        "paperless-ngx_redis": "/DATA/AppData/$AppID/redis",
+        "paperless-ngx_tika_tmp": "/DATA/AppData/$AppID/tika/tmp"
       },
       "port": "8000"
     },
@@ -170,8 +176,10 @@
         "paperless-ngx_paperless_data": "paperless/data",
         "paperless-ngx_paperless_export": "paperless/export",
         "paperless-ngx_paperless_media": "paperless/media",
+        "paperless-ngx_paperless_tmp": "paperless/tmp",
         "paperless-ngx_postgres": "postgres",
-        "paperless-ngx_redis": "redis"
+        "paperless-ngx_redis": "redis",
+        "paperless-ngx_tika_tmp": "tika/tmp"
       },
       "port": "8008"
     },
@@ -194,6 +202,8 @@
         "paperless-ngx_paperless_data": "paperless/data",
         "paperless-ngx_paperless_export": "paperless/export",
         "paperless-ngx_paperless_media": "paperless/media",
+        "paperless-ngx_paperless_tmp": "paperless/tmp",
+        "paperless-ngx_tika_tmp": "tika/tmp",
         "paperless-ngx_postgres": "postgres",
         "paperless-ngx_redis": "redis"
       },
