@@ -441,15 +441,21 @@ adjust_compose_for_platform() {
             # Copy the compose file and add big-bear- prefix to volume names
             cp "$input_file" "$output_file"
             add_bigbear_volume_prefix "$output_file"
+            # Remove the 'name' field for Portainer, Dockge, and Cosmos
+            yq eval 'del(.name)' -i "$output_file"
             ;;
         runtipi)
             # Copy compose, add runtipi.managed label and tipi_main_network
             cp "$input_file" "$output_file"
+            # Remove the 'name' field for Runtipi
+            yq eval 'del(.name)' -i "$output_file"
             # Will be modified in convert_to_runtipi function
             ;;
         umbrel)
             # Use clean compose as-is
             cp "$input_file" "$output_file"
+            # Remove the 'name' field for Umbrel as well
+            yq eval 'del(.name)' -i "$output_file"
             ;;
     esac
 }
@@ -951,6 +957,9 @@ convert_to_runtipi() {
     # Copy and modify docker-compose
     cp "$app_dir/docker-compose.yml" "$output_dir/docker-compose.yml"
     local compose_file="$output_dir/docker-compose.yml"
+    
+    # Remove the 'name' field for Runtipi
+    yq eval 'del(.name)' -i "$compose_file"
     
     # Rename main service to app_name
     local services=$(yq eval '.services | keys | .[0]' "$compose_file")
