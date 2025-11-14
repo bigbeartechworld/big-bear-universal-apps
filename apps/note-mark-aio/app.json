@@ -5,7 +5,7 @@
     "name": "Note Mark AIO",
     "description": "Note Mark Aio is a self-hosted note taking app that allows you to create, organize, and share notes. It's a fork of the popular note-mark app with a focus on simplicity and ease of use.",
     "tagline": "Note Mark Aio",
-    "version": "0.17.1",
+    "version": "0.18.0",
     "author": "BigBearTechWorld",
     "developer": "enchant97",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/enchant97/note-mark-aio",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:05Z",
-    "updated": "2025-10-27T02:42:05Z"
+    "updated": "2025-11-14T16:38:59.064Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/note-mark-aio/logo.png",
