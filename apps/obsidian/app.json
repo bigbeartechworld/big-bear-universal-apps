@@ -5,7 +5,7 @@
     "name": "Obsidian",
     "description": "Obsidian is a note-taking app that lets you create, link, and organize your notes on your device, with hundreds of plugins and themes to customize your workflow. You can also publish your notes online, access them offline, and sync them securely with end-to-end encryption.",
     "tagline": "Obsidian",
-    "version": "1.9.14",
+    "version": "1.10.3",
     "author": "BigBearTechWorld",
     "developer": "obsidianmd",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/obsidian",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:06Z",
-    "updated": "2025-10-27T02:42:06Z"
+    "updated": "2025-11-15T04:52:03.497Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/obsidian.png",
