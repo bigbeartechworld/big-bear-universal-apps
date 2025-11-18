@@ -5,7 +5,7 @@
     "name": "Beszel",
     "description": "A lightweight server resource monitoring hub with historical data, docker stats, and alerts.",
     "tagline": "Server Monitoring Hub",
-    "version": "0.16.0",
+    "version": "0.16.1",
     "author": "BigBearTechWorld",
     "developer": "henrygd",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/henrygd/beszel",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:37Z",
-    "updated": "2025-11-15T21:35:44.888Z"
+    "updated": "2025-11-18T01:54:35.332Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/beszel/logo.jpg",
