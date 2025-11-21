@@ -5,7 +5,7 @@
     "name": "Filebrowser",
     "description": "Reliable and Performant File Management Desktop Sync and File Sharing Tool.",
     "tagline": "Access your homeserver files from your browser",
-    "version": "v2.48.1-s6",
+    "version": "v2.48.2-s6",
     "author": "BigBearTechWorld",
     "developer": "filebrowser",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/filebrowser/filebrowser",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:47Z",
-    "updated": "2025-11-20T13:36:04.675Z"
+    "updated": "2025-11-21T14:03:04.570Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/file-browser.png",
