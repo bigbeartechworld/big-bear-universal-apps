@@ -5,7 +5,7 @@
     "name": "Invoice Ninja",
     "description": "Invoice Ninja is a free and open-source invoice and expense management system. It is a web-based application that allows you to create, manage, and track invoices and expenses.",
     "tagline": "Invoice Ninja",
-    "version": "5.12.30",
+    "version": "5.12.31",
     "author": "BigBearTechWorld",
     "developer": "invoiceninja",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/invoiceninja/invoiceninja",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:54Z",
-    "updated": "2025-11-07T01:50:53.670Z"
+    "updated": "2025-11-21T05:39:38.698Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/invoice-ninja.png",
