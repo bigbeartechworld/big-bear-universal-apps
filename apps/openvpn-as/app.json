@@ -16,10 +16,10 @@
     "updated": "2025-10-27T02:42:08Z"
   },
   "visual": {
-    "icon": "https://static-00.iconduck.com/assets.00/openvpn-icon-512x512-nmf6geqm.png",
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/openvpn.png",
     "thumbnail": "",
     "screenshots": [],
-    "logo": "https://static-00.iconduck.com/assets.00/openvpn-icon-512x512-nmf6geqm.png"
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/openvpn.png"
   },
   "resources": {
     "youtube": "",
