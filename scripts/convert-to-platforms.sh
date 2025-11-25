@@ -281,6 +281,7 @@ load_app_metadata() {
     export PORT_DOCKGE=$(jq -r '.compatibility.dockge.port // empty' "$app_json")
     export PORT_COSMOS=$(jq -r '.compatibility.cosmos.port // empty' "$app_json")
     export PORT_UMBREL=$(jq -r '.compatibility.umbrel.port // empty' "$app_json")
+    export APP_PORT_UMBREL=$(jq -r '.compatibility.umbrel.app_port // empty' "$app_json")
     export COMPAT_UMBREL=$(jq -r 'if .compatibility.umbrel.supported == null then "true" else (.compatibility.umbrel.supported | tostring) end' "$app_json")
     
     # Validate required fields
@@ -1619,12 +1620,18 @@ convert_to_umbrel() {
         use_port_override=true
     fi
     
+    # Check if there's a platform-specific app_port override for the container port
+    local use_app_port_override=false
+    if [[ -n "$APP_PORT_UMBREL" ]]; then
+        use_app_port_override=true
+    fi
+    
     # Extract ports from docker-compose.yml if available
     # For Umbrel we need TWO ports:
     # 1. host_port (umbrel-app.yml "port" field) - unique public port
     # 2. container_port (APP_PORT in docker-compose.yml) - internal port app listens on
     local host_port="${PORT_UMBREL:-$APP_DEFAULT_PORT}"
-    local container_port="$APP_DEFAULT_PORT"
+    local container_port="${APP_PORT_UMBREL:-$APP_DEFAULT_PORT}"
     local port_spec=$(yq eval '.services[].ports[0]' "$app_dir/docker-compose.yml" 2>/dev/null | head -1)
     
     if [[ -n "$port_spec" && "$port_spec" != "null" ]]; then
@@ -1633,13 +1640,17 @@ convert_to_umbrel() {
             if [[ "$use_port_override" == false ]]; then
                 host_port=$(echo "$port_spec" | cut -d':' -f1)
             fi
-            container_port=$(echo "$port_spec" | cut -d':' -f2)
+            if [[ "$use_app_port_override" == false ]]; then
+                container_port=$(echo "$port_spec" | cut -d':' -f2)
+            fi
         elif [[ "$port_spec" =~ ^[0-9]+$ ]]; then
             # Format: just the port number - use for both
             if [[ "$use_port_override" == false ]]; then
                 host_port="$port_spec"
             fi
-            container_port="$port_spec"
+            if [[ "$use_app_port_override" == false ]]; then
+                container_port="$port_spec"
+            fi
         else
             # Complex format (e.g., "8080:8000/tcp")
             local clean_spec=$(echo "$port_spec" | sed 's|/.*||')
@@ -1647,7 +1658,9 @@ convert_to_umbrel() {
                 if [[ "$use_port_override" == false ]]; then
                     host_port=$(echo "$clean_spec" | cut -d':' -f1)
                 fi
-                container_port=$(echo "$clean_spec" | cut -d':' -f2)
+                if [[ "$use_app_port_override" == false ]]; then
+                    container_port=$(echo "$clean_spec" | cut -d':' -f2)
+                fi
             fi
         fi
     fi
