@@ -444,6 +444,14 @@
               "type": "string",
               "description": "Platform-specific YouTube video URL"
             },
+            "port": {
+              "type": "string",
+              "description": "Override external host port for umbrel-app.yml (skips automatic 10000+ remapping)"
+            },
+            "app_port": {
+              "type": "string",
+              "description": "Override internal container port for app_proxy APP_PORT. Use when the app has multiple ports and the UI port differs from the first port in docker-compose.yml"
+            },
             "volume_mappings": {
               "type": "object",
               "description": "Custom volume path mappings for Umbrel. Maps named volume names to Umbrel data directory paths (e.g., {'audiobookshelf_media_data_books_spoken': 'media/data/books/spoken'}). Used to preserve backward compatibility with existing Umbrel app structures or specify custom hierarchical paths.",
