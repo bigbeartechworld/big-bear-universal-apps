@@ -129,7 +129,8 @@
         "plant-it_mysql": "mysql",
         "plant-it_upload-dir": "upload-dir"
       },
-      "port": "10140"
+      "port": "10140",
+      "app_port": "3000"
     }
   },
   "tags": [

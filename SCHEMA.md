@@ -261,7 +261,8 @@ By default, all platforms use the port specified in `technical.default_port`. Ho
   },
   "umbrel": {
     "supported": true,
-    "port": "10123"
+    "port": "10123",
+    "app_port": "3000"
   },
   "cosmos": {
     "supported": true,
@@ -273,7 +274,7 @@ By default, all platforms use the port specified in `technical.default_port`. Ho
 **Platform-specific behavior:**
 - **CasaOS**: Uses `port` value directly for `port_map` in x-casaos metadata
 - **Runtipi**: Uses `port` value, but still remaps ports < 1000 (e.g., 80 → 8080)
-- **Umbrel**: Uses `port` value and skips automatic 10000+ remapping
+- **Umbrel**: Uses `port` for the external host port in umbrel-app.yml, and `app_port` for the internal container port (`APP_PORT` in app_proxy)
 - **Cosmos**: Uses `port` value in route target URLs
 - **Portainer/Dockge**: Uses `port` value in templates
 
@@ -282,6 +283,29 @@ By default, all platforms use the port specified in `technical.default_port`. Ho
 - Avoiding port conflicts across different platforms
 - Meeting platform-specific port requirements (e.g., Umbrel 10000+ range)
 - Maintaining consistency with existing user deployments
+
+#### Umbrel app_port Override
+
+For apps that expose multiple ports (e.g., an API port and a UI port), the `app_port` field specifies which internal container port the Umbrel app_proxy should connect to. This is separate from the `port` field which sets the external host port.
+
+```json
+"compatibility": {
+  "umbrel": {
+    "supported": true,
+    "port": "10140",
+    "app_port": "3000"
+  }
+}
+```
+
+In this example:
+- `port: "10140"` - The external port users access (in umbrel-app.yml)
+- `app_port: "3000"` - The internal container port for the UI (`APP_PORT` in docker-compose.yml app_proxy)
+
+**Use cases for app_port:**
+- Apps with separate API and UI ports (e.g., Plant-it has API on 8080, UI on 3000)
+- When the first port in docker-compose.yml is not the primary UI port
+- Ensuring the app_proxy routes to the correct service port
 
 ## Validation
 
