@@ -1809,6 +1809,20 @@ convert_to_umbrel() {
     sed -i.bak 's|/DATA/AppData/\$AppID|\${APP_DATA_DIR}|g' "$output_dir/docker-compose.yml"
     rm -f "$output_dir/docker-compose.yml.bak"
     
+    # Replace CasaOS IP placeholders with umbrel.local for Umbrel
+    # Handle various placeholder formats: [YOUR_CASAOS_IP], [YOUR_CASAOS_LAN_IP], etc.
+    # Also update the port to the Umbrel host_port
+    sed -i.bak "s|\[YOUR_CASAOS_IP\]|umbrel.local|g" "$output_dir/docker-compose.yml"
+    sed -i.bak "s|\[YOUR_CASAOS_LAN_IP\]|umbrel.local|g" "$output_dir/docker-compose.yml"
+    
+    # Replace common ports in URLs with the Umbrel host port
+    # This handles cases like http://umbrel.local:3000 -> http://umbrel.local:10139
+    local original_port="${APP_DEFAULT_PORT:-8080}"
+    if [[ "$host_port" != "$original_port" ]]; then
+        sed -i.bak "s|umbrel.local:${original_port}|umbrel.local:${host_port}|g" "$output_dir/docker-compose.yml"
+    fi
+    rm -f "$output_dir/docker-compose.yml.bak"
+    
     # Create umbrel-app.yml with full app ID including prefix
     # For network_mode: host apps, use container_port (the actual port the app binds to)
     # For normal apps, use host_port (the remapped public port)
