@@ -8,10 +8,10 @@
     "version": "sha-a1b0b15",
     "author": "BigBearTechWorld",
     "developer": "VERT-sh",
-    "category": "BigBearCasaOS",
+    "category": "BigBearUniversalApps",
     "license": "AGPL-3.0",
     "homepage": "https://vert.sh/",
-    "source": "big-bear-universal",
+    "source": "big-bear-universal-apps",
     "created": "2025-11-26T00:00:00Z",
     "updated": "2025-11-26T00:00:00Z"
   },
