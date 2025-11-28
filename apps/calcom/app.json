@@ -5,7 +5,7 @@
     "name": "Cal.com",
     "description": "The open source Calendly successor. You are in charge of your own data, workflow, and appearance.\nCalendly and other scheduling tools are awesome. It made our lives massively easier. We're using it for business meetings, seminars, yoga classes, and even calls with our families. However, most tools are very limited in terms of control and customization.\n    That's where Cal.com comes in. Self-hosted or hosted by us. White-label by design. API-driven and ready to be deployed on your own domain. Full control of your events and data.",
     "tagline": "Cal.com",
-    "version": "v5.9.3",
+    "version": "v5.9.4",
     "author": "BigBearTechWorld",
     "developer": "calcom",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/calcom/cal.com",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:39Z",
-    "updated": "2025-11-24T19:40:43.867Z"
+    "updated": "2025-11-28T06:04:53.832Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/calcom/logo.jpg",
