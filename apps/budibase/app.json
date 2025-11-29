@@ -5,7 +5,7 @@
     "name": "Budibase",
     "description": "Low code platform for creating internal tools, workflows, and admin panels in minutes. Supports PostgreSQL, MySQL, MSSQL, MongoDB, Rest API, Docker, K8s, and more 🚀. Budibase, the low code platform you'll enjoy using ⚡",
     "tagline": "Internal tools made easy.",
-    "version": "3.23.29",
+    "version": "3.23.30",
     "author": "BigBearTechWorld",
     "developer": "Budibase",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/budibase/budibase",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:39Z",
-    "updated": "2025-11-28T15:09:26.320Z"
+    "updated": "2025-11-29T18:09:39.095Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/budibase.png",
