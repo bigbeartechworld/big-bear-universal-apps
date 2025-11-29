@@ -192,6 +192,66 @@ validate_yaml_syntax() {
     return 0
 }
 
+# Map category to valid Runtipi category
+# Valid Runtipi categories: network, media, development, automation, social, 
+# utilities, photography, security, featured, books, data, music, finance, gaming, ai
+map_runtipi_category() {
+    local category="$1"
+    local category_lower=$(echo "$category" | tr '[:upper:]' '[:lower:]')
+    
+    case "$category_lower" in
+        # Valid categories - pass through
+        network|media|development|automation|social|utilities|photography|security|featured|books|data|music|finance|gaming|ai)
+            echo "$category_lower"
+            ;;
+        # Map common BigBear/CasaOS categories to valid Runtipi categories
+        bigbearcasaos|bigbearuniversalapps|bigbear|casaos|other)
+            echo "utilities"
+            ;;
+        # Map specific app types
+        productivity|office|tools)
+            echo "utilities"
+            ;;
+        video|streaming|movies|tv)
+            echo "media"
+            ;;
+        audio|podcast)
+            echo "music"
+            ;;
+        photo*|image*)
+            echo "photography"
+            ;;
+        cloud|storage|backup)
+            echo "data"
+            ;;
+        chat|communication|messaging)
+            echo "social"
+            ;;
+        code|programming|ide)
+            echo "development"
+            ;;
+        vpn|firewall|auth*)
+            echo "security"
+            ;;
+        smart*|iot|home*)
+            echo "automation"
+            ;;
+        game*|emulat*)
+            echo "gaming"
+            ;;
+        llm|machine*learning|ml|gpt|ollama)
+            echo "ai"
+            ;;
+        budget|accounting|money)
+            echo "finance"
+            ;;
+        # Default fallback
+        *)
+            echo "utilities"
+            ;;
+    esac
+}
+
 # Initialize output directories
 init_directories() {
     if [[ "$DRY_RUN" == "true" ]]; then
@@ -1239,14 +1299,14 @@ convert_to_runtipi() {
     
     # Create config.json using jq
     local current_timestamp=$(($(date +%s) * 1000))
-    local category_lower=$(echo "$APP_CATEGORY" | tr '[:upper:]' '[:lower:]')
+    local category_mapped=$(map_runtipi_category "$APP_CATEGORY")
     jq -n \
         --arg name "$APP_NAME" \
         --argjson port "$runtipi_port" \
         --arg id "$APP_ID" \
         --arg description "$APP_DESCRIPTION" \
         --arg version "$APP_VERSION" \
-        --arg category "$category_lower" \
+        --arg category "$category_mapped" \
         --arg short_desc "$APP_TAGLINE" \
         --arg author "$APP_DEVELOPER" \
         --arg source "$APP_REPOSITORY" \
