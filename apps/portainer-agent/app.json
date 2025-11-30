@@ -5,7 +5,7 @@
     "name": "Portainer Agent",
     "description": "Portainer uses the Portainer Agent container to communicate with the Portainer Server instance and provide access to the node's resources. This document will outline how to install the Portainer Agent on your node and how to connect to it from your Portainer Server instance. If you do not have a working Portainer Server instance yet, please refer to the Portainer Server installation guide first.",
     "tagline": "Portainer Agent",
-    "version": "2.35.0",
+    "version": "2.36.0",
     "author": "BigBearTechWorld",
     "developer": "portainer",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/portainer/agent",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:14Z",
-    "updated": "2025-10-27T02:42:14Z"
+    "updated": "2025-11-30T00:00:34.573Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/portainer.png",
