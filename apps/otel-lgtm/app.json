@@ -5,7 +5,7 @@
     "name": "OTEL LGTM",
     "description": "An OpenTelemetry Backend in a Docker Image.",
     "tagline": "OpenTelemetry Backend",
-    "version": "0.11.17",
+    "version": "0.11.18",
     "author": "Konrad Botor (Forinil)",
     "developer": "Grafana Labs",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/grafana/otel-lgtm",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:08Z",
-    "updated": "2025-11-13T23:52:23.997Z"
+    "updated": "2025-12-01T18:34:11.466Z"
   },
   "visual": {
     "icon": "https://www.gravatar.com/avatar/31cea69afa424609b2d83621b4d47f1d?s=120&r=g&d=404",
