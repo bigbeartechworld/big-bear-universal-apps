@@ -1,0 +1,164 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "psitransfer",
+    "name": "PsiTransfer",
+    "description": "PsiTransfer is a simple open source self-hosted file sharing solution. It's an alternative to paid services like Dropbox and WeTransfer. Features include no accounts or logins required, mobile friendly responsive interface, support for many and very big files with resumable uploads and downloads, expiring upload buckets, one-time downloads, password protected downloads, and admin dashboard.",
+    "tagline": "Simple self-hosted file sharing solution",
+    "version": "2.3.0",
+    "author": "BigBearTechWorld",
+    "developer": "psi-4ward",
+    "category": "BigBearCasaOS",
+    "license": "BSD-2-Clause",
+    "homepage": "https://github.com/psi-4ward/psitransfer",
+    "source": "big-bear-universal",
+    "created": "2025-12-01T00:00:00Z",
+    "updated": "2025-12-01T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/psitransfer.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/psi-4ward/psitransfer@master/docs/psitransfer.gif",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/psitransfer.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://github.com/psi-4ward/psitransfer/tree/master/docs",
+    "repository": "https://github.com/psi-4ward/psitransfer",
+    "issues": "https://github.com/psi-4ward/psitransfer/issues",
+    "support": "https://community.bigbeartechworld.com/t/added-psitransfer-to-bigbearuniversal-apps/5142?u=dragonfire1119"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "3000",
+    "main_image": "psitrax/psitransfer",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PSITRANSFER_ADMIN_PASS",
+        "default": "",
+        "description": "Admin password for /admin page. Leave empty to disable admin page.",
+        "required": false
+      },
+      {
+        "name": "PSITRANSFER_UPLOAD_PASS",
+        "default": "",
+        "description": "Password required for uploading files. Leave empty to allow public uploads.",
+        "required": false
+      },
+      {
+        "name": "PSITRANSFER_REQUIRE_BUCKET_PASSWORD",
+        "default": "false",
+        "description": "Make the bucket password field mandatory.",
+        "required": false
+      },
+      {
+        "name": "PSITRANSFER_MAX_FILE_SIZE",
+        "default": "",
+        "description": "Maximum file size in bytes. Leave empty for no limit.",
+        "required": false
+      },
+      {
+        "name": "PSITRANSFER_MAX_BUCKET_SIZE",
+        "default": "",
+        "description": "Maximum bucket size in bytes. Leave empty for no limit.",
+        "required": false
+      },
+      {
+        "name": "PSITRANSFER_DEFAULT_RETENTION",
+        "default": "604800",
+        "description": "Default retention time in seconds (604800 = 1 week).",
+        "required": false
+      },
+      {
+        "name": "PSITRANSFER_MAX_AGE",
+        "default": "6480000",
+        "description": "Maximum age for files in seconds (6480000 = 75 days).",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Data directory for uploaded files"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp",
+        "description": "Web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Read more here: https://community.bigbeartechworld.com/t/added-psitransfer-to-bigbearuniversal-apps/5142#p-7883-documentation-5"
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3000",
+      "port": "3000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted",
+        "file-sharing"
+      ],
+      "administrator_only": false,
+      "port": "3000"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "port": "3000"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "3000"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "3000"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "10200"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container",
+    "file-sharing",
+    "file-transfer",
+    "wetransfer-alternative"
+  ]
+}
