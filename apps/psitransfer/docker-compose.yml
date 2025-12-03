@@ -12,6 +12,8 @@ services:
     image: psitrax/psitransfer:v2.3.0
     # Name of the container
     container_name: big-bear-psitransfer
+    # Run as UID 1000 (node user) to match the image's default user
+    user: "1000:1000"
     # Environment variables
     environment:
       # Admin password for /admin page (leave empty to disable)

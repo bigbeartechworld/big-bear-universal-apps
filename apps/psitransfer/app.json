@@ -104,7 +104,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Note: The data volume requires UID 1000. If you encounter permission issues, run: sudo chown -R 1000 ./data\n\nTo enable the admin dashboard, set PSITRANSFER_ADMIN_PASS to your desired password."
+        "en_us": "Read more here: https://community.bigbeartechworld.com/t/added-psitransfer-to-bigbearuniversal-apps/5142#p-7883-documentation-5"
       }
     }
   },
