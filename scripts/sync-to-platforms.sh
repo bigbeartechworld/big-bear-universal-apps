@@ -36,7 +36,7 @@ SPECIFIC_APP=""
 DRY_RUN=false
 FORCE=false
 REPLACE_ALL=false
-CLEAN=false
+NO_CLEAN=false
 VERBOSE=false
 
 # Counters
@@ -60,7 +60,7 @@ OPTIONS:
     --dry-run              Show what would be synced
     --force                Overwrite existing apps
     --replace-all          Delete all existing apps before syncing
-    --clean                Remove apps not in source
+    --no-clean             Skip removing orphaned apps (apps removed by default when not in source)
     -v, --verbose          Verbose output
 
 EXAMPLES:
@@ -83,7 +83,7 @@ while [[ $# -gt 0 ]]; do
         --dry-run) DRY_RUN=true; shift ;;
         --force) FORCE=true; shift ;;
         --replace-all) REPLACE_ALL=true; shift ;;
-        --clean) CLEAN=true; shift ;;
+        --no-clean) NO_CLEAN=true; shift ;;
         -v|--verbose) VERBOSE=true; shift ;;
         *) print_error "Unknown option: $1"; usage; exit 1 ;;
     esac
@@ -371,8 +371,10 @@ main() {
         sync_platform "$platform"
     done
     
-    # Clean orphaned apps if requested
-    if [[ "$CLEAN" == "true" ]]; then
+    # Always clean orphaned apps unless --no-clean is specified
+    # This ensures that when an app's "supported" flag is set to false,
+    # the app will be removed from the target platform repository
+    if [[ "$NO_CLEAN" != "true" ]]; then
         for platform in "${PLATFORMS[@]}"; do
             clean_orphaned_apps "$platform"
         done

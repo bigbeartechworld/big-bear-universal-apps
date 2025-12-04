@@ -204,7 +204,7 @@
       "routes_required": true
     },
     "umbrel": {
-      "supported": false,
+      "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
         "tp-link-omada-controller_data": "data",
