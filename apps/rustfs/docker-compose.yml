@@ -11,8 +11,8 @@ services:
       - rustfs_data:/data
       - rustfs_logs:/logs
     environment:
-      - RUSTFS_ACCESS_KEY=rustfsadmin
-      - RUSTFS_SECRET_KEY=rustfsadmin
+      - RUSTFS_ACCESS_KEY=bigbear
+      - RUSTFS_SECRET_KEY=f1805acc-55a7-4964-849a-8076b3e1cfdf
       - RUSTFS_CONSOLE_ENABLE=true
       - RUSTFS_ADDRESS=0.0.0.0:9000
       - RUSTFS_CONSOLE_ADDRESS=0.0.0.0:9001
