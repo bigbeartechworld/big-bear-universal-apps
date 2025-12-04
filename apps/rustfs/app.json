@@ -1,0 +1,158 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "rustfs",
+    "name": "RustFS",
+    "description": "RustFS is a high-performance, distributed object storage system built in Rust. It combines the simplicity of MinIO with the memory safety and raw performance of Rust. It offers full S3 compatibility, is completely open-source under Apache 2.0 license, and is optimized for data lakes, AI, and big data workloads.",
+    "tagline": "High-performance S3-compatible object storage built in Rust",
+    "version": "1.0.0-alpha.71",
+    "author": "BigBearCommunity",
+    "developer": "rustfs",
+    "category": "Storage",
+    "license": "Apache-2.0",
+    "homepage": "https://rustfs.com/",
+    "source": "big-bear-universal",
+    "created": "2025-12-03T00:00:00Z",
+    "updated": "2025-12-03T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/rustfs.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/rustfs.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://community.bigbeartechworld.com/t/added-rustfs-to-bigbearuniversal-apps/5143#p-7884-documentation-5",
+    "repository": "https://github.com/rustfs/rustfs",
+    "issues": "https://github.com/rustfs/rustfs/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": ["amd64", "arm64"],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "9000",
+    "main_image": "rustfs/rustfs",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "RUSTFS_ACCESS_KEY",
+        "default": "rustfsadmin",
+        "description": "Access key for RustFS authentication",
+        "required": false
+      },
+      {
+        "name": "RUSTFS_SECRET_KEY",
+        "default": "rustfsadmin",
+        "description": "Secret key for RustFS authentication",
+        "required": false
+      },
+      {
+        "name": "RUSTFS_CONSOLE_ENABLE",
+        "default": "true",
+        "description": "Enable the web console",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "UTC",
+        "description": "Timezone for the application",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Object storage data directory"
+      },
+      {
+        "container": "/logs",
+        "description": "Log files directory"
+      }
+    ],
+    "ports": [
+      {
+        "container": "9000",
+        "host": "9000",
+        "protocol": "tcp",
+        "description": "S3 API endpoint"
+      },
+      {
+        "container": "9001",
+        "host": "9001",
+        "protocol": "tcp",
+        "description": "Web Console"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "The container runs as non-root user (UID 10001). Ensure your data directories have correct ownership: chown -R 10001:10001 /path/to/data"
+      },
+      "after_install": {
+        "en_us": "Access the web console at http://your-server:9000. Default credentials: rustfsadmin / rustfsadmin"
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "9001",
+      "volume_mappings": {
+        "rustfs_data": "/DATA/AppData/$AppID/data",
+        "rustfs_logs": "/DATA/AppData/$AppID/logs"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["Storage", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": ["amd64", "arm64"],
+      "volume_mappings": {
+        "rustfs_data": "data",
+        "rustfs_logs": "logs"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "rustfs_data": "data",
+        "rustfs_logs": "logs"
+      },
+      "port": "10170"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "storage",
+    "object-storage",
+    "s3",
+    "rust",
+    "minio-alternative",
+    "distributed",
+    "cloud-native"
+  ]
+}
