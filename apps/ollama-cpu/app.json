@@ -5,7 +5,7 @@
     "name": "Ollama - CPU",
     "description": "Get up and running with Llama 3, Mistral, Gemma, and other large language models.",
     "tagline": "LLMs inference server with OpenAI compatible API",
-    "version": "0.13.0",
+    "version": "0.13.1",
     "author": "BigBearTechWorld",
     "developer": "ollama",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/ollama/ollama",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:07Z",
-    "updated": "2025-11-23T02:05:24.226Z"
+    "updated": "2025-12-05T21:06:52.393Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ollama.png",
