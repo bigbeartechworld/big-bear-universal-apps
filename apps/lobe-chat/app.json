@@ -5,7 +5,7 @@
     "name": "LobeChat",
     "description": "LobeChat is a open-source, extensible (Function Calling), high-performance chatbot framework. It supports one-click free deployment of your private ChatGPT/LLM web application.",
     "tagline": "LobeChat",
-    "version": "1.143.0",
+    "version": "1.143.1",
     "author": "BigBearTechWorld",
     "developer": "lobehub",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/lobehub/lobe-chat",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:59Z",
-    "updated": "2025-12-04T06:09:34.479Z"
+    "updated": "2025-12-05T12:49:40.939Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/lobe-chat.png",
