@@ -5,7 +5,7 @@
     "name": "joplin",
     "description": "Note taking and to-do application with synchronisation",
     "tagline": "joplin",
-    "version": "3.4.3",
+    "version": "3.5.1",
     "author": "BigBearTechWorld",
     "developer": "joplin",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/joplin/server",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:56Z",
-    "updated": "2025-10-27T02:41:56Z"
+    "updated": "2025-12-07T02:04:59.888Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/joplin.png",
