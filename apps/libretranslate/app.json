@@ -5,7 +5,7 @@
     "name": "LibreTranslate",
     "description": "Free and Open Source Machine Translation API, entirely self-hosted. Unlike other APIs, it doesn't rely on proprietary providers such as Google or Azure to perform translations. Instead, its translation engine is powered by the open source Argos Translate library.",
     "tagline": "Free and Open Source Machine Translation API. 100% self-hosted, offline capable and easy to setup.",
-    "version": "v1.8.0",
+    "version": "v1.8.1",
     "author": "BigBearTechWorld",
     "developer": "LibreTranslate",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/libretranslate/libretranslate",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:58Z",
-    "updated": "2025-11-20T05:51:15.829Z"
+    "updated": "2025-12-07T00:38:40.420Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/libretranslate/logo.png",
