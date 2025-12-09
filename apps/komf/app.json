@@ -5,7 +5,7 @@
     "name": "Komf",
     "description": "Komga and Kavita Metadata Fetcher is a tool that fetches metadata and thumbnails for your digital comic book library. It can automatically pick up added series and update their metadata and thumbnail. You can also manually search and identify series, or match the entire library or a series. Additionally, you can install the Komf userscript to add Komf integration directly to Komga and Kavita UI, allowing you to launch manual or automatic metadata identification.",
     "tagline": "Komga and Kavita Metadata Fetcher",
-    "version": "1.7.0",
+    "version": "1.7.1",
     "author": "BigBearTechWorld",
     "developer": "sndxr",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/sndxr/komf",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:57Z",
-    "updated": "2025-11-15T18:32:41.020Z"
+    "updated": "2025-12-09T10:39:50.364Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/komga.png",
