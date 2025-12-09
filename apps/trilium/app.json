@@ -5,7 +5,7 @@
     "name": "Trilium",
     "description": "Build your personal knowledge base with Trilium Notes",
     "tagline": "Build your personal knowledge base with Trilium Notes",
-    "version": "v0.99.5",
+    "version": "v0.100.0",
     "author": "BigBearTechWorld",
     "developer": "TriliumNext",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/triliumnext/trilium",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:21Z",
-    "updated": "2025-11-15T04:50:53.861Z"
+    "updated": "2025-12-09T13:40:47.694Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/trilium-notes.png",
