@@ -5,7 +5,7 @@
     "name": "Jlesage Handbrake",
     "description": "The GUI of the application is accessed through a modern web browser (no installation or configuration needed on the client side) or via any VNC client.",
     "tagline": "This project implements a Docker container for Handbrake.",
-    "version": "v25.10.1",
+    "version": "v25.12.1",
     "author": "BigBearTechWorld",
     "developer": "jlesage",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/jlesage/handbrake",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:55Z",
-    "updated": "2025-10-29T01:57:44.252Z"
+    "updated": "2025-12-11T01:59:50.043Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/handbrake.png",
