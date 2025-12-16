@@ -202,7 +202,7 @@ Validate apps against the JSON schema:
 | **Dozzle** | Dozzle is a real-time log viewer for docker containers. | `amir20/dozzle` | v8.14.10 | 8888 | [▶️](https://youtu.be/lLLNDcHNOuM) |  |
 | **EJBCA Community** | The open-source public key infrastructure (PKI) and certificate authority (CA) software EJBCA is ... | `keyfactor/ejbca-ce` | 9.1.1 | 8443 |  | [📖](https://doc.primekey.com/ejbca/ejbca-introduction) |
 | **Erugo** | A powerful, self-hosted file-sharing platform built with PHP and Laravel with a Vue.js frontend. ... | `wardy784/erugo` | 0.1.1 | 9997 |  |  |
-| **Eufy Security WS** | eufy-security-ws is a small server wrapper around the eufy-security-client library to access it v... | `bropat/eufy-security-ws` | 1.9.3 | 3000 |  |  |
+| **Eufy Security WS** | eufy-security-ws is a small server wrapper around the eufy-security-client library to access it v... | `bropat/eufy-security-ws` | 1.9.5 | 3000 |  |  |
 | **Excalidraw** | Virtual whiteboard for sketching hand-drawn like diagrams | `excalidraw/excalidraw` | latest | 8000 | [▶️](https://youtu.be/T4K6RDhieIA) |  |
 | **FarmOS** | farmOS is a web-based application for farm management, planning, and record keeping. It is develo... | `farmos/farmos` | 3.4.6 | 8080 |  |  |
 | **Faster-whisper** | Faster-whisper is a reimplementation of OpenAI's Whisper model using CTranslate2, which is a fast... | `linuxserver/faster-whisper` | 3.0.2 | 7575 |  |  |
@@ -219,7 +219,7 @@ Validate apps against the JSON schema:
 | **Ghost** | Ghost is a free and open source blogging platform written in JavaScript and distributed under the... | `ghost` | 6.10.2-alpine | 2368 | [▶️](https://youtu.be/oJZK9vH4W4Y) |  |
 | **Ghostfolio** | Open Source Wealth Management Software. Angular + NestJS + Prisma + Nx + TypeScript 🤍 | `ghostfolio/ghostfolio` | 2.222.0 | 3333 | [▶️](https://youtu.be/CNe4-8Vyhos) |  |
 | **Gitea Mirror** | Gitea Mirror is a modern web app for automatically mirroring repositories from GitHub to your sel... | `ghcr.io/raylabshq/gitea-mirror` | v3.9.2 | 4321 |  | [📖](https://community.bigbeartechworld.com/t/added-gitea-mirror-to-bigbearcasaos/3515?u=dragonfire1119#p-5962-documentation-6) |
-| **Gladys Assistant** | Gladys Assistant is a modern, privacy-first & open-source home automation software that runs anyw... | `gladysassistant/gladys` | v4.66.1 | 1080 | [▶️](https://youtu.be/l4GPomJMIT0) |  |
+| **Gladys Assistant** | Gladys Assistant is a modern, privacy-first & open-source home automation software that runs anyw... | `gladysassistant/gladys` | v4.66.2 | 1080 | [▶️](https://youtu.be/l4GPomJMIT0) |  |
 | **Glances** | Glances is an open-source system cross-platform monitoring tool. It allows real-time monitoring o... | `nicolargo/glances` | 4.3.0.8-full | 61208 | [▶️](https://youtu.be/nwsVJ0QB0sM) |  |
 | **Gluetun** | Lightweight swiss-knife-like VPN client to multiple VPN service providers | `qmcgaw/gluetun` | v3.40.3 | N/A |  | [📖](https://community.bigbeartechworld.com/t/added-gluetun-to-big-bear-casaos/175) |
 | **GoAway** | GoAway is a lightweight DNS sinkhole that blocks ads, trackers, and malicious domains at the netw... | `pommee/goaway` | 0.62.24 | 8080 |  | [📖](https://community.bigbeartechworld.com/t/added-goaway-to-bigbearcasaos/4085) |
@@ -242,7 +242,7 @@ Validate apps against the JSON schema:
 | **Jellyseerr** | Jellyseerr is a free and open source software application for managing requests for your media li... | `fallenbagel/jellyseerr` | 2.7.3 | 5055 |  |  |
 | **Jellystat** | Jellystat is a free and open source Statistics App for Jellyfin! (This project is still in develo... | `cyfershepard/jellystat` | 1.1.6 | 3000 |  |  |
 | **jfa-go** | jfa-go is a user management app for Jellyfin (and Emby as 2nd class) that provides invite-based a... | `hrfee/jfa-go` | latest | 8056 |  |  |
-| **Jlesage Firefox** | The GUI of the application is accessed through a modern web browser (no installation or configura... | `jlesage/firefox` | v25.12.2 | 5800 | [▶️](https://youtu.be/JWhR8RKGh9Y) | [📖](https://community.bigbeartechworld.com/t/added-jlesage-firefox-to-bigbearcasaos/2506#p-4575-documentation-4) |
+| **Jlesage Firefox** | The GUI of the application is accessed through a modern web browser (no installation or configura... | `jlesage/firefox` | v25.12.3 | 5800 | [▶️](https://youtu.be/JWhR8RKGh9Y) | [📖](https://community.bigbeartechworld.com/t/added-jlesage-firefox-to-bigbearcasaos/2506#p-4575-documentation-4) |
 | **Jlesage Handbrake** | The GUI of the application is accessed through a modern web browser (no installation or configura... | `jlesage/handbrake` | v25.12.1 | 5800 |  |  |
 | **joplin** | Note taking and to-do application with synchronisation | `joplin/server` | 3.5.1 | 22300 | [▶️](https://youtu.be/FjVyg0X-_zc) |  |
 | **Kasm** | The Container Streaming Platform - Streaming containerized apps and desktops to end-users. The Wo... | `linuxserver/kasm` | 1.120.20221218 | 3000 | [▶️](https://youtu.be/Fq7PlvRSvT4) |  |
@@ -260,7 +260,7 @@ Validate apps against the JSON schema:
 | **LS Adguard Home Sync** | 🛡️ Synchronize AdGuard Home config to replicas. This is the LinuxServer version. | `linuxserver/adguardhome-sync` | 0.8.2 | 8080 |  |  |
 | **LyriOn Music Server** | Simplify the management of your server with Homarr - a sleek, modern dashboard that puts all of y... | `lmscommunity/lyrionmusicserver` | 9.1.0 | 9000 |  |  |
 | **Mailpit** | Mailpit is a multi-platform email testing tool & API for developers. | `axllent/mailpit` | v1.28 | 8025 | [▶️](https://youtu.be/2MY3S6csrVw) |  |
-| **Matterbridge** | Matterbridge is a Matter plugin manager that allows you to have all your Matter devices up and ru... | `luligu/matterbridge` | 3.4.2 | 8283 |  |  |
+| **Matterbridge** | Matterbridge is a Matter plugin manager that allows you to have all your Matter devices up and ru... | `luligu/matterbridge` | 3.4.3 | 8283 |  |  |
 | **Maybe Finance** | Maybe is a fully* open-source OS for your personal finances built by a small team alongside an in... | `ghcr.io/maybe-finance/maybe` | sha-347c0a790693031fdd3b32792b5b6792693d1805 | 4000 |  |  |
 | **Mealie** | Mealie is a self hosted recipe manager and meal planner with a RestAPI backend and a reactive fro... | `hkotel/mealie` | v3.6.1 | 9925 | [▶️](https://youtu.be/S4MfNLV2Uf4) |  |
 | **Microbin** | Self-hosted, encrypted pastebin alternative with configurable features. | `danielszabo99/microbin` | 2.0.4 | 8888 |  | [📖](https://github.com/szabodanika/microbin) |
@@ -289,14 +289,14 @@ Validate apps against the JSON schema:
 | **Obsidian Livesync** | Self-hosted database for synchronizing Obsidian vaults. | `couchdb` | 3.5.0 | 5984 | [▶️](https://youtu.be/-n1abMPLmFg) |  |
 | **OctoPrint** | OctoPrint is the snappy web interface for your 3D printer! | `octoprint/octoprint` | 1.11.5 | 1080 | [▶️](https://youtu.be/gQ0J9y8w2wE) |  |
 | **Odoo** | Open-source business management software suite designed to streamline various aspects of business... | `odoo` | 19 | 8069 |  | [📖](https://community.bigbeartechworld.com/t/added-odoo-to-bigbearcasaos/1115?u=dragonfire1119) |
-| **Ollama - AMD** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.13.2-rocm | 11434 |  |  |
-| **Ollama - CPU** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.13.2 | 11434 |  |  |
-| **Ollama - NVIDIA** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.13.2 | 11434 |  |  |
-| **OneDev** | Self-hosted Git Server with Kanban and CI/CD | `1dev/server` | 13.1.4 | 6610 | [▶️](https://youtu.be/ps3JLYRB3SA) |  |
+| **Ollama - AMD** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.13.3-rocm | 11434 |  |  |
+| **Ollama - CPU** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.13.3 | 11434 |  |  |
+| **Ollama - NVIDIA** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.13.3 | 11434 |  |  |
+| **OneDev** | Self-hosted Git Server with Kanban and CI/CD | `1dev/server` | 13.1.5 | 6610 | [▶️](https://youtu.be/ps3JLYRB3SA) |  |
 | **OnlyOffice** | Feature-rich web-based office suite with a vast range of collaborative capabilities | `onlyoffice/documentserver` | 9.1.0 | 7400 |  |  |
 | **Open WebUI** | Open WebUI is an extensible, feature-rich, and user-friendly self-hosted WebUI designed to operat... | `ghcr.io/open-webui/open-webui` | git-33e54a9 | 8080 |  |  |
 | **OpenVPN** | OpenVPN is an open-source commercial software that implements virtual private network (VPN) techn... | `openvpn/openvpn-as` | 2.13.1-d8cdeb9c-Ubuntu22 | 943 |  |  |
-| **OTEL LGTM** | An OpenTelemetry Backend in a Docker Image. | `grafana/otel-lgtm` | 0.12.0 | 3000 |  |  |
+| **OTEL LGTM** | An OpenTelemetry Backend in a Docker Image. | `grafana/otel-lgtm` | 0.13.0 | 3000 |  |  |
 | **ownCloud** | ownCloud offers file sharing and collaboration trusted by 200+ million users worldwide regardless... | `owncloud/server` | 10.16.0 | 8080 |  |  |
 | **Paperless-ngx** | Paperless-ngx is a community-supported open-source document management system that transforms you... | `ghcr.io/paperless-ngx/paperless-ngx` | 2.20.0 | 8000 |  |  |
 | **Password Pusher** | Password Pusher is an open source application to communicate passwords over the web. Links to pas... | `pglombardo/pwpush` | 1.65.2 | 5100 | [▶️](https://youtu.be/U17LWqXfOmU) |  |
@@ -361,7 +361,7 @@ Validate apps against the JSON schema:
 | **Uptime Kuma** | A fancy self-hosted monitoring tool | `louislam/uptime-kuma` | 2 | 3001 | [▶️](https://youtu.be/Why5NU_Wafw) |  |
 | **VERT** | VERT is a file conversion utility that uses WebAssembly to convert files on your device instead o... | `ghcr.io/vert-sh/vert` | sha-a1b0b15 | 3030 |  | [📖](https://github.com/VERT-sh/VERT/blob/main/docs/DOCKER.md) |
 | **Vikunja** | The open-source, self-hostable to-do app. Organize everything, on all platforms. | `vikunja/vikunja` | 0.24.6 | 8081 | [▶️](https://youtu.be/T-dNbdIttoI) |  |
-| **Viseron** | Viseron is a self-hosted, local only NVR and AI Computer Vision software | `roflcoopter/viseron` | 3.3.1 | 8888 |  |  |
+| **Viseron** | Viseron is a self-hosted, local only NVR and AI Computer Vision software | `roflcoopter/viseron` | 3.4.0 | 8888 |  |  |
 | **Wallabag** | Wallabag is a self-hosted application for saving web pages. Unlike other services, Wallabag is fr... | `wallabag/wallabag` | 2.6.14 | 8080 |  |  |
 | **Wallos** | Wallos: Open-Source Personal Subscription Tracker | `bellamy/wallos` | 4.5.0 | 8282 | [▶️](https://youtu.be/feYTW02YDb8) |  |
 | **Warracker** | A self-hosted warranty tracker | `ghcr.io/sassanix/warracker/main` | 9.9.3 | 8005 |  |  |
