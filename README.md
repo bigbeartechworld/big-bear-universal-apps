@@ -168,7 +168,7 @@ Validate apps against the JSON schema:
 | **Audiobookshelf** | Audiobookshelf is a self-hosted audiobook server for managing and playing your audiobooks. Audiob... | `ghcr.io/advplyr/audiobookshelf` | 2.30.0 | 8080 |  |  |
 | **Authentik** | Authentik is a self-hosted identity and access management platform that provides a secure and sca... | `ghcr.io/goauthentik/server` | 2025.10.2 | 9443 |  |  |
 | **Ayon** | This is the official Docker-based deployment for the Ayon Server. Ayon is a robust tool designed ... | `ynput/ayon` | 1.3.6-20240823 | 5000 |  |  |
-| **Baserow** | Create your own online database without technical experience. Our user-friendly no-code tool give... | `baserow/baserow` | 1.35.3 | 7350 | [▶️](https://youtu.be/Xej7sH5bNFs) |  |
+| **Baserow** | Create your own online database without technical experience. Our user-friendly no-code tool give... | `baserow/baserow` | 2.0.3 | 7350 | [▶️](https://youtu.be/Xej7sH5bNFs) |  |
 | **Beaver Habit Tracker** | A self-hosted habit tracking app without Goals | `daya0576/beaverhabits` | 0.8.0 | 8080 |  |  |
 | **Beszel** | A lightweight server resource monitoring hub with historical data, docker stats, and alerts. | `henrygd/beszel` | 0.17.0 | 8090 | [▶️](https://youtu.be/BUVVG-9RCbg) |  |
 | **Big Bear CasaOS User Management** | Manage users in CasaOS | `bigbeartechworld/big-bear-casaos-user-management` | 0.1.1 | 5000 | [▶️](https://youtu.be/-a9k8fLAbRE) |  |
@@ -198,8 +198,8 @@ Validate apps against the JSON schema:
 | **Docker Cron Restart Notifier** | This Docker image is designed to automatically restart specified Docker containers and send notif... | `deduard/tools` | restart-notifier-latest | N/A |  |  |
 | **Dockge** | A fancy, easy-to-use and reactive docker `compose.yaml` stack-oriented manager | `louislam/dockge` | 1.5.0 | 5001 | [▶️](https://youtu.be/8Z6psh-t5iU) |  |
 | **Dockpeek** | A lightweight, self-hosted Docker dashboard that provides quick access to all running containers ... | `ghcr.io/dockpeek/dockpeek` | v1.7.2 | 3420 |  |  |
-| **Docmost** | Docmost is an open-source alternative to the likes of Notion and Confluence. Whether you're manag... | `docmost/docmost` | 0.23.2 | 3000 |  |  |
-| **Dozzle** | Dozzle is a real-time log viewer for docker containers. | `amir20/dozzle` | v8.14.11 | 8888 | [▶️](https://youtu.be/lLLNDcHNOuM) |  |
+| **Docmost** | Docmost is an open-source alternative to the likes of Notion and Confluence. Whether you're manag... | `docmost/docmost` | 0.24.1 | 3000 |  |  |
+| **Dozzle** | Dozzle is a real-time log viewer for docker containers. | `amir20/dozzle` | v8.14.12 | 8888 | [▶️](https://youtu.be/lLLNDcHNOuM) |  |
 | **EJBCA Community** | The open-source public key infrastructure (PKI) and certificate authority (CA) software EJBCA is ... | `keyfactor/ejbca-ce` | 9.1.1 | 8443 |  | [📖](https://doc.primekey.com/ejbca/ejbca-introduction) |
 | **Erugo** | A powerful, self-hosted file-sharing platform built with PHP and Laravel with a Vue.js frontend. ... | `wardy784/erugo` | 0.1.1 | 9997 |  |  |
 | **Eufy Security WS** | eufy-security-ws is a small server wrapper around the eufy-security-client library to access it v... | `bropat/eufy-security-ws` | 1.9.6 | 3000 |  |  |
@@ -217,9 +217,9 @@ Validate apps against the JSON schema:
 | **GemDigest Bot** | Simplify your reads, amplify your time! 📚✨ GemDigest is a Telegram bot that summarizes articles ... | `piero24/gemdigest` | 1.0 | 3333 |  |  |
 | **Genmon** | Generac (and other models) Generator Monitoring using a Raspberry Pi and WiFi | `bigbeartechworld/big-bear-genmon` | 1.19.06 | 8000 | [▶️](https://youtu.be/b0_zuVVeIP4) |  |
 | **Ghost** | Ghost is a free and open source blogging platform written in JavaScript and distributed under the... | `ghost` | 6.10.3-alpine | 2368 | [▶️](https://youtu.be/oJZK9vH4W4Y) |  |
-| **Ghostfolio** | Open Source Wealth Management Software. Angular + NestJS + Prisma + Nx + TypeScript 🤍 | `ghostfolio/ghostfolio` | 2.222.0 | 3333 | [▶️](https://youtu.be/CNe4-8Vyhos) |  |
+| **Ghostfolio** | Open Source Wealth Management Software. Angular + NestJS + Prisma + Nx + TypeScript 🤍 | `ghostfolio/ghostfolio` | 2.223.0 | 3333 | [▶️](https://youtu.be/CNe4-8Vyhos) |  |
 | **Gitea Mirror** | Gitea Mirror is a modern web app for automatically mirroring repositories from GitHub to your sel... | `ghcr.io/raylabshq/gitea-mirror` | v3.9.2 | 4321 |  | [📖](https://community.bigbeartechworld.com/t/added-gitea-mirror-to-bigbearcasaos/3515?u=dragonfire1119#p-5962-documentation-6) |
-| **Gladys Assistant** | Gladys Assistant is a modern, privacy-first & open-source home automation software that runs anyw... | `gladysassistant/gladys` | v4.66.2 | 1080 | [▶️](https://youtu.be/l4GPomJMIT0) |  |
+| **Gladys Assistant** | Gladys Assistant is a modern, privacy-first & open-source home automation software that runs anyw... | `gladysassistant/gladys` | v4.66.6 | 1080 | [▶️](https://youtu.be/l4GPomJMIT0) |  |
 | **Glances** | Glances is an open-source system cross-platform monitoring tool. It allows real-time monitoring o... | `nicolargo/glances` | 4.3.0.8-full | 61208 | [▶️](https://youtu.be/nwsVJ0QB0sM) |  |
 | **Gluetun** | Lightweight swiss-knife-like VPN client to multiple VPN service providers | `qmcgaw/gluetun` | v3.40.3 | N/A |  | [📖](https://community.bigbeartechworld.com/t/added-gluetun-to-big-bear-casaos/175) |
 | **GoAway** | GoAway is a lightweight DNS sinkhole that blocks ads, trackers, and malicious domains at the netw... | `pommee/goaway` | 0.62.24 | 8080 |  | [📖](https://community.bigbeartechworld.com/t/added-goaway-to-bigbearcasaos/4085) |
@@ -271,7 +271,7 @@ Validate apps against the JSON schema:
 | **Mumble Server** | Mumble is a free, open source, low latency, high quality voice chat application. | `mumblevoip/mumble-server` | v1.4.230-6 | 64738 |  |  |
 | **Music Assistant** | Music Assistant is a music library manager for your offline and online music sources which can ea... | `ghcr.io/music-assistant/server` | 2.6.3 | 8095 |  |  |
 | **MySpeed** | MySpeed is a speed test analysis software that records your internet speed for up to 30 days. | `germannewsmaker/myspeed` | 1.0.9 | 5216 | [▶️](https://youtu.be/7roj87Fytz0) |  |
-| **n8n** | Free and open fair-code licensed node based Workflow Automation Tool. | `n8nio/n8n` | 1.123.5 | 5678 |  |  |
+| **n8n** | Free and open fair-code licensed node based Workflow Automation Tool. | `n8nio/n8n` | 2.0.2 | 5678 |  |  |
 | **Ncdu** | Ncdu is a disk usage analyzer with an ncurses interface. It is designed to find space hogs on a r... | `bigbeartechworld/big-bear-ncdu` | 0.0.4 | 7681 | [▶️](https://youtu.be/5RCTglGRXss) |  |
 | **Neko Firefox** | Welcome to Neko, a self-hosted virtual browser that runs in Docker and uses WebRTC technology. Ne... | `m1k1o/neko` | firefox | 8080 |  |  |
 | **NetAlertX** | WIFI / LAN intruder detector. Scans for devices connected to your network and alerts you if new a... | `jokobsk/netalertx` | 25.11.29 | 8080 |  |  |
@@ -309,7 +309,7 @@ Validate apps against the JSON schema:
 | **Pi-hole and Unbound** | This is a custom pihole and unbound setup. | `bigbeartechworld/big-bear-pihole-unbound` | 2025.11.0 | 8080 | [▶️](https://youtu.be/ByFSgnnUuBI) | [📖](https://community.bigbeartechworld.com/t/added-pihole-and-unbound-to-bigbearcasaos/191) |
 | **Pi-hole® Updatelists** | The Pi-hole® is a DNS sinkhole that protects your devices from unwanted content without installin... | `jacklul/pihole` | 2025.11.1 | 8080 |  |  |
 | **Pingvin Share** | Pingvin Share is self-hosted file sharing platform and an alternative for WeTransfer. | `stonith404/pingvin-share` | v1.13.0 | 3000 | [▶️](https://youtu.be/SRJUS7h1vhU) |  |
-| **Piwigo** | Piwigo is a photo gallery software for the web that comes with powerful features to publish and m... | `linuxserver/piwigo` | 15.7.0 | 8080 |  |  |
+| **Piwigo** | Piwigo is a photo gallery software for the web that comes with powerful features to publish and m... | `linuxserver/piwigo` | 16.1.0 | 8080 |  |  |
 | **Planka** | The realtime kanban board for workgroups built with React and Redux. | `ghcr.io/plankanban/planka` | 1.26.3 | 3000 | [▶️](https://youtu.be/rsyU2cBbbSI) |  |
 | **Plant-it** | Plant-it is a self-hosted gardening companion app. Useful for keeping track of plant care, receiv... | `msdeluise/plant-it-server` | 0.10.0 | 3000 | [▶️](https://youtu.be/mUOAQRa17T4) |  |
 | **Playit Docker Web** | Playit.gg is a global proxy that allows anyone to host a server without port forwarding. We use t... | `wisdomsky/playit-docker-web` | 1.1 | 8008 |  |  |
@@ -342,7 +342,7 @@ Validate apps against the JSON schema:
 | **Speedtest Tracker** | A Docker image to check your internet speed using Ookla's Speedtest service. Build using Laravel ... | `linuxserver/speedtest-tracker` | 1.12.3 | 8080 | [▶️](https://youtu.be/TLjS8xNNwis) |  |
 | **Spoolman** | Keep track of your inventory of 3D-printer filament spools. Spoolman is a self-hosted web service... | `ghcr.io/donkie/spoolman` | 0.22.1 | 7912 |  | [📖](https://community.bigbeartechworld.com/t/added-spoolman-to-bigbearuniversal-apps/5108#p-7792-documentation-4) |
 | **Stalwart Mail** | Stalwart Mail Server is an open-source mail server solution with JMAP, IMAP4, POP3, and SMTP supp... | `stalwartlabs/stalwart` | v0.14.1 | 8080 |  |  |
-| **Stirling-PDF** | Stirling PDF - Local hosted web based PDF editor | `stirlingtools/stirling-pdf` | 1.6.0 | 8080 | [▶️](https://youtu.be/ZoPSPDvOPdo) | [📖](https://community.bigbeartechworld.com/t/added-stirling-pdf-to-bigbearcasaos/2265#p-4248-documentation-3) |
+| **Stirling-PDF** | Stirling PDF - Local hosted web based PDF editor | `stirlingtools/stirling-pdf` | 2.1.3 | 8080 | [▶️](https://youtu.be/ZoPSPDvOPdo) | [📖](https://community.bigbeartechworld.com/t/added-stirling-pdf-to-bigbearcasaos/2265#p-4248-documentation-3) |
 | **Syncthing** | Syncthing is a continuous file synchronization program. It synchronizes files between two or more... | `syncthing/syncthing` | 2.0 | 8384 |  |  |
 | **Tailscale** | Zero config VPN. Installs on any device in minutes, manages firewall rules for you, and works fro... | `tailscale/tailscale` | v1.90.9 | N/A |  |  |
 | **Tandoor** | Drop your collection of links and notes. Get Tandoor and never look back onto a time without reci... | `ghcr.io/tandoorrecipes/recipes` | 2.3.5 | 8080 | [▶️](https://youtu.be/f4-op1UOaWc) |  |
@@ -355,8 +355,8 @@ Validate apps against the JSON schema:
 | **UISP** | All-in-one docker image for Ubiquiti UISP (formerly UNMS). Supports x86_64 and ARM (Raspberry Pi). | `nico640/docker-unms` | 2.4.155.1 | 10443 |  |  |
 | **Umami** | Umami is a simple, fast, privacy-focused alternative to Google Analytics. | `ghcr.io/umami-software/umami` | postgresql-latest | 3000 | [▶️](https://youtu.be/4DEF5fNf8hU) |  |
 | **Umbrel OS** | Umbrel is a personal server OS that makes self-hosting accessible to everyone. | `dockurr/umbrel` | 1.4.0 | 8080 | [▶️](https://youtu.be/O03CH-YLdk0) |  |
-| **Unifi Network Application** | The Unifi-network-application software is a powerful, enterprise wireless software engine ideal f... | `linuxserver/unifi-network-application` | 9.5.21 | 8443 | [▶️](https://youtu.be/JCe-r_SHCe8) |  |
-| **Unifi Network Application** | Supports Zimaboards and PI's. The Unifi-network-application software is a powerful, enterprise wi... | `linuxserver/unifi-network-application` | 9.5.21 | 8443 | [▶️](https://youtu.be/JCe-r_SHCe8) |  |
+| **Unifi Network Application** | The Unifi-network-application software is a powerful, enterprise wireless software engine ideal f... | `linuxserver/unifi-network-application` | 10.0.162 | 8443 | [▶️](https://youtu.be/JCe-r_SHCe8) |  |
+| **Unifi Network Application** | Supports Zimaboards and PI's. The Unifi-network-application software is a powerful, enterprise wi... | `linuxserver/unifi-network-application` | 10.0.162 | 8443 | [▶️](https://youtu.be/JCe-r_SHCe8) |  |
 | **Upsnap** | A simple wake on lan web app written with SvelteKit, Go and PocketBase. | `ghcr.io/seriousm4x/upsnap` | 5.2.4 | 8090 |  |  |
 | **Uptime Kuma** | A fancy self-hosted monitoring tool | `louislam/uptime-kuma` | 2 | 3001 | [▶️](https://youtu.be/Why5NU_Wafw) |  |
 | **VERT** | VERT is a file conversion utility that uses WebAssembly to convert files on your device instead o... | `ghcr.io/vert-sh/vert` | sha-a1b0b15 | 3030 |  | [📖](https://github.com/VERT-sh/VERT/blob/main/docs/DOCKER.md) |
