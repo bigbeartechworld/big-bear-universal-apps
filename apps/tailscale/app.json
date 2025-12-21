@@ -5,7 +5,7 @@
     "name": "Tailscale",
     "description": "Zero config VPN. Installs on any device in minutes, manages firewall rules for you, and works from anywhere.",
     "tagline": "The easiest, most secure way to use WireGuard and 2FA.",
-    "version": "v1.90.9",
+    "version": "v1.92.3",
     "author": "BigBearTechWorld",
     "developer": "tailscale",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/tailscale/tailscale",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:20Z",
-    "updated": "2025-11-29T00:59:21.774Z"
+    "updated": "2025-12-21T06:04:43.015Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/tailscale.png",
