@@ -5,7 +5,7 @@
     "name": "Jellystat",
     "description": "Jellystat is a free and open source Statistics App for Jellyfin! (This project is still in development - expect some weirdness)",
     "tagline": "Jellystat",
-    "version": "1.1.6",
+    "version": "1.1.7",
     "author": "BigBearTechWorld",
     "developer": "cyfershepard",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/cyfershepard/jellystat",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:55Z",
-    "updated": "2025-10-27T02:41:55Z"
+    "updated": "2025-12-23T21:36:38.636Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/jellystat.png",
