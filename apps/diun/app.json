@@ -5,7 +5,7 @@
     "name": "DIUN",
     "description": "Docker Image Update Notifier is a CLI application written in Go and delivered as a single executable (and a Docker image) to receive notifications when a Docker image is updated on a Docker registry.",
     "tagline": "Docker Image Update Notifier",
-    "version": "4.30.0",
+    "version": "4.31.0",
     "author": "BigBearTechWorld",
     "developer": "crazymax",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/crazymax/diun",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:43Z",
-    "updated": "2025-10-27T02:41:43Z"
+    "updated": "2025-12-27T17:47:08.780Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/diun.png",
