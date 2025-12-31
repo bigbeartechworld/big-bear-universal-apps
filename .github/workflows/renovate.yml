@@ -27,8 +27,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # RENOVATE_TOKEN must be a Personal Access Token (PAT):
+      #   - Classic PAT: requires 'repo' and 'workflow' scopes
+      #   - Fine-grained PAT: requires Read+Write on Commit statuses, Contents,
+      #     Pull requests, Issues, Workflows, and Members (read) for org access
+      #
+      # IMPORTANT: Enable branch protection with "Require status checks before merging"
+      # to ensure platformAutomerge cannot merge PRs before CI passes.
       - name: Run Renovate
-        uses: renovatebot/github-action@v44.2.1
+        uses: renovatebot/github-action@v44.2.2
         with:
           configurationFile: renovate.json
           token: ${{ secrets.RENOVATE_TOKEN }}
