@@ -43,3 +43,4 @@ jobs:
           LOG_LEVEL: debug
           RENOVATE_REPOSITORIES: ${{ github.repository }}
           RENOVATE_DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && 'full' || '' }}
+          RENOVATE_SECRETS: '{"DOCKER_USERNAME":"${{ secrets.DOCKER_USERNAME }}","DOCKER_PASSWORD":"${{ secrets.DOCKER_PASSWORD }}"}'
