@@ -1,13 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended",
-    "config:best-practices"
+    "config:recommended"
   ],
-  "configMigration": true,
   "stabilityDays": 3,
   "automerge": true,
-  "platformAutomerge": true,
   "dependencyDashboard": true,
   "enabledManagers": ["docker-compose", "dockerfile"],
   "labels": ["dependencies", "renovate"],
@@ -15,15 +12,11 @@
   "hostRules": [
     {
       "matchHost": "docker.io",
-      "concurrentRequestLimit": 2,
-      "username": "{{ secrets.DOCKER_USERNAME }}",
-      "password": "{{ secrets.DOCKER_PASSWORD }}"
+      "concurrentRequestLimit": 2
     },
     {
       "matchHost": "index.docker.io",
-      "concurrentRequestLimit": 2,
-      "username": "{{ secrets.DOCKER_USERNAME }}",
-      "password": "{{ secrets.DOCKER_PASSWORD }}"
+      "concurrentRequestLimit": 2
     }
   ],
   "packageRules": [
