@@ -185,6 +185,15 @@ jobs:
               console.log('Label does not exist or already removed');
             }
 
+            // Add major-update label for easy filtering
+            await github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ["major-update"]
+            });
+            console.log('Added major-update label');
+
             // Add a comment to explain why automerge was skipped
             await github.rest.issues.createComment({
               issue_number: context.issue.number,
