@@ -5,7 +5,7 @@
     "name": "Wishlist",
     "description": "Wishlist is a self-hosted wishlist application that you can share with your friends and family. You no longer have to wonder what to get your family for the holidays, simply check their wishlist and claim any available item!",
     "tagline": "Wishlist is a self-hosted wishlist application that you can share with your friends and family.",
-    "version": "v0.54.2",
+    "version": "v0.58.0",
     "author": "BigBearTechWorld",
     "developer": "cmintey",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/cmintey/wishlist",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:26Z",
-    "updated": "2025-11-24T19:42:49.085Z"
+    "updated": "2025-12-31T03:09:11.900Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/wishlist/logo.png",
