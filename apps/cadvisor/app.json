@@ -5,7 +5,7 @@
     "name": "cAdvisor",
     "description": "cAdvisor (Container Advisor) provides container users an understanding of the resource usage and performance characteristics of their running containers. It is a running daemon that collects, aggregates, processes, and exports information about running containers. Specifically, for each container it keeps resource isolation parameters, historical resource usage, histograms of complete historical resource usage and network statistics. This data is exported by container and machine-wide.",
     "tagline": "cAdvisor",
-    "version": "v0.52.1",
+    "version": "v0.55.1",
     "author": "BigBearTechWorld",
     "developer": "cadvisor",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/cadvisor/cadvisor",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:39Z",
-    "updated": "2025-10-29T01:57:44.269Z"
+    "updated": "2025-12-31T03:08:35.947Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/cadvisor.png",
