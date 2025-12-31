@@ -3,12 +3,20 @@
   "extends": [
     "config:recommended"
   ],
-  "stabilityDays": 3,
+  "minimumReleaseAge": "3 days",
   "automerge": true,
   "dependencyDashboard": true,
-  "enabledManagers": ["docker-compose", "dockerfile"],
-  "labels": ["dependencies", "renovate"],
-  "gitIgnoredAuthors": ["github-actions[bot]@users.noreply.github.com"],
+  "enabledManagers": [
+    "docker-compose",
+    "dockerfile"
+  ],
+  "labels": [
+    "dependencies",
+    "renovate"
+  ],
+  "gitIgnoredAuthors": [
+    "github-actions[bot]@users.noreply.github.com"
+  ],
   "hostRules": [
     {
       "matchHost": "docker.io",
@@ -22,28 +30,36 @@
   "packageRules": [
     {
       "matchDatasources": "docker",
-      "matchPackagePatterns": ["^guacamole/"],
-      "groupName": "guacamole docker images"
+      "groupName": "guacamole docker images",
+      "matchPackageNames": [
+        "/^guacamole//"
+      ]
     },
     {
       "matchDatasources": "docker",
-      "matchPackagePatterns": ["^vikunja/"],
-      "groupName": "vikunja docker images"
+      "groupName": "vikunja docker images",
+      "matchPackageNames": [
+        "/^vikunja//"
+      ]
     },
     {
       "matchDatasources": "docker",
-      "matchPackagePatterns": ["^ghcr\\.io/immich-app/"],
-      "groupName": "immich docker images"
+      "groupName": "immich docker images",
+      "matchPackageNames": [
+        "/^ghcr\\.io/immich-app//"
+      ]
     },
     {
       "matchDatasources": "docker",
-      "matchPackagePatterns": [
-        "^([^\\/]+\\/)?(mysql|mariadb|mongodb|mongo|postgres|redis|memcached|clickhouse-server|clickhouse|nginx|couchdb|documentserver)(:|$)"
+      "enabled": false,
+      "matchPackageNames": [
+        "/^([^\\/]+\\/)?(mysql|mariadb|mongodb|mongo|postgres|redis|memcached|clickhouse-server|clickhouse|nginx|couchdb|documentserver)(:|$)/"
+      ]
+    },
+    {
+      "matchPackageNames": [
+        "ghcr.io/immich-app/postgres"
       ],
-      "enabled": false
-    },
-    {
-      "matchPackageNames": ["ghcr.io/immich-app/postgres"],
       "enabled": false
     },
     {
@@ -55,25 +71,36 @@
       "automerge": false
     },
     {
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true
     },
     {
-      "matchUpdateTypes": ["major"],
+      "matchUpdateTypes": [
+        "major"
+      ],
       "automerge": false
     },
     {
-      "matchPackageNames": ["ghcr.io/diced/zipline"],
-      "matchFileNames": ["apps/zipline/docker-compose.yml"],
+      "matchPackageNames": [
+        "ghcr.io/diced/zipline"
+      ],
+      "matchFileNames": [
+        "apps/zipline/docker-compose.yml"
+      ],
       "enabled": false
     },
     {
       "matchDatasources": "docker",
-      "matchPackagePatterns": [".*"],
       "matchCurrentVersion": "/^latest$/",
       "automerge": false,
-      "groupName": "latest-tag-packages"
+      "groupName": "latest-tag-packages",
+      "matchPackageNames": [
+        "/.*/"
+      ]
     }
   ],
-  "regexManagers": []
+  "customManagers": []
 }
