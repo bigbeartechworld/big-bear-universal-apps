@@ -5,6 +5,7 @@
   ],
   "stabilityDays": 3,
   "automerge": true,
+  "platformAutomerge": true,
   "dependencyDashboard": true,
   "enabledManagers": ["docker-compose", "dockerfile"],
   "labels": ["dependencies", "renovate"],
