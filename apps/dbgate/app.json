@@ -5,7 +5,7 @@
     "name": "DBGate",
     "description": "Web based UI for managing and exploring SQL database data",
     "tagline": "DBGate",
-    "version": "6.8.1-alpine",
+    "version": "6.8.2-alpine",
     "author": "BigBearTechWorld",
     "developer": "dbgate",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/dbgate/dbgate",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:43Z",
-    "updated": "2025-12-25T13:55:27.773Z"
+    "updated": "2026-01-01T16:44:08.861Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/dbgate/logo.png",
