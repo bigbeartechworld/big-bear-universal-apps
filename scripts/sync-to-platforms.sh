@@ -307,8 +307,11 @@ clean_orphaned_apps() {
     while IFS= read -r -d '' dest_app_dir; do
         local app_name=$(basename "$dest_app_dir")
         
-        # Skip special directories
-        if [[ "$app_name" == "__tests__" ]]; then
+        # Skip special directories (hidden dirs like .git, .github, and known non-app dirs)
+        if [[ "$app_name" == "__tests__" ]] || \
+           [[ "$app_name" =~ ^\. ]] || \
+           [[ "$app_name" == "scripts" ]] || \
+           [[ "$app_name" == "templates" ]]; then
             continue
         fi
         
