@@ -80,7 +80,7 @@ jobs:
     name: Convert to Platform Formats
     needs: validate
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -159,9 +159,10 @@ jobs:
     needs: convert
     runs-on: ubuntu-latest
     if: |
-      github.event.inputs.dry_run != 'true' &&
+      (github.event_name != 'workflow_dispatch' || github.event.inputs.dry_run != 'true') &&
       ((github.event_name == 'push' && github.ref == 'refs/heads/main') ||
-      (github.event_name == 'workflow_dispatch' && github.event.inputs.sync == 'true'))
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.sync == 'true') ||
+      github.event_name == 'schedule')
     strategy:
       matrix:
         platform:
