@@ -5,7 +5,7 @@
     "name": "Password Pusher",
     "description": "Password Pusher is an open source application to communicate passwords over the web. Links to passwords expire after a certain number of views and/or time has passed.",
     "tagline": "Give your users the tools to be secure by default.",
-    "version": "1.65.3",
+    "version": "1.66.0",
     "author": "BigBearTechWorld",
     "developer": "pglombardo",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/pglombardo/pwpush",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:09Z",
-    "updated": "2025-12-23T00:53:22.398Z"
+    "updated": "2026-01-12T02:08:32.433Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/password-pusher.png",
