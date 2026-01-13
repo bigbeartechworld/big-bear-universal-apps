@@ -5,7 +5,7 @@
     "name": "Microbin",
     "description": "Self-hosted, encrypted pastebin alternative with configurable features.",
     "tagline": "Pastebin alternative with encryption",
-    "version": "2.0.4",
+    "version": "2.1.0",
     "author": "BigBearTechWorld",
     "developer": "danielszabo99",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/danielszabo99/microbin",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:00Z",
-    "updated": "2025-10-27T02:42:00Z"
+    "updated": "2026-01-13T21:05:45.233Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/szabodanika/microbin@v2.0.4/templates/assets/logo-square.png",
