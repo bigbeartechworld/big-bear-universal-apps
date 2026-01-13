@@ -1,0 +1,133 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "dockhand",
+    "name": "Dockhand",
+    "description": "Modern, efficient Docker management application providing real-time container management, Compose stack orchestration, and multi-environment support. Features include interactive terminal access, file browser, Git integration, and SSO via OIDC. All in a lightweight, secure and privacy-focused package.",
+    "tagline": "Modern Docker management you will like",
+    "version": "latest",
+    "author": "BigBearTechWorld",
+    "developer": "Finsys",
+    "category": "BigBearCasaOS",
+    "license": "BSL 1.1",
+    "homepage": "https://dockhand.pro",
+    "source": "big-bear-universal",
+    "created": "2026-01-07T00:00:00Z",
+    "updated": "2026-01-07T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/dockhand.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/dockhand.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://dockhand.pro/manual/",
+    "repository": "https://github.com/Finsys/dockhand",
+    "issues": "https://github.com/Finsys/dockhand/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "3003",
+    "main_image": "fnsys/dockhand",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+      {
+        "container": "/var/run/docker.sock",
+        "description": "Docker socket access for container management"
+      },
+      {
+        "container": "/app/data",
+        "description": "Persistent data storage"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "3003",
+        "protocol": "tcp",
+        "description": "Web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "**Support BigBearTechWorld**: https://ko-fi.com/bigbeartechworld\n**Community Forum**: https://community.bigbeartechworld.com\n\nDockhand provides modern Docker management with real-time container orchestration, Compose stack management, and multi-environment support. Authentication is disabled by default for easy setup - consider enabling it in Settings > Authentication after installation.\n\n**Security Note**: This app requires Docker socket access, which grants full Docker daemon privileges."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3003",
+      "volume_mappings": {
+        "dockhand_data": "/DATA/AppData/$AppID/data"
+      },
+      "port": "3003"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "3003"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "dockhand_data": "data"
+      },
+      "port": "3025"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "3003"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "3003"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "dockhand_data": "data"
+      },
+      "port": "10448"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container",
+    "management",
+    "compose",
+    "orchestration"
+  ]
+}
