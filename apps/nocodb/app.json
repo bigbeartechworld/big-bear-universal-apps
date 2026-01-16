@@ -5,7 +5,7 @@
     "name": "NocoDB",
     "description": "NocoDB allows building no-code database solutions with ease of spreadsheets. Bring your own database or choose ours! Millions of rows? Not a problem. Your Data. Your rules. You are in control.",
     "tagline": "🔥 🔥 🔥 Open Source Airtable Alternative",
-    "version": "0.265.1",
+    "version": "0.301.0",
     "author": "BigBearTechWorld",
     "developer": "nocodb",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/nocodb/nocodb",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:05Z",
-    "updated": "2025-10-27T02:42:05Z"
+    "updated": "2026-01-16T20:47:32.816Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nocodb.png",
