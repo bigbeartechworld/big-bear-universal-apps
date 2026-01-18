@@ -5,7 +5,7 @@
     "name": "Kavita",
     "description": "Kavita is a fast, feature rich, cross platform reading server",
     "tagline": "Kavita",
-    "version": "0.8.8",
+    "version": "0.8.9",
     "author": "BigBearTechWorld",
     "developer": "jvmilazz0",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/jvmilazz0/kavita",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:56Z",
-    "updated": "2025-10-27T02:41:56Z"
+    "updated": "2026-01-18T00:43:38.929Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/kavita.png",
