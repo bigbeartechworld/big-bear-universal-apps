@@ -5,7 +5,7 @@
     "name": "Ghost",
     "description": "Ghost is a free and open source blogging platform written in JavaScript and distributed under the MIT License, designed to simplify the process of online publishing for individual bloggers as well as online publications.",
     "tagline": "Ghost is a free and open source blogging platform",
-    "version": "6.13.1-alpine",
+    "version": "6.13.2-alpine",
     "author": "BigBearTechWorld",
     "developer": "ghost",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/ghost",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:49Z",
-    "updated": "2026-01-19T02:09:07.075Z"
+    "updated": "2026-01-20T02:01:33.903Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ghost.png",
