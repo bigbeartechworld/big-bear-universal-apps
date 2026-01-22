@@ -5,7 +5,7 @@
     "name": "Reactive Resume",
     "description": "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume.",
     "tagline": "A free and open-source resume builder",
-    "version": "v4.5.5",
+    "version": "v4.5.6",
     "author": "BigBearTechWorld",
     "developer": "AmruthPillai",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/amruthpillai/reactive-resume",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:16Z",
-    "updated": "2025-11-07T19:39:57.912Z"
+    "updated": "2026-01-22T22:05:35.020Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/reactive-resume/logo.png",
