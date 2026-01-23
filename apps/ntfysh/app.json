@@ -5,7 +5,7 @@
     "name": "Ntfy.sh",
     "description": "ntfy (pronounced notify) is a simple HTTP-based pub-sub notification service. It allows you to send notifications to your phone or desktop via scripts from any computer, and/or using a REST API. It's infinitely flexible, and 100% free software.",
     "tagline": "A simple HTTP-based pub-sub notification service",
-    "version": "v2.15.0",
+    "version": "v2.16.0",
     "author": "BigBearTechWorld",
     "developer": "binwiederhier",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/binwiederhier/ntfy",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:05Z",
-    "updated": "2025-11-20T01:14:30.684Z"
+    "updated": "2026-01-23T01:50:41.603Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ntfy.png",
