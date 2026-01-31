@@ -1,0 +1,182 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "storyteller",
+    "name": "Storyteller",
+    "description": "Storyteller is a self-hosted platform for ebook reading and library management. It supports multiple ebook formats including EPUB, PDF, and MOBI. Features include a modern web-based reader, library organization, metadata management, and multi-user support. Built with Django and includes optional Readium reader integration for enhanced reading experience.",
+    "tagline": "Self-hosted ebook reading platform",
+    "version": "web-v2.6.0-experimental.14",
+    "author": "BigBearCommunity",
+    "developer": "storyteller-platform",
+    "category": "BigBearCasaOS",
+    "license": "MIT",
+    "homepage": "https://storyteller-platform.gitlab.io/storyteller",
+    "source": "big-bear-universal",
+    "created": "2026-01-30T00:00:00Z",
+    "updated": "2026-01-30T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/storyteller.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/storyteller.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://storyteller-platform.gitlab.io/storyteller/docs/installation/self-hosting",
+    "repository": "https://gitlab.com/storyteller-platform/storyteller",
+    "issues": "https://gitlab.com/storyteller-platform/storyteller/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8015",
+    "main_image": "registry.gitlab.com/storyteller-platform/storyteller",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "STORYTELLER_SECRET_KEY",
+        "default": "",
+        "description": "Secret key for authentication (required). Generate using: openssl rand -base64 32",
+        "required": true
+      },
+      {
+        "name": "STORYTELLER_LOG_LEVEL",
+        "default": "info",
+        "description": "Log level (debug, info, warning, error)",
+        "required": false
+      },
+      {
+        "name": "STORYTELLER_DATA_DIR",
+        "default": "/data",
+        "description": "Data directory path inside container",
+        "required": false
+      },
+      {
+        "name": "STORYTELLER_MAX_UPLOAD_CHUNK_SIZE",
+        "default": "10",
+        "description": "Maximum upload chunk size in MB",
+        "required": false
+      },
+      {
+        "name": "STORYTELLER_DEMO_MODE",
+        "default": "false",
+        "description": "Enable demo mode (true/false)",
+        "required": false
+      },
+      {
+        "name": "ENABLE_WEB_READER",
+        "default": "false",
+        "description": "Enable integrated web reader (true/false)",
+        "required": false
+      },
+      {
+        "name": "READIUM_PORT",
+        "default": "8002",
+        "description": "Readium server port (not exposed by default)",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "UTC",
+        "description": "Timezone",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Container Path: /data (database and books)"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8001",
+        "host": "8015",
+        "protocol": "tcp",
+        "description": "Container Port: 8001"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Generate a secure secret key using: openssl rand -base64 32"
+      },
+      "after_install": {
+        "en_us": "Access Storyteller at http://your-server:8015"
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8015",
+      "volume_mappings": {
+        "storyteller_data": "/DATA/AppData/$AppID/data"
+      },
+      "port": "8015"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted",
+        "Media"
+      ],
+      "administrator_only": false,
+      "port": "8015"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "storyteller_data": "data"
+      },
+      "port": "8015"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8015"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8015"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "storyteller_data": "data"
+      },
+      "port": "10094"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "media",
+    "ebook",
+    "books",
+    "reading",
+    "bigbearcasaos"
+  ]
+}
