@@ -93,10 +93,10 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Generate a secure gateway token using: openssl rand -hex 32. Run onboarding after install: docker compose run --rm big-bear-openclaw onboard"
+        "en_us": "Generate a secure gateway token using: openssl rand -hex 32. Set OPENCLAW_GATEWAY_TOKEN in your environment before starting."
       },
       "after_install": {
-        "en_us": "Access OpenClaw gateway at http://your-server:18789. Complete onboarding: docker compose run --rm big-bear-openclaw onboard"
+        "en_us": "Complete onboarding: docker compose run --rm big-bear-openclaw-cli onboard. Then access the gateway at http://your-server:18789."
       }
     }
   },
