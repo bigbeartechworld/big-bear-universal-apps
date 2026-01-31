@@ -1,0 +1,161 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "openclaw",
+    "name": "OpenClaw",
+    "description": "OpenClaw is a self-hosted AI agent platform that provides Claude AI integration through a local gateway. It enables running AI assistants with local tool execution, file access, and workspace management. Features include WebSocket gateway, browser automation, and extensible command framework.",
+    "tagline": "Self-hosted AI agent platform with Claude integration",
+    "version": "2026.1.29",
+    "author": "BigBearCommunity",
+    "developer": "openclaw",
+    "category": "BigBearCasaOS",
+    "license": "MIT",
+    "homepage": "https://github.com/openclaw/openclaw",
+    "source": "big-bear-universal",
+    "created": "2026-01-30T00:00:00Z",
+    "updated": "2026-01-30T00:00:00Z"
+  },
+  "visual": {
+    "icon": "",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": ""
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://docs.openclaw.ai/install/docker",
+    "repository": "https://github.com/openclaw/openclaw",
+    "issues": "https://github.com/openclaw/openclaw/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": ["amd64", "arm64"],
+    "platform": "linux",
+    "main_service": "big-bear-openclaw",
+    "default_port": "18789",
+    "main_image": "ghcr.io/openclaw/openclaw",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "OPENCLAW_GATEWAY_TOKEN",
+        "default": "",
+        "description": "Gateway authentication token (required). Generate using: openssl rand -hex 32",
+        "required": true
+      },
+      {
+        "name": "CLAUDE_AI_SESSION_KEY",
+        "default": "",
+        "description": "Claude AI session key for API access (optional)",
+        "required": false
+      },
+      {
+        "name": "CLAUDE_WEB_SESSION_KEY",
+        "default": "",
+        "description": "Claude web session key (optional)",
+        "required": false
+      },
+      {
+        "name": "CLAUDE_WEB_COOKIE",
+        "default": "",
+        "description": "Claude web cookie for authentication (optional)",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/home/node/.openclaw",
+        "description": "Container Path: /home/node/.openclaw (configuration)"
+      },
+      {
+        "container": "/home/node/.openclaw/workspace",
+        "description": "Container Path: /home/node/.openclaw/workspace (workspace data)"
+      }
+    ],
+    "ports": [
+      {
+        "container": "18789",
+        "host": "18789",
+        "protocol": "tcp",
+        "description": "Container Port: 18789 (gateway)"
+      },
+      {
+        "container": "18790",
+        "host": "18790",
+        "protocol": "tcp",
+        "description": "Container Port: 18790 (bridge)"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Generate a secure gateway token using: openssl rand -hex 32. Run onboarding after install: docker compose run --rm big-bear-openclaw onboard"
+      },
+      "after_install": {
+        "en_us": "Access OpenClaw gateway at http://your-server:18789. Complete onboarding: docker compose run --rm big-bear-openclaw onboard"
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "volumes": [
+        {
+          "container": "/home/node/.openclaw",
+          "host": "/DATA/AppData/$AppID/config"
+        },
+        {
+          "container": "/home/node/.openclaw/workspace",
+          "host": "/DATA/AppData/$AppID/workspace"
+        }
+      ]
+    },
+    "portainer": {
+      "categories": ["BigBearCasaOS", "selfhosted", "AI"]
+    },
+    "runtipi": {
+      "volumes": [
+        {
+          "container": "/home/node/.openclaw",
+          "host": "config"
+        },
+        {
+          "container": "/home/node/.openclaw/workspace",
+          "host": "workspace"
+        }
+      ]
+    },
+    "dockge": {
+      "file_based": true
+    },
+    "cosmos": {
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "volumes": [
+        {
+          "container": "/home/node/.openclaw",
+          "host": "config"
+        },
+        {
+          "container": "/home/node/.openclaw/workspace",
+          "host": "workspace"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "ai",
+    "claude",
+    "agent",
+    "automation",
+    "bigbearcasaos"
+  ]
+}

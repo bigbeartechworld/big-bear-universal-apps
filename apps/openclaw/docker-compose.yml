@@ -1,0 +1,40 @@
+name: big-bear-openclaw
+
+services:
+  big-bear-openclaw:
+    image: ghcr.io/openclaw/openclaw:2026.1.29
+    container_name: big-bear-openclaw
+    environment:
+      - HOME=/home/node
+      - TERM=xterm-256color
+      - OPENCLAW_GATEWAY_TOKEN=${OPENCLAW_GATEWAY_TOKEN}
+      - CLAUDE_AI_SESSION_KEY=${CLAUDE_AI_SESSION_KEY:-}
+      - CLAUDE_WEB_SESSION_KEY=${CLAUDE_WEB_SESSION_KEY:-}
+      - CLAUDE_WEB_COOKIE=${CLAUDE_WEB_COOKIE:-}
+    volumes:
+      - openclaw_config:/home/node/.openclaw
+      - openclaw_workspace:/home/node/.openclaw/workspace
+    ports:
+      - "18789:18789"
+      - "18790:18790"
+    init: true
+    restart: unless-stopped
+    network_mode: bridge
+    command:
+      [
+        "node",
+        "dist/index.js",
+        "gateway",
+        "--bind",
+        "lan",
+        "--port",
+        "18789"
+      ]
+
+volumes:
+  openclaw_config:
+    name: openclaw_config
+    driver: local
+  openclaw_workspace:
+    name: openclaw_workspace
+    driver: local
