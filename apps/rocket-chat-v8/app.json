@@ -1,0 +1,141 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "rocket-chat-v8",
+    "name": "Rocket.Chat v8",
+    "description": "Rocket.Chat v8 is an open-source fully customizable communications platform developed in JavaScript for organizations with high standards of data protection. This version requires MongoDB 8.2+ and includes significant updates including ABAC for private channels, Matrix federation support, and voice calling improvements. Note: This is a separate app from the legacy v6 version due to breaking changes including mandatory MongoDB 8.2+ upgrade, removal of multiple SMS providers (Twilio only), and elimination of built-in logging (requires Prometheus/Grafana).",
+    "tagline": "The communications platform that puts data protection first (v8).",
+    "version": "8.0.1",
+    "author": "BigBearTechWorld",
+    "developer": "rocket.chat",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/rocket.chat",
+    "source": "big-bear-universal",
+    "created": "2026-01-31T19:10:00Z",
+    "updated": "2026-01-31T19:10:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/rocket-chat.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/rocket-chat.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://docs.rocket.chat/docs/rocketchat-release-notes",
+    "repository": "https://github.com/RocketChat/Rocket.Chat",
+    "issues": "https://github.com/RocketChat/Rocket.Chat/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "3100",
+    "main_image": "rocket.chat",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "MONGO_OPLOG_URL",
+        "default": "mongodb://db:27017/local",
+        "description": "Database URL for MongoDB 8.2+ oplog",
+        "required": true
+      },
+      {
+        "name": "ROOT_URL",
+        "default": "http://localhost:3100",
+        "description": "Root URL for Rocket.Chat (update with your domain)",
+        "required": true
+      }
+    ],
+    "volumes": [],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "3100",
+        "protocol": "tcp",
+        "description": "Rocket.Chat v8 web interface (using 3100 to avoid conflicts with other apps)"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": [
+        "⚠️ Rocket.Chat v8 requires MongoDB 8.2+ (included in this compose file)",
+        "⚠️ This is a SEPARATE app from rocket-chat (v6) due to breaking changes",
+        "⚠️ Do NOT use this to upgrade existing v6 installations without proper migration",
+        "⚠️ SMS notifications require Twilio (other providers removed in v8)",
+        "⚠️ Built-in logging removed - use Prometheus/Grafana for monitoring",
+        "📝 Port 3100 is used to avoid conflicts with other apps",
+        "📚 Migration guide: https://docs.rocket.chat/docs/rocketchat-release-notes"
+      ]
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3100",
+      "volume_mappings": {
+        "rocket-chat-v8_db": "/DATA/AppData/$AppID/db"
+      },
+      "port": "3100"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "3100"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64"
+      ],
+      "volume_mappings": {
+        "rocket-chat-v8_db": "db"
+      },
+      "port": "3022"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "3100"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "3100"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "rocket-chat-v8_db": "db"
+      },
+      "port": "10157"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container",
+    "chat",
+    "communication",
+    "collaboration"
+  ]
+}
