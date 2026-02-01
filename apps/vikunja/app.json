@@ -5,7 +5,7 @@
     "name": "Vikunja",
     "description": "The open-source, self-hostable to-do app. Organize everything, on all platforms.",
     "tagline": "Vikunja",
-    "version": "0.24.6",
+    "version": "1.0.0",
     "author": "BigBearTechWorld",
     "developer": "kolaente",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/vikunja/vikunja",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:23Z",
-    "updated": "2025-10-27T02:42:23Z"
+    "updated": "2026-02-01T01:04:33.749Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/vikunja.png",
