@@ -5,7 +5,7 @@
     "name": "2FAuth",
     "description": "A Web app to manage your Two-Factor Authentication (2FA) accounts and generate their security codes",
     "tagline": "A Web app to manage your Two-Factor Authentication (2FA) accounts and generate their security codes",
-    "version": "5.6.1",
+    "version": "6.0.0",
     "author": "BigBearTechWorld",
     "developer": "bubka",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/2fauth/2fauth",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:53:15Z",
-    "updated": "2025-11-24T18:36:22.158Z"
+    "updated": "2026-01-31T00:53:12.180Z"
   },
   "visual": {
     "icon": "https://user-images.githubusercontent.com/1289128/276442834-bdb528d0-78fa-4155-ba15-7165d88b9836.png",
