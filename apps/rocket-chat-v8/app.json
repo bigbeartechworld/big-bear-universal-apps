@@ -34,7 +34,7 @@
     ],
     "platform": "linux",
     "main_service": "app",
-    "default_port": "3001",
+    "default_port": "3100",
     "main_image": "rocket.chat",
     "compose_file": "docker-compose.yml"
   },
@@ -48,7 +48,7 @@
       },
       {
         "name": "ROOT_URL",
-        "default": "http://localhost:3001",
+        "default": "http://localhost:3100",
         "description": "Root URL for Rocket.Chat (update with your domain)",
         "required": true
       }
@@ -57,9 +57,9 @@
     "ports": [
       {
         "container": "3000",
-        "host": "3001",
+        "host": "3100",
         "protocol": "tcp",
-        "description": "Rocket.Chat v8 web interface (using 3001 to avoid conflict with v6)"
+        "description": "Rocket.Chat v8 web interface (using 3100 to avoid conflicts with other apps)"
       }
     ]
   },
@@ -73,7 +73,7 @@
         "⚠️ Do NOT use this to upgrade existing v6 installations without proper migration",
         "⚠️ SMS notifications require Twilio (other providers removed in v8)",
         "⚠️ Built-in logging removed - use Prometheus/Grafana for monitoring",
-        "📝 Port 3001 is used to allow running alongside legacy v6 if needed",
+        "📝 Port 3100 is used to avoid conflicts with other apps",
         "📚 Migration guide: https://docs.rocket.chat/docs/rocketchat-release-notes"
       ]
     }
@@ -81,11 +81,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3001",
+      "port_map": "3100",
       "volume_mappings": {
         "rocket-chat-v8_db": "/DATA/AppData/$AppID/db"
       },
-      "port": "3001"
+      "port": "3100"
     },
     "portainer": {
       "supported": true,
@@ -95,7 +95,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "3001"
+      "port": "3100"
     },
     "runtipi": {
       "supported": true,
@@ -111,13 +111,13 @@
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "3001"
+      "port": "3100"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "3001"
+      "port": "3100"
     },
     "umbrel": {
       "supported": true,

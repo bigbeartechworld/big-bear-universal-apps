@@ -25,11 +25,11 @@ services:
     # These variables are used by Rocket.Chat for its configuration.
     environment:
       MONGO_OPLOG_URL: mongodb://db:27017/local
-      ROOT_URL: http://localhost:3001
+      ROOT_URL: http://localhost:3100
     # Port Mappings
     # Maps ports from the container to the host system.
     ports:
-      - "3001:3000" # HostPort:ContainerPort (using 3001 to avoid conflict with v6)
+      - "3100:3000" # HostPort:ContainerPort (using 3100 to avoid conflicts with other apps)
     # Dependencies
     # Specifies other services that this service depends on.
     depends_on:
