@@ -44,11 +44,11 @@
     "volumes": [
       {
         "container": "/var/run/docker.sock",
-        "description": "Docker socket access for container management"
+        "description": "Access to Docker socket for container management"
       },
       {
         "container": "/app/data",
-        "description": "Persistent data storage"
+        "description": "Dockhand application data and configuration"
       }
     ],
     "ports": [
