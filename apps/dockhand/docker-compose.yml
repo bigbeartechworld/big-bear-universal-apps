@@ -1,0 +1,33 @@
+# Configuration for dockhand setup
+
+# Name of the big-bear-dockhand application
+name: big-bear-dockhand
+
+# Service definitions for the big-bear-dockhand application
+services:
+  # Service name: app
+  # The `app` service definition
+  app:
+    # Name of the container
+    container_name: big-bear-dockhand
+
+    # Image to be used for the container
+    image: fnsys/dockhand:latest
+
+    # Container restart policy
+    restart: unless-stopped
+
+    # Volumes to be mounted to the container
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - dockhand_data:/app/data
+
+    # Ports mapping between host and container
+    ports:
+      - "3003:3000"
+
+# Volumes definition for the big-bear-dockhand application
+volumes:
+  dockhand_data:
+    name: dockhand_data
+    driver: local
