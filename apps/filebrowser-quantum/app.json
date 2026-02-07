@@ -5,7 +5,7 @@
     "name": "FileBrowser Quantum",
     "description": "A self-hosted web file manager forked from FileBrowser with advanced features including OIDC authentication, indexed search, office document previews, and multi-source support.",
     "tagline": "Advanced self-hosted web file manager",
-    "version": "1.1.2",
+    "version": "1.1.2-stable",
     "author": "BigBearCommunity",
     "developer": "gtsteffaniak",
     "category": "Storage",
