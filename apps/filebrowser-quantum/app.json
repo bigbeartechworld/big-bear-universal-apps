@@ -1,0 +1,141 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "filebrowser-quantum",
+    "name": "FileBrowser Quantum",
+    "description": "A self-hosted web file manager forked from FileBrowser with advanced features including OIDC authentication, indexed search, office document previews, and multi-source support.",
+    "tagline": "Advanced self-hosted web file manager",
+    "version": "1.1.2-stable",
+    "author": "BigBearCommunity",
+    "developer": "gtsteffaniak",
+    "category": "BigBearCasaOS",
+    "license": "Apache-2.0",
+    "homepage": "https://hub.docker.com/r/gtstef/filebrowser",
+    "source": "big-bear-universal",
+    "created": "2026-02-07T00:00:00Z",
+    "updated": "2026-02-07T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/gtsteffaniak/filebrowser@main/frontend/public/img/logo.svg",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/gtsteffaniak/filebrowser@main/frontend/public/img/logo.svg"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/gtsteffaniak/filebrowser",
+    "issues": "https://github.com/gtsteffaniak/filebrowser/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8700",
+    "main_image": "gtstef/filebrowser",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "TZ",
+        "default": "UTC",
+        "description": "Timezone for the application",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/home/filebrowser/data",
+        "description": "Database and configuration data"
+      },
+      {
+        "container": "/srv",
+        "description": "Served files directory"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "8700",
+        "protocol": "tcp",
+        "description": "Web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "**Support BigBearTechWorld**: https://ko-fi.com/bigbeartechworld\n**Community Forum**: https://community.bigbeartechworld.com/t/added-filebrowser-quantum-to-bigbearuniversal-apps/5209?u=dragonfire1119\n\nDefault credentials are **admin / admin**. Please change the password after your first login."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8700",
+      "volume_mappings": {
+        "filebrowser-quantum_data": "/DATA/AppData/$AppID/data",
+        "filebrowser-quantum_srv": "/DATA/AppData/$AppID/srv"
+      },
+      "port": "8700"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Storage",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8700"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "filebrowser-quantum_data": "data",
+        "filebrowser-quantum_srv": "srv"
+      },
+      "port": "8700"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8700"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8700"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "filebrowser-quantum_data": "data",
+        "filebrowser-quantum_srv": "srv"
+      },
+      "port": "10700"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "storage",
+    "file-manager",
+    "filebrowser"
+  ]
+}
