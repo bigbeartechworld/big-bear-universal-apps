@@ -1,0 +1,49 @@
+# Configuration for filebrowser-quantum setup
+
+# Name of the big-bear-filebrowser-quantum application
+name: big-bear-filebrowser-quantum
+
+# Service definitions for the big-bear-filebrowser-quantum application
+services:
+  # Service name: app
+  # The main FileBrowser Quantum application service
+  app:
+    # Name of the container
+    container_name: big-bear-filebrowser-quantum
+
+    # Image to be used for the container
+    image: gtstef/filebrowser:1.1.2
+
+    # Container restart policy
+    restart: unless-stopped
+
+    # Environment variables
+    environment:
+      - TZ=UTC
+
+    # Volumes to be mounted to the container
+    volumes:
+      - filebrowser-quantum_data:/home/filebrowser/data  # Database and config
+      - filebrowser-quantum_srv:/srv                      # Served files
+
+    # Ports mapping between host and container
+    ports:
+      - "8700:80"
+
+    # Networks for the big-bear-filebrowser-quantum application
+    networks:
+      - big-bear-filebrowser-quantum-network
+
+# Networks definition for the big-bear-filebrowser-quantum application
+networks:
+  big-bear-filebrowser-quantum-network:
+    driver: bridge
+
+# Volumes definition for the big-bear-filebrowser-quantum application
+volumes:
+  filebrowser-quantum_data:
+    name: filebrowser-quantum_data
+    driver: local
+  filebrowser-quantum_srv:
+    name: filebrowser-quantum_srv
+    driver: local
