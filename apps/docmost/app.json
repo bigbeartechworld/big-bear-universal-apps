@@ -5,7 +5,7 @@
     "name": "Docmost",
     "description": "Docmost is an open-source alternative to the likes of Notion and Confluence. Whether you're managing a wiki, a knowledge base, or extensive project documentation, Docmost provides the tools you need to create, collaborate, and share knowledge effortlessly.",
     "tagline": "Docmost",
-    "version": "0.25.1",
+    "version": "0.25.2",
     "author": "BigBearTechWorld",
     "developer": "docmost",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/docmost/docmost",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:44Z",
-    "updated": "2026-02-07T23:01:31.970Z"
+    "updated": "2026-02-09T21:56:39.766Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/docmost.png",
