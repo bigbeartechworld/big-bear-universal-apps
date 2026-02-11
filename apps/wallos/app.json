@@ -5,7 +5,7 @@
     "name": "Wallos",
     "description": "Wallos: Open-Source Personal Subscription Tracker",
     "tagline": "Wallos",
-    "version": "4.6.0",
+    "version": "4.6.1",
     "author": "BigBearTechWorld",
     "developer": "bellamy",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/bellamy/wallos",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:24Z",
-    "updated": "2025-12-24T05:15:16.343Z"
+    "updated": "2026-02-11T20:10:41.775Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/wallos.png",
