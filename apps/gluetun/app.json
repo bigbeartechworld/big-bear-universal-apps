@@ -5,7 +5,7 @@
     "name": "Gluetun",
     "description": "Lightweight swiss-knife-like VPN client to multiple VPN service providers",
     "tagline": "Gluetun",
-    "version": "v3.41.0",
+    "version": "v3.41.1",
     "author": "BigBearTechWorld",
     "developer": "portainer",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/qmcgaw/gluetun",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:50Z",
-    "updated": "2025-12-28T01:56:03.746Z"
+    "updated": "2026-02-11T20:16:43.951Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/gluetun.png",
