@@ -5,7 +5,7 @@
     "name": "Cloudflared Web",
     "description": "Cloudflared-web is a docker image that packages both cloudflared cli and a simple Web UI to easily start or stop remotely-managed Cloudflare tunnel.",
     "tagline": "Cloudflared Web",
-    "version": "2026.1.1",
+    "version": "2026.2.0",
     "author": "BigBearTechWorld",
     "developer": "wisdomsky",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/wisdomsky/cloudflared-web",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:40Z",
-    "updated": "2026-02-01T01:02:02.915Z"
+    "updated": "2026-02-11T20:10:41.755Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/cloudflare.png",
