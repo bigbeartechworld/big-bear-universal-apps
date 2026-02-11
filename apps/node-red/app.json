@@ -5,7 +5,7 @@
     "name": "Node-RED",
     "description": "Node-RED is a programming tool for wiring together hardware devices, APIs and online services in new and interesting ways.  It provides a browser-based editor that makes it easy to wire together flows using the wide range of nodes in the palette that can be deployed to its runtime in a single-click.",
     "tagline": "Low-code programming for event-driven applications",
-    "version": "4.1.4",
+    "version": "4.1.5",
     "author": "BigBearTechWorld",
     "developer": "nodered",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/nodered/node-red",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:05Z",
-    "updated": "2026-01-31T00:56:03.067Z"
+    "updated": "2026-02-11T20:16:14.851Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/node-red.png",
