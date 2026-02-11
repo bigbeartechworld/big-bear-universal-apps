@@ -5,7 +5,7 @@
     "name": "Immich Kiosk",
     "description": "Immich Kiosk is a lightweight slideshow for running on kiosk devices and browsers that uses Immich as a data source.",
     "tagline": "Immich Kiosk",
-    "version": "0.29.1",
+    "version": "0.32.1",
     "author": "BigBearTechWorld",
     "developer": "damongolding",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/damongolding/immich-kiosk",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:53Z",
-    "updated": "2025-12-31T03:46:46.655Z"
+    "updated": "2026-02-11T20:10:41.754Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/immich-kiosk.png",
