@@ -5,7 +5,7 @@
     "name": "Komga",
     "description": "A media server for your comics, mangas, BDs, magazines and eBooks.",
     "tagline": "A media server for your comics, mangas, BDs, magazines and eBooks.",
-    "version": "1.23.6",
+    "version": "1.24.1",
     "author": "BigBearTechWorld",
     "developer": "gotson",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/gotson/komga",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:57Z",
-    "updated": "2025-12-31T03:06:18.636Z"
+    "updated": "2026-02-12T00:59:26.054Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/komga.png",
