@@ -69,7 +69,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-planka-to-bigbearcasaos/924#documentation-5\n"
+        "en_us": "📌 Planka v1 Maintenance Mode\n\nThis is the stable v1.26.3 release. For new deployments, consider 'planka-v2' which includes:\n- Enhanced security (SSRF protection)\n- New features (user mentions, task linking)\n- UI-based webhooks and SMTP configuration\n\nExisting v1 users: Stay on v1 until ready to migrate. Migration requires manual data migration with no rollback.\n\nMigration guide: https://community.bigbeartechworld.com/t/added-planka-to-bigbearcasaos/924"
       }
     }
   },
