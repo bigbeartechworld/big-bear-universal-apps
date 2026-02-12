@@ -5,7 +5,7 @@
     "name": "CyberChef",
     "description": "CyberChef is a simple, intuitive web app for carrying out all manner of cyber operations within a web browser. These operations include simple encoding like XOR and Base64, more complex encryption like AES, DES and Blowfish, creating binary and hexdumps, compression and decompression of data, calculating hashes and checksums, IPv6 and X.509 parsing, changing character encodings, and much more.",
     "tagline": "The Cyber Swiss Army Knife",
-    "version": "10.22.0",
+    "version": "10.22.1",
     "author": "BigBearTechWorld",
     "developer": "gchq",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/gchq/cyberchef",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:42Z",
-    "updated": "2026-02-11T20:21:46.292Z"
+    "updated": "2026-02-12T16:32:43.895Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/cyberchef.png",
