@@ -5,7 +5,7 @@
     "name": "Poste.io",
     "description": "Full stack mail server solution with SSL TLS support. POP3s, SMTP(s), IMAPs, RSPAMD, Clamav, Roundcube(HTTPS), SPF, DKIM with easy installation and web administration.",
     "tagline": "Free version of full mail server solution. POP3, SMTP, IMAP, Spamassassin, WebMail, WebAdmin",
-    "version": "2.5.8",
+    "version": "2.5.9",
     "author": "BigBearTechWorld",
     "developer": "analogic",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/analogic/poste.io",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:14Z",
-    "updated": "2025-12-27T13:12:37.327Z"
+    "updated": "2026-02-14T04:05:44.644Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/poste.png",
