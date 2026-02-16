@@ -5,7 +5,7 @@
     "name": "Eufy Security WS",
     "description": "eufy-security-ws is a small server wrapper around the eufy-security-client library to access it via a WebSocket. It allows you to control Eufy security devices by connecting to the Eufy cloud servers and local/remote stations.",
     "tagline": "eufy-security-ws",
-    "version": "1.9.8",
+    "version": "1.9.9",
     "author": "BigBearTechWorld",
     "developer": "bropat",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/bropat/eufy-security-ws",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:45Z",
-    "updated": "2026-01-16T01:49:38.849Z"
+    "updated": "2026-02-16T04:21:11.933Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/_example/logo.jpg",
