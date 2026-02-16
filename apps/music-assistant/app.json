@@ -5,7 +5,7 @@
     "name": "Music Assistant",
     "description": "Music Assistant is a music library manager for your offline and online music sources which can easily stream your favourite music to a wide range of supported players and be combined with the power of Home Assistant!",
     "tagline": "Home Automation",
-    "version": "2.7.7",
+    "version": "2.7.8",
     "author": "Tofil",
     "developer": "music-assistant",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/music-assistant/server",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:02Z",
-    "updated": "2026-02-14T04:05:44.633Z"
+    "updated": "2026-02-16T14:48:11.703Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/music-assistant/logo.png",
