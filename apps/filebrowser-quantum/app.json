@@ -16,10 +16,10 @@
     "updated": "2026-02-07T00:00:00Z"
   },
   "visual": {
-    "icon": "https://cdn.jsdelivr.net/gh/gtsteffaniak/filebrowser@main/frontend/public/img/logo.svg",
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/filebrowser-quantum.svg",
     "thumbnail": "",
     "screenshots": [],
-    "logo": "https://cdn.jsdelivr.net/gh/gtsteffaniak/filebrowser@main/frontend/public/img/logo.svg"
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/filebrowser-quantum.svg"
   },
   "resources": {
     "youtube": "",
