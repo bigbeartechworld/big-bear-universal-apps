@@ -16,10 +16,10 @@
     "updated": "2026-02-16T04:22:38.129Z"
   },
   "visual": {
-    "icon": "",
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/openclaw.png",
     "thumbnail": "",
     "screenshots": [],
-    "logo": ""
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/openclaw.png"
   },
   "resources": {
     "youtube": "",
