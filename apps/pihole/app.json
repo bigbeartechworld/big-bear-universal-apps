@@ -5,7 +5,7 @@
     "name": "Pi-hole",
     "description": "The Pi-hole® is a DNS sinkhole that protects your devices from unwanted content without installing any client-side software.",
     "tagline": "A black hole for Internet advertisements",
-    "version": "2025.11.1",
+    "version": "2026.02.0",
     "author": "BigBearTechWorld",
     "developer": "pi-hole.net",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/pihole/pihole",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:11Z",
-    "updated": "2025-11-30T20:48:01.514Z"
+    "updated": "2026-02-18T09:52:11.845Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/pi-hole.png",
