@@ -5,7 +5,7 @@
     "name": "ownCloud",
     "description": "ownCloud offers file sharing and collaboration trusted by 200+ million users worldwide regardless of device or location.",
     "tagline": "ownCloud",
-    "version": "10.16.0",
+    "version": "10.16.1",
     "author": "BigBearTechWorld",
     "developer": "owncloud",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/owncloud/server",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:09Z",
-    "updated": "2025-10-27T02:42:09Z"
+    "updated": "2026-02-19T09:49:37.604Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/owncloud.png",
