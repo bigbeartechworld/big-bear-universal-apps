@@ -150,7 +150,10 @@ jobs:
           fi
 
           git commit -m "chore: update app.json versions to match docker-compose.yml"
-          git pull --rebase origin "$HEAD_REF"
+          if ! git pull --rebase origin "$HEAD_REF"; then
+            echo "Rebase failed - likely due to conflicts. Manual intervention required."
+            exit 1
+          fi
           git push
 
       - name: Debug outputs
