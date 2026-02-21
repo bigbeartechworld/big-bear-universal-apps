@@ -113,7 +113,7 @@ jobs:
           HEAD_REF: ${{ github.head_ref }}
         run: |
           if ! git pull --rebase origin "$HEAD_REF"; then
-            echo "Rebase failed - likely due to conflicts. Manual intervention required."
+            echo "::error::Rebase failed due to conflicts. Please manually resolve conflicts and push to the branch."
             exit 1
           fi
 
