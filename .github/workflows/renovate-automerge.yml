@@ -108,6 +108,15 @@ jobs:
             core.setOutput('major_bump', hasMajorBump ? 'true' : 'false');
             console.log(`major_bump output set to: ${hasMajorBump ? 'true' : 'false'}`);
 
+      - name: Sync branch with remote
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          if ! git pull --rebase origin "$HEAD_REF"; then
+            echo "Rebase failed - likely due to conflicts. Manual intervention required."
+            exit 1
+          fi
+
       - name: Update app.json versions
         id: update-versions
         env:
@@ -134,8 +143,6 @@ jobs:
 
       - name: Commit app.json version updates
         if: steps.update-versions.outputs.has_changes == 'true'
-        env:
-          HEAD_REF: ${{ github.head_ref }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
@@ -150,10 +157,6 @@ jobs:
           fi
 
           git commit -m "chore: update app.json versions to match docker-compose.yml"
-          if ! git pull --rebase origin "$HEAD_REF"; then
-            echo "Rebase failed - likely due to conflicts. Manual intervention required."
-            exit 1
-          fi
           git push
 
       - name: Debug outputs
