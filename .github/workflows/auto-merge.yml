@@ -19,6 +19,9 @@ on:
   status: {}
 jobs:
   automerge:
+    concurrency:
+      group: automerge-${{ github.event.pull_request.number || github.event.check_suite.pull_requests[0].number || github.run_id }}
+      cancel-in-progress: ${{ github.event_name != 'status' }}
     env:
       MERGE_METHOD: "squash"
       MERGE_LABELS: "automerge,!work in progress,!do not merge"
@@ -30,7 +33,7 @@ jobs:
       MERGE_REQUIRED_APPROVALS: "0"
       MERGE_DELETE_BRANCH: "true"
       UPDATE_LABELS: ""
-      UPDATE_METHOD: "rebase"
+      UPDATE_METHOD: ""
       GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
     runs-on: ubuntu-latest
     steps:
