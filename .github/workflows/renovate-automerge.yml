@@ -5,6 +5,9 @@ on:
 
 jobs:
   check-version-bump:
+    concurrency:
+      group: renovate-automerge-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
     if: contains(github.head_ref, 'renovate/')
     runs-on: ubuntu-latest
     steps:
@@ -131,6 +134,8 @@ jobs:
 
       - name: Commit app.json version updates
         if: steps.update-versions.outputs.has_changes == 'true'
+        env:
+          HEAD_REF: ${{ github.head_ref }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
@@ -145,6 +150,7 @@ jobs:
           fi
 
           git commit -m "chore: update app.json versions to match docker-compose.yml"
+          git pull --rebase origin "$HEAD_REF"
           git push
 
       - name: Debug outputs
