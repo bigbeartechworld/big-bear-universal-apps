@@ -5,7 +5,7 @@
     "name": "Pi-hole® Updatelists",
     "description": "The Pi-hole® is a DNS sinkhole that protects your devices from unwanted content without installing any client-side software. This is a fork of the Pi-hole® application that adds the ability to update the lists of blocked domains and regexes.",
     "tagline": "A black hole for Internet advertisements. This is a fork of the Pi-hole® application that adds the ability to update the lists of blocked domains and regexes.",
-    "version": "2025.11.1",
+    "version": "2026.02.0",
     "author": "BigBearTechWorld",
     "developer": "jacklul",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/jacklul/pihole",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:11Z",
-    "updated": "2025-12-01T02:11:35.364Z"
+    "updated": "2026-02-18T09:52:06.505Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/pi-hole.png",
