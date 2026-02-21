@@ -5,6 +5,9 @@ on:
 
 jobs:
   check-version-bump:
+    concurrency:
+      group: renovate-automerge-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
     if: contains(github.head_ref, 'renovate/')
     runs-on: ubuntu-latest
     steps:
@@ -104,6 +107,15 @@ jobs:
             // Always set output explicitly to avoid undefined
             core.setOutput('major_bump', hasMajorBump ? 'true' : 'false');
             console.log(`major_bump output set to: ${hasMajorBump ? 'true' : 'false'}`);
+
+      - name: Sync branch with remote
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          if ! git pull --rebase origin "$HEAD_REF"; then
+            echo "::error::git pull --rebase failed (exit $?). Check logs — could be conflicts, network, or auth issue."
+            exit 1
+          fi
 
       - name: Update app.json versions
         id: update-versions
