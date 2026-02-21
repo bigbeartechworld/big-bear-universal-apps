@@ -5,7 +5,7 @@
     "name": "Ollama - AMD",
     "description": "Get up and running with Llama 3, Mistral, Gemma, and other large language models.",
     "tagline": "LLMs inference server with OpenAI compatible API",
-    "version": "0.16.2-rocm",
+    "version": "0.16.3-rocm",
     "author": "BigBearTechWorld",
     "developer": "ollama",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/ollama/ollama",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:07Z",
-    "updated": "2026-02-18T04:17:02.621Z"
+    "updated": "2026-02-21T04:02:13.302Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ollama.png",
