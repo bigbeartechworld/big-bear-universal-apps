@@ -10,7 +10,7 @@
     "developer": "mrantonSG",
     "category": "BigBearCasaOS",
     "source": "big-bear-universal-apps",
-    "license": "",
+    "license": "Apache-2.0 WITH Commons-Clause",
     "homepage": "https://nova-tracker.com"
   },
   "visual": {
@@ -22,7 +22,7 @@
   "resources": {
     "youtube": "",
     "documentation": "https://nova-tracker.com",
-    "repository": "https://github.com/bigbeartechworld/big-bear-universal-apps",
+    "repository": "https://github.com/mrantonSG/nova_DSO_tracker",
     "issues": "https://github.com/bigbeartechworld/big-bear-universal-apps/issues",
     "support": "https://community.bigbeartechworld.com"
   }
