@@ -2,9 +2,9 @@
   "spec_version": "1.0",
   "metadata": {
     "id": "planka",
-    "name": "Planka",
+    "name": "Planka (Legacy)",
     "description": "The realtime kanban board for workgroups built with React and Redux.",
-    "tagline": "Free open source kanban board for workgroups.",
+    "tagline": "Legacy v1 - Use Planka v2 for new installs.",
     "version": "1.26.3",
     "author": "BigBearTechWorld",
     "developer": "plankanban",
