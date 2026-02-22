@@ -35,7 +35,7 @@ x-casaos:
     en_us: Real-time tracking and planning for Deep Space Objects.
   developer: mrantonSG
   author: mrantonSG
-  icon: https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/Apps/nova-dso-tracker/logo.png
+  icon: https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/nova-dso-tracker/logo.png
   title:
     en_us: Nova DSO Tracker
   index: /
@@ -43,11 +43,3 @@ x-casaos:
   scheme: http
   project_url: https://nova-tracker.com
 ```
-
----
-
-**File:** `Apps/nova-dso-tracker/logo.png`
-
-Download your existing logo from GitHub and commit it as `logo.png`:
-```
-https://raw.githubusercontent.com/mrantonSG/nova_DSO_tracker/master/static/nova_logo.png
