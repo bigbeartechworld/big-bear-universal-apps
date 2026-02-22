@@ -61,7 +61,10 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "5001"
+      "port_map": "5001",
+      "volume_mappings": {
+        "nova-dso-tracker_data": "instance"
+      }
     },
     "portainer": {
       "supported": true,
@@ -72,7 +75,10 @@
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
-      "supported_architectures": ["amd64", "arm64"]
+      "supported_architectures": ["amd64", "arm64"],
+      "volume_mappings": {
+        "nova-dso-tracker_data": "instance"
+      }
     },
     "dockge": {
       "supported": true,
