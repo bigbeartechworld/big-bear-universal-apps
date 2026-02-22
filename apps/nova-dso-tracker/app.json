@@ -63,7 +63,7 @@
       "supported": true,
       "port_map": "5001",
       "volume_mappings": {
-        "nova-dso-tracker_data": "instance"
+        "nova-dso-tracker_data": "/DATA/AppData/$AppID/instance"
       }
     },
     "portainer": {
