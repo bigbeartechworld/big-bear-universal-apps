@@ -1,0 +1,326 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "planka-v2",
+    "name": "Planka v2",
+    "description": "The realtime kanban board for workgroups built with React and Redux.",
+    "tagline": "Free open source kanban board for workgroups.",
+    "version": "2.0.1",
+    "author": "BigBearTechWorld",
+    "developer": "plankanban",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/plankanban/planka",
+    "source": "big-bear-universal",
+    "created": "2026-02-12T00:00:00Z",
+    "updated": "2026-02-12T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/planka.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/planka.png"
+  },
+  "resources": {
+    "youtube": "https://youtu.be/rsyU2cBbbSI",
+    "documentation": "https://docs.planka.cloud/docs/upgrade-to-v2/docker/",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "big-bear-planka-v2",
+    "default_port": "3001",
+    "main_image": "ghcr.io/plankanban/planka",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "BASE_URL",
+        "default": "http://[YOUR_CASAOS_LAN_IP]:3001",
+        "description": "The base URL where Planka will be accessed (required)",
+        "required": true
+      },
+      {
+        "name": "DATABASE_URL",
+        "default": "postgresql://postgres@big-bear-planka-v2-postgres/planka",
+        "description": "PostgreSQL database connection URL (required)",
+        "required": true
+      },
+      {
+        "name": "SECRET_KEY",
+        "default": "notsecretkey",
+        "description": "Secret key for session encryption - CHANGE THIS IN PRODUCTION (required)",
+        "required": true
+      },
+      {
+        "name": "DEFAULT_ADMIN_EMAIL",
+        "default": "demo@demo.demo",
+        "description": "Default admin email for initial setup (required)",
+        "required": true
+      },
+      {
+        "name": "DEFAULT_ADMIN_PASSWORD",
+        "default": "demo",
+        "description": "Default admin password for initial setup (required)",
+        "required": true
+      },
+      {
+        "name": "DEFAULT_ADMIN_NAME",
+        "default": "Demo Demo",
+        "description": "Default admin full name for initial setup (required)",
+        "required": true
+      },
+      {
+        "name": "DEFAULT_ADMIN_USERNAME",
+        "default": "demo",
+        "description": "Default admin username for initial setup (required)",
+        "required": true
+      },
+      {
+        "name": "TRUST_PROXY",
+        "default": "",
+        "description": "v2.0.0: Set to 'true' if behind reverse proxy (uses boolean strings, not numeric)",
+        "required": false
+      },
+      {
+        "name": "TOKEN_EXPIRES_IN",
+        "default": "365",
+        "description": "Token expiration in days (optional)",
+        "required": false
+      },
+      {
+        "name": "DEFAULT_LANGUAGE",
+        "default": "en-US",
+        "description": "v2.0.0: Default UI language (optional)",
+        "required": false
+      },
+      {
+        "name": "MAX_UPLOAD_FILE_SIZE",
+        "default": "100000000",
+        "description": "v2.0.0: Maximum file upload size in bytes (default: 100MB)",
+        "required": false
+      },
+      {
+        "name": "STORAGE_LIMIT",
+        "default": "0",
+        "description": "v2.0.0: Total storage limit in bytes (0 = unlimited)",
+        "required": false
+      },
+      {
+        "name": "ACTIVE_USERS_LIMIT",
+        "default": "0",
+        "description": "v2.0.0: Maximum active users (0 = unlimited)",
+        "required": false
+      },
+      {
+        "name": "OUTGOING_BLOCKED_HOSTS",
+        "default": "",
+        "description": "v2.0.0: Comma-separated list of hosts to block for SSRF protection (e.g., localhost,postgres)",
+        "required": false
+      },
+      {
+        "name": "OUTGOING_PROXY",
+        "default": "",
+        "description": "v2.0.0: HTTP proxy for outgoing requests (optional)",
+        "required": false
+      },
+      {
+        "name": "OUTGOING_PROXY_TLS_REJECT_UNAUTHORIZED",
+        "default": "true",
+        "description": "v2.0.0: Reject unauthorized TLS certificates for proxy (optional)",
+        "required": false
+      },
+      {
+        "name": "OIDC_ISSUER",
+        "default": "",
+        "description": "OpenID Connect issuer URL (optional)",
+        "required": false
+      },
+      {
+        "name": "OIDC_CLIENT_ID",
+        "default": "",
+        "description": "OpenID Connect client ID (optional)",
+        "required": false
+      },
+      {
+        "name": "OIDC_CLIENT_SECRET",
+        "default": "",
+        "description": "OpenID Connect client secret (optional)",
+        "required": false
+      },
+      {
+        "name": "OIDC_SCOPES",
+        "default": "openid email profile",
+        "description": "OpenID Connect scopes (optional)",
+        "required": false
+      },
+      {
+        "name": "OIDC_ADMIN_ROLES",
+        "default": "admin",
+        "description": "OpenID Connect admin roles (optional)",
+        "required": false
+      },
+      {
+        "name": "OIDC_EMAIL_ATTRIBUTE",
+        "default": "email",
+        "description": "OpenID Connect email attribute name (optional)",
+        "required": false
+      },
+      {
+        "name": "OIDC_NAME_ATTRIBUTE",
+        "default": "name",
+        "description": "OpenID Connect name attribute (optional)",
+        "required": false
+      },
+      {
+        "name": "OIDC_USERNAME_ATTRIBUTE",
+        "default": "preferred_username",
+        "description": "OpenID Connect username attribute (optional)",
+        "required": false
+      },
+      {
+        "name": "OIDC_ROLES_ATTRIBUTE",
+        "default": "groups",
+        "description": "OpenID Connect roles attribute (optional)",
+        "required": false
+      },
+      {
+        "name": "OIDC_IGNORE_USERNAME",
+        "default": "true",
+        "description": "Ignore OIDC username attribute (optional)",
+        "required": false
+      },
+      {
+        "name": "OIDC_IGNORE_ROLES",
+        "default": "true",
+        "description": "Ignore OIDC roles attribute (optional)",
+        "required": false
+      },
+      {
+        "name": "OIDC_ENFORCED",
+        "default": "true",
+        "description": "Enforce OIDC authentication (optional)",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/app/data",
+        "description": "v2.0.0 unified data directory (required)"
+      },
+      {
+        "container": "/app/public/background-images",
+        "description": "v2.0.0 background images directory"
+      },
+      {
+        "container": "/app/public/user-avatars",
+        "description": "Legacy mount point (kept for migration compatibility)"
+      },
+      {
+        "container": "/app/public/project-background-images",
+        "description": "Legacy mount point (kept for migration compatibility)"
+      },
+      {
+        "container": "/app/private/attachments",
+        "description": "Legacy mount point (kept for migration compatibility)"
+      }
+    ],
+    "ports": [
+      {
+        "container": "1337",
+        "host": "3001",
+        "protocol": "tcp",
+        "description": "Planka v2 web interface (port 3001 to avoid conflict with v1)"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "🆕 PLANKA V2 - SEPARATE APP\n\nThis is a NEW app, separate from 'planka' (v1). Both can run simultaneously.\n\nFOR NEW USERS:\n✅ Install this app for new Planka deployments\n✅ Modern v2 architecture with unified data directory\n✅ Enhanced security (SSRF protection)\n✅ New features: user mentions, task linking, webhooks UI, SMTP UI\n\nFOR V1 USERS:\n⚠️  Do NOT uninstall your 'planka' v1 app\n⚠️  Deploy this as a NEW app alongside v1\n⚠️  Migration is ONE-WAY with NO ROLLBACK\n⚠️  Requires manual data migration: https://docs.planka.cloud/docs/upgrade-to-v2/docker/\n⚠️  Must be on v1 >= 1.26.2, subdomain hosting required\n\nDetailed migration guide: https://community.bigbeartechworld.com/t/added-planka-to-bigbearcasaos/924"
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3001",
+      "volume_mappings": {
+        "planka-v2_data": "/DATA/AppData/$AppID/data",
+        "planka-v2_background-images": "/DATA/AppData/$AppID/background-images",
+        "planka-v2_attachments": "/DATA/AppData/$AppID/attachments",
+        "planka-v2_postgresql": "/DATA/AppData/$AppID/postgresql",
+        "planka-v2_project-background-images": "/DATA/AppData/$AppID/project-background-images",
+        "planka-v2_user-avatars": "/DATA/AppData/$AppID/user-avatars"
+      },
+      "port": "3001"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "3001"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "planka-v2_data": "data",
+        "planka-v2_background-images": "background-images",
+        "planka-v2_attachments": "attachments",
+        "planka-v2_postgresql": "postgresql",
+        "planka-v2_project-background-images": "project-background-images",
+        "planka-v2_user-avatars": "user-avatars"
+      },
+      "port": "3017"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "3001"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "3001"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "planka-v2_data": "data",
+        "planka-v2_background-images": "background-images",
+        "planka-v2_attachments": "attachments",
+        "planka-v2_postgresql": "postgresql",
+        "planka-v2_project-background-images": "project-background-images",
+        "planka-v2_user-avatars": "user-avatars"
+      },
+      "port": "10139"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}
