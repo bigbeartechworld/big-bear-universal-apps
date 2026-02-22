@@ -35,7 +35,7 @@
     ],
     "platform": "linux",
     "main_service": "app",
-    "default_port": "5080",
+    "default_port": "5580",
     "main_image": "ghcr.io/home-assistant-libs/python-matter-server",
     "compose_file": "docker-compose.yml"
   },
@@ -61,11 +61,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "5080",
+      "port_map": "5580",
       "volume_mappings": {
         "python-matter-server_data": "/DATA/AppData/$AppID/data"
       },
-      "port": "5080"
+      "port": "5580"
     },
     "portainer": {
       "supported": true,
@@ -86,7 +86,7 @@
       "volume_mappings": {
         "python-matter-server_data": "data"
       },
-      "port": "5080"
+      "port": "5580"
     },
     "dockge": {
       "supported": true,
@@ -103,7 +103,7 @@
       "volume_mappings": {
         "python-matter-server_data": "data"
       },
-      "port": "5080"
+      "port": "5580"
     }
   },
   "tags": [
