@@ -1,1 +1,29 @@
-
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "big-bear-nova-dso-tracker",
+    "name": "Nova DSO Tracker",
+    "description": "Nova DSO Tracker is a tool for astrophotographers to track Deep Space Objects, check observability, and manage imaging sessions.",
+    "tagline": "Real-time tracking and planning for Deep Space Objects.",
+    "version": "5.0.0",
+    "author": "mrantonSG",
+    "developer": "mrantonSG",
+    "category": "BigBearCasaOS",
+    "source": "big-bear-universal-apps",
+    "license": "",
+    "homepage": "https://nova-tracker.com"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/Apps/nova-dso-tracker/logo.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/Apps/nova-dso-tracker/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://nova-tracker.com",
+    "repository": "https://github.com/bigbeartechworld/big-bear-universal-apps",
+    "issues": "https://github.com/bigbeartechworld/big-bear-universal-apps/issues",
+    "support": "https://community.bigbeartechworld.com"
+  }
+}
