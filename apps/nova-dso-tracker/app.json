@@ -9,7 +9,7 @@
     "author": "mrantonSG",
     "developer": "mrantonSG",
     "category": "Photography",
-    "license": "Apache-2.0 WITH Commons-Clause",
+    "license": "LicenseRef-Apache-2.0-Commons-Clause",
     "homepage": "https://nova-tracker.com",
     "source": "big-bear-universal",
     "created": "2026-02-22T00:00:00Z",
@@ -33,7 +33,7 @@
     "platform": "linux",
     "main_service": "nova",
     "default_port": "5001",
-    "main_image": "mrantonsg/nova-dso-tracker",
+    "main_image": "mrantonsg/nova-dso-tracker:5.0.0",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {
@@ -87,7 +87,7 @@
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": false
     },
     "umbrel": {
       "supported": true,
