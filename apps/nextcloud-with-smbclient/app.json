@@ -5,7 +5,7 @@
     "name": "Nextcloud with SMB (Legacy)",
     "description": "This is legacy and you should use the BigBearCasaOS Nextcloud instead. Nextcloud puts your data at your fingertips, under your control. Store your documents, calendar, contacts and photos on a server at home, at one of our providers or in a data center you trust.",
     "tagline": "The productivity platform that keeps you in control",
-    "version": "32.0.3",
+    "version": "32.0.6",
     "author": "BigBearTechWorld",
     "developer": "nextcloud",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/bigbeartechworld/big-bear-nextcloud-with-smbclient",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:04Z",
-    "updated": "2025-12-31T02:56:34.202Z"
+    "updated": "2026-02-26T04:12:00.409Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nextcloud.png",
