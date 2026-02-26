@@ -5,7 +5,7 @@
     "name": "Pi-hole and Unbound",
     "description": "This is a custom pihole and unbound setup.",
     "tagline": "Pi-hole and Unbound",
-    "version": "2025.11.1",
+    "version": "2026.02.0",
     "author": "BigBearTechWorld",
     "developer": "bigbeartechworld",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/bigbeartechworld/big-bear-pihole-unbound",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:11Z",
-    "updated": "2026-01-25T09:08:12.436Z"
+    "updated": "2026-02-26T04:14:39.177Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/pi-hole-unbound.png",
