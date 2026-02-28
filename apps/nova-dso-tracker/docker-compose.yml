@@ -1,0 +1,16 @@
+name: nova-dso-tracker
+services:
+  nova:
+    image: mrantonsg/nova-dso-tracker:5.0.0
+    container_name: big-bear-nova-dso-tracker
+    ports:
+      - "5001:5001"
+    volumes:
+      - nova-dso-tracker_data:/app/instance
+    restart: unless-stopped
+    network_mode: bridge
+
+volumes:
+  nova-dso-tracker_data:
+    name: nova-dso-tracker_data
+    driver: local
