@@ -5,7 +5,7 @@
     "name": "Planka v2",
     "description": "The realtime kanban board for workgroups built with React and Redux.",
     "tagline": "Free open source kanban board for workgroups.",
-    "version": "2.0.1",
+    "version": "2.0.3",
     "author": "BigBearTechWorld",
     "developer": "plankanban",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/plankanban/planka",
     "source": "big-bear-universal",
     "created": "2026-02-12T00:00:00Z",
-    "updated": "2026-02-12T00:00:00Z"
+    "updated": "2026-03-01T21:07:03.544Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/planka.png",
