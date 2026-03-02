@@ -5,7 +5,7 @@
     "name": "nightscout",
     "description": "This acts as a web-based CGM (Continuous Glucose Monitor) to allow multiple caregivers to remotely view a patient's glucose data in real time. The server reads a MongoDB which is intended to be data from a physical CGM, where it sends new SGV (sensor glucose values) as the data becomes available. The data is then displayed graphically and blood glucose values are predicted 0.5 hours ahead using an autoregressive second order model. Alarms are generated for high and low values, which can be cleared by any watcher of the data.",
     "tagline": "Nightscout",
-    "version": "15.0.4",
+    "version": "15.0.5",
     "author": "BigBearTechWorld",
     "developer": "nightscout",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/nightscout/cgm-remote-monitor",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:04Z",
-    "updated": "2026-03-01T04:18:29.340Z"
+    "updated": "2026-03-02T04:09:11.732Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nightscout.png",
