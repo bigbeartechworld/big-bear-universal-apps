@@ -131,7 +131,7 @@ jobs:
         env:
           HEAD_REF: ${{ github.head_ref }}
         run: |
-          if ! git pull --rebase origin "$HEAD_REF" 2>&1; then
+          if ! git pull --rebase origin "$HEAD_REF"; then
             echo "Warning: git pull --rebase failed. Aborting rebase to keep workspace clean."
             git rebase --abort 2>/dev/null || true
           fi
