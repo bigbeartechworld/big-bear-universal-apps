@@ -6,17 +6,19 @@ on:
       - opened
       - synchronize
       - reopened
+      - labeled
   pull_request_review:
     types:
       - submitted
   check_suite:
     types:
       - completed
+  status: {}
 
 jobs:
   check-version-bump:
     concurrency:
-      group: renovate-automerge-${{ github.event.pull_request.number }}
+      group: renovate-automerge-${{ github.event.pull_request.number || github.run_id }}
       cancel-in-progress: true
     if: |
       contains(github.head_ref, 'renovate/') &&
