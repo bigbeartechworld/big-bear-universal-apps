@@ -128,8 +128,9 @@ jobs:
         env:
           HEAD_REF: ${{ github.head_ref }}
         run: |
-          if ! git pull --rebase origin "$HEAD_REF" 2>/dev/null; then
-            echo "Warning: git pull --rebase failed. Branch may not exist on remote yet. Continuing..."
+          if ! git pull --rebase origin "$HEAD_REF" 2>&1; then
+            echo "Warning: git pull --rebase failed. Aborting rebase to keep workspace clean."
+            git rebase --abort 2>/dev/null || true
           fi
 
       - name: Update app.json versions
@@ -251,3 +252,5 @@ jobs:
           MERGE_RETRY_SLEEP: "10000"
           MERGE_REQUIRED_APPROVALS: "0"
           MERGE_DELETE_BRANCH: "true"
+          UPDATE_LABELS: ""
+          UPDATE_METHOD: ""
