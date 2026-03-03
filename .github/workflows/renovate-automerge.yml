@@ -24,7 +24,10 @@ jobs:
     concurrency:
       group: renovate-automerge-${{ github.event.pull_request.number }}
       cancel-in-progress: true
-    if: contains(github.head_ref, 'renovate/')
+    if: |
+      contains(github.head_ref, 'renovate/') &&
+      github.event_name == 'pull_request' &&
+      contains(fromJSON('["opened","synchronize","reopened"]'), github.event.action)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
