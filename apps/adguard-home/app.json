@@ -9,7 +9,7 @@
     "author": "BigBearTechWorld",
     "developer": "AdGuardTeam",
     "category": "BigBearCasaOS",
-    "license": "",
+    "license": "GPL-3.0-or-later",
     "homepage": "https://hub.docker.com/r/adguard/adguardhome",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:35Z",
@@ -26,10 +26,10 @@
     "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/adguard-home.png"
   },
   "resources": {
-    "youtube": "https://youtu.be/6cu0kfP50Jg",
-    "documentation": "",
-    "repository": "",
-    "issues": "",
+    "youtube": "https://youtu.be/7NGnCbxBf_U",
+    "documentation": "https://github.com/AdguardTeam/AdGuardHome/wiki",
+    "repository": "https://github.com/AdguardTeam/AdGuardHome",
+    "issues": "https://github.com/AdguardTeam/AdGuardHome/issues",
     "support": "https://community.bigbeartechworld.com/"
   },
   "technical": {
