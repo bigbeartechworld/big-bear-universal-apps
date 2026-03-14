@@ -1,19 +1,19 @@
 {
   "spec_version": "1.0",
   "metadata": {
-    "id": "netalertx",
-    "name": "NetAlertX (Legacy)",
-    "description": "WIFI / LAN intruder detector. Scans for devices connected to your network and alerts you if new and unknown devices are found. NOTE: This is the legacy version (frozen at 25.11.29). For new installs, use NetAlertX v26 which has improved security and updated volume paths.",
-    "tagline": "NetAlertX (Legacy)",
-    "version": "25.11.29",
+    "id": "netalertx-v26",
+    "name": "NetAlertX v26",
+    "description": "WIFI / LAN intruder detector. Scans for devices connected to your network and alerts you if new and unknown devices are found. WARNING: v26 has breaking changes from previous versions — volume paths changed from /app/config and /app/db to /data/config and /data/db. Existing data will NOT be migrated automatically. See the migration docs before upgrading.",
+    "tagline": "NetAlertX v26 (Latest)",
+    "version": "26.3.7",
     "author": "BigBearTechWorld",
     "developer": "jokobsk",
     "category": "BigBearCasaOS",
     "license": "",
     "homepage": "https://hub.docker.com/r/jokobsk/netalertx",
     "source": "big-bear-universal",
-    "created": "2025-10-27T02:42:03Z",
-    "updated": "2026-03-09T17:34:09.337Z"
+    "created": "2026-03-14T00:00:00Z",
+    "updated": "2026-03-14T00:00:00Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/pi-alert.png",
@@ -23,7 +23,7 @@
   },
   "resources": {
     "youtube": "",
-    "documentation": "",
+    "documentation": "https://docs.netalertx.com",
     "repository": "",
     "issues": "",
     "support": "https://community.bigbeartechworld.com/"
@@ -34,7 +34,7 @@
       "arm64"
     ],
     "platform": "linux",
-    "main_service": "big-bear-netalertx",
+    "main_service": "big-bear-netalertx-v26",
     "default_port": "8080",
     "main_image": "jokobsk/netalertx",
     "compose_file": "docker-compose.yml"
@@ -43,12 +43,12 @@
     "environment_variables": [],
     "volumes": [
       {
-        "container": "/app/config",
-        "description": "Container Path: /app/config"
+        "container": "/data/config",
+        "description": "Container Path: /data/config"
       },
       {
-        "container": "/app/db",
-        "description": "Container Path: /app/db"
+        "container": "/data/db",
+        "description": "Container Path: /data/db"
       }
     ],
     "ports": [
@@ -63,15 +63,19 @@
   "ui": {
     "scheme": "http",
     "path": "",
-    "tips": {}
+    "tips": {
+      "before_install": {
+        "en_us": "v26 has breaking volume path changes. If migrating from the legacy version, see https://docs.netalertx.com for migration instructions.\n"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
       "port_map": "8080",
       "volume_mappings": {
-        "netalertx_config": "/DATA/AppData/$AppID/config",
-        "netalertx_db": "/DATA/AppData/$AppID/db"
+        "netalertx-v26_config": "/DATA/AppData/$AppID/config",
+        "netalertx-v26_db": "/DATA/AppData/$AppID/db"
       },
       "port": "8080"
     },
@@ -92,8 +96,8 @@
         "arm64"
       ],
       "volume_mappings": {
-        "netalertx_config": "config",
-        "netalertx_db": "db"
+        "netalertx-v26_config": "config",
+        "netalertx-v26_db": "db"
       },
       "port": "8112"
     },
@@ -110,8 +114,8 @@
       "supported": false,
       "manifest_version": 1,
       "volume_mappings": {
-        "netalertx_config": "config",
-        "netalertx_db": "db"
+        "netalertx-v26_config": "config",
+        "netalertx-v26_db": "db"
       },
       "port": "10444"
     }
