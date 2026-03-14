@@ -1,0 +1,51 @@
+# Configuration for netalertx-v26 setup
+
+# Name of the big-bear-netalertx-v26 application
+name: big-bear-netalertx-v26
+# Service definitions for the big-bear-netalertx-v26 application
+services:
+  # Service name: big-bear-netalertx-v26
+  # The `big-bear-netalertx-v26` service definition
+  big-bear-netalertx-v26:
+    # Name of the container
+    container_name: big-bear-netalertx-v26
+    # Image to be used for the container
+    image: jokobsk/netalertx:26.3.7
+    # Container restart policy
+    restart: unless-stopped
+    # Drop all capabilities and add only what's needed
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_RAW
+      - NET_ADMIN
+      - NET_BIND_SERVICE
+      - CHOWN
+      - SETUID
+      - SETGID
+    # Volumes to be mounted to the container
+    volumes:
+      # Mounting the local netalertx-v26_config directory to /data/config inside the container
+      - netalertx-v26_config:/data/config
+      # Mounting the local netalertx-v26_db directory to /data/db inside the container
+      - netalertx-v26_db:/data/db
+    # Tmpfs mount
+    tmpfs:
+      - /tmp
+    # Environment variables
+    environment:
+      - TZ=UTC
+      - PORT=8080
+      - PUID=1000
+      - PGID=1000
+      # ❗ DANGER ZONE BELOW - Setting ALWAYS_FRESH_INSTALL=true will delete the content of the /data/db & /data/config folders
+      - ALWAYS_FRESH_INSTALL=false
+    # Network mode for the container
+    network_mode: host
+volumes:
+  netalertx-v26_config:
+    name: netalertx-v26_config
+    driver: local
+  netalertx-v26_db:
+    name: netalertx-v26_db
+    driver: local
