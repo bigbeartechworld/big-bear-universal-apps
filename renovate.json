@@ -92,6 +92,15 @@
       "enabled": false
     },
     {
+      "matchPackageNames": [
+        "jokobsk/netalertx"
+      ],
+      "matchFileNames": [
+        "apps/netalertx/docker-compose.yml"
+      ],
+      "enabled": false
+    },
+    {
       "matchDatasources": "docker",
       "matchCurrentVersion": "/^latest$/",
       "automerge": false,
