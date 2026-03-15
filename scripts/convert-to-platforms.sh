@@ -789,8 +789,11 @@ convert_to_casaos() {
                         local vol_source=$(yq eval ".services.$service_name.volumes[$j].source" "$compose_file" 2>/dev/null)
                         if [[ "$vol_source" == "$vol_name" ]]; then
                             container_path=$(yq eval ".services.$service_name.volumes[$j].target" "$compose_file" 2>/dev/null)
-                            [[ "$container_path" != /* ]] && [[ "$container_path" != ./* ]] && container_path=""
-                            is_match=true
+                            if [[ "$container_path" == /* ]] || [[ "$container_path" == ./* ]]; then
+                                is_match=true
+                            else
+                                container_path=""
+                            fi
                         fi
                     else
                         local vol_entry=$(yq eval ".services.$service_name.volumes[$j]" "$compose_file")
@@ -802,8 +805,11 @@ convert_to_casaos() {
                         if [[ "$vol_entry" == "${vol_name}:"* ]]; then
                             container_path="${vol_entry#*:}"
                             container_path="${container_path%%:*}"
-                            [[ "$container_path" != /* ]] && [[ "$container_path" != ./* ]] && container_path=""
-                            is_match=true
+                            if [[ "$container_path" == /* ]] || [[ "$container_path" == ./* ]]; then
+                                is_match=true
+                            else
+                                container_path=""
+                            fi
                         fi
                     fi
 
