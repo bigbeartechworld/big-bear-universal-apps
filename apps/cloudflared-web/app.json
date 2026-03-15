@@ -23,9 +23,9 @@
   },
   "resources": {
     "youtube": "https://youtu.be/JvyyolXJ0-A",
-    "documentation": "",
-    "repository": "",
-    "issues": "",
+    "documentation": "https://github.com/wisdomsky/cloudflared-web",
+    "repository": "https://github.com/wisdomsky/cloudflared-web",
+    "issues": "https://github.com/wisdomsky/cloudflared-web/issues",
     "support": "https://community.bigbeartechworld.com/"
   },
   "technical": {
@@ -84,7 +84,12 @@
         "required": false
       }
     ],
-    "volumes": [],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
     "ports": [
       {
         "container": "14333",
@@ -107,6 +112,9 @@
     "casaos": {
       "supported": true,
       "port_map": "14333",
+      "volume_mappings": {
+        "cloudflared-web_config": "/DATA/AppData/$AppID/config"
+      },
       "port": "14333"
     },
     "portainer": {

@@ -24,3 +24,12 @@ services:
       - METRICS_PORT=60123
       - BASIC_AUTH_USER=admin
       - BASIC_AUTH_PASS=""
+    # Volumes for the service
+    volumes:
+      - cloudflared-web_config:/config
+
+# Volumes used by the application
+volumes:
+  cloudflared-web_config:
+    name: cloudflared-web_config
+    driver: local
