@@ -789,6 +789,7 @@ convert_to_casaos() {
                         local vol_source=$(yq eval ".services.$service_name.volumes[$j].source" "$compose_file" 2>/dev/null)
                         if [[ "$vol_source" == "$vol_name" ]]; then
                             container_path=$(yq eval ".services.$service_name.volumes[$j].target" "$compose_file" 2>/dev/null)
+                            [[ "$container_path" != /* ]] && [[ "$container_path" != ./* ]] && container_path=""
                             is_match=true
                         fi
                     else
