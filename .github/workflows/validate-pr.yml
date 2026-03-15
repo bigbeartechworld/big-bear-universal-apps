@@ -133,6 +133,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [validate-apps, test-conversion]
     if: always()
+    permissions:
+      pull-requests: write
     steps:
       - name: Comment PR
         uses: actions/github-script@v7
