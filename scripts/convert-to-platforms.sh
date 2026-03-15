@@ -844,6 +844,11 @@ convert_to_casaos() {
         yq eval 'del(.volumes)' -i "$compose_file"
     fi
     
+    # Remove empty arrays that CasaOS cannot validate (cap_add, devices, command)
+    yq eval 'del(.services[].cap_add | select(length == 0))' -i "$compose_file" 2>/dev/null || true
+    yq eval 'del(.services[].devices | select(length == 0))' -i "$compose_file" 2>/dev/null || true
+    yq eval 'del(.services[].command | select(length == 0))' -i "$compose_file" 2>/dev/null || true
+
     # Get platform-specific YouTube (or fall back to global)
     local platform_youtube=$(jq -r '.compatibility.casaos.youtube // ""' "$app_dir/app.json")
     local youtube_url="${platform_youtube:-$APP_YOUTUBE}"
