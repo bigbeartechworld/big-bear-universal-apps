@@ -802,6 +802,7 @@ convert_to_casaos() {
                         if [[ "$vol_entry" == "${vol_name}:"* ]]; then
                             container_path="${vol_entry#*:}"
                             container_path="${container_path%%:*}"
+                            [[ "$container_path" != /* ]] && [[ "$container_path" != ./* ]] && container_path=""
                             is_match=true
                         fi
                     fi
