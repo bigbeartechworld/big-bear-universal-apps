@@ -716,6 +716,8 @@ convert_to_casaos() {
                 local vol_str=$(yq eval ".services[\"$service_name\"].volumes[$i]" "$compose_file" 2>/dev/null)
                 container_path="${vol_str#*:}"
                 container_path="${container_path%%:*}"
+                # Only accept absolute or relative paths as container paths
+                [[ "$container_path" != /* ]] && [[ "$container_path" != ./* ]] && container_path=""
             fi
 
             if [[ -z "$container_path" ]] || [[ "$container_path" == "null" ]]; then
@@ -778,23 +780,35 @@ convert_to_casaos() {
                 local vol_count=$(yq eval ".services.$service_name.volumes | length" "$compose_file" 2>/dev/null || echo "0")
                 
                 for ((j=0; j<vol_count; j++)); do
-                    local vol_entry=$(yq eval ".services.$service_name.volumes[$j]" "$compose_file")
-                    
-                    # Skip if this is already a bind mount (starts with / or ./)
-                    if [[ "$vol_entry" == /* ]] || [[ "$vol_entry" == ./* ]]; then
-                        continue
+                    local vol_type=$(yq eval ".services.$service_name.volumes[$j] | type" "$compose_file" 2>/dev/null)
+                    local container_path=""
+                    local is_match=false
+
+                    if [[ "$vol_type" == "!!map" ]]; then
+                        # Long-form: check if .source matches the named volume
+                        local vol_source=$(yq eval ".services.$service_name.volumes[$j].source" "$compose_file" 2>/dev/null)
+                        if [[ "$vol_source" == "$vol_name" ]]; then
+                            container_path=$(yq eval ".services.$service_name.volumes[$j].target" "$compose_file" 2>/dev/null)
+                            is_match=true
+                        fi
+                    else
+                        local vol_entry=$(yq eval ".services.$service_name.volumes[$j]" "$compose_file")
+                        # Skip if this is already a bind mount (starts with / or ./)
+                        if [[ "$vol_entry" == /* ]] || [[ "$vol_entry" == ./* ]]; then
+                            continue
+                        fi
+                        # Check if this volume entry uses the named volume
+                        if [[ "$vol_entry" == "${vol_name}:"* ]]; then
+                            container_path="${vol_entry#*:}"
+                            container_path="${container_path%%:*}"
+                            is_match=true
+                        fi
                     fi
-                    
-                    # Check if this volume entry uses the named volume
-                    if [[ "$vol_entry" == "${vol_name}:"* ]]; then
-                        # Extract container path
-                        local container_path="${vol_entry#*:}"
-                        # Remove any trailing options (e.g., :ro, :rw)
-                        container_path="${container_path%%:*}"
-                        
+
+                    if [[ "$is_match" == true ]] && [[ -n "$container_path" ]] && [[ "$container_path" != "null" ]]; then
                         # Check if there's a custom mapping for this volume
                         local custom_mapping=$(echo "$volume_mappings_json" | jq -r --arg vol "$vol_name" '.[$vol] // empty')
-                        
+
                         local casaos_path
                         if [[ -n "$custom_mapping" && "$custom_mapping" != "null" ]]; then
                             # Use the custom mapping from app.json
@@ -804,14 +818,14 @@ convert_to_casaos() {
                             # Convert volume name to a simple folder name (remove app prefix if exists)
                             local folder_suffix="${vol_name#*_}"  # Remove prefix before underscore
                             [[ "$folder_suffix" == "$vol_name" ]] && folder_suffix="${vol_name}"
-                            
+
                             # Convert underscores to slashes for nested paths (e.g., data_work -> data/work)
                             folder_suffix="${folder_suffix//_//}"
-                            
+
                             casaos_path="/DATA/AppData/\$AppID/${folder_suffix}:${container_path}"
                         fi
-                        
-                        # Replace the volume entry
+
+                        # Replace the volume entry with a short-form bind mount string
                         yq eval ".services.$service_name.volumes[$j] = \"$casaos_path\"" -i "$compose_file"
                     fi
                 done
