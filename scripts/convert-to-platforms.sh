@@ -700,49 +700,66 @@ convert_to_casaos() {
             done <<< "$service_envs"
         fi
         
-        # Add volumes for this service
-        local service_volumes=$(yq eval ".services[\"$service_name\"].volumes | .[]" "$compose_file" 2>/dev/null || echo "")
+        # Add volumes for this service (handles both short-form and long-form syntax)
+        local vol_count=$(yq eval ".services[\"$service_name\"].volumes | length" "$compose_file" 2>/dev/null || echo "0")
         local vol_index=0
-        while IFS= read -r volume_entry; do
-            [[ -z "$volume_entry" ]] && continue
-            
-            # Extract container path from volume entry (after the colon)
-            local container_path="${volume_entry#*:}"
-            # Remove any trailing options (e.g., :ro, :rw)
-            container_path="${container_path%%:*}"
-            
-            # Skip if it's not a valid path
+        for ((i=0; i<vol_count; i++)); do
+            # Check if entry is a string (short-form) or object (long-form)
+            local vol_type=$(yq eval ".services[\"$service_name\"].volumes[$i] | type" "$compose_file" 2>/dev/null)
+            local container_path=""
+
+            if [[ "$vol_type" == "!!map" ]]; then
+                # Long-form: extract target field
+                container_path=$(yq eval ".services[\"$service_name\"].volumes[$i].target" "$compose_file" 2>/dev/null)
+            else
+                # Short-form: extract path after first colon
+                local vol_str=$(yq eval ".services[\"$service_name\"].volumes[$i]" "$compose_file" 2>/dev/null)
+                container_path="${vol_str#*:}"
+                container_path="${container_path%%:*}"
+            fi
+
+            # Strip trailing comments
+            container_path="${container_path%%#*}"
+            container_path="${container_path%% }"
+
             if [[ -z "$container_path" ]] || [[ "$container_path" == "null" ]]; then
                 continue
             fi
-            
-            # Add to x-casaos with proper escaping
+
             yq eval ".services.[\"$service_name\"].x-casaos.volumes[$vol_index].container = \"$container_path\"" -i "$compose_file" 2>/dev/null || true
             yq eval ".services.[\"$service_name\"].x-casaos.volumes[$vol_index].description.en_us = \"Container Path: $container_path\"" -i "$compose_file" 2>/dev/null || true
             vol_index=$((vol_index + 1))
-        done <<< "$service_volumes"
+        done
         
-        # Add ports for this service
-        local service_ports=$(yq eval ".services[\"$service_name\"].ports | .[]" "$compose_file" 2>/dev/null || echo "")
+        # Add ports for this service (handles both short-form and long-form syntax)
+        local port_count=$(yq eval ".services[\"$service_name\"].ports | length" "$compose_file" 2>/dev/null || echo "0")
         local port_index=0
-        while IFS= read -r port_entry; do
-            [[ -z "$port_entry" ]] && continue
-            
-            # Extract container port from port entry
-            local container_port="${port_entry#*:}"
-            # Remove any protocol suffix (e.g., /tcp, /udp)
-            container_port="${container_port%%/*}"
-            
-            # Skip if it's not a valid port
+        for ((i=0; i<port_count; i++)); do
+            local port_type=$(yq eval ".services[\"$service_name\"].ports[$i] | type" "$compose_file" 2>/dev/null)
+            local container_port=""
+
+            if [[ "$port_type" == "!!map" ]]; then
+                # Long-form: extract target field
+                container_port=$(yq eval ".services[\"$service_name\"].ports[$i].target" "$compose_file" 2>/dev/null)
+            else
+                # Short-form: extract container port
+                local port_str=$(yq eval ".services[\"$service_name\"].ports[$i]" "$compose_file" 2>/dev/null)
+                container_port="${port_str#*:}"
+                container_port="${container_port%%/*}"
+            fi
+
+            # Strip trailing comments
+            container_port="${container_port%%#*}"
+            container_port="${container_port%% }"
+
             if [[ -z "$container_port" ]] || [[ "$container_port" == "null" ]]; then
                 continue
             fi
-            
-            # Add to x-casaos with proper escaping
+
             yq eval ".services.[\"$service_name\"].x-casaos.ports[$port_index].container = \"$container_port\"" -i "$compose_file" 2>/dev/null || true
             yq eval ".services.[\"$service_name\"].x-casaos.ports[$port_index].description.en_us = \"Container Port: $container_port\"" -i "$compose_file" 2>/dev/null || true
             port_index=$((port_index + 1))
-        done <<< "$service_ports"
+        done
         
     done <<< "$all_services"
     
