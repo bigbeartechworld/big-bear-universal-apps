@@ -718,10 +718,6 @@ convert_to_casaos() {
                 container_path="${container_path%%:*}"
             fi
 
-            # Strip trailing comments
-            container_path="${container_path%%#*}"
-            container_path="${container_path%% }"
-
             if [[ -z "$container_path" ]] || [[ "$container_path" == "null" ]]; then
                 continue
             fi
@@ -744,13 +740,9 @@ convert_to_casaos() {
             else
                 # Short-form: extract container port
                 local port_str=$(yq eval ".services[\"$service_name\"].ports[$i]" "$compose_file" 2>/dev/null)
-                container_port="${port_str#*:}"
+                container_port="${port_str##*:}"
                 container_port="${container_port%%/*}"
             fi
-
-            # Strip trailing comments
-            container_port="${container_port%%#*}"
-            container_port="${container_port%% }"
 
             if [[ -z "$container_port" ]] || [[ "$container_port" == "null" ]]; then
                 continue
