@@ -13,13 +13,13 @@
     "homepage": "https://hub.docker.com/r/ihatemoney/ihatemoney",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:53Z",
-    "updated": "2026-03-06T20:54:51.661Z"
+    "updated": "2026-03-15T12:50:02Z"
   },
   "visual": {
-    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ihatemoney.png",
+    "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/ihatemoney.png",
     "thumbnail": "",
     "screenshots": [],
-    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ihatemoney.png"
+    "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/ihatemoney.png"
   },
   "resources": {
     "youtube": "https://youtu.be/aHz0Vh-KbXw",
