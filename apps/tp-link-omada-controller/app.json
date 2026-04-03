@@ -5,7 +5,7 @@
     "name": "TP-Link Omada Controller",
     "description": "Docker image for TP-Link Omada Controller to control TP-Link Omada Hardware",
     "tagline": "TP-Link Omada Controller",
-    "version": "6.1",
+    "version": "6.2",
     "author": "BigBearTechWorld",
     "developer": "mbentley",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/mbentley/omada-controller",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:21Z",
-    "updated": "2026-01-26T16:50:23.543Z"
+    "updated": "2026-04-03T01:56:08.023Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/omada.png",
