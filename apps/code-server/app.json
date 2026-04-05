@@ -5,7 +5,7 @@
     "name": "Code Server",
     "description": "Run VS Code on any machine anywhere and access it in the browser.",
     "tagline": "Code Server",
-    "version": "4.113.1",
+    "version": "4.114.0",
     "author": "BigBearTechWorld",
     "developer": "linuxserver",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/code-server",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:40Z",
-    "updated": "2026-04-04T00:49:43.176Z"
+    "updated": "2026-04-05T01:16:01.016Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/coder.png",
