@@ -5,6 +5,8 @@ Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within
 
 ## [2026.04.1]
 
+[Blog post](https://community.bigbeartechworld.com/t/2026-04-1-major-version-app-updates-in-big-bear-universal-apps/5262?u=dragonfire1119)
+
 ### Added
 - `apps/vikunja-v2/` — Vikunja v2.3.0. Major rewrite with rebuilt session-based authentication, changed API routes, and Typesense removed. Uses MariaDB 11, port 8082.
 - `apps/farmos-v4/` — FarmOS v4.0.0. Requires PHP 8.4 (Drupal 11) and MariaDB 10.6+. Uses port 8081 to coexist with legacy app.
