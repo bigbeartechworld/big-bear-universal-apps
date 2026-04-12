@@ -18,7 +18,7 @@ Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within
 - `apps/passwordpusher/app.json` — Renamed to "Password Pusher (Legacy)". Pinned at v1.69.3. Use `passwordpusher-v2` for v2+.
 - `renovate.json` — Added `enabled: false` rules scoped via `matchFileNames` for all legacy app docker-compose files. New versioned app directories continue to receive Renovate updates.
 
-### Updated (via squash merge)
+### Updated
 - `apps/zotero/` — v7 → v9 (linuxserver/zotero:9.0.20260410)
 - `apps/firefox/` — v1148.0.2 → v1149.0.2 (linuxserver/firefox:1149.0.2)
 - `apps/homer/` — v25.11.1 → v26.4.1 (b4bz/homer:v26.4.1)
