@@ -35,7 +35,7 @@
     ],
     "platform": "linux",
     "main_service": "big-bear-farmos-v4",
-    "default_port": "8081",
+    "default_port": "8083",
     "main_image": "farmos/farmos",
     "compose_file": "docker-compose.yml"
   },
@@ -50,9 +50,9 @@
     "ports": [
       {
         "container": "80",
-        "host": "8081",
+        "host": "8083",
         "protocol": "tcp",
-        "description": "FarmOS v4 web interface (port 8081 to avoid conflict with v3's 8080)"
+        "description": "FarmOS v4 web interface (port 8083 to avoid conflict with v3's 8080)"
       }
     ]
   },
@@ -68,12 +68,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8081",
+      "port_map": "8083",
       "volume_mappings": {
         "farmos-v4_db": "/DATA/AppData/$AppID/db",
         "farmos-v4_sites": "/DATA/AppData/$AppID/sites"
       },
-      "port": "8081"
+      "port": "8083"
     },
     "portainer": {
       "supported": true,
@@ -83,7 +83,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "8081\n3307"
+      "port": "8083\n3307"
     },
     "runtipi": {
       "supported": true,
@@ -96,18 +96,18 @@
         "farmos-v4_db": "db",
         "farmos-v4_sites": "sites"
       },
-      "port": "8081"
+      "port": "8083"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "8081\n3307"
+      "port": "8083\n3307"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "8081\n3307"
+      "port": "8083\n3307"
     },
     "umbrel": {
       "supported": true,
@@ -116,7 +116,7 @@
         "farmos-v4_db": "db",
         "farmos-v4_sites": "sites"
       },
-      "port": "8081"
+      "port": "8083"
     }
   },
   "tags": [

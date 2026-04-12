@@ -38,8 +38,8 @@ services:
       - farmos-v4_sites:/opt/drupal/web/sites
     # Ports mapping between host and container
     ports:
-      # Mapping port 8081 of the host to port 80 of the container (different from v3's 8080)
-      - "8081:80"
+      # Mapping port 8083 of the host to port 80 of the container (8080=v3, 8081=vikunja, 8082=vikunja-v2)
+      - "8083:80"
     networks:
       - big-bear-farmos-v4-network
   # MariaDB database service configuration for FarmOS v4
