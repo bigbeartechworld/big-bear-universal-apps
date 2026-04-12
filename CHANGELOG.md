@@ -1,9 +1,9 @@
 # Changelog
 
 All notable changes to Big Bear Universal Apps are documented here.
-Format: [CalVer](https://calver.org/) — `YYYY.MM.DD`
+Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within the month)
 
-## [2026.04.12]
+## [2026.04.1]
 
 ### Added
 - `apps/vikunja-v2/` — Vikunja v2.3.0. Major rewrite with rebuilt session-based authentication, changed API routes, and Typesense removed. Uses MariaDB 11, port 8082.
