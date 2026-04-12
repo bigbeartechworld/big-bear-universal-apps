@@ -1,31 +1,29 @@
 {
   "spec_version": "1.0",
   "metadata": {
-    "id": "farmos",
-    "name": "FarmOS (Legacy)",
+    "id": "farmos-v4",
+    "name": "FarmOS v4",
     "description": "farmOS is a web-based application for farm management, planning, and record keeping. It is developed by a community of volunteers and aims to provide a standard platform for farmers, developers, and researchers to build upon.",
     "tagline": "A web-based farm record keeping application.",
-    "version": "3.5.1",
+    "version": "4.0.0",
     "author": "BigBearTechWorld",
     "developer": "farmOS",
     "category": "BigBearCasaOS",
     "license": "",
     "homepage": "https://hub.docker.com/r/farmos/farmos",
     "source": "big-bear-universal",
-    "created": "2025-10-27T02:41:46Z",
-    "updated": "2026-02-01T01:02:51.365Z"
+    "created": "2026-04-12T00:00:00Z",
+    "updated": "2026-04-12T00:00:00Z"
   },
   "visual": {
-    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/farmos/logo.jpeg",
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/farmos-v4/logo.jpeg",
     "thumbnail": "",
-    "screenshots": [
-      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/farmos/screenshots/screenshot-1.png"
-    ],
-    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/farmos/logo.jpeg"
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/farmos-v4/logo.jpeg"
   },
   "resources": {
     "youtube": "",
-    "documentation": "",
+    "documentation": "https://farmos.org/hosting/install/",
     "repository": "",
     "issues": "",
     "support": "https://community.bigbeartechworld.com/"
@@ -36,8 +34,8 @@
       "arm64"
     ],
     "platform": "linux",
-    "main_service": "big-bear-farmos",
-    "default_port": "8080",
+    "main_service": "big-bear-farmos-v4",
+    "default_port": "8081",
     "main_image": "farmos/farmos",
     "compose_file": "docker-compose.yml"
   },
@@ -51,10 +49,10 @@
     ],
     "ports": [
       {
-        "container": "8080",
-        "host": "8080",
+        "container": "80",
+        "host": "8081",
         "protocol": "tcp",
-        "description": "Container Port: 8080"
+        "description": "FarmOS v4 web interface (port 8081 to avoid conflict with v3's 8080)"
       }
     ]
   },
@@ -63,19 +61,19 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-farmos-to-bigbearcasaos/2334?u=dragonfire1119\n"
+        "en_us": "NEW APP - FARMOS V4\n\nThis is a SEPARATE app from 'FarmOS (Legacy)' (v3.x). Both can run simultaneously.\n\nFarmOS v4 requires:\n- PHP 8.4 (Drupal 11)\n- MariaDB 10.6+ (this app uses MariaDB 10.6)\n\nFOR MIGRATION FROM V3:\n- You MUST be on the latest farmOS 3.x before upgrading\n- Do NOT uninstall your existing FarmOS (Legacy) app\n- Create backups before migrating\n- See: https://farmos.org/hosting/install/"
       }
     }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080",
+      "port_map": "8081",
       "volume_mappings": {
-        "farmos_db": "/DATA/AppData/$AppID/db",
-        "farmos_sites": "/DATA/AppData/$AppID/sites"
+        "farmos-v4_db": "/DATA/AppData/$AppID/db",
+        "farmos-v4_sites": "/DATA/AppData/$AppID/sites"
       },
-      "port": "8080"
+      "port": "8081"
     },
     "portainer": {
       "supported": true,
@@ -85,7 +83,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "8080\n3306"
+      "port": "8081\n3307"
     },
     "runtipi": {
       "supported": true,
@@ -95,30 +93,30 @@
         "arm64"
       ],
       "volume_mappings": {
-        "farmos_db": "db",
-        "farmos_sites": "sites"
+        "farmos-v4_db": "db",
+        "farmos-v4_sites": "sites"
       },
-      "port": "8093"
+      "port": "8081"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "8080\n3306"
+      "port": "8081\n3307"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "8080\n3306"
+      "port": "8081\n3307"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
-        "farmos_db": "db",
-        "farmos_sites": "sites"
+        "farmos-v4_db": "db",
+        "farmos-v4_sites": "sites"
       },
-      "port": "10044"
+      "port": "8081"
     }
   },
   "tags": [

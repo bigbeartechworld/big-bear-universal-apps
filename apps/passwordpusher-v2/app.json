@@ -1,19 +1,19 @@
 {
   "spec_version": "1.0",
   "metadata": {
-    "id": "passwordpusher",
-    "name": "Password Pusher (Legacy)",
+    "id": "passwordpusher-v2",
+    "name": "Password Pusher v2",
     "description": "Password Pusher is an open source application to communicate passwords over the web. Links to passwords expire after a certain number of views and/or time has passed.",
     "tagline": "Give your users the tools to be secure by default.",
-    "version": "1.69.3",
+    "version": "2.2.2",
     "author": "BigBearTechWorld",
     "developer": "pglombardo",
     "category": "BigBearCasaOS",
     "license": "",
     "homepage": "https://hub.docker.com/r/pglombardo/pwpush",
     "source": "big-bear-universal",
-    "created": "2025-10-27T02:42:09Z",
-    "updated": "2026-03-07T09:48:15.252Z"
+    "created": "2026-04-12T00:00:00Z",
+    "updated": "2026-04-12T00:00:00Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/password-pusher.png",
@@ -23,7 +23,7 @@
   },
   "resources": {
     "youtube": "https://youtu.be/U17LWqXfOmU",
-    "documentation": "",
+    "documentation": "https://docs.pwpush.com/docs/upgrading/",
     "repository": "",
     "issues": "",
     "support": "https://community.bigbeartechworld.com/"
@@ -34,8 +34,8 @@
       "arm64"
     ],
     "platform": "linux",
-    "main_service": "big-bear-pwpush",
-    "default_port": "5100",
+    "main_service": "big-bear-pwpush-v2",
+    "default_port": "5101",
     "main_image": "pglombardo/pwpush",
     "compose_file": "docker-compose.yml"
   },
@@ -43,19 +43,19 @@
     "environment_variables": [
       {
         "name": "PWP__PW__EXPIRE_AFTER_DAYS_DEFAULT",
-        "default": "",
+        "default": "1",
         "description": "Password Expire After Days Default",
         "required": false
       },
       {
         "name": "PWP__PW__EXPIRE_AFTER_VIEWS_MIN",
-        "default": "",
+        "default": "1",
         "description": "Password Expire After Views Min",
         "required": false
       },
       {
         "name": "PWP__PW__RETRIEVAL_STEP_DEFAULT",
-        "default": "",
+        "default": "true",
         "description": "Password Retrieval Step Default",
         "required": false
       }
@@ -69,9 +69,9 @@
     "ports": [
       {
         "container": "5100",
-        "host": "5100",
+        "host": "5101",
         "protocol": "tcp",
-        "description": "Container Port: 5100"
+        "description": "Password Pusher v2 web interface (port 5101 to avoid conflict with v1's 5100)"
       }
     ]
   },
@@ -80,19 +80,19 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-password-pusher-to-bigbearcasaos/1508?u=dragonfire1119\n"
+        "en_us": "NEW APP - PASSWORD PUSHER V2\n\nThis is a SEPARATE app from 'Password Pusher (Legacy)' (v1.x). Both can run simultaneously.\n\nPassword Pusher v2 breaking changes:\n- MySQL/MariaDB dropped entirely; now uses PostgreSQL\n- 'enable_logins' removed; use 'allow_anonymous', 'disable_signups', 'disable_logins'\n- URL/file/QR pushes now enabled by default\n\nFOR MIGRATION FROM V1:\n- Do NOT uninstall your existing Password Pusher (Legacy) app\n- Data migration from MariaDB to PostgreSQL is required\n- See: https://docs.pwpush.com/docs/upgrading/"
       }
     }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "5100",
+      "port_map": "5101",
       "volume_mappings": {
-        "passwordpusher_mysql": "/DATA/AppData/$AppID/mysql",
-        "passwordpusher_storage": "/DATA/AppData/$AppID/storage"
+        "passwordpusher-v2_postgres": "/DATA/AppData/$AppID/postgres",
+        "passwordpusher-v2_storage": "/DATA/AppData/$AppID/storage"
       },
-      "port": "5100"
+      "port": "5101"
     },
     "portainer": {
       "supported": true,
@@ -102,7 +102,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "5100\n3306"
+      "port": "5101"
     },
     "runtipi": {
       "supported": true,
@@ -112,30 +112,30 @@
         "arm64"
       ],
       "volume_mappings": {
-        "passwordpusher_mysql": "mysql",
-        "passwordpusher_storage": "storage"
+        "passwordpusher-v2_postgres": "postgres",
+        "passwordpusher-v2_storage": "storage"
       },
-      "port": "5100"
+      "port": "5101"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "5100\n3306"
+      "port": "5101"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "5100\n3306"
+      "port": "5101"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
-        "passwordpusher_mysql": "mysql",
-        "passwordpusher_storage": "storage"
+        "passwordpusher-v2_postgres": "postgres",
+        "passwordpusher-v2_storage": "storage"
       },
-      "port": "10128"
+      "port": "5101"
     }
   },
   "tags": [
