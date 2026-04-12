@@ -40,6 +40,8 @@ services:
     ports:
       # Mapping port 8083 of the host to port 80 of the container (8080=v3, 8081=vikunja, 8082=vikunja-v2)
       - "8083:80"
+    depends_on:
+      - big-bear-farmos-v4-db
     networks:
       - big-bear-farmos-v4-network
   # MariaDB database service configuration for FarmOS v4
