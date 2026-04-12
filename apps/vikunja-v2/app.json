@@ -1,19 +1,19 @@
 {
   "spec_version": "1.0",
   "metadata": {
-    "id": "vikunja",
-    "name": "Vikunja (Legacy)",
+    "id": "vikunja-v2",
+    "name": "Vikunja v2",
     "description": "The open-source, self-hostable to-do app. Organize everything, on all platforms.",
     "tagline": "Vikunja",
-    "version": "1.1.0",
+    "version": "2.3.0",
     "author": "BigBearTechWorld",
     "developer": "kolaente",
     "category": "BigBearCasaOS",
     "license": "",
     "homepage": "https://hub.docker.com/r/vikunja/vikunja",
     "source": "big-bear-universal",
-    "created": "2025-10-27T02:42:23Z",
-    "updated": "2026-02-11T20:19:49.855Z"
+    "created": "2026-04-12T00:00:00Z",
+    "updated": "2026-04-12T00:00:00Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/vikunja.png",
@@ -23,7 +23,7 @@
   },
   "resources": {
     "youtube": "https://youtu.be/T-dNbdIttoI",
-    "documentation": "",
+    "documentation": "https://vikunja.io/docs/api-login-session-migration/",
     "repository": "",
     "issues": "",
     "support": "https://community.bigbeartechworld.com/"
@@ -34,8 +34,8 @@
       "arm64"
     ],
     "platform": "linux",
-    "main_service": "vikunja",
-    "default_port": "8081",
+    "main_service": "vikunja-v2",
+    "default_port": "8082",
     "main_image": "vikunja/vikunja",
     "compose_file": "docker-compose.yml"
   },
@@ -43,45 +43,39 @@
     "environment_variables": [
       {
         "name": "VIKUNJA_DATABASE_HOST",
-        "default": "",
+        "default": "vikunja-v2-db",
         "description": "Database host",
         "required": false
       },
       {
         "name": "VIKUNJA_DATABASE_PASSWORD",
-        "default": "",
+        "default": "secret",
         "description": "Database password",
         "required": false
       },
       {
         "name": "VIKUNJA_DATABASE_TYPE",
-        "default": "",
+        "default": "mysql",
         "description": "Database type",
         "required": false
       },
       {
         "name": "VIKUNJA_DATABASE_USER",
-        "default": "",
+        "default": "vikunja",
         "description": "Database user",
         "required": false
       },
       {
         "name": "VIKUNJA_DATABASE_DATABASE",
-        "default": "",
+        "default": "vikunja",
         "description": "Database name",
         "required": false
       },
       {
-        "name": "VIKUNJA_SERVICE_JWTSECRET",
+        "name": "VIKUNJA_SERVICE_PUBLICURL",
         "default": "",
-        "description": "JWT secret",
-        "required": false
-      },
-      {
-        "name": "VIKUNJA_SERVICE_FRONTENDURL",
-        "default": "",
-        "description": "Frontend URL",
-        "required": false
+        "description": "Public frontend URL (required)",
+        "required": true
       }
     ],
     "volumes": [
@@ -93,26 +87,30 @@
     "ports": [
       {
         "container": "3456",
-        "host": "3456",
+        "host": "8082",
         "protocol": "tcp",
-        "description": "Container Port: 3456"
+        "description": "Vikunja v2 web interface (port 8082 to avoid conflict with v1)"
       }
     ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
-    "tips": {}
+    "tips": {
+      "before_install": {
+        "en_us": "NEW APP - VIKUNJA V2\n\nThis is a SEPARATE app from 'Vikunja (Legacy)' (v1.x). Both can run simultaneously.\n\nVikunja v2 is a major rewrite:\n- Rebuilt session-based authentication (API clients may need updates)\n- Typesense search removed\n- Changed API routes\n\nFOR MIGRATION FROM V1:\n- Do NOT uninstall your existing Vikunja (Legacy) app\n- Deploy this as a NEW app alongside v1\n- Create backups before migrating\n- See: https://vikunja.io/docs/api-login-session-migration/"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8081",
+      "port_map": "8082",
       "volume_mappings": {
-        "vikunja_files": "/DATA/AppData/$AppID/files",
-        "vikunja_mysql": "/DATA/AppData/$AppID/mysql"
+        "vikunja-v2_files": "/DATA/AppData/$AppID/files",
+        "vikunja-v2_mysql": "/DATA/AppData/$AppID/mysql"
       },
-      "port": "8081"
+      "port": "8082"
     },
     "portainer": {
       "supported": true,
@@ -122,7 +120,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "8081"
+      "port": "8082"
     },
     "runtipi": {
       "supported": true,
@@ -132,30 +130,30 @@
         "arm64"
       ],
       "volume_mappings": {
-        "vikunja_files": "files",
-        "vikunja_mysql": "mysql"
+        "vikunja-v2_files": "files",
+        "vikunja-v2_mysql": "mysql"
       },
-      "port": "8140"
+      "port": "8082"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "8081"
+      "port": "8082"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "8081"
+      "port": "8082"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
-        "vikunja_files": "files",
-        "vikunja_mysql": "mysql"
+        "vikunja-v2_files": "files",
+        "vikunja-v2_mysql": "mysql"
       },
-      "port": "10179"
+      "port": "8082"
     }
   },
   "tags": [

@@ -2,7 +2,7 @@
   "spec_version": "1.0",
   "metadata": {
     "id": "rocket-chat",
-    "name": "Rocket.Chat",
+    "name": "Rocket.Chat (Legacy)",
     "description": "Rocket.Chat is an open-source fully customizable communications platform [...]",
     "tagline": "The communications platform that puts data protection first.",
     "version": "6.13.1",

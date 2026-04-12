@@ -101,6 +101,51 @@
       "enabled": false
     },
     {
+      "matchPackageNames": [
+        "rocket.chat"
+      ],
+      "matchFileNames": [
+        "apps/rocket-chat/docker-compose.yml"
+      ],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": [
+        "ghcr.io/plankanban/planka"
+      ],
+      "matchFileNames": [
+        "apps/planka/docker-compose.yml"
+      ],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": [
+        "vikunja/vikunja"
+      ],
+      "matchFileNames": [
+        "apps/vikunja/docker-compose.yml"
+      ],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": [
+        "farmos/farmos"
+      ],
+      "matchFileNames": [
+        "apps/farmos/docker-compose.yml"
+      ],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": [
+        "pglombardo/pwpush"
+      ],
+      "matchFileNames": [
+        "apps/passwordpusher/docker-compose.yml"
+      ],
+      "enabled": false
+    },
+    {
       "matchDatasources": "docker",
       "matchCurrentVersion": "/^latest$/",
       "automerge": false,
