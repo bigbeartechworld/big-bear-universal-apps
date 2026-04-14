@@ -1,31 +1,31 @@
 {
   "spec_version": "1.0",
   "metadata": {
-    "id": "jellyseerr",
-    "name": "Jellyseerr (Legacy)",
-    "description": "Jellyseerr is a free and open source software application for managing requests for your media library. It is a fork of Overseerr built to bring support for Jellyfin & Emby media servers! Note: Jellyseerr is no longer actively maintained. New users should use Seerr instead.",
-    "tagline": "Legacy media request manager - new users should use Seerr instead",
-    "version": "2.7.3",
+    "id": "seerr",
+    "name": "Seerr",
+    "description": "Seerr is a free and open source software application for managing requests for your media library. It is the successor to Overseerr and Jellyseerr, bringing support for Jellyfin, Plex, and Emby media servers.",
+    "tagline": "Media request management for Jellyfin, Plex, and Emby",
+    "version": "3.1.0",
     "author": "BigBearCommunity",
-    "developer": "Fallenbagel",
+    "developer": "Seerr Team",
     "category": "BigBearCasaOS",
-    "license": "",
-    "homepage": "https://hub.docker.com/r/fallenbagel/jellyseerr",
+    "license": "MIT",
+    "homepage": "https://github.com/seerr-team/seerr",
     "source": "big-bear-universal",
-    "created": "2025-10-27T02:54:16Z",
-    "updated": "2025-10-27T02:54:16Z"
+    "created": "2026-04-13T00:00:00Z",
+    "updated": "2026-04-13T00:00:00Z"
   },
   "visual": {
-    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/jellyseerr.png",
-    "thumbnail": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Jellyseerr/thumbnail.jpg",
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/seerr.png",
+    "thumbnail": "",
     "screenshots": [],
-    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/jellyseerr.png"
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/seerr.png"
   },
   "resources": {
     "youtube": "",
-    "documentation": "",
-    "repository": "",
-    "issues": "",
+    "documentation": "https://docs.seerr.dev",
+    "repository": "https://github.com/seerr-team/seerr",
+    "issues": "https://github.com/seerr-team/seerr/issues",
     "support": "https://community.bigbeartechworld.com/"
   },
   "technical": {
@@ -35,15 +35,15 @@
     ],
     "platform": "linux",
     "main_service": "app",
-    "default_port": "5055",
-    "main_image": "fallenbagel/jellyseerr",
+    "default_port": "5056",
+    "main_image": "ghcr.io/seerr-team/seerr",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {
     "environment_variables": [
       {
         "name": "LOG_LEVEL",
-        "default": "",
+        "default": "debug",
         "description": "Log level",
         "required": false
       },
@@ -63,7 +63,7 @@
     "ports": [
       {
         "container": "5055",
-        "host": "5055",
+        "host": "5056",
         "protocol": "tcp",
         "description": "Container Port: 5055"
       }
@@ -73,19 +73,19 @@
     "scheme": "http",
     "path": "",
     "tips": {
-      "before_install": {
-        "en_us": "Jellyseerr is no longer actively maintained. Consider installing Seerr instead, which is the official successor with automatic migration support."
+      "after_install": {
+        "en_us": "Migrating from Jellyseerr? Seerr auto-migrates your data on first startup. Ensure the config directory is owned by UID 1000 (the node user)."
       }
     }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "5055",
+      "port_map": "5056",
       "volume_mappings": {
-        "jellyseerr_config": "/DATA/AppData/$AppID/config"
+        "seerr_config": "/DATA/AppData/$AppID/config"
       },
-      "port": "5055"
+      "port": "5056"
     },
     "portainer": {
       "supported": true,
@@ -95,7 +95,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "5055"
+      "port": "5056"
     },
     "runtipi": {
       "supported": true,
@@ -105,28 +105,28 @@
         "arm64"
       ],
       "volume_mappings": {
-        "jellyseerr_config": "config"
+        "seerr_config": "config"
       },
-      "port": "5055"
+      "port": "5056"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "5055"
+      "port": "5056"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "5055"
+      "port": "5056"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
-        "jellyseerr_config": "config"
+        "seerr_config": "config"
       },
-      "port": "10076"
+      "port": "5056"
     }
   },
   "tags": [
@@ -134,6 +134,8 @@
     "docker",
     "bigbear",
     "bigbearcasaos",
-    "container"
+    "container",
+    "media",
+    "requests"
   ]
 }
