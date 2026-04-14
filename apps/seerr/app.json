@@ -36,7 +36,7 @@
     "platform": "linux",
     "main_service": "app",
     "default_port": "5056",
-    "main_image": "ghcr.io/seerr-team/seerr",
+    "main_image": "seerr/seerr",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {
