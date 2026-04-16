@@ -5,7 +5,7 @@
     "name": "FarmOS v4",
     "description": "farmOS is a web-based application for farm management, planning, and record keeping. It is developed by a community of volunteers and aims to provide a standard platform for farmers, developers, and researchers to build upon.",
     "tagline": "A web-based farm record keeping application.",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "author": "BigBearTechWorld",
     "developer": "farmOS",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/farmos/farmos",
     "source": "big-bear-universal",
     "created": "2026-04-12T00:00:00Z",
-    "updated": "2026-04-12T00:00:00Z"
+    "updated": "2026-04-16T16:06:30.149Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/farmos-v4/logo.jpeg",
