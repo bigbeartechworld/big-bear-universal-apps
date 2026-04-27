@@ -5,7 +5,7 @@
     "name": "Upsnap",
     "description": "A simple wake on lan web app written with SvelteKit, Go and PocketBase.",
     "tagline": "Upsnap",
-    "version": "5.3.2",
+    "version": "5.3.3",
     "author": "BigBearTechWorld",
     "developer": "seriousm4x",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/seriousm4x/upsnap",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:23Z",
-    "updated": "2026-04-01T19:20:10.706Z"
+    "updated": "2026-04-27T14:53:47.825Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/upsnap.png",
