@@ -17,7 +17,7 @@
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/gitea.png",
-    "thumbnail": "",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/gitea.png",
     "screenshots": [],
     "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/gitea.png"
   },
@@ -51,6 +51,12 @@
         "name": "USER_GID",
         "default": "1000",
         "description": "GID of the user running Gitea inside the container",
+        "required": false
+      },
+      {
+        "name": "GITEA__server__SSH_PORT",
+        "default": "2222",
+        "description": "Advertised SSH port for Gitea",
         "required": false
       }
     ],
