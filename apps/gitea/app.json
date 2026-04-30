@@ -10,14 +10,14 @@
     "developer": "gitea",
     "category": "BigBearCasaOS",
     "license": "MIT",
-    "homepage": "https://hub.docker.com/r/gitea/gitea",
+    "homepage": "https://gitea.com",
     "source": "big-bear-universal",
     "created": "2026-04-29T00:00:00Z",
     "updated": "2026-04-29T00:00:00Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/gitea.png",
-    "thumbnail": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/gitea.png",
+    "thumbnail": "",
     "screenshots": [],
     "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/gitea.png"
   },
