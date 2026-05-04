@@ -5,7 +5,7 @@
     "name": "NetAlertX v26",
     "description": "WIFI / LAN intruder detector. Scans for devices connected to your network and alerts you if new and unknown devices are found. WARNING: v26 has breaking changes from previous versions — volume paths changed from /app/config and /app/db to /data/config and /data/db. Existing data will NOT be migrated automatically. See the migration docs before upgrading.",
     "tagline": "NetAlertX v26 (Latest)",
-    "version": "26.4.6",
+    "version": "26.5.4",
     "author": "BigBearTechWorld",
     "developer": "jokobsk",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/jokobsk/netalertx",
     "source": "big-bear-universal",
     "created": "2026-03-14T00:00:00Z",
-    "updated": "2026-04-06T05:35:48.744Z"
+    "updated": "2026-05-04T18:55:34.630Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/pi-alert.png",
