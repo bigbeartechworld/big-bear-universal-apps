@@ -1,0 +1,160 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "gitea",
+    "name": "Gitea",
+    "description": "Gitea is a painless self-hosted all-in-one software development service. It includes Git hosting, code review, team collaboration, package registry, and CI/CD. It is similar to GitHub, Bitbucket and GitLab.",
+    "tagline": "Self-hosted Git service",
+    "version": "1.22.6",
+    "author": "BigBearTechWorld",
+    "developer": "gitea",
+    "category": "BigBearCasaOS",
+    "license": "MIT",
+    "homepage": "https://gitea.com",
+    "source": "big-bear-universal",
+    "created": "2026-04-29T00:00:00Z",
+    "updated": "2026-04-29T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/gitea.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/gitea.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/gitea.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://docs.gitea.com/",
+    "repository": "https://github.com/go-gitea/gitea",
+    "issues": "https://github.com/go-gitea/gitea/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "big-bear-gitea",
+    "default_port": "3000",
+    "main_image": "gitea/gitea",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "USER_UID",
+        "default": "1000",
+        "description": "UID of the user running Gitea inside the container",
+        "required": false
+      },
+      {
+        "name": "USER_GID",
+        "default": "1000",
+        "description": "GID of the user running Gitea inside the container",
+        "required": false
+      },
+      {
+        "name": "GITEA__server__SSH_PORT",
+        "default": "2222",
+        "description": "Advertised SSH port for Gitea",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Gitea data directory"
+      },
+      {
+        "container": "/etc/timezone",
+        "description": "Host timezone (read-only)"
+      },
+      {
+        "container": "/etc/localtime",
+        "description": "Host localtime (read-only)"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp",
+        "description": "Gitea web UI"
+      },
+      {
+        "container": "22",
+        "host": "2222",
+        "protocol": "tcp",
+        "description": "Gitea SSH"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": ""
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3000",
+      "volume_mappings": {
+        "gitea_data": "/DATA/AppData/$AppID/data"
+      },
+      "port": "3000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted",
+        "development"
+      ],
+      "administrator_only": false,
+      "port": "3000"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "gitea_data": "data"
+      },
+      "port": "3000"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "3000"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "gitea_data": "data"
+      },
+      "port": "3000"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "git",
+    "development"
+  ]
+}
