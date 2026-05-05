@@ -55,10 +55,6 @@
     ],
     "volumes": [
       {
-        "container": "/ssh",
-        "description": "SSH keys directory (read-only, for accessing private registries)"
-      },
-      {
         "container": "/data",
         "description": "SQLite database and scan results"
       }
@@ -77,7 +73,7 @@
     "path": "/",
     "tips": {
       "before_install": {
-        "en_us": "Sentinel Ops is amd64 only. The /ssh volume is optional — mount your SSH keys there if you need to scan private registries."
+        "en_us": "Sentinel Ops is amd64 only. For private repository scanning, use a deploy key or personal access token configured via the SYS_CONFIG panel — do not mount SSH private keys into this container."
       }
     }
   },
@@ -87,7 +83,6 @@
       "port_map": "9393",
       "port": "9393",
       "volume_mappings": {
-        "sentinel-ops_ssh": "/DATA/AppData/$AppID/ssh",
         "sentinel-ops_data": "/DATA/AppData/$AppID/data"
       }
     },
@@ -109,7 +104,6 @@
       ],
       "port": "9393",
       "volume_mappings": {
-        "sentinel-ops_ssh": "sentinel-ops/ssh",
         "sentinel-ops_data": "sentinel-ops/data"
       }
     },
@@ -129,7 +123,6 @@
       "manifest_version": 1,
       "port": "10393",
       "volume_mappings": {
-        "sentinel-ops_ssh": "sentinel-ops/ssh",
         "sentinel-ops_data": "sentinel-ops/data"
       }
     }
