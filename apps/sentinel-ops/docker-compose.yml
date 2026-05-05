@@ -1,0 +1,29 @@
+name: sentinel-ops
+
+services:
+  sentinel-ops:
+    image: chavatte/sentinel-ops:2.0.0
+    container_name: sentinel-ops
+    restart: unless-stopped
+    ports:
+      - "9393:8080"
+    environment:
+      - SCAN_INTERVAL=21600
+      - TZ=UTC
+    volumes:
+      - sentinel-ops_ssh:/ssh:ro
+      - sentinel-ops_data:/data
+    networks:
+      - sentinel-ops-network
+
+networks:
+  sentinel-ops-network:
+    driver: bridge
+
+volumes:
+  sentinel-ops_ssh:
+    name: sentinel-ops_ssh
+    driver: local
+  sentinel-ops_data:
+    name: sentinel-ops_data
+    driver: local

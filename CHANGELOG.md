@@ -3,6 +3,11 @@
 All notable changes to Big Bear Universal Apps are documented here.
 Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within the month)
 
+## [2026.05.1]
+
+### Added
+- `apps/sentinel-ops/` — Sentinel Ops v2.0.0. Open-source Threat Intelligence and Vulnerability Monitor for Node.js (NPM/Yarn/PNPM) powered by Google's OSV-Scanner with an embedded SQLite tracking engine. amd64 only. Port 9393.
+
 ## [2026.04.1]
 
 [Blog post](https://community.bigbeartechworld.com/t/2026-04-1-major-version-app-updates-in-big-bear-universal-apps/5262?u=dragonfire1119)
