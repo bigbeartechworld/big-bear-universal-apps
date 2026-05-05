@@ -11,7 +11,7 @@ services:
       - SCAN_INTERVAL=21600
       - TZ=UTC
     volumes:
-      - /DATA/AppData/sentinel-ops/ssh:/ssh:ro
+      - sentinel-ops_ssh:/ssh:ro
       - sentinel-ops_data:/data
     networks:
       - sentinel-ops-network
@@ -21,6 +21,9 @@ networks:
     driver: bridge
 
 volumes:
+  sentinel-ops_ssh:
+    name: sentinel-ops_ssh
+    driver: local
   sentinel-ops_data:
     name: sentinel-ops_data
     driver: local

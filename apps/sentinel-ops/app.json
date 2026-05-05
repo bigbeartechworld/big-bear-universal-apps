@@ -55,6 +55,10 @@
     ],
     "volumes": [
       {
+        "container": "/ssh",
+        "description": "SSH keys directory (read-only, for accessing private registries)"
+      },
+      {
         "container": "/data",
         "description": "SQLite database and scan results"
       }
@@ -83,6 +87,7 @@
       "port_map": "9393",
       "port": "9393",
       "volume_mappings": {
+        "sentinel-ops_ssh": "/DATA/AppData/$AppID/ssh",
         "sentinel-ops_data": "/DATA/AppData/$AppID/data"
       }
     },
@@ -104,6 +109,7 @@
       ],
       "port": "9393",
       "volume_mappings": {
+        "sentinel-ops_ssh": "sentinel-ops/ssh",
         "sentinel-ops_data": "sentinel-ops/data"
       }
     },
@@ -123,6 +129,7 @@
       "manifest_version": 1,
       "port": "10393",
       "volume_mappings": {
+        "sentinel-ops_ssh": "sentinel-ops/ssh",
         "sentinel-ops_data": "sentinel-ops/data"
       }
     }
