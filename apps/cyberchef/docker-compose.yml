@@ -15,5 +15,5 @@ services:
     restart: unless-stopped
     # Ports mapping between host and container
     ports:
-      # Mapping port 8080 of the host to port 80 of the container
-      - "8080:80"
+      # Mapping port 8080 of the host to port 8080 of the container
+      - "8080:8080"
