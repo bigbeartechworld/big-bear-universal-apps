@@ -3,6 +3,13 @@
 All notable changes to Big Bear Universal Apps are documented here.
 Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within the month)
 
+## [Unreleased]
+
+## [2026.05.0]
+
+### Added
+- `apps/gitea/` — Gitea v1.26.1. Self-hosted Git service with SSH (port 2222), web UI (port 3000), and platform compatibility for CasaOS, Portainer, RunTipi, Dockge, Cosmos, and Umbrel.
+
 ## [2026.04.1]
 
 [Blog post](https://community.bigbeartechworld.com/t/2026-04-1-major-version-app-updates-in-big-bear-universal-apps/5262?u=dragonfire1119)
