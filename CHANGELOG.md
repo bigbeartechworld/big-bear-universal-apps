@@ -5,6 +5,8 @@ Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within
 
 ## [Unreleased]
 
+## [2026.05.0]
+
 ### Added
 - `apps/gitea/` — Gitea v1.26.1. Self-hosted Git service with SSH (port 2222), web UI (port 3000), and platform compatibility for CasaOS, Portainer, RunTipi, Dockge, Cosmos, and Umbrel.
 
