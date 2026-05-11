@@ -15,6 +15,8 @@ services:
       - USER_UID=1000
       - USER_GID=1000
       - GITEA__server__SSH_PORT=2222
+      - GITEA__server__DOMAIN=
+      - GITEA__server__ROOT_URL=
     healthcheck:
       test: ["CMD", "wget", "--no-verbose", "--tries=3", "--spider", "http://localhost:3000"]
       interval: 30s
