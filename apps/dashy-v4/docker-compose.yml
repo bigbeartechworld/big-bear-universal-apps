@@ -16,8 +16,6 @@
 # - Place conf.yml in the new volume at /app/user-data/conf.yml
 # - Breaking changes: /app/public -> /app/user-data, healthcheck path updated
 # - Config schema changes: pageInfo.footerText -> pageInfo.footer
-#
-# Detailed migration: https://github.com/Lissy93/dashy/releases/tag/4.0.8
 
 # Name of the big-bear-dashy-v4 application
 name: big-bear-dashy-v4

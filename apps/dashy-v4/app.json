@@ -68,7 +68,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "NEW APP - DASHY V4\n\nThis is a NEW app, separate from 'dashy' (v3). Both can run simultaneously.\n\nFOR NEW USERS:\n- Install this app for new Dashy deployments\n- v4 stores config at /app/user-data instead of /app/public\n- Runs as non-root (uid/gid 1000)\n\nFOR V3 USERS:\n- Do NOT uninstall your 'dashy' v3 app\n- Deploy this as a NEW app alongside v3\n- Copy your conf.yml from v3: docker cp big-bear-dashy:/app/public/conf.yml ./conf.yml\n- Note: pageInfo.footerText renamed to pageInfo.footer in v4\n\nDetailed changelog: https://github.com/Lissy93/dashy/releases/tag/4.0.8"
+        "en_us": "NEW APP - DASHY V4\n\nThis is a NEW app, separate from 'dashy' (v3). Both can run simultaneously.\n\nFOR NEW USERS:\n- Install this app for new Dashy deployments\n- v4 stores config at /app/user-data instead of /app/public\n- Runs as non-root (uid/gid 1000)\n\nFOR V3 USERS:\n- Do NOT uninstall your 'dashy' v3 app\n- Deploy this as a NEW app alongside v3\n- Copy your conf.yml from v3: docker cp big-bear-dashy:/app/public/conf.yml ./conf.yml\n- Note: pageInfo.footerText renamed to pageInfo.footer in v4"
       }
     }
   },
