@@ -1,19 +1,19 @@
 {
   "spec_version": "1.0",
   "metadata": {
-    "id": "dashy",
-    "name": "Dashy (Legacy)",
+    "id": "dashy-v4",
+    "name": "Dashy v4",
     "description": "Dashy helps you organize your self-hosted services by making them accessible from a single place",
-    "tagline": "Dashy",
-    "version": "3.3.1",
+    "tagline": "Dashy v4",
+    "version": "4.0.8",
     "author": "BigBearTechWorld",
     "developer": "Lissy93",
     "category": "BigBearCasaOS",
     "license": "",
     "homepage": "https://hub.docker.com/r/lissy93/dashy",
     "source": "big-bear-universal",
-    "created": "2025-10-27T02:41:43Z",
-    "updated": "2026-04-20T01:09:10.201Z"
+    "created": "2026-05-12T00:00:00Z",
+    "updated": "2026-05-12T00:00:00Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/dashy.png",
@@ -23,7 +23,7 @@
   },
   "resources": {
     "youtube": "",
-    "documentation": "",
+    "documentation": "https://github.com/Lissy93/dashy/blob/master/docs/changelog.md",
     "repository": "",
     "issues": "",
     "support": "https://community.bigbeartechworld.com/"
@@ -34,8 +34,8 @@
       "arm64"
     ],
     "platform": "linux",
-    "main_service": "big-bear-dashy",
-    "default_port": "4000",
+    "main_service": "big-bear-dashy-v4",
+    "default_port": "4001",
     "main_image": "lissy93/dashy",
     "compose_file": "docker-compose.yml"
   },
@@ -43,39 +43,43 @@
     "environment_variables": [
       {
         "name": "NODE_ENV",
-        "default": "",
+        "default": "production",
         "description": "Node environment",
         "required": false
       }
     ],
     "volumes": [
       {
-        "container": "/app/public",
-        "description": "Container Path: /app/public"
+        "container": "/app/user-data",
+        "description": "Container Path: /app/user-data (v4 config directory)"
       }
     ],
     "ports": [
       {
         "container": "8080",
-        "host": "8080",
+        "host": "4001",
         "protocol": "tcp",
-        "description": "Container Port: 8080"
+        "description": "Container Port: 8080 (host port 4001 to avoid conflict with v3)"
       }
     ]
   },
   "ui": {
     "scheme": "http",
     "path": "",
-    "tips": {}
+    "tips": {
+      "before_install": {
+        "en_us": "NEW APP - DASHY V4\n\nThis is a NEW app, separate from 'dashy' (v3). Both can run simultaneously.\n\nFOR NEW USERS:\n- Install this app for new Dashy deployments\n- v4 stores config at /app/user-data instead of /app/public\n- Runs as non-root (uid/gid 1000)\n\nFOR V3 USERS:\n- Do NOT uninstall your 'dashy' v3 app\n- Deploy this as a NEW app alongside v3\n- Copy your conf.yml from v3: docker cp big-bear-dashy:/app/public/conf.yml ./conf.yml\n- Note: pageInfo.footerText renamed to pageInfo.footer in v4\n\nDetailed changelog: https://github.com/Lissy93/dashy/blob/master/docs/changelog.md"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "4000",
+      "port_map": "4001",
       "volume_mappings": {
-        "dashy_public": "/DATA/AppData/$AppID/public"
+        "dashy-v4_user-data": "/DATA/AppData/$AppID/user-data"
       },
-      "port": "4000"
+      "port": "4001"
     },
     "portainer": {
       "supported": true,
@@ -85,7 +89,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "4000"
+      "port": "4001"
     },
     "runtipi": {
       "supported": true,
@@ -96,28 +100,28 @@
         "arm64"
       ],
       "volume_mappings": {
-        "dashy_public": "public"
+        "dashy-v4_user-data": "user-data"
       },
       "port": "4001"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "4000"
+      "port": "4001"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "4000"
+      "port": "4001"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
-        "dashy_public": "public"
+        "dashy-v4_user-data": "user-data"
       },
-      "port": "10031"
+      "port": "10032"
     }
   },
   "tags": [

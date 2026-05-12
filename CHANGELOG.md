@@ -3,6 +3,15 @@
 All notable changes to Big Bear Universal Apps are documented here.
 Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within the month)
 
+## [2026.05.4]
+
+### Added
+- `apps/dashy-v4/` — Dashy v4.0.8 (lissy93/dashy:4.0.8). Breaking changes: config path moved from `/app/public` to `/app/user-data`, healthcheck requires `.js` extension, runs as non-root uid 1000. Port 4001 to coexist with legacy app.
+
+### Changed
+- `apps/dashy/app.json` — Renamed to "Dashy (Legacy)". Pinned at v3.3.1. Use `dashy-v4` for v4+.
+- `renovate.json` — Added `enabled: false` rule scoped via `matchFileNames` for legacy dashy docker-compose.
+
 ## [2026.05.3]
 
 ### Updated
