@@ -15,6 +15,9 @@ Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within
 ### Changed
 - `renovate.json` — Added `minimumReleaseAge: "3 days"` to patch and minor automerge rule. Docker image updates now wait 3 days after release before auto-merging, reducing supply chain attack exposure.
 
+### Updated
+- `apps/onedev/` — v14.1.9 → v15.0.7 (1dev/server:15.0.7)
+
 ## [2026.05.0]
 
 ### Added
