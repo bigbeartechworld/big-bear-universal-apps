@@ -3,8 +3,6 @@
 All notable changes to Big Bear Universal Apps are documented here.
 Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within the month)
 
-## [Unreleased]
-
 ## [2026.05.2]
 
 ### Updated
