@@ -68,7 +68,7 @@
       {
         "name": "DATABASE_URL",
         "default": "",
-        "description": "Database URL: postgresql://ghostfolio:casaospassword@big-bear-ghostfolio-db:5432/ghostfolio?sslmode=prefer",
+        "description": "Database URL: postgresql://ghostfolio:casaospassword@big-bear-ghostfolio-db:5432/ghostfolio (v3: sslmode=prefer no longer supported — remove it if upgrading from v2)",
         "required": false
       },
       {
