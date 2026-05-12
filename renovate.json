@@ -154,6 +154,11 @@
       "matchPackageNames": [
         "/.*/"
       ]
+    },
+    {
+      "matchPackageNames": ["lissy93/dashy"],
+      "matchFileNames": ["apps/dashy/docker-compose.yml"],
+      "enabled": false
     }
   ],
   "customManagers": []
