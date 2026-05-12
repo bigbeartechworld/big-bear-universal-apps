@@ -3,7 +3,12 @@
 All notable changes to Big Bear Universal Apps are documented here.
 Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within the month)
 
-## [Unreleased]
+## [2026.05.2]
+
+### Updated
+- `apps/ghostfolio/` — v2.255.0 → v3.2.0 (ghostfolio/ghostfolio:3.2.0)
+
+  **⚠️ Breaking change (v3.0.0):** `sslmode=prefer` removed from `DATABASE_URL`. If you have a custom `DATABASE_URL` env var with `?sslmode=prefer`, remove that parameter before upgrading. The default compose file has been updated automatically.
 
 ## [2026.05.1]
 
