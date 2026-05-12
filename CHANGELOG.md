@@ -3,6 +3,11 @@
 All notable changes to Big Bear Universal Apps are documented here.
 Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within the month)
 
+## [2026.05.3]
+
+### Updated
+- `apps/onedev/` — v14.1.9 → v15.0.7 (1dev/server:15.0.7)
+
 ## [2026.05.2]
 
 ### Updated
