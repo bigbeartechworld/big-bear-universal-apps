@@ -90,7 +90,7 @@
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
-      "port": 10003,
+      "port": "10003",
       "volume_mappings": {
         "nova-dso-tracker_data": "instance"
       }
