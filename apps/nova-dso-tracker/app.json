@@ -30,7 +30,7 @@
     "architectures": ["amd64", "arm64"],
     "platform": "linux",
     "main_service": "nova",
-    "default_port": 5001,
+    "default_port": "5001",
     "main_image": "mrantonsg/nova-dso-tracker:5.9.0",
     "compose_file": "docker-compose.yml"
   },
