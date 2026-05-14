@@ -3,6 +3,11 @@
 All notable changes to Big Bear Universal Apps are documented here.
 Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within the month)
 
+## [2026.05.5]
+
+### Added
+- `apps/nova-dso-tracker/` — Nova DSO Tracker (mrantonsg/nova-dso-tracker). Astrophotography Deep Space Object tracker and imaging session planner. Port 5001. Community verified on CasaOS by j900.
+
 ## [2026.05.4]
 
 ### Added
