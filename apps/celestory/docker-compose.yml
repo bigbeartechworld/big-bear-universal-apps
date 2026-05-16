@@ -118,9 +118,9 @@ services:
       - celestory-project-files:/usr/src/app/projectFiles
     environment:
       PORT: 80
-      celestory-project-files_PATH: /usr/src/app/projectFiles
+      PROJECT_FILES_PATH: /usr/src/app/projectFiles
       STORAGE_SOLUTION: filesystem
-      celestory-project-files_PREFIX: /celestory/api/filesystem/
+      PROJECT_FILES_PREFIX: /celestory/api/filesystem/
     depends_on:
       api:
         condition: service_healthy
