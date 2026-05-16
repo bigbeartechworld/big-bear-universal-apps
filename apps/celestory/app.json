@@ -29,10 +29,7 @@
     "support": "https://github.com/celestory/celestory/issues"
   },
   "technical": {
-    "architectures": [
-      "amd64",
-      "arm64"
-    ],
+    "architectures": ["amd64", "arm64"],
     "platform": "linux",
     "main_service": "gateway",
     "default_port": "1500",
@@ -138,20 +135,14 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": [
-        "BigBearCasaOS",
-        "selfhosted"
-      ],
+      "categories": ["BigBearCasaOS", "selfhosted"],
       "administrator_only": false,
       "port": "1500"
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
-      "supported_architectures": [
-        "amd64",
-        "arm64"
-      ],
+      "supported_architectures": ["amd64", "arm64"],
       "volume_mappings": {
         "celestory-project-files": "projectFiles",
         "celestory-voltask-uploads": "uploads",
