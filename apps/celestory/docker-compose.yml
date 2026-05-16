@@ -269,11 +269,11 @@ services:
 
 volumes:
   postgres_data:
-    name: celestory-postgres-data
+    name: postgres-data
     driver: local
   project_files:
-    name: celestory-project-files
+    name: project-files
     driver: local
   voltask_uploads:
-    name: celestory-voltask-uploads
+    name: voltask-uploads
     driver: local
