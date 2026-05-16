@@ -159,7 +159,7 @@ services:
 
   voltask:
     image: celestory/voltask:1.0.8
-    container_name: voltask
+    container_name: celestory-voltask
     environment:
       PORT:  1401
       DATABASE_URL: postgresql://celestory_admin:celestory_postgres_password_@db:5432/voltask?schema=voltask
@@ -198,7 +198,7 @@ services:
 
   plugins-bun:
     image: celestory/voltask-plugins-bun:1.0.8
-    container_name: plugins-bun
+    container_name: celestory-plugins-bun
     restart: unless-stopped
     environment:
       PORT: 8001
@@ -217,7 +217,7 @@ services:
 
   plugins-deno:
     image: celestory/voltask-plugins-deno:1.0.8
-    container_name: plugins-deno
+    container_name: celestory-plugins-deno
     restart: unless-stopped
     environment:
       PORT: 8002
@@ -236,7 +236,7 @@ services:
 
   orchestrator:
     image: celestory/voltask-orchestrator:1.0.8
-    container_name: orchestrator
+    container_name: celestory-orchestrator
     environment:
       PORT: 3003
       DATABASE_URL: postgresql://celestory_admin:celestory_postgres_password_@db:5432/orchestrator?sslmode=disable
