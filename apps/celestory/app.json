@@ -46,7 +46,7 @@
       },
       {
         "name": "ADMIN_PASSWORD",
-        "default": "password_celestory",
+        "default": "",
         "description": "Main Admin Password",
         "required": true
       },
@@ -58,15 +58,15 @@
       },
       {
         "name": "VOLTASK_ADMIN_PASSWORD",
-        "default": "password_voltask",
+        "default": "",
         "description": "Voltask Admin Password",
         "required": true
       },
       {
         "name": "AUTH_AUTHORITY_SECRET",
-        "default": "a_long_random_string_123",
+        "default": "",
         "description": "JWT Authority Secret",
-        "required": false
+        "required": true
       },
       {
         "name": "API_ORIGIN",
@@ -113,18 +113,6 @@
         "host": "1500",
         "protocol": "tcp",
         "description": "Gateway"
-      },
-      {
-        "container": "1401",
-        "host": "1401",
-        "protocol": "tcp",
-        "description": "Voltask service"
-      },
-      {
-        "container": "1402",
-        "host": "1402",
-        "protocol": "tcp",
-        "description": "Hub service"
       }
     ]
   },

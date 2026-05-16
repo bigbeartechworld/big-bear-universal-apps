@@ -57,17 +57,15 @@ services:
     container_name: celestory-hub
     environment:
       AUTH_ORIGIN: http://auth
-      AUTH_CLIENT_ID: celestory_client
-      AUTH_CLIENT_SECRET: client_secret_xyz
       AUTH_AUDIENCE: self_hosted
-      AUTH_AUTHORITY_SECRET: a_long_random_string_123
+      AUTH_AUTHORITY_SECRET: ${AUTH_AUTHORITY_SECRET}
       AUTH_JWKS_URI: http://auth/.well-known/jwks.json
       DB_VOLTASK_URL: postgres://celestory_admin:celestory_postgres_password_@db/voltask
       DB_HUB_URL: postgres://celestory_admin:celestory_postgres_password_@db/hub
-      ADMIN_USERNAME: admin@celestory.io
-      ADMIN_PASSWORD: password_celestory
+      ADMIN_USERNAME: ${ADMIN_USERNAME}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
       PORT: 1402
-      ORIGIN: http://192.168.0.1/hub
+      ORIGIN: ${HUB_ORIGIN}
     depends_on:
       db:
         condition: service_healthy
@@ -96,7 +94,7 @@ services:
       AUTH_CLIENT_SECRET: self_hosted_secret
       AUTH_AUDIENCE: self_hosted
       GENERATOR_URL: http://generator
-      ORIGIN: http://192.168.0.1/celestory/api
+      ORIGIN: ${API_ORIGIN}
     depends_on:
       db:
         condition: service_healthy
@@ -140,9 +138,9 @@ services:
       DB_DATABASE: auth
       DB_USERNAME: celestory_admin
       DB_PASSWORD: celestory_postgres_password_
-      API_AUTHORITY_SECRET: a_long_random_string_123
+      API_AUTHORITY_SECRET: ${AUTH_AUTHORITY_SECRET}
       API_OAUTH_ISSUER: celestory_auth
-      SELF_HOSTED_REDIRECT_URI: http://192.168.0.1/celestory/callback
+      SELF_HOSTED_REDIRECT_URI: ${AUTH_REDIRECT_URI}
       GENERATE_KEYS: true
       API_ACCESS_TOKEN_TTL: 604800
       API_REFRESH_TOKEN_TTL: 1209600
@@ -165,7 +163,7 @@ services:
       DATABASE_URL: postgresql://celestory_admin:celestory_postgres_password_@db:5432/voltask?schema=voltask
       ORCHESTRATOR_URL: http://orchestrator:3003
       VOLTASK_URL: http://voltask:1401
-      WEBHOOK_URL: http://192.168.0.1/voltask
+      WEBHOOK_URL: ${VOLTASK_WEBHOOK_URL}
       CELESTORY_AUTH_URL: http://auth
       CELESTORY_AUTH_CLIENT_ID: self_hosted_client
       CELESTORY_AUTH_CLIENT_SECRET: self_hosted_secret
@@ -173,8 +171,8 @@ services:
       PLUGINS_BUN_URL: http://plugins-bun:8001
       PLUGINS_DENO_URL: http://plugins-deno:8002
       PREMISE: on-premise
-      PREMISE_USER_EMAIL: admin@voltask.tech
-      PREMISE_USER_PASSWORD: password_voltask
+      PREMISE_USER_EMAIL: ${VOLTASK_ADMIN_EMAIL}
+      PREMISE_USER_PASSWORD: ${VOLTASK_ADMIN_PASSWORD}
       STORAGE_DIR: /app/uploads
     volumes:
       - voltask_uploads:/app/uploads
@@ -253,7 +251,7 @@ services:
     restart: unless-stopped
 
   db:
-    image: celestory/postgres:latest
+    image: celestory/postgres:main
     container_name: celestory-db
     environment:
       POSTGRES_USER: celestory_admin
@@ -263,6 +261,8 @@ services:
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U celestory_admin"]
       interval: 10s
+      timeout: 60s
+      retries: 3
     restart: unless-stopped
 
 volumes:
