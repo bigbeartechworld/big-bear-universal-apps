@@ -84,7 +84,7 @@ services:
     image: celestory/api:1.1.2
     container_name: celestory-api
     volumes:
-      - project_files:/app/projectFiles
+      - celestory-project-files:/app/projectFiles
     environment:
       PORT: 80
       SELF_HOSTED: "true"
@@ -115,12 +115,12 @@ services:
     image: celestory/generator:1.1.2
     container_name: celestory-generator
     volumes:
-      - project_files:/usr/src/app/projectFiles
+      - celestory-project-files:/usr/src/app/projectFiles
     environment:
       PORT: 80
-      PROJECT_FILES_PATH: /usr/src/app/projectFiles
+      celestory-project-files_PATH: /usr/src/app/projectFiles
       STORAGE_SOLUTION: filesystem
-      PROJECT_FILES_PREFIX: /celestory/api/filesystem/
+      celestory-project-files_PREFIX: /celestory/api/filesystem/
     depends_on:
       api:
         condition: service_healthy
@@ -177,7 +177,7 @@ services:
       PREMISE_USER_PASSWORD: ${VOLTASK_ADMIN_PASSWORD}
       STORAGE_DIR: /app/uploads
     volumes:
-      - voltask_uploads:/app/uploads
+      - celestory-voltask-uploads:/app/uploads
     depends_on:
       hub:
         condition: service_healthy
@@ -259,7 +259,7 @@ services:
       POSTGRES_USER: celestory_admin
       POSTGRES_PASSWORD: celestory_postgres_password_
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - celestory-postgres-data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U celestory_admin"]
       interval: 10s
@@ -268,12 +268,12 @@ services:
     restart: unless-stopped
 
 volumes:
-  postgres_data:
-    name: postgres-data
+  celestory-postgres-data:
+    name: celestory-postgres-data
     driver: local
-  project_files:
-    name: project-files
+  celestory-project-files:
+    name: celestory-project-files
     driver: local
-  voltask_uploads:
-    name: voltask-uploads
+  celestory-voltask-uploads:
+    name: celestory-voltask-uploads
     driver: local

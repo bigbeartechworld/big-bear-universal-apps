@@ -126,9 +126,9 @@
       "supported": true,
       "port_map": "1500",
       "volume_mappings": {
-        "project_files": "/DATA/AppData/$AppID/projectFiles",
-        "voltask_uploads": "/DATA/AppData/$AppID/uploads",
-        "postgres_data": "/DATA/AppData/$AppID/db"
+        "celestory_project_files": "/DATA/AppData/$AppID/projectFiles",
+        "celestory_voltask_uploads": "/DATA/AppData/$AppID/uploads",
+        "celestory_postgres_data": "/DATA/AppData/$AppID/db"
       },
       "port": "1500"
     },
@@ -144,9 +144,9 @@
       "tipi_version": 1,
       "supported_architectures": ["amd64", "arm64"],
       "volume_mappings": {
-        "project_files": "projectFiles",
-        "voltask_uploads": "uploads",
-        "postgres_data": "db"
+        "celestory_project_files": "projectFiles",
+        "celestory_voltask_uploads": "uploads",
+        "celestory_postgres_data": "db"
       },
       "port": "1500"
     },
@@ -165,9 +165,9 @@
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
-        "project_files": "projectFiles",
-        "voltask_uploads": "uploads",
-        "postgres_data": "db"
+        "celestory_project_files": "projectFiles",
+        "celestory_voltask_uploads": "uploads",
+        "celestory_postgres_data": "db"
       },
       "port": "1500"
     }
