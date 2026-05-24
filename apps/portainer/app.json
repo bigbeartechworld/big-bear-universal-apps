@@ -5,7 +5,7 @@
     "name": "Portainer",
     "description": "Irrespective of your industry, orchestration platform, or computing device, Portainer is the most versatile container management software that simplifies your secure adoption of containers with remarkable speed.",
     "tagline": "Portainer",
-    "version": "2.41.1-alpine",
+    "version": "2.42.0-alpine",
     "author": "BigBearTechWorld",
     "developer": "portainer",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/portainer/portainer-ce",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:14Z",
-    "updated": "2026-05-11T05:33:23.713Z"
+    "updated": "2026-05-24T01:03:04.832Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/portainer.png",
