@@ -3,6 +3,11 @@
 All notable changes to Big Bear Universal Apps are documented here.
 Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within the month)
 
+## [2026.05.6]
+
+### Added
+- `apps/rackpeek/` — RackPeek v1.4.0 (aptacode/rackpeek:v1.4.0). Webui and CLI tool to discover, manage, and document home lab and small-scale IT infrastructure using open YAML. Port 8095.
+
 ## [2026.05.5]
 
 ### Added

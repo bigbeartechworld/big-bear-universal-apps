@@ -1,0 +1,122 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "rackpeek",
+    "name": "RackPeek",
+    "description": "A webui and CLI tool to discover, manage, and document your home lab and small-scale IT infrastructure. Track hardware, services, networks, and their relationships using open, non-proprietary YAML.",
+    "tagline": "Document Your Home Lab",
+    "version": "v1.4.0",
+    "author": "BigBearTechWorld",
+    "developer": "timmoth",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "https://timmoth.github.io/RackPeek/",
+    "source": "big-bear-universal",
+    "created": "2026-05-24T00:00:00Z",
+    "updated": "2026-05-24T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/rackpeek/logo.jpg",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/rackpeek/logo.jpg"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://timmoth.github.io/RackPeek/docs/overview",
+    "repository": "https://github.com/timmoth/RackPeek",
+    "issues": "https://github.com/timmoth/RackPeek/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "big-bear-rackpeek",
+    "default_port": "8095",
+    "main_image": "aptacode/rackpeek",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+      {
+        "container": "/app/config",
+        "description": "RackPeek Config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8080",
+        "host": "8095",
+        "protocol": "tcp",
+        "description": "Container Port: 8080"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8095",
+      "volume_mappings": {
+        "rackpeek_config": "/DATA/AppData/$AppID/config"
+      },
+      "port": "8095"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8095"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "rackpeek_config": "config"
+      },
+      "port": "8095"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8095"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8095"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "rackpeek_config": "config"
+      },
+      "port": "10192"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}
