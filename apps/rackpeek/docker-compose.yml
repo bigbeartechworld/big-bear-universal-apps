@@ -1,0 +1,26 @@
+# Configuration for rackpeek setup
+
+# Name of the big-bear-rackpeek application
+name: big-bear-rackpeek
+# Service definitions for the big-bear-rackpeek application
+services:
+  # Service name: big-bear-rackpeek
+  # The `big-bear-rackpeek` service definition
+  big-bear-rackpeek:
+    # Name of the container
+    container_name: big-bear-rackpeek
+    # Image to be used for the container
+    image: aptacode/rackpeek:v1.4.0
+    # Container restart policy
+    restart: unless-stopped
+    # Volumes to be mounted to the container
+    volumes:
+      - rackpeek_config:/app/config
+    # Ports mapping between host and container
+    ports:
+      # Mapping port 8095 of the host to port 8080 of the container
+      - "8095:8080"
+volumes:
+  rackpeek_config:
+    name: rackpeek_config
+    driver: local
