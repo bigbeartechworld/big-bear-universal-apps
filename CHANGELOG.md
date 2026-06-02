@@ -6,7 +6,7 @@ Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within
 ## [2026.06.0]
 
 ### Added
-- `apps/odysseus/` — Odysseus (bigbeartechworld/big-bear-odysseus:2026.06.02). Self-hosted AI workspace bundling chat, SearXNG web search, and a ChromaDB vector store. Ships four services (odysseus, chromadb, searxng, ntfy) with SearXNG settings seeded into a named volume. Port 7000.
+- `apps/odysseus/` — Odysseus (bigbeartechworld/big-bear-odysseus:2026.06.02). Self-hosted AI workspace bundling chat, SearXNG web search, and a ChromaDB vector store. Ships four services (odysseus, chromadb, searxng, ntfy) with SearXNG settings seeded into a named volume. Port 7000. Not fully tested.
 
 ## [2026.05.6]
 
