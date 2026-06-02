@@ -29,7 +29,7 @@ services:
       generator:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80/"]
+      test: [ "CMD", "curl", "-f", "http://localhost:80/" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -48,7 +48,7 @@ services:
       api:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80/"]
+      test: [ "CMD", "curl", "-f", "http://localhost:80/" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -74,7 +74,7 @@ services:
       auth:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "node", "-e", "require('http').get('http://127.0.0.1:1402/')"]
+      test: [ "CMD", "node", "-e", "require('http').get('http://127.0.0.1:1402/')" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -105,7 +105,7 @@ services:
       hub:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "node", "-e", "require('http').get('http://127.0.0.1:80/')"]
+      test: [ "CMD", "node", "-e", "require('http').get('http://127.0.0.1:80/')" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -125,7 +125,7 @@ services:
       api:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "node", "-e", "require('http').get('http://127.0.0.1:80/')"]
+      test: [ "CMD", "node", "-e", "require('http').get('http://127.0.0.1:80/')" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -151,7 +151,7 @@ services:
       db:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "node", "-e", "require('http').get('http://127.0.0.1:80/')"]
+      test: [ "CMD", "node", "-e", "require('http').get('http://127.0.0.1:80/')" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -161,7 +161,7 @@ services:
     image: celestory/voltask:1.0.8
     container_name: celestory-voltask
     environment:
-      PORT:  1401
+      PORT: 1401
       DATABASE_URL: postgresql://celestory_admin:celestory_postgres_password_@db:5432/voltask?schema=voltask
       ORCHESTRATOR_URL: http://orchestrator:3003
       VOLTASK_URL: http://voltask:1401
@@ -190,7 +190,7 @@ services:
       db:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "node", "-e", "require('http').get('http://127.0.0.1:1401/voltask')"]
+      test: [ "CMD", "node", "-e", "require('http').get('http://127.0.0.1:1401/voltask')" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -208,7 +208,7 @@ services:
         max-size: "30m"
         max-file: "1"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8001/imap"]
+      test: [ "CMD", "curl", "-f", "http://localhost:8001/imap" ]
       retries: 3
       timeout: 60s
       interval: 10s
@@ -227,7 +227,7 @@ services:
         max-size: "30m"
         max-file: "1"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8002/deno"]
+      test: [ "CMD", "curl", "-f", "http://localhost:8002/deno" ]
       retries: 3
       timeout: 60s
       interval: 10s
@@ -244,7 +244,7 @@ services:
       db:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3003/statements"]
+      test: [ "CMD", "curl", "-f", "http://localhost:3003/statements" ]
       retries: 3
       timeout: 60s
       interval: 10s
@@ -253,7 +253,7 @@ services:
     restart: unless-stopped
 
   db:
-    image: celestory/postgres:main
+    image: celestory/postgres:1.0.0
     container_name: celestory-db
     environment:
       POSTGRES_USER: celestory_admin
@@ -261,7 +261,7 @@ services:
     volumes:
       - celestory-postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U celestory_admin"]
+      test: [ "CMD-SHELL", "pg_isready -U celestory_admin" ]
       interval: 10s
       timeout: 60s
       retries: 3
