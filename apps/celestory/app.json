@@ -144,9 +144,9 @@
       "tipi_version": 1,
       "supported_architectures": ["amd64", "arm64"],
       "volume_mappings": {
-        "celestory_project_files": "projectFiles",
-        "celestory_voltask_uploads": "uploads",
-        "celestory_postgres_data": "db"
+        "celestory-project-files": "projectFiles",
+        "celestory-voltask-uploads": "uploads",
+        "celestory-postgres-data": "db"
       },
       "port": "1500"
     },
@@ -165,9 +165,9 @@
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
-        "celestory_project_files": "projectFiles",
-        "celestory_voltask_uploads": "uploads",
-        "celestory_postgres_data": "db"
+        "celestory-project-files": "projectFiles",
+        "celestory-voltask-uploads": "uploads",
+        "celestory-postgres-data": "db"
       },
       "port": "1500"
     }
