@@ -1,0 +1,158 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "odysseus",
+    "name": "Odysseus",
+    "description": "Odysseus is a self-hosted AI workspace. It bundles chat, web search via SearXNG, and a ChromaDB vector store so you can run your own private AI environment with the LLM provider of your choice.",
+    "tagline": "Self-hosted AI workspace",
+    "version": "2026.06.02",
+    "author": "BigBearTechWorld",
+    "developer": "pewdiepie-archdaemon",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "https://github.com/pewdiepie-archdaemon/odysseus",
+    "source": "big-bear-universal",
+    "created": "2026-06-01T00:00:00Z",
+    "updated": "2026-06-01T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/odysseus/logo.png",
+    "thumbnail": "",
+    "screenshots": [
+      "https://raw.githubusercontent.com/pewdiepie-archdaemon/odysseus/main/docs/odysseus.jpg"
+    ],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/odysseus/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://github.com/pewdiepie-archdaemon/odysseus",
+    "repository": "https://github.com/pewdiepie-archdaemon/odysseus",
+    "issues": "https://github.com/pewdiepie-archdaemon/odysseus/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "big-bear-odysseus",
+    "default_port": "7000",
+    "main_image": "bigbeartechworld/big-bear-odysseus",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "ODYSSEUS_ADMIN_PASSWORD",
+        "default": "changeme",
+        "description": "Admin password for the workspace. Change this before exposing the app.",
+        "required": true
+      },
+      {
+        "name": "AUTH_ENABLED",
+        "default": "true",
+        "description": "Require login to access the workspace.",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/app/data",
+        "description": "Container Path: /app/data"
+      },
+      {
+        "container": "/app/logs",
+        "description": "Container Path: /app/logs"
+      }
+    ],
+    "ports": [
+      {
+        "container": "7000",
+        "host": "7000",
+        "protocol": "tcp",
+        "description": "Container Port: 7000"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Set ODYSSEUS_ADMIN_PASSWORD before installing. The default password is insecure.\n"
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "7000",
+      "volume_mappings": {
+        "odysseus_data": "/DATA/AppData/$AppID/data",
+        "odysseus_logs": "/DATA/AppData/$AppID/logs",
+        "odysseus_chromadb": "/DATA/AppData/$AppID/chromadb",
+        "odysseus_searxng": "/DATA/AppData/$AppID/searxng",
+        "odysseus_ntfy": "/DATA/AppData/$AppID/ntfy"
+      },
+      "port": "7000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "7000"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "odysseus_data": "data",
+        "odysseus_logs": "logs",
+        "odysseus_chromadb": "chromadb",
+        "odysseus_searxng": "searxng",
+        "odysseus_ntfy": "ntfy"
+      },
+      "port": "7000"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "7000"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "7000"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "odysseus_data": "data",
+        "odysseus_logs": "logs",
+        "odysseus_chromadb": "chromadb",
+        "odysseus_searxng": "searxng",
+        "odysseus_ntfy": "ntfy"
+      },
+      "port": "10070",
+      "app_port": "7000"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "ai"
+  ]
+}
