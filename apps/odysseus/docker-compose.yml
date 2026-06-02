@@ -23,7 +23,7 @@ services:
       # Process group ID
       - PGID=1000
       # Require login to access the workspace
-      - AUTH_ENABLED=true
+      - AUTH_ENABLED=${AUTH_ENABLED:-true}
       # Admin password (override via .env, default is insecure)
       - ODYSSEUS_ADMIN_PASSWORD=${ODYSSEUS_ADMIN_PASSWORD:-changeme}
       # SearXNG search instance URL
