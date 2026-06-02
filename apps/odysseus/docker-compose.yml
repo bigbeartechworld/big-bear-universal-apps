@@ -121,7 +121,7 @@ services:
     # Healthcheck for the SearXNG service
     healthcheck:
       test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8080/', timeout=5).read(1)\""]
-      interval: 5s
+      interval: 10s
       timeout: 6s
       retries: 20
       start_period: 10s

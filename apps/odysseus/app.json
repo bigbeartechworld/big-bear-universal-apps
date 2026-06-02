@@ -47,7 +47,7 @@
         "name": "ODYSSEUS_ADMIN_PASSWORD",
         "default": "changeme",
         "description": "Admin password for the workspace. Change this before exposing the app.",
-        "required": false
+        "required": true
       },
       {
         "name": "AUTH_ENABLED",
