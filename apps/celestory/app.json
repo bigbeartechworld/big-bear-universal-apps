@@ -126,9 +126,9 @@
       "supported": true,
       "port_map": "1500",
       "volume_mappings": {
-        "celestory_project_files": "/DATA/AppData/$AppID/projectFiles",
-        "celestory_voltask_uploads": "/DATA/AppData/$AppID/uploads",
-        "celestory_postgres_data": "/DATA/AppData/$AppID/db"
+        "celestory-project-files": "/DATA/AppData/$AppID/projectFiles",
+        "celestory-voltask-uploads": "/DATA/AppData/$AppID/uploads",
+        "celestory-postgres-data": "/DATA/AppData/$AppID/db"
       },
       "port": "1500"
     },
