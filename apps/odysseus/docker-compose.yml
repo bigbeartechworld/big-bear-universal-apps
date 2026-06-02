@@ -59,7 +59,7 @@ services:
     # Name of the container
     container_name: big-bear-odysseus-chromadb
     # Image to be used for the container
-    image: chromadb/chroma:latest
+    image: chromadb/chroma:1.5.9
     # Container restart policy
     restart: unless-stopped
     environment:
@@ -77,7 +77,7 @@ services:
     # Name of the container
     container_name: big-bear-odysseus-searxng
     # Image to be used for the container
-    image: searxng/searxng:latest
+    image: searxng/searxng:2026.6.2-e964708c0
     # Container restart policy
     restart: unless-stopped
     # Inline entrypoint seeds settings.yml (secret + html/json formats) into the volume
@@ -133,7 +133,7 @@ services:
     # Name of the container
     container_name: big-bear-odysseus-ntfy
     # Image to be used for the container
-    image: binwiederhier/ntfy:latest
+    image: binwiederhier/ntfy:v2.23.0
     # Container restart policy
     restart: unless-stopped
     # Run the ntfy server
