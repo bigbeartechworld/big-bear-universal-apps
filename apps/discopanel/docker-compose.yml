@@ -15,7 +15,7 @@ services:
     image: nickheyer/discopanel:v2.0.12
 
     # Container restart policy
-    restart: always
+    restart: unless-stopped
 
     # Host networking is required so DiscoPanel can expose the dynamic
     # Minecraft server ports (25565+) of the containers it manages
