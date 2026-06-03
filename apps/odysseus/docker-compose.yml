@@ -140,7 +140,7 @@ services:
     command: serve
     # Ports mapping between host and container (bound to loopback by default)
     ports:
-      - "${NTFY_BIND:-127.0.0.1}:8091:80"
+      - "127.0.0.1:8091:80"
     environment:
       # Base URL for ntfy
       - NTFY_BASE_URL=${NTFY_BASE_URL:-http://localhost:8091}
