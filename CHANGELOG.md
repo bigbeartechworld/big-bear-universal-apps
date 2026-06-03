@@ -3,6 +3,11 @@
 All notable changes to Big Bear Universal Apps are documented here.
 Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within the month)
 
+## [2026.06.1]
+
+### Added
+- `apps/discopanel/` — DiscoPanel v2.0.12 (nickheyer/discopanel:v2.0.12). Game server panel for Minecraft that manages servers as Docker containers and installs modpacks. Mounts the Docker socket and runs with host networking to expose dynamic server ports (25565+). Port 8080.
+
 ## [2026.06.0]
 
 ### Added
