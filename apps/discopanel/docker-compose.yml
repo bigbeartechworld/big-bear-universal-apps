@@ -5,9 +5,9 @@ name: big-bear-discopanel
 
 # Service definitions for the big-bear-discopanel application
 services:
-  # Service name: app
+  # Service name: big-bear-discopanel
   # The main DiscoPanel application service
-  app:
+  big-bear-discopanel:
     # Name of the container
     container_name: big-bear-discopanel
 

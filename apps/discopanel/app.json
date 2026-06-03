@@ -34,7 +34,7 @@
       "arm64"
     ],
     "platform": "linux",
-    "main_service": "app",
+    "main_service": "big-bear-discopanel",
     "default_port": "8080",
     "main_image": "nickheyer/discopanel",
     "compose_file": "docker-compose.yml"
