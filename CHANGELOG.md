@@ -6,6 +6,7 @@ Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within
 ## [2026.06.0]
 
 ### Added
+- `apps/discopanel/` — DiscoPanel v2.0.12 (nickheyer/discopanel:v2.0.12). Game server panel for Minecraft that manages servers as Docker containers and installs modpacks. Mounts the Docker socket and runs with host networking to expose dynamic server ports (25565+). Port 8080.
 - `apps/odysseus/` — Odysseus (bigbeartechworld/big-bear-odysseus:2026.06.02). Self-hosted AI workspace bundling chat, SearXNG web search, and a ChromaDB vector store. Ships four services (odysseus, chromadb, searxng, ntfy) with SearXNG settings seeded into a named volume. Port 7000. Not fully tested.
 
 ## [2026.05.6]
