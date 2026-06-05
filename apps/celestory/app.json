@@ -1,0 +1,185 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "celestory",
+    "name": "Celestory & Voltask",
+    "description": "The all-in-one no-code platform for interactive storytelling and Voltask automation engine. Paid license required, no free tier available. Purchase a license at https://celestory.io/pricing",
+    "tagline": "No-code interactive storytelling & automation",
+    "version": "1.0.0",
+    "author": "Celestory",
+    "developer": "celestory",
+    "category": "Development",
+    "license": "Celestory Self-Hosted License",
+    "homepage": "https://www.celestory.io",
+    "source": "big-bear-universal",
+    "created": "2025-10-27T02:42:00Z",
+    "updated": "2026-05-16T00:00:00.000Z"
+  },
+  "visual": {
+    "icon": "https://storage.googleapis.com/voltask-assets/celestory.png",
+    "thumbnail": "https://storage.googleapis.com/voltask-assets/celestory.png",
+    "screenshots": [],
+    "logo": "https://storage.googleapis.com/voltask-assets/celestory.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/celestory/celestory",
+    "issues": "https://github.com/celestory/celestory/issues",
+    "support": "https://github.com/celestory/celestory/issues"
+  },
+  "technical": {
+    "architectures": ["amd64", "arm64"],
+    "platform": "linux",
+    "main_service": "gateway",
+    "default_port": "1500",
+    "main_image": "celestory/gateway",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "ADMIN_USERNAME",
+        "default": "admin@celestory.io",
+        "description": "Main Admin Username",
+        "required": true
+      },
+      {
+        "name": "ADMIN_PASSWORD",
+        "default": "",
+        "description": "Main Admin Password",
+        "required": true
+      },
+      {
+        "name": "VOLTASK_ADMIN_EMAIL",
+        "default": "admin@voltask.tech",
+        "description": "Voltask Admin Email",
+        "required": true
+      },
+      {
+        "name": "VOLTASK_ADMIN_PASSWORD",
+        "default": "",
+        "description": "Voltask Admin Password",
+        "required": true
+      },
+      {
+        "name": "AUTH_AUTHORITY_SECRET",
+        "default": "",
+        "description": "JWT Authority Secret",
+        "required": true
+      },
+      {
+        "name": "API_ORIGIN",
+        "default": "http://localhost:1500/celestory/api",
+        "description": "Full URL to the API service (e.g. http://yourdomain.com/celestory/api)",
+        "required": true
+      },
+      {
+        "name": "AUTH_REDIRECT_URI",
+        "default": "http://localhost:1500/celestory/callback",
+        "description": "Full URL for authentication callback (e.g. http://yourdomain.com/celestory/callback)",
+        "required": true
+      },
+      {
+        "name": "HUB_ORIGIN",
+        "default": "http://localhost:1500/hub",
+        "description": "Full URL to the Hub service (e.g. http://yourdomain.com/hub)",
+        "required": true
+      },
+      {
+        "name": "VOLTASK_WEBHOOK_URL",
+        "default": "http://localhost:1500/voltask",
+        "description": "Full URL for Voltask webhooks (e.g. http://yourdomain.com/voltask)",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/app/projectFiles",
+        "description": "Project files storage"
+      },
+      {
+        "container": "/app/uploads",
+        "description": "Voltask uploads storage"
+      },
+      {
+        "container": "/var/lib/postgresql/data",
+        "description": "PostgreSQL data"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "1500",
+        "protocol": "tcp",
+        "description": "Gateway"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "1500",
+      "volume_mappings": {
+        "celestory-project-files": "/DATA/AppData/$AppID/projectFiles",
+        "celestory-voltask-uploads": "/DATA/AppData/$AppID/uploads",
+        "celestory-postgres-data": "/DATA/AppData/$AppID/db"
+      },
+      "port": "1500"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["BigBearCasaOS", "selfhosted"],
+      "administrator_only": false,
+      "port": "1500"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": ["amd64", "arm64"],
+      "volume_mappings": {
+        "celestory-project-files": "projectFiles",
+        "celestory-voltask-uploads": "uploads",
+        "celestory-postgres-data": "db"
+      },
+      "port": "1500"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "1500"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "1500"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "celestory-project-files": "projectFiles",
+        "celestory-voltask-uploads": "uploads",
+        "celestory-postgres-data": "db"
+      },
+      "port": "1500"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container",
+    "development",
+    "storytelling",
+    "automation"
+  ]
+}
