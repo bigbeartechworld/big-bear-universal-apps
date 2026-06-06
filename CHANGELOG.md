@@ -3,6 +3,11 @@
 All notable changes to Big Bear Universal Apps are documented here.
 Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within the month)
 
+## [2026.06.2]
+
+### Added
+- `apps/celestory/` — Celestory & Voltask (10-service stack: gateway, frontend, hub, api, generator, auth, voltask, plugins-bun, plugins-deno, orchestrator + Postgres). Port 1500 via gateway.
+
 ## [2026.06.1]
 
 ### Added
