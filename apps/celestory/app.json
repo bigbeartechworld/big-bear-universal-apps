@@ -3,9 +3,9 @@
   "metadata": {
     "id": "celestory",
     "name": "Celestory & Voltask",
-    "description": "The all-in-one no-code platform for interactive storytelling and Voltask automation engine. Paid license required, no free tier available. Purchase a license at https://celestory.io/pricing",
+    "description": "The all-in-one no-code platform for interactive storytelling and Voltask automation engine. Paid license required, no free tier available.\nPurchase a license at https://celestory.io/pricing.\nHere is the installation guide: https://documentation.celestory.io/en/article/celestoryvoltask-self-host-11855bd/",
     "tagline": "No-code interactive storytelling & automation",
-    "version": "1.1.2",
+    "version": "1.1.3",
     "author": "Celestory",
     "developer": "celestory",
     "category": "Development",
@@ -23,16 +23,13 @@
   },
   "resources": {
     "youtube": "",
-    "documentation": "",
+    "documentation": "https://documentation.celestory.io/en/",
     "repository": "https://github.com/celestory/celestory",
     "issues": "https://github.com/celestory/celestory/issues",
     "support": "https://github.com/celestory/celestory/issues"
   },
   "technical": {
-    "architectures": [
-      "amd64",
-      "arm64"
-    ],
+    "architectures": ["amd64", "arm64"],
     "platform": "linux",
     "main_service": "gateway",
     "default_port": "1500",
@@ -138,20 +135,14 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": [
-        "BigBearCasaOS",
-        "selfhosted"
-      ],
+      "categories": ["BigBearCasaOS", "selfhosted"],
       "administrator_only": false,
       "port": "1500"
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
-      "supported_architectures": [
-        "amd64",
-        "arm64"
-      ],
+      "supported_architectures": ["amd64", "arm64"],
       "volume_mappings": {
         "celestory-project-files": "projectFiles",
         "celestory-voltask-uploads": "uploads",
