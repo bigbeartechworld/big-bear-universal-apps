@@ -5,7 +5,7 @@
     "name": "RackPeek",
     "description": "A webui and CLI tool to discover, manage, and document your home lab and small-scale IT infrastructure. Track hardware, services, networks, and their relationships using open, non-proprietary YAML.",
     "tagline": "Document Your Home Lab",
-    "version": "v1.4.0",
+    "version": "v2.0.0",
     "author": "BigBearTechWorld",
     "developer": "timmoth",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://timmoth.github.io/RackPeek/",
     "source": "big-bear-universal",
     "created": "2026-05-24T00:00:00Z",
-    "updated": "2026-05-24T00:00:00Z"
+    "updated": "2026-06-14T06:08:52.397Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/rackpeek/logo.jpg",
