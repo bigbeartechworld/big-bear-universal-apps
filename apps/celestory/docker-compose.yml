@@ -132,7 +132,7 @@ services:
     restart: unless-stopped
 
   auth:
-    image: celestory/auth:1.1.0
+    image: celestory/auth:1.1.1
     container_name: celestory-auth
     environment:
       PORT: 80
