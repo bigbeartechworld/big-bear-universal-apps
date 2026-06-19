@@ -1,0 +1,45 @@
+name: fireshare
+
+services:
+  fireshare:
+    image: shaneisrael/fireshare:1.7.1
+    container_name: fireshare
+    ports:
+      - "8585:80"
+    volumes:
+      - fireshare_data:/data
+      - fireshare_processed:/processed
+      - fireshare_videos:/videos
+      - fireshare_images:/images
+    environment:
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASSWORD=admin
+      - SECRET_KEY=replace_this_with_some_random_string
+      - MINUTES_BETWEEN_VIDEO_SCANS=5
+      - THUMBNAIL_VIDEO_LOCATION=0
+      - DOMAIN=
+      - PUID=1000
+      - PGID=1000
+      - ENABLE_TRANSCODING=false
+      - TRANSCODE_GPU=false
+    restart: unless-stopped
+    networks:
+      - fireshare-network
+
+networks:
+  fireshare-network:
+    driver: bridge
+
+volumes:
+  fireshare_data:
+    name: fireshare_data
+    driver: local
+  fireshare_processed:
+    name: fireshare_processed
+    driver: local
+  fireshare_videos:
+    name: fireshare_videos
+    driver: local
+  fireshare_images:
+    name: fireshare_images
+    driver: local

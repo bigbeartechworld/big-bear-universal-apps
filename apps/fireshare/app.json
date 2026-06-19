@@ -1,0 +1,202 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "fireshare",
+    "name": "Fireshare",
+    "description": "Fireshare lets you host your own video and image content and share it with others via public or private links — no third-party services required. Drop videos into a watched folder and Fireshare automatically scans, generates thumbnails, and organizes them into a clean, searchable library with folder support. Great for game clips, screen recordings, screenshots, and home videos. Features include public/private share links, an admin login, automatic video scanning, OpenGraph link previews, and optional GPU transcoding.",
+    "tagline": "Store and share your video game clips and screenshots",
+    "version": "1.7.1",
+    "author": "BigBearCommunity",
+    "developer": "Shane Israel",
+    "category": "Media",
+    "license": "MIT",
+    "homepage": "https://github.com/ShaneIsrael/fireshare",
+    "source": "big-bear-universal",
+    "created": "2026-06-18T00:00:00Z",
+    "updated": "2026-06-18T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/fireshare.png",
+    "thumbnail": "",
+    "screenshots": [
+      "https://raw.githubusercontent.com/ShaneIsrael/fireshare/master/.github/images/card-view.png",
+      "https://raw.githubusercontent.com/ShaneIsrael/fireshare/master/.github/images/folders.png",
+      "https://raw.githubusercontent.com/ShaneIsrael/fireshare/master/.github/images/folders-game.png",
+      "https://raw.githubusercontent.com/ShaneIsrael/fireshare/master/.github/images/edit-details.png",
+      "https://raw.githubusercontent.com/ShaneIsrael/fireshare/master/.github/images/uploading.png"
+    ],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/fireshare.png"
+  },
+  "resources": {
+    "documentation": "https://github.com/ShaneIsrael/fireshare#readme",
+    "repository": "https://github.com/ShaneIsrael/fireshare",
+    "issues": "https://github.com/ShaneIsrael/fireshare/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": ["amd64", "arm64"],
+    "platform": "linux",
+    "main_service": "fireshare",
+    "default_port": "8585",
+    "main_image": "shaneisrael/fireshare",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "ADMIN_USERNAME",
+        "default": "admin",
+        "description": "Administrator account username",
+        "required": true
+      },
+      {
+        "name": "ADMIN_PASSWORD",
+        "default": "admin",
+        "description": "Administrator account password (change this!)",
+        "required": true
+      },
+      {
+        "name": "SECRET_KEY",
+        "default": "replace_this_with_some_random_string",
+        "description": "Random string used to secure sessions",
+        "required": true
+      },
+      {
+        "name": "DOMAIN",
+        "default": "",
+        "description": "Public domain for OpenGraph link previews (optional)",
+        "required": false
+      },
+      {
+        "name": "MINUTES_BETWEEN_VIDEO_SCANS",
+        "default": "5",
+        "description": "How often Fireshare scans for new videos",
+        "required": false
+      },
+      {
+        "name": "PUID",
+        "default": "1000",
+        "description": "User ID for file ownership",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "1000",
+        "description": "Group ID for file ownership",
+        "required": false
+      },
+      {
+        "name": "ENABLE_TRANSCODING",
+        "default": "false",
+        "description": "Enable video transcoding",
+        "required": false
+      },
+      {
+        "name": "TRANSCODE_GPU",
+        "default": "false",
+        "description": "Use NVIDIA GPU for transcoding (requires ENABLE_TRANSCODING)",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Internal database and config"
+      },
+      {
+        "container": "/processed",
+        "description": "Generated metadata, posters and thumbnails"
+      },
+      {
+        "container": "/videos",
+        "description": "Source video directory"
+      },
+      {
+        "container": "/images",
+        "description": "Source image directory"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "8585",
+        "protocol": "tcp",
+        "description": "Web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "/",
+    "tips": {
+      "before_install": {
+        "en_us": "• Change your login credentials in the container settings using **ADMIN_USERNAME** and **ADMIN_PASSWORD**.\n\n• Set a **SECRET_KEY** if you plan to expose Fireshare publicly.\n\n• Transcoding is disabled by default. To enable it, set **ENABLE_TRANSCODING=true** (and **TRANSCODE_GPU=true** if you have an NVIDIA GPU)."
+      },
+      "after_install": {
+        "en_us": "Access the web UI at http://your-server:8585 and log in with your admin credentials. Drop videos into the /videos volume to have them scanned automatically."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8585",
+      "port": "8585",
+      "volume_mappings": {
+        "fireshare_data": "/DATA/AppData/$AppID/data",
+        "fireshare_processed": "/DATA/AppData/$AppID/processed",
+        "fireshare_videos": "/DATA/AppData/$AppID/videos",
+        "fireshare_images": "/DATA/AppData/$AppID/images"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["Media", "selfhosted"],
+      "administrator_only": false,
+      "port": "8585"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": ["amd64", "arm64"],
+      "port": "8585",
+      "volume_mappings": {
+        "fireshare_data": "fireshare/data",
+        "fireshare_processed": "fireshare/processed",
+        "fireshare_videos": "fireshare/videos",
+        "fireshare_images": "fireshare/images"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8585"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8585"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "18585",
+      "volume_mappings": {
+        "fireshare_data": "fireshare/data",
+        "fireshare_processed": "fireshare/processed",
+        "fireshare_videos": "fireshare/videos",
+        "fireshare_images": "fireshare/images"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "media",
+    "video",
+    "sharing"
+  ]
+}
