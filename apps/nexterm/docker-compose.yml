@@ -13,6 +13,10 @@ services:
     image: nexterm/aio:1.2.1-BETA
     # Container restart policy
     restart: unless-stopped
+    # Environment variables for the big-bear-nexterm container
+    environment:
+      # Generate with: openssl rand -hex 32
+      - ENCRYPTION_KEY=changeme
     # Volumes to be mounted to the container
     volumes:
       # Mounting the local nexterm_data directory to /app/data inside the container

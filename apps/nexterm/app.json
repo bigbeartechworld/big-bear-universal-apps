@@ -3,7 +3,7 @@
   "metadata": {
     "id": "nexterm",
     "name": "Nexterm",
-    "description": "The open source server management software for SSH, VNC & RDP. This is in Preview Release.",
+    "description": "The open source server management software for SSH, VNC & RDP. This is in BETA.",
     "tagline": "Nexterm",
     "version": "1.2.1-BETA",
     "author": "BigBearTechWorld",
@@ -40,7 +40,14 @@
     "compose_file": "docker-compose.yml"
   },
   "deployment": {
-    "environment_variables": [],
+    "environment_variables": [
+      {
+        "name": "ENCRYPTION_KEY",
+        "description": "Key used to encrypt stored credentials. Generate with: openssl rand -hex 32",
+        "required": true,
+        "default": "changeme"
+      }
+    ],
     "volumes": [
       {
         "container": "/app/data",
