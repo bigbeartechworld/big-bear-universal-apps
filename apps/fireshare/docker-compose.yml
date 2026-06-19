@@ -18,7 +18,7 @@ services:
       # random key (Python secrets.token_hex) when unset, so it is unique per
       # deployment. Set it explicitly only to persist sessions across restarts.
       - MINUTES_BETWEEN_VIDEO_SCANS=5
-      - THUMBNAIL_VIDEO_LOCATION=0
+      - THUMBNAIL_VIDEO_LOCATION=10
       - DOMAIN=
       - PUID=1000
       - PGID=1000

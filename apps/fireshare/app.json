@@ -68,6 +68,12 @@
         "required": false
       },
       {
+        "name": "THUMBNAIL_VIDEO_LOCATION",
+        "default": "10",
+        "description": "Percentage into each video to grab the thumbnail frame (e.g. 10 = 10% in)",
+        "required": false
+      },
+      {
         "name": "PUID",
         "default": "1000",
         "description": "User ID for file ownership",
