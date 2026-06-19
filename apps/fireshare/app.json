@@ -56,12 +56,6 @@
         "required": true
       },
       {
-        "name": "SECRET_KEY",
-        "default": "replace_this_with_some_random_string",
-        "description": "Random string used to secure sessions",
-        "required": true
-      },
-      {
         "name": "DOMAIN",
         "default": "",
         "description": "Public domain for OpenGraph link previews (optional)",
@@ -130,7 +124,7 @@
     "path": "/",
     "tips": {
       "before_install": {
-        "en_us": "• Change your login credentials in the container settings using **ADMIN_USERNAME** and **ADMIN_PASSWORD**.\n\n• Set a **SECRET_KEY** if you plan to expose Fireshare publicly.\n\n• Transcoding is disabled by default. To enable it, set **ENABLE_TRANSCODING=true** (and **TRANSCODE_GPU=true** if you have an NVIDIA GPU)."
+        "en_us": "• Change your login credentials in the container settings using **ADMIN_USERNAME** and **ADMIN_PASSWORD**.\n\n• Transcoding is disabled by default. To enable it, set **ENABLE_TRANSCODING=true** (and **TRANSCODE_GPU=true** if you have an NVIDIA GPU)."
       },
       "after_install": {
         "en_us": "Access the web UI at http://your-server:8585 and log in with your admin credentials. Drop videos into the /videos volume to have them scanned automatically."
