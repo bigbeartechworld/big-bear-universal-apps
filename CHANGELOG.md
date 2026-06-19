@@ -3,6 +3,11 @@
 All notable changes to Big Bear Universal Apps are documented here.
 Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within the month)
 
+## [2026.06.3]
+
+### Updated
+- `apps/nexterm/` — v1.0.9-OPEN-PREVIEW → v1.2.1-BETA. Docker image moved from `germannewsmaker/nexterm` to `nexterm/aio` per upstream release.
+
 ## [2026.06.2]
 
 ### Added

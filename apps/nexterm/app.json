@@ -3,17 +3,17 @@
   "metadata": {
     "id": "nexterm",
     "name": "Nexterm",
-    "description": "The open source server management software for SSH, VNC & RDP. This is in Preview Release.",
+    "description": "The open source server management software for SSH, VNC & RDP. This is in BETA.",
     "tagline": "Nexterm",
-    "version": "1.0.9-OPEN-PREVIEW",
+    "version": "1.2.1-BETA",
     "author": "BigBearTechWorld",
-    "developer": "germannewsmaker",
+    "developer": "gnmyt",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "https://hub.docker.com/r/germannewsmaker/nexterm",
+    "homepage": "https://hub.docker.com/r/nexterm/aio",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:04Z",
-    "updated": "2026-01-03T21:43:03.156Z"
+    "updated": "2026-06-19T00:00:00.000Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/nexterm/logo.png",
@@ -36,11 +36,17 @@
     "platform": "linux",
     "main_service": "big-bear-nexterm",
     "default_port": "6989",
-    "main_image": "germannewsmaker/nexterm",
+    "main_image": "nexterm/aio",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {
-    "environment_variables": [],
+    "environment_variables": [
+      {
+        "name": "ENCRYPTION_KEY",
+        "description": "Key used to encrypt stored credentials. Generate with: openssl rand -hex 32",
+        "required": true
+      }
+    ],
     "volumes": [
       {
         "container": "/app/data",
