@@ -44,8 +44,7 @@
       {
         "name": "ENCRYPTION_KEY",
         "description": "Key used to encrypt stored credentials. Generate with: openssl rand -hex 32",
-        "required": true,
-        "default": "changeme"
+        "required": true
       }
     ],
     "volumes": [
