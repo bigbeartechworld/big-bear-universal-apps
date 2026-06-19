@@ -5,7 +5,7 @@
     "name": "RomM",
     "description": "ROM manager for organizing, enriching, and playing retro games, with support for 400+ platforms.",
     "tagline": "RomM",
-    "version": "4.9.0",
+    "version": "4.9.1",
     "author": "BigBearTechWorld",
     "developer": "RomM Team",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/rommapp/romm",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:17Z",
-    "updated": "2026-06-17T01:58:21.804Z"
+    "updated": "2026-06-19T03:45:29.914Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/romm.png",
