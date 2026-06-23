@@ -5,7 +5,7 @@
     "name": "OneDev",
     "description": "Self-hosted Git Server with Kanban and CI/CD",
     "tagline": "Self-hosted Git Server with Kanban and CI/CD",
-    "version": "15.1.7",
+    "version": "15.1.8",
     "author": "BigBearTechWorld",
     "developer": "theonedev",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/1dev/server",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:07Z",
-    "updated": "2026-06-21T17:47:16.786Z"
+    "updated": "2026-06-23T01:32:09.426Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/onedev.png",
