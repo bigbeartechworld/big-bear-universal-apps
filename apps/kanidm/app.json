@@ -85,6 +85,30 @@
         "default": "https://idm.example.com:44300",
         "description": "Kanidm url, including port if non-standard",
         "required": true
+      },
+      {
+        "name": "KANIDM_HTTP_CLIENT_ADDRESS_INFO_X-FORWARD-FOR",
+        "default": "",
+        "description": "Kanidm trusted ips that append x-forward-for header",
+        "required": false
+      },
+      {
+        "name": "KANIDM_ONLINE_BACKUP_PATH",
+        "default": "/backups/",
+        "description": "Kanidm backups path (inside container)",
+        "required": true
+      },
+      {
+        "name": "KANIDM_ONLINE_BACKUP_SCHEDULE",
+        "default": "@daily",
+        "description": "When to create a backup (cron syntax)",
+        "required": false
+      },
+      {
+        "name": "KANIDM_ONLINE_BACKUP_VERSION",
+        "default": "7",
+        "description": "How many backups to keep",
+        "required": false
       }
     ],
     "volumes": [
