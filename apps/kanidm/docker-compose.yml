@@ -1,0 +1,12 @@
+services:
+  kanidm:
+    container_name: big-bear-kanidm
+    restart: "always"
+    image: kanidm/server:1.10.4
+    stop_grace_period: 30s
+    volumes:
+      - kanidm_data:/data
+      - kanidm_backups:/backups
+volumes:
+  kanidm_data:
+  kanidm_backups:
