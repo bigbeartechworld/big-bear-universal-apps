@@ -3,9 +3,9 @@
   "metadata": {
     "id": "nova-dso-tracker",
     "name": "Nova DSO Tracker",
-    "description": "Nova DSO Tracker is a tool for astrophotographers to track Deep Space Objects, check observability, and manage imaging sessions.",
+    "description": "Nova DSO Tracker is a web app for astrophotographers to track Deep Sky Objects, plan imaging sessions, and log results. Features real-time altitude tracking, AI-powered target ranking, log file analysis for ASIAIR/PHD2/N.I.N.A., yearly visibility heatmap, mosaic planning, PDF session reports, and multi-user support.",
     "tagline": "Real-time tracking and planning for Deep Space Objects.",
-    "version": "5.9.0",
+    "version": "6.2.0",
     "author": "mrantonSG",
     "developer": "mrantonSG",
     "category": "Photography",
@@ -13,11 +13,17 @@
     "homepage": "https://nova-tracker.com",
     "source": "big-bear-universal",
     "created": "2026-02-22T00:00:00Z",
-    "updated": "2026-05-13T00:00:00Z"
+    "updated": "2026-06-24T00:00:00Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/nova-dso-tracker/logo.png",
-    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/nova-dso-tracker/logo.png"
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/nova-dso-tracker/logo.png",
+    "screenshots": [
+      "https://raw.githubusercontent.com/mrantonSG/nova_DSO_tracker/master/docs/screenshots/SCS_1.jpg",
+      "https://raw.githubusercontent.com/mrantonSG/nova_DSO_tracker/master/docs/screenshots/SCS_2.jpg",
+      "https://raw.githubusercontent.com/mrantonSG/nova_DSO_tracker/master/docs/screenshots/SCS_3.jpg",
+      "https://raw.githubusercontent.com/mrantonSG/nova_DSO_tracker/master/docs/screenshots/SCS_4.jpg"
+    ]
   },
   "resources": {
     "youtube": "",
@@ -31,7 +37,7 @@
     "platform": "linux",
     "main_service": "nova",
     "default_port": "5001",
-    "main_image": "mrantonsg/nova-dso-tracker:5.9.0",
+    "main_image": "mrantonsg/nova-dso-tracker:6.2.0",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {
