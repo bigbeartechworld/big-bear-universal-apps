@@ -5,7 +5,7 @@
     "name": "Odysseus",
     "description": "Odysseus is a self-hosted AI workspace. It bundles chat, web search via SearXNG, and a ChromaDB vector store so you can run your own private AI environment with the LLM provider of your choice.",
     "tagline": "Self-hosted AI workspace",
-    "version": "2026.06.15",
+    "version": "2026.06.22",
     "author": "BigBearTechWorld",
     "developer": "pewdiepie-archdaemon",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://github.com/pewdiepie-archdaemon/odysseus",
     "source": "big-bear-universal",
     "created": "2026-06-01T00:00:00Z",
-    "updated": "2026-06-18T15:16:05.852Z"
+    "updated": "2026-06-25T08:46:22.969Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/odysseus/logo.png",
