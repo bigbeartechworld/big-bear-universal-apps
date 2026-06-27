@@ -19,10 +19,10 @@
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/nova-dso-tracker/logo.png",
     "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/nova-dso-tracker/logo.png",
     "screenshots": [
-      "https://raw.githubusercontent.com/mrantonSG/nova_DSO_tracker/master/docs/screenshots/SCS_1.jpg",
-      "https://raw.githubusercontent.com/mrantonSG/nova_DSO_tracker/master/docs/screenshots/SCS_2.jpg",
-      "https://raw.githubusercontent.com/mrantonSG/nova_DSO_tracker/master/docs/screenshots/SCS_3.jpg",
-      "https://raw.githubusercontent.com/mrantonSG/nova_DSO_tracker/master/docs/screenshots/SCS_4.jpg"
+      "https://cdn.jsdelivr.net/gh/mrantonSG/big-bear-universal-apps@main/apps/nova-dso-tracker/screenshots/SCS_1.jpg",
+      "https://cdn.jsdelivr.net/gh/mrantonSG/big-bear-universal-apps@main/apps/nova-dso-tracker/screenshots/SCS_2.jpg",
+      "https://cdn.jsdelivr.net/gh/mrantonSG/big-bear-universal-apps@main/apps/nova-dso-tracker/screenshots/SCS_3.jpg",
+      "https://cdn.jsdelivr.net/gh/mrantonSG/big-bear-universal-apps@main/apps/nova-dso-tracker/screenshots/SCS_4.jpg"
     ]
   },
   "resources": {
@@ -72,12 +72,14 @@
     },
     "portainer": {
       "supported": true,
+      "port": "5001",
       "template_type": 2,
       "categories": ["Photography", "selfhosted"],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
+      "port": "5001",
       "tipi_version": 1,
       "supported_architectures": ["amd64", "arm64"],
       "volume_mappings": {
@@ -86,6 +88,7 @@
     },
     "dockge": {
       "supported": true,
+      "port": "5001",
       "file_based": true
     },
     "cosmos": {
