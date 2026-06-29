@@ -1498,9 +1498,7 @@ convert_to_cosmos() {
     mkdir -p "$output_dir"
     
     # Create temporary compose file with big-bear- prefix
-    TEMP_DIR=$(mktemp -d)
-    trap 'rm -rf -- "$TEMP_DIR"' EXIT
-    local temp_compose=$(mktemp -p $TEMP_DIR)
+    local temp_compose=$(mktemp)
     adjust_compose_for_platform "$app_dir/docker-compose.yml" "$temp_compose" "cosmos" "$app_name"
     
     # Escape APP_NAME for JSON in routes
@@ -1543,8 +1541,11 @@ convert_to_cosmos() {
   }
 }
 EOF
+
+    rm -f $temp_compose
     # Ensure pretty formatting
     yq -o=json "$temp_cosmos_compose" > "$output_dir/cosmos-compose.json"
+    rm -f $temp_cosmos_compose
 
     # Use icon URL or logo URL for icon field
     local icon_url="${APP_ICON:-${APP_LOGO:-https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/_example/logo.jpg}}"
