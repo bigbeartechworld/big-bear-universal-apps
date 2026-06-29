@@ -1540,57 +1540,50 @@ convert_to_cosmos() {
   }
 }
 EOF
+
+    # Use icon URL or logo URL for icon field
+    local icon_url="${APP_ICON:-${APP_LOGO:-https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/_example/logo.jpg}}"
     
-    # Use icon URL or logo URL for image and icon fields
-    local image_url="${APP_ICON:-${APP_LOGO:-https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/_example/logo.jpg}}"
+    # Use container image name/URI to create URL
+    local main_image=${APP_MAIN_IMAGE}
+    local base_url1="https://hub.docker.com/r/"
+    local base_url2="https://hub.docker.com/_/"
+    if [[ "$main_image" == ghcr.io* ]]; then
+        main_image="https://${main_image}"
+    elif [[ "$main_image" == lscr.io/linuxserver* ]]; then
+        main_image=$(echo $main_image | sed 's/lscr\.io\/linuxserver\///')
+        main_image="https://docs.linuxserver.io/images/docker-${main_image}"
+    elif [[ "$main_image" == registry.gitlab.com* ]]; then
+        main_image=$(echo $main_image | sed 's/registry\.//')
+        main_image="https://$main_image/container_registry"
+    elif [[ "$main_image" == */* ]]; then
+        main_image="${base_url1}${main_image}"
+    else
+        main_image="${base_url2}${main_image}"
+    fi
     
     # Create description.json using jq to properly escape all strings
     jq -n \
         --arg name "$APP_NAME" \
+        --arg tagline "$APP_TAGLINE" \
         --arg description "$APP_DESCRIPTION" \
         --arg url "$APP_HOMEPAGE" \
         --argjson tags "$APP_TAGS" \
         --arg repository "${APP_REPOSITORY:-https://github.com/bigbeartechworld}" \
-        --arg image "$image_url" \
+        --arg image "$main_image" \
+        --arg icon "$icon_url" \
         --argjson architectures "$APP_ARCHITECTURES" \
         '{
             name: $name,
-            description: $description,
+            description: $tagline,
             url: $url,
             longDescription: $description,
             tags: $tags,
             repository: $repository,
             image: $image,
             supported_architectures: $architectures,
-            icon: $image
+            icon: $icon
         }' > "$output_dir/description.json"
-    
-    # Create config.json using jq
-    jq -n \
-        --arg id "$app_name" \
-        --arg version "$APP_VERSION" \
-        --arg image "$APP_MAIN_IMAGE" \
-        --arg youtube "${APP_YOUTUBE:-}" \
-        --arg docs_link "${APP_DOCUMENTATION:-}" \
-        '{
-            id: $id,
-            version: $version,
-            image: $image,
-            youtube: $youtube,
-            docs_link: $docs_link,
-            big_bear_cosmos_youtube: ""
-        }' > "$output_dir/config.json"
-    
-    # Create docker-compose.yml for Cosmos
-    # Start with the temp compose and prepend cosmos-installer
-    {
-        echo "cosmos-installer: null"
-        cat "$temp_compose"
-        echo "minVersion: 0.14.0"
-    } > "$output_dir/docker-compose.yml"
-    
-    # Clean up temporary file - do this AFTER using it for docker-compose.yml
-    rm -f "$temp_compose"
     
     # Download icon
     if [[ -n "$APP_ICON" ]]; then
@@ -1641,21 +1634,7 @@ EOF
         return 1
     fi
     
-    if ! jq empty "$output_dir/config.json" 2>/dev/null; then
-        print_error "Generated config.json for $app_name (Cosmos) has invalid JSON!"
-        print_error "Validation error:"
-        jq empty "$output_dir/config.json" 2>&1
-        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
-        return 1
-    fi
-    
-    if ! yq eval '.' "$output_dir/docker-compose.yml" > /dev/null 2>&1; then
-        print_error "Generated docker-compose.yml for $app_name (Cosmos) has invalid YAML!"
-        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
-        return 1
-    fi
-    
-    print_success "Converted $app_name for Cosmos (config.json, description.json, docker-compose.yml, cosmos-compose.json)"
+    print_success "Converted $app_name for Cosmos (description.json, cosmos-compose.json, icon.png)"
 }
 
 # Convert to Umbrel format
