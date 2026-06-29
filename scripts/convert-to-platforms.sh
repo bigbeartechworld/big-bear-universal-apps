@@ -1499,6 +1499,7 @@ convert_to_cosmos() {
     
     # Create temporary compose file with big-bear- prefix
     local temp_compose=$(mktemp)
+    trap 'rm -rf -- "$temp_compose"' EXIT
     adjust_compose_for_platform "$app_dir/docker-compose.yml" "$temp_compose" "cosmos" "$app_name"
     
     # Escape APP_NAME for JSON in routes
@@ -1531,6 +1532,7 @@ convert_to_cosmos() {
     fi
 
     local temp_cosmos_compose=$(mktemp)
+    trap 'rm -rf -- "$temp_cosmos_compose"' EXIT
     cat > "$temp_cosmos_compose" << EOF
 {
   "cosmos-installer": {
@@ -1548,7 +1550,7 @@ EOF
     local icon_url="${APP_ICON:-${APP_LOGO:-https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/_example/logo.jpg}}"
     
     # Use container image name/URI to create URL
-    local main_image=${APP_MAIN_IMAGE}
+    local main_image=${APP_MAIN_IMAGE%:*}
     local base_url1="https://hub.docker.com/r/"
     local base_url2="https://hub.docker.com/_/"
     if [[ "$main_image" == ghcr.io* ]]; then
@@ -1568,7 +1570,7 @@ EOF
     # Create description.json using jq to properly escape all strings
     jq -n \
         --arg name "$APP_NAME" \
-        --arg tagline "$APP_TAGLINE" \
+        --arg tagline "${APP_TAGLINE:-$APP_DESCRIPTION}" \
         --arg description "$APP_DESCRIPTION" \
         --arg url "$APP_HOMEPAGE" \
         --argjson tags "$APP_TAGS" \
