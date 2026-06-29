@@ -5,7 +5,7 @@
     "name": "Kanidm",
     "description": "Kanidm is a simple and secure identity management platform, allowing other applications and services to offload the challenge of authenticating and storing identities to Kanidm. The goal of this project is to be a complete identity provider, covering the broadest possible set of requirements and integrations.",
     "tagline": "Kanidm is a modern and simple identity management platform written in rust.",
-    "version": "latest",
+    "version": "1.10.4",
     "author": "ByteSquire",
     "developer": "kanidm",
     "category": "Security",
