@@ -1498,8 +1498,9 @@ convert_to_cosmos() {
     mkdir -p "$output_dir"
     
     # Create temporary compose file with big-bear- prefix
-    local temp_compose=$(mktemp)
-    trap 'rm -rf -- "$temp_compose"' EXIT
+    TEMP_DIR=$(mktemp -d)
+    trap 'rm -rf -- "$TEMP_DIR"' EXIT
+    local temp_compose=$(mktemp -p $TEMP_DIR)
     adjust_compose_for_platform "$app_dir/docker-compose.yml" "$temp_compose" "cosmos" "$app_name"
     
     # Escape APP_NAME for JSON in routes
@@ -1531,8 +1532,7 @@ convert_to_cosmos() {
       ],"
     fi
 
-    local temp_cosmos_compose=$(mktemp)
-    trap 'rm -rf -- "$temp_cosmos_compose"' EXIT
+    local temp_cosmos_compose=$(mktemp -p $TEMP_DIR)
     cat > "$temp_cosmos_compose" << EOF
 {
   "cosmos-installer": {
@@ -1551,16 +1551,20 @@ EOF
     
     # Use container image name/URI to create URL
     local main_image=${APP_MAIN_IMAGE%:*}
+    main_image="${main_image%@*}"
     local base_url1="https://hub.docker.com/r/"
     local base_url2="https://hub.docker.com/_/"
     if [[ "$main_image" == ghcr.io* ]]; then
         main_image="https://${main_image}"
     elif [[ "$main_image" == lscr.io/linuxserver* ]]; then
-        main_image=$(echo $main_image | sed 's/lscr\.io\/linuxserver\///')
+        main_image="${main_image#lscr.io/linuxserver/}"
         main_image="https://docs.linuxserver.io/images/docker-${main_image}"
     elif [[ "$main_image" == registry.gitlab.com* ]]; then
-        main_image=$(echo $main_image | sed 's/registry\.//')
+        main_image="${main_image#registry.}"
         main_image="https://$main_image/container_registry"
+    elif [[ "$main_image" == codeberg.org* ]]; then
+        main_image="${main_image#codeberg.org/}"
+        main_image="https://codeberg.org/${main_image}/packages"
     elif [[ "$main_image" == */* ]]; then
         main_image="${base_url1}${main_image}"
     else
