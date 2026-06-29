@@ -31,8 +31,8 @@
   "technical": {
     "architectures": ["amd64", "arm64"],
     "platform": "linux",
-    "main_service": "app",
-    "default_port": "443",
+    "main_service": "kanidm",
+    "default_port": "8443",
     "main_image": "kanidm/server",
     "compose_file": "docker-compose.yml"
   },
@@ -45,16 +45,16 @@
         "required": false
       },
       {
-        "name": "KANIDM_LDAPBINDADDRESS",
-        "default": "[::]:3636",
-        "description": "Kanidm ldap bind address (inside container)",
-        "required": false
-      },
-      {
         "name": "KANIDM_BINDADDRESS",
         "default": "[::]:8443",
         "description": "Kanidm bind address (inside container)",
         "required": true
+      },
+      {
+        "name": "KANIDM_LDAPBINDADDRESS",
+        "default": "[::]:3636",
+        "description": "Kanidm ldap bind address (inside container)",
+        "required": false
       },
       {
         "name": "KANIDM_DB_PATH",
@@ -137,7 +137,7 @@
       {
         "container": "3636",
         "host": "3636",
-        "protocol": "ldap",
+        "protocol": "tcp",
         "description": "LDAPS"
       }
     ]
