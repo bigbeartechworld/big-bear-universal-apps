@@ -93,6 +93,12 @@
         "required": false
       },
       {
+        "name": "KANIDM_HTTP_CLIENT_ADDRESS_INFO_PROXY-V2",
+        "default": "",
+        "description": "Kanidm trusted ips allowed to use proxy protocol",
+        "required": false
+      },
+      {
         "name": "KANIDM_ONLINE_BACKUP_PATH",
         "default": "/backups/",
         "description": "Kanidm backups path (inside container)",
