@@ -1596,30 +1596,21 @@ EOF
         }' > "$output_dir/description.json"
     
     # Download icon
-    if [[ -n "$APP_ICON" ]]; then
-        if curl -fsSL "$APP_ICON" -o "$output_dir/icon_temp" 2>/dev/null; then
-            # Try to convert to PNG if ImageMagick is available
-            if command -v convert &> /dev/null; then
-                if convert "$output_dir/icon_temp" "$output_dir/icon.png" 2>/dev/null; then
-                    rm -f "$output_dir/icon_temp"
-                else
-                    # If conversion fails, just rename to .png
-                    mv "$output_dir/icon_temp" "$output_dir/icon.png"
-                fi
+    if curl -fsSL "$icon_url" -o "$output_dir/icon_temp" 2>/dev/null; then
+        # Try to convert to PNG if ImageMagick is available
+        if command -v convert &> /dev/null; then
+            if convert "$output_dir/icon_temp" "$output_dir/icon.png" 2>/dev/null; then
+                rm -f "$output_dir/icon_temp"
             else
-                # No ImageMagick, just rename to .png
+                # If conversion fails, just rename to .png
                 mv "$output_dir/icon_temp" "$output_dir/icon.png"
             fi
         else
-            # If download fails, create placeholder
-            if command -v convert &> /dev/null; then
-                convert -size 512x512 xc:gray "$output_dir/icon.png" 2>/dev/null || touch "$output_dir/icon.png"
-            else
-                touch "$output_dir/icon.png"
-            fi
+            # No ImageMagick, just rename to .png
+            mv "$output_dir/icon_temp" "$output_dir/icon.png"
         fi
     else
-        # No icon URL, create placeholder
+        # If download fails, create placeholder
         if command -v convert &> /dev/null; then
             convert -size 512x512 xc:gray "$output_dir/icon.png" 2>/dev/null || touch "$output_dir/icon.png"
         else
