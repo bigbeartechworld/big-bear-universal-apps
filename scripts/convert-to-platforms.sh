@@ -1529,8 +1529,9 @@ convert_to_cosmos() {
         }
       ],"
     fi
-    
-    cat > "$output_dir/cosmos-compose.json" << EOF
+
+    local temp_cosmos_compose=$(mktemp)
+    cat > "$temp_cosmos_compose" << EOF
 {
   "cosmos-installer": {
     $routes
@@ -1540,6 +1541,8 @@ convert_to_cosmos() {
   }
 }
 EOF
+    # Ensure pretty formatting
+    yq -o=json "$temp_cosmos_compose" > "$output_dir/cosmos-compose.json"
 
     # Use icon URL or logo URL for icon field
     local icon_url="${APP_ICON:-${APP_LOGO:-https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/_example/logo.jpg}}"
