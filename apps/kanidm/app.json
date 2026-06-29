@@ -1,7 +1,7 @@
 {
   "spec_version": "1.0",
   "metadata": {
-    "id": "kandim",
+    "id": "kanidm",
     "name": "Kanidm",
     "description": "Kanidm is a simple and secure identity management platform, allowing other applications and services to offload the challenge of authenticating and storing identities to Kanidm. The goal of this project is to be a complete identity provider, covering the broadest possible set of requirements and integrations.",
     "tagline": "Kanidm is a modern and simple identity management platform written in rust.",
@@ -47,14 +47,14 @@
       {
         "name": "KANIDM_LDAPBINDADDRESS",
         "default": "[::]:3636",
-        "description": "Kanidm ldap bind address",
+        "description": "Kanidm ldap bind address (inside container)",
         "required": false
       },
       {
         "name": "KANIDM_BINDADDRESS",
         "default": "[::]:8443",
-        "description": "Kanidm bind address",
-        "required": false
+        "description": "Kanidm bind address (inside container)",
+        "required": true
       },
       {
         "name": "KANIDM_DB_PATH",
@@ -64,25 +64,25 @@
       },
       {
         "name": "KANIDM_TLS_CHAIN",
-        "default": "",
+        "default": "/data/chain.pem",
         "description": "Kanidm certificate chain file path (inside container)",
-        "required": false
+        "required": true
       },
       {
         "name": "KANIDM_TLS_KEY",
-        "default": "",
+        "default": "/data/key.pem",
         "description": "Kanidm private key file path (inside container)",
-        "required": false
+        "required": true
       },
       {
         "name": "KANIDM_DOMAIN",
         "default": "idm.example.com",
-        "description": "Kanidm domain FQDN",
+        "description": "Kanidm instance FQDN",
         "required": true
       },
       {
         "name": "KANIDM_ORIGIN",
-        "default": "https://idm.example.com:44300",
+        "default": "https://idm.example.com",
         "description": "Kanidm url, including port if non-standard",
         "required": true
       },
@@ -111,7 +111,7 @@
         "required": false
       },
       {
-        "name": "KANIDM_ONLINE_BACKUP_VERSION",
+        "name": "KANIDM_ONLINE_BACKUP_VERSIONS",
         "default": "7",
         "description": "How many backups to keep",
         "required": false
@@ -129,7 +129,7 @@
     ],
     "ports": [
       {
-        "container": "443",
+        "container": "8443",
         "host": "44300",
         "protocol": "tcp",
         "description": "Web UI"

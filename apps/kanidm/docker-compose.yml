@@ -6,6 +6,7 @@ services:
     stop_grace_period: 30s
     volumes:
       - kanidm_data:/data
+      - ./server.toml:/data/server.toml
       - kanidm_backups:/backups
 volumes:
   kanidm_data:
