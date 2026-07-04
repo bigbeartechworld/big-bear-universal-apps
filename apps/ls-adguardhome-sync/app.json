@@ -5,7 +5,7 @@
     "name": "LS Adguard Home Sync",
     "description": "🛡️ Synchronize AdGuard Home config to replicas. This is the LinuxServer version.",
     "tagline": "LS Adguard Home Sync",
-    "version": "0.9.1",
+    "version": "0.9.2",
     "author": "BigBearTechWorld",
     "developer": "bakito",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/adguardhome-sync",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:59Z",
-    "updated": "2026-07-02T06:11:07.583Z"
+    "updated": "2026-07-04T13:34:31.894Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/adguard-home.png",
