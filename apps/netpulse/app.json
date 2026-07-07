@@ -49,8 +49,8 @@
       },
       {
         "name": "NETPULSE_PASSWORD",
-        "default": "",
-        "description": "Login password for the dashboard — must be set before install",
+        "default": "97f76f53-c2b9-499d-b5cb-1643e6b29cf3",
+        "description": "Login password for the dashboard — change this default value",
         "required": true
       },
       {
@@ -98,7 +98,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "NetPulse runs on host networking and binds port 8077 directly on your server. Set NETPULSE_PASSWORD before installing — it protects the dashboard login (default username is admin). Speedtests run every 10 minutes by default; adjust SPEEDTEST_INTERVAL_MIN if that's too frequent."
+        "en_us": "NetPulse runs on host networking and binds port 8077 directly on your server. Change the default NETPULSE_PASSWORD — it protects the dashboard login (default username is admin). Speedtests run every 10 minutes by default; adjust SPEEDTEST_INTERVAL_MIN if that's too frequent."
       }
     }
   },

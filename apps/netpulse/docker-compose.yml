@@ -20,7 +20,7 @@ services:
     # Environment variables
     environment:
       - NETPULSE_USERNAME=admin
-      - NETPULSE_PASSWORD=${NETPULSE_PASSWORD:-}
+      - NETPULSE_PASSWORD=97f76f53-c2b9-499d-b5cb-1643e6b29cf3
       - SPEEDTEST_INTERVAL_MIN=10
       - PING_INTERVAL_SEC=60
       - PING_HOST=1.1.1.1
