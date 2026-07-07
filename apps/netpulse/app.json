@@ -5,7 +5,7 @@
     "name": "NetPulse",
     "description": "A self-hosted network monitoring dashboard that runs real Ookla speedtests on a schedule, pings continuously to track uptime, and shows the history as graphs you can actually reflect on — not just a live number that resets every refresh.",
     "tagline": "Self-hosted internet speed & uptime monitor",
-    "version": "2026.07.07",
+    "version": "sha-8922b29",
     "author": "BigBearTechWorld",
     "developer": "BentFender",
     "category": "BigBearCasaOS",
