@@ -61,7 +61,7 @@
       },
       {
         "name": "ENTE_JWT_SECRET",
-        "default": "",
+        "default": "i2DecQmfGreG6q1vBj5tCokhlN41gcfS2cjOs9Po-u8=",
         "description": "JWT signing secret. Rotate before real use.",
         "required": true
       }
