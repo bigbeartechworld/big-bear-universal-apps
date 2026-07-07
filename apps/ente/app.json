@@ -1,0 +1,174 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "ente",
+    "name": "Ente Photos",
+    "description": "Ente is a self-hosted, end-to-end encrypted platform to store, share, and rediscover your photos and videos across all your devices.",
+    "tagline": "End-to-end encrypted photo storage",
+    "version": "2026.07.07",
+    "author": "BigBearTechWorld",
+    "developer": "ente-io",
+    "category": "BigBearCasaOS",
+    "license": "AGPL-3.0",
+    "homepage": "https://ente.io",
+    "source": "big-bear-universal",
+    "created": "2026-07-07T00:00:00Z",
+    "updated": "2026-07-07T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ente-photos.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ente-photos.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://help.ente.io/self-hosting/",
+    "repository": "https://github.com/ente-io/ente",
+    "issues": "https://github.com/ente-io/ente/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "web",
+    "default_port": "3000",
+    "main_image": "ghcr.io/ente/web",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "ENTE_S3_B2_EU_CEN_ENDPOINT",
+        "default": "localhost:3200",
+        "description": "MinIO S3 endpoint reachable by both museum and clients. Change localhost to the server LAN IP for multi-device access.",
+        "required": true
+      },
+      {
+        "name": "ENTE_API_ORIGIN",
+        "default": "http://localhost:8080",
+        "description": "URL of the museum API as reached by the web app. Change localhost to the server LAN IP for multi-device access.",
+        "required": true
+      },
+      {
+        "name": "ENTE_APPS_PUBLIC_ALBUMS",
+        "default": "http://localhost:3002",
+        "description": "Public albums URL. Change localhost to the server LAN IP for multi-device access.",
+        "required": false
+      },
+      {
+        "name": "ENTE_JWT_SECRET",
+        "default": "i2DecQmfGreG6q1vBj5tCokhlN41gcfS2cjOs9Po-u8=",
+        "description": "JWT signing secret. Rotate before real use.",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/var/lib/postgresql/data",
+        "description": "PostgreSQL database storage"
+      },
+      {
+        "container": "/data",
+        "description": "MinIO object storage (photos and videos)"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp",
+        "description": "Photos web UI"
+      },
+      {
+        "container": "3002",
+        "host": "3002",
+        "protocol": "tcp",
+        "description": "Public albums"
+      },
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Museum API"
+      },
+      {
+        "container": "3200",
+        "host": "3200",
+        "protocol": "tcp",
+        "description": "MinIO object storage API"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3000",
+      "volume_mappings": {
+        "ente_postgres_data": "/DATA/AppData/$AppID/postgres_data",
+        "ente_minio_data": "/DATA/AppData/$AppID/minio_data"
+      },
+      "port": "3000"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "3000"
+    },
+    "runtipi": {
+      "supported": false,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "ente_postgres_data": "postgres_data",
+        "ente_minio_data": "minio_data"
+      },
+      "port": "3000"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "3000"
+    },
+    "cosmos": {
+      "supported": false,
+      "servapp": true,
+      "routes_required": true,
+      "port": "3000"
+    },
+    "umbrel": {
+      "supported": false,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "ente_postgres_data": "postgres_data",
+        "ente_minio_data": "minio_data"
+      },
+      "port": "10340"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "photos",
+    "encrypted",
+    "storage"
+  ]
+}

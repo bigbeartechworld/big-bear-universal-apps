@@ -69,6 +69,14 @@ async function checkVersionMismatches() {
         continue;
       }
 
+      // Skip digest-pinned images (e.g. repo:tag@sha256:...) — the digest is
+      // not a version and its hex can start with a digit, causing false mismatches.
+      // A tag cannot contain '@', so any '@' means a digest is present.
+      if (imageTag.includes('@')) {
+        noVersion.push({ appName, dockerVersion: 'digest-pinned' });
+        continue;
+      }
+
       // Extract version
       const versionMatch = imageTag.match(/:([^:]+)$/);
       if (!versionMatch) {
