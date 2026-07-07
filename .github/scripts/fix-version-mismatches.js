@@ -68,6 +68,12 @@ async function fixVersionMismatches() {
         continue;
       }
 
+      // Skip digest-pinned images (e.g. repo:tag@sha256:...) — the digest is
+      // not a version and its hex can start with a digit, causing false mismatches
+      if (imageTag.includes('@sha256:')) {
+        continue;
+      }
+
       // Extract version
       const versionMatch = imageTag.match(/:([^:]+)$/);
       if (!versionMatch) {
