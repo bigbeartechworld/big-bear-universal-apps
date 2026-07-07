@@ -70,7 +70,7 @@ Follows the `immich` app.json as the template (closest analog — multi-service 
 - `technical`: `main_service: web`, `default_port: 3000`, `main_image: ghcr.io/ente/web`, architectures `[amd64, arm64]`.
 - `deployment`: document the key env vars, volumes (postgres data, minio data), and ports (3000, 3002, 8080, 3200).
 - `visual`: icon/logo from `https://cdn.jsdelivr.net/gh/selfhst/icons/png/ente.png` (verify existence during implementation; fall back to Ente's official logo URL if absent).
-- `compatibility`: all six platforms (casaos, portainer, runtipi, dockge, cosmos, umbrel) with volume_mappings + port overrides mirroring immich. Umbrel gets a 10xxx host port.
+- `compatibility`: `casaos`, `portainer`, `dockge` supported (they publish all ports to the host directly). `runtipi`, `cosmos`, `umbrel` set `supported: false` — Ente's browser client reaches the museum API (:8080) and MinIO (:3200) as separate origins, which single-port-proxy platforms cannot serve (UI loads but login/upload fails). Same precedent as host-network apps that only ship platforms where they actually work. Volume_mappings + port overrides mirror immich.
 - `resources`: documentation `https://help.ente.io/self-hosting/`, repository `https://github.com/ente-io/ente`, support community URL.
 
 ## docker-compose.yml Structure

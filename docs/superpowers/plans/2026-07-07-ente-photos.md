@@ -26,7 +26,7 @@
 
 ---
 
-### Task 1: docker-compose.yml
+### Task 1: docker-compose.yml ✅
 
 **Files:**
 - Create: `apps/ente/docker-compose.yml`
@@ -184,7 +184,7 @@ git commit -m "feat: add ente photos docker-compose (#2416)"
 
 ---
 
-### Task 2: app.json
+### Task 2: app.json ✅
 
 **Files:**
 - Create: `apps/ente/app.json`
