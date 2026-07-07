@@ -1,0 +1,33 @@
+# Configuration for netpulse setup
+
+# Name of the big-bear-netpulse application
+name: big-bear-netpulse
+# Service definitions for the big-bear-netpulse application
+services:
+  # Service name: big-bear-netpulse
+  # The `big-bear-netpulse` service definition
+  big-bear-netpulse:
+    # Name of the container
+    container_name: big-bear-netpulse
+    # Image to be used for the container
+    image: ghcr.io/bentfender/netpulse:sha-8922b29
+    # Container restart policy
+    restart: unless-stopped
+    # Volumes to be mounted to the container
+    volumes:
+      # Persist the NetPulse database and history
+      - netpulse_data:/data
+    # Environment variables
+    environment:
+      - NETPULSE_USERNAME=admin
+      - NETPULSE_PASSWORD=97f76f53-c2b9-499d-b5cb-1643e6b29cf3
+      - SPEEDTEST_INTERVAL_MIN=10
+      - PING_INTERVAL_SEC=60
+      - PING_HOST=1.1.1.1
+      - TZ=UTC
+    # Host networking for accurate speedtests and pings
+    network_mode: host
+volumes:
+  netpulse_data:
+    name: netpulse_data
+    driver: local

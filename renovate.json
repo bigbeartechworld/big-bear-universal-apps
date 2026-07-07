@@ -147,6 +147,11 @@
       "enabled": false
     },
     {
+      "matchPackageNames": ["ghcr.io/bentfender/netpulse"],
+      "matchFileNames": ["apps/netpulse/docker-compose.yml"],
+      "enabled": false
+    },
+    {
       "matchDatasources": "docker",
       "matchCurrentVersion": "/^latest$/",
       "automerge": false,

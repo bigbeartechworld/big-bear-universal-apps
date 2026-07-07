@@ -1,0 +1,165 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "netpulse",
+    "name": "NetPulse",
+    "description": "A self-hosted network monitoring dashboard that runs real Ookla speedtests on a schedule, pings continuously to track uptime, and shows the history as graphs you can actually reflect on — not just a live number that resets every refresh.",
+    "tagline": "Self-hosted internet speed & uptime monitor",
+    "version": "sha-8922b29",
+    "author": "BigBearTechWorld",
+    "developer": "BentFender",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "https://github.com/BentFender/netpulse",
+    "source": "big-bear-universal",
+    "created": "2026-07-07T00:00:00Z",
+    "updated": "2026-07-07T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/netpulse/logo.jpg",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/netpulse/logo.jpg"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://github.com/BentFender/netpulse",
+    "repository": "https://github.com/BentFender/netpulse",
+    "issues": "https://github.com/BentFender/netpulse/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "big-bear-netpulse",
+    "default_port": "8077",
+    "main_image": "ghcr.io/bentfender/netpulse",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "NETPULSE_USERNAME",
+        "default": "admin",
+        "description": "Login username for the dashboard",
+        "required": false
+      },
+      {
+        "name": "NETPULSE_PASSWORD",
+        "default": "97f76f53-c2b9-499d-b5cb-1643e6b29cf3",
+        "description": "Login password for the dashboard — change this default value",
+        "required": true
+      },
+      {
+        "name": "SPEEDTEST_INTERVAL_MIN",
+        "default": "10",
+        "description": "Minutes between full speedtests",
+        "required": false
+      },
+      {
+        "name": "PING_INTERVAL_SEC",
+        "default": "60",
+        "description": "Seconds between uptime pings",
+        "required": false
+      },
+      {
+        "name": "PING_HOST",
+        "default": "1.1.1.1",
+        "description": "Host to ping for uptime checks",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "UTC",
+        "description": "Timezone for the application",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "NetPulse data and SQLite database"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8077",
+        "host": "8077",
+        "protocol": "tcp",
+        "description": "Web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "NetPulse runs on host networking and binds port 8077 directly on your server. Change the default NETPULSE_PASSWORD — it protects the dashboard login (default username is admin). Speedtests run every 10 minutes by default; adjust SPEEDTEST_INTERVAL_MIN if that's too frequent."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8077",
+      "volume_mappings": {
+        "netpulse_data": "/DATA/AppData/$AppID/data"
+      },
+      "port": "8077"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8077"
+    },
+    "runtipi": {
+      "supported": false,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "netpulse_data": "data"
+      },
+      "port": "8077"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8077"
+    },
+    "cosmos": {
+      "supported": false,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8077"
+    },
+    "umbrel": {
+      "supported": false,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "netpulse_data": "data"
+      },
+      "port": "10177"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "network",
+    "monitoring",
+    "speedtest"
+  ]
+}
