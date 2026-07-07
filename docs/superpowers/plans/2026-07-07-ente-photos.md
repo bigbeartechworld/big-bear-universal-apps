@@ -475,7 +475,7 @@ Expected: `README_OK`
 - [ ] **Step 3: Run the full validator (all apps) to confirm no regressions**
 
 Run: `bash scripts/validate-apps.sh 2>&1 | tail -8`
-Expected: `Passed:` count = 238, `Failed:   0 apps`.
+Expected: `Failed:   0 apps` (hard gate) and `Passed:` count = 238 (237 baseline + ente).
 
 - [ ] **Step 4: Commit**
 
