@@ -18,6 +18,7 @@ Ente self-hosting requires five cooperating containers:
 | `postgres`| `postgres:15`              | Application database.                                          |
 | `minio`   | `minio/minio`              | S3-compatible object storage (port 3200).                     |
 | `socat`   | `alpine/socat`             | TCP bridge so `museum` resolves `localhost:3200` → `minio:3200`. |
+| `minio-init` | `minio/mc`              | One-shot job: creates the three S3 buckets, then exits.       |
 
 The museum server accepts **all** configuration via environment variables using the `ENTE_` prefix with underscores replacing nesting and hyphens (e.g. `db.user` → `ENTE_DB_USER`, `s3.b2-eu-cen.key` → `ENTE_S3_B2_EU_CEN_KEY`). This lets us avoid the separate `museum.yaml` file that the official quickstart generates — the catalog format supports only `app.json` + `docker-compose.yml`, so a mounted config file is not an option.
 
@@ -44,7 +45,7 @@ MinIO presigned URLs and the web API origin embed `localhost`, which works on th
 
 ### 4. MinIO bucket bootstrap
 
-MinIO's three buckets (`b2-eu-cen`, `wasabi-eu-central-2-v3`, `scw-eu-fr-v3`) are created via a `MINIO_DEFAULT_BUCKETS` environment variable on the minio service. Only `b2-eu-cen` is functionally required (replication is off by default), but all three are created to match Ente's expectations and avoid startup warnings. If `MINIO_DEFAULT_BUCKETS` proves unreliable across the minio image version, fall back to a lightweight one-shot `minio/mc` init service that creates the buckets and exits (validated during implementation).
+MinIO's three buckets (`b2-eu-cen`, `wasabi-eu-central-2-v3`, `scw-eu-fr-v3`) are created by a dedicated one-shot `minio-init` service running `minio/mc`. It waits for minio to be reachable, sets a `mc` alias with the root credentials, runs `mc mb --ignore-existing` for each bucket, then exits `0`. This is chosen over minio's `post_start` lifecycle hook (requires compose spec ≥ 2.30 and is stripped by some platform converters) and over `MINIO_DEFAULT_BUCKETS` (unused by any existing catalog app, no confirmed support in the pinned image). The init service uses `depends_on: minio` and does not carry a `restart` policy (it must run once and stay exited). Only `b2-eu-cen` is functionally required (replication is off by default); all three are created to match Ente's expectations and avoid museum startup warnings.
 
 ### 5. Web frontend
 
@@ -81,7 +82,8 @@ services:
   socat:       # alpine/socat, network_mode: service:museum, forwards :3200 → minio:3200
   web:         # ghcr.io/ente/web, ports 3000 + 3002, ENTE_API_ORIGIN
   postgres:    # postgres:15, healthcheck, named volume
-  minio:       # minio/minio, port 3200, MINIO_DEFAULT_BUCKETS, named volume
+  minio:       # minio/minio, port 3200, named volume
+  minio-init:  # minio/mc, one-shot bucket creation, depends_on minio, no restart
 volumes:
   ente_postgres_data
   ente_minio_data
@@ -101,7 +103,7 @@ Restart policy `unless-stopped`, explicit `container_name`, named volumes with `
 ## Success Criteria
 
 1. `apps/ente/{app.json,docker-compose.yml,README.md}` created.
-2. `scripts/validate-apps.sh` reports `ente: PASSED` and total pass count = 238.
+2. `scripts/validate-apps.sh` reports `ente: PASSED` with zero failed apps (baseline was 237 passed / 0 failed; ente adds one more passing app).
 3. `bun .github/scripts/check-version-mismatches.js` reports no mismatch for `ente`.
 4. `docker-compose.yml` is valid YAML and parses via `docker compose config`.
 5. README documents the LAN-IP edit, secret rotation, and default login flow.
