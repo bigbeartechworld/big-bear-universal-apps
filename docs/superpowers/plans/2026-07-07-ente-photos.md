@@ -398,7 +398,7 @@ git commit -m "feat: add ente photos app.json (#2416)"
 
 ---
 
-### Task 3: README.md
+### Task 3: README.md ✅
 
 **Files:**
 - Create: `apps/ente/README.md`
