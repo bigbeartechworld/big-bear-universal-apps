@@ -1,0 +1,190 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "snapotter",
+    "name": "SnapOtter",
+    "description": "SnapOtter is an open-source, self-hosted file manipulation suite with 200+ tools across images, video, audio, PDFs, and files. It includes batch processing, reusable pipelines, local AI tools, a browser image editor, and a REST API so files stay on your own server.",
+    "tagline": "Self-hosted file toolkit for images, video, audio, PDFs, and files.",
+    "version": "2.0.0",
+    "author": "SnapOtter",
+    "developer": "SnapOtter",
+    "category": "BigBearCasaOS",
+    "license": "AGPL-3.0",
+    "homepage": "https://snapotter.com",
+    "source": "big-bear-universal-apps",
+    "created": "2026-07-08T00:00:00Z",
+    "updated": "2026-07-08T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/snapotter/logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/snapotter/thumbnail.png",
+    "screenshots": [
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/snapotter/screenshots/screenshot-1.png"
+    ],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/snapotter/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://docs.snapotter.com/guide/getting-started",
+    "repository": "https://github.com/snapotter-hq/SnapOtter",
+    "issues": "https://github.com/snapotter-hq/SnapOtter/issues",
+    "support": "https://discord.gg/hr3s7HPUsr"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "snapotter",
+    "default_port": "1349",
+    "main_image": "snapotter/snapotter",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "AUTH_ENABLED",
+        "default": "true",
+        "description": "Require login before using SnapOtter.",
+        "required": false
+      },
+      {
+        "name": "DEFAULT_USERNAME",
+        "default": "admin",
+        "description": "Initial administrator username, used only on first run.",
+        "required": false
+      },
+      {
+        "name": "DEFAULT_PASSWORD",
+        "default": "admin",
+        "description": "Initial administrator password. Change this after first login.",
+        "required": false
+      },
+      {
+        "name": "MAX_UPLOAD_SIZE_MB",
+        "default": "0",
+        "description": "Maximum upload size in MB. Set to 0 for unlimited.",
+        "required": false
+      },
+      {
+        "name": "MAX_BATCH_SIZE",
+        "default": "0",
+        "description": "Maximum number of files per batch. Set to 0 for unlimited.",
+        "required": false
+      },
+      {
+        "name": "CONCURRENT_JOBS",
+        "default": "0",
+        "description": "Number of concurrent jobs. Set to 0 to auto-detect.",
+        "required": false
+      },
+      {
+        "name": "REDIS_MAXMEMORY",
+        "default": "512mb",
+        "description": "Memory cap for embedded Redis.",
+        "required": false
+      },
+      {
+        "name": "TRUST_PROXY",
+        "default": "true",
+        "description": "Trust reverse proxy headers.",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Persistent SnapOtter data, user files, AI models, logs, embedded Postgres, and embedded Redis."
+      },
+      {
+        "container": "/tmp/workspace",
+        "description": "Temporary workspace used while processing files."
+      }
+    ],
+    "ports": [
+      {
+        "container": "1349",
+        "host": "1349",
+        "protocol": "tcp",
+        "description": "Web UI and REST API"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Default login is admin / admin. You will be asked to change the password after first login. This package uses SnapOtter embedded mode, so leave DATABASE_URL and REDIS_URL unset unless you are moving to an external Postgres/Redis stack.\n"
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "1349",
+      "volume_mappings": {
+        "snapotter_data": "/DATA/AppData/$AppID/data",
+        "snapotter_workspace": "/DATA/AppData/$AppID/workspace"
+      },
+      "port": "1349"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 3,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "1349"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "snapotter_data": "data",
+        "snapotter_workspace": "workspace"
+      },
+      "port": "1349"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "1349"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "1349"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "snapotter_data": "data",
+        "snapotter_workspace": "workspace"
+      },
+      "port": "10193",
+      "app_port": "1349"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "file-converter",
+    "pdf",
+    "image",
+    "video",
+    "audio",
+    "local-ai"
+  ]
+}
