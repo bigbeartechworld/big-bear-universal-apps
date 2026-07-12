@@ -31,11 +31,15 @@ const out: Record<string, Cat> = {};
 for (const app of apps) {
   const p = join(APPS, app, "app.json");
   if (!existsSync(p)) continue;
-  const j = JSON.parse(readFileSync(p, "utf8"));
-  const id = j?.metadata?.id ?? app;
-  const name = j?.metadata?.name ?? "";
-  const desc = j?.metadata?.description ?? "";
-  out[id] = classify(name, desc);
+  try {
+    const j = JSON.parse(readFileSync(p, "utf8"));
+    const id = j?.metadata?.id ?? app;
+    const name = j?.metadata?.name ?? "";
+    const desc = j?.metadata?.description ?? "";
+    out[id] = classify(name, desc);
+  } catch (e) {
+    console.warn(`skip ${app}: ${e instanceof Error ? e.message : e}`);
+  }
 }
 writeFileSync(MAP_PATH, JSON.stringify(out, null, 2) + "\n");
 console.log(`Wrote ${Object.keys(out).length} entries to ${MAP_PATH}`);
