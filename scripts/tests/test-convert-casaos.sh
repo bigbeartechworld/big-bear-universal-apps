@@ -31,4 +31,15 @@ case "$CAT" in Media|Productivity|Home|Networking|AI|Finance|Social|Developer|Ot
 if yq eval '.. | select(tag == "!!map") | keys' "$CF" 2>/dev/null | grep -q '\ben_us\b'; then echo "FAIL: lowercase en_us present"; fail=1; else echo "ok: no en_us keys"; fi
 rm -rf "$TMP_OUT"
 
+# --- category proposal script (writes to temp, not the committed map) ---
+TMP_MAP="$(mktemp)"
+CASAOS_MAP_OUT="$TMP_MAP" bun "$REPO/scripts/migrate-casaos-categories.ts" >/dev/null 2>&1
+assert_eq "$([[ -s "$TMP_MAP" ]] && echo yes)" "yes" "map file produced"
+BAD=$(jq -r '.[]' "$TMP_MAP" | grep -Evc '^(Media|Productivity|Home|Networking|AI|Finance|Social|Developer|Others)$' || true)
+assert_eq "$BAD" "0" "all mapped categories valid"
+NAPPS=$(ls -d "$REPO"/apps/*/ | wc -l | tr -d ' ')
+NMAP=$(jq 'length' "$TMP_MAP")
+assert_eq "$NMAP" "$NAPPS" "map covers every app"
+rm -f "$TMP_MAP"
+
 exit $fail
