@@ -3,6 +3,14 @@
 All notable changes to Big Bear Universal Apps are documented here.
 Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within the month)
 
+## [2026.07.1]
+
+### Added
+- `apps/wordpress-v7/` — new WordPress 7.0.1 app paired with MySQL 8.0. WordPress 7 raises the minimum database to MySQL 8.0, which the legacy app's bundled MySQL 5.7 cannot satisfy.
+
+### Changed
+- `apps/wordpress/` — renamed to "WordPress (Legacy)", reverted to `wordpress:6.9.4` (still paired with MySQL 5.7), and pinned in `renovate.json` so it no longer auto-updates.
+
 ## [2026.06.3]
 
 ### Updated
