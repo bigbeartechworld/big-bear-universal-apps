@@ -2,7 +2,8 @@ import { readdirSync, readFileSync, writeFileSync, existsSync } from "fs";
 import { join, dirname } from "path";
 
 const REPO = dirname(dirname(new URL(import.meta.url).pathname));
-const APPS = join(REPO, "apps");
+// Apps dir; overridable for tests so --apply never mutates the tracked tree.
+const APPS = process.env.CASAOS_APPS_DIR ?? join(REPO, "apps");
 // Committed map path; overridable for tests so runs never clobber the reviewed file.
 const MAP_PATH = process.env.CASAOS_MAP_OUT ?? join(REPO, "scripts", "casaos-category-map.json");
 
