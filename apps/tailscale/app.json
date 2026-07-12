@@ -136,7 +136,8 @@
         "tailscale_config": "/DATA/AppData/$AppID/config",
         "tailscale_state": "/DATA/AppData/$AppID/state",
         "tailscale_shared": "/DATA/AppData/$AppID/shared"
-      }
+      },
+      "category": "Networking"
     },
     "portainer": {
       "supported": true,

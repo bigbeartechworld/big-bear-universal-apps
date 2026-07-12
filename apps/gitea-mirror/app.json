@@ -110,7 +110,8 @@
       "volume_mappings": {
         "gitea-mirror_data": "/DATA/AppData/$AppID/data"
       },
-      "port": "4321"
+      "port": "4321",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

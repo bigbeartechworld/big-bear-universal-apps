@@ -65,7 +65,8 @@
     "casaos": {
       "supported": true,
       "port_map": "8888",
-      "port": "8888"
+      "port": "8888",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

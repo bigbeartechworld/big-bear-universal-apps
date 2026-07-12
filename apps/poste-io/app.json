@@ -75,7 +75,8 @@
       "volume_mappings": {
         "poste-io_data": "/DATA/AppData/$AppID/data"
       },
-      "port": "80"
+      "port": "80",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

@@ -87,7 +87,8 @@
         "adguard-home_data_work": "/DATA/AppData/$AppID/data/work",
         "adguard-home_data_conf": "/DATA/AppData/$AppID/data/conf"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Networking"
     },
     "portainer": {
       "supported": true,

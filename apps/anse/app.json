@@ -67,7 +67,8 @@
     "casaos": {
       "supported": true,
       "port_map": "8014",
-      "port": "8014"
+      "port": "8014",
+      "category": "AI"
     },
     "portainer": {
       "supported": true,

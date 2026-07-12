@@ -169,7 +169,8 @@
         "tp-link-omada-controller_data": "/DATA/AppData/$AppID/data",
         "tp-link-omada-controller_logs": "/DATA/AppData/$AppID/logs"
       },
-      "port": "8088"
+      "port": "8088",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

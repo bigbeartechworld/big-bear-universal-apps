@@ -75,7 +75,8 @@
       "volume_mappings": {
         "mailpit_data": "/DATA/AppData/$AppID/data"
       },
-      "port": "8025"
+      "port": "8025",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

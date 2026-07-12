@@ -124,7 +124,8 @@
         "MaybeFinance_postgres-data": "/DATA/AppData/$AppID/postgres-data",
         "MaybeFinance_redis-data": "/DATA/AppData/$AppID/redis-data"
       },
-      "port": "4000"
+      "port": "4000",
+      "category": "Finance"
     },
     "portainer": {
       "supported": true,

@@ -93,7 +93,8 @@
       "volume_mappings": {
         "guacamole_mysql": "/DATA/AppData/$AppID/mysql"
       },
-      "port": "8090"
+      "port": "8090",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

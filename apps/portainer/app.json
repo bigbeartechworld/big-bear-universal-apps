@@ -84,7 +84,8 @@
       "volume_mappings": {
         "portainer_data": "/DATA/AppData/$AppID/data"
       },
-      "port": "9443"
+      "port": "9443",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

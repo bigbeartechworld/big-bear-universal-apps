@@ -76,7 +76,8 @@
         "2fauth_data": "/DATA/AppData/$AppID/data"
       },
       "youtube": "https://youtu.be/yCnjxSryD_U",
-      "port": "8000"
+      "port": "8000",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

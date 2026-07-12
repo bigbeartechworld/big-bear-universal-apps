@@ -128,7 +128,8 @@
         "snapotter_data": "/DATA/AppData/$AppID/data",
         "snapotter_workspace": "/DATA/AppData/$AppID/workspace"
       },
-      "port": "1349"
+      "port": "1349",
+      "category": "AI"
     },
     "portainer": {
       "supported": true,

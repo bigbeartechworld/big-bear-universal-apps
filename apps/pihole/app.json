@@ -91,7 +91,8 @@
         "pihole_dnsmasq.d": "/DATA/AppData/$AppID/dnsmasq.d",
         "pihole_etc": "/DATA/AppData/$AppID/etc"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Networking"
     },
     "portainer": {
       "supported": true,

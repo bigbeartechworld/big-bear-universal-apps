@@ -124,7 +124,8 @@
     "casaos": {
       "supported": true,
       "port_map": "2022",
-      "port": "2022"
+      "port": "2022",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

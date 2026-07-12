@@ -84,7 +84,8 @@
         "wallos_db": "/DATA/AppData/$AppID/db",
         "wallos_logos": "/DATA/AppData/$AppID/logos"
       },
-      "port": "8282"
+      "port": "8282",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

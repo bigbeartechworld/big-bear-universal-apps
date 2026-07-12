@@ -90,7 +90,8 @@
         "kopia_home": "/DATA/AppData/$AppID/home",
         "kopia_repository": "/DATA/AppData/$AppID/repository"
       },
-      "port": "51515"
+      "port": "51515",
+      "category": "Networking"
     },
     "portainer": {
       "supported": true,

@@ -76,7 +76,8 @@
       "volume_mappings": {
         "tianji_pgdata": "/DATA/AppData/$AppID/pgdata"
       },
-      "port": "12345"
+      "port": "12345",
+      "category": "Networking"
     },
     "portainer": {
       "supported": true,

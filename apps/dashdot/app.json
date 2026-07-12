@@ -68,7 +68,8 @@
       "volume_mappings": {
         "dashdot_data": "/DATA/AppData/$AppID"
       },
-      "port": "3001"
+      "port": "3001",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

@@ -59,7 +59,8 @@
       "port_map": "",
       "volume_mappings": {
         "playitgg_secrets": "/DATA/AppData/$AppID/secrets"
-      }
+      },
+      "category": "Networking"
     },
     "portainer": {
       "supported": true,

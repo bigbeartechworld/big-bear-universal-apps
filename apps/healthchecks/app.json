@@ -207,7 +207,8 @@
       "volume_mappings": {
         "healthchecks_config": "/DATA/AppData/$AppID/config"
       },
-      "port": "8000"
+      "port": "8000",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

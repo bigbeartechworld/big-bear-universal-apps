@@ -72,7 +72,8 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": ""
+      "port_map": "",
+      "category": "Productivity"
     },
     "portainer": {
       "supported": true,

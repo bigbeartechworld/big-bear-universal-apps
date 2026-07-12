@@ -80,7 +80,8 @@
       "volume_mappings": {
         "convertx_data": "/DATA/AppData/$AppID/data"
       },
-      "port": "3000"
+      "port": "3000",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

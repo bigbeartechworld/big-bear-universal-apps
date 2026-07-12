@@ -86,7 +86,8 @@
         "jfa-go_.config_jfa-go": "/DATA/AppData/$AppID/.config/jfa-go",
         "jfa-go_jellyfin": "/DATA/AppData/$AppID/jellyfin"
       },
-      "port": "8056"
+      "port": "8056",
+      "category": "Media"
     },
     "portainer": {
       "supported": true,

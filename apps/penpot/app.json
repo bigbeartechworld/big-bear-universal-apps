@@ -69,7 +69,8 @@
         "penpot_assets": "/DATA/AppData/$AppID/assets",
         "penpot_pgdata": "/DATA/AppData/$AppID/pgdata"
       },
-      "port": "9001"
+      "port": "9001",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

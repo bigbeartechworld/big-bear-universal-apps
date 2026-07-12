@@ -92,7 +92,8 @@
         "genmon_git_genmon": "/DATA/AppData/$AppID/git/genmon",
         "genmon_var_log": "/DATA/AppData/$AppID/var/log"
       },
-      "port": "8000"
+      "port": "8000",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

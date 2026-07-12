@@ -85,7 +85,8 @@
       "volume_mappings": {
         "note-mark-aio_data": "/DATA/AppData/$AppID/data"
       },
-      "port": "8000"
+      "port": "8000",
+      "category": "Productivity"
     },
     "portainer": {
       "supported": true,

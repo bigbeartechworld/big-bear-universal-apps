@@ -79,7 +79,8 @@
       "volume_mappings": {
         "playit-docker-web_config": "/DATA/AppData/$AppID/config"
       },
-      "port": "8008"
+      "port": "8008",
+      "category": "Networking"
     },
     "portainer": {
       "supported": true,

@@ -77,7 +77,8 @@
         "netalertx-v26_config": "/DATA/AppData/$AppID/config",
         "netalertx-v26_db": "/DATA/AppData/$AppID/db"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Networking"
     },
     "portainer": {
       "supported": true,

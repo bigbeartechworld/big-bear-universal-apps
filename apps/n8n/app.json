@@ -81,7 +81,8 @@
         "n8n_db_init-data.sh": "/DATA/AppData/$AppID/db/init-data.sh",
         "n8n_pgdata": "/DATA/AppData/$AppID/pgdata"
       },
-      "port": "5678"
+      "port": "5678",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

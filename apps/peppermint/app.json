@@ -59,7 +59,8 @@
       "volume_mappings": {
         "peppermint_postgres_data": "/DATA/AppData/$AppID/postgres/data"
       },
-      "port": "3000"
+      "port": "3000",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

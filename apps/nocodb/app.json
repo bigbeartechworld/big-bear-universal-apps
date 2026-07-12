@@ -70,7 +70,8 @@
         "nocodb_pgdata": "/DATA/AppData/$AppID/pgdata",
         "nocodb_redis": "/DATA/AppData/$AppID/redis"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

@@ -109,7 +109,8 @@
       "volume_mappings": {
         "netpulse_data": "/DATA/AppData/$AppID/data"
       },
-      "port": "8077"
+      "port": "8077",
+      "category": "Networking"
     },
     "portainer": {
       "supported": true,

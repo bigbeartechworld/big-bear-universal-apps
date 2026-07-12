@@ -72,7 +72,8 @@
       "volume_mappings": {
         "homarr-v1_appdata": "/DATA/AppData/$AppID/appdata"
       },
-      "port": "7575"
+      "port": "7575",
+      "category": "Productivity"
     },
     "portainer": {
       "supported": true,

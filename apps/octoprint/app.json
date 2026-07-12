@@ -68,7 +68,8 @@
       "volume_mappings": {
         "octoprint_octoprint": "/DATA/AppData/$AppID/octoprint"
       },
-      "port": "1080"
+      "port": "1080",
+      "category": "Home"
     },
     "portainer": {
       "supported": true,

@@ -70,7 +70,8 @@
       "folder_name": "gemdigest",
       "volume_mappings": {
         "GemDigest_extra_configs": "/DATA/AppData/$AppID/extra/configs"
-      }
+      },
+      "category": "Others"
     },
     "portainer": {
       "supported": true,
