@@ -200,15 +200,21 @@ validate_yaml_syntax() {
 # Map any category to a valid CasaOS v2 category.
 # Valid: Media Productivity Home Networking AI Finance Social Developer Others
 map_casaos_category() {
-    local raw="$1"
+    local raw
+    raw=$(echo "$1" | tr '[:upper:]' '[:lower:]')
     case "$raw" in
-        Media|Productivity|Home|Networking|AI|Finance|Social|Developer|Others)
-            echo "$raw" ;;
-        Development|Developers|Dev)          echo "Developer" ;;
-        Photography|Photos|Video|Streaming)  echo "Media" ;;
-        Utilities|Utility|Storage|Tools)     echo "Others" ;;
-        Network|Networking)                  echo "Networking" ;;
-        *)                                   echo "Others" ;;
+        media)         echo "Media" ;;
+        productivity)  echo "Productivity" ;;
+        home)          echo "Home" ;;
+        networking|network)    echo "Networking" ;;
+        ai)            echo "AI" ;;
+        finance)       echo "Finance" ;;
+        social)        echo "Social" ;;
+        developer|development|developers|dev)  echo "Developer" ;;
+        others)        echo "Others" ;;
+        photography|photos|video|streaming)    echo "Media" ;;
+        utilities|utility|storage|tools)       echo "Others" ;;
+        *)             echo "Others" ;;
     esac
 }
 
