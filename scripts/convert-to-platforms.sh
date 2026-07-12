@@ -31,6 +31,7 @@ SPECIFIC_APP=""
 DRY_RUN=false
 VERBOSE=false
 VALIDATE=false
+SOURCE_ONLY=false
 
 # Counters
 TOTAL_CONVERTED=0
@@ -84,6 +85,10 @@ EOF
 # Parse command line arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
+        --source-only)
+            SOURCE_ONLY=true
+            shift
+            ;;
         -h|--help)
             usage
             exit 0
@@ -192,8 +197,23 @@ validate_yaml_syntax() {
     return 0
 }
 
+# Map any category to a valid CasaOS v2 category.
+# Valid: Media Productivity Home Networking AI Finance Social Developer Others
+map_casaos_category() {
+    local raw="$1"
+    case "$raw" in
+        Media|Productivity|Home|Networking|AI|Finance|Social|Developer|Others)
+            echo "$raw" ;;
+        Development|Developers|Dev)          echo "Developer" ;;
+        Photography|Photos|Video|Streaming)  echo "Media" ;;
+        Utilities|Utility|Storage|Tools)     echo "Others" ;;
+        Network|Networking)                  echo "Networking" ;;
+        *)                                   echo "Others" ;;
+    esac
+}
+
 # Map category to valid Runtipi category
-# Valid Runtipi categories: network, media, development, automation, social, 
+# Valid Runtipi categories: network, media, development, automation, social,
 # utilities, photography, security, featured, books, data, music, finance, gaming, ai
 map_runtipi_category() {
     local category="$1"
@@ -2253,5 +2273,7 @@ main() {
     fi
 }
 
+if [[ "$SOURCE_ONLY" != "true" ]]; then
 # Run main
 main "$@"
+fi
