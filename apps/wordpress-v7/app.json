@@ -75,7 +75,7 @@
     "ports": [
       {
         "container": "80",
-        "host": "80",
+        "host": "8084",
         "protocol": "tcp",
         "description": "Container Port: 80"
       }
