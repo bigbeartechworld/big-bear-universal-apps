@@ -164,6 +164,11 @@
       "matchPackageNames": ["lissy93/dashy"],
       "matchFileNames": ["apps/dashy/docker-compose.yml"],
       "enabled": false
+    },
+    {
+      "matchPackageNames": ["wordpress"],
+      "matchFileNames": ["apps/wordpress/docker-compose.yml"],
+      "enabled": false
     }
   ],
   "customManagers": []
