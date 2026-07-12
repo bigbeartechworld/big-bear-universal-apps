@@ -117,7 +117,8 @@
         "crafty_data_logs": "/DATA/AppData/$AppID/data/logs",
         "crafty_data_servers": "/DATA/AppData/$AppID/data/servers"
       },
-      "port": "8443"
+      "port": "8443",
+      "category": "Media"
     },
     "portainer": {
       "supported": true,

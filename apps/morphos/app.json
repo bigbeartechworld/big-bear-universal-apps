@@ -80,7 +80,8 @@
       "volume_mappings": {
         "morphos_tmp": "/DATA/AppData/$AppID/tmp"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Productivity"
     },
     "portainer": {
       "supported": true,

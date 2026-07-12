@@ -84,7 +84,8 @@
         "plant-it_mysql": "/DATA/AppData/$AppID/mysql",
         "plant-it_upload-dir": "/DATA/AppData/$AppID/upload-dir"
       },
-      "port": "3000"
+      "port": "3000",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

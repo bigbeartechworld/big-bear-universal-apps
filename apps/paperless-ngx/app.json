@@ -152,7 +152,8 @@
         "paperless-ngx_redis": "/DATA/AppData/$AppID/redis",
         "paperless-ngx_tika_tmp": "/DATA/AppData/$AppID/tika/tmp"
       },
-      "port": "8000"
+      "port": "8000",
+      "category": "Social"
     },
     "portainer": {
       "supported": true,

@@ -78,7 +78,8 @@
     "casaos": {
       "supported": true,
       "port_map": "61208",
-      "port": "61208"
+      "port": "61208",
+      "category": "Networking"
     },
     "portainer": {
       "supported": true,

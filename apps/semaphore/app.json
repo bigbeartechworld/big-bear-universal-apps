@@ -74,7 +74,8 @@
         "semaphore_lib": "/DATA/AppData/$AppID/lib",
         "semaphore_mysql": "/DATA/AppData/$AppID/mysql"
       },
-      "port": "3000"
+      "port": "3000",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

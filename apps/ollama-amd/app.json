@@ -68,7 +68,8 @@
       "volume_mappings": {
         "ollama-amd_.ollama": "/DATA/AppData/$AppID/.ollama"
       },
-      "port": "11434"
+      "port": "11434",
+      "category": "AI"
     },
     "portainer": {
       "supported": true,

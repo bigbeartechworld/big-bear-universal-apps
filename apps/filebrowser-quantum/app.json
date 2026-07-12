@@ -84,7 +84,8 @@
         "filebrowser-quantum_data": "/DATA/AppData/$AppID/data",
         "filebrowser-quantum_srv": "/DATA/AppData/$AppID/srv"
       },
-      "port": "8700"
+      "port": "8700",
+      "category": "Productivity"
     },
     "portainer": {
       "supported": true,

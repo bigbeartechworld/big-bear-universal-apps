@@ -97,7 +97,8 @@
       "volume_mappings": {
         "write-freely_data_config": "/DATA/AppData/$AppID/data/config"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Social"
     },
     "portainer": {
       "supported": true,

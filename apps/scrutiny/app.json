@@ -83,7 +83,8 @@
         "scrutiny_config": "/DATA/AppData/$AppID/config",
         "scrutiny_influxdb": "/DATA/AppData/$AppID/influxdb"
       },
-      "port": "38080"
+      "port": "38080",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

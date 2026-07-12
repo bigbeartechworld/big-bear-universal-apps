@@ -70,7 +70,8 @@
         "matterbridge_.matterbridge": "/DATA/AppData/$AppID/.matterbridge",
         "matterbridge_Matterbridge": "/DATA/AppData/$AppID/Matterbridge"
       },
-      "port": "8283"
+      "port": "8283",
+      "category": "Home"
     },
     "portainer": {
       "supported": true,

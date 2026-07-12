@@ -78,7 +78,8 @@
         "ayon_redis": "/DATA/AppData/$AppID/redis",
         "ayon_storage": "/DATA/AppData/$AppID/storage"
       },
-      "port": "5000"
+      "port": "5000",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

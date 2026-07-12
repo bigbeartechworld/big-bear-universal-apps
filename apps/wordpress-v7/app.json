@@ -98,7 +98,8 @@
         "wordpress-v7_html": "/DATA/AppData/$AppID/html",
         "wordpress-v7_mysql": "/DATA/AppData/$AppID/mysql"
       },
-      "port": "8084"
+      "port": "8084",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

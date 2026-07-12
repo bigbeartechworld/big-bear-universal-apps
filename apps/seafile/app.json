@@ -116,7 +116,8 @@
         "seafile_mysql": "/DATA/AppData/$AppID/mysql",
         "seafile_shared": "/DATA/AppData/$AppID/shared"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Productivity"
     },
     "portainer": {
       "supported": true,

@@ -113,7 +113,8 @@
         "immich_pgdata": "/DATA/AppData/$AppID/pgdata",
         "immich_upload": "/DATA/AppData/$AppID/upload"
       },
-      "port": "2283"
+      "port": "2283",
+      "category": "Media"
     },
     "portainer": {
       "supported": true,

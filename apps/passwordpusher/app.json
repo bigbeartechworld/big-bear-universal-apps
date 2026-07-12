@@ -92,7 +92,8 @@
         "passwordpusher_mysql": "/DATA/AppData/$AppID/mysql",
         "passwordpusher_storage": "/DATA/AppData/$AppID/storage"
       },
-      "port": "5100"
+      "port": "5100",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

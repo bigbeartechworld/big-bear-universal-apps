@@ -85,7 +85,8 @@
       "volume_mappings": {
         "uisp_config": "/DATA/AppData/$AppID/config"
       },
-      "port": "10443"
+      "port": "10443",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

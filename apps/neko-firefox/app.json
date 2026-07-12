@@ -96,7 +96,8 @@
     "casaos": {
       "supported": true,
       "port_map": "8080",
-      "port": "8080"
+      "port": "8080",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

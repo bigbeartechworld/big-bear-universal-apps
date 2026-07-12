@@ -75,7 +75,8 @@
         "farmos_db": "/DATA/AppData/$AppID/db",
         "farmos_sites": "/DATA/AppData/$AppID/sites"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Social"
     },
     "portainer": {
       "supported": true,

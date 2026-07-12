@@ -67,7 +67,8 @@
       "volume_mappings": {
         "faster-whisper_config": "/DATA/AppData/$AppID/config"
       },
-      "port": "7575"
+      "port": "7575",
+      "category": "AI"
     },
     "portainer": {
       "supported": true,

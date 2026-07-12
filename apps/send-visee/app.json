@@ -106,7 +106,8 @@
         "send-visee_redis": "/DATA/AppData/$AppID/redis",
         "send-visee_uploads": "/DATA/AppData/$AppID/uploads"
       },
-      "port": "1443"
+      "port": "1443",
+      "category": "Social"
     },
     "portainer": {
       "supported": true,

@@ -97,7 +97,8 @@
         "odoo_data_etc": "/DATA/AppData/$AppID/data/etc",
         "odoo_data_postgresql": "/DATA/AppData/$AppID/data/postgresql"
       },
-      "port": "8069"
+      "port": "8069",
+      "category": "Finance"
     },
     "portainer": {
       "supported": true,

@@ -75,7 +75,8 @@
       "volume_mappings": {
         "mind_db": "/DATA/AppData/$AppID/db"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

@@ -114,7 +114,8 @@
           "container": "/home/node/.openclaw/workspace",
           "host": "/DATA/AppData/$AppID/workspace"
         }
-      ]
+      ],
+      "category": "AI"
     },
     "portainer": {
       "categories": [

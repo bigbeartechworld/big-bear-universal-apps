@@ -110,7 +110,8 @@
         "filebrowser_data_config": "/DATA/AppData/$AppID/data/config",
         "filebrowser_data_db": "/DATA/AppData/$AppID/data/db"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

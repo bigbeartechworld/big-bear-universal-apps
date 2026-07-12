@@ -42,4 +42,18 @@ NMAP=$(jq 'length' "$TMP_MAP")
 assert_eq "$NMAP" "$NAPPS" "map covers every app"
 rm -f "$TMP_MAP"
 
+# --- apply writes compatibility.casaos.category, leaves metadata.category ---
+BEFORE_META=$(jq -r '.metadata.category' "$REPO/apps/uptime-kuma/app.json")
+bun "$REPO/scripts/migrate-casaos-categories.ts" --apply >/dev/null 2>&1
+AFTER_CASAOS=$(jq -r '.compatibility.casaos.category' "$REPO/apps/uptime-kuma/app.json")
+AFTER_META=$(jq -r '.metadata.category' "$REPO/apps/uptime-kuma/app.json")
+case "$AFTER_CASAOS" in Media|Productivity|Home|Networking|AI|Finance|Social|Developer|Others) echo "ok: casaos.category set ($AFTER_CASAOS)";; *) echo "FAIL: casaos.category invalid ($AFTER_CASAOS)"; fail=1;; esac
+assert_eq "$AFTER_META" "$BEFORE_META" "metadata.category unchanged"
+MISSING=0
+for d in "$REPO"/apps/*/; do
+  v=$(jq -r '.compatibility.casaos.category // "MISSING"' "$d/app.json")
+  [[ "$v" == "MISSING" ]] && MISSING=$((MISSING+1))
+done
+assert_eq "$MISSING" "0" "all apps have casaos.category"
+
 exit $fail

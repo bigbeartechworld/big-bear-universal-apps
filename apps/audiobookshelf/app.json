@@ -83,7 +83,8 @@
         "audiobookshelf_media_data_books_spoken": "/DATA/AppData/$AppID/media/data/books/spoken",
         "audiobookshelf_media_data_podcasts": "/DATA/AppData/$AppID/media/data/podcasts"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Media"
     },
     "portainer": {
       "supported": true,

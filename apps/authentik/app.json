@@ -84,7 +84,8 @@
         "authentik_data_postgres": "/DATA/AppData/$AppID/data/postgres",
         "authentik_data_redis": "/DATA/AppData/$AppID/data/redis"
       },
-      "port": "9443"
+      "port": "9443",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

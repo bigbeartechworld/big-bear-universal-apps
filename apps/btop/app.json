@@ -107,7 +107,8 @@
       "volume_mappings": {
         "btop_config": "/DATA/AppData/$AppID/config"
       },
-      "port": "7681"
+      "port": "7681",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

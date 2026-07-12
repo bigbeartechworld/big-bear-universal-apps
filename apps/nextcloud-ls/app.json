@@ -96,7 +96,8 @@
         "nextcloud-ls_config": "/DATA/AppData/$AppID/config",
         "nextcloud-ls_data": "/DATA/AppData/$AppID/data"
       },
-      "port": "10443"
+      "port": "10443",
+      "category": "Media"
     },
     "portainer": {
       "supported": true,

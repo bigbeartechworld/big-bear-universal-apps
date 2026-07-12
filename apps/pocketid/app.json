@@ -103,7 +103,8 @@
       "volume_mappings": {
         "pocketid_data": "/DATA/AppData/$AppID/data"
       },
-      "port": "1411"
+      "port": "1411",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

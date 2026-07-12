@@ -94,7 +94,8 @@
       "volume_mappings": {
         "ihatemoney_mysql": "/DATA/AppData/$AppID/mysql"
       },
-      "port": "8001"
+      "port": "8001",
+      "category": "Finance"
     },
     "portainer": {
       "supported": true,

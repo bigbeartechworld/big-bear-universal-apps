@@ -102,7 +102,8 @@
     "casaos": {
       "supported": true,
       "port_map": "2283",
-      "port": "2283"
+      "port": "2283",
+      "category": "AI"
     },
     "portainer": {
       "supported": true,

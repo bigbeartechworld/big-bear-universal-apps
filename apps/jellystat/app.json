@@ -69,7 +69,8 @@
         "jellystat_backup-data": "/DATA/AppData/$AppID/backup-data",
         "jellystat_postgres-data": "/DATA/AppData/$AppID/postgres-data"
       },
-      "port": "3000"
+      "port": "3000",
+      "category": "Media"
     },
     "portainer": {
       "supported": true,

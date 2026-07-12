@@ -59,7 +59,8 @@
     "casaos": {
       "supported": true,
       "port_map": "8000",
-      "port": "8000"
+      "port": "8000",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

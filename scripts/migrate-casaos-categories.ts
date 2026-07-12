@@ -41,5 +41,31 @@ for (const app of apps) {
     console.warn(`skip ${app}: ${e instanceof Error ? e.message : e}`);
   }
 }
-writeFileSync(MAP_PATH, JSON.stringify(out, null, 2) + "\n");
-console.log(`Wrote ${Object.keys(out).length} entries to ${MAP_PATH}`);
+const APPLY = process.argv.includes("--apply");
+
+if (!APPLY) {
+  writeFileSync(MAP_PATH, JSON.stringify(out, null, 2) + "\n");
+  console.log(`Wrote ${Object.keys(out).length} entries to ${MAP_PATH}`);
+} else {
+  if (!existsSync(MAP_PATH)) throw new Error(`Missing ${MAP_PATH}; run without --apply first, then review.`);
+  const map: Record<string, string> = JSON.parse(readFileSync(MAP_PATH, "utf8"));
+  const valid = new Set<string>(VALID);
+  for (const [id, cat] of Object.entries(map)) {
+    if (!valid.has(cat)) throw new Error(`Invalid category "${cat}" for "${id}"`);
+  }
+  let written = 0;
+  for (const app of apps) {
+    const p = join(APPS, app, "app.json");
+    if (!existsSync(p)) continue;
+    const j = JSON.parse(readFileSync(p, "utf8"));
+    const id = j?.metadata?.id ?? app;
+    const cat = map[id];
+    if (!cat) throw new Error(`No mapping for "${id}"`);
+    j.compatibility = j.compatibility ?? {};
+    j.compatibility.casaos = j.compatibility.casaos ?? {};
+    j.compatibility.casaos.category = cat;
+    writeFileSync(p, JSON.stringify(j, null, 2) + "\n");
+    written++;
+  }
+  console.log(`Applied casaos.category to ${written} apps`);
+}

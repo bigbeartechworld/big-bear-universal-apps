@@ -424,7 +424,8 @@
         "coolify_ssh": "/DATA/AppData/$AppID/ssh",
         "coolify_webhooks-during-maintenance": "/DATA/AppData/$AppID/webhooks-during-maintenance"
       },
-      "port": "8000"
+      "port": "8000",
+      "category": "Media"
     },
     "portainer": {
       "supported": true,
