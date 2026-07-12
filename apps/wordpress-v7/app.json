@@ -1,18 +1,18 @@
 {
   "spec_version": "1.0",
   "metadata": {
-    "id": "wordpress",
-    "name": "WordPress (Legacy)",
-    "description": "Initially started as a blogging tool in 2003, it has evolved into a highly flexible CMS that powers over 40% of the web (as of my last training data in 2022).",
+    "id": "wordpress-v7",
+    "name": "WordPress v7",
+    "description": "Initially started as a blogging tool in 2003, it has evolved into a highly flexible CMS that powers over 40% of the web. WordPress 7 requires MySQL 8.0 and is packaged as a new app alongside the legacy WordPress 6 entry.",
     "tagline": "WordPress",
-    "version": "6.9.4",
+    "version": "7.0.1",
     "author": "BigBearTechWorld",
     "developer": "Automattic",
     "category": "BigBearCasaOS",
     "license": "",
     "homepage": "https://hub.docker.com/r/wordpress",
     "source": "big-bear-universal",
-    "created": "2025-10-27T02:42:26Z",
+    "created": "2026-07-12T00:00:00Z",
     "updated": "2026-07-12T00:00:00Z"
   },
   "visual": {
@@ -35,7 +35,7 @@
     ],
     "platform": "linux",
     "main_service": "app",
-    "default_port": "8080",
+    "default_port": "8084",
     "main_image": "wordpress",
     "compose_file": "docker-compose.yml"
   },
@@ -84,17 +84,21 @@
   "ui": {
     "scheme": "http",
     "path": "",
-    "tips": {}
+    "tips": {
+      "before_install": {
+        "en_us": "🆕 WORDPRESS V7 - SEPARATE APP\n\nThis is a NEW app, separate from 'wordpress' (v6). Both can run simultaneously.\n\nFOR NEW USERS:\n✅ Install this app for new WordPress deployments\n✅ Pairs WordPress 7.0.1 with MySQL 8.0 (WordPress 7 requires MySQL 8.0)\n\nFOR V6 USERS:\n⚠️  Do NOT uninstall your 'wordpress' v6 app\n⚠️  Deploy this as a NEW app alongside v6\n⚠️  WordPress 7 rejects MySQL 5.7, and a 5.7 data directory does not upgrade in-place to 8.0\n⚠️  Migration requires a manual MySQL dump/reload — back up your database first\n\nSupport: https://community.bigbeartechworld.com/"
+      }
+    }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080",
+      "port_map": "8084",
       "volume_mappings": {
-        "wordpress_html": "/DATA/AppData/$AppID/html",
-        "wordpress_mysql": "/DATA/AppData/$AppID/mysql"
+        "wordpress-v7_html": "/DATA/AppData/$AppID/html",
+        "wordpress-v7_mysql": "/DATA/AppData/$AppID/mysql"
       },
-      "port": "8080"
+      "port": "8084"
     },
     "portainer": {
       "supported": true,
@@ -104,7 +108,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "8080"
+      "port": "8084"
     },
     "runtipi": {
       "supported": true,
@@ -115,30 +119,30 @@
         "arm"
       ],
       "volume_mappings": {
-        "wordpress_html": "html",
-        "wordpress_mysql": "mysql"
+        "wordpress-v7_html": "html",
+        "wordpress-v7_mysql": "mysql"
       },
-      "port": "8142"
+      "port": "8145"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "8080"
+      "port": "8084"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "8080"
+      "port": "8084"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
-        "wordpress_html": "html",
-        "wordpress_mysql": "mysql"
+        "wordpress-v7_html": "html",
+        "wordpress-v7_mysql": "mysql"
       },
-      "port": "10187"
+      "port": "10194"
     }
   },
   "tags": [
