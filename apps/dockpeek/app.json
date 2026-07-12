@@ -94,7 +94,8 @@
     "casaos": {
       "supported": true,
       "port_map": "3420",
-      "port": "3420"
+      "port": "3420",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

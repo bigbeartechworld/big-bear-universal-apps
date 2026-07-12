@@ -70,7 +70,8 @@
         "pd3f_to-ocr": "/DATA/AppData/$AppID/to-ocr",
         "pd3f_uploads": "/DATA/AppData/$AppID/uploads"
       },
-      "port": "1616"
+      "port": "1616",
+      "category": "AI"
     },
     "portainer": {
       "supported": true,

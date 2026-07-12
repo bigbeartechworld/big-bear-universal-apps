@@ -110,7 +110,8 @@
         "vikunja-v2_files": "/DATA/AppData/$AppID/files",
         "vikunja-v2_mysql": "/DATA/AppData/$AppID/mysql"
       },
-      "port": "8082"
+      "port": "8082",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

@@ -73,7 +73,8 @@
       "volume_mappings": {
         "chrome_Downloads": "/DATA/AppData/$AppID/Downloads"
       },
-      "port": "6902"
+      "port": "6902",
+      "category": "Media"
     },
     "portainer": {
       "supported": true,

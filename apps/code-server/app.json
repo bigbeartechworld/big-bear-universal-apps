@@ -92,7 +92,8 @@
         "code-server_config": "/DATA/AppData/$AppID/config",
         "code-server_projects": "/DATA/AppData/$AppID/projects"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

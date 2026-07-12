@@ -74,7 +74,8 @@
       "volume_mappings": {
         "appsmith_stacks": "/DATA/AppData/$AppID/stacks"
       },
-      "port": "1080"
+      "port": "1080",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

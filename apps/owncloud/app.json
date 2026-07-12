@@ -147,7 +147,8 @@
         "owncloud_mysql": "/DATA/AppData/$AppID/mysql",
         "owncloud_redis": "/DATA/AppData/$AppID/redis"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

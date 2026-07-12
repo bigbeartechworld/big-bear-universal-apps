@@ -78,7 +78,8 @@
       "volume_mappings": {
         "nexterm_data": "/DATA/AppData/$AppID/data"
       },
-      "port": "6989"
+      "port": "6989",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

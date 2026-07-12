@@ -75,7 +75,8 @@
       "volume_mappings": {
         "dashy_public": "/DATA/AppData/$AppID/public"
       },
-      "port": "4000"
+      "port": "4000",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

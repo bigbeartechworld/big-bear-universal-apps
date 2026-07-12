@@ -125,7 +125,8 @@
         "pihole-updatelists_etc": "/DATA/AppData/$AppID/etc",
         "pihole-updatelists_etc_pihole-updatelists": "/DATA/AppData/$AppID/etc/pihole-updatelists"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Networking"
     },
     "portainer": {
       "supported": true,

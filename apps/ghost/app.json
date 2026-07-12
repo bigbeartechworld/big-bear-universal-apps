@@ -110,7 +110,8 @@
         "ghost_content": "/DATA/AppData/$AppID/content",
         "ghost_mysql": "/DATA/AppData/$AppID/mysql"
       },
-      "port": "2368"
+      "port": "2368",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

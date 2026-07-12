@@ -116,7 +116,8 @@
         "ente_postgres_data": "/DATA/AppData/$AppID/postgres_data",
         "ente_minio_data": "/DATA/AppData/$AppID/minio_data"
       },
-      "port": "3000"
+      "port": "3000",
+      "category": "Media"
     },
     "portainer": {
       "supported": true,

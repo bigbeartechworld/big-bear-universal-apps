@@ -68,7 +68,8 @@
       "volume_mappings": {
         "rackpeek_config": "/DATA/AppData/$AppID/config"
       },
-      "port": "8095"
+      "port": "8095",
+      "category": "Networking"
     },
     "portainer": {
       "supported": true,

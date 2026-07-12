@@ -112,7 +112,8 @@
         "vikunja_files": "/DATA/AppData/$AppID/files",
         "vikunja_mysql": "/DATA/AppData/$AppID/mysql"
       },
-      "port": "8081"
+      "port": "8081",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

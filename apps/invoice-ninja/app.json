@@ -82,7 +82,8 @@
         "invoice-ninja_data_public": "/DATA/AppData/$AppID/data/public",
         "invoice-ninja_data_storage": "/DATA/AppData/$AppID/data/storage"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Finance"
     },
     "portainer": {
       "supported": true,

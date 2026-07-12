@@ -122,7 +122,8 @@
       "volume_mappings": {
         "joplin_postgresql_data": "/DATA/AppData/$AppID/postgresql/data"
       },
-      "port": "22300"
+      "port": "22300",
+      "category": "Productivity"
     },
     "portainer": {
       "supported": true,

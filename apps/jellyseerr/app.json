@@ -85,7 +85,8 @@
       "volume_mappings": {
         "jellyseerr_config": "/DATA/AppData/$AppID/config"
       },
-      "port": "5055"
+      "port": "5055",
+      "category": "Media"
     },
     "portainer": {
       "supported": true,

@@ -81,7 +81,8 @@
     "casaos": {
       "supported": true,
       "port_map": "7681",
-      "port": "7681"
+      "port": "7681",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

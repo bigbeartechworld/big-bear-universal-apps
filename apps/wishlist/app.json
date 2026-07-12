@@ -106,7 +106,8 @@
         "wishlist_data": "/DATA/AppData/$AppID/data",
         "wishlist_uploads": "/DATA/AppData/$AppID/uploads"
       },
-      "port": "3280"
+      "port": "3280",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

@@ -72,7 +72,8 @@
       "volume_mappings": {
         "mealie_data": "/DATA/AppData/$AppID/data"
       },
-      "port": "9925"
+      "port": "9925",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

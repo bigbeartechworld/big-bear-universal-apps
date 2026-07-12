@@ -63,7 +63,8 @@
       "volume_mappings": {
         "changedetection_datastore": "/DATA/AppData/$AppID/datastore"
       },
-      "port": "5000"
+      "port": "5000",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

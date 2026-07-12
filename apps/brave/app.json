@@ -73,7 +73,8 @@
       "volume_mappings": {
         "brave_Downloads": "/DATA/AppData/$AppID/Downloads"
       },
-      "port": "6901"
+      "port": "6901",
+      "category": "Media"
     },
     "portainer": {
       "supported": true,

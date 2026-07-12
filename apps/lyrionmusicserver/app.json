@@ -115,7 +115,8 @@
         "lyrionmusicserver_music": "/DATA/AppData/$AppID/music",
         "lyrionmusicserver_playlists": "/DATA/AppData/$AppID/playlists"
       },
-      "port": "9000"
+      "port": "9000",
+      "category": "Media"
     },
     "portainer": {
       "supported": true,

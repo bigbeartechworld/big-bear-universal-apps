@@ -93,7 +93,8 @@
         "onlyoffice_onlyoffice_rabbitmq": "/DATA/AppData/$AppID/onlyoffice/rabbitmq",
         "onlyoffice_onlyoffice_redis": "/DATA/AppData/$AppID/onlyoffice/redis"
       },
-      "port": "7400"
+      "port": "7400",
+      "category": "Productivity"
     },
     "portainer": {
       "supported": true,

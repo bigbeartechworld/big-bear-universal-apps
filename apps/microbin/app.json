@@ -313,7 +313,8 @@
       "volume_mappings": {
         "microbin_data": "/DATA/AppData/$AppID/data"
       },
-      "port": "8888"
+      "port": "8888",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

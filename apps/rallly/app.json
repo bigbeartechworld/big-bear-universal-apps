@@ -133,7 +133,8 @@
       "volume_mappings": {
         "rallly_postgresql": "/DATA/AppData/$AppID/postgresql"
       },
-      "port": "3000"
+      "port": "3000",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

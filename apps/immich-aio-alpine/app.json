@@ -159,7 +159,8 @@
         "immich-aio-alpine_pgdata": "/DATA/AppData/$AppID/pgdata",
         "immich-aio-alpine_photos": "/DATA/AppData/$AppID/photos"
       },
-      "port": "2283"
+      "port": "2283",
+      "category": "Media"
     },
     "portainer": {
       "supported": true,

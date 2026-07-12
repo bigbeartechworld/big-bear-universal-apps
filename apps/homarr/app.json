@@ -78,7 +78,8 @@
         "homarr_data": "/DATA/AppData/$AppID/data",
         "homarr_icons": "/DATA/AppData/$AppID/icons"
       },
-      "port": "7575"
+      "port": "7575",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

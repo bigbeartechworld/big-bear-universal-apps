@@ -68,7 +68,8 @@
       "volume_mappings": {
         "erugo_storage": "/DATA/AppData/$AppID/storage"
       },
-      "port": "9997"
+      "port": "9997",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

@@ -75,7 +75,8 @@
       "volume_mappings": {
         "homer_assets": "/DATA/AppData/$AppID/assets"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

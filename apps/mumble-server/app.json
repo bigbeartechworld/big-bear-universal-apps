@@ -59,7 +59,8 @@
     "casaos": {
       "supported": true,
       "port_map": "64738",
-      "port": "64738"
+      "port": "64738",
+      "category": "Social"
     },
     "portainer": {
       "supported": true,

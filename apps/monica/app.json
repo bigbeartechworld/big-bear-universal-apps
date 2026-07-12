@@ -69,7 +69,8 @@
         "monica_mysql": "/DATA/AppData/$AppID/mysql",
         "monica_storage": "/DATA/AppData/$AppID/storage"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Productivity"
     },
     "portainer": {
       "supported": true,

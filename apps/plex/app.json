@@ -71,7 +71,8 @@
         "plex_movies": "/DATA/AppData/$AppID/movies",
         "plex_tv": "/DATA/AppData/$AppID/tv"
       },
-      "port": "32400"
+      "port": "32400",
+      "category": "Media"
     },
     "portainer": {
       "supported": true,
