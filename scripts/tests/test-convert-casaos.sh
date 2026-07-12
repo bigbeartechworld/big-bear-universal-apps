@@ -31,6 +31,26 @@ case "$CAT" in Media|Productivity|Home|Networking|AI|Finance|Social|Developer|Ot
 if yq eval '.. | select(tag == "!!map") | keys' "$CF" 2>/dev/null | grep -q '\ben_us\b'; then echo "FAIL: lowercase en_us present"; fail=1; else echo "ok: no en_us keys"; fi
 rm -rf "$TMP_OUT"
 
+# --- tips + service-level envs en_US re-key (nextcloud has both) ---
+TMP_NC="$(mktemp -d)"
+bash "$REPO/scripts/convert-to-platforms.sh" -p casaos -a nextcloud -o "$TMP_NC" >/dev/null 2>&1
+NC="$TMP_NC/casaos/nextcloud/docker-compose.yml"
+assert_eq "$(yq eval '.x-casaos.tips.before_install | has("en_US")' "$NC")" "true" "tips re-keyed en_US"
+assert_eq "$(yq eval '.x-casaos.tips.before_install | has("en_us")' "$NC")" "false" "tips no en_us"
+if yq eval '.. | select(tag == "!!map") | keys' "$NC" 2>/dev/null | grep -q '\ben_us\b'; then echo "FAIL: nextcloud lowercase en_us present"; fail=1; else echo "ok: nextcloud no en_us keys (incl service envs)"; fi
+rm -rf "$TMP_NC"
+
+# --- category metadata-fallback branch: casaos.category absent -> map(metadata.category) ---
+TMP_FB="$(mktemp -d)"
+cp -R "$REPO/apps/." "$TMP_FB/apps/"
+FB_APP="$TMP_FB/apps/uptime-kuma/app.json"
+jq 'del(.compatibility.casaos.category)' "$FB_APP" > "$FB_APP.tmp" && mv "$FB_APP.tmp" "$FB_APP"
+bash "$REPO/scripts/convert-to-platforms.sh" -p casaos -a uptime-kuma -i "$TMP_FB/apps" -o "$TMP_FB/out" >/dev/null 2>&1
+FBC="$TMP_FB/out/casaos/uptime-kuma/docker-compose.yml"
+FB_CAT="$(yq eval '.x-casaos.category' "$FBC" 2>/dev/null)"
+case "$FB_CAT" in Media|Productivity|Home|Networking|AI|Finance|Social|Developer|Others) echo "ok: fallback category valid ($FB_CAT)";; *) echo "FAIL: fallback category invalid ($FB_CAT)"; fail=1;; esac
+rm -rf "$TMP_FB"
+
 # --- category proposal script (writes to temp, not the committed map) ---
 TMP_MAP="$(mktemp)"
 CASAOS_MAP_OUT="$TMP_MAP" bun "$REPO/scripts/migrate-casaos-categories.ts" >/dev/null 2>&1
