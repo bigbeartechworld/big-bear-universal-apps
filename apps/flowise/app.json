@@ -151,7 +151,8 @@
       "volume_mappings": {
         "flowise_data": "/DATA/AppData/$AppID/data"
       },
-      "port": "8009"
+      "port": "8009",
+      "category": "AI"
     },
     "portainer": {
       "supported": true,

@@ -84,7 +84,8 @@
       "volume_mappings": {
         "ejbca-ce_persistent": "/DATA/AppData/$AppID/persistent"
       },
-      "port": "8443"
+      "port": "8443",
+      "category": "Social"
     },
     "portainer": {
       "supported": true,

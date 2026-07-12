@@ -79,7 +79,8 @@
         "libredesk_data_redis": "/DATA/AppData/$AppID/data/redis",
         "libredesk_uploads": "/DATA/AppData/$AppID/uploads"
       },
-      "port": "9000"
+      "port": "9000",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

@@ -68,7 +68,8 @@
       "volume_mappings": {
         "actual-server_data": "/DATA/AppData/$AppID"
       },
-      "port": "5006"
+      "port": "5006",
+      "category": "Finance"
     },
     "portainer": {
       "supported": true,

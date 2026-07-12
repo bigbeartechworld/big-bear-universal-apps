@@ -79,7 +79,8 @@
         "traccar_logs": "/DATA/AppData/$AppID/logs",
         "traccar_traccar.xml": "/DATA/AppData/$AppID/traccar.xml"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

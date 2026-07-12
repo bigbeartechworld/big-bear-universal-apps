@@ -229,7 +229,8 @@
         "photoprism_originals": "/DATA/AppData/$AppID/originals",
         "photoprism_storage": "/DATA/AppData/$AppID/storage"
       },
-      "port": "2342"
+      "port": "2342",
+      "category": "AI"
     },
     "portainer": {
       "supported": true,

@@ -77,7 +77,8 @@
         "obsidian-livesync_data_couchdb": "/DATA/AppData/$AppID/data/couchdb",
         "obsidian-livesync_data_local.ini": "/DATA/AppData/$AppID/data/local.ini"
       },
-      "port": "5984"
+      "port": "5984",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

@@ -126,7 +126,8 @@
         "warracker_uploads": "/DATA/AppData/$AppID/uploads",
         "warracker_warrackerdb": "/DATA/AppData/$AppID/warrackerdb"
       },
-      "port": "8005"
+      "port": "8005",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

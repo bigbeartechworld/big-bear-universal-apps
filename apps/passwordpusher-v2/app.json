@@ -92,7 +92,8 @@
         "passwordpusher-v2_postgres": "/DATA/AppData/$AppID/postgres",
         "passwordpusher-v2_storage": "/DATA/AppData/$AppID/storage"
       },
-      "port": "5101"
+      "port": "5101",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

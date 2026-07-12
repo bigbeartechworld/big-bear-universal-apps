@@ -109,7 +109,8 @@
         "viseron_snapshots": "/DATA/AppData/$AppID/snapshots",
         "viseron_thumbnails": "/DATA/AppData/$AppID/thumbnails"
       },
-      "port": "8888"
+      "port": "8888",
+      "category": "AI"
     },
     "portainer": {
       "supported": true,

@@ -79,7 +79,8 @@
       "volume_mappings": {
         "dashy-v4_user-data": "/DATA/AppData/$AppID/user-data"
       },
-      "port": "4001"
+      "port": "4001",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

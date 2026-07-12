@@ -78,7 +78,8 @@
         "lancache_cache": "/DATA/AppData/$AppID/cache",
         "lancache_logs": "/DATA/AppData/$AppID/logs"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Networking"
     },
     "portainer": {
       "supported": true,

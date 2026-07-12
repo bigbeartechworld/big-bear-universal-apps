@@ -80,7 +80,8 @@
       "volume_mappings": {
         "gotify_data": "/DATA/AppData/$AppID/data"
       },
-      "port": "8091"
+      "port": "8091",
+      "category": "Social"
     },
     "portainer": {
       "supported": true,

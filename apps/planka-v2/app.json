@@ -262,7 +262,8 @@
         "planka-v2_project-background-images": "/DATA/AppData/$AppID/project-background-images",
         "planka-v2_user-avatars": "/DATA/AppData/$AppID/user-avatars"
       },
-      "port": "3001"
+      "port": "3001",
+      "category": "Productivity"
     },
     "portainer": {
       "supported": true,

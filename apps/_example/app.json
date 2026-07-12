@@ -32,7 +32,10 @@
     "support": "https://community.bigbeartechworld.com/"
   },
   "technical": {
-    "architectures": ["amd64", "arm64"],
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "8080",
@@ -107,12 +110,16 @@
         "comment": "Optional: Platform-specific volume path overrides",
         "example_app_data": "/DATA/AppData/$AppID/data",
         "example_app_config": "/DATA/AppData/$AppID/config"
-      }
+      },
+      "category": "Others"
     },
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["Utilities", "selfhosted"],
+      "categories": [
+        "Utilities",
+        "selfhosted"
+      ],
       "administrator_only": false,
       "port": "8080",
       "comment_port": "Optional: Override the default port for this platform"
@@ -120,7 +127,10 @@
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
-      "supported_architectures": ["amd64", "arm64"],
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
       "port": "8080",
       "comment_port": "Optional: Override the default port. Runtipi will still remap if port is < 1000",
       "volume_mappings": {

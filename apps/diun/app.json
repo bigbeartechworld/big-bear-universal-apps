@@ -95,7 +95,8 @@
       "port_map": "",
       "volume_mappings": {
         "diun_data": "/DATA/AppData/$AppID/data"
-      }
+      },
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

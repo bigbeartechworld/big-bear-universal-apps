@@ -212,7 +212,8 @@
         "calcom_config": "/DATA/AppData/$AppID/config",
         "calcom_data_db": "/DATA/AppData/$AppID/data/db"
       },
-      "port": "3000"
+      "port": "3000",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

@@ -143,7 +143,8 @@
         "speedtest-tracker_mysql": "/DATA/AppData/$AppID/mysql",
         "speedtest-tracker_web": "/DATA/AppData/$AppID/web"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Networking"
     },
     "portainer": {
       "supported": true,

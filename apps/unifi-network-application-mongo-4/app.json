@@ -194,7 +194,8 @@
         "unifi-network-application-mongo-4_config": "/DATA/AppData/$AppID/config",
         "unifi-network-application-mongo-4_db_data": "/DATA/AppData/$AppID/db/data"
       },
-      "port": "8443"
+      "port": "8443",
+      "category": "Networking"
     },
     "portainer": {
       "supported": true,

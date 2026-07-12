@@ -118,7 +118,8 @@
         "plex-nvidia_movies": "/DATA/AppData/$AppID/movies",
         "plex-nvidia_tv": "/DATA/AppData/$AppID/tv"
       },
-      "port": "32400"
+      "port": "32400",
+      "category": "Media"
     },
     "portainer": {
       "supported": true,

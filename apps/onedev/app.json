@@ -79,7 +79,8 @@
         "onedev_data": "/DATA/AppData/$AppID/data",
         "onedev_postgres_data": "/DATA/AppData/$AppID/postgres/data"
       },
-      "port": "6610"
+      "port": "6610",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

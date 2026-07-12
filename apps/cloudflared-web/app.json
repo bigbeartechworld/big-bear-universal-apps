@@ -115,7 +115,8 @@
       "volume_mappings": {
         "cloudflared-web_config": "/DATA/AppData/$AppID/config"
       },
-      "port": "14333"
+      "port": "14333",
+      "category": "Networking"
     },
     "portainer": {
       "supported": true,

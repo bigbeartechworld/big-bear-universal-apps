@@ -78,7 +78,8 @@
         "codex-docs_db": "/DATA/AppData/$AppID/db",
         "codex-docs_uploads": "/DATA/AppData/$AppID/uploads"
       },
-      "port": "3000"
+      "port": "3000",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

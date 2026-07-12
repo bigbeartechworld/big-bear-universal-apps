@@ -91,7 +91,8 @@
         "sftpgo_data": "/DATA/AppData/$AppID/data",
         "sftpgo_srv": "/DATA/AppData/$AppID/srv"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

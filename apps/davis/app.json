@@ -161,7 +161,8 @@
         "davis_mailpit_data": "/DATA/AppData/$AppID/mailpit/data",
         "davis_mysql": "/DATA/AppData/$AppID/mysql"
       },
-      "port": "9000"
+      "port": "9000",
+      "category": "Productivity"
     },
     "portainer": {
       "supported": true,

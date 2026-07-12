@@ -215,7 +215,8 @@
         "pterodactyl-panel_nginx_": "/DATA/AppData/$AppID/nginx/",
         "pterodactyl-panel_var_": "/DATA/AppData/$AppID/var/"
       },
-      "port": "1180"
+      "port": "1180",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

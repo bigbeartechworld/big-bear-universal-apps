@@ -84,7 +84,8 @@
       "volume_mappings": {
         "goaway_config": "/DATA/AppData/$AppID/config"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Networking"
     },
     "portainer": {
       "supported": true,

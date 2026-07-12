@@ -99,7 +99,8 @@
       "volume_mappings": {
         "nightscout_mongo-data": "/DATA/AppData/$AppID/mongo-data"
       },
-      "port": "1337"
+      "port": "1337",
+      "category": "Home"
     },
     "portainer": {
       "supported": true,

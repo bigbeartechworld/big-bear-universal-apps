@@ -107,7 +107,8 @@
         "docmost_data_redis": "/DATA/AppData/$AppID/data/redis",
         "docmost_data_storage": "/DATA/AppData/$AppID/data/storage"
       },
-      "port": "3000"
+      "port": "3000",
+      "category": "Productivity"
     },
     "portainer": {
       "supported": true,

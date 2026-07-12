@@ -31,6 +31,7 @@ SPECIFIC_APP=""
 DRY_RUN=false
 VERBOSE=false
 VALIDATE=false
+SOURCE_ONLY=false
 
 # Counters
 TOTAL_CONVERTED=0
@@ -84,6 +85,10 @@ EOF
 # Parse command line arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
+        --source-only)
+            SOURCE_ONLY=true
+            shift
+            ;;
         -h|--help)
             usage
             exit 0
@@ -192,8 +197,29 @@ validate_yaml_syntax() {
     return 0
 }
 
+# Map any category to a valid CasaOS v2 category.
+# Valid: Media Productivity Home Networking AI Finance Social Developer Others
+map_casaos_category() {
+    local raw
+    raw=$(echo "$1" | tr '[:upper:]' '[:lower:]')
+    case "$raw" in
+        media)         echo "Media" ;;
+        productivity)  echo "Productivity" ;;
+        home)          echo "Home" ;;
+        networking|network)    echo "Networking" ;;
+        ai)            echo "AI" ;;
+        finance)       echo "Finance" ;;
+        social)        echo "Social" ;;
+        developer|development|developers|dev)  echo "Developer" ;;
+        others)        echo "Others" ;;
+        photography|photos|video|streaming)    echo "Media" ;;
+        utilities|utility|storage|tools)       echo "Others" ;;
+        *)             echo "Others" ;;
+    esac
+}
+
 # Map category to valid Runtipi category
-# Valid Runtipi categories: network, media, development, automation, social, 
+# Valid Runtipi categories: network, media, development, automation, social,
 # utilities, photography, security, featured, books, data, music, finance, gaming, ai
 map_runtipi_category() {
     local category="$1"
@@ -566,11 +592,19 @@ convert_to_casaos() {
     fi
     
     mkdir -p "$output_dir"
-    
+
     # Start with clean compose
     cp "$app_dir/docker-compose.yml" "$output_dir/docker-compose.yml"
     local compose_file="$output_dir/docker-compose.yml"
-    
+
+    local casaos_category_raw
+    casaos_category_raw=$(jq -r '.compatibility.casaos.category // empty' "$app_dir/app.json")
+    if [[ -z "$casaos_category_raw" ]]; then
+        casaos_category_raw="$APP_CATEGORY"
+    fi
+    local casaos_category
+    casaos_category=$(map_casaos_category "$casaos_category_raw")
+
     # Update the name to include big-bear- prefix for CasaOS
     local current_name=$(yq eval '.name' "$compose_file")
     if [[ "$current_name" != "big-bear-"* ]]; then
@@ -580,8 +614,9 @@ convert_to_casaos() {
     # Add x-casaos sections to compose file
     # Add top-level x-casaos
     yq eval ".x-casaos.architectures = $APP_ARCHITECTURES" -i "$compose_file"
+    yq eval ".x-casaos.id = \"com.bigbeartechworld.$APP_ID\"" -i "$compose_file"
     yq eval ".x-casaos.main = \"$APP_MAIN_SERVICE\"" -i "$compose_file"
-    yq eval ".x-casaos.description.en_us = \"$APP_DESCRIPTION\"" -i "$compose_file"
+    yq eval ".x-casaos.description.en_US = \"$APP_DESCRIPTION\"" -i "$compose_file"
     
     # Add screenshot_link if screenshots exist
     local screenshots=$(jq -c '.visual.screenshots // []' "$app_dir/app.json")
@@ -590,7 +625,7 @@ convert_to_casaos() {
         yq eval ".x-casaos.screenshot_link = $screenshots" -i "$compose_file"
     fi
     
-    yq eval ".x-casaos.tagline.en_us = \"$APP_TAGLINE\"" -i "$compose_file"
+    yq eval ".x-casaos.tagline.en_US = \"$APP_TAGLINE\"" -i "$compose_file"
     yq eval ".x-casaos.developer = \"$APP_DEVELOPER\"" -i "$compose_file"
     yq eval ".x-casaos.author = \"$APP_AUTHOR\"" -i "$compose_file"
     yq eval ".x-casaos.icon = \"$APP_ICON\"" -i "$compose_file"
@@ -602,10 +637,13 @@ convert_to_casaos() {
         # Escape the multiline string for yq and use style="literal" for proper formatting
         local tips_json=$(jq -c '.ui.tips.before_install // {}' "$app_dir/app.json")
         yq eval ".x-casaos.tips.before_install = $tips_json" -i "$compose_file"
+        if [[ "$(yq eval '.x-casaos.tips.before_install | has("en_us")' "$compose_file")" == "true" ]]; then
+            yq eval '.x-casaos.tips.before_install.en_US = .x-casaos.tips.before_install.en_us | del(.x-casaos.tips.before_install.en_us)' -i "$compose_file"
+        fi
     fi
-    
-    yq eval ".x-casaos.title.en_us = \"$APP_NAME\"" -i "$compose_file"
-    yq eval ".x-casaos.category = \"$APP_CATEGORY\"" -i "$compose_file"
+
+    yq eval ".x-casaos.title.en_US = \"$APP_NAME\"" -i "$compose_file"
+    yq eval ".x-casaos.category = \"$casaos_category\"" -i "$compose_file"
     
     # Use platform-specific port if defined, otherwise use default
     local casaos_port="${PORT_CASAOS:-$APP_DEFAULT_PORT}"
@@ -614,7 +652,10 @@ convert_to_casaos() {
     # Add descriptive comments to x-casaos section using perl (works on both macOS and Linux)
     # Add comment before architectures
     perl -i -pe 's/^x-casaos:/x-casaos:\n  # Supported CPU architectures for this application/' "$compose_file"
-    
+
+    # Add comment before id
+    perl -i -pe 's/^  id:/  # Stable reverse-domain app identifier\n  id:/' "$compose_file"
+
     # Add comment before main
     perl -i -pe 's/^  main:/  # Main service for this application\n  main:/' "$compose_file"
     
@@ -679,7 +720,7 @@ convert_to_casaos() {
                 
                 # Add to x-casaos with proper escaping
                 yq eval ".services.[\"$service_name\"].x-casaos.envs[$env_index].container = \"$env_key\"" -i "$compose_file" 2>/dev/null || true
-                yq eval ".services.[\"$service_name\"].x-casaos.envs[$env_index].description.en_us = \"Container Variable: $env_key\"" -i "$compose_file" 2>/dev/null || true
+                yq eval ".services.[\"$service_name\"].x-casaos.envs[$env_index].description.en_US = \"Container Variable: $env_key\"" -i "$compose_file" 2>/dev/null || true
                 env_index=$((env_index + 1))
             done <<< "$service_envs"
         elif [[ "$env_format" == "!!map" ]]; then
@@ -695,7 +736,7 @@ convert_to_casaos() {
                 
                 # Add to x-casaos with proper escaping
                 yq eval ".services.[\"$service_name\"].x-casaos.envs[$env_index].container = \"$env_key\"" -i "$compose_file" 2>/dev/null || true
-                yq eval ".services.[\"$service_name\"].x-casaos.envs[$env_index].description.en_us = \"Container Variable: $env_key\"" -i "$compose_file" 2>/dev/null || true
+                yq eval ".services.[\"$service_name\"].x-casaos.envs[$env_index].description.en_US = \"Container Variable: $env_key\"" -i "$compose_file" 2>/dev/null || true
                 env_index=$((env_index + 1))
             done <<< "$service_envs"
         fi
@@ -725,7 +766,7 @@ convert_to_casaos() {
             fi
 
             yq eval ".services.[\"$service_name\"].x-casaos.volumes[$vol_index].container = \"$container_path\"" -i "$compose_file" 2>/dev/null || true
-            yq eval ".services.[\"$service_name\"].x-casaos.volumes[$vol_index].description.en_us = \"Container Path: $container_path\"" -i "$compose_file" 2>/dev/null || true
+            yq eval ".services.[\"$service_name\"].x-casaos.volumes[$vol_index].description.en_US = \"Container Path: $container_path\"" -i "$compose_file" 2>/dev/null || true
             vol_index=$((vol_index + 1))
         done
         
@@ -751,7 +792,7 @@ convert_to_casaos() {
             fi
 
             yq eval ".services.[\"$service_name\"].x-casaos.ports[$port_index].container = \"$container_port\"" -i "$compose_file" 2>/dev/null || true
-            yq eval ".services.[\"$service_name\"].x-casaos.ports[$port_index].description.en_us = \"Container Port: $container_port\"" -i "$compose_file" 2>/dev/null || true
+            yq eval ".services.[\"$service_name\"].x-casaos.ports[$port_index].description.en_US = \"Container Port: $container_port\"" -i "$compose_file" 2>/dev/null || true
             port_index=$((port_index + 1))
         done
         
@@ -2253,5 +2294,7 @@ main() {
     fi
 }
 
+if [[ "$SOURCE_ONLY" != "true" ]]; then
 # Run main
 main "$@"
+fi

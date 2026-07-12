@@ -94,7 +94,8 @@
         "jlesage-handbrake_storage": "/DATA/AppData/$AppID/storage",
         "jlesage-handbrake_watch": "/DATA/AppData/$AppID/watch"
       },
-      "port": "5800"
+      "port": "5800",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

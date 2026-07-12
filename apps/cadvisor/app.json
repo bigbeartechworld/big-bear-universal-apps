@@ -85,7 +85,8 @@
     "casaos": {
       "supported": true,
       "port_map": "8085",
-      "port": "8085"
+      "port": "8085",
+      "category": "Networking"
     },
     "portainer": {
       "supported": true,

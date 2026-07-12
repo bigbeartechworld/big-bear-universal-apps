@@ -95,7 +95,8 @@
         "odysseus_searxng": "/DATA/AppData/$AppID/searxng",
         "odysseus_ntfy": "/DATA/AppData/$AppID/ntfy"
       },
-      "port": "7000"
+      "port": "7000",
+      "category": "AI"
     },
     "portainer": {
       "supported": true,

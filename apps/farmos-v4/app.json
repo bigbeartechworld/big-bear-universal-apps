@@ -73,7 +73,8 @@
         "farmos-v4_db": "/DATA/AppData/$AppID/db",
         "farmos-v4_sites": "/DATA/AppData/$AppID/sites"
       },
-      "port": "8083"
+      "port": "8083",
+      "category": "Social"
     },
     "portainer": {
       "supported": true,

@@ -78,7 +78,8 @@
         "piwigo_gallery": "/DATA/AppData/$AppID/gallery",
         "piwigo_mysql": "/DATA/AppData/$AppID/mysql"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Media"
     },
     "portainer": {
       "supported": true,

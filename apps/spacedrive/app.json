@@ -79,7 +79,8 @@
       "volume_mappings": {
         "spacedrive_data_spacedrive": "/DATA/AppData/$AppID/data/spacedrive"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

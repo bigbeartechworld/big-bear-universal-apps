@@ -74,7 +74,8 @@
         "tandoor_postgresql": "/DATA/AppData/$AppID/postgresql",
         "tandoor_staticfiles": "/DATA/AppData/$AppID/staticfiles"
       },
-      "port": "8080"
+      "port": "8080",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

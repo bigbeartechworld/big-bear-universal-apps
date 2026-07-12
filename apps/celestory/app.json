@@ -133,7 +133,8 @@
         "celestory-voltask-uploads": "/DATA/AppData/$AppID/uploads",
         "celestory-postgres-data": "/DATA/AppData/$AppID/db"
       },
-      "port": "1500"
+      "port": "1500",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

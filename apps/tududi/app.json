@@ -95,7 +95,8 @@
       "volume_mappings": {
         "tududi_tududi_db": "/DATA/AppData/$AppID/tududi/db"
       },
-      "port": "9292"
+      "port": "9292",
+      "category": "Productivity"
     },
     "portainer": {
       "supported": true,

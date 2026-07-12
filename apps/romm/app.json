@@ -197,7 +197,8 @@
         "romm_redis-data": "/DATA/AppData/$AppID/redis-data",
         "romm_resources": "/DATA/AppData/$AppID/resources"
       },
-      "port": "1080"
+      "port": "1080",
+      "category": "Media"
     },
     "portainer": {
       "supported": true,

@@ -73,7 +73,8 @@
       "volume_mappings": {
         "Homepage_config": "/DATA/AppData/$AppID/config"
       },
-      "port": "3000"
+      "port": "3000",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

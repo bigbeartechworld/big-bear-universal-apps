@@ -83,7 +83,8 @@
         "kavita_media_data_comics": "/DATA/AppData/$AppID/media/data/comics",
         "kavita_media_data_manga": "/DATA/AppData/$AppID/media/data/manga"
       },
-      "port": "5000"
+      "port": "5000",
+      "category": "Productivity"
     },
     "portainer": {
       "supported": true,

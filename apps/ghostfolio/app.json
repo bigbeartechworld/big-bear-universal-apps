@@ -137,7 +137,8 @@
         "ghostfolio_data_db": "/DATA/AppData/$AppID/data/db",
         "ghostfolio_data_redis": "/DATA/AppData/$AppID/data/redis"
       },
-      "port": "3333"
+      "port": "3333",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

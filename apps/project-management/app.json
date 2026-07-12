@@ -76,7 +76,8 @@
       "volume_mappings": {
         "project-management_mysql": "/DATA/AppData/$AppID/mysql"
       },
-      "port": "8000"
+      "port": "8000",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,

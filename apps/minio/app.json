@@ -81,7 +81,8 @@
       "volume_mappings": {
         "minio_data": "/DATA/AppData/$AppID"
       },
-      "port": "9011"
+      "port": "9011",
+      "category": "Others"
     },
     "portainer": {
       "supported": true,

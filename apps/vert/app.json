@@ -59,7 +59,8 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3030"
+      "port_map": "3030",
+      "category": "Developer"
     },
     "portainer": {
       "supported": true,
