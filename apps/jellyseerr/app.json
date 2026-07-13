@@ -17,7 +17,7 @@
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/jellyseerr.png",
-    "thumbnail": "https://cdn.jsdelivr.net/gh/seerr-team/seerr@develop/public/preview.jpg",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/seerr-team/seerr@5ae70d05e1ee123b3cda43153ed415754fd8e816/public/preview.jpg",
     "screenshots": [],
     "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/jellyseerr.png"
   },

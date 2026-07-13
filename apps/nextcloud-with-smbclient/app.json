@@ -17,11 +17,11 @@
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nextcloud.png",
-    "thumbnail": "https://cdn.jsdelivr.net/gh/nextcloud/screenshots@master/nextcloud-hub-25-files.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/nextcloud/screenshots@328f3616f78906ecb405bdcc00481bfbbeb59278/nextcloud-hub-25-files.png",
     "screenshots": [
-      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-1.png",
-      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-2.png",
-      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-3.png"
+      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@f2eaaebe9b6d487a2b594a716fc5bbcf8e80ac0d/Apps/Nextcloud/screenshot-1.png",
+      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@f2eaaebe9b6d487a2b594a716fc5bbcf8e80ac0d/Apps/Nextcloud/screenshot-2.png",
+      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@f2eaaebe9b6d487a2b594a716fc5bbcf8e80ac0d/Apps/Nextcloud/screenshot-3.png"
     ],
     "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nextcloud.png"
   },
