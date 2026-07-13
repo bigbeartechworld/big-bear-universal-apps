@@ -17,11 +17,11 @@
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/adguard-home.png",
-    "thumbnail": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/AdGuardHome/thumbnail.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@f2eaaebe9b6d487a2b594a716fc5bbcf8e80ac0d/Apps/AdGuardHome/thumbnail.png",
     "screenshots": [
-      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/AdGuardHome/screenshot-1.png",
-      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/AdGuardHome/screenshot-2.png",
-      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/AdGuardHome/screenshot-3.png"
+      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@f2eaaebe9b6d487a2b594a716fc5bbcf8e80ac0d/Apps/AdGuardHome/screenshot-1.png",
+      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@f2eaaebe9b6d487a2b594a716fc5bbcf8e80ac0d/Apps/AdGuardHome/screenshot-2.png",
+      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@f2eaaebe9b6d487a2b594a716fc5bbcf8e80ac0d/Apps/AdGuardHome/screenshot-3.png"
     ],
     "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/adguard-home.png"
   },
