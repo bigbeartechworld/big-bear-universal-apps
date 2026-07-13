@@ -87,6 +87,11 @@ check_dependencies() {
         print_error "yq not found. Install: brew install yq"
         exit 1
     fi
+
+    if [[ "$CHECK_LINKS" == "true" ]] && ! command -v python3 &> /dev/null; then
+        print_error "python3 not found (required for --check-links)"
+        exit 1
+    fi
 }
 
 # Validate JSON syntax
@@ -404,8 +409,6 @@ for s in v.get('screenshots', []) or []:
         code=$(curl -s -o /dev/null -w "%{http_code}" -L --max-time "$LINK_TIMEOUT" "$url" 2>/dev/null || echo "000")
         printf '%s\t%s\t%s\t%s\n' "$code" "$app" "$field" "$url" >> "$status_file"
     }
-    export -f check_one
-    export LINK_TIMEOUT status_file
 
     local job_count=0
     while IFS=$'\t' read -r app field url; do
