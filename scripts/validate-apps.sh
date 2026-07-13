@@ -26,6 +26,10 @@ SCHEMA_FILE="$UNIVERSAL_REPO/schemas/app-schema-v1.json"
 SPECIFIC_APP=""
 VERBOSE=false
 STRICT=false
+CHECK_LINKS=false
+LINK_JOBS=20
+LINK_TIMEOUT=15
+LINK_EXCLUDE_APPS=("_example")
 
 # Counters
 TOTAL_VALIDATED=0
@@ -44,11 +48,16 @@ OPTIONS:
     -a, --app NAME          Validate specific app only
     -s, --strict            Fail on warnings
     -v, --verbose          Verbose output
+    --check-links           Also verify visual URLs (icon/thumbnail/logo/screenshots)
+                            resolve HTTP 200 (network check, runs after schema validation)
+    --link-jobs N           Max parallel link checks (default: 20)
+    --link-timeout N        Per-request timeout in seconds (default: 15)
 
 EXAMPLES:
     $0                      # Validate all apps
     $0 -a jellyseerr       # Validate specific app
     $0 --strict            # Strict validation
+    $0 --check-links       # Also verify image URLs resolve 200
 
 EOF
 }
@@ -60,6 +69,9 @@ while [[ $# -gt 0 ]]; do
         -a|--app) SPECIFIC_APP="$2"; shift 2 ;;
         -s|--strict) STRICT=true; shift ;;
         -v|--verbose) VERBOSE=true; shift ;;
+        --check-links) CHECK_LINKS=true; shift ;;
+        --link-jobs) LINK_JOBS="$2"; shift 2 ;;
+        --link-timeout) LINK_TIMEOUT="$2"; shift 2 ;;
         *) print_error "Unknown option: $1"; usage; exit 1 ;;
     esac
 done
@@ -73,6 +85,11 @@ check_dependencies() {
     
     if ! command -v yq &> /dev/null; then
         print_error "yq not found. Install: brew install yq"
+        exit 1
+    fi
+
+    if [[ "$CHECK_LINKS" == "true" ]] && ! command -v python3 &> /dev/null; then
+        print_error "python3 not found (required for --check-links)"
         exit 1
     fi
 }
@@ -338,6 +355,93 @@ validate_app() {
     return 0
 }
 
+# Check that visual URLs (icon/thumbnail/logo/screenshots) resolve HTTP 200
+check_image_links() {
+    local workdir url_map status_file
+    workdir="$(mktemp -d)"
+    url_map="$workdir/url_map.tsv"
+    status_file="$workdir/status.tsv"
+    > "$url_map"
+    > "$status_file"
+
+    echo ""
+    print_info "Checking visual URLs resolve HTTP 200..."
+
+    local app_dir app_name app_json
+    for app_dir in "$APPS_DIR"/*/; do
+        app_name="$(basename "$app_dir")"
+
+        if [[ -n "$SPECIFIC_APP" && "$app_name" != "$SPECIFIC_APP" ]]; then
+            continue
+        fi
+
+        local skip=false
+        for excl in "${LINK_EXCLUDE_APPS[@]}"; do
+            [[ "$app_name" == "$excl" ]] && skip=true
+        done
+        [[ "$skip" == true ]] && continue
+
+        app_json="$app_dir/app.json"
+        [[ -f "$app_json" ]] || continue
+
+        python3 -c "
+import json, sys
+try:
+    d = json.load(open('$app_json'))
+except Exception:
+    sys.exit()
+v = d.get('visual', {})
+for k in ['icon', 'thumbnail', 'logo']:
+    if v.get(k):
+        print(f'$app_name\t{k}\t{v[k]}')
+for s in v.get('screenshots', []) or []:
+    print(f'$app_name\tscreenshot\t{s}')
+" >> "$url_map"
+    done
+
+    local total_urls
+    total_urls=$(wc -l < "$url_map" | tr -d ' ')
+    print_info "Found $total_urls URL reference(s). Checking (parallel: $LINK_JOBS)..."
+
+    check_one() {
+        local app="$1" field="$2" url="$3"
+        local code
+        code=$(curl -s -o /dev/null -w "%{http_code}" -L --max-time "$LINK_TIMEOUT" "$url" 2>/dev/null || echo "000")
+        printf '%s\t%s\t%s\t%s\n' "$code" "$app" "$field" "$url" >> "$status_file"
+    }
+
+    local job_count=0
+    while IFS=$'\t' read -r app field url; do
+        [[ -z "$url" ]] && continue
+        check_one "$app" "$field" "$url" &
+        job_count=$((job_count + 1))
+        if [[ "$job_count" -ge "$LINK_JOBS" ]]; then
+            wait
+            job_count=0
+        fi
+    done < "$url_map"
+    wait
+
+    local failed
+    failed=$(awk -F'\t' '$1!=200' "$status_file")
+
+    if [[ -z "$failed" ]]; then
+        print_success "All $total_urls image URL(s) resolved 200."
+        rm -rf "$workdir"
+        return 0
+    fi
+
+    local fail_count
+    fail_count=$(echo -n "$failed" | grep -c . || true)
+    print_error "$fail_count broken image URL(s):"
+    echo "$failed" | sort | while IFS=$'\t' read -r code app field url; do
+        echo -e "  ${RED}[$code]${NC} $app ($field): $url"
+    done
+
+    rm -rf "$workdir"
+    return 1
+}
+
 # Print summary
 print_summary() {
     echo ""
@@ -377,8 +481,13 @@ main() {
     fi
     
     print_summary
-    
-    if [[ $TOTAL_FAILED -gt 0 ]]; then
+
+    local link_check_failed=false
+    if [[ "$CHECK_LINKS" == "true" ]]; then
+        check_image_links || link_check_failed=true
+    fi
+
+    if [[ $TOTAL_FAILED -gt 0 ]] || [[ "$link_check_failed" == "true" ]]; then
         exit 1
     fi
 }
