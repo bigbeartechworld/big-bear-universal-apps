@@ -86,8 +86,13 @@ async function updateAppVersion() {
         console.log(`Target service: ${targetService}`);
         console.log(`Image tag: ${imageTag}`);
 
+        // Strip any digest pin (e.g. repo:tag@sha256:...) before extracting the
+        // version. A tag cannot contain '@', so the segment before '@' is the tag
+        // and the hex after it is a digest, not a version.
+        const taggedImage = imageTag.split('@')[0];
+
         // Extract version from image tag (e.g., "budibase/budibase:3.22.4" -> "3.22.4")
-        const versionMatch = imageTag.match(/:([^:]+)$/);
+        const versionMatch = taggedImage.match(/:([^:]+)$/);
         
         if (!versionMatch) {
           console.log('Could not extract version from image tag');
