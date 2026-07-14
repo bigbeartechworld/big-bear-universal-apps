@@ -4,7 +4,8 @@
   "description": "Universal app definitions for Big Bear platforms",
   "main": "",
   "scripts": {
-    "generate-readme": "bun .github/scripts/readme-generator.ts"
+    "generate-readme": "bun .github/scripts/readme-generator.ts",
+    "test": "bun test ./.github/scripts/update-app-version.test.js"
   },
   "repository": {
     "type": "git",
