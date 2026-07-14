@@ -2,6 +2,29 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
+function extractVersion(imageTag) {
+  const taggedImage = imageTag.split('@')[0];
+  const versionMatch = taggedImage.match(/:([^:]+)$/);
+
+  if (!versionMatch) {
+    return null;
+  }
+
+  const newVersion = versionMatch[1];
+
+  if (newVersion === 'latest' || newVersion === 'stable') {
+    return null;
+  }
+
+  if (!newVersion.match(/^(v)?\d+/)) {
+    return null;
+  }
+
+  return newVersion;
+}
+
+module.exports = { extractVersion };
+
 /**
  * Updates app.json version based on docker-compose.yml image version
  * This script is run automatically when Renovate updates docker-compose.yml files
@@ -86,33 +109,14 @@ async function updateAppVersion() {
         console.log(`Target service: ${targetService}`);
         console.log(`Image tag: ${imageTag}`);
 
-        // Strip any digest pin (e.g. repo:tag@sha256:...) before extracting the
-        // version. A tag cannot contain '@', so the segment before '@' is the tag
-        // and the hex after it is a digest, not a version.
-        const taggedImage = imageTag.split('@')[0];
+        const newVersion = extractVersion(imageTag);
 
-        // Extract version from image tag (e.g., "budibase/budibase:3.22.4" -> "3.22.4")
-        const versionMatch = taggedImage.match(/:([^:]+)$/);
-        
-        if (!versionMatch) {
-          console.log('Could not extract version from image tag');
+        if (!newVersion) {
+          console.log('Could not extract a semver version from image tag');
           continue;
         }
 
-        let newVersion = versionMatch[1];
         console.log(`Extracted version: ${newVersion}`);
-
-        // Skip if version is "latest" or "stable"
-        if (newVersion === 'latest' || newVersion === 'stable') {
-          console.log(`Skipping non-semver version tag: ${newVersion}`);
-          continue;
-        }
-        
-        // Check if version starts with digits or 'v' followed by digits
-        if (!newVersion.match(/^(v)?\d+/)) {
-          console.log(`Skipping non-semver version tag: ${newVersion}`);
-          continue;
-        }
 
         const currentVersion = appJson.metadata?.version;
         console.log(`Current version in app.json: ${currentVersion}`);
@@ -159,5 +163,6 @@ async function updateAppVersion() {
   }
 }
 
-// Run the script
-updateAppVersion();
+if (require.main === module) {
+  updateAppVersion();
+}

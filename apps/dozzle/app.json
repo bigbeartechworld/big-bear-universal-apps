@@ -5,7 +5,7 @@
     "name": "Dozzle",
     "description": "Dozzle is a real-time log viewer for docker containers.",
     "tagline": "Dozzle is a real-time log viewer for docker containers.",
-    "version": "v10.6.8",
+    "version": "v10.6.9",
     "author": "BigBearTechWorld",
     "developer": "amir20",
     "category": "BigBearCasaOS",
