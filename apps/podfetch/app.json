@@ -1,0 +1,171 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "podfetch",
+    "name": "PodFetch",
+    "description": "PodFetch is a sleek and efficient self-hosted podcast manager written in Rust. It automatically downloads new episodes, offers a web UI for listening and managing podcasts, and provides a GPodder-compatible sync API so you can keep using podcast apps like AntennaPod.",
+    "tagline": "Sleek podcast downloader with GPodder sync",
+    "version": "5.2.2",
+    "author": "SamTV12345",
+    "developer": "SamTV12345",
+    "category": "Media",
+    "license": "Apache-2.0",
+    "homepage": "https://samtv12345.github.io/PodFetch/",
+    "source": "big-bear-universal",
+    "created": "2026-07-18T00:00:00Z",
+    "updated": "2026-07-18T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/podfetch.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/podfetch.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://samtv12345.github.io/PodFetch/",
+    "repository": "https://github.com/SamTV12345/PodFetch",
+    "issues": "https://github.com/SamTV12345/PodFetch/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8000",
+    "main_image": "samuel19982/podfetch",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "DATABASE_URL",
+        "default": "sqlite:///app/db/podcast.db",
+        "description": "SQLite database location (or a PostgreSQL connection string)",
+        "required": false
+      },
+      {
+        "name": "POLLING_INTERVAL",
+        "default": "300",
+        "description": "Minutes between checks for new episodes",
+        "required": false
+      },
+      {
+        "name": "BASIC_AUTH",
+        "default": "false",
+        "description": "Set to true to enable login (required for GPodder sync); also set USERNAME and PASSWORD",
+        "required": false
+      },
+      {
+        "name": "USERNAME",
+        "default": "",
+        "description": "Admin username when BASIC_AUTH is enabled",
+        "required": false
+      },
+      {
+        "name": "PASSWORD",
+        "default": "",
+        "description": "Admin password when BASIC_AUTH is enabled",
+        "required": false
+      },
+      {
+        "name": "GPODDER_INTEGRATION_ENABLED",
+        "default": "false",
+        "description": "Set to true to enable the GPodder-compatible sync API for apps like AntennaPod",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/app/podcasts",
+        "description": "Downloaded podcast episodes"
+      },
+      {
+        "container": "/app/db",
+        "description": "SQLite database"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8000",
+        "host": "8000",
+        "protocol": "tcp",
+        "description": "Web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "/",
+    "tips": {
+      "after_install": {
+        "en_us": "Access the web UI at http://your-server:8000. To sync with mobile apps like AntennaPod, set BASIC_AUTH=true, USERNAME, PASSWORD and GPODDER_INTEGRATION_ENABLED=true, then create users via the web UI (User Administration > Invites)."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8000",
+      "volume_mappings": {
+        "podfetch_podcasts": "/DATA/AppData/$AppID/podcasts",
+        "podfetch_db": "/DATA/AppData/$AppID/db"
+      },
+      "category": "Media"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Media",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8000"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "port": "8000",
+      "volume_mappings": {
+        "podfetch_podcasts": "podfetch/podcasts",
+        "podfetch_db": "podfetch/db"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8000"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8000"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "18000",
+      "volume_mappings": {
+        "podfetch_podcasts": "podfetch/podcasts",
+        "podfetch_db": "podfetch/db"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "podcast",
+    "gpodder",
+    "media"
+  ]
+}
