@@ -12,6 +12,10 @@ services:
     environment:
       - DATABASE_URL=sqlite:///app/db/podcast.db
       - POLLING_INTERVAL=300
+      - BASIC_AUTH=${BASIC_AUTH:-false}
+      - USERNAME=${USERNAME:-}
+      - PASSWORD=${PASSWORD:-}
+      - GPODDER_INTEGRATION_ENABLED=${GPODDER_INTEGRATION_ENABLED:-false}
     restart: unless-stopped
     networks:
       - podfetch-network
