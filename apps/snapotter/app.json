@@ -5,7 +5,7 @@
     "name": "SnapOtter",
     "description": "SnapOtter is an open-source, self-hosted file manipulation suite with 200+ tools across images, video, audio, PDFs, and files. It includes batch processing, reusable pipelines, local AI tools, a browser image editor, and a REST API so files stay on your own server.",
     "tagline": "Self-hosted file toolkit for images, video, audio, PDFs, and files.",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "author": "SnapOtter",
     "developer": "SnapOtter",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://snapotter.com",
     "source": "big-bear-universal-apps",
     "created": "2026-07-08T00:00:00Z",
-    "updated": "2026-07-08T00:00:00Z"
+    "updated": "2026-07-20T22:24:12.063Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/snapotter/logo.png",
