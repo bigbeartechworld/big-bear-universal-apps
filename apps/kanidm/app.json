@@ -1,0 +1,195 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "kanidm",
+    "name": "Kanidm",
+    "description": "Kanidm is a simple and secure identity management platform, allowing other applications and services to offload the challenge of authenticating and storing identities to Kanidm. The goal of this project is to be a complete identity provider, covering the broadest possible set of requirements and integrations.",
+    "tagline": "Kanidm is a modern and simple identity management platform written in rust.",
+    "version": "1.10.4",
+    "author": "ByteSquire",
+    "developer": "kanidm",
+    "category": "Security",
+    "license": "MPL-2.0",
+    "homepage": "https://kanidm.com/",
+    "source": "big-bear-universal",
+    "created": "2026-06-23T10:42:22Z",
+    "updated": "2026-06-23T10:42:22Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/kanidm/kanidm/artwork/logo-small.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/kanidm/kanidm/artwork/logo-small.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://kanidm.github.io/kanidm/stable",
+    "repository": "https://github.com/kanidm/kanidm",
+    "issues": "https://github.com/kanidm/kanidm/issues",
+    "support": "https://community.bigbeartechworld.com"
+  },
+  "technical": {
+    "architectures": ["amd64", "arm64"],
+    "platform": "linux",
+    "main_service": "kanidm",
+    "default_port": "8443",
+    "main_image": "kanidm/server",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "KANIDM_LOG_LEVEL",
+        "default": "info",
+        "description": "Kanidm log level",
+        "required": false
+      },
+      {
+        "name": "KANIDM_BINDADDRESS",
+        "default": "[::]:8443",
+        "description": "Kanidm bind address (inside container)",
+        "required": true
+      },
+      {
+        "name": "KANIDM_LDAPBINDADDRESS",
+        "default": "[::]:3636",
+        "description": "Kanidm ldap bind address (inside container)",
+        "required": false
+      },
+      {
+        "name": "KANIDM_DB_PATH",
+        "default": "/data/kanidm.db",
+        "description": "Kanidm database path (inside container)",
+        "required": true
+      },
+      {
+        "name": "KANIDM_TLS_CHAIN",
+        "default": "/data/chain.pem",
+        "description": "Kanidm certificate chain file path (inside container)",
+        "required": true
+      },
+      {
+        "name": "KANIDM_TLS_KEY",
+        "default": "/data/key.pem",
+        "description": "Kanidm private key file path (inside container)",
+        "required": true
+      },
+      {
+        "name": "KANIDM_DOMAIN",
+        "default": "idm.example.com",
+        "description": "Kanidm instance FQDN",
+        "required": true
+      },
+      {
+        "name": "KANIDM_ORIGIN",
+        "default": "https://idm.example.com",
+        "description": "Kanidm url, including port if non-standard",
+        "required": true
+      },
+      {
+        "name": "KANIDM_HTTP_CLIENT_ADDRESS_INFO_X-FORWARD-FOR",
+        "default": "",
+        "description": "Kanidm trusted ips that append x-forward-for header",
+        "required": false
+      },
+      {
+        "name": "KANIDM_HTTP_CLIENT_ADDRESS_INFO_PROXY-V2",
+        "default": "",
+        "description": "Kanidm trusted ips allowed to use proxy protocol",
+        "required": false
+      },
+      {
+        "name": "KANIDM_ONLINE_BACKUP_PATH",
+        "default": "/backups/",
+        "description": "Kanidm backups path (inside container)",
+        "required": true
+      },
+      {
+        "name": "KANIDM_ONLINE_BACKUP_SCHEDULE",
+        "default": "@daily",
+        "description": "When to create a backup (cron syntax)",
+        "required": false
+      },
+      {
+        "name": "KANIDM_ONLINE_BACKUP_VERSIONS",
+        "default": "7",
+        "description": "How many backups to keep",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Data directory"
+      },
+      {
+        "container": "/backups",
+        "description": "Backup directory"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8443",
+        "host": "44300",
+        "protocol": "tcp",
+        "description": "Web UI"
+      },
+      {
+        "container": "3636",
+        "host": "3636",
+        "protocol": "tcp",
+        "description": "LDAPS"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "44300",
+      "port": "44300"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["Security", "Network", "selfhosted"],
+      "administrator_only": false,
+      "port": "44300"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": ["amd64", "arm64"],
+      "port": "44300"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "44300"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "44300"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "44300"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "idm",
+    "security",
+    "network",
+    "container"
+  ]
+}
