@@ -1,0 +1,33 @@
+name: podfetch
+
+services:
+  app:
+    image: samuel19982/podfetch:v5.2.2@sha256:b6473cc2fef5a3f1cbebab18ba56e198ee95fe8b3524e57c54d1d1e012c4045f
+    container_name: podfetch
+    ports:
+      - "8000:8000"
+    volumes:
+      - podfetch_podcasts:/app/podcasts
+      - podfetch_db:/app/db
+    environment:
+      - DATABASE_URL=sqlite:///app/db/podcast.db
+      - POLLING_INTERVAL=300
+      - BASIC_AUTH=${BASIC_AUTH:-false}
+      - USERNAME=${USERNAME:-}
+      - PASSWORD=${PASSWORD:-}
+      - GPODDER_INTEGRATION_ENABLED=${GPODDER_INTEGRATION_ENABLED:-false}
+    restart: unless-stopped
+    networks:
+      - podfetch-network
+
+networks:
+  podfetch-network:
+    driver: bridge
+
+volumes:
+  podfetch_podcasts:
+    name: podfetch_podcasts
+    driver: local
+  podfetch_db:
+    name: podfetch_db
+    driver: local
