@@ -5,7 +5,7 @@
     "name": "WordPress v7",
     "description": "Initially started as a blogging tool in 2003, it has evolved into a highly flexible CMS that powers over 40% of the web. WordPress 7 requires MySQL 8.0 and is packaged as a new app alongside the legacy WordPress 6 entry.",
     "tagline": "WordPress",
-    "version": "7.0.1",
+    "version": "7.0.2",
     "author": "BigBearTechWorld",
     "developer": "Automattic",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/wordpress",
     "source": "big-bear-universal",
     "created": "2026-07-12T00:00:00Z",
-    "updated": "2026-07-12T00:00:00Z"
+    "updated": "2026-07-25T13:36:35.271Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/wordpress.png",
