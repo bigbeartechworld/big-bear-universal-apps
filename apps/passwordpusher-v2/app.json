@@ -93,7 +93,8 @@
         "passwordpusher-v2_storage": "/DATA/AppData/$AppID/storage"
       },
       "port": "5101",
-      "category": "Others"
+      "category": "Others",
+      "youtube": "https://youtu.be/7Ej56MDo95g"
     },
     "portainer": {
       "supported": true,

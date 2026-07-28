@@ -119,7 +119,8 @@
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "3420"
+      "port": "3420",
+      "youtube": "https://youtu.be/WYOT9szhDUI"
     },
     "cosmos": {
       "supported": true,
