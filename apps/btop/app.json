@@ -108,7 +108,8 @@
         "btop_config": "/DATA/AppData/$AppID/config"
       },
       "port": "7681",
-      "category": "Others"
+      "category": "Others",
+      "youtube": "https://youtu.be/chaRoQV1V2I"
     },
     "portainer": {
       "supported": true,
@@ -130,12 +131,14 @@
       "volume_mappings": {
         "btop_config": "config"
       },
-      "port": "7681"
+      "port": "7681",
+      "youtube": "https://youtu.be/5ShJdw99nS8"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "7681"
+      "port": "7681",
+      "youtube": "https://youtu.be/xv9Bp0jCyN4"
     },
     "cosmos": {
       "supported": true,
