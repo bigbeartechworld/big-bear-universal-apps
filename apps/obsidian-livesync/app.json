@@ -78,7 +78,8 @@
         "obsidian-livesync_data_local.ini": "/DATA/AppData/$AppID/data/local.ini"
       },
       "port": "5984",
-      "category": "Developer"
+      "category": "Developer",
+      "youtube": "https://youtu.be/-n1abMPLmFg"
     },
     "portainer": {
       "supported": true,
