@@ -2,11 +2,10 @@ name: romarr
 
 services:
   romarr:
-    image: ghcr.io/blizzhacker/romarr:0.6.1@sha256:ce961117539fa985ee6d9c92a7ee8781ec3a154d2bb6c482d9eae27fed3e961c
+    image: ghcr.io/blizzhacker/romarr:0.7.0@sha256:106b336bf174813e1f2a6f610b567f9b384efba2ac2563ccc415015703786cbe
     container_name: romarr
     ports:
-      # 7878 is also Radarr's port, so the host side is offset to stay clear.
-      - "7879:7878"
+      - "6868:6868"
     volumes:
       - romarr_config:/config
       - romarr_roms:/roms
