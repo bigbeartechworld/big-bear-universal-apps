@@ -1,0 +1,242 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "romarr",
+    "name": "ROMarr",
+    "description": "ROMarr is the *arr for games. Request a title and it searches your indexers through Prowlarr, hands the winner to your download client, and files the ROM into your game library where it can actually be played. If you run Radarr for films and Sonarr for TV, this is the missing one. ROMarr is not tied to one library: RomM, Gaseous and Retrom are all supported through a single setting, and a folder mode writes a plain directory tree laid out by platform - no URL and no account - which is what Batocera, RetroPie, EmulationStation, ES-DE, EmuDeck, Pegasus, Lakka, muOS and LaunchBox already read. Every candidate release is scored with its reasoning recorded, and interactive search lists them all with a Grab button, so a wrong pick is one click to correct rather than a bug report. Unofficial; not affiliated with RomM, Gaseous or Retrom.",
+    "tagline": "The *arr for games",
+    "version": "0.6.1",
+    "author": "BigBearCommunity",
+    "developer": "Move Weight Foundation",
+    "category": "Media",
+    "license": "MIT",
+    "homepage": "https://github.com/BlizzHacker/romarr",
+    "source": "big-bear-universal",
+    "created": "2026-08-02T00:00:00Z",
+    "updated": "2026-08-02T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://raw.githubusercontent.com/BlizzHacker/cartridge-unraid/main/icon/romarr.png",
+    "thumbnail": "",
+    "screenshots": [
+      "https://raw.githubusercontent.com/BlizzHacker/romarr/main/docs/img/status.png",
+      "https://raw.githubusercontent.com/BlizzHacker/romarr/main/docs/img/interactive-search.png",
+      "https://raw.githubusercontent.com/BlizzHacker/romarr/main/docs/img/library.png"
+    ],
+    "logo": "https://raw.githubusercontent.com/BlizzHacker/cartridge-unraid/main/icon/romarr.png"
+  },
+  "resources": {
+    "documentation": "https://github.com/BlizzHacker/romarr#readme",
+    "repository": "https://github.com/BlizzHacker/romarr",
+    "issues": "https://github.com/BlizzHacker/romarr/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": ["amd64", "arm64"],
+    "platform": "linux",
+    "main_service": "romarr",
+    "default_port": "7878",
+    "main_image": "ghcr.io/blizzhacker/romarr",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PROWLARR_URL",
+        "default": "",
+        "description": "How ROMarr finds releases, for example http://192.168.1.10:9696. Use your server's LAN address - localhost inside this container is this container.",
+        "required": true
+      },
+      {
+        "name": "PROWLARR_API_KEY",
+        "default": "",
+        "description": "Prowlarr, Settings, General, API Key",
+        "required": true
+      },
+      {
+        "name": "LIBRARY_KIND",
+        "default": "romm",
+        "description": "Which game library to file into: romm, gaseous, retrom, or folder. Use folder for Batocera, RetroPie, ES-DE, EmuDeck and similar - they read a plain directory tree and need no URL or account.",
+        "required": true
+      },
+      {
+        "name": "LIBRARY_URL",
+        "default": "",
+        "description": "Your library server's address, for example http://192.168.1.10:8080. Leave empty when LIBRARY_KIND is folder.",
+        "required": false
+      },
+      {
+        "name": "LIBRARY_USERNAME",
+        "default": "",
+        "description": "Use a dedicated account, not your admin one - all ROMarr needs is permission to trigger a rescan. Leave empty for folder mode.",
+        "required": false
+      },
+      {
+        "name": "LIBRARY_PASSWORD",
+        "default": "",
+        "description": "Password for the library account. Leave empty for folder mode.",
+        "required": false
+      },
+      {
+        "name": "LIBRARY_PATH",
+        "default": "/roms",
+        "description": "Where ROMs are written, as seen inside this container. Must match the container side of the ROM library volume.",
+        "required": false
+      },
+      {
+        "name": "QBITTORRENT_URL",
+        "default": "",
+        "description": "qBittorrent WebUI address. At least one download client is required.",
+        "required": false
+      },
+      {
+        "name": "QBITTORRENT_USER",
+        "default": "",
+        "description": "qBittorrent WebUI username",
+        "required": false
+      },
+      {
+        "name": "QBITTORRENT_PASS",
+        "default": "",
+        "description": "qBittorrent WebUI password",
+        "required": false
+      },
+      {
+        "name": "SABNZBD_URL",
+        "default": "",
+        "description": "Optional usenet client address",
+        "required": false
+      },
+      {
+        "name": "SABNZBD_API_KEY",
+        "default": "",
+        "description": "SABnzbd, Config, General, API Key",
+        "required": false
+      },
+      {
+        "name": "PUID",
+        "default": "1000",
+        "description": "User ID that owns the ROMs ROMarr writes. Match whatever your library app uses.",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "1000",
+        "description": "Group ID that owns the ROMs ROMarr writes. Match whatever your library app uses.",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "UTC",
+        "description": "Timezone for history and log timestamps",
+        "required": false
+      },
+      {
+        "name": "LOG_LEVEL",
+        "default": "INFO",
+        "description": "INFO, or DEBUG when filing a bug report",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Settings, history and indexer configuration"
+      },
+      {
+        "container": "/roms",
+        "description": "Where finished ROMs are filed - point this at the same location your library app reads"
+      },
+      {
+        "container": "/downloads",
+        "description": "Your download client's completed folder. This must match the path your client reports, character for character - ROMarr asks the client where a finished download is and then opens that path itself."
+      }
+    ],
+    "ports": [
+      {
+        "container": "7878",
+        "host": "7879",
+        "protocol": "tcp",
+        "description": "Web UI. The host side is offset because 7878 is also Radarr's port."
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "/",
+    "tips": {
+      "before_install": {
+        "en_us": "ROMarr needs a running Prowlarr and at least one download client (qBittorrent, SABnzbd or NZBGet). The download client is genuinely required - a release found with no client that speaks its protocol is ranked and then refused. Note that the web UI is mapped to host port 7879, because 7878 inside the container is also Radarr's port."
+      },
+      "after_install": {
+        "en_us": "Open ROMarr at http://your-server:7879 and finish setup on its Settings page. Important: ROMarr reads its environment variables once, on first start, and its own stored settings win afterwards - so later changes belong on the Settings page, not in the environment."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "7879",
+      "port": "7879",
+      "volume_mappings": {
+        "romarr_config": "/DATA/AppData/$AppID/config",
+        "romarr_roms": "/DATA/Media/Games",
+        "romarr_downloads": "/DATA/Downloads"
+      },
+      "category": "Media"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 1,
+      "categories": ["Media", "Downloaders", "selfhosted"],
+      "administrator_only": false,
+      "port": "7879"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": ["amd64", "arm64"],
+      "port": "8118",
+      "volume_mappings": {
+        "romarr_config": "romarr/config",
+        "romarr_roms": "romarr/roms",
+        "romarr_downloads": "romarr/downloads"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "7879"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "7878"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "17878",
+      "volume_mappings": {
+        "romarr_config": "romarr/config",
+        "romarr_roms": "romarr/roms",
+        "romarr_downloads": "romarr/downloads"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "media",
+    "games",
+    "roms",
+    "retro",
+    "emulation",
+    "arr",
+    "prowlarr",
+    "romm",
+    "downloader"
+  ]
+}
