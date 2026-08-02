@@ -5,7 +5,7 @@
     "name": "ROMarr",
     "description": "ROMarr is the *arr for games. Request a title and it searches your indexers through Prowlarr, hands the winner to your download client, and files the ROM into your game library where it can actually be played. If you run Radarr for films and Sonarr for TV, this is the missing one. ROMarr is not tied to one library: RomM, Gaseous and Retrom are all supported through a single setting, and a folder mode writes a plain directory tree laid out by platform - no URL and no account - which is what Batocera, RetroPie, EmulationStation, ES-DE, EmuDeck, Pegasus, Lakka, muOS and LaunchBox already read. Every candidate release is scored with its reasoning recorded, and interactive search lists them all with a Grab button, so a wrong pick is one click to correct rather than a bug report. Unofficial; not affiliated with RomM, Gaseous or Retrom.",
     "tagline": "The *arr for games",
-    "version": "0.6.1",
+    "version": "0.7.0",
     "author": "BigBearCommunity",
     "developer": "Move Weight Foundation",
     "category": "Media",
@@ -32,10 +32,13 @@
     "support": "https://community.bigbeartechworld.com/"
   },
   "technical": {
-    "architectures": ["amd64", "arm64"],
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "romarr",
-    "default_port": "7878",
+    "default_port": "6868",
     "main_image": "ghcr.io/blizzhacker/romarr",
     "compose_file": "docker-compose.yml"
   },
@@ -154,10 +157,10 @@
     ],
     "ports": [
       {
-        "container": "7878",
-        "host": "7879",
+        "container": "6868",
+        "host": "6868",
         "protocol": "tcp",
-        "description": "Web UI. The host side is offset because 7878 is also Radarr's port."
+        "description": "Web UI"
       }
     ]
   },
@@ -166,18 +169,18 @@
     "path": "/",
     "tips": {
       "before_install": {
-        "en_us": "ROMarr needs a running Prowlarr and at least one download client (qBittorrent, SABnzbd or NZBGet). The download client is genuinely required - a release found with no client that speaks its protocol is ranked and then refused. Note that the web UI is mapped to host port 7879, because 7878 inside the container is also Radarr's port."
+        "en_us": "ROMarr needs a running Prowlarr and at least one download client (qBittorrent, SABnzbd or NZBGet). The download client is genuinely required - a release found with no client that speaks its protocol is ranked and then refused."
       },
       "after_install": {
-        "en_us": "Open ROMarr at http://your-server:7879 and finish setup on its Settings page. Important: ROMarr reads its environment variables once, on first start, and its own stored settings win afterwards - so later changes belong on the Settings page, not in the environment."
+        "en_us": "Open ROMarr at http://your-server:6868 and finish setup on its Settings page. Important: ROMarr reads its environment variables once, on first start, and its own stored settings win afterwards - so later changes belong on the Settings page, not in the environment."
       }
     }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "7879",
-      "port": "7879",
+      "port_map": "6868",
+      "port": "6868",
       "volume_mappings": {
         "romarr_config": "/DATA/AppData/$AppID/config",
         "romarr_roms": "/DATA/Media/Games",
@@ -188,15 +191,22 @@
     "portainer": {
       "supported": true,
       "template_type": 1,
-      "categories": ["Media", "Downloaders", "selfhosted"],
+      "categories": [
+        "Media",
+        "Downloaders",
+        "selfhosted"
+      ],
       "administrator_only": false,
-      "port": "7879"
+      "port": "6868"
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
-      "supported_architectures": ["amd64", "arm64"],
-      "port": "8118",
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "port": "6868",
       "volume_mappings": {
         "romarr_config": "romarr/config",
         "romarr_roms": "romarr/roms",
@@ -206,18 +216,18 @@
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "7879"
+      "port": "6868"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "7878"
+      "port": "6868"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
-      "port": "17878",
+      "port": "16868",
       "volume_mappings": {
         "romarr_config": "romarr/config",
         "romarr_roms": "romarr/roms",
