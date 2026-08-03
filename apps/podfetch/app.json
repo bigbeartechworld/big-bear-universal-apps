@@ -61,13 +61,13 @@
       },
       {
         "name": "USERNAME",
-        "default": "",
+        "default": "bigbear",
         "description": "Admin username when BASIC_AUTH is enabled",
         "required": false
       },
       {
         "name": "PASSWORD",
-        "default": "",
+        "default": "15c40698-3cd9-40ce-8039-e8d80fc1a030",
         "description": "Admin password when BASIC_AUTH is enabled",
         "required": false
       },
@@ -101,6 +101,9 @@
     "scheme": "http",
     "path": "/",
     "tips": {
+      "before_install": {
+        "en_us": "Before installing, change the default PASSWORD in the app settings to a secure password."
+      },
       "after_install": {
         "en_us": "Access the web UI at http://your-server:8000. To sync with mobile apps like AntennaPod, set BASIC_AUTH=true, USERNAME, PASSWORD and GPODDER_INTEGRATION_ENABLED=true, then create users via the web UI (User Administration > Invites)."
       }
