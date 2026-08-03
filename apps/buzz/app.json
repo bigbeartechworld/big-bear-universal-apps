@@ -50,7 +50,7 @@
       {
         "name": "RELAY_URL",
         "default": "ws://localhost:3000",
-        "description": "URL clients use to reach this relay. Change localhost to the server LAN IP or domain so other devices can connect.",
+        "description": "Address this relay answers on. Buzz serves its web interface only for this exact host and port, so change localhost to the server LAN IP or domain or other devices get 'no community is configured for this host'.",
         "required": true
       },
       {
@@ -103,7 +103,7 @@
         "en_us": "This app ships with placeholder secrets so it starts without configuration. Rotate BUZZ_RELAY_PRIVATE_KEY and the change-me database, Redis, and S3 passwords before using it for anything real. See the app README."
       },
       "after_install": {
-        "en_us": "Open http://your-server:3000 for the web interface. Nostr clients connect to ws://your-server:3000. Change RELAY_URL from localhost to your server IP so other devices can connect."
+        "en_us": "Set RELAY_URL to the address you browse to, for example ws://192.168.1.50:3000, then restart. Buzz serves its web interface only for the address in RELAY_URL, so with the localhost default any other device gets 'no community is configured for this host'. Nostr clients use the same ws:// address."
       }
     }
   },

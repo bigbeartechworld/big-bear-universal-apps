@@ -10,15 +10,21 @@ Self-hostable workspace for humans and agents from Block, built on the Nostr pro
 
 A single process serves all three. Health and metrics listen on ports 8080 and 9102 inside the container and are intentionally not published.
 
-## Multi-device access
+## Set RELAY_URL first
 
-`RELAY_URL` defaults to `ws://localhost:3000`, which only resolves on the server itself. To connect from another device, edit the `relay` service in `docker-compose.yml` and replace `localhost` with the server LAN IP or domain:
+Buzz serves the web interface only for the exact address set in `RELAY_URL`. The default is `ws://localhost:3000`, which works when browsing from the server itself. Opening the app from any other device returns:
+
+```
+relay: no community is configured for this host
+```
+
+To fix it, edit the `relay` service in `docker-compose.yml` and replace `localhost` with the address you browse to, then restart the relay:
 
 ```
 RELAY_URL: ws://192.168.1.50:3000
 ```
 
-Restart the relay after changing it.
+Use the same value for Nostr clients: `ws://192.168.1.50:3000`. Behind a reverse proxy or domain, set `RELAY_URL` to that hostname instead, matching the port users connect on.
 
 ## Secrets
 
