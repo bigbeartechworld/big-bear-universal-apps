@@ -25,6 +25,7 @@ services:
       BUZZ_RELAY_PRIVATE_KEY: 7c0d0f000f4cdafc380ab93c413d97deceff42e273c97200d3fb35ad74e29231
       BUZZ_SERVE_GIT_WEB_GUI: "true"
       RELAY_URL: ws://localhost:3000
+      BUZZ_MEDIA_BASE_URL: http://localhost:3000/media
     volumes:
       - buzz_git_data:/data/git
     depends_on:

@@ -18,13 +18,16 @@ Buzz serves the web interface only for the exact address set in `RELAY_URL`. The
 relay: no community is configured for this host
 ```
 
-To fix it, edit the `relay` service in `docker-compose.yml` and replace `localhost` with the address you browse to, then restart the relay:
+To fix it, edit the `relay` service in `docker-compose.yml` and replace `localhost` in **both** of these with the address you browse to, then restart the relay:
 
 ```
 RELAY_URL: ws://192.168.1.50:3000
+BUZZ_MEDIA_BASE_URL: http://192.168.1.50:3000/media
 ```
 
-Use the same value for Nostr clients: `ws://192.168.1.50:3000`. Behind a reverse proxy or domain, set `RELAY_URL` to that hostname instead, matching the port users connect on.
+Change them together. `BUZZ_MEDIA_BASE_URL` is not derived from `RELAY_URL`, and it is written into the URL of every uploaded file. Leaving it on `localhost` publishes media links that only work on the server, and links already published cannot be corrected by changing it later.
+
+Use the same value for Nostr clients: `ws://192.168.1.50:3000`. Behind a reverse proxy or domain, set both to that hostname instead, matching the port users connect on.
 
 ## Secrets
 

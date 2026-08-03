@@ -54,6 +54,12 @@
         "required": true
       },
       {
+        "name": "BUZZ_MEDIA_BASE_URL",
+        "default": "http://localhost:3000/media",
+        "description": "Base URL written into the link of every uploaded file. Change localhost to the same address used in RELAY_URL. Links published before this is corrected cannot be fixed later.",
+        "required": true
+      },
+      {
         "name": "RELAY_OWNER_PUBKEY",
         "default": "",
         "description": "Owner Nostr public key as 64-character hex. Only needed when BUZZ_REQUIRE_RELAY_MEMBERSHIP is true.",
@@ -103,7 +109,7 @@
         "en_us": "This app ships with placeholder secrets so it starts without configuration. Rotate BUZZ_RELAY_PRIVATE_KEY and the change-me database, Redis, and S3 passwords before using it for anything real. See the app README."
       },
       "after_install": {
-        "en_us": "Set RELAY_URL to the address you browse to, for example ws://192.168.1.50:3000, then restart. Buzz serves its web interface only for the address in RELAY_URL, so with the localhost default any other device gets 'no community is configured for this host'. Nostr clients use the same ws:// address."
+        "en_us": "Set RELAY_URL and BUZZ_MEDIA_BASE_URL to the address you browse to, for example ws://192.168.1.50:3000 and http://192.168.1.50:3000/media, then restart. Buzz serves its web interface only for the address in RELAY_URL, so with the localhost default any other device gets 'no community is configured for this host'. Nostr clients use the same ws:// address."
       }
     }
   },
