@@ -5,7 +5,7 @@
     "name": "PodFetch",
     "description": "PodFetch is a sleek and efficient self-hosted podcast manager written in Rust. It automatically downloads new episodes, offers a web UI for listening and managing podcasts, and provides a GPodder-compatible sync API so you can keep using podcast apps like AntennaPod.",
     "tagline": "Sleek podcast downloader with GPodder sync",
-    "version": "5.2.2",
+    "version": "v5.2.2",
     "author": "SamTV12345",
     "developer": "SamTV12345",
     "category": "Media",
@@ -13,7 +13,7 @@
     "homepage": "https://samtv12345.github.io/PodFetch/",
     "source": "big-bear-universal",
     "created": "2026-07-18T00:00:00Z",
-    "updated": "2026-07-18T00:00:00Z"
+    "updated": "2026-08-03T22:34:26.944Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/podfetch.png",
