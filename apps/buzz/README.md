@@ -58,11 +58,13 @@ Use the printed secret key as `BUZZ_RELAY_PRIVATE_KEY`. Keep it stable across re
 
 Rotate the database, Redis, and MinIO secrets **before first start**. PostgreSQL and MinIO read their credentials only when their volume is first initialised, so editing the compose file later leaves the relay presenting a password the server never accepted and it restarts in a loop. Redis is the exception and picks up the new value on restart.
 
-To change the database password after data exists, update it in PostgreSQL first, then edit `DATABASE_URL` to match:
+To change the database password after data exists, update it in PostgreSQL first:
 
 ```bash
 docker exec -it buzz-postgres psql -U buzz -c "ALTER USER buzz WITH PASSWORD 'new-password';"
 ```
+
+Then edit `docker-compose.yml` and set the new password in **both** places — `DATABASE_URL` on the `relay` service and `POSTGRES_PASSWORD` on the `postgres` service — and restart. `POSTGRES_PASSWORD` is ignored while the volume exists, but leaving it stale re-seeds the old password if `buzz_postgres_data` is ever recreated, and the relay would then fail to authenticate.
 
 Changing the MinIO root credentials after first start means recreating the `buzz_minio_data` volume, which deletes stored media.
 
