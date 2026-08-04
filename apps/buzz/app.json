@@ -1,0 +1,188 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "buzz",
+    "name": "Buzz",
+    "description": "Buzz is a self-hostable workspace for humans and agents from Block. It runs a Nostr relay, a REST bridge, git-over-object-storage, and a web interface from a single Rust binary, so you can host your own community and agent infrastructure.",
+    "tagline": "Self-hosted workspace and Nostr relay for humans and agents",
+    "version": "latest",
+    "author": "BigBearTechWorld",
+    "developer": "block",
+    "category": "BigBearCasaOS",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/block/buzz",
+    "source": "big-bear-universal",
+    "created": "2026-08-03T00:00:00Z",
+    "updated": "2026-08-03T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/block/buzz@main/desktop/public/app-icon@2x.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/block/buzz@main/desktop/public/app-icon@2x.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://engineering.block.xyz/blog/run-your-own-buzz-relay",
+    "repository": "https://github.com/block/buzz",
+    "issues": "https://github.com/block/buzz/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "relay",
+    "default_port": "3000",
+    "main_image": "ghcr.io/block/buzz",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "BUZZ_RELAY_PRIVATE_KEY",
+        "default": "7c0d0f000f4cdafc380ab93c413d97deceff42e273c97200d3fb35ad74e29231",
+        "description": "Relay signing identity as 64-character hex. This default is published in a public repository, so replace it before real use. Generate one with: docker exec buzz-relay buzz-admin generate-key",
+        "required": true
+      },
+      {
+        "name": "RELAY_URL",
+        "default": "ws://localhost:3000",
+        "description": "Address this relay answers on. Buzz serves its web interface only for this exact host and port, so change localhost to the server LAN IP or domain or other devices get 'no community is configured for this host'.",
+        "required": true
+      },
+      {
+        "name": "BUZZ_MEDIA_BASE_URL",
+        "default": "http://localhost:3000/media",
+        "description": "Base URL written into the link of every uploaded file. Change localhost to the same address used in RELAY_URL. Links published before this is corrected cannot be fixed later.",
+        "required": true
+      },
+      {
+        "name": "RELAY_OWNER_PUBKEY",
+        "default": "",
+        "description": "Owner Nostr public key as 64-character hex. Only needed when BUZZ_REQUIRE_RELAY_MEMBERSHIP is true.",
+        "required": false
+      },
+      {
+        "name": "BUZZ_REQUIRE_RELAY_MEMBERSHIP",
+        "default": "false",
+        "description": "Set to true to run a closed relay that only approved members can use. Requires RELAY_OWNER_PUBKEY.",
+        "required": false
+      },
+      {
+        "name": "BUZZ_AUTO_MIGRATE",
+        "default": "true",
+        "description": "Runs database migrations on start. Leave enabled so the schema is created on first launch.",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/var/lib/postgresql/data",
+        "description": "PostgreSQL database storage"
+      },
+      {
+        "container": "/data",
+        "description": "Redis append-only file and MinIO object storage"
+      },
+      {
+        "container": "/data/git",
+        "description": "Git repository data"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp",
+        "description": "Web UI, Nostr WebSocket relay, and REST API"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "This app ships with placeholder secrets so it starts without configuration. Rotate BUZZ_RELAY_PRIVATE_KEY and the change-me database, Redis, and S3 passwords before using it for anything real. See the app README."
+      },
+      "after_install": {
+        "en_us": "Set RELAY_URL and BUZZ_MEDIA_BASE_URL to the address you browse to, for example ws://192.168.1.50:3000 and http://192.168.1.50:3000/media, then restart. Buzz serves its web interface only for the address in RELAY_URL, so with the localhost default any other device gets 'no community is configured for this host'. Nostr clients use the same ws:// address."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3000",
+      "port": "3000",
+      "category": "Developer",
+      "volume_mappings": {
+        "buzz_postgres_data": "/DATA/AppData/$AppID/postgres_data",
+        "buzz_redis_data": "/DATA/AppData/$AppID/redis_data",
+        "buzz_minio_data": "/DATA/AppData/$AppID/minio_data",
+        "buzz_git_data": "/DATA/AppData/$AppID/git_data"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "3000"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "port": "3000",
+      "volume_mappings": {
+        "buzz_postgres_data": "postgres_data",
+        "buzz_redis_data": "redis_data",
+        "buzz_minio_data": "minio_data",
+        "buzz_git_data": "git_data"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "3000"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "3000"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "10195",
+      "app_port": "3000",
+      "volume_mappings": {
+        "buzz_postgres_data": "postgres_data",
+        "buzz_redis_data": "redis_data",
+        "buzz_minio_data": "minio_data",
+        "buzz_git_data": "git_data"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "nostr",
+    "relay",
+    "social",
+    "agents"
+  ]
+}
