@@ -1,0 +1,138 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "cinedock",
+    "name": "CineDock",
+    "description": "CineDock gives Plex, Emby or Jellyfin an enhanced browsing experience on the NVIDIA Shield TV, on an Amazon Fire TV Stick, or in a browser on your computer or tablet.",
+    "tagline": "Rediscover your library.",
+    "version": "4.1.6",
+    "author": "CineDock",
+    "developer": "CineDock",
+    "category": "Media",
+    "license": "MIT",
+    "homepage": "https://github.com/cinedock/unraid-templates",
+    "source": "big-bear-universal",
+    "created": "2026-08-11T21:08:51Z",
+    "updated": "2026-08-11T21:08:51Z"
+  },
+  "visual": {
+    "icon": "https://raw.githubusercontent.com/cinedock/unraid-templates/main/cinedock-icon.png",
+    "thumbnail": "https://raw.githubusercontent.com/cinedock/unraid-templates/main/cinedock-icon.png",
+    "screenshots": [],
+    "logo": "https://raw.githubusercontent.com/cinedock/unraid-templates/main/cinedock-icon.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://github.com/cinedock/unraid-templates#readme",
+    "repository": "https://github.com/cinedock/unraid-templates",
+    "issues": "https://github.com/cinedock/unraid-templates/issues",
+    "support": "https://github.com/cinedock/unraid-templates/issues"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "cinedock",
+    "default_port": "8945",
+    "main_image": "ghcr.io/cinedock/cinedock",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "TMDB_API_KEY",
+        "default": "",
+        "description": "Optional TMDB API key for actor biographies, filmographies, and trailer fallback. It can also be added later in CineDock Settings.",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "CineDock connection settings and caches"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8945",
+        "host": "8945",
+        "protocol": "tcp",
+        "description": "CineDock web interface"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "CineDock requires an existing reachable Plex, Emby, or Jellyfin server. Recommended host capacity is one CPU core, 1 GB available RAM, and 4 GB free application storage. No GPU or media-folder mount is needed because the media server handles streaming and transcoding."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8945",
+      "volume_mappings": {
+        "cinedock_config": "/DATA/AppData/$AppID/config"
+      },
+      "port": "8945",
+      "category": "Media"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Media",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8945"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "cinedock_config": "config"
+      },
+      "port": "8945"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8945"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8945"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "cinedock_config": "config"
+      },
+      "port": "10196",
+      "app_port": "8945"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "media",
+    "plex",
+    "emby",
+    "jellyfin",
+    "cinedock"
+  ]
+}
