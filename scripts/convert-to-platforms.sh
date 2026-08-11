@@ -1357,10 +1357,19 @@ convert_to_runtipi() {
         esac
     fi
     
+    # Keep the existing tag-derived behavior for unpinned images, but preserve
+    # an exact digest-pinned reference from the generated Compose service.
+    local runtipi_image="$APP_MAIN_IMAGE:$APP_VERSION"
+    local compose_image
+    compose_image=$(yq eval ".services[\"$app_name\"].image // \"\"" "$compose_file")
+    if [[ "$compose_image" == *@sha256:* ]]; then
+        runtipi_image="$compose_image"
+    fi
+
     # Create docker-compose.json using jq
     jq -n \
         --arg name "$app_name" \
-        --arg image "$APP_MAIN_IMAGE:$APP_VERSION" \
+        --arg image "$runtipi_image" \
         --argjson port "$runtipi_port" \
         '{
             schemaVersion: 2,
