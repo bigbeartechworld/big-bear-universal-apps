@@ -1099,10 +1099,18 @@ convert_to_runtipi() {
     # Remove the 'name' field for Runtipi
     yq eval 'del(.name)' -i "$compose_file"
     
-    # Rename main service to app_name
-    local services=$(yq eval '.services | keys | .[0]' "$compose_file")
-    if [[ "$services" != "$app_name" ]]; then
-        yq eval ".services.\"$app_name\" = .services.\"$services\" | del(.services.\"$services\")" -i "$compose_file"
+    # Read and rename the configured main service rather than whichever service
+    # sorts first in a multi-service Compose file.
+    local compose_image
+    compose_image=$(yq eval ".services[\"$APP_MAIN_SERVICE\"].image // \"\"" "$compose_file")
+    if [[ -z "$compose_image" || "$compose_image" == "null" ]]; then
+        print_error "Missing image for configured main service $APP_MAIN_SERVICE in $app_name"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+
+    if [[ "$APP_MAIN_SERVICE" != "$app_name" ]]; then
+        yq eval ".services[\"$app_name\"] = .services[\"$APP_MAIN_SERVICE\"] | del(.services[\"$APP_MAIN_SERVICE\"])" -i "$compose_file"
     fi
     
     # Set container name
@@ -1360,9 +1368,13 @@ convert_to_runtipi() {
     # Keep the existing tag-derived behavior for unpinned images, but preserve
     # an exact digest-pinned reference from the generated Compose service.
     local runtipi_image="$APP_MAIN_IMAGE:$APP_VERSION"
-    local compose_image
-    compose_image=$(yq eval ".services[\"$app_name\"].image // \"\"" "$compose_file")
-    if [[ "$compose_image" == *@sha256:* ]]; then
+    if [[ "$compose_image" == *@* ]] && ! [[ "$compose_image" =~ @sha256:[[:xdigit:]]{64}$ ]]; then
+        print_error "Invalid SHA-256 image digest for $app_name: $compose_image"
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+
+    if [[ "$compose_image" =~ @sha256:[[:xdigit:]]{64}$ ]]; then
         runtipi_image="$compose_image"
     fi
 
