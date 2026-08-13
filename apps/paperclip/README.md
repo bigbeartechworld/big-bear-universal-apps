@@ -9,15 +9,19 @@ Open-source self-hosted board for managing AI coding agents — Claude Code, Cod
 
 The container listens on `3100` and is published on host port `3101`, because `3100` is already used by another app in this catalog.
 
+Some platforms publish it elsewhere: Umbrel serves Paperclip on `10201`, and Runtipi uses whatever `APP_PORT` is set to. Check the port your platform shows before setting `PAPERCLIP_PUBLIC_URL` below.
+
 ## Set PAPERCLIP_PUBLIC_URL first
 
 Paperclip builds its sign-in callback URLs from `PAPERCLIP_PUBLIC_URL`. The default is `http://localhost:3101`, which works only when browsing from the server itself. From any other device, sign-in fails on the callback.
 
-Edit the `paperclip` service in `docker-compose.yml` and replace `localhost` with the address you browse to, then restart:
+Edit the `paperclip` service in `docker-compose.yml` and set both the host **and** the port to what you actually browse to, then restart. The port is not always `3101` — see Access above:
 
 ```yaml
 PAPERCLIP_PUBLIC_URL: http://192.168.1.50:3101
 ```
+
+On Umbrel that line is `http://192.168.1.50:10201` instead.
 
 ```bash
 docker compose -f docker-compose.yml up -d

@@ -107,7 +107,7 @@
         "en_us": "This app ships with placeholder secrets so it starts without configuration. They are published in a public repository. Rotate BETTER_AUTH_SECRET and PAPERCLIP_TOOL_ACTION_SIGNING_SECRET with 'openssl rand -hex 32' before using it for anything real. See the app README."
       },
       "after_install": {
-        "en_us": "Change PAPERCLIP_PUBLIC_URL from http://localhost:3101 to the address you actually browse to, for example http://192.168.1.50:3101, then restart the container. Sign-in callbacks fail while it points at localhost and you open Paperclip from another device."
+        "en_us": "Change PAPERCLIP_PUBLIC_URL to the exact address and port you actually browse to, then restart the container. Use the port your platform serves Paperclip on, which is not always 3101: on Umbrel it is 10201, and on Runtipi it is whatever APP_PORT is set to. For example http://192.168.1.50:3101 on CasaOS or Portainer, http://192.168.1.50:10201 on Umbrel. Sign-in callbacks fail while this points at the wrong host or port."
       }
     }
   },
