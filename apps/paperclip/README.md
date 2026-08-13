@@ -39,12 +39,12 @@ On a plain LAN address without a proxy, traffic is unencrypted. Put Paperclip be
 
 ## Secrets
 
-This app ships with fixed placeholder secrets so it starts with no configuration. **They are published in a public repository. Rotate them before real use.**
+This app ships with placeholder secrets so it starts with no configuration. **They are the same for every install and are not secret. Replace them before real use.**
 
-In `docker-compose.yml`, replace both of:
+In `docker-compose.yml`, replace the `change-this-run-openssl-rand-hex-32` placeholder in both of:
 
-- `8426a45b83c80f6465cf48145bb80108288fd6b5d835e5a8e0e0034d7d500bf4` — `BETTER_AUTH_SECRET`
-- `4574e70d6763a4ebd9e08f6a2ef516780a70cf2d73876b99330648c95bab198c` — `PAPERCLIP_TOOL_ACTION_SIGNING_SECRET`
+- `BETTER_AUTH_SECRET`
+- `PAPERCLIP_TOOL_ACTION_SIGNING_SECRET`
 
 Generate each replacement with:
 
@@ -56,7 +56,7 @@ openssl rand -hex 32
 
 `PAPERCLIP_TOOL_ACTION_SIGNING_SECRET` signs agent tool-action approvals. The server boots without it, but every agent approval then fails with a signing-secret error. There is no fallback.
 
-Rotate both **before first start** if you can, and keep them stable afterwards. Back them up alongside the data volume.
+Rotate both **before first start** if you can, and keep them stable afterward. Back them up alongside the data volume.
 
 ## API keys
 

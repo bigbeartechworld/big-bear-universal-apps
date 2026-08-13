@@ -43,14 +43,14 @@
     "environment_variables": [
       {
         "name": "BETTER_AUTH_SECRET",
-        "default": "8426a45b83c80f6465cf48145bb80108288fd6b5d835e5a8e0e0034d7d500bf4",
-        "description": "Session signing secret as 64-character hex. Paperclip refuses to start without it. This default is published in a public repository, so replace it before real use. Generate one with: openssl rand -hex 32",
+        "default": "change-this-run-openssl-rand-hex-32",
+        "description": "Session signing secret as 64-character hex. Paperclip refuses to start without it. This shipped value is a placeholder shared by every install, so you must replace it before real use. Generate one with: openssl rand -hex 32",
         "required": true
       },
       {
         "name": "PAPERCLIP_TOOL_ACTION_SIGNING_SECRET",
-        "default": "4574e70d6763a4ebd9e08f6a2ef516780a70cf2d73876b99330648c95bab198c",
-        "description": "Signs agent tool-action approvals as 64-character hex. The server boots without it but every agent approval fails. This default is published in a public repository, so replace it before real use. Generate one with: openssl rand -hex 32",
+        "default": "change-this-run-openssl-rand-hex-32",
+        "description": "Signs agent tool-action approvals as 64-character hex. The server boots without it but every agent approval fails. This shipped value is a placeholder shared by every install, so you must replace it before real use. Generate one with: openssl rand -hex 32",
         "required": true
       },
       {
@@ -104,7 +104,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "This app ships with placeholder secrets so it starts without configuration. They are published in a public repository. Rotate BETTER_AUTH_SECRET and PAPERCLIP_TOOL_ACTION_SIGNING_SECRET with 'openssl rand -hex 32' before using it for anything real. Also change PAPERCLIP_PUBLIC_URL from localhost to the exact address and port you browse to, for example http://192.168.1.50:3101: the port is 3101 on most platforms but 10201 on Umbrel, and sign-in callbacks fail while it is wrong. See the app README."
+        "en_us": "This app ships with placeholder secrets so it starts without configuration. They are the same for every install and are not secret. Replace BETTER_AUTH_SECRET and PAPERCLIP_TOOL_ACTION_SIGNING_SECRET with 'openssl rand -hex 32' before using it for anything real. Also change PAPERCLIP_PUBLIC_URL from localhost to the exact address and port you browse to, for example http://192.168.1.50:3101: the port is 3101 on most platforms but 10201 on Umbrel, and sign-in callbacks fail while it is wrong. See the app README."
       },
       "after_install": {
         "en_us": "Change PAPERCLIP_PUBLIC_URL to the exact address and port you actually browse to, then restart the container. Use the port your platform serves Paperclip on, which is not always 3101: on Umbrel it is 10201, and on Runtipi it is whatever APP_PORT is set to. For example http://192.168.1.50:3101 on CasaOS or Portainer, http://192.168.1.50:10201 on Umbrel. Sign-in callbacks fail while this points at the wrong host or port."
