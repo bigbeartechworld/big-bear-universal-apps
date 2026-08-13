@@ -1934,14 +1934,15 @@ convert_to_umbrel() {
         local svc="$main_service"
         export svc
         local networks_kind=$(yq eval '.services[strenv(svc)].networks | type' "$output_dir/docker-compose.yml" 2>/dev/null)
-        local has_default=$(yq eval '[.services[strenv(svc)].networks // [] | (.[] // (. | keys | .[])) | select(. == "default")] | length' "$output_dir/docker-compose.yml" 2>/dev/null)
+        local has_default=$(yq eval '[.services[strenv(svc)].networks // [] | (select(type == "!!map") | keys) // (select(type == "!!seq")) | .[] | select(. == "default")] | length' "$output_dir/docker-compose.yml" 2>/dev/null)
         if [[ "$networks_kind" == "!!seq" || "$networks_kind" == "!!map" ]] && [[ "$has_default" == "0" ]]; then
             local append_expr='.services[strenv(svc)].networks += ["default"]'
             [[ "$networks_kind" == "!!map" ]] && append_expr='.services[strenv(svc)].networks.default = null'
-            if yq eval "$append_expr" "$output_dir/docker-compose.yml" > "$temp_compose" 2>/dev/null && [[ -s "$temp_compose" ]]; then
-                mv "$temp_compose" "$output_dir/docker-compose.yml"
+            local network_temp=$(mktemp)
+            if yq eval "$append_expr" "$output_dir/docker-compose.yml" > "$network_temp" 2>/dev/null && [[ -s "$network_temp" ]]; then
+                mv "$network_temp" "$output_dir/docker-compose.yml"
             else
-                rm -f "$temp_compose"
+                rm -f "$network_temp"
                 print_error "$app_name: failed to attach main service to Umbrel default network"
                 TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
             fi

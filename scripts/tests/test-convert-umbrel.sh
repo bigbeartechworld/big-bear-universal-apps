@@ -103,7 +103,29 @@ bash "$REPO/scripts/convert-to-platforms.sh" -i "$TMP/apps" -a mapnet -p umbrel 
 MAPNET="$TMP/out/umbrel/big-bear-umbrel-mapnet/docker-compose.yml"
 assert_eq "$(yq eval '.services.app.networks | has("default")' "$MAPNET" 2>/dev/null)" "true" "map-style networks gains default"
 assert_eq "$(yq eval '.services.app.networks.custom_network.aliases | join(",")' "$MAPNET" 2>/dev/null)" "internal" "map-style networks keeps existing entries"
-assert_eq "$(yq eval '.services.app.image' "$MAPNET" 2>/dev/null)" "nginx:alpine" "map-style compose file is not truncated"
+
+cp "$MAPNET" "$TMP/mapnet-first.yml"
+bash "$REPO/scripts/convert-to-platforms.sh" -i "$TMP/apps" -a mapnet -p umbrel -o "$TMP/out" > /dev/null 2>&1
+diff -q "$TMP/mapnet-first.yml" "$MAPNET" > /dev/null 2>&1
+assert_eq "$?" "0" "map-style rerun is byte-identical"
+
+make_app "$TMP" "mapdefault" 'services:
+  app:
+    image: nginx:alpine
+    networks:
+      custom_network:
+        aliases:
+          - internal
+      default:
+        aliases:
+          - myapp
+networks:
+  custom_network:
+    driver: bridge
+'
+bash "$REPO/scripts/convert-to-platforms.sh" -i "$TMP/apps" -a mapdefault -p umbrel -o "$TMP/out" > /dev/null 2>&1
+MAPDEF="$TMP/out/umbrel/big-bear-umbrel-mapdefault/docker-compose.yml"
+assert_eq "$(yq eval '.services.app.networks.default.aliases | join(",")' "$MAPDEF" 2>/dev/null)" "myapp" "map-style existing default keeps its config"
 
 section "idempotency: re-running the converter does not append default twice"
 cp "$CUSTOM" "$TMP/first-run.yml"
