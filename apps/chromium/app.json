@@ -36,7 +36,7 @@
     "platform": "linux",
     "main_service": "chromium",
     "default_port": "3000",
-    "main_image": "lscr.io/linuxserver/chromium",
+    "main_image": "linuxserver/chromium",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {
