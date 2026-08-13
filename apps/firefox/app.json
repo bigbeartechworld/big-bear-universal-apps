@@ -36,7 +36,7 @@
     "platform": "linux",
     "main_service": "firefox",
     "default_port": "3000",
-    "main_image": "lscr.io/linuxserver/firefox",
+    "main_image": "linuxserver/firefox",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {
