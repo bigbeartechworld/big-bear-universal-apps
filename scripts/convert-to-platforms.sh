@@ -1077,7 +1077,6 @@ EOF
     print_success "Converted $app_name for Portainer"
 }
 
-# Resolve the main service image from the source compose file (see docs/superpowers/specs/2026-08-13-runtipi-digest-pin-design.md)
 resolve_runtipi_main_image() {
     local source_compose="$1"
     local main_image="$2"
@@ -1413,9 +1412,12 @@ convert_to_runtipi() {
     fi
     
     # Create docker-compose.json using jq
+    local runtipi_main_image
+    runtipi_main_image=$(resolve_runtipi_main_image "$app_dir/docker-compose.yml" "$APP_MAIN_IMAGE" "$app_name" "$APP_MAIN_IMAGE:$APP_VERSION")
+
     jq -n \
         --arg name "$app_name" \
-        --arg image "$APP_MAIN_IMAGE:$APP_VERSION" \
+        --arg image "$runtipi_main_image" \
         --argjson port "$runtipi_port" \
         '{
             schemaVersion: 2,
