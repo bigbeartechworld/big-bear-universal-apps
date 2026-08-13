@@ -84,29 +84,60 @@ assert_eq "$MISSING" "0" "all apps have casaos.category"
 rm -rf "$TMP_APPS"
 
 # --- yq expression injection is inert (issue #2478) ---
-TMP_INJ="$(mktemp -d)"
-cp -R "$REPO/apps/." "$TMP_INJ/apps/"
-echo "CANARY_FILE_CONTENT_2478" > "$TMP_INJ/canary.txt"
-PAYLOAD='" | .x-casaos.pwned = load_str("'"$TMP_INJ"'/canary.txt") | .x-casaos.author = "'
-INJ_APP="$TMP_INJ/apps/uptime-kuma/app.json"
-jq --arg p "$PAYLOAD" '.metadata.description = $p | .metadata.tagline = $p' "$INJ_APP" > "$INJ_APP.tmp" && mv "$INJ_APP.tmp" "$INJ_APP"
-bash "$REPO/scripts/convert-to-platforms.sh" -p casaos -a uptime-kuma -i "$TMP_INJ/apps" -o "$TMP_INJ/out" >/dev/null 2>&1
-INJ_CF="$TMP_INJ/out/casaos/uptime-kuma/docker-compose.yml"
-assert_eq "$([[ -f "$INJ_CF" ]] && echo yes)" "yes" "injection: compose still produced"
-assert_eq "$(yq eval '.x-casaos | has("pwned")' "$INJ_CF" 2>/dev/null)" "false" "injection: no injected key"
-if grep -q "CANARY_FILE_CONTENT_2478" "$INJ_CF"; then echo "FAIL: injection: canary file content leaked into output"; fail=1; else echo "ok: injection: no foreign file content"; fi
-assert_eq "$(yq eval '.x-casaos.description.en_US' "$INJ_CF" 2>/dev/null)" "$PAYLOAD" "injection: payload stored as literal string"
-rm -rf "$TMP_INJ"
+# Every attacker-controlled app.json field feeding a yq expression gets the payload,
+# so reintroducing interpolation at any one site fails the suite.
+for INJ_FIELD in metadata.description metadata.tagline metadata.author metadata.developer metadata.name visual.icon visual.thumbnail technical.main_service; do
+  TMP_INJ="$(mktemp -d)"
+  cp -R "$REPO/apps/." "$TMP_INJ/apps/"
+  echo "CANARY_FILE_CONTENT_2478" > "$TMP_INJ/canary.txt"
+  PAYLOAD='" | .x-casaos.pwned = load_str("'"$TMP_INJ"'/canary.txt") | .x-casaos.zz = "'
+  INJ_APP="$TMP_INJ/apps/uptime-kuma/app.json"
+  jq --arg p "$PAYLOAD" --arg f "$INJ_FIELD" 'setpath($f | split("."); $p)' "$INJ_APP" > "$INJ_APP.tmp" && mv "$INJ_APP.tmp" "$INJ_APP"
+  bash "$REPO/scripts/convert-to-platforms.sh" -p casaos -a uptime-kuma -i "$TMP_INJ/apps" -o "$TMP_INJ/out" >/dev/null 2>&1
+  INJ_CF="$TMP_INJ/out/casaos/uptime-kuma/docker-compose.yml"
+  assert_eq "$([[ -s "$INJ_CF" ]] && echo yes)" "yes" "injection[$INJ_FIELD]: compose still produced"
+  assert_eq "$(yq eval '.x-casaos | has("pwned")' "$INJ_CF" 2>/dev/null)" "false" "injection[$INJ_FIELD]: no injected key"
+  if [[ -s "$INJ_CF" ]] && ! grep -q "CANARY_FILE_CONTENT_2478" "$INJ_CF"; then echo "ok: injection[$INJ_FIELD]: no foreign file content"; else echo "FAIL: injection[$INJ_FIELD]: canary file content leaked into output"; fail=1; fi
+  rm -rf "$TMP_INJ"
+done
+
+# --- payload survives verbatim (proves it is stored as data, not dropped) ---
+TMP_LIT="$(mktemp -d)"
+cp -R "$REPO/apps/." "$TMP_LIT/apps/"
+LIT_PAYLOAD='" | .x-casaos.pwned = load_str("/etc/hostname") | .x-casaos.zz = "'
+LIT_APP="$TMP_LIT/apps/uptime-kuma/app.json"
+jq --arg p "$LIT_PAYLOAD" '.metadata.description = $p | .metadata.author = $p' "$LIT_APP" > "$LIT_APP.tmp" && mv "$LIT_APP.tmp" "$LIT_APP"
+bash "$REPO/scripts/convert-to-platforms.sh" -p casaos -a uptime-kuma -i "$TMP_LIT/apps" -o "$TMP_LIT/out" >/dev/null 2>&1
+LIT_CF="$TMP_LIT/out/casaos/uptime-kuma/docker-compose.yml"
+assert_eq "$(yq eval '.x-casaos.description.en_US' "$LIT_CF" 2>/dev/null)" "$LIT_PAYLOAD" "injection: payload stored as literal string"
+assert_eq "$(yq eval '.x-casaos.author' "$LIT_CF" 2>/dev/null)" "$LIT_PAYLOAD" "injection: author payload stored as literal string"
+rm -rf "$TMP_LIT"
+
+# --- compose-derived values are inert too (env keys, volume paths, ports) ---
+TMP_CINJ="$(mktemp -d)"
+cp -R "$REPO/apps/." "$TMP_CINJ/apps/"
+echo "CANARY_COMPOSE_2478" > "$TMP_CINJ/canary.txt"
+CPAYLOAD='" | .x-casaos.pwned = load_str("'"$TMP_CINJ"'/canary.txt") | .x-casaos.zz = "'
+CINJ_DIR="$TMP_CINJ/apps/uptime-kuma"
+CINJ_SVC=$(yq eval '.services | keys | .[0]' "$CINJ_DIR/docker-compose.yml")
+CINJ_SVC="$CINJ_SVC" CPAYLOAD="$CPAYLOAD" yq eval '.services[strenv(CINJ_SVC)].environment[strenv(CPAYLOAD)] = "x" | .services[strenv(CINJ_SVC)].volumes += ["/tmp/src:" + strenv(CPAYLOAD)]' -i "$CINJ_DIR/docker-compose.yml"
+bash "$REPO/scripts/convert-to-platforms.sh" -p casaos -a uptime-kuma -i "$TMP_CINJ/apps" -o "$TMP_CINJ/out" >/dev/null 2>&1
+CINJ_CF="$TMP_CINJ/out/casaos/uptime-kuma/docker-compose.yml"
+assert_eq "$([[ -s "$CINJ_CF" ]] && echo yes)" "yes" "compose injection: compose still produced"
+assert_eq "$(yq eval '.x-casaos | has("pwned")' "$CINJ_CF" 2>/dev/null)" "false" "compose injection: no injected key"
+if [[ -s "$CINJ_CF" ]] && ! grep -q "CANARY_COMPOSE_2478" "$CINJ_CF"; then echo "ok: compose injection: no foreign file content"; else echo "FAIL: compose injection: canary file content leaked into output"; fail=1; fi
+rm -rf "$TMP_CINJ"
 
 # --- JSON blobs keep block style (naive env() would reflow them to flow style) ---
 TMP_STYLE="$(mktemp -d)"
 bash "$REPO/scripts/convert-to-platforms.sh" -p casaos -a adguard-home -o "$TMP_STYLE" >/dev/null 2>&1
 SCF="$TMP_STYLE/casaos/adguard-home/docker-compose.yml"
-if grep -qE '^\s+screenshot_link: \[' "$SCF"; then echo "FAIL: screenshot_link reflowed to flow style"; fail=1; else echo "ok: screenshot_link block style"; fi
+assert_eq "$([[ -s "$SCF" ]] && echo yes)" "yes" "style: compose produced"
+if [[ -s "$SCF" ]] && ! grep -qE '^\s+screenshot_link: \[' "$SCF"; then echo "ok: screenshot_link block style"; else echo "FAIL: screenshot_link reflowed to flow style"; fail=1; fi
 assert_eq "$(yq eval '.x-casaos.screenshot_link | length' "$SCF")" "3" "screenshot_link parsed as sequence"
 assert_eq "$(yq eval '.x-casaos.architectures | tag' "$SCF")" "!!seq" "architectures still a sequence"
 if grep -qE '^\s+en_US: \|' "$SCF"; then echo "ok: tips literal block scalar preserved"; else echo "FAIL: tips lost literal block scalar"; fail=1; fi
-if grep -qE '^\s+"en_[a-zA-Z]+":' "$SCF"; then echo "FAIL: blob keys became quoted"; fail=1; else echo "ok: blob keys unquoted"; fi
+if [[ -s "$SCF" ]] && ! grep -qE '^\s+"en_[a-zA-Z]+":' "$SCF"; then echo "ok: blob keys unquoted"; else echo "FAIL: blob keys became quoted"; fail=1; fi
 rm -rf "$TMP_STYLE"
 
 # --- dotted service names address correctly (bracket form, not dot form) ---
