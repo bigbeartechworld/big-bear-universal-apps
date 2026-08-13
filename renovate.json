@@ -169,6 +169,11 @@
       "matchPackageNames": ["wordpress"],
       "matchFileNames": ["apps/wordpress/docker-compose.yml"],
       "enabled": false
+    },
+    {
+      "matchPackageNames": ["ghcr.io/paperclipai/paperclip"],
+      "matchFileNames": ["apps/paperclip/docker-compose.yml"],
+      "enabled": false
     }
   ],
   "customManagers": []
