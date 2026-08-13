@@ -48,7 +48,7 @@
       },
       {
         "container": "/var/run/docker.sock",
-        "description": "Read-only Docker socket for the docker-containers widget"
+        "description": "Docker socket for the docker-containers widget (ro mount; still grants full Docker API access)"
       }
     ],
     "ports": [
