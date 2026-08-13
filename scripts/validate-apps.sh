@@ -331,7 +331,19 @@ validate_app() {
         print_warning "  docker-compose.yml contains x-casaos extensions (should be clean)"
         warnings=$((warnings + 1))
     fi
-    
+
+    local single_stack_listeners
+    if ! single_stack_listeners=$(yq eval '.services | to_entries | .[] | select(.value.command // "" | tostring | test("(?i)\b(TCP[46]?-(LISTEN|L)):")) | select((.value.command | tostring | test("(?i)(^|[,\\s])ipv6only=0([,\\s]|$)")) | not) | .key' "$compose_file" 2>&1); then
+        print_error "  could not inspect services for single-stack listeners: $single_stack_listeners"
+        errors=$((errors + 1))
+    elif [[ -n "$single_stack_listeners" ]]; then
+        while IFS= read -r service_name; do
+            [[ -z "$service_name" ]] && continue
+            print_error "  service '$service_name' listens single-stack (use TCP6-LISTEN:<port>,fork,reuseaddr,ipv6only=0 so localhost resolving to ::1 still connects)"
+            errors=$((errors + 1))
+        done <<< "$single_stack_listeners"
+    fi
+
     # Summary for this app
     if [[ $errors -gt 0 ]]; then
         print_error "$app_name: FAILED ($errors errors, $warnings warnings)"
