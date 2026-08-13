@@ -206,7 +206,7 @@ if [[ "${RUNTIPI_FULL_RUN:-0}" == "1" ]]; then
   bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -o "$TMP_FULL/out" > "$FULL_LOG" 2>&1
   FULL_EXIT=$?
   assert_eq "$FULL_EXIT" "0" "full runtipi run exits 0"
-  assert_eq "$(grep -c 'WARNING' "$FULL_LOG" || true)" "4" "full run emits exactly 4 warnings"
+  assert_eq "$(grep -c 'WARNING' "$FULL_LOG" || true)" "0" "full run emits no warnings"
   FULL_ERRS="$(grep 'Errors:' "$FULL_LOG" | tail -1 | grep -Eo '[0-9]+ apps' | grep -Eo '^[0-9]+' || true)"
   assert_eq "$FULL_ERRS" "0" "full run reports Errors: 0"
   DIRTY=0
