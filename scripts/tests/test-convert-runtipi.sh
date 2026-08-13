@@ -3,6 +3,7 @@ set -uo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO="$(dirname "$(dirname "$SCRIPT_DIR")")"
 source "$REPO/scripts/convert-to-platforms.sh" --source-only 2>/dev/null || true
+set +e
 
 fail=0
 assert_eq() {
