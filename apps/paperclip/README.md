@@ -13,7 +13,9 @@ Some platforms publish it elsewhere: Umbrel serves Paperclip on `10201`, and Run
 
 ## Set PAPERCLIP_PUBLIC_URL first
 
-Paperclip builds its sign-in callback URLs from `PAPERCLIP_PUBLIC_URL`. The default is `http://localhost:3101`, which works only when browsing from the server itself. From any other device, sign-in fails on the callback.
+Paperclip builds its sign-in callback URLs from `PAPERCLIP_PUBLIC_URL`. It ships as `http://localhost:3101`, which works only when browsing from the server itself. From any other device, sign-in fails on the callback until this matches the address you actually browse to.
+
+Do not use the `[YOUR_CASAOS_IP]` placeholder style here. Paperclip parses this value as a URL at startup and refuses to boot on an unparseable one, so it must always be a real address.
 
 Edit the `paperclip` service in `docker-compose.yml` and set both the host **and** the port to what you actually browse to, then restart. The port is not always `3101` — see Access above:
 
@@ -93,7 +95,7 @@ The image entrypoint starts as `root` so it can `usermod` and `chown` the data d
 
 No Docker socket is mounted and no extra capabilities are granted. Agents run in-process using CLIs baked into the image rather than by spawning sibling containers.
 
-The image is pinned by digest to `ghcr.io/paperclipai/paperclip:latest@sha256:66056e8c...`. Upstream publishes no versioned image tag, so the digest pin is what keeps this deployment reproducible; Renovate is opted out of bumping it.
+The image is pinned by digest to `ghcr.io/paperclipai/paperclip:latest@sha256:66056e8c...`. Upstream publishes no versioned *image* tag — GHCR carries only `latest` and `sha-*` — so the digest pin is what keeps this deployment reproducible; Renovate is opted out of bumping it.
 
 ## Links
 
