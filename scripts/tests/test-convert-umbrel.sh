@@ -106,6 +106,7 @@ assert_eq "$(yq eval '.services.app.networks.custom_network.aliases | join(",")'
 
 cp "$MAPNET" "$TMP/mapnet-first.yml"
 bash "$REPO/scripts/convert-to-platforms.sh" -i "$TMP/apps" -a mapnet -p umbrel -o "$TMP/out" > /dev/null 2>&1
+assert_eq "$?" "0" "map-style rerun exits 0"
 diff -q "$TMP/mapnet-first.yml" "$MAPNET" > /dev/null 2>&1
 assert_eq "$?" "0" "map-style rerun is byte-identical"
 
@@ -130,6 +131,7 @@ assert_eq "$(yq eval '.services.app.networks.default.aliases | join(",")' "$MAPD
 section "idempotency: re-running the converter does not append default twice"
 cp "$CUSTOM" "$TMP/first-run.yml"
 bash "$REPO/scripts/convert-to-platforms.sh" -i "$TMP/apps" -p umbrel -o "$TMP/out" > /dev/null 2>&1
+assert_eq "$?" "0" "second run exits 0"
 assert_eq "$(main_networks "$CUSTOM" app)" "custom_network,default" "second run keeps a single default"
 diff -q "$TMP/first-run.yml" "$CUSTOM" > /dev/null 2>&1
 assert_eq "$?" "0" "second run output is byte-identical"
