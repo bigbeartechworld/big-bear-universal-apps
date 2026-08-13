@@ -1,0 +1,42 @@
+name: paperclip
+
+services:
+  paperclip:
+    image: ghcr.io/paperclipai/paperclip:latest@sha256:66056e8c979bc2f8ef35083ebd333b7c83224fe3234bd92d251b0bbce1054317
+    container_name: paperclip
+    ports:
+      - "3101:3100"
+    environment:
+      PORT: "3100"
+      HOST: 0.0.0.0
+      SERVE_UI: "true"
+      PAPERCLIP_HOME: /paperclip
+      PAPERCLIP_PUBLIC_URL: http://localhost:3101
+      PAPERCLIP_DEPLOYMENT_MODE: authenticated
+      PAPERCLIP_DEPLOYMENT_EXPOSURE: private
+      BETTER_AUTH_SECRET: 8426a45b83c80f6465cf48145bb80108288fd6b5d835e5a8e0e0034d7d500bf4
+      PAPERCLIP_TOOL_ACTION_SIGNING_SECRET: 4574e70d6763a4ebd9e08f6a2ef516780a70cf2d73876b99330648c95bab198c
+      ANTHROPIC_API_KEY: ""
+      OPENAI_API_KEY: ""
+      GEMINI_API_KEY: ""
+      GITHUB_TOKEN: ""
+    volumes:
+      - paperclip_data:/paperclip
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:3100/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 60s
+    restart: unless-stopped
+    networks:
+      - paperclip_network
+
+networks:
+  paperclip_network:
+    driver: bridge
+
+volumes:
+  paperclip_data:
+    name: paperclip_data
+    driver: local
