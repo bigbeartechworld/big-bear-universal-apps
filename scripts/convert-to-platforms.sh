@@ -1933,11 +1933,18 @@ convert_to_umbrel() {
         # app_proxy resolves APP_HOST only on Umbrel's default network (umbrel_main_network)
         local svc="$main_service"
         export svc
-        local main_networks=$(yq eval '.services[strenv(svc)].networks // [] | length' "$output_dir/docker-compose.yml" 2>/dev/null)
-        local has_default=$(yq eval '[.services[strenv(svc)].networks // [] | .[] | select(. == "default")] | length' "$output_dir/docker-compose.yml" 2>/dev/null)
-        if [[ "$main_networks" =~ ^[0-9]+$ ]] && [[ "$main_networks" -gt 0 ]] && [[ "$has_default" == "0" ]]; then
-            yq eval '.services[strenv(svc)].networks += ["default"]' "$output_dir/docker-compose.yml" > "$temp_compose"
-            mv "$temp_compose" "$output_dir/docker-compose.yml"
+        local networks_kind=$(yq eval '.services[strenv(svc)].networks | type' "$output_dir/docker-compose.yml" 2>/dev/null)
+        local has_default=$(yq eval '[.services[strenv(svc)].networks // [] | (.[] // (. | keys | .[])) | select(. == "default")] | length' "$output_dir/docker-compose.yml" 2>/dev/null)
+        if [[ "$networks_kind" == "!!seq" || "$networks_kind" == "!!map" ]] && [[ "$has_default" == "0" ]]; then
+            local append_expr='.services[strenv(svc)].networks += ["default"]'
+            [[ "$networks_kind" == "!!map" ]] && append_expr='.services[strenv(svc)].networks.default = null'
+            if yq eval "$append_expr" "$output_dir/docker-compose.yml" > "$temp_compose" 2>/dev/null && [[ -s "$temp_compose" ]]; then
+                mv "$temp_compose" "$output_dir/docker-compose.yml"
+            else
+                rm -f "$temp_compose"
+                print_error "$app_name: failed to attach main service to Umbrel default network"
+                TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+            fi
         fi
         unset svc
     fi

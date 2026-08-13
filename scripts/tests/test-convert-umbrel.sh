@@ -87,6 +87,24 @@ assert_eq "$(main_networks "$CUSTOM" sidecar)" "custom_network" "sibling service
 assert_eq "$(main_networks "$TMP/out/umbrel/big-bear-umbrel-defaultnet/docker-compose.yml" app)" "" "main service with no networks key is untouched"
 assert_eq "$(main_networks "$TMP/out/umbrel/big-bear-umbrel-hasdefault/docker-compose.yml" app)" "custom_network,default" "existing default is not duplicated"
 
+section "map-style networks: attached without corrupting the compose file"
+make_app "$TMP" "mapnet" 'services:
+  app:
+    image: nginx:alpine
+    networks:
+      custom_network:
+        aliases:
+          - internal
+networks:
+  custom_network:
+    driver: bridge
+'
+bash "$REPO/scripts/convert-to-platforms.sh" -i "$TMP/apps" -a mapnet -p umbrel -o "$TMP/out" > "$TMP/map.log" 2>&1
+MAPNET="$TMP/out/umbrel/big-bear-umbrel-mapnet/docker-compose.yml"
+assert_eq "$(yq eval '.services.app.networks | has("default")' "$MAPNET" 2>/dev/null)" "true" "map-style networks gains default"
+assert_eq "$(yq eval '.services.app.networks.custom_network.aliases | join(",")' "$MAPNET" 2>/dev/null)" "internal" "map-style networks keeps existing entries"
+assert_eq "$(yq eval '.services.app.image' "$MAPNET" 2>/dev/null)" "nginx:alpine" "map-style compose file is not truncated"
+
 section "idempotency: re-running the converter does not append default twice"
 cp "$CUSTOM" "$TMP/first-run.yml"
 bash "$REPO/scripts/convert-to-platforms.sh" -i "$TMP/apps" -p umbrel -o "$TMP/out" > /dev/null 2>&1
