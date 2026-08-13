@@ -1077,6 +1077,60 @@ EOF
     print_success "Converted $app_name for Portainer"
 }
 
+resolve_runtipi_main_image() {
+    local source_compose="$1"
+    local main_image="$2"
+    local app_name="$3"
+    local fallback="$4"
+
+    local images=""
+    if [[ -f "$source_compose" ]]; then
+        images=$(yq eval '.services | to_entries | .[] | select(.value.image != null) | .key + " " + .value.image' "$source_compose" 2>/dev/null || echo "")
+    fi
+
+    local matched=""
+    local matched_service=""
+    local match_count=0
+
+    while IFS= read -r line; do
+        [[ -z "$line" ]] && continue
+        local svc="${line%% *}"
+        local img="${line#* }"
+        [[ -z "$img" ]] && continue
+
+        local repo="${img%%@*}"
+        local last_segment="${repo##*/}"
+        if [[ "$last_segment" == *:* ]]; then
+            repo="${repo%:*}"
+        fi
+
+        if [[ "$repo" == "$main_image" ]]; then
+            matched="${matched}${img}"$'\n'
+            match_count=$((match_count + 1))
+            [[ -z "$matched_service" ]] && matched_service="$svc"
+        fi
+    done <<< "$images"
+
+    local distinct=0
+    if [[ -n "$matched" ]]; then
+        distinct=$(printf '%s' "$matched" | sort -u | grep -c . || true)
+        distinct="${distinct:-0}"
+    fi
+
+    if [[ "$match_count" -ge 1 && "$distinct" -eq 1 ]]; then
+        local resolved="${matched%%$'\n'*}"
+        if [[ "$VERBOSE" == "true" ]]; then
+            echo "  DEBUG: runtipi resolved image='$resolved' (service='$matched_service')" >&2
+        fi
+        echo "$resolved"
+        return 0
+    fi
+
+    print_warning "runtipi: could not resolve main image for $app_name from docker-compose.yml (main_image='$main_image'); falling back to $fallback (no digest pin)" >&2
+    echo "$fallback"
+    return 0
+}
+
 # Convert to Runtipi format
 convert_to_runtipi() {
     local app_name="$1"
@@ -1358,9 +1412,12 @@ convert_to_runtipi() {
     fi
     
     # Create docker-compose.json using jq
+    local runtipi_main_image
+    runtipi_main_image=$(resolve_runtipi_main_image "$app_dir/docker-compose.yml" "$APP_MAIN_IMAGE" "$app_name" "$APP_MAIN_IMAGE:$APP_VERSION")
+
     jq -n \
         --arg name "$app_name" \
-        --arg image "$APP_MAIN_IMAGE:$APP_VERSION" \
+        --arg image "$runtipi_main_image" \
         --argjson port "$runtipi_port" \
         '{
             schemaVersion: 2,
