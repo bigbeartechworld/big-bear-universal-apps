@@ -28,6 +28,9 @@ jobs:
       - name: Run converter test suite
         run: bash scripts/tests/test-convert-casaos.sh
 
+      - name: Run Umbrel converter test suite
+        run: bash scripts/tests/test-convert-umbrel.sh
+
   validate-apps:
     name: Validate App Definitions
     runs-on: ubuntu-latest
