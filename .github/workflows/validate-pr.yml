@@ -8,6 +8,26 @@ on:
       - 'scripts/**'
 
 jobs:
+  converter-tests:
+    name: Converter Test Suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+          sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
+          sudo chmod +x /usr/local/bin/yq
+
+      - name: Install bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Run converter test suite
+        run: bash scripts/tests/test-convert-casaos.sh
+
   validate-apps:
     name: Validate App Definitions
     runs-on: ubuntu-latest

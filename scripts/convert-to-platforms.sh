@@ -608,46 +608,46 @@ convert_to_casaos() {
     # Update the name to include big-bear- prefix for CasaOS
     local current_name=$(yq eval '.name' "$compose_file")
     if [[ "$current_name" != "big-bear-"* ]]; then
-        yq eval ".name = \"big-bear-$current_name\"" -i "$compose_file"
+        current_name="$current_name" yq eval '.name = ("big-bear-" + strenv(current_name))' -i "$compose_file"
     fi
     
     # Add x-casaos sections to compose file
     # Add top-level x-casaos
-    yq eval ".x-casaos.architectures = $APP_ARCHITECTURES" -i "$compose_file"
-    yq eval ".x-casaos.id = \"com.bigbeartechworld.$APP_ID\"" -i "$compose_file"
-    yq eval ".x-casaos.main = \"$APP_MAIN_SERVICE\"" -i "$compose_file"
-    yq eval ".x-casaos.description.en_US = \"$APP_DESCRIPTION\"" -i "$compose_file"
+    APP_ARCHITECTURES="$APP_ARCHITECTURES" yq eval '.x-casaos.architectures = (env(APP_ARCHITECTURES) | ... style="")' -i "$compose_file"
+    APP_ID="$APP_ID" yq eval '.x-casaos.id = ("com.bigbeartechworld." + strenv(APP_ID))' -i "$compose_file"
+    APP_MAIN_SERVICE="$APP_MAIN_SERVICE" yq eval '.x-casaos.main = strenv(APP_MAIN_SERVICE)' -i "$compose_file"
+    APP_DESCRIPTION="$APP_DESCRIPTION" yq eval '.x-casaos.description.en_US = strenv(APP_DESCRIPTION)' -i "$compose_file"
     
     # Add screenshot_link if screenshots exist
     local screenshots=$(jq -c '.visual.screenshots // []' "$app_dir/app.json")
     local screenshot_count=$(echo "$screenshots" | jq 'length')
     if [[ "$screenshot_count" -gt 0 ]]; then
-        yq eval ".x-casaos.screenshot_link = $screenshots" -i "$compose_file"
+        screenshots="$screenshots" yq eval '.x-casaos.screenshot_link = (env(screenshots) | ... style="")' -i "$compose_file"
     fi
     
-    yq eval ".x-casaos.tagline.en_US = \"$APP_TAGLINE\"" -i "$compose_file"
-    yq eval ".x-casaos.developer = \"$APP_DEVELOPER\"" -i "$compose_file"
-    yq eval ".x-casaos.author = \"$APP_AUTHOR\"" -i "$compose_file"
-    yq eval ".x-casaos.icon = \"$APP_ICON\"" -i "$compose_file"
-    yq eval ".x-casaos.thumbnail = \"$APP_THUMBNAIL\"" -i "$compose_file"
+    APP_TAGLINE="$APP_TAGLINE" yq eval '.x-casaos.tagline.en_US = strenv(APP_TAGLINE)' -i "$compose_file"
+    APP_DEVELOPER="$APP_DEVELOPER" yq eval '.x-casaos.developer = strenv(APP_DEVELOPER)' -i "$compose_file"
+    APP_AUTHOR="$APP_AUTHOR" yq eval '.x-casaos.author = strenv(APP_AUTHOR)' -i "$compose_file"
+    APP_ICON="$APP_ICON" yq eval '.x-casaos.icon = strenv(APP_ICON)' -i "$compose_file"
+    APP_THUMBNAIL="$APP_THUMBNAIL" yq eval '.x-casaos.thumbnail = strenv(APP_THUMBNAIL)' -i "$compose_file"
     
     # Add tips if they exist
     local tips_before_install=$(jq -r '.ui.tips.before_install.en_us // ""' "$app_dir/app.json")
     if [[ -n "$tips_before_install" && "$tips_before_install" != "null" ]]; then
         # Escape the multiline string for yq and use style="literal" for proper formatting
         local tips_json=$(jq -c '.ui.tips.before_install // {}' "$app_dir/app.json")
-        yq eval ".x-casaos.tips.before_install = $tips_json" -i "$compose_file"
+        tips_json="$tips_json" yq eval '.x-casaos.tips.before_install = (env(tips_json) | ... style="")' -i "$compose_file"
         if [[ "$(yq eval '.x-casaos.tips.before_install | has("en_us")' "$compose_file")" == "true" ]]; then
             yq eval '.x-casaos.tips.before_install.en_US = .x-casaos.tips.before_install.en_us | del(.x-casaos.tips.before_install.en_us)' -i "$compose_file"
         fi
     fi
 
-    yq eval ".x-casaos.title.en_US = \"$APP_NAME\"" -i "$compose_file"
-    yq eval ".x-casaos.category = \"$casaos_category\"" -i "$compose_file"
+    APP_NAME="$APP_NAME" yq eval '.x-casaos.title.en_US = strenv(APP_NAME)' -i "$compose_file"
+    casaos_category="$casaos_category" yq eval '.x-casaos.category = strenv(casaos_category)' -i "$compose_file"
     
     # Use platform-specific port if defined, otherwise use default
     local casaos_port="${PORT_CASAOS:-$APP_DEFAULT_PORT}"
-    yq eval ".x-casaos.port_map = \"$casaos_port\"" -i "$compose_file"
+    casaos_port="$casaos_port" yq eval '.x-casaos.port_map = strenv(casaos_port)' -i "$compose_file"
     
     # Add descriptive comments to x-casaos section using perl (works on both macOS and Linux)
     # Add comment before architectures
@@ -701,12 +701,12 @@ convert_to_casaos() {
         
         # Add environment variables for this service
         # Environment can be either an array of "KEY=VALUE" strings or an object {KEY: VALUE}
-        local env_format=$(yq eval ".services[\"$service_name\"].environment | type" "$compose_file" 2>/dev/null || echo "null")
+        local env_format=$(service_name="$service_name" yq eval '.services[strenv(service_name)].environment | type' "$compose_file" 2>/dev/null || echo "null")
         local env_index=0
         
         if [[ "$env_format" == "!!seq" ]]; then
             # Array format: ["KEY=VALUE", ...]
-            local service_envs=$(yq eval ".services[\"$service_name\"].environment | .[]" "$compose_file" 2>/dev/null || echo "")
+            local service_envs=$(service_name="$service_name" yq eval '.services[strenv(service_name)].environment | .[]' "$compose_file" 2>/dev/null || echo "")
             while IFS= read -r env_entry; do
                 [[ -z "$env_entry" ]] && continue
                 
@@ -719,13 +719,13 @@ convert_to_casaos() {
                 fi
                 
                 # Add to x-casaos with proper escaping
-                yq eval ".services.[\"$service_name\"].x-casaos.envs[$env_index].container = \"$env_key\"" -i "$compose_file" 2>/dev/null || true
-                yq eval ".services.[\"$service_name\"].x-casaos.envs[$env_index].description.en_US = \"Container Variable: $env_key\"" -i "$compose_file" 2>/dev/null || true
+                service_name="$service_name" env_key="$env_key" env_index="$env_index" yq eval '.services[strenv(service_name)].x-casaos.envs[env(env_index)].container = strenv(env_key)' -i "$compose_file" 2>/dev/null || true
+                service_name="$service_name" env_key="$env_key" env_index="$env_index" yq eval '.services[strenv(service_name)].x-casaos.envs[env(env_index)].description.en_US = ("Container Variable: " + strenv(env_key))' -i "$compose_file" 2>/dev/null || true
                 env_index=$((env_index + 1))
             done <<< "$service_envs"
         elif [[ "$env_format" == "!!map" ]]; then
             # Object format: {KEY: VALUE, ...}
-            local service_envs=$(yq eval ".services[\"$service_name\"].environment | keys | .[]" "$compose_file" 2>/dev/null || echo "")
+            local service_envs=$(service_name="$service_name" yq eval '.services[strenv(service_name)].environment | keys | .[]' "$compose_file" 2>/dev/null || echo "")
             while IFS= read -r env_key; do
                 [[ -z "$env_key" ]] && continue
                 
@@ -735,26 +735,26 @@ convert_to_casaos() {
                 fi
                 
                 # Add to x-casaos with proper escaping
-                yq eval ".services.[\"$service_name\"].x-casaos.envs[$env_index].container = \"$env_key\"" -i "$compose_file" 2>/dev/null || true
-                yq eval ".services.[\"$service_name\"].x-casaos.envs[$env_index].description.en_US = \"Container Variable: $env_key\"" -i "$compose_file" 2>/dev/null || true
+                service_name="$service_name" env_key="$env_key" env_index="$env_index" yq eval '.services[strenv(service_name)].x-casaos.envs[env(env_index)].container = strenv(env_key)' -i "$compose_file" 2>/dev/null || true
+                service_name="$service_name" env_key="$env_key" env_index="$env_index" yq eval '.services[strenv(service_name)].x-casaos.envs[env(env_index)].description.en_US = ("Container Variable: " + strenv(env_key))' -i "$compose_file" 2>/dev/null || true
                 env_index=$((env_index + 1))
             done <<< "$service_envs"
         fi
         
         # Add volumes for this service (handles both short-form and long-form syntax)
-        local vol_count=$(yq eval ".services[\"$service_name\"].volumes | length" "$compose_file" 2>/dev/null || echo "0")
+        local vol_count=$(service_name="$service_name" yq eval '.services[strenv(service_name)].volumes | length' "$compose_file" 2>/dev/null || echo "0")
         local vol_index=0
         for ((i=0; i<vol_count; i++)); do
             # Check if entry is a string (short-form) or object (long-form)
-            local vol_type=$(yq eval ".services[\"$service_name\"].volumes[$i] | type" "$compose_file" 2>/dev/null)
+            local vol_type=$(service_name="$service_name" i="$i" yq eval '.services[strenv(service_name)].volumes[env(i)] | type' "$compose_file" 2>/dev/null)
             local container_path=""
 
             if [[ "$vol_type" == "!!map" ]]; then
                 # Long-form: extract target field
-                container_path=$(yq eval ".services[\"$service_name\"].volumes[$i].target" "$compose_file" 2>/dev/null)
+                container_path=$(service_name="$service_name" i="$i" yq eval '.services[strenv(service_name)].volumes[env(i)].target' "$compose_file" 2>/dev/null)
             else
                 # Short-form: extract path after first colon
-                local vol_str=$(yq eval ".services[\"$service_name\"].volumes[$i]" "$compose_file" 2>/dev/null)
+                local vol_str=$(service_name="$service_name" i="$i" yq eval '.services[strenv(service_name)].volumes[env(i)]' "$compose_file" 2>/dev/null)
                 container_path="${vol_str#*:}"
                 container_path="${container_path%%:*}"
                 # Only accept absolute or relative paths as container paths
@@ -765,24 +765,24 @@ convert_to_casaos() {
                 continue
             fi
 
-            yq eval ".services.[\"$service_name\"].x-casaos.volumes[$vol_index].container = \"$container_path\"" -i "$compose_file" 2>/dev/null || true
-            yq eval ".services.[\"$service_name\"].x-casaos.volumes[$vol_index].description.en_US = \"Container Path: $container_path\"" -i "$compose_file" 2>/dev/null || true
+            service_name="$service_name" container_path="$container_path" vol_index="$vol_index" yq eval '.services[strenv(service_name)].x-casaos.volumes[env(vol_index)].container = strenv(container_path)' -i "$compose_file" 2>/dev/null || true
+            service_name="$service_name" container_path="$container_path" vol_index="$vol_index" yq eval '.services[strenv(service_name)].x-casaos.volumes[env(vol_index)].description.en_US = ("Container Path: " + strenv(container_path))' -i "$compose_file" 2>/dev/null || true
             vol_index=$((vol_index + 1))
         done
         
         # Add ports for this service (handles both short-form and long-form syntax)
-        local port_count=$(yq eval ".services[\"$service_name\"].ports | length" "$compose_file" 2>/dev/null || echo "0")
+        local port_count=$(service_name="$service_name" yq eval '.services[strenv(service_name)].ports | length' "$compose_file" 2>/dev/null || echo "0")
         local port_index=0
         for ((i=0; i<port_count; i++)); do
-            local port_type=$(yq eval ".services[\"$service_name\"].ports[$i] | type" "$compose_file" 2>/dev/null)
+            local port_type=$(service_name="$service_name" i="$i" yq eval '.services[strenv(service_name)].ports[env(i)] | type' "$compose_file" 2>/dev/null)
             local container_port=""
 
             if [[ "$port_type" == "!!map" ]]; then
                 # Long-form: extract target field
-                container_port=$(yq eval ".services[\"$service_name\"].ports[$i].target" "$compose_file" 2>/dev/null)
+                container_port=$(service_name="$service_name" i="$i" yq eval '.services[strenv(service_name)].ports[env(i)].target' "$compose_file" 2>/dev/null)
             else
                 # Short-form: extract container port
-                local port_str=$(yq eval ".services[\"$service_name\"].ports[$i]" "$compose_file" 2>/dev/null)
+                local port_str=$(service_name="$service_name" i="$i" yq eval '.services[strenv(service_name)].ports[env(i)]' "$compose_file" 2>/dev/null)
                 container_port="${port_str##*:}"
                 container_port="${container_port%%/*}"
             fi
@@ -791,8 +791,8 @@ convert_to_casaos() {
                 continue
             fi
 
-            yq eval ".services.[\"$service_name\"].x-casaos.ports[$port_index].container = \"$container_port\"" -i "$compose_file" 2>/dev/null || true
-            yq eval ".services.[\"$service_name\"].x-casaos.ports[$port_index].description.en_US = \"Container Port: $container_port\"" -i "$compose_file" 2>/dev/null || true
+            service_name="$service_name" container_port="$container_port" port_index="$port_index" yq eval '.services[strenv(service_name)].x-casaos.ports[env(port_index)].container = strenv(container_port)' -i "$compose_file" 2>/dev/null || true
+            service_name="$service_name" container_port="$container_port" port_index="$port_index" yq eval '.services[strenv(service_name)].x-casaos.ports[env(port_index)].description.en_US = ("Container Port: " + strenv(container_port))' -i "$compose_file" 2>/dev/null || true
             port_index=$((port_index + 1))
         done
         
@@ -818,18 +818,18 @@ convert_to_casaos() {
                 [[ -z "$vol_name" ]] && continue
                 
                 # Get the count of volumes in this service
-                local vol_count=$(yq eval ".services.$service_name.volumes | length" "$compose_file" 2>/dev/null || echo "0")
-                
+                local vol_count=$(service_name="$service_name" yq eval '.services[strenv(service_name)].volumes | length' "$compose_file" 2>/dev/null || echo "0")
+
                 for ((j=0; j<vol_count; j++)); do
-                    local vol_type=$(yq eval ".services.$service_name.volumes[$j] | type" "$compose_file" 2>/dev/null)
+                    local vol_type=$(service_name="$service_name" j="$j" yq eval '.services[strenv(service_name)].volumes[env(j)] | type' "$compose_file" 2>/dev/null)
                     local container_path=""
                     local is_match=false
 
                     if [[ "$vol_type" == "!!map" ]]; then
                         # Long-form: check if .source matches the named volume
-                        local vol_source=$(yq eval ".services.$service_name.volumes[$j].source" "$compose_file" 2>/dev/null)
+                        local vol_source=$(service_name="$service_name" j="$j" yq eval '.services[strenv(service_name)].volumes[env(j)].source' "$compose_file" 2>/dev/null)
                         if [[ "$vol_source" == "$vol_name" ]]; then
-                            container_path=$(yq eval ".services.$service_name.volumes[$j].target" "$compose_file" 2>/dev/null)
+                            container_path=$(service_name="$service_name" j="$j" yq eval '.services[strenv(service_name)].volumes[env(j)].target' "$compose_file" 2>/dev/null)
                             if [[ "$container_path" == /* ]] || [[ "$container_path" == ./* ]]; then
                                 is_match=true
                             else
@@ -837,7 +837,7 @@ convert_to_casaos() {
                             fi
                         fi
                     else
-                        local vol_entry=$(yq eval ".services.$service_name.volumes[$j]" "$compose_file")
+                        local vol_entry=$(service_name="$service_name" j="$j" yq eval '.services[strenv(service_name)].volumes[env(j)]' "$compose_file")
                         # Skip if this is already a bind mount (starts with / or ./)
                         if [[ "$vol_entry" == /* ]] || [[ "$vol_entry" == ./* ]]; then
                             continue
@@ -875,7 +875,7 @@ convert_to_casaos() {
                         fi
 
                         # Replace the volume entry with a short-form bind mount string
-                        yq eval ".services.$service_name.volumes[$j] = \"$casaos_path\"" -i "$compose_file"
+                        service_name="$service_name" j="$j" casaos_path="$casaos_path" yq eval '.services[strenv(service_name)].volumes[env(j)] = strenv(casaos_path)' -i "$compose_file"
                     fi
                 done
             done <<< "$volume_names"
