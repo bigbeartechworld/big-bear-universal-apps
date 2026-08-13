@@ -1,0 +1,176 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "paperclip",
+    "name": "Paperclip",
+    "description": "Paperclip is an open-source self-hosted board for managing AI coding agents such as Claude Code, Codex, OpenCode, and Gemini CLI. Assign work to agents, run them, and track cost and output from a single dashboard.",
+    "tagline": "Self-hosted board for managing AI coding agents",
+    "version": "latest",
+    "author": "BigBearTechWorld",
+    "developer": "paperclipai",
+    "category": "BigBearCasaOS",
+    "license": "MIT",
+    "homepage": "https://paperclip.ing",
+    "source": "big-bear-universal",
+    "created": "2026-08-13T00:00:00Z",
+    "updated": "2026-08-13T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/paperclipai/paperclip@master/ui/public/apple-touch-icon.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/paperclipai/paperclip@master/ui/public/apple-touch-icon.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://github.com/paperclipai/paperclip/blob/master/doc/DOCKER.md",
+    "repository": "https://github.com/paperclipai/paperclip",
+    "issues": "https://github.com/paperclipai/paperclip/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "paperclip",
+    "default_port": "3101",
+    "main_image": "ghcr.io/paperclipai/paperclip",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "BETTER_AUTH_SECRET",
+        "default": "change-this-run-openssl-rand-hex-32",
+        "description": "Session signing secret as 64-character hex. Paperclip refuses to start without it. This shipped value is a placeholder shared by every install, so you must replace it before real use. Generate one with: openssl rand -hex 32",
+        "required": true
+      },
+      {
+        "name": "PAPERCLIP_TOOL_ACTION_SIGNING_SECRET",
+        "default": "change-this-run-openssl-rand-hex-32",
+        "description": "Signs agent tool-action approvals as 64-character hex. The server boots without it but every agent approval fails. This shipped value is a placeholder shared by every install, so you must replace it before real use. Generate one with: openssl rand -hex 32",
+        "required": true
+      },
+      {
+        "name": "PAPERCLIP_PUBLIC_URL",
+        "default": "http://localhost:3101",
+        "description": "External address Paperclip is reached on. Sign-in callbacks fail unless this matches the address you actually browse to, so change localhost to the server LAN IP or domain and use the port your platform serves Paperclip on, for example http://192.168.1.50:3101. On Umbrel the port is 10201.",
+        "required": true
+      },
+      {
+        "name": "ANTHROPIC_API_KEY",
+        "default": "",
+        "description": "Anthropic API key for Claude Code agents. Optional: Paperclip runs without it, but Claude agents cannot.",
+        "required": false
+      },
+      {
+        "name": "OPENAI_API_KEY",
+        "default": "",
+        "description": "OpenAI API key for Codex agents. Optional: Paperclip runs without it, but Codex agents cannot.",
+        "required": false
+      },
+      {
+        "name": "GEMINI_API_KEY",
+        "default": "",
+        "description": "Google Gemini API key for Gemini CLI agents. Optional: Paperclip runs without it, but Gemini agents cannot.",
+        "required": false
+      },
+      {
+        "name": "GITHUB_TOKEN",
+        "default": "",
+        "description": "GitHub token used by agents to read and write repositories. Optional: Paperclip runs without it, but repository actions fail.",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/paperclip",
+        "description": "Paperclip data and embedded PostgreSQL storage"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3100",
+        "host": "3101",
+        "protocol": "tcp",
+        "description": "Web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "This app ships with placeholder secrets so it starts without configuration. They are the same for every install and are not secret. Replace BETTER_AUTH_SECRET and PAPERCLIP_TOOL_ACTION_SIGNING_SECRET with 'openssl rand -hex 32' before using it for anything real. Also change PAPERCLIP_PUBLIC_URL from localhost to the exact address and port you browse to, for example http://192.168.1.50:3101: the port is 3101 on most platforms but 10201 on Umbrel, and sign-in callbacks fail while it is wrong. See the app README."
+      },
+      "after_install": {
+        "en_us": "Change PAPERCLIP_PUBLIC_URL to the exact address and port you actually browse to, then restart the container. Use the port your platform serves Paperclip on, which is not always 3101: on Umbrel it is 10201, and on Runtipi it is whatever APP_PORT is set to. For example http://192.168.1.50:3101 on CasaOS or Portainer, http://192.168.1.50:10201 on Umbrel. Sign-in callbacks fail while this points at the wrong host or port."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3101",
+      "port": "3101",
+      "category": "AI",
+      "volume_mappings": {
+        "paperclip_data": "/DATA/AppData/$AppID/data"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "3101"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "port": "3101",
+      "volume_mappings": {
+        "paperclip_data": "data"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "3101"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "3101"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "10201",
+      "app_port": "3100",
+      "volume_mappings": {
+        "paperclip_data": "data"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "ai",
+    "agents",
+    "development"
+  ]
+}
