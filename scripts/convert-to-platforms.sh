@@ -1929,8 +1929,19 @@ convert_to_umbrel() {
             yq eval ".services = {\"app_proxy\": {\"environment\": {\"APP_HOST\": \"${folder_name}_${main_service}_1\", \"APP_PORT\": \"$container_port\"}}} + .services" "$output_dir/docker-compose.yml" > "$temp_compose"
             mv "$temp_compose" "$output_dir/docker-compose.yml"
         fi
+
+        # app_proxy resolves APP_HOST only on Umbrel's default network (umbrel_main_network)
+        local svc="$main_service"
+        export svc
+        local main_networks=$(yq eval '.services[strenv(svc)].networks // [] | length' "$output_dir/docker-compose.yml" 2>/dev/null)
+        local has_default=$(yq eval '[.services[strenv(svc)].networks // [] | .[] | select(. == "default")] | length' "$output_dir/docker-compose.yml" 2>/dev/null)
+        if [[ "$main_networks" =~ ^[0-9]+$ ]] && [[ "$main_networks" -gt 0 ]] && [[ "$has_default" == "0" ]]; then
+            yq eval '.services[strenv(svc)].networks += ["default"]' "$output_dir/docker-compose.yml" > "$temp_compose"
+            mv "$temp_compose" "$output_dir/docker-compose.yml"
+        fi
+        unset svc
     fi
-    
+
     # Convert named volumes to ${APP_DATA_DIR} bind mounts for Umbrel
     # First, get list of named volumes
     local named_volumes=$(yq eval '.volumes | keys | .[]' "$output_dir/docker-compose.yml" 2>/dev/null || echo "")
