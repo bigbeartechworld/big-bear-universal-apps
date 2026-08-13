@@ -50,6 +50,8 @@ Generate new museum keys with Ente's tool: `go run tools/gen-random-keys/main.go
 | `socat`      | Bridges museum's `localhost:3200` to `minio:3200`.  |
 | `minio-init` | One-shot job that creates the storage buckets.      |
 
+The `socat` bridge binds dual-stack via `TCP6-LISTEN:...,ipv6only=0` because inside the museum container `localhost` resolves to `::1` before `127.0.0.1`. Reverting to `TCP-LISTEN:` (IPv4-only) leaves museum unable to reach object storage on that address family, so uploads and downloads all fail even though every container still looks healthy. This intentionally diverges from upstream Ente's compose, so an upstream sync must not revert it.
+
 ## Links
 
 - Documentation: https://help.ente.io/self-hosting/
