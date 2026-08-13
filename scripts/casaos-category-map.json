@@ -240,5 +240,6 @@
   "zigbee2mqtt": "Home",
   "zipline": "Others",
   "zotero": "Others",
-  "buzz": "Developer"
+  "buzz": "Developer",
+  "glance": "Others"
 }
