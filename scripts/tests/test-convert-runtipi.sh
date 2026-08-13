@@ -5,11 +5,13 @@ REPO="$(dirname "$(dirname "$SCRIPT_DIR")")"
 source "$REPO/scripts/convert-to-platforms.sh" --source-only 2>/dev/null || true
 
 fail=0
-assert_eq() { # $1=actual $2=expected $3=label
-  if [[ "$1" != "$2" ]]; then echo "FAIL: $3 — got '$1' want '$2'"; fail=1; else echo "ok: $3"; fi
+assert_eq() {
+  local actual="$1" expected="$2" label="$3"
+  if [[ "$actual" != "$expected" ]]; then echo "FAIL: $label — got '$actual' want '$expected'"; fail=1; else echo "ok: $label"; fi
 }
+section() { echo; echo "== $1 =="; }
 
-# --- unit: resolver over synthetic compose fixtures ---
+section "unit: resolver over synthetic compose fixtures"
 UNIT_DIR="$(mktemp -d)"
 
 cat > "$UNIT_DIR/single.yml" <<'YAML'
@@ -101,7 +103,7 @@ assert_eq "$MISSING_FILE" "foo/bar:1.0" "missing compose file falls back"
 
 rm -rf "$UNIT_DIR"
 
-# --- e2e case 1+2+6: happy path, digest preserved, JSON/YAML agreement, schema shape ---
+section "e2e: happy path, digest preserved, JSON/YAML agreement, schema shape"
 TMP_UK="$(mktemp -d)"
 UK_LOG="$TMP_UK/run.log"
 bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a uptime-kuma -o "$TMP_UK/out" > "$UK_LOG" 2>&1
@@ -121,7 +123,7 @@ assert_eq "$(jq -r '.services[0].internalPort | type' "$UK_JSON")" "number" "int
 assert_eq "$(grep -c 'WARNING' "$UK_LOG" || true)" "0" "uptime-kuma emits no warning"
 rm -rf "$TMP_UK"
 
-# --- e2e case 3: multi-match identical strings, no warning ---
+section "e2e: multi-match identical strings, no warning"
 TMP_AK="$(mktemp -d)"
 AK_LOG="$TMP_AK/run.log"
 bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a authentik -o "$TMP_AK/out" > "$AK_LOG" 2>&1
@@ -134,7 +136,7 @@ assert_eq "$(printf '%s' "$AK_JSON_IMG" | grep -c '@sha256:' || true)" "1" "auth
 assert_eq "$(grep -c 'WARNING' "$AK_LOG" || true)" "0" "authentik multi-match emits no warning"
 rm -rf "$TMP_AK"
 
-# --- e2e case 4: no-match fallback; THIS IS THE set -e REGRESSION GUARD ---
+section "e2e: no-match fallback (set -e regression guard)"
 TMP_BS="$(mktemp -d)"
 BS_LOG="$TMP_BS/run.log"
 bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a bookstack -o "$TMP_BS/out" > "$BS_LOG" 2>&1
@@ -149,7 +151,7 @@ assert_eq "$(printf '%s' "$BS_JSON_IMG" | grep -c '@' || true)" "0" "bookstack f
 assert_eq "$(grep -c 'WARNING' "$BS_LOG" || true)" "1" "bookstack emits exactly one warning"
 rm -rf "$TMP_BS"
 
-# --- e2e case 5: legitimately unpinned upstream, no warning, no error ---
+section "e2e: legitimately unpinned upstream, no warning, no error"
 TMP_IM="$(mktemp -d)"
 IM_LOG="$TMP_IM/run.log"
 bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a immich-aio-alpine -o "$TMP_IM/out" > "$IM_LOG" 2>&1
@@ -160,7 +162,7 @@ assert_eq "$(jq -r '.services[0].image' "$TMP_IM/out/runtipi/immich-aio-alpine/d
 assert_eq "$(grep -c 'WARNING' "$IM_LOG" || true)" "0" "immich-aio-alpine emits no warning"
 rm -rf "$TMP_IM"
 
-# --- e2e case 7: synthetic multi-match with differing strings -> fallback ---
+section "e2e: synthetic multi-match with differing strings falls back"
 TMP_SYN="$(mktemp -d)"
 cp -R "$REPO/apps/." "$TMP_SYN/apps/"
 yq eval -i '.services."big-bear-authentik-worker".image = "ghcr.io/goauthentik/server:2026.2.2@sha256:0000000000000000000000000000000000000000000000000000000000000000"' \
@@ -176,7 +178,7 @@ assert_eq "$(printf '%s' "$SYN_IMG" | grep -c '@' || true)" "0" "multi-diff fall
 assert_eq "$(grep -c 'WARNING' "$SYN_LOG" || true)" "1" "multi-diff emits exactly one warning"
 rm -rf "$TMP_SYN"
 
-# --- e2e case 8: full-run neutrality (slow; opt in with RUNTIPI_FULL_RUN=1) ---
+section "e2e: full-run neutrality (opt in with RUNTIPI_FULL_RUN=1)"
 if [[ "${RUNTIPI_FULL_RUN:-0}" == "1" ]]; then
   TMP_FULL="$(mktemp -d)"
   FULL_LOG="$TMP_FULL/run.log"
