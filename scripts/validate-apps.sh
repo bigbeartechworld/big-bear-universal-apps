@@ -332,8 +332,8 @@ validate_app() {
         warnings=$((warnings + 1))
     fi
 
-    local single_stack_listeners=$(yq eval '.services | to_entries | .[] | select(.value.command // "" | tostring | test("(?i)\b(TCP[46]?-(LISTEN|L)):")) | select((.value.command | tostring | test("(?i)ipv6only=0")) | not) | .key' "$compose_file" 2>&1 || true)
-    if [[ "$single_stack_listeners" == Error:* ]]; then
+    local single_stack_listeners
+    if ! single_stack_listeners=$(yq eval '.services | to_entries | .[] | select(.value.command // "" | tostring | test("(?i)\b(TCP[46]?-(LISTEN|L)):")) | select((.value.command | tostring | test("(?i)(^|[,\\s])ipv6only=0([,\\s]|$)")) | not) | .key' "$compose_file" 2>&1); then
         print_error "  could not inspect services for single-stack listeners: $single_stack_listeners"
         errors=$((errors + 1))
     elif [[ -n "$single_stack_listeners" ]]; then
