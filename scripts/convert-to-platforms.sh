@@ -1929,8 +1929,27 @@ convert_to_umbrel() {
             yq eval ".services = {\"app_proxy\": {\"environment\": {\"APP_HOST\": \"${folder_name}_${main_service}_1\", \"APP_PORT\": \"$container_port\"}}} + .services" "$output_dir/docker-compose.yml" > "$temp_compose"
             mv "$temp_compose" "$output_dir/docker-compose.yml"
         fi
+
+        # app_proxy resolves APP_HOST only on Umbrel's default network (umbrel_main_network)
+        local svc="$main_service"
+        export svc
+        local networks_kind=$(yq eval '.services[strenv(svc)].networks | type' "$output_dir/docker-compose.yml" 2>/dev/null)
+        local has_default=$(yq eval '[.services[strenv(svc)].networks // [] | (select(type == "!!map") | keys) // (select(type == "!!seq")) | .[] | select(. == "default")] | length' "$output_dir/docker-compose.yml" 2>/dev/null)
+        if [[ "$networks_kind" == "!!seq" || "$networks_kind" == "!!map" ]] && [[ "$has_default" == "0" ]]; then
+            local append_expr='.services[strenv(svc)].networks += ["default"]'
+            [[ "$networks_kind" == "!!map" ]] && append_expr='.services[strenv(svc)].networks.default = null'
+            local network_temp=$(mktemp)
+            if yq eval "$append_expr" "$output_dir/docker-compose.yml" > "$network_temp" 2>/dev/null && [[ -s "$network_temp" ]]; then
+                mv "$network_temp" "$output_dir/docker-compose.yml"
+            else
+                rm -f "$network_temp"
+                print_error "$app_name: failed to attach main service to Umbrel default network"
+                TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+            fi
+        fi
+        unset svc
     fi
-    
+
     # Convert named volumes to ${APP_DATA_DIR} bind mounts for Umbrel
     # First, get list of named volumes
     local named_volumes=$(yq eval '.volumes | keys | .[]' "$output_dir/docker-compose.yml" 2>/dev/null || echo "")
