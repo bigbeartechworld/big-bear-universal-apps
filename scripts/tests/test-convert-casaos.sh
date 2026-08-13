@@ -3,6 +3,9 @@ set -uo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO="$(dirname "$(dirname "$SCRIPT_DIR")")"
 source "$REPO/scripts/convert-to-platforms.sh" --source-only 2>/dev/null || true
+# The sourced converter runs `set -e`, which would abort this harness on the
+# first failing assertion instead of reporting every result.
+set +e
 
 fail=0
 assert_eq() { # $1=actual $2=expected $3=label
@@ -75,9 +78,48 @@ assert_eq "$AFTER_META" "$BEFORE_META" "metadata.category unchanged"
 MISSING=0
 for d in "$TMP_APPS"/*/; do
   v=$(jq -r '.compatibility.casaos.category // "MISSING"' "$d/app.json")
-  [[ "$v" == "MISSING" ]] && MISSING=$((MISSING+1))
+  [[ "$v" == "MISSING" ]] && MISSING=$((MISSING+1)) || true
 done
 assert_eq "$MISSING" "0" "all apps have casaos.category"
 rm -rf "$TMP_APPS"
+
+# --- yq expression injection is inert (issue #2478) ---
+TMP_INJ="$(mktemp -d)"
+cp -R "$REPO/apps/." "$TMP_INJ/apps/"
+echo "CANARY_FILE_CONTENT_2478" > "$TMP_INJ/canary.txt"
+PAYLOAD='" | .x-casaos.pwned = load_str("'"$TMP_INJ"'/canary.txt") | .x-casaos.author = "'
+INJ_APP="$TMP_INJ/apps/uptime-kuma/app.json"
+jq --arg p "$PAYLOAD" '.metadata.description = $p | .metadata.tagline = $p' "$INJ_APP" > "$INJ_APP.tmp" && mv "$INJ_APP.tmp" "$INJ_APP"
+bash "$REPO/scripts/convert-to-platforms.sh" -p casaos -a uptime-kuma -i "$TMP_INJ/apps" -o "$TMP_INJ/out" >/dev/null 2>&1
+INJ_CF="$TMP_INJ/out/casaos/uptime-kuma/docker-compose.yml"
+assert_eq "$([[ -f "$INJ_CF" ]] && echo yes)" "yes" "injection: compose still produced"
+assert_eq "$(yq eval '.x-casaos | has("pwned")' "$INJ_CF" 2>/dev/null)" "false" "injection: no injected key"
+if grep -q "CANARY_FILE_CONTENT_2478" "$INJ_CF"; then echo "FAIL: injection: canary file content leaked into output"; fail=1; else echo "ok: injection: no foreign file content"; fi
+assert_eq "$(yq eval '.x-casaos.description.en_US' "$INJ_CF" 2>/dev/null)" "$PAYLOAD" "injection: payload stored as literal string"
+rm -rf "$TMP_INJ"
+
+# --- JSON blobs keep block style (naive env() would reflow them to flow style) ---
+TMP_STYLE="$(mktemp -d)"
+bash "$REPO/scripts/convert-to-platforms.sh" -p casaos -a adguard-home -o "$TMP_STYLE" >/dev/null 2>&1
+SCF="$TMP_STYLE/casaos/adguard-home/docker-compose.yml"
+if grep -qE '^\s+screenshot_link: \[' "$SCF"; then echo "FAIL: screenshot_link reflowed to flow style"; fail=1; else echo "ok: screenshot_link block style"; fi
+assert_eq "$(yq eval '.x-casaos.screenshot_link | length' "$SCF")" "3" "screenshot_link parsed as sequence"
+assert_eq "$(yq eval '.x-casaos.architectures | tag' "$SCF")" "!!seq" "architectures still a sequence"
+if grep -qE '^\s+en_US: \|' "$SCF"; then echo "ok: tips literal block scalar preserved"; else echo "FAIL: tips lost literal block scalar"; fail=1; fi
+if grep -qE '^\s+"en_[a-zA-Z]+":' "$SCF"; then echo "FAIL: blob keys became quoted"; fail=1; else echo "ok: blob keys unquoted"; fi
+rm -rf "$TMP_STYLE"
+
+# --- dotted service names address correctly (bracket form, not dot form) ---
+TMP_DOT="$(mktemp -d)"
+cp -R "$REPO/apps/." "$TMP_DOT/apps/"
+DOT_DIR="$TMP_DOT/apps/uptime-kuma"
+DOT_SVC=$(yq eval '.services | keys | .[0]' "$DOT_DIR/docker-compose.yml")
+DOT_SVC="$DOT_SVC" yq eval '.services["svc.v2"] = .services[strenv(DOT_SVC)] | del(.services[strenv(DOT_SVC)]) | .volumes.testvol = null | .services["svc.v2"].volumes = ["testvol:/data"]' -i "$DOT_DIR/docker-compose.yml"
+jq '.deployment.main_service = "svc.v2"' "$DOT_DIR/app.json" > "$DOT_DIR/app.json.tmp" && mv "$DOT_DIR/app.json.tmp" "$DOT_DIR/app.json"
+bash "$REPO/scripts/convert-to-platforms.sh" -p casaos -a uptime-kuma -i "$TMP_DOT/apps" -o "$TMP_DOT/out" >/dev/null 2>&1
+DCF="$TMP_DOT/out/casaos/uptime-kuma/docker-compose.yml"
+assert_eq "$(yq eval '.services | keys | length' "$DCF" 2>/dev/null)" "1" "dotted name: no bogus split key"
+assert_eq "$(yq eval '.services["svc.v2"].volumes[0]' "$DCF" 2>/dev/null)" '/DATA/AppData/$AppID/testvol:/data' "dotted name: volume converted to bind mount"
+rm -rf "$TMP_DOT"
 
 exit $fail
