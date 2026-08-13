@@ -95,7 +95,7 @@ The image entrypoint starts as `root` so it can `usermod` and `chown` the data d
 
 No Docker socket is mounted and no extra capabilities are granted. Agents run in-process using CLIs baked into the image rather than by spawning sibling containers.
 
-The image is pinned by digest to `ghcr.io/paperclipai/paperclip:latest@sha256:66056e8c...`. Upstream publishes no versioned *image* tag — GHCR carries only `latest` and `sha-*` — so the digest pin is what keeps this deployment reproducible; Renovate is opted out of bumping it.
+The image is pinned by digest to `ghcr.io/paperclipai/paperclip:latest@sha256:66056e8c...`. Upstream publishes no versioned *image* tag — GHCR carries only rolling tags (`latest`, `beta`, `canary`, `nightly`) and per-commit `sha-*` tags — so the digest pin is what keeps this deployment reproducible; Renovate is opted out of bumping it.
 
 ## Links
 
