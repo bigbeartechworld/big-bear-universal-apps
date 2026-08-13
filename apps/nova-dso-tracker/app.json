@@ -34,7 +34,7 @@
     "platform": "linux",
     "main_service": "nova",
     "default_port": "5001",
-    "main_image": "mrantonsg/nova-dso-tracker:5.9.0",
+    "main_image": "mrantonsg/nova-dso-tracker",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {

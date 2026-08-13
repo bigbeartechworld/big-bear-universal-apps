@@ -36,7 +36,7 @@
     "platform": "linux",
     "main_service": "big-bear-bookstack",
     "default_port": "8080",
-    "main_image": "lscr.io/linuxserver/bookstack",
+    "main_image": "linuxserver/bookstack",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {
