@@ -65,7 +65,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "A starter glance.yml is created on first run. Edit it to customize your dashboard. The Docker socket is mounted for the containers widget - this grants Glance root-equivalent access to Docker, so remove that volume if you do not want the widget."
+        "en_us": "A starter glance.yml is created on first run. Edit it to customize your dashboard; if it is ever left invalid or half-written, delete it and restart to get a fresh starter config. The Docker socket is mounted for the containers widget - this grants Glance root-equivalent access to Docker regardless of the read-only flag, so delete the docker-containers widget from glance.yml after install, or remove the socket volume from the compose file before deploying, if you do not want the widget."
       }
     }
   },

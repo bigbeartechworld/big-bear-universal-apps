@@ -74,7 +74,8 @@ services:
     volumes:
       # Dashboard configuration
       - glance_config:/app/config
-      # Read-only socket for the docker-containers widget
+      # Docker socket for the docker-containers widget
+      # (ro mount protects the socket file, not the Docker API behind it)
       - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
       - big_bear_glance_network
