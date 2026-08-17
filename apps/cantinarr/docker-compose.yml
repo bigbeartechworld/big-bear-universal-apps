@@ -1,0 +1,31 @@
+name: big-bear-cantinarr
+
+services:
+  app:
+    image: ghcr.io/windoze95/cantinarr:0.2.0@sha256:87fea4db9ce2278842c9b33a2276b199ca767021e61d4c345027ea15c02cf36d
+    container_name: big-bear-cantinarr
+    restart: unless-stopped
+    ports:
+      - "8585:8585"
+    environment:
+      CANTINARR_PUSH_GATEWAY_URL: https://push.julian.codes
+      CANTINARR_PUBLIC_URL: ""
+    volumes:
+      - cantinarr_config:/config
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:8585/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    networks:
+      - big_bear_cantinarr_network
+
+networks:
+  big_bear_cantinarr_network:
+    driver: bridge
+
+volumes:
+  cantinarr_config:
+    name: cantinarr_config
+    driver: local
