@@ -10,7 +10,7 @@ services:
     # Name of the container
     container_name: big-bear-plex
     # Image to be used for the container
-    image: linuxserver/plex:1.43.3@sha256:d2d85229429f2a8b84a6f5523f7cd69470d9b705a1aba9046887eb73d395101f
+    image: linuxserver/plex:1.43.3@sha256:f6c58cb2f5e41cd1397bf2ed4e61ef63bd86e0736841b3ef426fabfe04606293
     environment:
       - PUID=1000 # specify the user id
       - PGID=1000 # specify the group id
