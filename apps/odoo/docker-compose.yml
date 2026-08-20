@@ -10,7 +10,7 @@ services:
     # Name of the container
     container_name: big-bear-odoo # Specifies the container instance name for identification
     # Image to be used for the container
-    image: odoo:19@sha256:4a96c54e7ccddc83ab3baba00be8f7cac418cbd5bd0291247ed1bba8bbd5d5e7 # Docker image for Odoo version 17
+    image: odoo:19@sha256:f99ffac95cb39a0924622ea4118481c95651d9c84187e5b30a21c2cc4419c7dd # Docker image for Odoo version 17
     # Container restart policy
     restart: unless-stopped # Restart policy to ensure service recovery
     # User to run the container as
