@@ -2,14 +2,14 @@ name: big-bear-cantinarr
 
 services:
   app:
-    image: ghcr.io/windoze95/cantinarr:0.2.0@sha256:87fea4db9ce2278842c9b33a2276b199ca767021e61d4c345027ea15c02cf36d
+    image: ghcr.io/windoze95/cantinarr:0.3.0@sha256:d49dd64daf7f7b0c90dd56989b565783130b9ddf24603a4ec8317c55d6bd1797
     container_name: big-bear-cantinarr
     restart: unless-stopped
     ports:
       - "8585:8585"
     environment:
       CANTINARR_PUSH_GATEWAY_URL: https://push.julian.codes
-      CANTINARR_PUBLIC_URL: ""
+      CANTINARR_ARR_CALLBACK_URL: ""
     volumes:
       - cantinarr_config:/config
     healthcheck:
