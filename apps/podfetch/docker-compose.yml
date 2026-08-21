@@ -2,7 +2,7 @@ name: podfetch
 
 services:
   app:
-    image: samuel19982/podfetch:v5.2.3@sha256:6b6f3e781f412123d30f0d78bc9fd8cba59aef70c786f9fcc26b382a01ba8499
+    image: samuel19982/podfetch:v5.2.3@sha256:a9705ffb906c020740b1e1aae4b38a0ea966d7190d47ee7956b4d573a48c16f9
     container_name: podfetch
     ports:
       - "8000:8000"
