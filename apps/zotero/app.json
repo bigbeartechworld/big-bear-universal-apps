@@ -5,7 +5,7 @@
     "name": "Zotero",
     "description": "Zotero is a free, easy-to-use tool to help you collect, organize, annotate, cite, and share research.",
     "tagline": "Zotero",
-    "version": "9.0.20260417",
+    "version": "10.0.20260821",
     "author": "BigBearTechWorld",
     "developer": "linuxserver",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/zotero",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:27Z",
-    "updated": "2026-04-17T11:59:30.242Z"
+    "updated": "2026-08-21T11:51:59.365Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/zotero/logo.png",
