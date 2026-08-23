@@ -1,0 +1,161 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "nightlio",
+    "name": "Nightlio",
+    "description": "Nightlio is a privacy-first mood tracker and daily journal designed for effortless self-hosting. Log your daily mood on a simple five-point scale, write rich Markdown journal entries with customizable tags, and view insightful analytics including mood history calendars, average mood trends, and journaling streaks. All data is stored in a local SQLite database on your own server with no telemetry, ads, or subscriptions.",
+    "tagline": "Privacy-first mood tracker and daily journal",
+    "version": "0.1.7",
+    "author": "BigBearTechWorld",
+    "developer": "shirsakm",
+    "category": "BigBearCasaOS",
+    "license": "AGPL-3.0",
+    "homepage": "https://github.com/shirsakm/nightlio",
+    "source": "big-bear-universal",
+    "created": "2026-08-23T00:00:00Z",
+    "updated": "2026-08-23T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nightlio.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/nightlio.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://github.com/shirsakm/nightlio#readme",
+    "repository": "https://github.com/shirsakm/nightlio",
+    "issues": "https://github.com/shirsakm/nightlio/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "big-bear-nightlio-frontend",
+    "default_port": "5173",
+    "main_image": "ghcr.io/shirsakm/nightlio-frontend",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "SECRET_KEY",
+        "default": "changeme",
+        "description": "Secret key used by the API for session signing. Change to a long random string",
+        "required": false
+      },
+      {
+        "name": "JWT_SECRET",
+        "default": "changeme-too",
+        "description": "Secret used to sign JWT authentication tokens. Change to a different long random string",
+        "required": false
+      },
+      {
+        "name": "CORS_ORIGINS",
+        "default": "http://localhost:5173",
+        "description": "Comma-separated list of origins allowed to call the API directly. Add your public domain when exposing the app",
+        "required": false
+      },
+      {
+        "name": "ENABLE_GOOGLE_OAUTH",
+        "default": "0",
+        "description": "Enables Google OAuth for multi-user support (1 to enable, 0 to disable)",
+        "required": false
+      },
+      {
+        "name": "ENABLE_MOOD_MUSIC",
+        "default": "0",
+        "description": "Enables the mood music feature powered by Jamendo (1 to enable, 0 to disable)",
+        "required": false
+      },
+      {
+        "name": "DEFAULT_SELF_HOST_ID",
+        "default": "selfhost_default_user",
+        "description": "Identifier of the default single-user account in self-hosted mode",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/app/data",
+        "description": "SQLite database storage for moods, journal entries, and achievements"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "5173",
+        "protocol": "tcp",
+        "description": "Web UI served by nginx, which proxies /api requests to the Flask backend"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "5173",
+      "volume_mappings": {
+        "nightlio_data": "/DATA/AppData/$AppID/data"
+      },
+      "port": "5173",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "5173"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "nightlio_data": "data"
+      },
+      "port": "8016"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "5173"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "nightlio_data": "data"
+      },
+      "port": "10012"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "mood-tracker",
+    "journal",
+    "privacy"
+  ]
+}
