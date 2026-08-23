@@ -9,17 +9,17 @@
     "author": "BigBearTechWorld",
     "developer": "lissy93",
     "category": "BigBearCasaOS",
-    "license": "",
+    "license": "MIT",
     "homepage": "https://hub.docker.com/r/lissy93/domain-locker",
     "source": "big-bear-universal",
     "created": "2026-08-23T00:00:00Z",
     "updated": "2026-08-23T00:00:00Z"
   },
   "visual": {
-    "icon": "https://cdn.jsdelivr.net/gh/lissy93/icons/png/domain-locker.png",
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/domain-locker.png",
     "thumbnail": "",
     "screenshots": [],
-    "logo": "https://cdn.jsdelivr.net/gh/lissy93/icons/png/domain-locker.png"
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/domain-locker.png"
   },
   "resources": {
     "youtube": "",
@@ -34,7 +34,7 @@
       "arm64"
     ],
     "platform": "linux",
-    "main_service": "domain-locker",
+    "main_service": "app",
     "default_port": "8083",
     "main_image": "ghcr.io/lissy93/domain-locker",
     "compose_file": "docker-compose.yml"
@@ -42,30 +42,54 @@
   "deployment": {
     "environment_variables": [
       {
-        "name": "TZ",
-        "default": "",
-        "description": "Timezone",
+        "name": "DL_ENV_TYPE",
+        "default": "selfHosted",
+        "description": "Environment type",
         "required": false
       },
       {
-        "name": "DOMAIN_LOCKER_PORT",
-        "default": "8083",
-        "description": "Port for Domain Locker",
+        "name": "DL_PG_HOST",
+        "default": "postgres",
+        "description": "Postgres host",
+        "required": false
+      },
+      {
+        "name": "DL_PG_PORT",
+        "default": "5432",
+        "description": "Postgres port",
+        "required": false
+      },
+      {
+        "name": "DL_PG_USER",
+        "default": "postgres",
+        "description": "Postgres user",
+        "required": false
+      },
+      {
+        "name": "DL_PG_PASSWORD",
+        "default": "changeme2420",
+        "description": "Postgres password",
+        "required": false
+      },
+      {
+        "name": "DL_PG_NAME",
+        "default": "domain_locker",
+        "description": "Postgres database name",
         "required": false
       }
     ],
     "volumes": [
       {
-        "container": "/data",
-        "description": "Container Path: /data"
+        "container": "/var/lib/postgresql/data",
+        "description": "Postgres data directory"
       }
     ],
     "ports": [
       {
-        "container": "8080",
+        "container": "3000",
         "host": "8083",
         "protocol": "tcp",
-        "description": "Container Port: 8080"
+        "description": "Web UI"
       }
     ]
   },
@@ -79,7 +103,7 @@
       "supported": true,
       "port_map": "8083",
       "volume_mappings": {
-        "domainlocker_data": "/DATA/AppData/$AppID/data"
+        "domainlocker_postgres_data": "/DATA/AppData/$AppID/postgres_data"
       }
     },
     "portainer": {
@@ -99,7 +123,7 @@
         "arm64"
       ],
       "volume_mappings": {
-        "domainlocker_data": "data"
+        "domainlocker_postgres_data": "postgres_data"
       }
     },
     "dockge": {
@@ -115,7 +139,7 @@
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
-        "domainlocker_data": "data"
+        "domainlocker_postgres_data": "postgres_data"
       },
       "port": "8083"
     }
