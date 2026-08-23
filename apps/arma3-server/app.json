@@ -1,0 +1,193 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "arma3-server",
+    "name": "Arma 3 Server",
+    "description": "Arma 3 Dedicated Server. Updates to the latest version every time it is restarted. Supports mission configs mods and headless clients.",
+    "tagline": "Arma 3 Dedicated Server",
+    "version": "1.0.0",
+    "author": "BigBearCommunity",
+    "developer": "BrettMayson",
+    "category": "Gaming",
+    "license": "",
+    "homepage": "https://github.com/BrettMayson/Arma3Server",
+    "source": "big-bear-universal",
+    "created": "2026-08-23T00:00:00Z",
+    "updated": "2026-08-23T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/steam.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/steam.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://community.bistudio.com/wiki/Arma_3_Dedicated_Server",
+    "repository": "https://github.com/BrettMayson/Arma3Server",
+    "issues": "https://github.com/BrettMayson/Arma3Server/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "2302",
+    "main_image": "ghcr.io/brettmayson/arma3server/arma3server",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "STEAM_USER",
+        "default": "",
+        "description": "Steam username used to login to steamcmd",
+        "required": true
+      },
+      {
+        "name": "STEAM_PASSWORD",
+        "default": "",
+        "description": "Steam password",
+        "required": true
+      },
+      {
+        "name": "PORT",
+        "default": "2302",
+        "description": "Port used by the server uses PORT to PORT+3",
+        "required": false
+      },
+      {
+        "name": "ARMA_CONFIG",
+        "default": "main.cfg",
+        "description": "Config file to load from /arma3/configs",
+        "required": false
+      },
+      {
+        "name": "ARMA_PROFILE",
+        "default": "main",
+        "description": "Profile name stored in /arma3/configs/profiles",
+        "required": false
+      },
+      {
+        "name": "ARMA_WORLD",
+        "default": "empty",
+        "description": "World to load on startup",
+        "required": false
+      },
+      {
+        "name": "ARMA_LIMITFPS",
+        "default": "100",
+        "description": "Maximum FPS",
+        "required": false
+      },
+      {
+        "name": "ARMA_BINARY",
+        "default": "./arma3server_x64",
+        "description": "Arma 3 server binary to use",
+        "required": false
+      },
+      {
+        "name": "ARMA_PARAMS",
+        "default": "",
+        "description": "Additional Arma CLI parameters",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "UTC",
+        "description": "Timezone",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/arma3/mpmissions",
+        "description": "Container Path: /arma3/mpmissions"
+      },
+      {
+        "container": "/arma3/configs",
+        "description": "Container Path: /arma3/configs"
+      },
+      {
+        "container": "/arma3/mods",
+        "description": "Container Path: /arma3/mods"
+      },
+      {
+        "container": "/arma3/servermods",
+        "description": "Container Path: /arma3/servermods"
+      },
+      {
+        "container": "/arma3/addons",
+        "description": "Container Path: /arma3/addons"
+      },
+      {
+        "container": "/steamcmd",
+        "description": "Container Path: /steamcmd"
+      }
+    ],
+    "ports": [
+      {
+        "container": "2302-2306",
+        "host": "2302-2306",
+        "protocol": "udp",
+        "description": "Container Port: 2302-2306"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "2302",
+      "port": "2302",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "2302"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64"
+      ],
+      "port": "2302"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "2302"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "2302"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "2302"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

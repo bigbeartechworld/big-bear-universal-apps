@@ -1,0 +1,47 @@
+name: big-bear-arma3-server
+
+services:
+  app:
+    image: ghcr.io/brettmayson/arma3server/arma3server:latest@sha256:951fb164243d35d815259a9ddd2f9ce7b5375d366c665ee7c78e752717fde815
+    container_name: arma3-server
+    ports:
+      - "2302-2306:2302-2306/udp"
+    volumes:
+      - arma3-server_mpmissions:/arma3/mpmissions
+      - arma3-server_configs:/arma3/configs
+      - arma3-server_mods:/arma3/mods
+      - arma3-server_servermods:/arma3/servermods
+      - arma3-server_addons:/arma3/addons
+      - arma3-server_steamcmd:/steamcmd
+    environment:
+      - STEAM_USER=${STEAM_USER:-}
+      - STEAM_PASSWORD=${STEAM_PASSWORD:-}
+      - PORT=2302
+      - ARMA_CONFIG=main.cfg
+      - ARMA_PROFILE=main
+      - ARMA_WORLD=empty
+      - ARMA_LIMITFPS=100
+      - ARMA_BINARY=./arma3server_x64
+      - ARMA_PARAMS=
+      - TZ=UTC
+    restart: unless-stopped
+
+volumes:
+  arma3-server_mpmissions:
+    name: arma3-server_mpmissions
+    driver: local
+  arma3-server_configs:
+    name: arma3-server_configs
+    driver: local
+  arma3-server_mods:
+    name: arma3-server_mods
+    driver: local
+  arma3-server_servermods:
+    name: arma3-server_servermods
+    driver: local
+  arma3-server_addons:
+    name: arma3-server_addons
+    driver: local
+  arma3-server_steamcmd:
+    name: arma3-server_steamcmd
+    driver: local
