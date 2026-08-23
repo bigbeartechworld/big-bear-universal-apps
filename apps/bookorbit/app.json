@@ -1,0 +1,202 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "bookorbit",
+    "name": "BookOrbit",
+    "description": "BookOrbit is a self-hosted library and reading platform for ebooks, PDFs, audiobooks, and comics. It syncs progress and highlights across the web reader, Kobo, and KOReader, with metadata lookup, reading stats, OPDS, and multi-user OIDC support.",
+    "tagline": "Your self-hosted reading space for books, audiobooks, and comics",
+    "version": "2.7.0",
+    "author": "BigBearTechWorld",
+    "developer": "bookorbit",
+    "category": "BigBearCasaOS",
+    "license": "AGPL-3.0",
+    "homepage": "https://bookorbit.app",
+    "source": "big-bear-universal",
+    "created": "2026-08-23T00:00:00Z",
+    "updated": "2026-08-23T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/bookorbit.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/bookorbit.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://bookorbit.app/installation",
+    "repository": "https://github.com/bookorbit/bookorbit",
+    "issues": "https://github.com/bookorbit/bookorbit/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "3000",
+    "main_image": "ghcr.io/bookorbit/bookorbit",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "APP_URL",
+        "default": "http://[YOUR_CASAOS_LAN_IP]:3000",
+        "description": "Public URL used by emails and Kobo endpoints - replace [YOUR_CASAOS_LAN_IP] with your server IP (required)",
+        "required": true
+      },
+      {
+        "name": "POSTGRES_USER",
+        "default": "bookorbit",
+        "description": "PostgreSQL username (required)",
+        "required": true
+      },
+      {
+        "name": "POSTGRES_PASSWORD",
+        "default": "7b0aee8dc43c518eef646e2d",
+        "description": "PostgreSQL password - CHANGE THIS IN PRODUCTION (required)",
+        "required": true
+      },
+      {
+        "name": "POSTGRES_DB",
+        "default": "bookorbit",
+        "description": "PostgreSQL database name (required)",
+        "required": true
+      },
+      {
+        "name": "JWT_SECRET",
+        "default": "cd94b64e8c98c7e5cab21ebc9c1e82e739c770d0f00f2626def2987942167c4e",
+        "description": "Secret used to sign login tokens - CHANGE THIS IN PRODUCTION (required)",
+        "required": true
+      },
+      {
+        "name": "SETUP_BOOTSTRAP_TOKEN",
+        "default": "1ba75f44baee64b32d1af876cc38e2b6",
+        "description": "One-time token required to complete the setup wizard (required)",
+        "required": true
+      },
+      {
+        "name": "PUID",
+        "default": "1000",
+        "description": "Runtime UID for files written to app data folders - match your books folder owner on NAS (optional)",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "1000",
+        "description": "Runtime GID for files written to app data folders - match your books folder owner on NAS (optional)",
+        "required": false
+      },
+      {
+        "name": "LIBRARY_BROWSE_ROOT",
+        "default": "/books",
+        "description": "Container folder where the library picker starts instead of / (optional)",
+        "required": false
+      },
+      {
+        "name": "BOOK_DOCK_PATH",
+        "default": "",
+        "description": "Container path for the automated ingestion drop folder (optional)",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/books",
+        "description": "Book library folder - point this at your existing book files"
+      },
+      {
+        "container": "/data",
+        "description": "Application data directory"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp",
+        "description": "Web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "📚 BOOKORBIT SETUP\n\n1. Place your book files in the ./books folder next to the compose file, or point the bind mount at an existing library path.\n2. Update APP_URL to your server's actual address after install so Kobo sync and emails work.\n3. After starting, open http://your-server-ip:3000 and complete setup using SETUP_BOOTSTRAP_TOKEN from docker-compose.yml.\n\nThe app container runs read-only with dropped capabilities for security."
+      },
+      "after_install": {
+        "en_us": "Access the web UI at http://your-server-ip:3000. Create libraries from your /books folder and add users in Settings."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3000",
+      "volume_mappings": {
+        "bookorbit_data": "/DATA/AppData/$AppID/data",
+        "bookorbit_postgresql": "/DATA/AppData/$AppID/postgresql"
+      },
+      "port": "3000",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "3000"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "bookorbit_data": "data",
+        "bookorbit_postgresql": "postgresql"
+      },
+      "port": "3000"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "3000"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "3000"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "bookorbit_data": "data",
+        "bookorbit_postgresql": "postgresql"
+      },
+      "port": "10301"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "books",
+    "ebooks",
+    "audiobooks",
+    "comics",
+    "reading",
+    "library"
+  ]
+}
