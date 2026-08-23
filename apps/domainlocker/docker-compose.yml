@@ -51,15 +51,16 @@ services:
         condition: service_healthy
     networks:
       - big_bear_domainlocker_network
-    command: >
-      /bin/sh -c "
+    command:
+      - /bin/sh
+      - -c
+      - |
         apk add --no-cache curl &&
-        echo '0 3 * * * /usr/bin/curl -f -X POST http://app:3000/api/domain-updater || echo \"ERROR: domain-updater failed at $$(date)\" >&2' > /etc/crontabs/root &&
-        echo '0 4 * * * /usr/bin/curl -f -X POST http://app:3000/api/expiration-reminders || echo \"ERROR: expiration-reminders failed at $$(date)\" >&2' >> /etc/crontabs/root &&
-        echo '*/15 * * * * /usr/bin/curl -f -X POST http://app:3000/api/domain-monitor || echo \"ERROR: domain-monitor failed at $$(date)\" >&2' >> /etc/crontabs/root &&
-        echo '0 2 * * 0 /usr/bin/curl -f -X POST http://app:3000/api/cleanup-monitor-data || echo \"ERROR: cleanup-monitor-data failed at $$(date)\" >&2' >> /etc/crontabs/root &&
+        echo '0 3 * * * /usr/bin/curl -f -X POST http://app:3000/api/domain-updater || echo "ERROR: domain-updater failed at $(date)" >&2' > /etc/crontabs/root &&
+        echo '0 4 * * * /usr/bin/curl -f -X POST http://app:3000/api/expiration-reminders || echo "ERROR: expiration-reminders failed at $(date)" >&2' >> /etc/crontabs/root &&
+        echo '*/15 * * * * /usr/bin/curl -f -X POST http://app:3000/api/domain-monitor || echo "ERROR: domain-monitor failed at $(date)" >&2' >> /etc/crontabs/root &&
+        echo '0 2 * * 0 /usr/bin/curl -f -X POST http://app:3000/api/cleanup-monitor-data || echo "ERROR: cleanup-monitor-data failed at $(date)" >&2' >> /etc/crontabs/root &&
         crond -f -L /dev/stdout
-      "
 networks:
   big_bear_domainlocker_network:
     driver: bridge
