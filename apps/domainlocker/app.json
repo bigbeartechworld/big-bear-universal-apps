@@ -5,7 +5,7 @@
     "name": "Domain Locker",
     "description": "🌐 The all-in-one tool, for keeping track of your domain name portfolio. Got domain names? Get Domain Locker!",
     "tagline": "Domain Locker",
-    "version": "v0.2.4",
+    "version": "0.2.4",
     "author": "BigBearTechWorld",
     "developer": "lissy93",
     "category": "BigBearCasaOS",
@@ -80,9 +80,7 @@
       "port_map": "8083",
       "volume_mappings": {
         "domainlocker_data": "/DATA/AppData/$AppID/data"
-      },
-      "port": "8083",
-      "category": "Tools"
+      }
     },
     "portainer": {
       "supported": true,
@@ -91,8 +89,7 @@
         "BigBearCasaOS",
         "selfhosted"
       ],
-      "administrator_only": false,
-      "port": "8083"
+      "administrator_only": false
     },
     "runtipi": {
       "supported": true,
@@ -103,19 +100,16 @@
       ],
       "volume_mappings": {
         "domainlocker_data": "data"
-      },
-      "port": "8083"
+      }
     },
     "dockge": {
       "supported": true,
-      "file_based": true,
-      "port": "8083"
+      "file_based": true
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true,
-      "port": "8083"
+      "routes_required": true
     },
     "umbrel": {
       "supported": true,
