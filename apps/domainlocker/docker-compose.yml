@@ -7,7 +7,7 @@ services:
     container_name: domain-locker # Name of the running container
     image: ghcr.io/lissy93/domain-locker@v0.2.4@sha256:7a3ade47e8187193f92ea1ea5b913d699cc09635 # Image to be used
     ports: # Mapping ports from the host OS to the container
-      - 8080:8080
+      - 8180:8080
     volumes: # Mounting directories for persistent data storage
       - domainlocker_data:/data
     restart: unless-stopped # Policy to restart unless stopped
