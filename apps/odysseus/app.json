@@ -145,7 +145,7 @@
         "odysseus_searxng": "searxng",
         "odysseus_ntfy": "ntfy"
       },
-      "port": "10070",
+      "port": "10207",
       "app_port": "7000"
     }
   },
