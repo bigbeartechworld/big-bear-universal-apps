@@ -1,0 +1,137 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "domainlocker",
+    "name": "Domain Locker",
+    "description": "🌐 The all-in-one tool, for keeping track of your domain name portfolio. Got domain names? Get Domain Locker!",
+    "tagline": "Domain Locker",
+    "version": "v0.2.4",
+    "author": "BigBearTechWorld",
+    "developer": "lissy93",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/lissy93/domain-locker",
+    "source": "big-bear-universal",
+    "created": "2026-08-23T00:00:00Z",
+    "updated": "2026-08-23T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/lissy93/icons/png/domain-locker.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/lissy93/icons/png/domain-locker.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://github.com/Lissy93/domain-locker",
+    "repository": "https://github.com/Lissy93/domain-locker",
+    "issues": "https://github.com/bigbeartechworld/big-bear-universal-apps/issues/2900",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "domain-locker",
+    "default_port": "8080",
+    "main_image": "ghcr.io/lissy93/domain-locker",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Timezone",
+        "required": false
+      },
+      {
+        "name": "DOMAIN_LOCKER_PORT",
+        "default": "8080",
+        "description": "Port for Domain Locker",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Container Port: 8080"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080",
+      "volume_mappings": {
+        "domainlocker_data": "/DATA/AppData/$AppID/data"
+      },
+      "port": "8080",
+      "category": "Tools"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8080"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "domainlocker_data": "data"
+      },
+      "port": "8080"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8080"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8080"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "domainlocker_data": "data"
+      },
+      "port": "8080"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container",
+    "domain"
+  ]
+}
