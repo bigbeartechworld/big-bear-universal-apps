@@ -5,7 +5,7 @@ services:
   # Main Domain Locker service configuration
   domain-locker:
     container_name: domain-locker # Name of the running container
-    image: ghcr.io/lissy93/domain-locker:v0.2.4@sha256:latest # Image to be used
+    image: ghcr.io/lissy93/domain-locker@v0.2.4 # Image to be used
     ports: # Mapping ports from the host OS to the container
       - 8080:8080
     volumes: # Mounting directories for persistent data storage
