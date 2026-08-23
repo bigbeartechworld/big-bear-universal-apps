@@ -35,7 +35,7 @@
     ],
     "platform": "linux",
     "main_service": "domain-locker",
-    "default_port": "8080",
+    "default_port": "8083",
     "main_image": "ghcr.io/lissy93/domain-locker",
     "compose_file": "docker-compose.yml"
   },
@@ -49,7 +49,7 @@
       },
       {
         "name": "DOMAIN_LOCKER_PORT",
-        "default": "8080",
+        "default": "8083",
         "description": "Port for Domain Locker",
         "required": false
       }
@@ -77,11 +77,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080",
+      "port_map": "8083",
       "volume_mappings": {
         "domainlocker_data": "/DATA/AppData/$AppID/data"
       },
-      "port": "8080",
+      "port": "8083",
       "category": "Tools"
     },
     "portainer": {
@@ -92,7 +92,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "8080"
+      "port": "8083"
     },
     "runtipi": {
       "supported": true,
@@ -104,18 +104,18 @@
       "volume_mappings": {
         "domainlocker_data": "data"
       },
-      "port": "8080"
+      "port": "8083"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "8080"
+      "port": "8083"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "8080"
+      "port": "8083"
     },
     "umbrel": {
       "supported": true,
@@ -123,7 +123,7 @@
       "volume_mappings": {
         "domainlocker_data": "data"
       },
-      "port": "8080"
+      "port": "8083"
     }
   },
   "tags": [
