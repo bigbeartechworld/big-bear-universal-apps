@@ -122,7 +122,7 @@
       "volume_mappings": {
         "dashy-v4_user-data": "user-data"
       },
-      "port": "10032"
+      "port": "10205"
     }
   },
   "tags": [

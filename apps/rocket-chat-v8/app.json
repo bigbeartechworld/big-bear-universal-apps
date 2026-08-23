@@ -126,7 +126,7 @@
       "volume_mappings": {
         "rocket-chat-v8_db": "db"
       },
-      "port": "10157"
+      "port": "10209"
     }
   },
   "tags": [

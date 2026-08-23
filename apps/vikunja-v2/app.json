@@ -154,7 +154,7 @@
         "vikunja-v2_files": "files",
         "vikunja-v2_mysql": "mysql"
       },
-      "port": "8082"
+      "port": "10208"
     }
   },
   "tags": [
