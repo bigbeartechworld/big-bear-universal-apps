@@ -21,6 +21,8 @@ services:
       SETUP_BOOTSTRAP_TOKEN: 1ba75f44baee64b32d1af876cc38e2b6
       PUID: "1000"
       PGID: "1000"
+      LIBRARY_BROWSE_ROOT: /books
+      BOOK_DOCK_PATH: ""
     depends_on:
       postgres:
         condition: service_healthy
