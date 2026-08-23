@@ -141,7 +141,8 @@
       "volume_mappings": {
         "domainlocker_postgres_data": "postgres_data"
       },
-      "port": "8083"
+      "port": "10203",
+      "app_port": "3000"
     }
   },
   "tags": [
