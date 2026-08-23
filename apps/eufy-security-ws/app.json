@@ -142,7 +142,7 @@
       "volume_mappings": {
         "eufy-security-ws_data": "data"
       },
-      "port": "3000"
+      "port": "10211"
     }
   },
   "tags": [

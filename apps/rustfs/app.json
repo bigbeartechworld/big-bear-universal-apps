@@ -150,7 +150,7 @@
         "rustfs_data": "data",
         "rustfs_logs": "logs"
       },
-      "port": "10170"
+      "port": "10210"
     }
   },
   "tags": [
