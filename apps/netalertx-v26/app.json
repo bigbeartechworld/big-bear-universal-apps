@@ -118,7 +118,7 @@
         "netalertx-v26_config": "config",
         "netalertx-v26_db": "db"
       },
-      "port": "10444"
+      "port": "10212"
     }
   },
   "tags": [
