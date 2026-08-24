@@ -1,0 +1,156 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "domainlocker",
+    "name": "Domain Locker",
+    "description": "🌐 The all-in-one tool, for keeping track of your domain name portfolio. Got domain names? Get Domain Locker!",
+    "tagline": "Domain Locker",
+    "version": "0.2.4",
+    "author": "BigBearTechWorld",
+    "developer": "lissy93",
+    "category": "BigBearCasaOS",
+    "license": "MIT",
+    "homepage": "https://hub.docker.com/r/lissy93/domain-locker",
+    "source": "big-bear-universal",
+    "created": "2026-08-23T00:00:00Z",
+    "updated": "2026-08-23T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/domain-locker.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/domain-locker.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://github.com/Lissy93/domain-locker",
+    "repository": "https://github.com/Lissy93/domain-locker",
+    "issues": "https://github.com/bigbeartechworld/big-bear-universal-apps/issues/2900",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8083",
+    "main_image": "ghcr.io/lissy93/domain-locker",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "DL_ENV_TYPE",
+        "default": "selfHosted",
+        "description": "Environment type",
+        "required": false
+      },
+      {
+        "name": "DL_PG_HOST",
+        "default": "postgres",
+        "description": "Postgres host",
+        "required": false
+      },
+      {
+        "name": "DL_PG_PORT",
+        "default": "5432",
+        "description": "Postgres port",
+        "required": false
+      },
+      {
+        "name": "DL_PG_USER",
+        "default": "postgres",
+        "description": "Postgres user",
+        "required": false
+      },
+      {
+        "name": "DL_PG_PASSWORD",
+        "default": "changeme2420",
+        "description": "Postgres password",
+        "required": false
+      },
+      {
+        "name": "DL_PG_NAME",
+        "default": "domain_locker",
+        "description": "Postgres database name",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/var/lib/postgresql/data",
+        "description": "Postgres data directory"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "8083",
+        "protocol": "tcp",
+        "description": "Web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8083",
+      "volume_mappings": {
+        "domainlocker_postgres_data": "/DATA/AppData/$AppID/postgres_data"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "domainlocker_postgres_data": "postgres_data"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "domainlocker_postgres_data": "postgres_data"
+      },
+      "port": "10203",
+      "app_port": "3000"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container",
+    "domain"
+  ]
+}
