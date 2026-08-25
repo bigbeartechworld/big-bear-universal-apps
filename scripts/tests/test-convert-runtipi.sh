@@ -240,8 +240,12 @@ assert_eq "$(yq eval '.services.updater.depends_on | has("domainlocker")' "$MS_C
   "updater depends_on follows the renamed main service"
 assert_eq "$(yq eval '.services.updater.depends_on | has("app")' "$MS_COMPOSE")" "false" \
   "updater does not depend on the pre-rename service name"
-assert_eq "$(yq eval '.services.domainlocker.networks.tipi_main_network.aliases[0]' "$MS_COMPOSE")" "app" \
-  "renamed service keeps old name as a network alias"
+assert_eq "$(yq eval '.services.domainlocker.networks | type' "$MS_COMPOSE")" "!!seq" \
+  "renamed service does not publish a shared-network alias"
+assert_eq "$(yq eval '.services.updater.command[-1]' "$MS_COMPOSE" | grep -c 'http://domainlocker:3000' || true)" "4" \
+  "updater command host follows the renamed main service"
+assert_eq "$(yq eval '.services.updater.command[-1]' "$MS_COMPOSE" | grep -c 'http://app:3000' || true)" "0" \
+  "updater command does not keep the pre-rename hostname"
 rm -rf "$TMP_MS"
 
 section "e2e: synthetic reordered compose still promotes main_service"

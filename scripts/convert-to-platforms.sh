@@ -1131,6 +1131,33 @@ resolve_runtipi_main_image() {
     return 0
 }
 
+runtipi_follow_service_rename() {
+    local compose_file="$1"
+    local old_name="$2"
+    local new_name="$3"
+    [[ -z "$old_name" || "$old_name" == "null" || "$old_name" == "$new_name" ]] && return 0
+
+    local dep_svcs dep_svc dep_type dep_len di
+    dep_svcs=$(yq eval '.services | keys | .[]' "$compose_file")
+    while IFS= read -r dep_svc; do
+        [[ -z "$dep_svc" ]] && continue
+        dep_type=$(yq eval ".services[\"$dep_svc\"].depends_on | type" "$compose_file" 2>/dev/null || echo "null")
+        if [[ "$dep_type" == "!!map" ]] && [[ "$(yq eval ".services[\"$dep_svc\"].depends_on | has(\"$old_name\")" "$compose_file")" == "true" ]]; then
+            yq eval ".services[\"$dep_svc\"].depends_on.\"$new_name\" = .services[\"$dep_svc\"].depends_on.\"$old_name\" | del(.services[\"$dep_svc\"].depends_on.\"$old_name\")" -i "$compose_file"
+        elif [[ "$dep_type" == "!!seq" ]]; then
+            dep_len=$(yq eval ".services[\"$dep_svc\"].depends_on | length" "$compose_file")
+            for ((di=0; di<dep_len; di++)); do
+                if [[ "$(yq eval ".services[\"$dep_svc\"].depends_on[$di]" "$compose_file")" == "$old_name" ]]; then
+                    yq eval ".services[\"$dep_svc\"].depends_on[$di] = \"$new_name\"" -i "$compose_file"
+                fi
+            done
+        fi
+    done <<< "$dep_svcs"
+
+    yq eval "(.. | select(tag == \"!!str\")) |= sub(\"http://${old_name}:\"; \"http://${new_name}:\")" -i "$compose_file"
+    yq eval "(.. | select(tag == \"!!str\")) |= sub(\"https://${old_name}:\"; \"https://${new_name}:\")" -i "$compose_file"
+}
+
 # Convert to Runtipi format
 convert_to_runtipi() {
     local app_name="$1"
@@ -1160,25 +1187,7 @@ convert_to_runtipi() {
     fi
     if [[ "$services" != "$app_name" ]]; then
         yq eval ".services.\"$app_name\" = .services.\"$services\" | del(.services.\"$services\")" -i "$compose_file"
-        local dep_svcs
-        dep_svcs=$(yq eval '.services | keys | .[]' "$compose_file")
-        while IFS= read -r dep_svc; do
-            [[ -z "$dep_svc" ]] && continue
-            local dep_type
-            dep_type=$(yq eval ".services[\"$dep_svc\"].depends_on | type" "$compose_file" 2>/dev/null || echo "null")
-            if [[ "$dep_type" == "!!map" ]] && [[ "$(yq eval ".services[\"$dep_svc\"].depends_on | has(\"$services\")" "$compose_file")" == "true" ]]; then
-                yq eval ".services[\"$dep_svc\"].depends_on.\"$app_name\" = .services[\"$dep_svc\"].depends_on.\"$services\" | del(.services[\"$dep_svc\"].depends_on.\"$services\")" -i "$compose_file"
-            elif [[ "$dep_type" == "!!seq" ]]; then
-                local dep_len
-                dep_len=$(yq eval ".services[\"$dep_svc\"].depends_on | length" "$compose_file")
-                local di
-                for ((di=0; di<dep_len; di++)); do
-                    if [[ "$(yq eval ".services[\"$dep_svc\"].depends_on[$di]" "$compose_file")" == "$services" ]]; then
-                        yq eval ".services[\"$dep_svc\"].depends_on[$di] = \"$app_name\"" -i "$compose_file"
-                    fi
-                done
-            fi
-        done <<< "$dep_svcs"
+        runtipi_follow_service_rename "$compose_file" "$services" "$app_name"
     fi
     
     # Set container name
@@ -1253,9 +1262,6 @@ convert_to_runtipi() {
         
         # Remove all custom networks and add only tipi_main_network
         yq eval 'del(.networks) | .networks.tipi_main_network.external = true' -i "$compose_file"
-        if [[ "$services" != "$app_name" ]]; then
-            yq eval ".services[\"$app_name\"].networks = {\"tipi_main_network\": {\"aliases\": [\"$services\"]}}" -i "$compose_file"
-        fi
     fi
     
     # Convert named volumes to ${APP_DATA_DIR} bind mounts for Runtipi
