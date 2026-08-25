@@ -221,4 +221,83 @@ else
   echo "ok: full-run case skipped (set RUNTIPI_FULL_RUN=1 to enable)"
 fi
 
+section "e2e: main_service not first in compose is the promoted service"
+TMP_MS="$(mktemp -d)"
+bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a domainlocker -o "$TMP_MS/out" > "$TMP_MS/run.log" 2>&1
+assert_eq "$?" "0" "domainlocker run exits 0"
+MS_COMPOSE="$TMP_MS/out/runtipi/domainlocker/docker-compose.yml"
+assert_eq "$(yq eval '.services.domainlocker.image' "$MS_COMPOSE" | cut -d: -f1)" \
+  "ghcr.io/lissy93/domain-locker" "promoted service carries the app image, not the db"
+assert_eq "$(yq eval '.services.domainlocker.ports | length' "$MS_COMPOSE")" "1" \
+  "promoted service owns the host port"
+assert_eq "$(yq eval '.services.domainlocker.ports[0]' "$MS_COMPOSE")" '${APP_PORT}:3000' \
+  "promoted service port is rewritten to APP_PORT"
+assert_eq "$(yq eval '.services.postgres.ports // "none"' "$MS_COMPOSE")" "none" \
+  "non-main service keeps no host port"
+assert_eq "$(yq eval '[.services[] | select(.image | test("^postgres:"))] | length' "$MS_COMPOSE")" "1" \
+  "db service survives under its own name"
+assert_eq "$(yq eval '.services.updater.depends_on | has("domainlocker")' "$MS_COMPOSE")" "true" \
+  "updater depends_on follows the renamed main service"
+assert_eq "$(yq eval '.services.updater.depends_on | has("app")' "$MS_COMPOSE")" "false" \
+  "updater does not depend on the pre-rename service name"
+assert_eq "$(yq eval '.services.domainlocker.networks.tipi_main_network.aliases[0]' "$MS_COMPOSE")" "app" \
+  "renamed service keeps old name as a network alias"
+rm -rf "$TMP_MS"
+
+section "e2e: synthetic reordered compose still promotes main_service"
+TMP_RO="$(mktemp -d)"
+cp -R "$REPO/apps/." "$TMP_RO/apps/"
+cat > "$TMP_RO/apps/uptime-kuma/docker-compose.yml" <<'YAML'
+name: big-bear-uptime-kuma
+services:
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+  app:
+    image: louislam/uptime-kuma:2
+    restart: unless-stopped
+    ports:
+      - 9099:3001
+  worker:
+    image: alpine:3.20
+    restart: unless-stopped
+    depends_on:
+      - app
+YAML
+jq '.technical.main_service = "app" | .technical.main_image = "louislam/uptime-kuma"' \
+  "$TMP_RO/apps/uptime-kuma/app.json" > "$TMP_RO/apps/uptime-kuma/app.json.tmp" \
+  && mv "$TMP_RO/apps/uptime-kuma/app.json.tmp" "$TMP_RO/apps/uptime-kuma/app.json"
+bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a uptime-kuma -i "$TMP_RO/apps" -o "$TMP_RO/out" > "$TMP_RO/run.log" 2>&1
+RO_COMPOSE="$TMP_RO/out/runtipi/uptime-kuma/docker-compose.yml"
+assert_eq "$(yq eval '.services.uptime-kuma.image' "$RO_COMPOSE")" \
+  "louislam/uptime-kuma:2" "reordered compose promotes main_service, not first service"
+assert_eq "$(yq eval '.services.uptime-kuma.ports[0]' "$RO_COMPOSE")" '${APP_PORT}:3001' \
+  "reordered compose rewrites the promoted service port"
+assert_eq "$(yq eval '.services.db.image' "$RO_COMPOSE")" "postgres:15-alpine" \
+  "first service keeps its own name and image"
+assert_eq "$(yq eval '.services.worker.depends_on[0]' "$RO_COMPOSE")" "uptime-kuma" \
+  "list-form depends_on follows the renamed main service"
+rm -rf "$TMP_RO"
+
+section "e2e: absent main_service still falls back to first service"
+TMP_FB="$(mktemp -d)"
+cp -R "$REPO/apps/." "$TMP_FB/apps/"
+cat > "$TMP_FB/apps/uptime-kuma/docker-compose.yml" <<'YAML'
+name: big-bear-uptime-kuma
+services:
+  solo:
+    image: louislam/uptime-kuma:2
+    restart: unless-stopped
+    ports:
+      - 9099:3001
+YAML
+jq 'del(.technical.main_service) | .technical.main_image = "louislam/uptime-kuma"' \
+  "$TMP_FB/apps/uptime-kuma/app.json" > "$TMP_FB/apps/uptime-kuma/app.json.tmp" \
+  && mv "$TMP_FB/apps/uptime-kuma/app.json.tmp" "$TMP_FB/apps/uptime-kuma/app.json"
+bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a uptime-kuma -i "$TMP_FB/apps" -o "$TMP_FB/out" > "$TMP_FB/run.log" 2>&1
+FB_COMPOSE="$TMP_FB/out/runtipi/uptime-kuma/docker-compose.yml"
+assert_eq "$(yq eval '.services.uptime-kuma.image' "$FB_COMPOSE")" \
+  "louislam/uptime-kuma:2" "absent main_service falls back to the only service"
+rm -rf "$TMP_FB"
+
 exit $fail

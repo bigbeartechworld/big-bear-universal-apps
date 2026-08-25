@@ -1154,9 +1154,31 @@ convert_to_runtipi() {
     yq eval 'del(.name)' -i "$compose_file"
     
     # Rename main service to app_name
-    local services=$(yq eval '.services | keys | .[0]' "$compose_file")
+    local services="${APP_MAIN_SERVICE:-}"
+    if [[ -z "$services" || "$services" == "null" ]] || [[ "$(yq eval ".services | has(\"$services\")" "$compose_file")" != "true" ]]; then
+        services=$(yq eval '.services | keys | .[0]' "$compose_file")
+    fi
     if [[ "$services" != "$app_name" ]]; then
         yq eval ".services.\"$app_name\" = .services.\"$services\" | del(.services.\"$services\")" -i "$compose_file"
+        local dep_svcs
+        dep_svcs=$(yq eval '.services | keys | .[]' "$compose_file")
+        while IFS= read -r dep_svc; do
+            [[ -z "$dep_svc" ]] && continue
+            local dep_type
+            dep_type=$(yq eval ".services[\"$dep_svc\"].depends_on | type" "$compose_file" 2>/dev/null || echo "null")
+            if [[ "$dep_type" == "!!map" ]] && [[ "$(yq eval ".services[\"$dep_svc\"].depends_on | has(\"$services\")" "$compose_file")" == "true" ]]; then
+                yq eval ".services[\"$dep_svc\"].depends_on.\"$app_name\" = .services[\"$dep_svc\"].depends_on.\"$services\" | del(.services[\"$dep_svc\"].depends_on.\"$services\")" -i "$compose_file"
+            elif [[ "$dep_type" == "!!seq" ]]; then
+                local dep_len
+                dep_len=$(yq eval ".services[\"$dep_svc\"].depends_on | length" "$compose_file")
+                local di
+                for ((di=0; di<dep_len; di++)); do
+                    if [[ "$(yq eval ".services[\"$dep_svc\"].depends_on[$di]" "$compose_file")" == "$services" ]]; then
+                        yq eval ".services[\"$dep_svc\"].depends_on[$di] = \"$app_name\"" -i "$compose_file"
+                    fi
+                done
+            fi
+        done <<< "$dep_svcs"
     fi
     
     # Set container name
@@ -1231,6 +1253,9 @@ convert_to_runtipi() {
         
         # Remove all custom networks and add only tipi_main_network
         yq eval 'del(.networks) | .networks.tipi_main_network.external = true' -i "$compose_file"
+        if [[ "$services" != "$app_name" ]]; then
+            yq eval ".services[\"$app_name\"].networks = {\"tipi_main_network\": {\"aliases\": [\"$services\"]}}" -i "$compose_file"
+        fi
     fi
     
     # Convert named volumes to ${APP_DATA_DIR} bind mounts for Runtipi

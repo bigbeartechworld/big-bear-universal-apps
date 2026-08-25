@@ -104,7 +104,8 @@
       "port_map": "8083",
       "volume_mappings": {
         "domainlocker_postgres_data": "/DATA/AppData/$AppID/postgres_data"
-      }
+      },
+      "category": "Others"
     },
     "portainer": {
       "supported": true,
