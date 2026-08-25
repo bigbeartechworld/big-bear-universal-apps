@@ -1152,10 +1152,23 @@ runtipi_follow_service_rename() {
                 fi
             done
         fi
+        local link_type
+        link_type=$(yq eval ".services[\"$dep_svc\"].links | type" "$compose_file" 2>/dev/null || echo "null")
+        if [[ "$link_type" == "!!seq" ]]; then
+            dep_len=$(yq eval ".services[\"$dep_svc\"].links | length" "$compose_file")
+            for ((di=0; di<dep_len; di++)); do
+                if [[ "$(yq eval ".services[\"$dep_svc\"].links[$di]" "$compose_file")" == "$old_name" ]]; then
+                    yq eval ".services[\"$dep_svc\"].links[$di] = \"$new_name\"" -i "$compose_file"
+                fi
+            done
+        fi
     done <<< "$dep_svcs"
 
-    yq eval "(.. | select(tag == \"!!str\")) |= sub(\"http://${old_name}:\"; \"http://${new_name}:\")" -i "$compose_file"
-    yq eval "(.. | select(tag == \"!!str\")) |= sub(\"https://${old_name}:\"; \"https://${new_name}:\")" -i "$compose_file"
+    local old_re
+    old_re=$(printf '%s' "$old_name" | sed 's/[][(){}.^$|*+?\\]/\\&/g')
+    yq eval "(.. | select(tag == \"!!str\")) |= sub(\"(https?://)${old_re}(:|/|$)\"; \"\${1}${new_name}\${2}\")" -i "$compose_file"
+    yq eval "(.. | select(tag == \"!!str\")) |= sub(\"=${old_re}$\"; \"=${new_name}\")" -i "$compose_file"
+    yq eval "(.. | select(tag == \"!!str\" and . == \"${old_name}\")) |= \"${new_name}\"" -i "$compose_file"
 }
 
 # Convert to Runtipi format

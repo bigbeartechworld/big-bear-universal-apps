@@ -246,7 +246,20 @@ assert_eq "$(yq eval '.services.updater.command[-1]' "$MS_COMPOSE" | grep -c 'ht
   "updater command host follows the renamed main service"
 assert_eq "$(yq eval '.services.updater.command[-1]' "$MS_COMPOSE" | grep -c 'http://app:3000' || true)" "0" \
   "updater command does not keep the pre-rename hostname"
+assert_eq "$(yq eval '.services.updater.depends_on.domainlocker.condition' "$MS_COMPOSE")" "service_healthy" \
+  "map-form depends_on keeps the health condition"
 rm -rf "$TMP_MS"
+
+section "e2e: invoice-ninja portless APP_URL follows renamed main_service"
+TMP_IN="$(mktemp -d)"
+bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a invoice-ninja -o "$TMP_IN/out" > "$TMP_IN/run.log" 2>&1
+assert_eq "$?" "0" "invoice-ninja run exits 0"
+IN_COMPOSE="$TMP_IN/out/runtipi/invoice-ninja/docker-compose.yml"
+assert_eq "$(grep -c 'APP_URL=http://invoice-ninja$' "$IN_COMPOSE" || true)" "1" \
+  "portless APP_URL follows the renamed main service"
+assert_eq "$(grep -c 'APP_URL=http://big-bear-invoice-ninja-web' "$IN_COMPOSE" || true)" "0" \
+  "portless APP_URL does not keep the pre-rename hostname"
+rm -rf "$TMP_IN"
 
 section "e2e: synthetic reordered compose still promotes main_service"
 TMP_RO="$(mktemp -d)"
@@ -267,6 +280,11 @@ services:
     restart: unless-stopped
     depends_on:
       - app
+    environment:
+      APP_URL: http://app
+      HOST: app
+    links:
+      - app
 YAML
 jq '.technical.main_service = "app" | .technical.main_image = "louislam/uptime-kuma"' \
   "$TMP_RO/apps/uptime-kuma/app.json" > "$TMP_RO/apps/uptime-kuma/app.json.tmp" \
@@ -281,6 +299,12 @@ assert_eq "$(yq eval '.services.db.image' "$RO_COMPOSE")" "postgres:15-alpine" \
   "first service keeps its own name and image"
 assert_eq "$(yq eval '.services.worker.depends_on[0]' "$RO_COMPOSE")" "uptime-kuma" \
   "list-form depends_on follows the renamed main service"
+assert_eq "$(yq eval '.services.worker.environment.APP_URL' "$RO_COMPOSE")" "http://uptime-kuma" \
+  "portless APP_URL follows the renamed main service"
+assert_eq "$(yq eval '.services.worker.environment.HOST' "$RO_COMPOSE")" "uptime-kuma" \
+  "bare hostname env follows the renamed main service"
+assert_eq "$(yq eval '.services.worker.links[0]' "$RO_COMPOSE")" "uptime-kuma" \
+  "links follows the renamed main service"
 rm -rf "$TMP_RO"
 
 section "e2e: absent main_service still falls back to first service"
