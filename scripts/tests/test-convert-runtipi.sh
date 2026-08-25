@@ -82,10 +82,10 @@ assert_eq "$(resolve_runtipi_main_image "$UNIT_DIR/buildonly.yml" "louislam/upti
 cat > "$UNIT_DIR/unpinned.yml" <<'YAML'
 services:
   app:
-    image: ghcr.io/imagegenius/immich:2.0.0-alpine
+    image: ghcr.io/imagegenius/immich:2.7.5
 YAML
-UNPINNED_OUT="$(resolve_runtipi_main_image "$UNIT_DIR/unpinned.yml" "ghcr.io/imagegenius/immich" immich-aio-alpine "ghcr.io/imagegenius/immich:2.0.0")"
-assert_eq "$UNPINNED_OUT" "ghcr.io/imagegenius/immich:2.0.0-alpine" "unpinned match verbatim"
+UNPINNED_OUT="$(resolve_runtipi_main_image "$UNIT_DIR/unpinned.yml" "ghcr.io/imagegenius/immich" immich-aio-alpine "ghcr.io/imagegenius/immich:2.7.5")"
+assert_eq "$UNPINNED_OUT" "ghcr.io/imagegenius/immich:2.7.5" "unpinned match verbatim"
 
 WARN_ON_MATCH="$(resolve_runtipi_main_image "$UNIT_DIR/unpinned.yml" "ghcr.io/imagegenius/immich" immich-aio-alpine "x:1" 2>&1 | grep -c 'WARNING' || true)"
 assert_eq "$WARN_ON_MATCH" "0" "no warning on successful match"
@@ -175,11 +175,16 @@ rm -rf "$TMP_NM"
 section "e2e: legitimately unpinned upstream, no warning, no error"
 TMP_IM="$(mktemp -d)"
 IM_LOG="$TMP_IM/run.log"
-bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a immich-aio-alpine -o "$TMP_IM/out" > "$IM_LOG" 2>&1
+cp -R "$REPO/apps/." "$TMP_IM/apps/"
+export IM_UNPINNED="ghcr.io/imagegenius/immich:2.7.5"
+yq eval -i ".services.\"big-bear-immich-aio-alpine\".image = strenv(IM_UNPINNED) | .services.\"big-bear-immich-aio-alpine\".image style=\"\"" \
+  "$TMP_IM/apps/immich-aio-alpine/docker-compose.yml"
+bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a immich-aio-alpine -i "$TMP_IM/apps" -o "$TMP_IM/out" > "$IM_LOG" 2>&1
 IM_EXIT=$?
 assert_eq "$IM_EXIT" "0" "immich-aio-alpine run exits 0"
+assert_eq "$(printf '%s' "$IM_UNPINNED" | grep -c '@' || true)" "0" "immich-aio-alpine fixture is genuinely unpinned"
 assert_eq "$(jq -r '.services[0].image' "$TMP_IM/out/runtipi/immich-aio-alpine/docker-compose.json")" \
-  "ghcr.io/imagegenius/immich:2.0.0-alpine" "immich-aio-alpine unpinned image copied verbatim"
+  "$IM_UNPINNED" "immich-aio-alpine unpinned image copied verbatim"
 assert_eq "$(grep -c 'WARNING' "$IM_LOG" || true)" "0" "immich-aio-alpine emits no warning"
 rm -rf "$TMP_IM"
 
