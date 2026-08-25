@@ -31,6 +31,9 @@ jobs:
       - name: Run Umbrel converter test suite
         run: bash scripts/tests/test-convert-umbrel.sh
 
+      - name: Run Runtipi converter test suite
+        run: bash scripts/tests/test-convert-runtipi.sh
+
   validate-apps:
     name: Validate App Definitions
     runs-on: ubuntu-latest
