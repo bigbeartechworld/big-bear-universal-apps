@@ -1,0 +1,71 @@
+# Configuration for Popcornn - Modern Torrent Streaming Platform
+
+# Application Name
+name: big-bear-popcornn
+
+# Services used in the application
+services:
+  # Frontend service - React web interface
+  popcornn-client:
+    container_name: big-bear-popcornn-client
+    image: bobdivx/popcorn-frontend:latest
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    network_mode: bridge
+    environment:
+      - BACKEND_URL=http://big-bear-popcornn-server:3000
+    depends_on:
+      - popcornn-server
+
+  # Backend service - Rust streaming server
+  popcornn-server:
+    container_name: big-bear-popcornn-server
+    image: bobdivx/popcorn-backend:dev
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    network_mode: bridge
+    volumes:
+      - popcornn_config:/app/config
+      - popcornn_cache:/app/cache
+      - popcornn_data:/app/data
+    environment:
+      - FLARESOLVERR_URL=http://big-bear-popcornn-flaresolverr:8191
+      - RUST_LOG=info
+    depends_on:
+      - popcornn-flaresolverr
+    # Uncomment for NVIDIA GPU support
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [compute, video]
+
+  # FlareSolverr service - Bypass Cloudflare protection
+  popcornn-flaresolverr:
+    container_name: big-bear-popcornn-flaresolverr
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    restart: unless-stopped
+    ports:
+      - "8191:8191"
+    network_mode: bridge
+    environment:
+      - LOG_LEVEL=info
+      - LOG_HTML=false
+      - CAPTCHA_SOLVER=none
+      - TZ=Europe/London
+
+# Volumes for persistent data
+volumes:
+  popcornn_config:
+    name: popcornn_config
+    driver: local
+  popcornn_cache:
+    name: popcornn_cache
+    driver: local
+  popcornn_data:
+    name: popcornn_data
+    driver: local

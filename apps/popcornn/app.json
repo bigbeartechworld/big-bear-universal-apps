@@ -1,0 +1,183 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "popcornn",
+    "name": "Popcornn",
+    "description": "Modern torrent streaming platform with HLS transcoding, library management, and hardware acceleration support. Stream movies and TV shows directly from torrents.",
+    "tagline": "Self-hosted torrent streaming & library manager",
+    "version": "0.1.0",
+    "author": "BigBearTechWorld",
+    "developer": "bobdivx",
+    "category": "BigBearCasaOS",
+    "license": "MIT",
+    "homepage": "https://github.com/bobdivx/popcorn-server",
+    "source": "big-bear-universal",
+    "created": "2026-08-25T08:25:00Z",
+    "updated": "2026-08-25T08:25:00Z"
+  },
+  "visual": {
+    "icon": "https://raw.githubusercontent.com/bobdivx/popcorn-server/main/assets/logo.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://raw.githubusercontent.com/bobdivx/popcorn-server/main/assets/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://github.com/bobdivx/popcorn-server/blob/main/README.md",
+    "repository": "https://github.com/bobdivx/popcorn-server",
+    "issues": "https://github.com/bobdivx/popcorn-server/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64"
+    ],
+    "platform": "linux",
+    "main_service": "popcornn-client",
+    "default_port": "3001",
+    "main_image": "bobdivx/popcorn-frontend",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "BACKEND_URL",
+        "default": "http://big-bear-popcornn-server:3000",
+        "description": "Backend API URL",
+        "required": true
+      },
+      {
+        "name": "FLARESOLVERR_URL",
+        "default": "http://big-bear-popcornn-flaresolverr:8191",
+        "description": "FlareSolverr URL for Cloudflare bypass",
+        "required": true
+      },
+      {
+        "name": "RUST_LOG",
+        "default": "info",
+        "description": "Log level (error, warn, info, debug, trace)",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/app/config",
+        "description": "Configuration files"
+      },
+      {
+        "container": "/app/cache",
+        "description": "Cache directory for torrents"
+      },
+      {
+        "container": "/app/data",
+        "description": "Data directory for media library"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3001",
+        "host": "3001",
+        "protocol": "tcp",
+        "description": "Frontend web interface"
+      },
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp",
+        "description": "Backend API"
+      },
+      {
+        "container": "8191",
+        "host": "8191",
+        "protocol": "tcp",
+        "description": "FlareSolverr service"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": [
+        "Popcornn requires at least 2GB RAM for smooth operation",
+        "GPU passthrough is optional but recommended for hardware acceleration",
+        "FlareSolverr service is required to bypass Cloudflare protection on torrent sites"
+      ]
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3001",
+      "volume_mappings": {
+        "popcornn_config": "/DATA/AppData/$AppID/config",
+        "popcornn_cache": "/DATA/AppData/$AppID/cache",
+        "popcornn_data": "/DATA/AppData/$AppID/data"
+      },
+      "youtube": "",
+      "port": "3001",
+      "category": "Media"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "Media",
+        "Video",
+        "Streaming"
+      ],
+      "administrator_only": false,
+      "port": "3001"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64"
+      ],
+      "volume_mappings": {
+        "popcornn_config": "config",
+        "popcornn_cache": "cache",
+        "popcornn_data": "data"
+      },
+      "port": "3001"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "3001"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "3001"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "popcornn_config": "config",
+        "popcornn_cache": "cache",
+        "popcornn_data": "data"
+      },
+      "port": "3001"
+    }
+  },
+  "tags": [
+    "media",
+    "streaming",
+    "torrent",
+    "movies",
+    "tv-shows",
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container",
+    "hls",
+    "transcoding",
+    "rust"
+  ]
+}
