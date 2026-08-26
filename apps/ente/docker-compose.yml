@@ -46,7 +46,7 @@ services:
     restart: unless-stopped
 
   web:
-    image: ghcr.io/ente/web:latest@sha256:a2a00d1c5de0cf236bfae4c6fba77900035269c34009f97f055fa8ca4eb807b8
+    image: ghcr.io/ente/web:latest@sha256:d40a0df0df283cbbb1e7b20e5b98839d80666f83c12d37c8f174974841c67d00
     container_name: ente-web
     ports:
       - "3000:3000"
