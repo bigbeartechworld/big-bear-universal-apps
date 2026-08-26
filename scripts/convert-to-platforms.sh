@@ -1131,6 +1131,50 @@ resolve_runtipi_main_image() {
     return 0
 }
 
+runtipi_follow_service_rename() {
+    local compose_file="$1"
+    local old_name="$2"
+    local new_name="$3"
+    [[ -z "$old_name" || "$old_name" == "null" || "$old_name" == "$new_name" ]] && return 0
+
+    local dep_svcs dep_svc dep_type dep_len di
+    dep_svcs=$(yq eval '.services | keys | .[]' "$compose_file")
+    while IFS= read -r dep_svc; do
+        [[ -z "$dep_svc" ]] && continue
+        dep_type=$(yq eval ".services[\"$dep_svc\"].depends_on | type" "$compose_file" 2>/dev/null || echo "null")
+        if [[ "$dep_type" == "!!map" ]] && [[ "$(yq eval ".services[\"$dep_svc\"].depends_on | has(\"$old_name\")" "$compose_file")" == "true" ]]; then
+            yq eval ".services[\"$dep_svc\"].depends_on.\"$new_name\" = .services[\"$dep_svc\"].depends_on.\"$old_name\" | del(.services[\"$dep_svc\"].depends_on.\"$old_name\")" -i "$compose_file"
+        elif [[ "$dep_type" == "!!seq" ]]; then
+            dep_len=$(yq eval ".services[\"$dep_svc\"].depends_on | length" "$compose_file")
+            for ((di=0; di<dep_len; di++)); do
+                if [[ "$(yq eval ".services[\"$dep_svc\"].depends_on[$di]" "$compose_file")" == "$old_name" ]]; then
+                    yq eval ".services[\"$dep_svc\"].depends_on[$di] = \"$new_name\"" -i "$compose_file"
+                fi
+            done
+        fi
+        local link_type
+        link_type=$(yq eval ".services[\"$dep_svc\"].links | type" "$compose_file" 2>/dev/null || echo "null")
+        if [[ "$link_type" == "!!seq" ]]; then
+            dep_len=$(yq eval ".services[\"$dep_svc\"].links | length" "$compose_file")
+            for ((di=0; di<dep_len; di++)); do
+                local link_item
+                link_item=$(yq eval ".services[\"$dep_svc\"].links[$di]" "$compose_file")
+                if [[ "$link_item" == "$old_name" ]]; then
+                    yq eval ".services[\"$dep_svc\"].links[$di] = \"$new_name\"" -i "$compose_file"
+                elif [[ "$link_item" == "$old_name:"* ]]; then
+                    yq eval ".services[\"$dep_svc\"].links[$di] = \"${new_name}:${link_item#"$old_name:"}\"" -i "$compose_file"
+                fi
+            done
+        fi
+    done <<< "$dep_svcs"
+
+    local old_re
+    old_re=$(printf '%s' "$old_name" | sed 's/[][(){}.^$|*+?\\]/\\&/g')
+    yq eval "(.. | select(tag == \"!!str\")) |= sub(\"(https?://)${old_re}(:|/|$)\"; \"\${1}${new_name}\${2}\")" -i "$compose_file"
+    yq eval "(.. | select(tag == \"!!str\")) |= sub(\"=${old_re}$\"; \"=${new_name}\")" -i "$compose_file"
+    yq eval "(.. | select(tag == \"!!str\" and . == \"${old_name}\")) |= \"${new_name}\"" -i "$compose_file"
+}
+
 # Convert to Runtipi format
 convert_to_runtipi() {
     local app_name="$1"
@@ -1154,9 +1198,13 @@ convert_to_runtipi() {
     yq eval 'del(.name)' -i "$compose_file"
     
     # Rename main service to app_name
-    local services=$(yq eval '.services | keys | .[0]' "$compose_file")
+    local services="${APP_MAIN_SERVICE:-}"
+    if [[ -z "$services" || "$services" == "null" ]] || [[ "$(yq eval ".services | has(\"$services\")" "$compose_file")" != "true" ]]; then
+        services=$(yq eval '.services | keys | .[0]' "$compose_file")
+    fi
     if [[ "$services" != "$app_name" ]]; then
         yq eval ".services.\"$app_name\" = .services.\"$services\" | del(.services.\"$services\")" -i "$compose_file"
+        runtipi_follow_service_rename "$compose_file" "$services" "$app_name"
     fi
     
     # Set container name
