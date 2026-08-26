@@ -1,0 +1,165 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "sonozz",
+    "name": "SONOZZ",
+    "description": "Self-hosted music studio platform featuring artist discovery, album organization from A to Z, and comprehensive music library management. Requires Turso database for data storage and Google Gemini API key for AI-powered features (configured in-app after login).",
+    "tagline": "Self-hosted music studio & library manager",
+    "version": "0.0.1",
+    "author": "BigBearTechWorld",
+    "developer": "bobdivx",
+    "category": "BigBearCasaOS",
+    "license": "MIT",
+    "homepage": "https://github.com/bobdivx/sonozz",
+    "source": "big-bear-universal",
+    "created": "2026-08-26T13:00:00Z",
+    "updated": "2026-08-26T13:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bobdivx/sonozz@main/public/logo.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bobdivx/sonozz@main/public/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://github.com/bobdivx/sonozz/blob/main/README.md",
+    "repository": "https://github.com/bobdivx/sonozz",
+    "issues": "https://github.com/bobdivx/sonozz/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64"
+    ],
+    "platform": "linux",
+    "main_service": "big-bear-sonozz",
+    "default_port": "4321",
+    "main_image": "ghcr.io/bobdivx/sonozz",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "TURSO_DATABASE_URL",
+        "default": "",
+        "description": "Turso database URL (required) - Create at https://turso.tech",
+        "required": true
+      },
+      {
+        "name": "TURSO_AUTH_TOKEN",
+        "default": "",
+        "description": "Turso authentication token (required) - Get from Turso dashboard",
+        "required": true
+      },
+      {
+        "name": "AUTH_PASSWORD",
+        "default": "changeme",
+        "description": "Admin login password - Change this from default 'changeme'",
+        "required": true
+      },
+      {
+        "name": "AUTH_SECRET",
+        "default": "change-this-to-a-long-random-string",
+        "description": "Authentication secret key - Use a long random string",
+        "required": true
+      },
+      {
+        "name": "AUTH_EMAIL",
+        "default": "admin@example.com",
+        "description": "Admin email address for login",
+        "required": false
+      },
+      {
+        "name": "AUTH_SECURE",
+        "default": "0",
+        "description": "Secure cookies (0=disabled for HTTP on LAN, 1=enabled for HTTPS)",
+        "required": false
+      }
+    ],
+    "volumes": [],
+    "ports": [
+      {
+        "container": "4321",
+        "host": "4321",
+        "protocol": "tcp",
+        "description": "Web interface"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": [
+        "SONOZZ requires a Turso database - Create one at https://turso.tech before installation",
+        "Set TURSO_DATABASE_URL and TURSO_AUTH_TOKEN from your Turso dashboard",
+        "Change default AUTH_PASSWORD and AUTH_SECRET for security",
+        "Use AUTH_SECURE=0 for HTTP access on local network (CasaOS default)",
+        "Google Gemini API key can be configured in-app after first login",
+        "Default login: admin@example.com / changeme (change AUTH_EMAIL and AUTH_PASSWORD)",
+        "Demo available at https://sonozz.briseteia.me"
+      ]
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "4321",
+      "volume_mappings": {},
+      "port": "4321",
+      "category": "Media"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "Media",
+        "Music"
+      ],
+      "administrator_only": false,
+      "port": "4321"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64"
+      ],
+      "volume_mappings": {},
+      "port": "4321"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "4321"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "4321"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {},
+      "port": "4321"
+    }
+  },
+  "tags": [
+    "music",
+    "media",
+    "library",
+    "artist-discovery",
+    "album-management",
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container",
+    "turso",
+    "astro"
+  ]
+}
