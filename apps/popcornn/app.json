@@ -3,17 +3,17 @@
   "metadata": {
     "id": "popcornn",
     "name": "Popcornn",
-    "description": "Modern torrent streaming platform with HLS transcoding, library management, and hardware acceleration support. Stream movies and TV shows directly from torrents.",
+    "description": "Modern torrent streaming platform with web client (bobdivx/popcorn-frontend:1.3.56) and Rust server (bobdivx/popcorn-backend:1.2.51). Includes HLS transcoding, library management, hardware acceleration support, and FlareSolverr for Cloudflare bypass. Stream movies and TV shows directly from torrents with a beautiful React interface.",
     "tagline": "Self-hosted torrent streaming & library manager",
-    "version": "0.1.0",
+    "version": "1.2.51",
     "author": "BigBearTechWorld",
     "developer": "bobdivx",
     "category": "BigBearCasaOS",
     "license": "MIT",
-    "homepage": "https://github.com/bobdivx/popcorn-server",
+    "homepage": "https://popcornn.app",
     "source": "big-bear-universal",
     "created": "2026-08-25T08:25:00Z",
-    "updated": "2026-08-25T08:25:00Z"
+    "updated": "2026-08-26T13:19:00Z"
   },
   "visual": {
     "icon": "https://raw.githubusercontent.com/bobdivx/popcorn-server/main/assets/logo.png",
@@ -24,7 +24,7 @@
   "resources": {
     "youtube": "",
     "documentation": "https://github.com/bobdivx/popcorn-server/blob/main/README.md",
-    "repository": "https://github.com/bobdivx/popcorn-server",
+    "repository": "https://github.com/bobdivx/popcorn-client,https://github.com/bobdivx/popcorn-server",
     "issues": "https://github.com/bobdivx/popcorn-server/issues",
     "support": "https://community.bigbeartechworld.com/"
   },
@@ -33,23 +33,47 @@
       "amd64"
     ],
     "platform": "linux",
-    "main_service": "popcornn-client",
-    "default_port": "3001",
+    "main_service": "big-bear-popcornn-client",
+    "default_port": "4325",
     "main_image": "bobdivx/popcorn-frontend",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {
     "environment_variables": [
       {
+        "name": "PUBLIC_BACKEND_URL",
+        "default": "",
+        "description": "Public backend URL (e.g., https://popcornn.example.com/api) - leave empty for local access",
+        "required": false
+      },
+      {
+        "name": "API_USERNAME",
+        "default": "admin",
+        "description": "Backend API username for authentication",
+        "required": true
+      },
+      {
+        "name": "API_PASSWORD",
+        "default": "popcorn_password_secure",
+        "description": "Backend API password - CHANGE THIS AFTER INSTALLATION",
+        "required": true
+      },
+      {
         "name": "BACKEND_URL",
         "default": "http://big-bear-popcornn-server:3000",
-        "description": "Backend API URL",
+        "description": "Internal backend API URL",
         "required": true
       },
       {
         "name": "FLARESOLVERR_URL",
         "default": "http://big-bear-popcornn-flaresolverr:8191",
         "description": "FlareSolverr URL for Cloudflare bypass",
+        "required": true
+      },
+      {
+        "name": "DOWNLOAD_DIR",
+        "default": "/app/downloads",
+        "description": "Download directory for torrents",
         "required": true
       },
       {
@@ -61,22 +85,18 @@
     ],
     "volumes": [
       {
-        "container": "/app/config",
-        "description": "Configuration files"
+        "container": "/app/.data",
+        "description": "Application data and database"
       },
       {
-        "container": "/app/cache",
-        "description": "Cache directory for torrents"
-      },
-      {
-        "container": "/app/data",
-        "description": "Data directory for media library"
+        "container": "/app/downloads",
+        "description": "Downloaded torrents and media files"
       }
     ],
     "ports": [
       {
-        "container": "3001",
-        "host": "3001",
+        "container": "80",
+        "host": "4325",
         "protocol": "tcp",
         "description": "Frontend web interface"
       },
@@ -87,10 +107,16 @@
         "description": "Backend API"
       },
       {
-        "container": "8191",
-        "host": "8191",
+        "container": "4240",
+        "host": "4240",
         "protocol": "tcp",
-        "description": "FlareSolverr service"
+        "description": "Torrent TCP port"
+      },
+      {
+        "container": "4240",
+        "host": "4240",
+        "protocol": "udp",
+        "description": "Torrent UDP port"
       }
     ]
   },
@@ -99,23 +125,25 @@
     "path": "",
     "tips": {
       "before_install": [
+        "This package installs BOTH the web client (React frontend) and the Rust server backend, plus FlareSolverr for Cloudflare bypass",
+        "Access the web interface on port 4325, backend API on port 3000",
+        "Default login: admin / popcorn_password_secure - CHANGE THIS PASSWORD after installation",
+        "Forward ports 4240 TCP and 4240 UDP for optimal torrent connectivity",
         "Popcornn requires at least 2GB RAM for smooth operation",
-        "GPU passthrough is optional but recommended for hardware acceleration",
-        "FlareSolverr service is required to bypass Cloudflare protection on torrent sites"
+        "GPU passthrough is optional but recommended for hardware acceleration"
       ]
     }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3001",
+      "port_map": "4325",
       "volume_mappings": {
-        "popcornn_config": "/DATA/AppData/$AppID/config",
-        "popcornn_cache": "/DATA/AppData/$AppID/cache",
-        "popcornn_data": "/DATA/AppData/$AppID/data"
+        "popcornn_data": "/DATA/AppData/$AppID/data",
+        "popcornn_downloads": "/DATA/AppData/$AppID/downloads"
       },
       "youtube": "",
-      "port": "3001",
+      "port": "4325",
       "category": "Media"
     },
     "portainer": {
@@ -128,7 +156,7 @@
         "Streaming"
       ],
       "administrator_only": false,
-      "port": "3001"
+      "port": "4325"
     },
     "runtipi": {
       "supported": true,
@@ -137,32 +165,30 @@
         "amd64"
       ],
       "volume_mappings": {
-        "popcornn_config": "config",
-        "popcornn_cache": "cache",
-        "popcornn_data": "data"
+        "popcornn_data": "data",
+        "popcornn_downloads": "downloads"
       },
-      "port": "3001"
+      "port": "4325"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "3001"
+      "port": "4325"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "3001"
+      "port": "4325"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
-        "popcornn_config": "config",
-        "popcornn_cache": "cache",
-        "popcornn_data": "data"
+        "popcornn_data": "data",
+        "popcornn_downloads": "downloads"
       },
-      "port": "3001"
+      "port": "4325"
     }
   },
   "tags": [
