@@ -285,6 +285,7 @@ services:
       HOST: app
     links:
       - app
+      - app:database
 YAML
 jq '.technical.main_service = "app" | .technical.main_image = "louislam/uptime-kuma"' \
   "$TMP_RO/apps/uptime-kuma/app.json" > "$TMP_RO/apps/uptime-kuma/app.json.tmp" \
@@ -305,6 +306,8 @@ assert_eq "$(yq eval '.services.worker.environment.HOST' "$RO_COMPOSE")" "uptime
   "bare hostname env follows the renamed main service"
 assert_eq "$(yq eval '.services.worker.links[0]' "$RO_COMPOSE")" "uptime-kuma" \
   "links follows the renamed main service"
+assert_eq "$(yq eval '.services.worker.links[1]' "$RO_COMPOSE")" "uptime-kuma:database" \
+  "aliased links keep the alias and rewrite the service prefix"
 rm -rf "$TMP_RO"
 
 section "e2e: absent main_service still falls back to first service"

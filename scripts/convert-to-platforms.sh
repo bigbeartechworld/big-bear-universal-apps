@@ -1157,8 +1157,12 @@ runtipi_follow_service_rename() {
         if [[ "$link_type" == "!!seq" ]]; then
             dep_len=$(yq eval ".services[\"$dep_svc\"].links | length" "$compose_file")
             for ((di=0; di<dep_len; di++)); do
-                if [[ "$(yq eval ".services[\"$dep_svc\"].links[$di]" "$compose_file")" == "$old_name" ]]; then
+                local link_item
+                link_item=$(yq eval ".services[\"$dep_svc\"].links[$di]" "$compose_file")
+                if [[ "$link_item" == "$old_name" ]]; then
                     yq eval ".services[\"$dep_svc\"].links[$di] = \"$new_name\"" -i "$compose_file"
+                elif [[ "$link_item" == "$old_name:"* ]]; then
+                    yq eval ".services[\"$dep_svc\"].links[$di] = \"${new_name}:${link_item#"$old_name:"}\"" -i "$compose_file"
                 fi
             done
         fi
