@@ -39,4 +39,7 @@ __pycache__/
 test-output/
 coverage/
 
-docs/
+# Generated docs — keep superpowers specs/plans tracked
+docs/*
+!docs/superpowers/
+!docs/superpowers/**
