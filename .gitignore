@@ -39,4 +39,4 @@ __pycache__/
 test-output/
 coverage/
 
-docs/
+docs/*
