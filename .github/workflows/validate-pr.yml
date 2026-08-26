@@ -11,6 +11,8 @@ jobs:
   converter-tests:
     name: Converter Test Suite
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -18,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y jq
+          sudo apt-get install -y jq imagemagick
           sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
           sudo chmod +x /usr/local/bin/yq
 
@@ -30,6 +32,9 @@ jobs:
 
       - name: Run Umbrel converter test suite
         run: bash scripts/tests/test-convert-umbrel.sh
+
+      - name: Run Runtipi converter test suite
+        run: bash scripts/tests/test-convert-runtipi.sh
 
   validate-apps:
     name: Validate App Definitions
