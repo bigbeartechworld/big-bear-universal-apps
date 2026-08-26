@@ -1,0 +1,170 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "netboot-xyz",
+    "name": "netboot.xyz",
+    "description": "netboot.xyz is a PXE app: an iPXE menu that boots OS installers and utilities over the network. This Universal App wraps the official container (web UI, TFTP, local asset HTTP). It does not run DHCP; point the LAN DHCP next-server and bootfile at this host.",
+    "tagline": "Network boot menu (iPXE) with TFTP and a web UI",
+    "version": "0.7.6-nbxyz24",
+    "author": "BigBearTechWorld",
+    "developer": "netbootxyz",
+    "category": "BigBearCasaOS",
+    "license": "Apache-2.0",
+    "homepage": "https://netboot.xyz",
+    "source": "big-bear-universal",
+    "created": "2026-08-25T00:00:00Z",
+    "updated": "2026-08-25T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/netboot-xyz.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/netboot-xyz.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://netboot.xyz/docs/docker/",
+    "repository": "https://github.com/netbootxyz/docker-netbootxyz",
+    "issues": "https://github.com/netbootxyz/docker-netbootxyz/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "3000",
+    "main_image": "ghcr.io/netbootxyz/netbootxyz",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "NGINX_PORT",
+        "default": "80",
+        "description": "nginx listen port inside the container for local assets",
+        "required": false
+      },
+      {
+        "name": "WEB_APP_PORT",
+        "default": "3000",
+        "description": "web UI listen port inside the container",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "UTC",
+        "description": "container timezone",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Boot menus and web application config"
+      },
+      {
+        "container": "/assets",
+        "description": "Optional local mirrored boot assets"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp",
+        "description": "Web UI"
+      },
+      {
+        "container": "69",
+        "host": "69",
+        "protocol": "udp",
+        "description": "TFTP — must stay 69; PXE firmware requires it"
+      },
+      {
+        "container": "80",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "nginx local assets"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "/",
+    "tips": {
+      "before_install": {
+        "en_us": "This app does not run DHCP. Point the LAN's existing DHCP server at this host:\n\n- next-server / TFTP server name (option 66): this host's LAN IP\n- bootfile (option 67): netboot.xyz.kpxe (BIOS), netboot.xyz.efi (x86_64 UEFI), or netboot.xyz-arm64.efi (ARM64 UEFI)\n\nThese boot filenames are baked into the image. Host UDP 69 must stay mapped to container 69; PXE firmware requires port 69. If another process already bound host UDP 69, TCP 3000, or TCP 8080, the container will fail to start."
+      },
+      "after_install": {
+        "en_us": "Web UI: http://<host>:3000\nLocal assets: http://<host>:8080"
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3000",
+      "port": "3000",
+      "category": "Networking",
+      "volume_mappings": {
+        "netboot-xyz_config": "/DATA/AppData/$AppID/config",
+        "netboot-xyz_assets": "/DATA/AppData/$AppID/assets"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "3000"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "port": "3000",
+      "volume_mappings": {
+        "netboot-xyz_config": "config",
+        "netboot-xyz_assets": "assets"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "3000"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "3000"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "10196",
+      "app_port": "3000",
+      "volume_mappings": {
+        "netboot-xyz_config": "config",
+        "netboot-xyz_assets": "assets"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "pxe",
+    "tftp"
+  ]
+}
