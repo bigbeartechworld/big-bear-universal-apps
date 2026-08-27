@@ -12,7 +12,7 @@ services:
     container_name: big-bear-dockhand
 
     # Image to be used for the container
-    image: fnsys/dockhand:latest@sha256:aaebbbafabd9c49105b021f4b3203ba372cc6230dcc040a983e65934508399f8
+    image: fnsys/dockhand:latest@sha256:bca6ccd3a1d07b2cef41f9db6b4c1a443aa39e8bb7b185c23430f271780e43f9
 
     # Container restart policy
     restart: unless-stopped
