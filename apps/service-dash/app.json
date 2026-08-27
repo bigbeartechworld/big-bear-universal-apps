@@ -1,0 +1,171 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "service-dash",
+    "name": "Service Dash",
+    "description": "Service Dash turns an existing Uptime Kuma status page into a homelab dashboard. Each service gets one card carrying both of its addresses - the internal (local) URL you use at home and the external (public) URL you use away from it - so you open either one without keeping a second bookmark list. A switch in the top bar moves every card between the two at once. The pairing comes from Uptime Kuma itself: monitors named 'Plex' and 'Plex local' become one card with two addresses, so there is nothing to configure. Alongside the cards, a bundled Netdata Agent reports the health of the host itself: CPU, RAM, storage and live network throughput, plus the machine's LAN and WAN addresses. Around 2,900 service icons are matched automatically, with a searchable picker per card. Card settings and notes are shared across every browser that opens the dashboard, and changing them asks Uptime Kuma whether your session is real, so there is no second account to create. Signed out, service URLs and the host's own addresses are withheld entirely, so the dashboard can sit on a screen other people can see.",
+    "tagline": "Every service's local and public URL on one card, beside the live health of the box running them",
+    "version": "1.3.3",
+    "author": "Chintan Vaghela",
+    "developer": "Chintan Vaghela",
+    "category": "Monitoring",
+    "license": "GPL-3.0-or-later",
+    "homepage": "https://github.com/cvaghela/service-dash",
+    "source": "big-bear-universal",
+    "created": "2026-08-27T00:00:00Z",
+    "updated": "2026-08-27T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/cvaghela/service-dash@main/appstore/Apps/ServiceDash/icon.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/cvaghela/service-dash@main/appstore/Apps/ServiceDash/thumbnail.png",
+    "screenshots": [
+      "https://cdn.jsdelivr.net/gh/cvaghela/service-dash@main/appstore/Apps/ServiceDash/screenshot-1.jpg",
+      "https://cdn.jsdelivr.net/gh/cvaghela/service-dash@main/appstore/Apps/ServiceDash/screenshot-2.jpg",
+      "https://cdn.jsdelivr.net/gh/cvaghela/service-dash@main/appstore/Apps/ServiceDash/screenshot-3.jpg"
+    ],
+    "logo": "https://cdn.jsdelivr.net/gh/cvaghela/service-dash@main/appstore/Apps/ServiceDash/icon.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://github.com/cvaghela/service-dash#readme",
+    "repository": "https://github.com/cvaghela/service-dash",
+    "issues": "https://github.com/cvaghela/service-dash/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "service-dash",
+    "default_port": "8888",
+    "main_image": "ghcr.io/cvaghela/service-dash",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "KUMA_PORT",
+        "default": "3001",
+        "description": "The port Uptime Kuma listens on, on this host. Kuma must already be running.",
+        "required": true
+      },
+      {
+        "name": "STATUS_SLUG",
+        "default": "homelab",
+        "description": "The slug of the Uptime Kuma status page to read monitors from - the last part of its URL.",
+        "required": true
+      },
+      {
+        "name": "STORAGE_MOUNT",
+        "default": "auto",
+        "description": "Which filesystem the storage gauge reports. 'auto' picks the largest data mount.",
+        "required": false
+      },
+      {
+        "name": "KUMA_URL",
+        "default": "http://host.docker.internal:3001",
+        "description": "Where the kuma-auth sidecar reaches Uptime Kuma. Must be the same instance as KUMA_PORT.",
+        "required": true
+      },
+      {
+        "name": "NETWORK_INFO_REFRESH_SECONDS",
+        "default": "600",
+        "description": "Starting value only - the dashboard's own settings page overrides it.",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/var/lib/service-dash",
+        "description": "Shared card settings and notes"
+      },
+      {
+        "container": "/var/run/network-info",
+        "description": "LAN and WAN addresses detected by the network-info sidecar"
+      },
+      {
+        "container": "/etc/netdata",
+        "description": "Netdata Agent configuration"
+      },
+      {
+        "container": "/var/lib/netdata",
+        "description": "Netdata Agent state"
+      },
+      {
+        "container": "/var/cache/netdata",
+        "description": "Netdata Agent cache"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "8888",
+        "protocol": "tcp",
+        "description": "Dashboard web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "/",
+    "tips": {
+      "before_install": {
+        "en_us": "Service Dash reads your monitors from Uptime Kuma and does not install it for you. Install Uptime Kuma first and leave it on its default port 3001; if you run it elsewhere, change KUMA_PORT and KUMA_URL to match. Kuma must be on this same host. Then create a status page in Kuma, add the monitors you want on the dashboard, and note its slug - if it is not 'homelab', change STATUS_SLUG.\n\nLocal and public URLs come from how you name the monitors. Give a service two monitors: 'Plex' pointed at your public URL, and 'Plex local' pointed at your LAN URL. Service Dash pairs them by name into one card carrying both. 'Plex (local)', 'Plex - local' and 'Plex.local' work the same way. A service with only one monitor simply shows one address.\n\nThis stack needs rootful Docker. The bundled Netdata Agent uses pid: host, SYS_PTRACE, SYS_ADMIN and read-only mounts of the host root, /proc and /sys - that is what produces real host metrics, and rootless Docker cannot grant it."
+      },
+      "after_install": {
+        "en_us": "Open the dashboard on port 8888. Service URLs and the host's own LAN and WAN addresses read 'Locked' until you sign in with your Uptime Kuma account - signed out they are never sent to the browser at all. Signing in also unlocks the settings gear and the shared notes panel.\n\nTry it first at https://cvaghela.github.io/service-dash/demo/ - sign in there as test / Test."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8888",
+      "volume_mappings": {
+        "settings": "/DATA/AppData/$AppID/settings",
+        "networkinfo": "/DATA/AppData/$AppID/network-info",
+        "netdataconfig": "/DATA/AppData/$AppID/netdata/config",
+        "netdatalib": "/DATA/AppData/$AppID/netdata/lib",
+        "netdatacache": "/DATA/AppData/$AppID/netdata/cache"
+      },
+      "category": "Networking"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 3,
+      "categories": [
+        "Networking",
+        "Monitoring",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "runtipi": {
+      "supported": false
+    },
+    "cosmos": {
+      "supported": false
+    },
+    "umbrel": {
+      "supported": false
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "dashboard",
+    "homelab",
+    "uptime-kuma",
+    "netdata",
+    "monitoring",
+    "start-page",
+    "reverse-proxy-friendly"
+  ]
+}
