@@ -16,10 +16,10 @@
     "updated": "2026-08-26T13:00:00Z"
   },
   "visual": {
-    "icon": "https://cdn.jsdelivr.net/gh/bobdivx/devforge@main/docker/zimaos/appstore/DevForge/icon.png",
+    "icon": "https://raw.githubusercontent.com/bobdivx/big-bear-universal-apps/cursor/add-devforge-2833/apps/devforge/logo.png",
     "thumbnail": "",
     "screenshots": [],
-    "logo": "https://cdn.jsdelivr.net/gh/bobdivx/devforge@main/docker/zimaos/appstore/DevForge/icon.png"
+    "logo": "https://raw.githubusercontent.com/bobdivx/big-bear-universal-apps/cursor/add-devforge-2833/apps/devforge/logo.png"
   },
   "resources": {
     "youtube": "",
