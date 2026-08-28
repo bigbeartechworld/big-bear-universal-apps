@@ -17,8 +17,11 @@
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bobdivx/sonozz@main/public/logo.png",
-    "thumbnail": "",
-    "screenshots": [],
+    "thumbnail": "https://raw.githubusercontent.com/bobdivx/big-bear-universal-apps/cursor/add-sonozz-2833/apps/sonozz/thumbnail.png",
+    "screenshots": [
+      "https://raw.githubusercontent.com/bobdivx/big-bear-universal-apps/cursor/add-sonozz-2833/apps/sonozz/screenshot-1.png",
+      "https://raw.githubusercontent.com/bobdivx/big-bear-universal-apps/cursor/add-sonozz-2833/apps/sonozz/screenshot-2.png"
+    ],
     "logo": "https://cdn.jsdelivr.net/gh/bobdivx/sonozz@main/public/logo.png"
   },
   "resources": {
