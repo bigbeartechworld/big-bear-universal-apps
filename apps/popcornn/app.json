@@ -5,7 +5,7 @@
     "name": "Popcornn",
     "description": "Modern torrent streaming platform with web client (bobdivx/popcorn-frontend:1.3.56) and Rust server (bobdivx/popcorn-backend:1.2.51). Includes HLS transcoding, library management, hardware acceleration support, and FlareSolverr for Cloudflare bypass. Stream movies and TV shows directly from torrents with a beautiful React interface.",
     "tagline": "Self-hosted torrent streaming & library manager",
-    "version": "1.2.51",
+    "version": "1.3.56",
     "author": "BigBearTechWorld",
     "developer": "bobdivx",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://popcornn.app",
     "source": "big-bear-universal",
     "created": "2026-08-25T08:25:00Z",
-    "updated": "2026-08-28T12:47:00Z"
+    "updated": "2026-08-28T12:52:00Z"
   },
   "visual": {
     "icon": "https://raw.githubusercontent.com/bobdivx/popcorn-server/main/assets/logo.png",
