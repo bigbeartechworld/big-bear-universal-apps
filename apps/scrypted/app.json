@@ -5,7 +5,7 @@
     "name": "Scrypted",
     "description": "Scrypted is an open source video integration platform. Using various Plugins, Scrypted can receive streams from a range of cameras and send them to other platforms (HomeKit, Google Home, Alexa, Home Assistant).",
     "tagline": "Scrypted",
-    "version": "v0.144.1-noble-full",
+    "version": "v0.144.3-noble-full",
     "author": "BigBearTechWorld",
     "developer": "koush",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/koush/scrypted",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:17Z",
-    "updated": "2025-11-11T08:01:55.262Z"
+    "updated": "2026-08-28T12:01:14.372Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/scrypted.png",
