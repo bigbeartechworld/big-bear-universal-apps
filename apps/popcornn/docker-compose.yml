@@ -13,7 +13,8 @@ services:
     ports:
       - "4325:80"
     environment:
-      - BACKEND_URL=http://big-bear-popcornn-server:3000
+      # Use Compose service names (not container_name): Umbrel strips container_name
+      - BACKEND_URL=http://popcornn-server:3000
       - PUBLIC_BACKEND_URL=
       - HOST=0.0.0.0
       - NODE_ENV=production
@@ -36,7 +37,7 @@ services:
       - API_USERNAME=admin
       - API_PASSWORD=popcorn_password_secure
       - DOWNLOAD_DIR=/app/downloads
-      - FLARESOLVERR_URL=http://big-bear-popcornn-flaresolverr:8191
+      - FLARESOLVERR_URL=http://popcornn-flaresolverr:8191
       - SERVER_HOST=0.0.0.0
       - SERVER_PORT=3000
       - RUST_LOG=info

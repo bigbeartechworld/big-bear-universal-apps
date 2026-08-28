@@ -13,7 +13,7 @@
     "homepage": "https://popcornn.app",
     "source": "big-bear-universal",
     "created": "2026-08-25T08:25:00Z",
-    "updated": "2026-08-26T13:19:00Z"
+    "updated": "2026-08-28T12:47:00Z"
   },
   "visual": {
     "icon": "https://raw.githubusercontent.com/bobdivx/popcorn-server/main/assets/logo.png",
@@ -60,14 +60,14 @@
       },
       {
         "name": "BACKEND_URL",
-        "default": "http://big-bear-popcornn-server:3000",
-        "description": "Internal backend API URL",
+        "default": "http://popcornn-server:3000",
+        "description": "Internal backend API URL (Compose service name; survives Umbrel conversion)",
         "required": true
       },
       {
         "name": "FLARESOLVERR_URL",
-        "default": "http://big-bear-popcornn-flaresolverr:8191",
-        "description": "FlareSolverr URL for Cloudflare bypass",
+        "default": "http://popcornn-flaresolverr:8191",
+        "description": "FlareSolverr URL for Cloudflare bypass (Compose service name)",
         "required": true
       },
       {
