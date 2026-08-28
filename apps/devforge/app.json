@@ -1,1 +1,203 @@
-PLACEHOLDER
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "devforge",
+    "name": "DevForge",
+    "description": "Self-hosted PaaS platform with Git integration, Docker deployments, server management, and AI agents support. Deploy web applications, manage servers, and automate workflows with built-in MCP server capabilities. First registered user becomes administrator. AMD64 architecture only.",
+    "tagline": "Self-hosted PaaS with Git, Docker & AI agents",
+    "version": "4.1.3",
+    "author": "BigBearTechWorld",
+    "developer": "bobdivx",
+    "category": "BigBearCasaOS",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/bobdivx/devforge",
+    "source": "big-bear-universal",
+    "created": "2026-08-26T13:00:00Z",
+    "updated": "2026-08-28T13:25:00Z"
+  },
+  "visual": {
+    "icon": "https://raw.githubusercontent.com/bobdivx/big-bear-universal-apps/cursor/add-devforge-2833/apps/devforge/logo.png",
+    "logo": "https://raw.githubusercontent.com/bobdivx/big-bear-universal-apps/cursor/add-devforge-2833/apps/devforge/logo.png",
+    "thumbnail": "https://raw.githubusercontent.com/bobdivx/big-bear-universal-apps/cursor/add-devforge-2833/apps/devforge/thumbnail.png",
+    "screenshots": [
+      "https://raw.githubusercontent.com/bobdivx/big-bear-universal-apps/cursor/add-devforge-2833/apps/devforge/screenshot-1.png",
+      "https://raw.githubusercontent.com/bobdivx/big-bear-universal-apps/cursor/add-devforge-2833/apps/devforge/screenshot-2.png"
+    ]
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://github.com/bobdivx/devforge/blob/main/README.md",
+    "repository": "https://github.com/bobdivx/devforge",
+    "issues": "https://github.com/bobdivx/devforge/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64"
+    ],
+    "platform": "linux",
+    "main_service": "big-bear-devforge",
+    "default_port": "8080",
+    "main_image": "bobdivx/devforge",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "APP_URL",
+        "default": "http://[CASAOS_IP]:8080",
+        "description": "Application URL - Set to your NAS IP address with port 8080",
+        "required": true
+      },
+      {
+        "name": "APP_KEY",
+        "default": "base64:RGV2Rm9yZ2VaaW1hT1NTdG9yZUFwcEtleTMyYnl0ZSE=",
+        "description": "Application encryption key - Change in production",
+        "required": true
+      },
+      {
+        "name": "DB_PASSWORD",
+        "default": "devforge",
+        "description": "PostgreSQL database password - Default is 'devforge', change for production",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Application data directory"
+      },
+      {
+        "container": "/var/run/devforge-ssh",
+        "description": "SSH keys storage"
+      },
+      {
+        "container": "/var/run/devforge-applications",
+        "description": "Deployed applications data"
+      },
+      {
+        "container": "/var/run/devforge-databases",
+        "description": "Database backups and configurations"
+      },
+      {
+        "container": "/var/run/devforge-services",
+        "description": "Services configurations"
+      },
+      {
+        "container": "/var/run/devforge-backups",
+        "description": "Backups storage"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Web interface"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": [
+        "DevForge requires access to Docker socket (/var/run/docker.sock) to deploy applications",
+        "Set APP_URL to http://YOUR_NAS_IP:8080 for proper operation",
+        "Default database password is 'devforge' - change it for production deployments",
+        "AMD64 architecture only - not compatible with ARM devices",
+        "Requires at least 20GB of free disk space",
+        "First registered user will become the administrator",
+        "Images are available on Docker Hub under bobdivx/devforge"
+      ]
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080",
+      "volume_mappings": {
+        "devforge_data": "/DATA/AppData/$AppID/data",
+        "devforge_ssh": "/DATA/AppData/$AppID/ssh",
+        "devforge_applications": "/DATA/AppData/$AppID/applications",
+        "devforge_databases": "/DATA/AppData/$AppID/databases",
+        "devforge_services": "/DATA/AppData/$AppID/services",
+        "devforge_backups": "/DATA/AppData/$AppID/backups",
+        "devforge_pgdata": "/DATA/AppData/$AppID/pgdata",
+        "devforge_redis": "/DATA/AppData/$AppID/redis"
+      },
+      "port": "8080",
+      "category": "Developer"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "Developer",
+        "PaaS"
+      ],
+      "administrator_only": false,
+      "port": "8080"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64"
+      ],
+      "volume_mappings": {
+        "devforge_data": "data",
+        "devforge_ssh": "ssh",
+        "devforge_applications": "applications",
+        "devforge_databases": "databases",
+        "devforge_services": "services",
+        "devforge_backups": "backups",
+        "devforge_pgdata": "pgdata",
+        "devforge_redis": "redis"
+      },
+      "port": "8080"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8080"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8080"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "devforge_data": "data",
+        "devforge_ssh": "ssh",
+        "devforge_applications": "applications",
+        "devforge_databases": "databases",
+        "devforge_services": "services",
+        "devforge_backups": "backups",
+        "devforge_pgdata": "pgdata",
+        "devforge_redis": "redis"
+      },
+      "port": "8080"
+    }
+  },
+  "tags": [
+    "paas",
+    "deployment",
+    "docker",
+    "git",
+    "ci-cd",
+    "server-management",
+    "ai-agents",
+    "mcp",
+    "selfhosted",
+    "bigbear",
+    "bigbearcasaos",
+    "container",
+    "developer"
+  ]
+}
