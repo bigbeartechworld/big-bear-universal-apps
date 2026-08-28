@@ -13,19 +13,22 @@
     "homepage": "https://popcornn.app",
     "source": "big-bear-universal",
     "created": "2026-08-25T08:25:00Z",
-    "updated": "2026-08-28T12:52:00Z"
+    "updated": "2026-08-28T13:05:00Z"
   },
   "visual": {
-    "icon": "https://raw.githubusercontent.com/bobdivx/popcorn-server/main/assets/logo.png",
-    "thumbnail": "",
-    "screenshots": [],
-    "logo": "https://raw.githubusercontent.com/bobdivx/popcorn-server/main/assets/logo.png"
+    "icon": "https://raw.githubusercontent.com/bobdivx/big-bear-universal-apps/add-popcornn/apps/popcornn/logo.png",
+    "thumbnail": "https://raw.githubusercontent.com/bobdivx/big-bear-universal-apps/add-popcornn/apps/popcornn/thumbnail.png",
+    "screenshots": [
+      "https://raw.githubusercontent.com/bobdivx/big-bear-universal-apps/add-popcornn/apps/popcornn/screenshot-1.png",
+      "https://raw.githubusercontent.com/bobdivx/big-bear-universal-apps/add-popcornn/apps/popcornn/screenshot-2.png"
+    ],
+    "logo": "https://raw.githubusercontent.com/bobdivx/big-bear-universal-apps/add-popcornn/apps/popcornn/logo.png"
   },
   "resources": {
     "youtube": "",
-    "documentation": "https://github.com/bobdivx/popcorn-server/blob/main/README.md",
-    "repository": "https://github.com/bobdivx/popcorn-client,https://github.com/bobdivx/popcorn-server",
-    "issues": "https://github.com/bobdivx/popcorn-server/issues",
+    "documentation": "https://github.com/bobdivx/popcorn-client/blob/main/README.md",
+    "repository": "https://github.com/bobdivx/popcorn-client",
+    "issues": "https://github.com/bobdivx/popcorn-client/issues",
     "support": "https://community.bigbeartechworld.com/"
   },
   "technical": {
@@ -33,7 +36,7 @@
       "amd64"
     ],
     "platform": "linux",
-    "main_service": "big-bear-popcornn-client",
+    "main_service": "popcornn-client",
     "default_port": "4325",
     "main_image": "bobdivx/popcorn-frontend",
     "compose_file": "docker-compose.yml"
