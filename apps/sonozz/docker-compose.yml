@@ -8,7 +8,7 @@ services:
   # Main application service
   big-bear-sonozz:
     container_name: big-bear-sonozz
-    image: ghcr.io/bobdivx/sonozz:latest
+    image: ghcr.io/bobdivx/sonozz:main-8388d90
     restart: unless-stopped
     ports:
       - "4321:4321"
