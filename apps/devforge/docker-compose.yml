@@ -8,7 +8,7 @@ services:
   # Proxy service - Main entry point
   big-bear-devforge:
     container_name: big-bear-devforge
-    image: bobdivx/devforge:proxy
+    image: bobdivx/devforge:proxy-4.1.3
     restart: unless-stopped
     ports:
       - "8080:80"
