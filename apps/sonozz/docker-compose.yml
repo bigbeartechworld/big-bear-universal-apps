@@ -1,0 +1,26 @@
+# Configuration for SONOZZ - Self-hosted Music Studio Platform
+
+# Application Name
+name: big-bear-sonozz
+
+# Services used in the application
+services:
+  # Main application service
+  big-bear-sonozz:
+    container_name: big-bear-sonozz
+    image: ghcr.io/bobdivx/sonozz:main-8388d90
+    restart: unless-stopped
+    ports:
+      - "4321:4321"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=4321
+      - NODE_ENV=production
+      - TURSO_DATABASE_URL=
+      - TURSO_AUTH_TOKEN=
+      - AUTH_EMAIL=admin@example.com
+      - AUTH_PASSWORD=changeme
+      - AUTH_SECRET=change-this-to-a-long-random-string
+      - AUTH_SECURE=0
+
+# No volumes needed - all data stored in Turso database
