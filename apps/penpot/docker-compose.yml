@@ -10,7 +10,7 @@ services:
     # Name of the container
     container_name: big-bear-penpot-frontend
     # Image to be used for the container
-    image: penpotapp/frontend:2.17.1@sha256:ad24d567d72797cfdb312ad3b3e609321983c0c819abe8e7c72d99a603ac14fb
+    image: penpotapp/frontend:2.17.2@sha256:94fa2864d8fc0cd62245af95c03cca89306a7fd23c206a98a3e9dc9a376ea27e
     # Container restart policy
     restart: unless-stopped
     # Volumes to be mounted to the container
