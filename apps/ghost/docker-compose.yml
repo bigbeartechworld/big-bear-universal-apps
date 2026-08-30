@@ -9,7 +9,7 @@ services:
     # Name of the container
     container_name: big-bear-ghost
     # Docker image to be used
-    image: ghost:6.59.0-alpine@sha256:789dee0d3e8c462ee75813e4f0fda31809a70c98097ded9059a4c72553db909c
+    image: ghost:6.60.0-alpine@sha256:a726359fa1736560d7271f36dacbce0697773726a9373b1beb45e1f23b4c8f7a
     # Restart policy for the service
     restart: on-failure
     # Networks used by the service
