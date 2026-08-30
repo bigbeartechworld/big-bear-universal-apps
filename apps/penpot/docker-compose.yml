@@ -31,7 +31,7 @@ services:
   # Definition for penpot-backend service
   penpot-backend:
     # Docker image for the service
-    image: penpotapp/backend:2.17.1@sha256:7d06a62e5105ae6fb593cd43e4479fa4aff0e66ef2ec21395c130813a88212e2
+    image: penpotapp/backend:2.17.2@sha256:770b55f6e51bfcee49152b30858ca6a47143256de8d43953a50b952b5c60bb55
     # Name of the container
     container_name: big-bear-penpot-backend
     # Restart policy for the container
