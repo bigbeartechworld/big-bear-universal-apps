@@ -23,6 +23,28 @@ They pair by name into a single card carrying both. `Plex (local)`,
 `Plex - local` and `Plex.local` are read the same way. A service with one
 monitor shows one address.
 
+## If the dashboard comes up empty
+
+A blank grid has three quite different causes, and the dashboard names which
+one rather than leaving you to guess: Uptime Kuma is not reachable, the status
+page has no monitors on it (this one still reports `CONNECTED`), or your search
+and filters are hiding the cards. Each comes with the steps to fix it.
+
+## Optional: Claude and ChatGPT plan usage
+
+Two reporters can show how much of your Claude or ChatGPT plan is left, as dials
+above the card grid. Both ship idle and start for nobody — they hold a
+credential, so signing in is what turns the panel on:
+
+```
+docker exec -it service-dash-claude-usage claude auth login
+docker exec -it service-dash-codex-usage codex login --device-auth
+```
+
+`--device-auth` is not optional in a container: the default flow opens a browser
+at the container's own localhost and hangs. Idle, the two cost about 12MB of RAM
+between them.
+
 ## Why it needs rootful Docker
 
 The bundled Netdata Agent uses `pid: host`, `SYS_PTRACE`, `SYS_ADMIN` and

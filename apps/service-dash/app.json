@@ -3,9 +3,9 @@
   "metadata": {
     "id": "service-dash",
     "name": "Service Dash",
-    "description": "Service Dash turns an existing Uptime Kuma status page into a homelab dashboard. Each service gets one card carrying both of its addresses - the internal (local) URL you use at home and the external (public) URL you use away from it - so you open either one without keeping a second bookmark list. A switch in the top bar moves every card between the two at once. The pairing comes from Uptime Kuma itself: monitors named 'Plex' and 'Plex local' become one card with two addresses, so there is nothing to configure. Alongside the cards, a bundled Netdata Agent reports the health of the host itself: CPU, RAM, storage and live network throughput, plus the machine's LAN and WAN addresses. Around 2,900 service icons are matched automatically, with a searchable picker per card. Card settings and notes are shared across every browser that opens the dashboard, and changing them asks Uptime Kuma whether your session is real, so there is no second account to create. Signed out, service URLs and the host's own addresses are withheld entirely, so the dashboard can sit on a screen other people can see.",
+    "description": "Service Dash turns an existing Uptime Kuma status page into a homelab dashboard. Each service gets one card carrying both of its addresses - the internal (local) URL you use at home and the external (public) URL you use away from it - so you open either one without keeping a second bookmark list. A switch in the top bar moves every card between the two at once. The pairing comes from Uptime Kuma itself: monitors named 'Plex' and 'Plex local' become one card with two addresses, so there is nothing to configure. Alongside the cards, a bundled Netdata Agent reports the health of the host itself: CPU, RAM, storage and live network throughput, plus the machine's LAN and WAN addresses. Around 2,900 service icons are matched automatically, with a searchable picker per card. Card settings and notes are shared across every browser that opens the dashboard, and changing them asks Uptime Kuma whether your session is real, so there is no second account to create. Optionally, how much of your Claude or ChatGPT plan is left shows as dials above the grid, from two reporters that stay idle until you sign in to them. Signed out, service URLs and the host's own addresses are withheld entirely, so the dashboard can sit on a screen other people can see.",
     "tagline": "Every service's local and public URL on one card, beside the live health of the box running them",
-    "version": "1.3.3",
+    "version": "1.5.2",
     "author": "Chintan Vaghela",
     "developer": "Chintan Vaghela",
     "category": "Monitoring",
@@ -13,7 +13,7 @@
     "homepage": "https://github.com/cvaghela/service-dash",
     "source": "big-bear-universal",
     "created": "2026-08-27T00:00:00Z",
-    "updated": "2026-08-27T00:00:00Z"
+    "updated": "2026-08-30T00:00:00Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/cvaghela/service-dash@main/appstore/Apps/ServiceDash/icon.png",
@@ -74,6 +74,18 @@
         "default": "600",
         "description": "Starting value only - the dashboard's own settings page overrides it.",
         "required": false
+      },
+      {
+        "name": "CLAUDE_USAGE_REFRESH_SECONDS",
+        "default": "300",
+        "description": "How often the optional Claude usage reporter polls. Plan windows move slowly.",
+        "required": false
+      },
+      {
+        "name": "CODEX_USAGE_REFRESH_SECONDS",
+        "default": "300",
+        "description": "How often the optional Codex usage reporter polls.",
+        "required": false
       }
     ],
     "volumes": [
@@ -96,6 +108,18 @@
       {
         "container": "/var/cache/netdata",
         "description": "Netdata Agent cache"
+      },
+      {
+        "container": "/status",
+        "description": "Shared by the two AI usage reporters; served read-only by the dashboard"
+      },
+      {
+        "container": "/root/.claude",
+        "description": "Claude sign-in for the optional usage reporter"
+      },
+      {
+        "container": "/root/.codex",
+        "description": "Codex sign-in for the optional usage reporter"
       }
     ],
     "ports": [
@@ -115,7 +139,7 @@
         "en_us": "Service Dash reads your monitors from Uptime Kuma and does not install it for you. Install Uptime Kuma first and leave it on its default port 3001; if you run it elsewhere, change KUMA_PORT and KUMA_URL to match. Kuma must be on this same host. Then create a status page in Kuma, add the monitors you want on the dashboard, and note its slug - if it is not 'homelab', change STATUS_SLUG.\n\nLocal and public URLs come from how you name the monitors. Give a service two monitors: 'Plex' pointed at your public URL, and 'Plex local' pointed at your LAN URL. Service Dash pairs them by name into one card carrying both. 'Plex (local)', 'Plex - local' and 'Plex.local' work the same way. A service with only one monitor simply shows one address.\n\nThis stack needs rootful Docker. The bundled Netdata Agent uses pid: host, SYS_PTRACE, SYS_ADMIN and read-only mounts of the host root, /proc and /sys - that is what produces real host metrics, and rootless Docker cannot grant it."
       },
       "after_install": {
-        "en_us": "Open the dashboard on port 8888. Service URLs and the host's own LAN and WAN addresses read 'Locked' until you sign in with your Uptime Kuma account - signed out they are never sent to the browser at all. Signing in also unlocks the settings gear and the shared notes panel.\n\nTry it first at https://cvaghela.github.io/service-dash/demo/ - sign in there as test / Test."
+        "en_us": "Open the dashboard on port 8888. Service URLs and the host's own LAN and WAN addresses read 'Locked' until you sign in with your Uptime Kuma account - signed out they are never sent to the browser at all. Signing in also unlocks the settings gear and the shared notes panel.\n\nIf the grid is empty, the dashboard now says why and what to do about it - Uptime Kuma not reachable, a status page with no monitors on it, or filters hiding the cards.\n\nOptional: to show how much of your Claude or ChatGPT plan is left, sign in to a reporter with 'docker exec -it service-dash-claude-usage claude auth login' or 'docker exec -it service-dash-codex-usage codex login --device-auth'. Until you do, both sit idle and the panel stays hidden.\n\nTry it first at https://cvaghela.github.io/service-dash/demo/ - sign in there as test / Test."
       }
     }
   },
