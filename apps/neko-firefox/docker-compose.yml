@@ -10,7 +10,7 @@ services:
     # Name of the container
     container_name: neko-firefox
     # Image to be used for the container
-    image: m1k1o/neko:firefox@sha256:aa9e8bd52717d171075e42a27719837c06af70d03c7094e484850540d51b92f5
+    image: m1k1o/neko:firefox@sha256:7a8df662c49406d2e46d8dc57e4b2e9af09245e127081139eb3481179e5b2370
     # Container restart policy
     restart: unless-stopped
     # Shared memory size
