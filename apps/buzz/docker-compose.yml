@@ -2,7 +2,7 @@ name: buzz
 
 services:
   relay:
-    image: ghcr.io/block/buzz:main@sha256:af89efb2b8799163b0cafb6142a6f07a8f798dfdb8307a10d54283c23359b521
+    image: ghcr.io/block/buzz:main@sha256:aa5180ce58ac367a125a1c079bfde88f8c158daa99e1aa5df86e8814649669f5
     container_name: buzz-relay
     ports:
       - "3000:3000"
