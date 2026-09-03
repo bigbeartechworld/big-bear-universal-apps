@@ -2,7 +2,7 @@ name: big-bear-firefox # Name of the CasaOS application
 services:
   firefox:
     container_name: big-bear-firefox # Name of the Docker container
-    image: linuxserver/firefox:1152.0.6@sha256:bfdaa35e82334657b716dbc9e4d26cd5bf19e88105e81f2dfca95f86e2f136be # Docker image for the Firefox browser
+    image: linuxserver/firefox:1154.0.1@sha256:8304a67b19667d67162b007de23691f09e8f180854f7156881b276ac8109131a # Docker image for the Firefox browser
     ports:
       - "3000:3000" # Expose port 3000 for HTTP VNC access
       - "3001:3001" # Expose port 3001 for HTTPS VNC access
