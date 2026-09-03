@@ -100,7 +100,7 @@ services:
       - big-bear-penpot-network
   # Define the penpot-mailcatch service
   penpot-mailcatch:
-    image: sj26/mailcatcher:latest@sha256:5d153a4daadf0c266f29c3856085741f06ca1e3768671f4267622d3e3ffe5564
+    image: sj26/mailcatcher:latest@sha256:572048324658d2198e0a96785cca4f0260f2c4cadb2cb057bd837b9ee0c60533
     restart: always
     expose:
       - "1025" # Expose port 1025 for SMTP
