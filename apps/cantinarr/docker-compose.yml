@@ -8,7 +8,7 @@ services:
     ports:
       - "8585:8585"
     environment:
-      CANTINARR_PUSH_GATEWAY_URL: https://push.julian.codes
+      CANTINARR_PUSH_GATEWAY_URL: https://push.cantinarr.com
       CANTINARR_ARR_CALLBACK_URL: ""
     volumes:
       - cantinarr_config:/config

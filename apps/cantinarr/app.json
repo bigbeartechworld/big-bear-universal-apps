@@ -47,7 +47,7 @@
     "environment_variables": [
       {
         "name": "CANTINARR_PUSH_GATEWAY_URL",
-        "default": "https://push.julian.codes",
+        "default": "https://push.cantinarr.com",
         "description": "Push gateway for the companion iOS and Android apps. The server enrolls itself on first start with no signup; clear the value to disable push, or point it at your own gateway.",
         "required": false
       },
