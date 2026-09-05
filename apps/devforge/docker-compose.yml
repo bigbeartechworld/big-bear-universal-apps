@@ -1,0 +1,176 @@
+# Configuration for DevForge - Self-hosted PaaS Platform
+
+# Application Name
+name: big-bear-devforge
+
+# Services used in the application
+services:
+  # Proxy service - Main entry point
+  big-bear-devforge:
+    container_name: big-bear-devforge
+    image: bobdivx/devforge:proxy-4.1.3
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    depends_on:
+      - big-bear-devforge-api
+      - big-bear-devforge-web
+      - big-bear-devforge-realtime
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://127.0.0.1/ || exit 1
+      interval: 5s
+      retries: 10
+      timeout: 2s
+    networks:
+      - big_bear_devforge_network
+
+  # Web service - Frontend UI
+  big-bear-devforge-web:
+    container_name: big-bear-devforge-web
+    image: bobdivx/devforge:web-4.1.3
+    restart: unless-stopped
+    networks:
+      - big_bear_devforge_network
+
+  # API service - Backend application
+  big-bear-devforge-api:
+    container_name: big-bear-devforge-api
+    image: bobdivx/devforge:4.1.3
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - APP_ENV=production
+      - APP_ID=1
+      - APP_KEY=base64:RGV2Rm9yZ2VaaW1hT1NTdG9yZUFwcEtleTMyYnl0ZSE=
+      - APP_NAME=DevForge
+      - APP_URL=http://[CASAOS_IP]:8080
+      - DB_CONNECTION=pgsql
+      - DB_DATABASE=devforge
+      - DB_HOST=big-bear-devforge-db
+      - DB_PASSWORD=devforge
+      - DB_PORT=5432
+      - DB_USERNAME=devforge
+      - DEVFORGE_AGENTS_ENABLED=true
+      - DEVFORGE_ENABLED=true
+      - DEVFORGE_MCP_ENABLED=true
+      - HELPER_IMAGE=bobdivx/devforge
+      - PUSHER_APP_ID=devforge
+      - PUSHER_APP_KEY=devforge
+      - PUSHER_APP_SECRET=devforge
+      - PUSHER_BACKEND_HOST=big-bear-devforge-realtime
+      - PUSHER_BACKEND_PORT=6001
+      - PUSHER_PORT=6001
+      - PUSHER_SCHEME=http
+      - REDIS_HOST=big-bear-devforge-redis
+      - SESSION_SECURE_COOKIE=false
+    volumes:
+      - devforge_data:/data
+      - devforge_ssh:/var/run/devforge-ssh
+      - devforge_applications:/var/run/devforge-applications
+      - devforge_databases:/var/run/devforge-databases
+      - devforge_services:/var/run/devforge-services
+      - devforge_backups:/var/run/devforge-backups
+      - /var/run/docker.sock:/var/run/docker.sock
+    healthcheck:
+      test: curl --fail http://127.0.0.1:8080/api/health || exit 1
+      interval: 5s
+      retries: 10
+      timeout: 2s
+    depends_on:
+      big-bear-devforge-db:
+        condition: service_healthy
+      big-bear-devforge-redis:
+        condition: service_healthy
+      big-bear-devforge-realtime:
+        condition: service_started
+    networks:
+      - big_bear_devforge_network
+
+  # Database service - PostgreSQL
+  big-bear-devforge-db:
+    container_name: big-bear-devforge-db
+    image: postgres:15.14-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=devforge
+      - POSTGRES_USER=devforge
+      - POSTGRES_PASSWORD=devforge
+    volumes:
+      - devforge_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U devforge -d devforge"]
+      interval: 5s
+      retries: 10
+      timeout: 2s
+    networks:
+      - big_bear_devforge_network
+
+  # Realtime service - WebSocket server
+  big-bear-devforge-realtime:
+    container_name: big-bear-devforge-realtime
+    image: bobdivx/devforge:realtime-4.1.3
+    restart: unless-stopped
+    environment:
+      - SOKETI_DEBUG=false
+      - SOKETI_DEFAULT_APP_ID=devforge
+      - SOKETI_DEFAULT_APP_KEY=devforge
+      - SOKETI_DEFAULT_APP_SECRET=devforge
+    volumes:
+      - devforge_ssh:/var/run/devforge-ssh
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://127.0.0.1:6001/ready || exit 1
+      interval: 5s
+      retries: 10
+      timeout: 2s
+    networks:
+      - big_bear_devforge_network
+
+  # Redis service - Cache and queue
+  big-bear-devforge-redis:
+    container_name: big-bear-devforge-redis
+    image: redis:7.4.5-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--save", "20", "1"]
+    volumes:
+      - devforge_redis:/data
+    healthcheck:
+      test: redis-cli ping
+      interval: 5s
+      retries: 10
+      timeout: 2s
+    networks:
+      - big_bear_devforge_network
+
+# Networks
+networks:
+  big_bear_devforge_network:
+    name: big_bear_devforge_network
+    driver: bridge
+
+# Volumes for persistent data
+volumes:
+  devforge_data:
+    name: devforge_data
+    driver: local
+  devforge_ssh:
+    name: devforge_ssh
+    driver: local
+  devforge_applications:
+    name: devforge_applications
+    driver: local
+  devforge_databases:
+    name: devforge_databases
+    driver: local
+  devforge_services:
+    name: devforge_services
+    driver: local
+  devforge_backups:
+    name: devforge_backups
+    driver: local
+  devforge_pgdata:
+    name: devforge_pgdata
+    driver: local
+  devforge_redis:
+    name: devforge_redis
+    driver: local
