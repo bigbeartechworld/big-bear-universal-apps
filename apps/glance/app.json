@@ -5,7 +5,7 @@
     "name": "Glance",
     "description": "Glance is a self-hosted dashboard that puts all your feeds in one place.",
     "tagline": "Self-hosted dashboard for your feeds",
-    "version": "v0.8.5",
+    "version": "v0.8.6",
     "author": "BigBearTechWorld",
     "developer": "glanceapp",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://github.com/glanceapp/glance",
     "source": "big-bear-universal",
     "created": "2026-08-13T20:45:00Z",
-    "updated": "2026-08-13T20:45:00Z"
+    "updated": "2026-09-06T16:50:38.633Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/glance/logo.png",
