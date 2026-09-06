@@ -10,7 +10,7 @@ services:
     # Name of the container
     container_name: big-bear-budibase
     # Image to be used for the container
-    image: budibase/budibase:v3.43.0@sha256:1a589c2ed2163eda317ee7a6869aaf0bf1c2370147a24a77db2459fa2aa1ea33
+    image: budibase/budibase:v3.44.0@sha256:79a09831f46da5e67138ff13d95b26c8ff89cd484d398ac8ff85510e14ba8c8d
     # Container restart policy
     restart: unless-stopped
     # Volumes to be mounted to the container
