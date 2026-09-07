@@ -1,0 +1,29 @@
+services:
+  kanidm:
+    container_name: big-bear-kanidm
+    restart: "always"
+    image: kanidm/server:1.10.4
+    stop_grace_period: 30s
+    ports:
+      - "44300:8443"
+      - "3636:3636"
+    volumes:
+      - kanidm_data:/data
+      - kanidm_backups:/backups
+    environment:
+      - KANIDM_LOG_LEVEL=info
+      - KANIDM_BINDADDRESS="[::]:8443"
+      - KANIDM_LDAPBINDADDRESS="[::]:3636"
+      - KANIDM_DB_PATH="/data/kanidm.db"
+      - KANIDM_TLS_CHAIN="/data/chain.pem"
+      - KANIDM_TLS_KEY="/data/key.pem"
+      - KANIDM_DOMAIN="idm.example.com"
+      - KANIDM_ORIGIN="https://idm.example.com"
+      - KANIDM_HTTP_CLIENT_ADDRESS_INFO_X-FORWARD-FOR=""
+      - KANIDM_HTTP_CLIENT_ADDRESS_INFO_PROXY-V2=""
+      - KANIDM_ONLINE_BACKUP_PATH="/backups/"
+      - KANIDM_ONLINE_BACKUP_SCHEDULE="@daily"
+      - KANIDM_ONLINE_BACKUP_VERSIONS=7
+volumes:
+  kanidm_data:
+  kanidm_backups:
