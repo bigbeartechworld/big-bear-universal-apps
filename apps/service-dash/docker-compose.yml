@@ -1,0 +1,169 @@
+name: big-bear-service-dash
+
+services:
+  service-dash:
+    image: ghcr.io/cvaghela/service-dash:1.5.2@sha256:651a1ffe1ef73be124c7bd11e5c9c07b85b502b220cbb9d53ce6e1fcb9fb4a5b
+    container_name: service-dash
+    ports:
+      # Change 8888 only when a different host port is required.
+      - "8888:80"
+    environment:
+      # User configuration: edit these values directly when defaults differ.
+      KUMA_PORT: "3001"
+      STATUS_SLUG: "homelab"
+      # Use "auto" or an exact mount path reported by Netdata, such as "/",
+      # "/DATA", "/media/1TB-SSD-1", or "/mnt/storage".
+      STORAGE_MOUNT: "auto"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      netdata:
+        condition: service_healthy
+      docker-metadata:
+        condition: service_started
+      network-info:
+        condition: service_healthy
+      kuma-auth:
+        condition: service_healthy
+    volumes:
+      - networkinfo:/var/run/network-info:ro
+      # Written by the two AI usage reporters below. Read-only here: the
+      # dashboard serves the document, it never writes it.
+      - aiusage:/var/run/ai-usage:ro
+      # Card settings, filters and notes, shared by every browser and device.
+      - settings:/var/lib/service-dash
+    restart: unless-stopped
+
+  # Answers one question for nginx: is this browser really signed in to Uptime
+  # Kuma? Without it, saving settings would have to trust the browser's word.
+  kuma-auth:
+    image: ghcr.io/cvaghela/service-dash-kuma-auth:1.5.2@sha256:1d4ea01a5ec9a115e8c102d40fedf6b841bd7992a609e9ecb614636279c8408b
+    container_name: service-dash-kuma-auth
+    environment:
+      # Must point at the same Uptime Kuma as KUMA_PORT above — if you change
+      # one, change the other.
+      KUMA_URL: "http://host.docker.internal:3001"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('node:http').get('http://127.0.0.1:2371/healthz',r=>process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+    restart: unless-stopped
+
+  network-info:
+    image: ghcr.io/cvaghela/service-dash-network-info:1.5.2@sha256:3af5d95c109072d709c94c9b682c86fce2e19354bab2251a57f3a7216038fc8d
+    container_name: service-dash-network-info
+    network_mode: host
+    read_only: true
+    environment:
+      # Starting value only — the dashboard's settings page overrides it.
+      NETWORK_INFO_REFRESH_SECONDS: "600"
+    volumes:
+      - networkinfo:/status
+      # Read-only: the refresh interval is set on the dashboard's settings page.
+      - settings:/settings:ro
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "test", "-s", "/status/status.json"]
+      interval: 2s
+      timeout: 2s
+      retries: 15
+      start_period: 2s
+    restart: unless-stopped
+
+  docker-metadata:
+    image: ghcr.io/hectorm/cetusguard:v1@sha256:b3dc5d2042869dd714c75985d94bb8c259df53b325ec6b1a2b57bcc3eac17689
+    container_name: service-dash-docker-metadata
+    read_only: true
+    environment:
+      CETUSGUARD_BACKEND_ADDR: unix:///var/run/docker.sock
+      CETUSGUARD_FRONTEND_ADDR: tcp://0.0.0.0:2375
+      CETUSGUARD_RULES: |
+        GET %API_PREFIX_NETWORKS%(\?.*)?
+        GET %API_PREFIX_NETWORKS%/%NETWORK_ID_OR_NAME%(\?.*)?
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+
+  netdata:
+    image: netdata/netdata:stable@sha256:c45c71eb23ff3f1012bcda7832bf08c0b09954363557e84511bcfaf6cafa3aa8
+    container_name: service-dash-netdata
+    pid: host
+    environment:
+      DISABLE_TELEMETRY: "1"
+    cap_add:
+      - SYS_PTRACE
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - netdataconfig:/etc/netdata
+      - netdatalib:/var/lib/netdata
+      - netdatacache:/var/cache/netdata
+      - /:/host/root:ro,rslave
+      - /etc/hostname:/host/etc/hostname:ro
+      - /etc/passwd:/host/etc/passwd:ro
+      - /etc/group:/host/etc/group:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /etc/os-release:/host/etc/os-release:ro
+      - /var/log:/host/var/log:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /run/dbus:/run/dbus:ro
+    restart: unless-stopped
+
+  # Optional, and idle until you sign in. Reports how much of your Claude plan
+  # is left, as dials above the card grid. It holds a credential and carries
+  # Claude Code, so it starts for nobody by default -- signing in is what turns
+  # the panel on:
+  #   docker exec -it service-dash-claude-usage claude auth login
+  claude-usage:
+    image: ghcr.io/cvaghela/service-dash-claude-usage:1.5.2@sha256:300ee7eb003405d23b12a5399febc6f061db69c9faa490d7bcf26279059b6e67
+    container_name: service-dash-claude-usage
+    environment:
+      # Plan windows move slowly; polling harder gains nothing.
+      CLAUDE_USAGE_REFRESH_SECONDS: "300"
+    volumes:
+      - aiusage:/status
+      # The login. Without this a container rebuild signs you out.
+      - claudeauth:/root/.claude
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+
+  # The same for a ChatGPT/Codex plan. --device-auth is not optional in a
+  # container: the default flow opens a browser at the container's own
+  # localhost and hangs rather than failing.
+  #   docker exec -it service-dash-codex-usage codex login --device-auth
+  codex-usage:
+    image: ghcr.io/cvaghela/service-dash-codex-usage:1.5.2@sha256:9e6f78bce9178258fcdd6881a7f62e0d715174c692cced659499a368bf220b4a
+    container_name: service-dash-codex-usage
+    environment:
+      CODEX_USAGE_REFRESH_SECONDS: "300"
+    volumes:
+      - aiusage:/status
+      - codexauth:/root/.codex
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+
+volumes:
+  aiusage:
+  claudeauth:
+  codexauth:
+  networkinfo:
+  settings:
+  netdataconfig:
+  netdatalib:
+  netdatacache:
+
