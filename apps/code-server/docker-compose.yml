@@ -4,7 +4,7 @@ name: big-bear-code-server
 services:
   # Service name: app
   app:
-    image: linuxserver/code-server:4.134.0@sha256:212d588e21815316d6525abe8d14bb0114fc2cf0499f08e9e34a1b514b1055b9 # The Docker image to be used for the service
+    image: linuxserver/code-server:4.136.2@sha256:5d7aa5dbcf0ba770ee1a25151d110beefe37f400fa7a9108508f11f49627a548 # The Docker image to be used for the service
     container_name: code-server # Name of the container instance
     environment:
       - PUID=1000 # User ID under which code-server will run
