@@ -177,7 +177,7 @@ Validate apps against the JSON schema:
 | **bookstack** | BookStack is a simple, self-hosted, easy-to-use platform for organising and storing information. ... | `linuxserver/bookstack` | 26.05.20260608 | 8080 | [▶️](https://youtu.be/_jW4RjJm-6A) |  |
 | **Brave** | This Image contains a browser-accessible version of Brave. | `kasmweb/brave` | 1.15.0-rolling | 6901 | [▶️](https://youtu.be/CJ2x-yCW-co) |  |
 | **btop** | A monitor of resources. Software made by Aristocratos at https://github.com/aristocratos/btop | `bigbeartechworld/big-bear-btop` | 0.1.10 | 7681 | [▶️](https://youtu.be/mD52bujMt68) |  |
-| **Budibase** | Low code platform for creating internal tools, workflows, and admin panels in minutes. Supports P... | `budibase/budibase` | v3.44.0 | 8080 |  |  |
+| **Budibase** | Low code platform for creating internal tools, workflows, and admin panels in minutes. Supports P... | `budibase/budibase` | v3.44.1 | 8080 |  |  |
 | **Buzz** | Buzz is a self-hostable workspace for humans and agents from Block. It runs a Nostr relay, a REST... | `ghcr.io/block/buzz` | latest | 3000 |  | [📖](https://engineering.block.xyz/blog/run-your-own-buzz-relay) |
 | **cAdvisor** | cAdvisor (Container Advisor) provides container users an understanding of the resource usage and ... | `gcr.io/cadvisor/cadvisor` | v0.55.1 | 8085 |  |  |
 | **Cal.com** | The open source Calendly successor. You are in charge of your own data, workflow, and appearance.... | `calcom/cal.com` | v6.2.0 | 3000 |  |  |
@@ -187,7 +187,7 @@ Validate apps against the JSON schema:
 | **chrome** | This Image contains a browser-accessible version of chrome. | `kasmweb/chrome` | 1.15.0-rolling | 6902 | [▶️](https://youtu.be/jYm_Ih8VHAs) |  |
 | **chromium** | This Image contains a browser-accessible version of chromium. | `linuxserver/chromium` | version-6ae43f81 | 3000 | [▶️](https://youtu.be/ziy4c4n7KnU) |  |
 | **Cloudflared Web** | Cloudflared-web is a docker image that packages both cloudflared cli and a simple Web UI to easil... | `wisdomsky/cloudflared-web` | 2026.8.3 | 14333 | [▶️](https://youtu.be/JvyyolXJ0-A) | [📖](https://github.com/wisdomsky/cloudflared-web) |
-| **Code Server** | Run VS Code on any machine anywhere and access it in the browser. | `linuxserver/code-server` | 4.134.0 | 8080 | [▶️](https://youtu.be/aiYcwXDfgE8) |  |
+| **Code Server** | Run VS Code on any machine anywhere and access it in the browser. | `linuxserver/code-server` | 4.136.2 | 8080 | [▶️](https://youtu.be/aiYcwXDfgE8) |  |
 | **CodeX Docs** | CodeX Docs is a free docs application. It's based on Editor.js ecosystem which gives all modern o... | `ghcr.io/codex-team/codex.docs` | v2.2 | 3000 | [▶️](https://youtu.be/dKm2VJwam24) |  |
 | **Compose Toolbox** | Self-hosted tool to edit, validate, and get suggestions for docker-compose.yml files. | `ghcr.io/bluegoosemedia/composetoolbox` | latest | 3002 |  | [📖](https://github.com/bluegoosemedia/composetoolbox) |
 | **ConvertX** | A self-hosted online file converter. Supports over a thousand different formats. Written with Typ... | `ghcr.io/c4illin/convertx` | v0.17.0 | 3000 |  |  |
@@ -205,9 +205,9 @@ Validate apps against the JSON schema:
 | **Dockge** | A fancy, easy-to-use and reactive docker `compose.yaml` stack-oriented manager | `louislam/dockge` | 1.5.0 | 5001 | [▶️](https://youtu.be/8Z6psh-t5iU) |  |
 | **Dockhand** | Modern, efficient Docker management application providing real-time container management, Compose... | `fnsys/dockhand` | latest | 3003 |  | [📖](https://dockhand.pro/manual/) |
 | **Dockpeek** | A lightweight, self-hosted Docker dashboard that provides quick access to all running containers ... | `ghcr.io/dockpeek/dockpeek` | v1.7.2 | 3420 |  |  |
-| **Docmost** | Docmost is an open-source alternative to the likes of Notion and Confluence. Whether you're manag... | `docmost/docmost` | 0.95.0 | 3000 |  |  |
+| **Docmost** | Docmost is an open-source alternative to the likes of Notion and Confluence. Whether you're manag... | `docmost/docmost` | 0.96.0 | 3000 |  |  |
 | **Domain Locker** | 🌐 The all-in-one tool, for keeping track of your domain name portfolio. Got domain names? Get Do... | `ghcr.io/lissy93/domain-locker` | 0.2.4 | 8180 |  | [📖](https://github.com/Lissy93/domain-locker) |
-| **Dozzle** | Dozzle is a real-time log viewer for docker containers. | `amir20/dozzle` | v10.9.2 | 8888 | [▶️](https://youtu.be/lLLNDcHNOuM) |  |
+| **Dozzle** | Dozzle is a real-time log viewer for docker containers. | `amir20/dozzle` | v10.10.0 | 8888 | [▶️](https://youtu.be/lLLNDcHNOuM) |  |
 | **EJBCA Community** | The open-source public key infrastructure (PKI) and certificate authority (CA) software EJBCA is ... | `keyfactor/ejbca-ce` | 9.3.7 | 8443 |  | [📖](https://doc.primekey.com/ejbca/ejbca-introduction) |
 | **Ente Photos** | Ente is a self-hosted, end-to-end encrypted platform to store, share, and rediscover your photos ... | `ghcr.io/ente/web` | latest | 3000 |  | [📖](https://help.ente.io/self-hosting/) |
 | **Erugo** | A powerful, self-hosted file-sharing platform built with PHP and Laravel with a Vue.js frontend. ... | `wardy784/erugo` | 0.2.15 | 9997 |  |  |
@@ -215,7 +215,7 @@ Validate apps against the JSON schema:
 | **Excalidraw** | Virtual whiteboard for sketching hand-drawn like diagrams | `excalidraw/excalidraw` | latest | 8000 | [▶️](https://youtu.be/T4K6RDhieIA) |  |
 | **FarmOS (Legacy)** | farmOS is a web-based application for farm management, planning, and record keeping. It is develo... | `farmos/farmos` | 3.5.1 | 8080 |  |  |
 | **FarmOS v4** | farmOS is a web-based application for farm management, planning, and record keeping. It is develo... | `farmos/farmos` | 4.0.5 | 8083 |  | [📖](https://farmos.org/hosting/install/) |
-| **Faster-whisper** | Faster-whisper is a reimplementation of OpenAI's Whisper model using CTranslate2, which is a fast... | `linuxserver/faster-whisper` | 3.6.0 | 7575 |  |  |
+| **Faster-whisper** | Faster-whisper is a reimplementation of OpenAI's Whisper model using CTranslate2, which is a fast... | `linuxserver/faster-whisper` | 3.7.0 | 7575 |  |  |
 | **Fastfetch** | Fastfetch is a neofetch-like tool for fetching system information and displaying it prettily. It ... | `bigbeartechworld/big-bear-fastfetch` | 0.0.5 | 7681 | [▶️](https://youtu.be/pVBMvIMzfpw) |  |
 | **Filebrowser** | Reliable and Performant File Management Desktop Sync and File Sharing Tool. | `filebrowser/filebrowser` | v2.63.23-s6 | 8080 |  |  |
 | **FileBrowser Quantum** | A self-hosted web file manager forked from FileBrowser with advanced features including OIDC auth... | `gtstef/filebrowser` | 1.5.6-stable | 8700 |  |  |
@@ -228,7 +228,7 @@ Validate apps against the JSON schema:
 | **GemDigest Bot** | Simplify your reads, amplify your time! 📚✨ GemDigest is a Telegram bot that summarizes articles ... | `piero24/gemdigest` | 1.0 | 3333 |  |  |
 | **Genmon** | Generac (and other models) Generator Monitoring using a Raspberry Pi and WiFi | `bigbeartechworld/big-bear-genmon` | 2.0.01 | 8000 | [▶️](https://youtu.be/b0_zuVVeIP4) |  |
 | **Ghost** | Ghost is a free and open source blogging platform written in JavaScript and distributed under the... | `ghost` | 6.62.0-alpine | 2368 | [▶️](https://youtu.be/oJZK9vH4W4Y) |  |
-| **Ghostfolio** | Open Source Wealth Management Software. Angular + NestJS + Prisma + Nx + TypeScript 🤍 | `ghostfolio/ghostfolio` | 3.67.1 | 3333 | [▶️](https://youtu.be/CNe4-8Vyhos) |  |
+| **Ghostfolio** | Open Source Wealth Management Software. Angular + NestJS + Prisma + Nx + TypeScript 🤍 | `ghostfolio/ghostfolio` | 3.69.0 | 3333 | [▶️](https://youtu.be/CNe4-8Vyhos) |  |
 | **Gitea** | Gitea is a painless self-hosted all-in-one software development service. It includes Git hosting,... | `gitea/gitea` | 1.27.3 | 3000 |  | [📖](https://docs.gitea.com/) |
 | **Gitea Mirror** | Gitea Mirror is a modern web app for automatically mirroring repositories from GitHub to your sel... | `ghcr.io/raylabshq/gitea-mirror` | v3.15.10 | 4321 |  | [📖](https://community.bigbeartechworld.com/t/added-gitea-mirror-to-bigbearcasaos/3515?u=dragonfire1119#p-5962-documentation-6) |
 | **Gladys Assistant** | Gladys Assistant is a modern, privacy-first & open-source home automation software that runs anyw... | `gladysassistant/gladys` | v4.86.1 | 1080 | [▶️](https://youtu.be/l4GPomJMIT0) |  |
@@ -238,7 +238,7 @@ Validate apps against the JSON schema:
 | **GoAway** | GoAway is a lightweight DNS sinkhole that blocks ads, trackers, and malicious domains at the netw... | `pommee/goaway` | 0.63.17 | 8080 |  | [📖](https://community.bigbeartechworld.com/t/added-goaway-to-bigbearcasaos/4085) |
 | **Gotify** | a simple server for sending and receiving messages | `gotify/server` | 3.1.0 | 8091 |  |  |
 | **Guacamole** | Apache Guacamole is a free and open-source, cross-platform, clientless remote desktop gateway mai... | `guacamole/guacamole` | 1.6.0 | 8090 | [▶️](https://youtu.be/6cu0kfP50Jg) |  |
-| **Healthchecks** | Healthchecks is a watchdog for your cron jobs. It's a web server that listens for pings from your... | `linuxserver/healthchecks` | 4.3.20260824 | 8000 |  |  |
+| **Healthchecks** | Healthchecks is a watchdog for your cron jobs. It's a web server that listens for pings from your... | `linuxserver/healthchecks` | 4.4.20260907 | 8000 |  |  |
 | **Homarr** | Simplify the management of your server with Homarr - a sleek, modern dashboard that puts all of y... | `ghcr.io/ajnart/homarr` | 0.16.1 | 7575 | [▶️](https://youtu.be/H4rzZNO47Uk) |  |
 | **Homarr v1** | Homarr v1 - A sleek, modern dashboard for your server. This is the latest major version (v1.x) fr... | `ghcr.io/homarr-labs/homarr` | v1.63.0 | 7575 |  | [📖](https://homarr.dev/docs) |
 | **Home Assistant** | Open source home automation that puts local control and privacy first. Powered by a worldwide com... | `ghcr.io/home-assistant/home-assistant` | 2026.5.1 | 8123 | [▶️](https://youtu.be/YnCpj5sND_A) |  |
@@ -253,11 +253,11 @@ Validate apps against the JSON schema:
 | **Invoice Ninja** | Invoice Ninja is a free and open-source invoice and expense management system. It is a web-based ... | `invoiceninja/invoiceninja` | 5.13.37 | 8080 |  |  |
 | **IT Tools** | Collection of handy online tools for developers, with great UX as a web app. | `corentinth/it-tools` | 2023.11.2-7d94e11 | 8080 | [▶️](https://youtu.be/MlGypCrUJug) |  |
 | **Jellyseerr (Legacy)** | Jellyseerr is a free and open source software application for managing requests for your media li... | `fallenbagel/jellyseerr` | 2.7.3 | 5055 |  |  |
-| **Jellystat** | Jellystat is a free and open source Statistics App for Jellyfin! (This project is still in develo... | `cyfershepard/jellystat` | 1.1.11 | 3000 |  |  |
+| **Jellystat** | Jellystat is a free and open source Statistics App for Jellyfin! (This project is still in develo... | `cyfershepard/jellystat` | 1.1.12 | 3000 |  |  |
 | **jfa-go** | jfa-go is a user management app for Jellyfin (and Emby as 2nd class) that provides invite-based a... | `hrfee/jfa-go` | latest | 8056 |  |  |
 | **Jlesage Firefox** | The GUI of the application is accessed through a modern web browser (no installation or configura... | `jlesage/firefox` | v26.08.3 | 5800 | [▶️](https://youtu.be/JWhR8RKGh9Y) | [📖](https://community.bigbeartechworld.com/t/added-jlesage-firefox-to-bigbearcasaos/2506#p-4575-documentation-4) |
 | **Jlesage Handbrake** | The GUI of the application is accessed through a modern web browser (no installation or configura... | `jlesage/handbrake` | v26.08.2 | 5800 |  |  |
-| **joplin** | Note taking and to-do application with synchronisation | `joplin/server` | 3.7.1 | 22300 | [▶️](https://youtu.be/FjVyg0X-_zc) |  |
+| **joplin** | Note taking and to-do application with synchronisation | `joplin/server` | 3.7.2 | 22300 | [▶️](https://youtu.be/FjVyg0X-_zc) |  |
 | **Kasm** | The Container Streaming Platform - Streaming containerized apps and desktops to end-users. The Wo... | `linuxserver/kasm` | 1.120.20221218 | 3000 | [▶️](https://youtu.be/Fq7PlvRSvT4) |  |
 | **Kavita** | Kavita is a fast, feature rich, cross platform reading server | `jvmilazz0/kavita` | 0.9.1 | 5000 |  |  |
 | **KitchenOwl** | KitchenOwl is a self-hosted grocery list and recipe manager. Track what you need to buy, add reci... | `tombursch/kitchenowl` | v0.7.10 | 9287 |  | [📖](https://docs.kitchenowl.org/) |
@@ -285,7 +285,7 @@ Validate apps against the JSON schema:
 | **Mumble Server** | Mumble is a free, open source, low latency, high quality voice chat application. | `mumblevoip/mumble-server` | v1.4.230-6 | 64738 |  |  |
 | **Music Assistant** | Music Assistant is a music library manager for your offline and online music sources which can ea... | `ghcr.io/music-assistant/server` | 2.8.7 | 8095 |  |  |
 | **MySpeed** | MySpeed is a speed test analysis software that records your internet speed for up to 30 days. | `germannewsmaker/myspeed` | 1.0.9 | 5216 | [▶️](https://youtu.be/7roj87Fytz0) |  |
-| **n8n** | Free and open fair-code licensed node based Workflow Automation Tool. | `n8nio/n8n` | 2.37.3 | 5678 |  |  |
+| **n8n** | Free and open fair-code licensed node based Workflow Automation Tool. | `n8nio/n8n` | 2.39.0 | 5678 |  |  |
 | **Ncdu** | Ncdu is a disk usage analyzer with an ncurses interface. It is designed to find space hogs on a r... | `bigbeartechworld/big-bear-ncdu` | 0.0.9 | 7681 | [▶️](https://youtu.be/5RCTglGRXss) |  |
 | **Neko Firefox** | Welcome to Neko, a self-hosted virtual browser that runs in Docker and uses WebRTC technology. Ne... | `m1k1o/neko` | firefox | 8080 |  |  |
 | **NetAlertX (Legacy)** | WIFI / LAN intruder detector. Scans for devices connected to your network and alerts you if new a... | `jokobsk/netalertx` | 25.11.29 | 8080 |  |  |
@@ -299,9 +299,9 @@ Validate apps against the JSON schema:
 | **Nightlio** | Nightlio is a privacy-first mood tracker and daily journal designed for effortless self-hosting. ... | `ghcr.io/shirsakm/nightlio-frontend` | 0.1.7 | 5173 |  | [📖](https://github.com/shirsakm/nightlio#readme) |
 | **nightscout** | This acts as a web-based CGM (Continuous Glucose Monitor) to allow multiple caregivers to remotel... | `nightscout/cgm-remote-monitor` | 15.0.8 | 1337 | [▶️](https://youtu.be/ty0F0lo9kSo) |  |
 | **NocoDB** | NocoDB allows building no-code database solutions with ease of spreadsheets. Bring your own datab... | `nocodb/nocodb` | 0.301.5 | 8080 | [▶️](https://youtu.be/mO2YzWpBu4o) | [📖](https://community.bigbeartechworld.com/t/added-nocodb-to-big-bear-casaos/177) |
-| **Node-RED** | Node-RED is a programming tool for wiring together hardware devices, APIs and online services in ... | `nodered/node-red` | 5.0.6 | 1880 |  |  |
+| **Node-RED** | Node-RED is a programming tool for wiring together hardware devices, APIs and online services in ... | `nodered/node-red` | 5.0.7 | 1880 |  |  |
 | **Note Mark AIO** | Note Mark Aio is a self-hosted note taking app that allows you to create, organize, and share not... | `ghcr.io/enchant97/note-mark-aio` | 0.19.4 | 8000 |  |  |
-| **Nova DSO Tracker** | Nova DSO Tracker is a tool for astrophotographers to track Deep Space Objects, check observabilit... | `mrantonsg/nova-dso-tracker` | 6.3.0 | 5001 |  | [📖](https://nova-tracker.com) |
+| **Nova DSO Tracker** | Nova DSO Tracker is a tool for astrophotographers to track Deep Space Objects, check observabilit... | `mrantonsg/nova-dso-tracker` | 6.4.1 | 5001 |  | [📖](https://nova-tracker.com) |
 | **NPMPlus** | Docker container for managing Nginx proxy hosts with a simple, powerful interface | `zoeyvid/npmplus` | 449 | 81 |  |  |
 | **Ntfy.sh** | ntfy (pronounced notify) is a simple HTTP-based pub-sub notification service. It allows you to se... | `binwiederhier/ntfy` | v2.28.0 | 7200 | [▶️](https://youtu.be/wSWhtSNwTd8) |  |
 | **Obsidian** | Obsidian is a note-taking app that lets you create, link, and organize your notes on your device,... | `linuxserver/obsidian` | 1.13.7 | 3000 |  |  |
@@ -312,7 +312,7 @@ Validate apps against the JSON schema:
 | **Ollama - AMD** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.33.3-rocm | 11434 |  |  |
 | **Ollama - CPU** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.33.3 | 11434 |  |  |
 | **Ollama - NVIDIA** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.33.3 | 11434 |  |  |
-| **OneDev** | Self-hosted Git Server with Kanban and CI/CD | `1dev/server` | 16.5.11 | 6610 | [▶️](https://youtu.be/ps3JLYRB3SA) |  |
+| **OneDev** | Self-hosted Git Server with Kanban and CI/CD | `1dev/server` | 16.5.12 | 6610 | [▶️](https://youtu.be/ps3JLYRB3SA) |  |
 | **OnlyOffice** | Feature-rich web-based office suite with a vast range of collaborative capabilities | `onlyoffice/documentserver` | 9.1.0 | 7400 |  |  |
 | **Open WebUI** | Open WebUI is an extensible, feature-rich, and user-friendly self-hosted WebUI designed to operat... | `ghcr.io/open-webui/open-webui` | git-33e54a9 | 8080 |  |  |
 | **OpenClaw** | OpenClaw is a self-hosted AI agent platform that provides Claude AI integration through a local g... | `ghcr.io/openclaw/openclaw` | 2026.5.3-1 | 18789 |  | [📖](https://docs.openclaw.ai/install/docker) |
@@ -342,7 +342,7 @@ Validate apps against the JSON schema:
 | **Plex with NVIDIA GPU** | Stream Movies & TV Shows with NVIDIA GPU | `linuxserver/plex` | 1.43.3 | 32400 |  |  |
 | **Pocket ID** | Simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to you... | `ghcr.io/pocket-id/pocket-id` | v2.7 | 1411 |  | [📖](https://pocket-id.org/docs/introduction) |
 | **PodFetch** | PodFetch is a sleek and efficient self-hosted podcast manager written in Rust. It automatically d... | `samuel19982/podfetch` | v5.2.3 | 8000 |  | [📖](https://samtv12345.github.io/PodFetch/) |
-| **Portainer** | Irrespective of your industry, orchestration platform, or computing device, Portainer is the most... | `portainer/portainer-ce` | 2.44.0-alpine | 9443 | [▶️](https://youtu.be/GW4_OALLI_s) |  |
+| **Portainer** | Irrespective of your industry, orchestration platform, or computing device, Portainer is the most... | `portainer/portainer-ce` | 2.45.0-alpine | 9443 | [▶️](https://youtu.be/GW4_OALLI_s) |  |
 | **Portainer Agent** | Portainer uses the Portainer Agent container to communicate with the Portainer Server instance an... | `portainer/agent` | 2.45.0 | N/A |  |  |
 | **Portracker** | A self-hosted, real-time port monitoring and discovery tool that automatically discovers and maps... | `mostafawahied/portracker` | 1.3 | 4999 |  |  |
 | **Poste.io** | Full stack mail server solution with SSL TLS support. POP3s, SMTP(s), IMAPs, RSPAMD, Clamav, Roun... | `analogic/poste.io` | 2.5.16 | 8080 |  |  |
@@ -352,7 +352,7 @@ Validate apps against the JSON schema:
 | **Pterodactyl Wings** | Wings is Pterodactyl's server control plane, built for the rapidly changing gaming industry and d... | `ghcr.io/pterodactyl/wings` | v1.12.1 | 2022 | [▶️](https://youtu.be/p_140cc6_1g) |  |
 | **Python Matter Server** | This project implements a Matter Controller Server over WebSockets using the official Matter (for... | `ghcr.io/home-assistant-libs/python-matter-server` | 8.1.0 | 5580 |  |  |
 | **RackPeek** | A webui and CLI tool to discover, manage, and document your home lab and small-scale IT infrastru... | `aptacode/rackpeek` | v2.0.0 | 8095 |  | [📖](https://timmoth.github.io/RackPeek/docs/overview) |
-| **Rallly** | Rallly is an open-source scheduling and collaboration tool designed to make organizing events and... | `lukevella/rallly` | 4.13.1 | 3000 | [▶️](https://youtu.be/2MY3S6csrVw) | [📖](https://community.bigbeartechworld.com/t/added-rallly-to-bigbearcasaos/1012#instructions-3) |
+| **Rallly** | Rallly is an open-source scheduling and collaboration tool designed to make organizing events and... | `lukevella/rallly` | 4.14.0 | 3000 | [▶️](https://youtu.be/2MY3S6csrVw) | [📖](https://community.bigbeartechworld.com/t/added-rallly-to-bigbearcasaos/1012#instructions-3) |
 | **Reactive Resume** | A free and open-source resume builder that simplifies the process of creating, updating, and shar... | `amruthpillai/reactive-resume` | v5.2.9 | 3000 |  |  |
 | **Readeck** | Readeck is a simple web application that lets you save the precious readable content of web pages... | `codeberg.org/readeck/readeck` | 0.22.3 | 8000 |  |  |
 | **RetroArch** | Online retro games emulator.The RetroArch Web Player is RetroArch compiled through Emscripten. | `inglebard/retroarch-web` | latest | 8080 |  |  |
@@ -361,7 +361,7 @@ Validate apps against the JSON schema:
 | **RomM** | ROM manager for organizing, enriching, and playing retro games, with support for 400+ platforms. | `rommapp/romm` | 5.2.0 | 1080 |  | [📖](https://github.com/rommapp/romm/wiki) |
 | **RustFS** | RustFS is a high-performance, distributed object storage system built in Rust. It combines the si... | `rustfs/rustfs` | 1.0.0-alpha.71 | 9000 |  | [📖](https://community.bigbeartechworld.com/t/added-rustfs-to-bigbearuniversal-apps/5143#p-7884-documentation-5) |
 | **Scrutiny** | If you run a server with more than a couple of hard drives, you're probably already familiar with... | `ghcr.io/analogj/scrutiny` | master-omnibus | 38080 |  |  |
-| **Scrypted** | Scrypted is an open source video integration platform. Using various Plugins, Scrypted can receiv... | `koush/scrypted` | v0.144.3-noble-full | 10443 | [▶️](https://youtu.be/5uH0LaSyKTY) | [📖](https://community.bigbeartechworld.com/t/how-to-install-scrypted-on-casaos-using-bigbearcasaos/155) |
+| **Scrypted** | Scrypted is an open source video integration platform. Using various Plugins, Scrypted can receiv... | `koush/scrypted` | v0.146.1-noble-full | 10443 | [▶️](https://youtu.be/5uH0LaSyKTY) | [📖](https://community.bigbeartechworld.com/t/how-to-install-scrypted-on-casaos-using-bigbearcasaos/155) |
 | **seafile** | Seafile is an open source file sync and share platform, focusing on reliability and performance. ... | `seafileltd/seafile-mc` | 11.0.13 | 8080 |  |  |
 | **Seerr** | Seerr is a free and open source software application for managing requests for your media library... | `seerr/seerr` | v3.4.1 | 5056 |  | [📖](https://docs.seerr.dev) |
 | **Send Visee** | A fork of Mozilla's Firefox Send. Mozilla discontinued Send, this fork is a community effort to k... | `registry.gitlab.com/timvisee/send` | v3.4.27 | 1443 |  |  |
@@ -370,7 +370,7 @@ Validate apps against the JSON schema:
 | **Spacedrive** | Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed files... | `ghcr.io/spacedriveapp/spacedrive/server` | 0.4.2 | 8080 |  |  |
 | **Speedtest Tracker** | A Docker image to check your internet speed using Ookla's Speedtest service. Build using Laravel ... | `linuxserver/speedtest-tracker` | 1.15.0 | 8080 | [▶️](https://youtu.be/TLjS8xNNwis) |  |
 | **Spoolman** | Keep track of your inventory of 3D-printer filament spools. Spoolman is a self-hosted web service... | `ghcr.io/donkie/spoolman` | 0.23.1 | 7912 |  | [📖](https://community.bigbeartechworld.com/t/added-spoolman-to-bigbearuniversal-apps/5108#p-7792-documentation-4) |
-| **Stalwart Mail** | Stalwart Mail Server is an open-source mail server solution with JMAP, IMAP4, POP3, and SMTP supp... | `stalwartlabs/stalwart` | v0.16.20 | 8080 |  |  |
+| **Stalwart Mail** | Stalwart Mail Server is an open-source mail server solution with JMAP, IMAP4, POP3, and SMTP supp... | `stalwartlabs/stalwart` | v0.16.21 | 8080 |  |  |
 | **Stirling-PDF** | Stirling PDF - Local hosted web based PDF editor | `stirlingtools/stirling-pdf` | 2.14.3 | 8080 | [▶️](https://youtu.be/ZoPSPDvOPdo) | [📖](https://community.bigbeartechworld.com/t/added-stirling-pdf-to-bigbearcasaos/2265#p-4248-documentation-3) |
 | **Storyteller** | Storyteller is a self-hosted platform for ebook reading and library management. It supports multi... | `registry.gitlab.com/storyteller-platform/storyteller` | web-v2.6.0-experimental.14 | 8015 |  | [📖](https://storyteller-platform.gitlab.io/storyteller/docs/installation/self-hosting) |
 | **Syncthing** | Syncthing is a continuous file synchronization program. It synchronizes files between two or more... | `syncthing/syncthing` | 2.1 | 8384 |  |  |
@@ -381,20 +381,20 @@ Validate apps against the JSON schema:
 | **Traccar** | Traccar GPS Tracking System in Docker image. | `traccar/traccar` | 6.15-ubuntu | 8080 | [▶️](https://youtu.be/zn_tu9r6g-w) |  |
 | **Trilium** | Build your personal knowledge base with Trilium Notes | `triliumnext/trilium` | v0.105.0 | 8080 | [▶️](https://youtu.be/h5ISPmUuBHs) |  |
 | **Tududi** | tududi is a task and project management web application built with Sinatra. It allows users to ef... | `chrisvel/tududi` | 0.87 | 9292 |  |  |
-| **Tugtainer** | Tugtainer is a self-hosted app for automating updates of your docker containers with a web UI. It... | `quenary/tugtainer` | v1.34.3 | 9412 |  |  |
+| **Tugtainer** | Tugtainer is a self-hosted app for automating updates of your docker containers with a web UI. It... | `quenary/tugtainer` | v1.40.0 | 9412 |  |  |
 | **UISP** | All-in-one docker image for Ubiquiti UISP (formerly UNMS). Supports x86_64 and ARM (Raspberry Pi). | `nico640/docker-unms` | 2.4.155.1 | 10443 |  |  |
 | **Umami** | Umami is a simple, fast, privacy-focused alternative to Google Analytics. | `ghcr.io/umami-software/umami` | postgresql-latest | 3000 | [▶️](https://youtu.be/4DEF5fNf8hU) |  |
 | **Umbrel OS** | Umbrel is a personal server OS that makes self-hosting accessible to everyone. | `dockurr/umbrel` | 1.7.4 | 8080 | [▶️](https://youtu.be/O03CH-YLdk0) |  |
-| **Unifi Network Application** | Supports Zimaboards and PI's. The Unifi-network-application software is a powerful, enterprise wi... | `linuxserver/unifi-network-application` | 10.5.67 | 8443 | [▶️](https://youtu.be/JCe-r_SHCe8) |  |
-| **Unifi Network Application** | The Unifi-network-application software is a powerful, enterprise wireless software engine ideal f... | `linuxserver/unifi-network-application` | 10.5.67 | 8443 | [▶️](https://youtu.be/JCe-r_SHCe8) |  |
+| **Unifi Network Application** | Supports Zimaboards and PI's. The Unifi-network-application software is a powerful, enterprise wi... | `linuxserver/unifi-network-application` | 10.6.101 | 8443 | [▶️](https://youtu.be/JCe-r_SHCe8) |  |
+| **Unifi Network Application** | The Unifi-network-application software is a powerful, enterprise wireless software engine ideal f... | `linuxserver/unifi-network-application` | 10.6.101 | 8443 | [▶️](https://youtu.be/JCe-r_SHCe8) |  |
 | **Upsnap** | A simple wake on lan web app written with SvelteKit, Go and PocketBase. | `ghcr.io/seriousm4x/upsnap` | 5.3.4 | 8090 |  |  |
 | **Uptime Kuma** | A fancy self-hosted monitoring tool | `louislam/uptime-kuma` | 2 | 3001 | [▶️](https://youtu.be/Why5NU_Wafw) |  |
 | **VERT** | VERT is a file conversion utility that uses WebAssembly to convert files on your device instead o... | `ghcr.io/vert-sh/vert` | sha-a1b0b15 | 3030 |  | [📖](https://github.com/VERT-sh/VERT/blob/main/docs/DOCKER.md) |
 | **Vikunja (Legacy)** | The open-source, self-hostable to-do app. Organize everything, on all platforms. | `vikunja/vikunja` | 1.1.0 | 8081 | [▶️](https://youtu.be/T-dNbdIttoI) |  |
-| **Vikunja v2** | The open-source, self-hostable to-do app. Organize everything, on all platforms. | `vikunja/vikunja` | 2.5.0 | 8082 | [▶️](https://youtu.be/T-dNbdIttoI) | [📖](https://vikunja.io/docs/api-login-session-migration/) |
-| **Viseron** | Viseron is a self-hosted, local only NVR and AI Computer Vision software | `roflcoopter/viseron` | 3.6.1 | 8888 |  |  |
+| **Vikunja v2** | The open-source, self-hostable to-do app. Organize everything, on all platforms. | `vikunja/vikunja` | 2.6.0 | 8082 | [▶️](https://youtu.be/T-dNbdIttoI) | [📖](https://vikunja.io/docs/api-login-session-migration/) |
+| **Viseron** | Viseron is a self-hosted, local only NVR and AI Computer Vision software | `roflcoopter/viseron` | 3.6.2 | 8888 |  |  |
 | **Wallabag** | Wallabag is a self-hosted application for saving web pages. Unlike other services, Wallabag is fr... | `wallabag/wallabag` | 2.6.14 | 8080 |  |  |
-| **Wallos** | Wallos: Open-Source Personal Subscription Tracker | `bellamy/wallos` | 5.5.0 | 8282 | [▶️](https://youtu.be/feYTW02YDb8) |  |
+| **Wallos** | Wallos: Open-Source Personal Subscription Tracker | `bellamy/wallos` | 5.6.0 | 8282 | [▶️](https://youtu.be/feYTW02YDb8) |  |
 | **Warracker** | A self-hosted warranty tracker | `ghcr.io/sassanix/warracker/main` | 1.0.2 | 8005 |  |  |
 | **WatchYourLAN** | Lightweight network IP scanner. Can be used to notify about new hosts and monitor host online/off... | `aceberg/watchyourlan` | 2.1.4 | 8840 | [▶️](https://youtu.be/LaYZjvUJ9U8) |  |
 | **What's Up Docker** | Gets you notified when new versions of your Docker containers are available and lets you react th... | `fmartinou/whats-up-docker` | 6.6.1 | 3000 |  |  |
@@ -404,7 +404,7 @@ Validate apps against the JSON schema:
 | **WordPress (Legacy)** | Initially started as a blogging tool in 2003, it has evolved into a highly flexible CMS that powe... | `wordpress` | 6.9.4 | 8080 | [▶️](https://youtu.be/j5M4qlRCbYs) |  |
 | **WordPress v7** | Initially started as a blogging tool in 2003, it has evolved into a highly flexible CMS that powe... | `wordpress` | 7.1.0 | 8084 | [▶️](https://youtu.be/j5M4qlRCbYs) |  |
 | **Write Freely** | WriteFreely is a clean, minimalist publishing platform made for writers. Start a blog, share know... | `nephatrine/write-freely` | 0.16 | 8080 |  |  |
-| **Zigbee to MQTT bridge** | Zigbee to MQTT bridge, get rid of your proprietary Zigbee bridges | `koenkk/zigbee2mqtt` | 2.13.0 | 8080 |  |  |
+| **Zigbee to MQTT bridge** | Zigbee to MQTT bridge, get rid of your proprietary Zigbee bridges | `koenkk/zigbee2mqtt` | 2.14.1 | 8080 |  |  |
 | **zipline** | A ShareX/file upload server that is easy to use, packed with features, and with an easy setup! | `ghcr.io/diced/zipline` | 3.7.13 | 3000 |  |  |
 | **Zotero** | Zotero is a free, easy-to-use tool to help you collect, organize, annotate, cite, and share resea... | `linuxserver/zotero` | 9.0.20260417 | 3000 |  |  |
 
