@@ -36,6 +36,9 @@ jobs:
       - name: Run Runtipi converter test suite
         run: bash scripts/tests/test-convert-runtipi.sh
 
+      - name: Run Cosmos converter test suite
+        run: bash scripts/tests/test-convert-cosmos.sh
+
   validate-apps:
     name: Validate App Definitions
     runs-on: ubuntu-latest
