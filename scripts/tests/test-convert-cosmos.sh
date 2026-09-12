@@ -77,7 +77,7 @@ assert_eq "$JSON_CMD_TYPE" "string" "json command is string"
 assert_eq "$(printf '%s' "$EP_VAL" | awk '{print NF}')" "2" "entrypoint Fields token count"
 rm -rf "$TMP"
 
-section "multiline sh -c seed cannot live in entrypoint; seed moves to post_install"
+section "multiline sh -c seed cannot live in entrypoint; original script persists on the volume"
 TMP="$(mktemp -d)"
 make_app "$TMP" "seedy" 'services:
   app:
@@ -98,6 +98,8 @@ make_app "$TMP" "seedy" 'services:
         exec /app/app --config /app/config/app.yml
     ports:
       - "8080:8080"
+    volumes:
+      - seedy_config:/app/config
 '
 bash "$REPO/scripts/convert-to-platforms.sh" -i "$TMP/apps" -p cosmos -o "$TMP/out" >/dev/null 2>&1
 OUT="$(cosmos_out "$TMP" "seedy")"
@@ -108,12 +110,63 @@ JSON_EP_TYPE="$(jq -r '.["cosmos-installer"].services.seedy.entrypoint | type' "
 assert_eq "$EP_TYPE" "!!str" "seed yml entrypoint is string"
 assert_eq "$JSON_EP_TYPE" "string" "seed json entrypoint is string"
 assert_contains "$EP_VAL" "/bin/sh -c" "entrypoint still invokes sh -c"
-assert_contains "$EP_VAL" "until(cat</tmp/cosmos-ready)" "entrypoint waits for seed sentinel"
+assert_contains "$EP_VAL" "until(cat</app/config/.cosmos-run)" "wait-loop keys off volume path not /tmp"
+if [[ "$EP_VAL" == *"/tmp/"* ]]; then echo "FAIL: wait-loop uses ephemeral /tmp"; fail=1; else echo "ok: wait-loop not on /tmp"; fi
 if [[ "$EP_VAL" == *"name: Home"* ]]; then echo "FAIL: seed yaml leaked into entrypoint"; fail=1; else echo "ok: seed yaml not in entrypoint"; fi
-assert_contains "$PI" "name: Home" "post_install writes starter yaml"
-assert_contains "$PI" "touch /tmp/cosmos-ready" "post_install writes sentinel"
-if [[ "$PI" == *"exec /app/app"* ]]; then echo "FAIL: post_install still execs app (deadlocks docker exec)"; fail=1; else echo "ok: post_install does not exec app"; fi
-assert_contains "$EP_VAL" "exec,/app/app,--config,/app/config/app.yml" "wait-loop execs original binary"
+assert_contains "$PI" "/app/config/.cosmos-run" "post_install writes run script onto the volume"
+assert_contains "$PI" "name: Home" "run script still contains starter yaml"
+assert_contains "$PI" "exec /app/app --config /app/config/app.yml" "run script keeps original exec"
+assert_eq "$(printf '%s' "$EP_VAL" | awk '{print NF}')" "5" "wait-loop Fields token count"
+assert_eq "$(printf '%s' "$EP_VAL" | awk '{print $5}')" "sleep,1" "Fields \$1 is sleep,1"
+rm -rf "$TMP"
+
+section "command-form sh -c with whitespace uses the same volume run script"
+TMP="$(mktemp -d)"
+make_app "$TMP" "cmdsh" 'services:
+  app:
+    image: nginx:alpine
+    container_name: cmdsh
+    entrypoint: /bin/sh
+    command:
+      - -c
+      - echo hello && exec nginx
+    ports:
+      - "8080:8080"
+    volumes:
+      - cmdsh_data:/data
+'
+bash "$REPO/scripts/convert-to-platforms.sh" -i "$TMP/apps" -p cosmos -o "$TMP/out" >/dev/null 2>&1
+OUT="$(cosmos_out "$TMP" "cmdsh")"
+EP_VAL="$(yq eval '.services.app.entrypoint' "$OUT/docker-compose.yml")"
+CMD_TYPE="$(yq eval '.services.app.command | type' "$OUT/docker-compose.yml")"
+PI="$(yq eval '.services.app.post_install[0] // ""' "$OUT/docker-compose.yml")"
+assert_contains "$EP_VAL" "until(cat</data/.cosmos-run)" "command sh -c waits on volume run script"
+assert_contains "$PI" "echo hello && exec nginx" "original command script persisted"
+if [[ "$CMD_TYPE" == "!!seq" ]]; then echo "FAIL: command still a sequence"; fail=1; else echo "ok: command no longer a sequence"; fi
+rm -rf "$TMP"
+
+section "sh -c without exec still persists the script (no naive join)"
+TMP="$(mktemp -d)"
+make_app "$TMP" "noexec" 'services:
+  app:
+    image: nginx:alpine
+    container_name: noexec
+    entrypoint:
+      - /bin/sh
+      - -c
+      - echo hello world
+    ports:
+      - "8080:8080"
+    volumes:
+      - noexec_data:/data
+'
+bash "$REPO/scripts/convert-to-platforms.sh" -i "$TMP/apps" -p cosmos -o "$TMP/out" >/dev/null 2>&1
+OUT="$(cosmos_out "$TMP" "noexec")"
+EP_VAL="$(yq eval '.services.app.entrypoint' "$OUT/docker-compose.yml")"
+PI="$(yq eval '.services.app.post_install[0] // ""' "$OUT/docker-compose.yml")"
+assert_contains "$EP_VAL" "until(cat</data/.cosmos-run)" "no-exec sh -c still waits on run script"
+assert_contains "$PI" "echo hello world" "no-exec script persisted"
+if [[ "$EP_VAL" == *"echo hello world"* ]]; then echo "FAIL: no-exec script leaked into entrypoint string"; fail=1; else echo "ok: no-exec script not joined into entrypoint"; fi
 rm -rf "$TMP"
 
 section "glance (issue 2532): cosmos artifacts must not emit entrypoint arrays"
@@ -128,8 +181,10 @@ assert_eq "$([[ -f "$G/cosmos-compose.json" ]] && echo yes)" "yes" "glance cosmo
 assert_eq "$EP_TYPE" "!!str" "glance yml entrypoint is string (DS003)"
 assert_eq "$JSON_EP_TYPE" "string" "glance json entrypoint is string (DS003)"
 assert_contains "$PI" "type: calendar" "glance post_install seeds starter dashboard"
-assert_contains "$PI" "touch /tmp/cosmos-ready" "glance post_install writes sentinel"
+assert_contains "$PI" "/app/config/.cosmos-run" "glance run script lives on the config volume"
+assert_contains "$EP_VAL" "until(cat</app/config/.cosmos-run)" "glance waits on volume run script"
 if [[ "$EP_VAL" == *"type: calendar"* ]]; then echo "FAIL: glance yaml leaked into cosmos entrypoint"; fail=1; else echo "ok: glance yaml not in cosmos entrypoint"; fi
+if [[ "$EP_VAL" == *"/tmp/"* ]]; then echo "FAIL: glance wait-loop uses /tmp"; fail=1; else echo "ok: glance wait-loop not on /tmp"; fi
 rm -rf "$TMP"
 
 section "casaos glance keeps exec-form entrypoint (real compose)"

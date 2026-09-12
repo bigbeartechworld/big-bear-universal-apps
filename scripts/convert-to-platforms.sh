@@ -1629,59 +1629,97 @@ convert_to_dockge() {
 }
 
 # Cosmos CreateService types entrypoint and command as strings, then
-# strings.Fields the value. Exec-form arrays in compose become JSON/YAML
-# sequences and 400 (DS003). Join token lists; for `/bin/sh -c` scripts
-# that contain whitespace, move the script to post_install (which is
-# exec'd as one string) and wait on a sentinel before the original exec.
-cosmos_exec_csv_from_script() {
-    local script="$1"
-    local exec_line
-    exec_line=$(printf '%s\n' "$script" | sed -n 's/^[[:space:]]*exec //p' | tail -1)
-    [[ -z "$exec_line" ]] && return 1
-    printf 'exec,%s' "${exec_line// /,}"
+# strings.Fields the value. Exec-form arrays 400 (DS003). Token lists
+# join. Whitespace-bearing /bin/sh -c scripts cannot round-trip through
+# Fields: persist the original script on the first volume target so
+# recreate/auto-update still find it, and wait on that path.
+cosmos_is_shell() {
+    case "$1" in
+        /bin/sh|sh|/bin/bash|bash) return 0 ;;
+        *) return 1 ;;
+    esac
 }
 
-cosmos_script_without_exec() {
-    local script="$1"
-    printf '%s\n' "$script" | sed '/^[[:space:]]*exec /d'
+cosmos_persist_dir() {
+    local compose_file="$1" service_name="$2"
+    local vtype vol target
+    vtype=$(service_name="$service_name" yq eval '.services[strenv(service_name)].volumes[0] | type' "$compose_file" 2>/dev/null || echo "null")
+    if [[ "$vtype" == "!!map" ]]; then
+        target=$(service_name="$service_name" yq eval '.services[strenv(service_name)].volumes[0].target // ""' "$compose_file")
+    elif [[ "$vtype" == "!!str" ]]; then
+        vol=$(service_name="$service_name" yq eval '.services[strenv(service_name)].volumes[0] // ""' "$compose_file")
+        target=$(printf '%s' "$vol" | awk -F: '{if (NF>=2) print $2; else print $1}')
+    fi
+    if [[ -z "$target" || "$target" == "null" || "$target" == *[[:space:]]* ]]; then
+        printf '%s' "/tmp"
+    else
+        printf '%s' "$target"
+    fi
+}
+
+cosmos_stringify_seq_field() {
+    local compose_file="$1" service_name="$2" field="$3"
+    local joined
+    joined=$(service_name="$service_name" field="$field" yq eval '.services[strenv(service_name)][strenv(field)] | join(" ")' "$compose_file")
+    service_name="$service_name" field="$field" joined="$joined" yq eval '.services[strenv(service_name)][strenv(field)] = strenv(joined)' -i "$compose_file"
+}
+
+cosmos_persist_sh_c_script() {
+    local compose_file="$1" service_name="$2" script="$3"
+    local persist run_file wait_ep seed
+    persist=$(cosmos_persist_dir "$compose_file" "$service_name")
+    run_file="${persist}/.cosmos-run"
+    seed="mkdir -p ${persist}
+cat > ${run_file}.tmp <<'BB_COSMOS_RUN'
+#!/bin/sh
+${script}
+BB_COSMOS_RUN
+chmod +x ${run_file}.tmp
+mv ${run_file}.tmp ${run_file}"
+    wait_ep="/bin/sh -c until(cat<${run_file})2>/dev/null;do(IFS=,;s=\$1;\$s);done;${run_file} dummy sleep,1"
+    service_name="$service_name" wait_ep="$wait_ep" yq eval '.services[strenv(service_name)].entrypoint = strenv(wait_ep)' -i "$compose_file"
+    service_name="$service_name" seed="$seed" yq eval '.services[strenv(service_name)].post_install[0] = strenv(seed)' -i "$compose_file"
+    service_name="$service_name" yq eval 'del(.services[strenv(service_name)].command)' -i "$compose_file"
 }
 
 adapt_compose_exec_for_cosmos() {
     local compose_file="$1"
-    local service_name ep_type cmd_type ep0 ep1 ep_script exec_csv joined wait_ep seed
+    local service_name ep_type cmd_type ep0 ep1 ep2 cmd0 cmd1 cmd2 adapted
 
     local all_services
     all_services=$(yq eval '.services | keys | .[]' "$compose_file" 2>/dev/null || echo "")
 
     while IFS= read -r service_name; do
         [[ -z "$service_name" ]] && continue
+        adapted=0
 
         ep_type=$(service_name="$service_name" yq eval '.services[strenv(service_name)].entrypoint | type' "$compose_file" 2>/dev/null || echo "null")
         if [[ "$ep_type" == "!!seq" ]]; then
             ep0=$(service_name="$service_name" yq eval '.services[strenv(service_name)].entrypoint[0] // ""' "$compose_file")
             ep1=$(service_name="$service_name" yq eval '.services[strenv(service_name)].entrypoint[1] // ""' "$compose_file")
-            ep_script=$(service_name="$service_name" yq eval '.services[strenv(service_name)].entrypoint[2] // ""' "$compose_file")
-            if [[ "$ep1" == "-c" && ( "$ep0" == "/bin/sh" || "$ep0" == "sh" || "$ep0" == "/bin/bash" || "$ep0" == "bash" ) && "$ep_script" == *[[:space:]]* ]]; then
-                exec_csv=$(cosmos_exec_csv_from_script "$ep_script" || true)
-                if [[ -n "$exec_csv" ]]; then
-                    seed="$(cosmos_script_without_exec "$ep_script")"$'\n'"touch /tmp/cosmos-ready"
-                    wait_ep='/bin/sh -c until(cat</tmp/cosmos-ready)2>/dev/null;do(IFS=,;s=$1;$s);done;IFS=,;z=$2;$z dummy sleep,1 '"$exec_csv"
-                    service_name="$service_name" wait_ep="$wait_ep" yq eval '.services[strenv(service_name)].entrypoint = strenv(wait_ep)' -i "$compose_file"
-                    service_name="$service_name" seed="$seed" yq eval '.services[strenv(service_name)].post_install[0] = strenv(seed)' -i "$compose_file"
-                else
-                    joined=$(service_name="$service_name" yq eval '.services[strenv(service_name)].entrypoint | join(" ")' "$compose_file")
-                    service_name="$service_name" joined="$joined" yq eval '.services[strenv(service_name)].entrypoint = strenv(joined)' -i "$compose_file"
-                fi
+            ep2=$(service_name="$service_name" yq eval '.services[strenv(service_name)].entrypoint[2] // ""' "$compose_file")
+            if cosmos_is_shell "$ep0" && [[ "$ep1" == "-c" && "$ep2" == *[[:space:]]* ]]; then
+                cosmos_persist_sh_c_script "$compose_file" "$service_name" "$ep2"
+                adapted=1
             else
-                joined=$(service_name="$service_name" yq eval '.services[strenv(service_name)].entrypoint | join(" ")' "$compose_file")
-                service_name="$service_name" joined="$joined" yq eval '.services[strenv(service_name)].entrypoint = strenv(joined)' -i "$compose_file"
+                cosmos_stringify_seq_field "$compose_file" "$service_name" "entrypoint"
             fi
         fi
 
+        [[ "$adapted" -eq 1 ]] && continue
+
         cmd_type=$(service_name="$service_name" yq eval '.services[strenv(service_name)].command | type' "$compose_file" 2>/dev/null || echo "null")
         if [[ "$cmd_type" == "!!seq" ]]; then
-            joined=$(service_name="$service_name" yq eval '.services[strenv(service_name)].command | join(" ")' "$compose_file")
-            service_name="$service_name" joined="$joined" yq eval '.services[strenv(service_name)].command = strenv(joined)' -i "$compose_file"
+            cmd0=$(service_name="$service_name" yq eval '.services[strenv(service_name)].command[0] // ""' "$compose_file")
+            cmd1=$(service_name="$service_name" yq eval '.services[strenv(service_name)].command[1] // ""' "$compose_file")
+            cmd2=$(service_name="$service_name" yq eval '.services[strenv(service_name)].command[2] // ""' "$compose_file")
+            if [[ "$cmd0" == "-c" && "$cmd1" == *[[:space:]]* ]]; then
+                cosmos_persist_sh_c_script "$compose_file" "$service_name" "$cmd1"
+            elif cosmos_is_shell "$cmd0" && [[ "$cmd1" == "-c" && "$cmd2" == *[[:space:]]* ]]; then
+                cosmos_persist_sh_c_script "$compose_file" "$service_name" "$cmd2"
+            else
+                cosmos_stringify_seq_field "$compose_file" "$service_name" "command"
+            fi
         fi
     done <<< "$all_services"
 }
