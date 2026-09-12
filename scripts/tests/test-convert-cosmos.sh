@@ -142,7 +142,43 @@ VOLS="$(yq eval '.services.app.volumes[]' "$OUT/docker-compose.yml")"
 assert_contains "$EP_VAL" "until(cat</var/lib/cosmos-run/.cosmos-run)" "no-volume injects persist dir"
 if [[ "$EP_VAL" == *"/tmp/"* ]]; then echo "FAIL: no-volume wait-loop uses /tmp"; fail=1; else echo "ok: no-volume wait-loop not on /tmp"; fi
 assert_contains "$PI" "/var/lib/cosmos-run/.cosmos-run" "no-volume post_install writes injected persist"
-assert_contains "$VOLS" "cosmos-run:/var/lib/cosmos-run" "no-volume service mounts persist volume"
+assert_contains "$VOLS" "cosmos-run-app:/var/lib/cosmos-run" "no-volume service mounts persist volume"
+rm -rf "$TMP"
+
+section "two no-volume sh -c services must not share a persist volume"
+TMP="$(mktemp -d)"
+make_app "$TMP" "twins" 'services:
+  app:
+    image: nginx:alpine
+    container_name: twins-app
+    entrypoint:
+      - /bin/sh
+      - -c
+      - echo from app; exec nginx
+    ports:
+      - "8080:8080"
+  worker:
+    image: nginx:alpine
+    container_name: twins-worker
+    command:
+      - /bin/sh
+      - -c
+      - echo from worker; exec nginx
+'
+bash "$REPO/scripts/convert-to-platforms.sh" -i "$TMP/apps" -p cosmos -o "$TMP/out" >/dev/null 2>&1
+OUT="$(cosmos_out "$TMP" "twins")"
+APP_VOLS="$(yq eval '.services.app.volumes[]' "$OUT/docker-compose.yml")"
+WORKER_VOLS="$(yq eval '.services.worker.volumes[]' "$OUT/docker-compose.yml")"
+APP_PI="$(yq eval '.services.app.post_install[0] // ""' "$OUT/docker-compose.yml")"
+WORKER_PI="$(yq eval '.services.worker.post_install[0] // ""' "$OUT/docker-compose.yml")"
+assert_contains "$APP_VOLS" "cosmos-run-app:/var/lib/cosmos-run" "app persist volume is service-specific"
+assert_contains "$WORKER_VOLS" "cosmos-run-worker:/var/lib/cosmos-run" "worker persist volume is service-specific"
+if [[ "$APP_VOLS" == *cosmos-run-worker* ]]; then echo "FAIL: app mounted worker persist volume"; fail=1; else echo "ok: app did not mount worker persist volume"; fi
+if [[ "$WORKER_VOLS" == *cosmos-run-app* ]]; then echo "FAIL: worker mounted app persist volume"; fail=1; else echo "ok: worker did not mount app persist volume"; fi
+assert_contains "$APP_PI" "echo from app" "app post_install keeps app script"
+assert_contains "$WORKER_PI" "echo from worker" "worker post_install keeps worker script"
+if [[ "$APP_PI" == *"echo from worker"* ]]; then echo "FAIL: app post_install contains worker script"; fail=1; else echo "ok: app post_install is not worker script"; fi
+if [[ "$WORKER_PI" == *"echo from app"* ]]; then echo "FAIL: worker post_install contains app script"; fail=1; else echo "ok: worker post_install is not app script"; fi
 rm -rf "$TMP"
 
 section "Compose dollar-dollar unescapes in persisted script"

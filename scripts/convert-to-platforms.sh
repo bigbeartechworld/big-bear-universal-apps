@@ -1674,10 +1674,20 @@ cosmos_persist_dir() {
     done
 }
 
+cosmos_safe_service_name() {
+    local raw="$1" safe
+    safe=$(printf '%s' "$raw" | sed 's/[^A-Za-z0-9._-]/-/g')
+    [[ -z "$safe" ]] && safe="svc"
+    printf '%s' "$safe"
+}
+
 cosmos_ensure_persist_volume() {
     local compose_file="$1" service_name="$2"
-    service_name="$service_name" yq eval '.services[strenv(service_name)].volumes += ["cosmos-run:/var/lib/cosmos-run"]' -i "$compose_file"
-    yq eval '.volumes.cosmos-run.driver = "local"' -i "$compose_file"
+    local vol_name mount
+    vol_name="cosmos-run-$(cosmos_safe_service_name "$service_name")"
+    mount="${vol_name}:/var/lib/cosmos-run"
+    service_name="$service_name" mount="$mount" yq eval '.services[strenv(service_name)].volumes += [strenv(mount)]' -i "$compose_file"
+    vol_name="$vol_name" yq eval '.volumes[strenv(vol_name)].driver = "local"' -i "$compose_file"
 }
 
 cosmos_stringify_seq_field() {
