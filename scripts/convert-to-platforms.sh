@@ -1628,6 +1628,64 @@ convert_to_dockge() {
     print_success "Converted $app_name for Dockge"
 }
 
+# Cosmos CreateService types entrypoint and command as strings, then
+# strings.Fields the value. Exec-form arrays in compose become JSON/YAML
+# sequences and 400 (DS003). Join token lists; for `/bin/sh -c` scripts
+# that contain whitespace, move the script to post_install (which is
+# exec'd as one string) and wait on a sentinel before the original exec.
+cosmos_exec_csv_from_script() {
+    local script="$1"
+    local exec_line
+    exec_line=$(printf '%s\n' "$script" | sed -n 's/^[[:space:]]*exec //p' | tail -1)
+    [[ -z "$exec_line" ]] && return 1
+    printf 'exec,%s' "${exec_line// /,}"
+}
+
+cosmos_script_without_exec() {
+    local script="$1"
+    printf '%s\n' "$script" | sed '/^[[:space:]]*exec /d'
+}
+
+adapt_compose_exec_for_cosmos() {
+    local compose_file="$1"
+    local service_name ep_type cmd_type ep0 ep1 ep_script exec_csv joined wait_ep seed
+
+    local all_services
+    all_services=$(yq eval '.services | keys | .[]' "$compose_file" 2>/dev/null || echo "")
+
+    while IFS= read -r service_name; do
+        [[ -z "$service_name" ]] && continue
+
+        ep_type=$(service_name="$service_name" yq eval '.services[strenv(service_name)].entrypoint | type' "$compose_file" 2>/dev/null || echo "null")
+        if [[ "$ep_type" == "!!seq" ]]; then
+            ep0=$(service_name="$service_name" yq eval '.services[strenv(service_name)].entrypoint[0] // ""' "$compose_file")
+            ep1=$(service_name="$service_name" yq eval '.services[strenv(service_name)].entrypoint[1] // ""' "$compose_file")
+            ep_script=$(service_name="$service_name" yq eval '.services[strenv(service_name)].entrypoint[2] // ""' "$compose_file")
+            if [[ "$ep1" == "-c" && ( "$ep0" == "/bin/sh" || "$ep0" == "sh" || "$ep0" == "/bin/bash" || "$ep0" == "bash" ) && "$ep_script" == *[[:space:]]* ]]; then
+                exec_csv=$(cosmos_exec_csv_from_script "$ep_script" || true)
+                if [[ -n "$exec_csv" ]]; then
+                    seed="$(cosmos_script_without_exec "$ep_script")"$'\n'"touch /tmp/cosmos-ready"
+                    wait_ep='/bin/sh -c until(cat</tmp/cosmos-ready)2>/dev/null;do(IFS=,;s=$1;$s);done;IFS=,;z=$2;$z dummy sleep,1 '"$exec_csv"
+                    service_name="$service_name" wait_ep="$wait_ep" yq eval '.services[strenv(service_name)].entrypoint = strenv(wait_ep)' -i "$compose_file"
+                    service_name="$service_name" seed="$seed" yq eval '.services[strenv(service_name)].post_install[0] = strenv(seed)' -i "$compose_file"
+                else
+                    joined=$(service_name="$service_name" yq eval '.services[strenv(service_name)].entrypoint | join(" ")' "$compose_file")
+                    service_name="$service_name" joined="$joined" yq eval '.services[strenv(service_name)].entrypoint = strenv(joined)' -i "$compose_file"
+                fi
+            else
+                joined=$(service_name="$service_name" yq eval '.services[strenv(service_name)].entrypoint | join(" ")' "$compose_file")
+                service_name="$service_name" joined="$joined" yq eval '.services[strenv(service_name)].entrypoint = strenv(joined)' -i "$compose_file"
+            fi
+        fi
+
+        cmd_type=$(service_name="$service_name" yq eval '.services[strenv(service_name)].command | type' "$compose_file" 2>/dev/null || echo "null")
+        if [[ "$cmd_type" == "!!seq" ]]; then
+            joined=$(service_name="$service_name" yq eval '.services[strenv(service_name)].command | join(" ")' "$compose_file")
+            service_name="$service_name" joined="$joined" yq eval '.services[strenv(service_name)].command = strenv(joined)' -i "$compose_file"
+        fi
+    done <<< "$all_services"
+}
+
 # Convert to Cosmos format
 convert_to_cosmos() {
     local app_name="$1"
@@ -1646,6 +1704,7 @@ convert_to_cosmos() {
     # Create temporary compose file with big-bear- prefix
     local temp_compose=$(mktemp)
     adjust_compose_for_platform "$app_dir/docker-compose.yml" "$temp_compose" "cosmos" "$app_name"
+    adapt_compose_exec_for_cosmos "$temp_compose"
     
     # Escape APP_NAME for JSON in routes
     local name_for_routes="${APP_NAME}"
