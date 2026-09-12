@@ -142,7 +142,7 @@ VOLS="$(yq eval '.services.app.volumes[]' "$OUT/docker-compose.yml")"
 assert_contains "$EP_VAL" "until(cat</var/lib/cosmos-run/.cosmos-run)" "no-volume injects persist dir"
 if [[ "$EP_VAL" == *"/tmp/"* ]]; then echo "FAIL: no-volume wait-loop uses /tmp"; fail=1; else echo "ok: no-volume wait-loop not on /tmp"; fi
 assert_contains "$PI" "/var/lib/cosmos-run/.cosmos-run" "no-volume post_install writes injected persist"
-assert_contains "$VOLS" "cosmos-run-app:/var/lib/cosmos-run" "no-volume service mounts persist volume"
+assert_contains "$VOLS" "cosmos-run-novol-app:/var/lib/cosmos-run" "no-volume persist volume is app+service scoped"
 rm -rf "$TMP"
 
 section "two no-volume sh -c services must not share a persist volume"
@@ -171,14 +171,48 @@ APP_VOLS="$(yq eval '.services.app.volumes[]' "$OUT/docker-compose.yml")"
 WORKER_VOLS="$(yq eval '.services.worker.volumes[]' "$OUT/docker-compose.yml")"
 APP_PI="$(yq eval '.services.app.post_install[0] // ""' "$OUT/docker-compose.yml")"
 WORKER_PI="$(yq eval '.services.worker.post_install[0] // ""' "$OUT/docker-compose.yml")"
-assert_contains "$APP_VOLS" "cosmos-run-app:/var/lib/cosmos-run" "app persist volume is service-specific"
-assert_contains "$WORKER_VOLS" "cosmos-run-worker:/var/lib/cosmos-run" "worker persist volume is service-specific"
-if [[ "$APP_VOLS" == *cosmos-run-worker* ]]; then echo "FAIL: app mounted worker persist volume"; fail=1; else echo "ok: app did not mount worker persist volume"; fi
-if [[ "$WORKER_VOLS" == *cosmos-run-app* ]]; then echo "FAIL: worker mounted app persist volume"; fail=1; else echo "ok: worker did not mount app persist volume"; fi
+assert_contains "$APP_VOLS" "cosmos-run-twins-app:/var/lib/cosmos-run" "app persist volume is app+service scoped"
+assert_contains "$WORKER_VOLS" "cosmos-run-twins-worker:/var/lib/cosmos-run" "worker persist volume is app+service scoped"
+if [[ "$APP_VOLS" == *cosmos-run-twins-worker* ]]; then echo "FAIL: app mounted worker persist volume"; fail=1; else echo "ok: app did not mount worker persist volume"; fi
+if [[ "$WORKER_VOLS" == *cosmos-run-twins-app* ]]; then echo "FAIL: worker mounted app persist volume"; fail=1; else echo "ok: worker did not mount app persist volume"; fi
 assert_contains "$APP_PI" "echo from app" "app post_install keeps app script"
 assert_contains "$WORKER_PI" "echo from worker" "worker post_install keeps worker script"
 if [[ "$APP_PI" == *"echo from worker"* ]]; then echo "FAIL: app post_install contains worker script"; fail=1; else echo "ok: app post_install is not worker script"; fi
 if [[ "$WORKER_PI" == *"echo from app"* ]]; then echo "FAIL: worker post_install contains app script"; fail=1; else echo "ok: worker post_install is not app script"; fi
+rm -rf "$TMP"
+
+section "two apps with service named app must not share a host volume"
+TMP="$(mktemp -d)"
+make_app "$TMP" "alpha" 'services:
+  app:
+    image: nginx:alpine
+    container_name: alpha
+    entrypoint:
+      - /bin/sh
+      - -c
+      - echo from alpha; exec nginx
+    ports:
+      - "8080:8080"
+'
+make_app "$TMP" "beta" 'services:
+  app:
+    image: nginx:alpine
+    container_name: beta
+    entrypoint:
+      - /bin/sh
+      - -c
+      - echo from beta; exec nginx
+    ports:
+      - "8080:8080"
+'
+bash "$REPO/scripts/convert-to-platforms.sh" -i "$TMP/apps" -p cosmos -a alpha -o "$TMP/out" >/dev/null 2>&1
+bash "$REPO/scripts/convert-to-platforms.sh" -i "$TMP/apps" -p cosmos -a beta -o "$TMP/out" >/dev/null 2>&1
+ALPHA_VOLS="$(yq eval '.services.app.volumes[]' "$TMP/out/cosmos/alpha/docker-compose.yml")"
+BETA_VOLS="$(yq eval '.services.app.volumes[]' "$TMP/out/cosmos/beta/docker-compose.yml")"
+assert_contains "$ALPHA_VOLS" "cosmos-run-alpha-app:/var/lib/cosmos-run" "alpha persist volume includes app id"
+assert_contains "$BETA_VOLS" "cosmos-run-beta-app:/var/lib/cosmos-run" "beta persist volume includes app id"
+if [[ "$ALPHA_VOLS" == *cosmos-run-beta-app* ]]; then echo "FAIL: alpha mounted beta persist volume"; fail=1; else echo "ok: alpha volume is not beta's"; fi
+if [[ "$BETA_VOLS" == *cosmos-run-alpha-app* ]]; then echo "FAIL: beta mounted alpha persist volume"; fail=1; else echo "ok: beta volume is not alpha's"; fi
 rm -rf "$TMP"
 
 section "Compose dollar-dollar unescapes in persisted script"

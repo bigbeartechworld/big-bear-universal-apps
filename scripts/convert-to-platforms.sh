@@ -1682,9 +1682,9 @@ cosmos_safe_service_name() {
 }
 
 cosmos_ensure_persist_volume() {
-    local compose_file="$1" service_name="$2"
+    local compose_file="$1" app_name="$2" service_name="$3"
     local vol_name mount
-    vol_name="cosmos-run-$(cosmos_safe_service_name "$service_name")"
+    vol_name="cosmos-run-$(cosmos_safe_service_name "$app_name")-$(cosmos_safe_service_name "$service_name")"
     mount="${vol_name}:/var/lib/cosmos-run"
     service_name="$service_name" mount="$mount" yq eval '.services[strenv(service_name)].volumes += [strenv(mount)]' -i "$compose_file"
     vol_name="$vol_name" yq eval '.volumes[strenv(vol_name)].driver = "local"' -i "$compose_file"
@@ -1698,11 +1698,11 @@ cosmos_stringify_seq_field() {
 }
 
 cosmos_persist_sh_c_script() {
-    local compose_file="$1" service_name="$2" script="$3"
+    local compose_file="$1" app_name="$2" service_name="$3" script="$4"
     local persist run_file wait_ep seed
     persist=$(cosmos_persist_dir "$compose_file" "$service_name")
     if [[ -z "$persist" ]]; then
-        cosmos_ensure_persist_volume "$compose_file" "$service_name"
+        cosmos_ensure_persist_volume "$compose_file" "$app_name" "$service_name"
         persist="/var/lib/cosmos-run"
     fi
     script="${script//\$\$/\$}"
@@ -1722,6 +1722,7 @@ mv ${run_file}.tmp ${run_file}"
 
 adapt_compose_exec_for_cosmos() {
     local compose_file="$1"
+    local app_name="$2"
     local service_name ep_type cmd_type ep0 ep1 ep2 cmd0 cmd1 cmd2 adapted
 
     local all_services
@@ -1737,7 +1738,7 @@ adapt_compose_exec_for_cosmos() {
             ep1=$(service_name="$service_name" yq eval '.services[strenv(service_name)].entrypoint[1] // ""' "$compose_file")
             ep2=$(service_name="$service_name" yq eval '.services[strenv(service_name)].entrypoint[2] // ""' "$compose_file")
             if cosmos_is_shell "$ep0" && [[ "$ep1" == "-c" && "$ep2" == *[[:space:]]* ]]; then
-                cosmos_persist_sh_c_script "$compose_file" "$service_name" "$ep2"
+                cosmos_persist_sh_c_script "$compose_file" "$app_name" "$service_name" "$ep2"
                 adapted=1
             else
                 cosmos_stringify_seq_field "$compose_file" "$service_name" "entrypoint"
@@ -1752,9 +1753,9 @@ adapt_compose_exec_for_cosmos() {
             cmd1=$(service_name="$service_name" yq eval '.services[strenv(service_name)].command[1] // ""' "$compose_file")
             cmd2=$(service_name="$service_name" yq eval '.services[strenv(service_name)].command[2] // ""' "$compose_file")
             if [[ "$cmd0" == "-c" && "$cmd1" == *[[:space:]]* ]]; then
-                cosmos_persist_sh_c_script "$compose_file" "$service_name" "$cmd1"
+                cosmos_persist_sh_c_script "$compose_file" "$app_name" "$service_name" "$cmd1"
             elif cosmos_is_shell "$cmd0" && [[ "$cmd1" == "-c" && "$cmd2" == *[[:space:]]* ]]; then
-                cosmos_persist_sh_c_script "$compose_file" "$service_name" "$cmd2"
+                cosmos_persist_sh_c_script "$compose_file" "$app_name" "$service_name" "$cmd2"
             else
                 cosmos_stringify_seq_field "$compose_file" "$service_name" "command"
             fi
@@ -1780,7 +1781,7 @@ convert_to_cosmos() {
     # Create temporary compose file with big-bear- prefix
     local temp_compose=$(mktemp)
     adjust_compose_for_platform "$app_dir/docker-compose.yml" "$temp_compose" "cosmos" "$app_name"
-    adapt_compose_exec_for_cosmos "$temp_compose"
+    adapt_compose_exec_for_cosmos "$temp_compose" "$app_name"
     
     # Escape APP_NAME for JSON in routes
     local name_for_routes="${APP_NAME}"
