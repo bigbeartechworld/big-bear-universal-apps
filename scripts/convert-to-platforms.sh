@@ -1640,21 +1640,44 @@ cosmos_is_shell() {
     esac
 }
 
+cosmos_volume_target_ok() {
+    local vol="$1" target="$2"
+    [[ -z "$target" || "$target" == "null" || "$target" != /* || "$target" == *[[:space:]]* ]] && return 1
+    [[ "$target" == "/var/run/docker.sock" || "$target" == "/run/docker.sock" ]] && return 1
+    [[ "$vol" == *":ro" || "$vol" == *":ro,"* ]] && return 1
+    return 0
+}
+
 cosmos_persist_dir() {
     local compose_file="$1" service_name="$2"
-    local vtype vol target
-    vtype=$(service_name="$service_name" yq eval '.services[strenv(service_name)].volumes[0] | type' "$compose_file" 2>/dev/null || echo "null")
-    if [[ "$vtype" == "!!map" ]]; then
-        target=$(service_name="$service_name" yq eval '.services[strenv(service_name)].volumes[0].target // ""' "$compose_file")
-    elif [[ "$vtype" == "!!str" ]]; then
-        vol=$(service_name="$service_name" yq eval '.services[strenv(service_name)].volumes[0] // ""' "$compose_file")
-        target=$(printf '%s' "$vol" | awk -F: '{if (NF>=2) print $2; else print $1}')
-    fi
-    if [[ -z "$target" || "$target" == "null" || "$target" == *[[:space:]]* ]]; then
-        printf '%s' "/tmp"
-    else
-        printf '%s' "$target"
-    fi
+    local n i vtype vol target
+    n=$(service_name="$service_name" yq eval '.services[strenv(service_name)].volumes | length' "$compose_file" 2>/dev/null || echo "0")
+    [[ "$n" == "null" || -z "$n" ]] && n=0
+    for ((i=0; i<n; i++)); do
+        vtype=$(service_name="$service_name" i="$i" yq eval '.services[strenv(service_name)].volumes[env(i)] | type' "$compose_file" 2>/dev/null || echo "null")
+        vol=""
+        target=""
+        if [[ "$vtype" == "!!map" ]]; then
+            target=$(service_name="$service_name" i="$i" yq eval '.services[strenv(service_name)].volumes[env(i)].target // ""' "$compose_file")
+            vol=$(service_name="$service_name" i="$i" yq eval '.services[strenv(service_name)].volumes[env(i)].read_only // ""' "$compose_file")
+            [[ "$vol" == "true" ]] && continue
+        elif [[ "$vtype" == "!!str" ]]; then
+            vol=$(service_name="$service_name" i="$i" yq eval '.services[strenv(service_name)].volumes[env(i)] // ""' "$compose_file")
+            target=$(printf '%s' "$vol" | awk -F: '{if (NF>=2) print $2; else print $1}')
+        else
+            continue
+        fi
+        if cosmos_volume_target_ok "$vol" "$target"; then
+            printf '%s' "$target"
+            return
+        fi
+    done
+}
+
+cosmos_ensure_persist_volume() {
+    local compose_file="$1" service_name="$2"
+    service_name="$service_name" yq eval '.services[strenv(service_name)].volumes += ["cosmos-run:/var/lib/cosmos-run"]' -i "$compose_file"
+    yq eval '.volumes.cosmos-run.driver = "local"' -i "$compose_file"
 }
 
 cosmos_stringify_seq_field() {
@@ -1668,6 +1691,11 @@ cosmos_persist_sh_c_script() {
     local compose_file="$1" service_name="$2" script="$3"
     local persist run_file wait_ep seed
     persist=$(cosmos_persist_dir "$compose_file" "$service_name")
+    if [[ -z "$persist" ]]; then
+        cosmos_ensure_persist_volume "$compose_file" "$service_name"
+        persist="/var/lib/cosmos-run"
+    fi
+    script="${script//\$\$/\$}"
     run_file="${persist}/.cosmos-run"
     seed="mkdir -p ${persist}
 cat > ${run_file}.tmp <<'BB_COSMOS_RUN'
@@ -1676,7 +1704,7 @@ ${script}
 BB_COSMOS_RUN
 chmod +x ${run_file}.tmp
 mv ${run_file}.tmp ${run_file}"
-    wait_ep="/bin/sh -c until(cat<${run_file})2>/dev/null;do(IFS=,;s=\$1;\$s);done;${run_file} dummy sleep,1"
+    wait_ep="/bin/sh -c until(cat<${run_file})2>/dev/null;do(IFS=,;s=\$1;\$s);done;IFS=,;z=\$2;\$z dummy sleep,1 exec,${run_file}"
     service_name="$service_name" wait_ep="$wait_ep" yq eval '.services[strenv(service_name)].entrypoint = strenv(wait_ep)' -i "$compose_file"
     service_name="$service_name" seed="$seed" yq eval '.services[strenv(service_name)].post_install[0] = strenv(seed)' -i "$compose_file"
     service_name="$service_name" yq eval 'del(.services[strenv(service_name)].command)' -i "$compose_file"

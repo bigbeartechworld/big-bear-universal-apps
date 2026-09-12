@@ -116,8 +116,57 @@ if [[ "$EP_VAL" == *"name: Home"* ]]; then echo "FAIL: seed yaml leaked into ent
 assert_contains "$PI" "/app/config/.cosmos-run" "post_install writes run script onto the volume"
 assert_contains "$PI" "name: Home" "run script still contains starter yaml"
 assert_contains "$PI" "exec /app/app --config /app/config/app.yml" "run script keeps original exec"
-assert_eq "$(printf '%s' "$EP_VAL" | awk '{print NF}')" "5" "wait-loop Fields token count"
+assert_eq "$(printf '%s' "$EP_VAL" | awk '{print NF}')" "6" "wait-loop Fields token count"
 assert_eq "$(printf '%s' "$EP_VAL" | awk '{print $5}')" "sleep,1" "Fields \$1 is sleep,1"
+assert_eq "$(printf '%s' "$EP_VAL" | awk '{print $6}')" "exec,/app/config/.cosmos-run" "Fields \$2 execs the run script"
+rm -rf "$TMP"
+
+section "no-volume sh -c must not wait on /tmp"
+TMP="$(mktemp -d)"
+make_app "$TMP" "novol" 'services:
+  app:
+    image: nginx:alpine
+    container_name: novol
+    entrypoint:
+      - /bin/sh
+      - -c
+      - echo hello world; exec nginx
+    ports:
+      - "8080:8080"
+'
+bash "$REPO/scripts/convert-to-platforms.sh" -i "$TMP/apps" -p cosmos -o "$TMP/out" >/dev/null 2>&1
+OUT="$(cosmos_out "$TMP" "novol")"
+EP_VAL="$(yq eval '.services.app.entrypoint' "$OUT/docker-compose.yml")"
+PI="$(yq eval '.services.app.post_install[0] // ""' "$OUT/docker-compose.yml")"
+VOLS="$(yq eval '.services.app.volumes[]' "$OUT/docker-compose.yml")"
+assert_contains "$EP_VAL" "until(cat</var/lib/cosmos-run/.cosmos-run)" "no-volume injects persist dir"
+if [[ "$EP_VAL" == *"/tmp/"* ]]; then echo "FAIL: no-volume wait-loop uses /tmp"; fail=1; else echo "ok: no-volume wait-loop not on /tmp"; fi
+assert_contains "$PI" "/var/lib/cosmos-run/.cosmos-run" "no-volume post_install writes injected persist"
+assert_contains "$VOLS" "cosmos-run:/var/lib/cosmos-run" "no-volume service mounts persist volume"
+rm -rf "$TMP"
+
+section "Compose dollar-dollar unescapes in persisted script"
+TMP="$(mktemp -d)"
+make_app "$TMP" "dollars" 'services:
+  app:
+    image: nginx:alpine
+    container_name: dollars
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        secret="$${SEARXNG_SECRET:-}"
+        exec nginx
+    ports:
+      - "8080:8080"
+    volumes:
+      - dollars_data:/data
+'
+bash "$REPO/scripts/convert-to-platforms.sh" -i "$TMP/apps" -p cosmos -o "$TMP/out" >/dev/null 2>&1
+OUT="$(cosmos_out "$TMP" "dollars")"
+PI="$(yq eval '.services.app.post_install[0] // ""' "$OUT/docker-compose.yml")"
+assert_contains "$PI" '${SEARXNG_SECRET:-}' "Compose \$\$ becomes shell \$"
+if [[ "$PI" == *'$${SEARXNG_SECRET'* ]]; then echo "FAIL: persisted script still has Compose \$\$"; fail=1; else echo "ok: no leftover Compose \$\$"; fi
 rm -rf "$TMP"
 
 section "command-form sh -c with whitespace uses the same volume run script"
