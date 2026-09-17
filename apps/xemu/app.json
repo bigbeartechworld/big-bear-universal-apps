@@ -1,0 +1,120 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "xemu",
+    "name": "Xemu",
+    "description": "xemu is a free and open-source application that emulates the original Microsoft Xbox game console, enabling people to play their original Xbox games on Windows, macOS, and Linux systems.",
+    "tagline": "A free and open-source application that emulates the original Microsoft Xbox game console, enabling people to play their original Xbox games on Windows, macOS, and Linux systems.",
+    "version": "0.8.134",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/xemu",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:58.798Z",
+    "updated": "2026-09-17T18:10:58.798Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/xemu-logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/xemu-logo.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/xemu-logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "3000",
+    "main_image": "linuxserver/xemu",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp"
+      },
+      {
+        "container": "3001",
+        "host": "3001",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "3000",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "3000"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "3000"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "3000"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "3000"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "3000"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

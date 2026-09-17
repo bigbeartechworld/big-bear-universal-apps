@@ -1,0 +1,131 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "calibre-web",
+    "name": "Calibre-web",
+    "description": "Calibre-web is a web app providing a clean interface for browsing, reading and downloading eBooks using an existing Calibre database. It is also possible to integrate google drive and edit metadata and your calibre library through the app itself. This software is a fork of library and licensed under the GPL v3 License.",
+    "tagline": "A web app providing a clean interface for browsing, reading and downloading eBooks using an existing Calibre database. It is also possible to integrate google drive and edit metadata and your calibre library through the app itself. This software is a fork of library and licensed under the GPL v3 License.",
+    "version": "0.6.27",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/calibre-web",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:58.759Z",
+    "updated": "2026-09-17T18:10:58.759Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/calibre-web-icon.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/calibre-web-icon.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/calibre-web-icon.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8083",
+    "main_image": "linuxserver/calibre-web",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "DOCKER_MODS",
+        "default": "",
+        "description": "Container Variable: DOCKER_MODS",
+        "required": false
+      },
+      {
+        "name": "OAUTHLIB_RELAX_TOKEN_SCOPE",
+        "default": "",
+        "description": "Container Variable: OAUTHLIB_RELAX_TOKEN_SCOPE",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/books",
+        "description": "Container Path: /books"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8083",
+        "host": "8083",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "8083",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "8083"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "8083"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "8083"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "8083"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "8083"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

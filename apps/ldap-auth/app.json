@@ -1,0 +1,138 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "ldap-auth",
+    "name": "Ldap-auth",
+    "description": "Ldap-auth software is for authenticating users who request protected resources from servers proxied by nginx. It includes a daemon (ldap-auth) that communicates with an authentication server, and a webserver daemon that generates an authentication cookie based on the user’s credentials. The daemons are written in Python for use with a Lightweight Directory Access Protocol (LDAP) authentication server (OpenLDAP or Microsoft Windows Active Directory 2003 and 2012).",
+    "tagline": "Software is for authenticating users who request protected resources from servers proxied by nginx. It includes a daemon (ldap-auth) that communicates with an authentication server, and a webserver daemon that generates an authentication cookie based on the user’s credentials. The daemons are written in Python for use with a Lightweight Directory Access Protocol (LDAP) authentication server (OpenLDAP or Microsoft Windows Active Directory 2003 and 2012).",
+    "version": "3.4.8",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/ldap-auth",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:56.905Z",
+    "updated": "2026-09-17T18:10:56.905Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/ldap-auth-logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/ldap-auth-logo.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/ldap-auth-logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8888",
+    "main_image": "linuxserver/ldap-auth",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "FERNETKEY",
+        "default": "",
+        "description": "Container Variable: FERNETKEY",
+        "required": false
+      },
+      {
+        "name": "CERTFILE",
+        "default": "",
+        "description": "Container Variable: CERTFILE",
+        "required": false
+      },
+      {
+        "name": "KEYFILE",
+        "default": "",
+        "description": "Container Variable: KEYFILE",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8888",
+        "host": "8888",
+        "protocol": "tcp"
+      },
+      {
+        "container": "9000",
+        "host": "9000",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "8888",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "8888"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "8888"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "8888"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "8888"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "8888"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

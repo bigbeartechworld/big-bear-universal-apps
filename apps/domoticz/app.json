@@ -1,0 +1,137 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "domoticz",
+    "name": "Domoticz",
+    "description": "Visit homepage: https://hub.docker.com/r/linuxserver/domoticz/",
+    "tagline": "A Home Automation System that lets you monitor and configure various devices like: Lights, Switches, various sensors/meters like Temperature, Rain, Wind, UV, Electra, Gas, Water and much more. Notifications/Alerts can be sent to any mobile device.",
+    "version": "2023.2.20231129",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/domoticz",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.613Z",
+    "updated": "2026-09-17T18:10:57.613Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/domoticz-logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/domoticz-logo.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/domoticz-logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8080",
+    "main_image": "linuxserver/domoticz",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "WEBROOT",
+        "default": "",
+        "description": "Container Variable: WEBROOT",
+        "required": false
+      },
+      {
+        "name": "DBASE",
+        "default": "",
+        "description": "Container Variable: DBASE",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp"
+      },
+      {
+        "container": "6144",
+        "host": "6144",
+        "protocol": "tcp"
+      },
+      {
+        "container": "1443",
+        "host": "1443",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "8080",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "8080"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "8080"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "8080"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "8080"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "8080"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "quassel-web",
+    "name": "Quassel-web",
+    "description": "Visit homepage: https://hub.docker.com/r/linuxserver/quassel-web/",
+    "tagline": "A web client for Quassel. Note that a Quassel-Core instance is required, we have a container available here.",
+    "version": "0.0.0",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/quassel-web",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.778Z",
+    "updated": "2026-09-17T18:10:57.778Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/quassel-web-icon.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/quassel-web-banner.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/quassel-web-icon.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "64080",
+    "main_image": "linuxserver/quassel-web",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "QUASSEL_CORE",
+        "default": "",
+        "description": "Container Variable: QUASSEL_CORE",
+        "required": false
+      },
+      {
+        "name": "QUASSEL_PORT",
+        "default": "",
+        "description": "Container Variable: QUASSEL_PORT",
+        "required": false
+      },
+      {
+        "name": "QUASSEL_HTTPS",
+        "default": "",
+        "description": "Container Variable: QUASSEL_HTTPS",
+        "required": false
+      },
+      {
+        "name": "URL_BASE",
+        "default": "",
+        "description": "Container Variable: URL_BASE",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "64080",
+        "host": "64080",
+        "protocol": "tcp"
+      },
+      {
+        "container": "64443",
+        "host": "64443",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "64080",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "64080"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "64080"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "64080"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "64080"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "64080"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

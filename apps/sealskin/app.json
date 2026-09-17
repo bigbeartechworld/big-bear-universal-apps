@@ -1,0 +1,134 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "sealskin",
+    "name": "Sealskin",
+    "description": "Sealskin is a self-hosted, client-server platform that enables users to run powerful, containerized desktop applications streamed directly to a web browser. It uses a browser extension to intercept user actions—such as clicking a link or downloading a file and redirects them to a secure, isolated application environment running on a remote server.",
+    "tagline": "A self-hosted, client-server platform that enables users to run powerful, containerized desktop applications streamed directly to a web browser. It uses a browser extension to intercept user actions—such as clicking a link or downloading a file and redirects them to a secure, isolated application environment running on a remote server.",
+    "version": "0.3.2",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/sealskin",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.733Z",
+    "updated": "2026-09-17T18:10:57.733Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/selkies-logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/selkies-logo.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/selkies-logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8443",
+    "main_image": "linuxserver/sealskin",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "HOST_URL",
+        "default": "",
+        "description": "Container Variable: HOST_URL",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/storage",
+        "description": "Container Path: /storage"
+      },
+      {
+        "container": "/var/run/docker.sock",
+        "description": "Container Path: /var/run/docker.sock"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8443",
+        "host": "8443",
+        "protocol": "tcp"
+      },
+      {
+        "container": "8000",
+        "host": "8000",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "8443",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "8443"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "8443"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "8443"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "8443"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "8443"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

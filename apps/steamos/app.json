@@ -1,0 +1,151 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "steamos",
+    "name": "Steamos",
+    "description": "SteamOS is an Arch based Linux distribution made by Valve Software. This container is a vanilla Arch install with Steam repositories added for software support. This container will only work with modern AMD/Intel GPUs on a real Linux Host",
+    "tagline": "An Arch based Linux distribution made by Valve Software. This container is a vanilla Arch install with Steam repositories added for software support. This container will only work with modern AMD/Intel GPUs on a real Linux Host",
+    "version": "0.0.0",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/steamos",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:58.451Z",
+    "updated": "2026-09-17T18:10:58.451Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/steamos-logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/steamos-logo.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/steamos-logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "3000",
+    "main_image": "linuxserver/steamos",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "DRINODE",
+        "default": "",
+        "description": "Container Variable: DRINODE",
+        "required": false
+      },
+      {
+        "name": "HOST_IP",
+        "default": "",
+        "description": "Container Variable: HOST_IP",
+        "required": false
+      },
+      {
+        "name": "STARTUP",
+        "default": "",
+        "description": "Container Variable: STARTUP",
+        "required": false
+      },
+      {
+        "name": "RESOLUTION",
+        "default": "",
+        "description": "Container Variable: RESOLUTION",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/dev/input",
+        "description": "Container Path: /dev/input"
+      },
+      {
+        "container": "/run/udev/data",
+        "description": "Container Path: /run/udev/data"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp"
+      },
+      {
+        "container": "3001",
+        "host": "3001",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "3000",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "3000"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "3000"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "3000"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "3000"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "3000"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

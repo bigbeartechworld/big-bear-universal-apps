@@ -1,0 +1,115 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "grocy",
+    "name": "Grocy",
+    "description": "Grocy is an ERP system for your kitchen! Cut down on food waste, and manage your chores with this brilliant utility. Keep track of your purchases, how much food you are wasting, what chores need doing and what batteries need charging with this proudly Open Source tool For more information on grocy visit their website and check it out: https://grocy.info",
+    "tagline": "An ERP system for your kitchen. Cut down on food waste, and manage your chores with this brilliant utility. Keep track of your purchases, how much food you are wasting, what chores need doing and what batteries need charging with this proudly Open Source tool For more information on grocy visit their website and check it out: https://grocy. Info",
+    "version": "4.7.1",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/grocy",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:58.750Z",
+    "updated": "2026-09-17T18:10:58.750Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/grocy-logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/grocy-logo.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/grocy-logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "9283",
+    "main_image": "linuxserver/grocy",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "9283",
+        "host": "80",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "9283",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "9283"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "9283"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "9283"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "9283"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "9283"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

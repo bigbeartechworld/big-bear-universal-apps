@@ -1,0 +1,143 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "duckdns",
+    "name": "Duckdns",
+    "description": "Duckdns is a free service which will point a DNS (sub domains of duckdns.org) to an IP of your choice. The service is completely free, and doesn't require reactivation or forum posts to maintain its existence.",
+    "tagline": "A free service which will point a DNS (sub domains of duckdns. Org) to an IP of your choice. The service is completely free, and doesn't require reactivation or forum posts to maintain its existence.",
+    "version": "0.0.0",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/duckdns",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:58.358Z",
+    "updated": "2026-09-17T18:10:58.358Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/duckdns.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/duckdns.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/duckdns.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "80",
+    "main_image": "linuxserver/duckdns",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "SUBDOMAINS",
+        "default": "",
+        "description": "Container Variable: SUBDOMAINS",
+        "required": false
+      },
+      {
+        "name": "TOKEN",
+        "default": "",
+        "description": "Container Variable: TOKEN",
+        "required": false
+      },
+      {
+        "name": "UPDATE_IP",
+        "default": "",
+        "description": "Container Variable: UPDATE_IP",
+        "required": false
+      },
+      {
+        "name": "LOG_FILE",
+        "default": "",
+        "description": "Container Variable: LOG_FILE",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "80",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "80"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "80"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "80"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "80"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "80"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

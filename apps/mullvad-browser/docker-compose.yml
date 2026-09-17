@@ -1,0 +1,27 @@
+name: linuxserver-mullvad-browser
+services:
+  app:
+    image: linuxserver/mullvad-browser:15.0.21@sha256:0498858fbae727fd2d2976f7c32093aedebe55e8711f497e11cd1a939e90bf97
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+      LOCAL_NET: ''
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+      - target: 3001
+        published: 3001
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/mullvad-browser/config
+        target: /config
+      - type: bind
+        source: /DATA/Downloads
+        target: /config/Downloads
+    cap_add:
+      - NET_ADMIN
+    shm_size: 1gb

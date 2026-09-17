@@ -1,0 +1,35 @@
+name: linuxserver-snipe-it
+services:
+  app:
+    image: linuxserver/snipe-it:7.1.15@sha256:8f2ed6b86661a30f7cb54e31ee1cb1460ae891a07a39ddf9a5b64adf61a366e8
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+      APP_KEY: ''
+      APP_URL: ''
+      MYSQL_PORT_3306_TCP_ADDR: ''
+      MYSQL_PORT_3306_TCP_PORT: ''
+      MYSQL_DATABASE: ''
+      MYSQL_USER: ''
+      MYSQL_PASSWORD: ''
+      APP_DEBUG: ''
+      APP_ENV: ''
+      APP_FORCE_TLS: ''
+      APP_LOCALE: ''
+      MAIL_PORT_587_TCP_ADDR: ''
+      MAIL_PORT_587_TCP_PORT: ''
+      MAIL_ENV_FROM_ADDR: ''
+      MAIL_ENV_FROM_NAME: ''
+      MAIL_ENV_ENCRYPTION: ''
+      MAIL_ENV_USERNAME: ''
+      MAIL_ENV_PASSWORD: ''
+    ports:
+      - target: 8080
+        published: 80
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/snipe-it/config
+        target: /config

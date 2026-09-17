@@ -1,0 +1,126 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "quassel-core",
+    "name": "Quassel-core",
+    "description": "Visit homepage: https://hub.docker.com/r/linuxserver/quassel-core/",
+    "tagline": "A modern, cross-platform, distributed IRC client, meaning that one (or multiple) client(s) can attach to and detach from a central core. This container handles the IRC connection (quasselcore) and requires a desktop client (quasselclient) to be used and configured. It is designed to be always on and will keep your identity present in IRC even when your clients cannot be online. Backlog (history) is downloaded by your client upon reconnection allowing infinite scrollback through time.",
+    "version": "0.14.0",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/quassel-core",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:58.097Z",
+    "updated": "2026-09-17T18:10:58.097Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/quassel-core-icon.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/quassel-core-icon.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/quassel-core-icon.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "4242",
+    "main_image": "linuxserver/quassel-core",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "RUN_OPTS",
+        "default": "",
+        "description": "Container Variable: RUN_OPTS",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "4242",
+        "host": "4242",
+        "protocol": "tcp"
+      },
+      {
+        "container": "113",
+        "host": "10113",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "4242",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "4242"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "4242"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "4242"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "4242"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "4242"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

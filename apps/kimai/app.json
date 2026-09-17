@@ -1,0 +1,144 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "kimai",
+    "name": "Kimai",
+    "description": "Kimai is a professional grade time-tracking application, free and open-source. It handles use-cases of freelancers as well as companies with dozens or hundreds of users. Kimai was build to track your project times and ships with many advanced features, including but not limited to: JSON API, invoicing, data exports, multi-timer and punch-in punch-out mode, tagging, multi-user - multi-timezones - multi-language (over 30 translations existing!), authentication via SAML/LDAP/Database, two-factor authentication (2FA) with TOTP, customizable role and team permissions, responsive design, user/customer/project specific rates, advanced search & filtering, money and time budgets, advanced reporting, support for plugins and so much more.",
+    "tagline": "A professional grade time-tracking application, free and open-source. It handles use-cases of freelancers as well as companies with dozens or hundreds of users. Kimai was build to track your project times and ships with many advanced features, including but not limited to: JSON API, invoicing, data exports, multi-timer and punch-in punch-out mode, tagging, multi-user - multi-timezones - multi-language (over 30 translations existing. ), authentication via SAML/LDAP/Database, two-factor authentication (2FA) with TOTP, customizable role and team permissions, responsive design, user/customer/project specific rates, advanced search & filtering, money and time budgets, advanced reporting, support for plugins and so much more.",
+    "version": "2.67.0",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/kimai",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:56.886Z",
+    "updated": "2026-09-17T18:10:56.886Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/kimai-logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/kimai-logo.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/kimai-logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "80",
+    "main_image": "linuxserver/kimai",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "APP_SECRET",
+        "default": "",
+        "description": "Container Variable: APP_SECRET",
+        "required": false
+      },
+      {
+        "name": "DATABASE_URL",
+        "default": "",
+        "description": "Container Variable: DATABASE_URL",
+        "required": false
+      },
+      {
+        "name": "TRUSTED_HOSTS",
+        "default": "",
+        "description": "Container Variable: TRUSTED_HOSTS",
+        "required": false
+      },
+      {
+        "name": "TRUSTED_PROXIES",
+        "default": "",
+        "description": "Container Variable: TRUSTED_PROXIES",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp"
+      },
+      {
+        "container": "443",
+        "host": "443",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "80",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "80"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "80"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "80"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "80"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "80"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

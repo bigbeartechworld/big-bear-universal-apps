@@ -1,0 +1,127 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "hishtory-server",
+    "name": "Hishtory-server",
+    "description": "hiSHtory is a better shell history. It stores your shell history in context (what directory you ran the command in, whether it succeeded or failed, how long it took, etc). This is all stored locally and end-to-end encrypted for syncing to to all your other computers.",
+    "tagline": "A better shell history. It stores your shell history in context (what directory you ran the command in, whether it succeeded or failed, how long it took, etc). This is all stored locally and end-to-end encrypted for syncing to to all your other computers.",
+    "version": "0.335.20260911",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/hishtory-server",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:58.069Z",
+    "updated": "2026-09-17T18:10:58.069Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/hishtory-server-icon.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/hishtory-server-icon.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/hishtory-server-icon.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8080",
+    "main_image": "linuxserver/hishtory-server",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "HISHTORY_POSTGRES_DB",
+        "default": "",
+        "description": "Container Variable: HISHTORY_POSTGRES_DB",
+        "required": false
+      },
+      {
+        "name": "HISHTORY_SQLITE_DB",
+        "default": "",
+        "description": "Container Variable: HISHTORY_SQLITE_DB",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "8080",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "8080"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "8080"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "8080"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "8080"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "8080"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

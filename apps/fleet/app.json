@@ -1,0 +1,145 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "fleet",
+    "name": "Fleet",
+    "description": "Fleet provides an online web interface which displays a set of maintained images from one or more owned repositories.",
+    "tagline": "Provides an online web interface which displays a set of maintained images from one or more owned repositories. ",
+    "version": "2.3.3",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/fleet",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.063Z",
+    "updated": "2026-09-17T18:10:57.063Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/WisdomSky/CasaOS-LinuxServer-AppStore@main/default-icon.svg",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/WisdomSky/CasaOS-LinuxServer-AppStore@main/default-icon.svg",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/WisdomSky/CasaOS-LinuxServer-AppStore@main/default-icon.svg"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8080",
+    "main_image": "linuxserver/fleet",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "fleet_admin_authentication_type",
+        "default": "",
+        "description": "Container Variable: fleet_admin_authentication_type",
+        "required": false
+      },
+      {
+        "name": "fleet_database_url",
+        "default": "",
+        "description": "Container Variable: fleet_database_url",
+        "required": false
+      },
+      {
+        "name": "fleet_database_username",
+        "default": "",
+        "description": "Container Variable: fleet_database_username",
+        "required": false
+      },
+      {
+        "name": "fleet_database_password",
+        "default": "",
+        "description": "Container Variable: fleet_database_password",
+        "required": false
+      },
+      {
+        "name": "fleet_admin_secret",
+        "default": "",
+        "description": "Container Variable: fleet_admin_secret",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "8080",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "8080"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "8080"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "8080"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "8080"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "8080"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

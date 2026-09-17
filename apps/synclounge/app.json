@@ -1,0 +1,103 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "synclounge",
+    "name": "Synclounge",
+    "description": "Synclounge is a third party tool that allows you to watch Plex in sync with your friends/family, wherever you are.",
+    "tagline": "A third party tool that allows you to watch Plex in sync with your friends/family, wherever you are.",
+    "version": "5.2.35",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/synclounge",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.958Z",
+    "updated": "2026-09-17T18:10:57.958Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/synclounge-banner.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/synclounge-banner.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/synclounge-banner.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8088",
+    "main_image": "linuxserver/synclounge",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "AUTH_LIST",
+        "default": "",
+        "description": "Container Variable: AUTH_LIST",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8088",
+        "host": "8088",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "8088",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "8088"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "8088"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "8088"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "8088"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "8088"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "qdirstat",
+    "name": "Qdirstat",
+    "description": "QDirStat Qt-based directory statistics: KDirStat without any KDE -- from the author of the original KDirStat.",
+    "tagline": "Qt-based directory statistics: KDirStat without any KDE -- from the author of the original KDirStat.",
+    "version": "2.0.20260913",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/qdirstat",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:58.469Z",
+    "updated": "2026-09-17T18:10:58.469Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/qdirstat-logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/qdirstat-logo.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/qdirstat-logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "3000",
+    "main_image": "linuxserver/qdirstat",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp"
+      },
+      {
+        "container": "3001",
+        "host": "3001",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "3000",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "3000"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "3000"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "3000"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "3000"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "3000"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

@@ -1,0 +1,20 @@
+name: linuxserver-daapd
+services:
+  app:
+    image: linuxserver/daapd:28.10.20250108@sha256:5d6a1744c28dce29f71fd0b1fb296674944df76e879d150298d775b9742c052a
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/daapd/config
+        target: /config
+      - type: bind
+        source: /DATA/AppData/daapd/music
+        target: /music

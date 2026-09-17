@@ -1,0 +1,247 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "netbox",
+    "name": "Netbox",
+    "description": "Netbox is an IP address management (IPAM) and data center infrastructure management (DCIM) tool. Initially conceived by the network engineering team at DigitalOcean, NetBox was developed specifically to address the needs of network and infrastructure engineers. It is intended to function as a domain-specific source of truth for network operations.",
+    "tagline": "An IP address management (IPAM) and data center infrastructure management (DCIM) tool. Initially conceived by the network engineering team at DigitalOcean, NetBox was developed specifically to address the needs of network and infrastructure engineers. It is intended to function as a domain-specific source of truth for network operations.",
+    "version": "4.7.1",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/netbox",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:58.636Z",
+    "updated": "2026-09-17T18:10:58.636Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/netbox-logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/netbox-logo.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/netbox-logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8000",
+    "main_image": "linuxserver/netbox",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "SUPERUSER_EMAIL",
+        "default": "",
+        "description": "Container Variable: SUPERUSER_EMAIL",
+        "required": false
+      },
+      {
+        "name": "SUPERUSER_PASSWORD",
+        "default": "",
+        "description": "Container Variable: SUPERUSER_PASSWORD",
+        "required": false
+      },
+      {
+        "name": "ALLOWED_HOST",
+        "default": "",
+        "description": "Container Variable: ALLOWED_HOST",
+        "required": false
+      },
+      {
+        "name": "DB_NAME",
+        "default": "",
+        "description": "Container Variable: DB_NAME",
+        "required": false
+      },
+      {
+        "name": "DB_USER",
+        "default": "",
+        "description": "Container Variable: DB_USER",
+        "required": false
+      },
+      {
+        "name": "DB_PASSWORD",
+        "default": "",
+        "description": "Container Variable: DB_PASSWORD",
+        "required": false
+      },
+      {
+        "name": "DB_HOST",
+        "default": "",
+        "description": "Container Variable: DB_HOST",
+        "required": false
+      },
+      {
+        "name": "DB_PORT",
+        "default": "",
+        "description": "Container Variable: DB_PORT",
+        "required": false
+      },
+      {
+        "name": "REDIS_HOST",
+        "default": "",
+        "description": "Container Variable: REDIS_HOST",
+        "required": false
+      },
+      {
+        "name": "REDIS_PORT",
+        "default": "",
+        "description": "Container Variable: REDIS_PORT",
+        "required": false
+      },
+      {
+        "name": "REDIS_USERNAME",
+        "default": "",
+        "description": "Container Variable: REDIS_USERNAME",
+        "required": false
+      },
+      {
+        "name": "REDIS_PASSWORD",
+        "default": "",
+        "description": "Container Variable: REDIS_PASSWORD",
+        "required": false
+      },
+      {
+        "name": "REDIS_DB_TASK",
+        "default": "",
+        "description": "Container Variable: REDIS_DB_TASK",
+        "required": false
+      },
+      {
+        "name": "REDIS_DB_CACHE",
+        "default": "",
+        "description": "Container Variable: REDIS_DB_CACHE",
+        "required": false
+      },
+      {
+        "name": "BASE_PATH",
+        "default": "",
+        "description": "Container Variable: BASE_PATH",
+        "required": false
+      },
+      {
+        "name": "CSRF_TRUSTED_ORIGINS",
+        "default": "",
+        "description": "Container Variable: CSRF_TRUSTED_ORIGINS",
+        "required": false
+      },
+      {
+        "name": "REMOTE_AUTH_ENABLED",
+        "default": "",
+        "description": "Container Variable: REMOTE_AUTH_ENABLED",
+        "required": false
+      },
+      {
+        "name": "REMOTE_AUTH_BACKEND",
+        "default": "",
+        "description": "Container Variable: REMOTE_AUTH_BACKEND",
+        "required": false
+      },
+      {
+        "name": "REMOTE_AUTH_HEADER",
+        "default": "",
+        "description": "Container Variable: REMOTE_AUTH_HEADER",
+        "required": false
+      },
+      {
+        "name": "REMOTE_AUTH_AUTO_CREATE_USER",
+        "default": "",
+        "description": "Container Variable: REMOTE_AUTH_AUTO_CREATE_USER",
+        "required": false
+      },
+      {
+        "name": "REMOTE_AUTH_DEFAULT_GROUPS",
+        "default": "",
+        "description": "Container Variable: REMOTE_AUTH_DEFAULT_GROUPS",
+        "required": false
+      },
+      {
+        "name": "REMOTE_AUTH_DEFAULT_PERMISSIONS",
+        "default": "",
+        "description": "Container Variable: REMOTE_AUTH_DEFAULT_PERMISSIONS",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8000",
+        "host": "8000",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "8000",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "8000"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "8000"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "8000"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "8000"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "8000"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

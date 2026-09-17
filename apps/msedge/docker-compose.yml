@@ -1,0 +1,21 @@
+name: linuxserver-msedge
+services:
+  app:
+    image: linuxserver/msedge:153.0.4234@sha256:973493dc4f81c163eee84a0385f0b11f4a2efa2427a70e25d0bd38431d3e7318
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+      EDGE_CLI: ''
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+      - target: 3001
+        published: 3001
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/msedge/config
+        target: /config

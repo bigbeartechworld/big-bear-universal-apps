@@ -1,0 +1,135 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "syslog-ng",
+    "name": "Syslog-ng",
+    "description": "syslog-ng allows you to flexibly collect, parse, classify, rewrite and correlate logs from across your infrastructure and store or route them to log analysis tools.",
+    "tagline": "Allows you to flexibly collect, parse, classify, rewrite and correlate logs from across your infrastructure and store or route them to log analysis tools.",
+    "version": "4.11.0",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/syslog-ng",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.072Z",
+    "updated": "2026-09-17T18:10:57.072Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/syslog-ng-logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/syslog-ng-logo.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/syslog-ng-logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "514",
+    "main_image": "linuxserver/syslog-ng",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "LOG_TO_STDOUT",
+        "default": "",
+        "description": "Container Variable: LOG_TO_STDOUT",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/var/log",
+        "description": "Container Path: /var/log"
+      }
+    ],
+    "ports": [
+      {
+        "container": "514",
+        "host": "5514",
+        "protocol": "udp"
+      },
+      {
+        "container": "601",
+        "host": "6601",
+        "protocol": "tcp"
+      },
+      {
+        "container": "6514",
+        "host": "6514",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "514",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "514"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "514"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "514"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "514"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "514"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

@@ -1490,7 +1490,7 @@ convert_to_runtipi() {
         --arg version "$APP_VERSION" \
         --arg category "$category_mapped" \
         --arg short_desc "$APP_TAGLINE" \
-        --arg author "$APP_DEVELOPER" \
+        --arg author "$APP_AUTHOR" \
         --arg source "$APP_REPOSITORY" \
         --arg website "$APP_HOMEPAGE" \
         --argjson architectures "$APP_ARCHITECTURES" \
@@ -1525,7 +1525,9 @@ convert_to_runtipi() {
     if [[ -n "$APP_ICON" ]]; then
         if curl -fsSL "$APP_ICON" -o "$output_dir/metadata/logo_temp" 2>/dev/null; then
             if command -v convert &> /dev/null; then
-                convert "$output_dir/metadata/logo_temp" "$output_dir/metadata/logo.jpg" 2>/dev/null
+                if ! convert "$output_dir/metadata/logo_temp" "$output_dir/metadata/logo.jpg" 2>/dev/null; then
+                    create_placeholder_logo "$output_dir/metadata/logo.jpg"
+                fi
                 rm -f "$output_dir/metadata/logo_temp"
             else
                 mv "$output_dir/metadata/logo_temp" "$output_dir/metadata/logo.jpg"
@@ -2274,7 +2276,7 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 icon: $APP_ICON
-submitter: BigBearTechWorld
+submitter: $APP_AUTHOR
 submission: https://github.com/bigbeartechworld/big-bear-universal-apps
 EOF
     

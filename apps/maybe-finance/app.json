@@ -16,10 +16,10 @@
     "updated": "2025-10-27T02:42:00Z"
   },
   "visual": {
-    "icon": "https://raw.githubusercontent.com/maybe-finance/maybe/refs/heads/main/app/assets/images/logo-color.png",
+    "icon": "https://cdn.jsdelivr.net/gh/maybe-finance/maybe@refs/heads/main/app/assets/images/logo-color.png",
     "thumbnail": "",
     "screenshots": [],
-    "logo": "https://raw.githubusercontent.com/maybe-finance/maybe/refs/heads/main/app/assets/images/logo-color.png"
+    "logo": "https://cdn.jsdelivr.net/gh/maybe-finance/maybe@refs/heads/main/app/assets/images/logo-color.png"
   },
   "resources": {
     "youtube": "",

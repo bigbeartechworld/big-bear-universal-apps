@@ -1,0 +1,156 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "your-spotify",
+    "name": "Your_spotify",
+    "description": "Your_spotify is a self-hosted application that tracks what you listen and offers you a dashboard to explore statistics about it! It's composed of a web server which polls the Spotify API every now and then and a web application on which you can explore your statistics.",
+    "tagline": "A self-hosted application that tracks what you listen and offers you a dashboard to explore statistics about it. It's composed of a web server which polls the Spotify API every now and then and a web application on which you can explore your statistics.",
+    "version": "1.20.0",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/your_spotify",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.242Z",
+    "updated": "2026-09-17T18:10:57.242Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/your_spotify-logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/your_spotify-logo.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/your_spotify-logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "80",
+    "main_image": "linuxserver/your_spotify",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "APP_URL",
+        "default": "",
+        "description": "Container Variable: APP_URL",
+        "required": false
+      },
+      {
+        "name": "SPOTIFY_PUBLIC",
+        "default": "",
+        "description": "Container Variable: SPOTIFY_PUBLIC",
+        "required": false
+      },
+      {
+        "name": "SPOTIFY_SECRET",
+        "default": "",
+        "description": "Container Variable: SPOTIFY_SECRET",
+        "required": false
+      },
+      {
+        "name": "SPOTIFY_API_DELAY_MS",
+        "default": "",
+        "description": "Container Variable: SPOTIFY_API_DELAY_MS",
+        "required": false
+      },
+      {
+        "name": "CORS",
+        "default": "",
+        "description": "Container Variable: CORS",
+        "required": false
+      },
+      {
+        "name": "MONGO_ENDPOINT",
+        "default": "",
+        "description": "Container Variable: MONGO_ENDPOINT",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp"
+      },
+      {
+        "container": "443",
+        "host": "443",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "80",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "80"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "80"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "80"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "80"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "80"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

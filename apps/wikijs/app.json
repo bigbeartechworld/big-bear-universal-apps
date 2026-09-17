@@ -1,0 +1,155 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "wikijs",
+    "name": "Wikijs",
+    "description": "Wikijs A modern, lightweight and powerful wiki app built on NodeJS.",
+    "tagline": "A modern, lightweight and powerful wiki app built on NodeJS.",
+    "version": "2.5.314",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/wikijs",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.044Z",
+    "updated": "2026-09-17T18:10:57.044Z"
+  },
+  "visual": {
+    "screenshots": [],
+    "icon": "https://images.weserv.nl/?url=https%3A%2F%2Fstatic.requarks.io%2Flogo%2Fwikijs-full.svg",
+    "thumbnail": "https://images.weserv.nl/?url=https%3A%2F%2Fstatic.requarks.io%2Flogo%2Fwikijs-full.svg",
+    "logo": "https://images.weserv.nl/?url=https%3A%2F%2Fstatic.requarks.io%2Flogo%2Fwikijs-full.svg"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "3000",
+    "main_image": "linuxserver/wikijs",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "DB_TYPE",
+        "default": "",
+        "description": "Container Variable: DB_TYPE",
+        "required": false
+      },
+      {
+        "name": "DB_HOST",
+        "default": "",
+        "description": "Container Variable: DB_HOST",
+        "required": false
+      },
+      {
+        "name": "DB_PORT",
+        "default": "",
+        "description": "Container Variable: DB_PORT",
+        "required": false
+      },
+      {
+        "name": "DB_NAME",
+        "default": "",
+        "description": "Container Variable: DB_NAME",
+        "required": false
+      },
+      {
+        "name": "DB_USER",
+        "default": "",
+        "description": "Container Variable: DB_USER",
+        "required": false
+      },
+      {
+        "name": "DB_PASS",
+        "default": "",
+        "description": "Container Variable: DB_PASS",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "3000",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "3000"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "3000"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "3000"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "3000"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "3000"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

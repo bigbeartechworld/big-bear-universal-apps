@@ -1,0 +1,131 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "minisatip",
+    "name": "Minisatip",
+    "description": "Minisatip is a multi-threaded satip server version 1.2 that runs under Linux and it was tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards.",
+    "tagline": "A multi-threaded satip server version 1. 2 that runs under Linux and it was tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards.",
+    "version": "2.0.103",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/minisatip",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.015Z",
+    "updated": "2026-09-17T18:10:57.016Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/minisatip-icon.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/minisatip-icon.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/minisatip-icon.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8875",
+    "main_image": "linuxserver/minisatip",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "RUN_OPTS",
+        "default": "",
+        "description": "Container Variable: RUN_OPTS",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8875",
+        "host": "8875",
+        "protocol": "tcp"
+      },
+      {
+        "container": "554",
+        "host": "554",
+        "protocol": "tcp"
+      },
+      {
+        "container": "1900",
+        "host": "1900",
+        "protocol": "udp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "8875",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "8875"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "8875"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "8875"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "8875"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "8875"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

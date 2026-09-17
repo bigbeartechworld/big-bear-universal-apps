@@ -16,10 +16,10 @@
     "updated": "2025-10-29T01:57:44.251Z"
   },
   "visual": {
-    "icon": "https://i.imgur.com/UgjalkK.png",
-    "thumbnail": "",
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/docker.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/docker.png",
     "screenshots": [],
-    "logo": "https://i.imgur.com/UgjalkK.png"
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/docker.png"
   },
   "resources": {
     "youtube": "",

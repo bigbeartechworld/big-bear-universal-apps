@@ -1,0 +1,168 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "nano",
+    "name": "Nano",
+    "description": "Nano is a digital payment protocol designed to be accessible and lightweight, with a focus on removing inefficiencies present in other cryptocurrencies. With ultrafast transactions and zero fees on a secure, green and decentralized network, this makes Nano ideal for everyday transactions.",
+    "tagline": "A digital payment protocol designed to be accessible and lightweight, with a focus on removing inefficiencies present in other cryptocurrencies. With ultrafast transactions and zero fees on a secure, green and decentralized network, this makes Nano ideal for everyday transactions.",
+    "version": "21.2.20220522",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/nano",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:58.141Z",
+    "updated": "2026-09-17T18:10:58.141Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/WisdomSky/CasaOS-LinuxServer-AppStore@main/default-icon.svg",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/WisdomSky/CasaOS-LinuxServer-AppStore@main/default-icon.svg",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/WisdomSky/CasaOS-LinuxServer-AppStore@main/default-icon.svg"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-${id}",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8075",
+    "main_image": "linuxserver/nano",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "PEER_HOST",
+        "default": "",
+        "description": "Container Variable: PEER_HOST",
+        "required": false
+      },
+      {
+        "name": "LIVE_GENESIS_PUB",
+        "default": "",
+        "description": "Container Variable: LIVE_GENESIS_PUB",
+        "required": false
+      },
+      {
+        "name": "LIVE_GENESIS_ACCOUNT",
+        "default": "",
+        "description": "Container Variable: LIVE_GENESIS_ACCOUNT",
+        "required": false
+      },
+      {
+        "name": "LIVE_GENESIS_WORK",
+        "default": "",
+        "description": "Container Variable: LIVE_GENESIS_WORK",
+        "required": false
+      },
+      {
+        "name": "LIVE_GENESIS_SIG",
+        "default": "",
+        "description": "Container Variable: LIVE_GENESIS_SIG",
+        "required": false
+      },
+      {
+        "name": "CLI_OPTIONS",
+        "default": "",
+        "description": "Container Variable: CLI_OPTIONS",
+        "required": false
+      },
+      {
+        "name": "LMDB_BOOTSTRAP_URL",
+        "default": "",
+        "description": "Container Variable: LMDB_BOOTSTRAP_URL",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8075",
+        "host": "8075",
+        "protocol": "tcp"
+      },
+      {
+        "container": "7076",
+        "host": "3000",
+        "protocol": "tcp"
+      },
+      {
+        "container": "7077",
+        "host": "3001",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "8075",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "8075"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "8075"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "8075"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "8075"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "8075"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}
