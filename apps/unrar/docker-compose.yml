@@ -1,7 +1,7 @@
 name: linuxserver-unrar
 services:
   app:
-    image: linuxserver/unrar:7.0.9@sha256:3d59ac0161e7ee264a99bc2235a13ab775602313efeb4bd3272aa23f80843f8d
+    image: linuxserver/unrar:7.2.7@sha256:48c0ce2609bb3c35764956bbd9395e95b177421e3c74b3628c3676029f24f2e0
     restart: unless-stopped
     environment:
       PUID: $PUID
