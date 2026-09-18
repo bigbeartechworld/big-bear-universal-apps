@@ -24,7 +24,7 @@
   "resources": {
     "youtube": "",
     "documentation": "",
-    "repository": "https://github.com/linuxserver/docker-${id}",
+    "repository": "https://github.com/linuxserver/docker-snipe-it",
     "issues": "",
     "support": "https://www.linuxserver.io/"
   },
@@ -63,43 +63,43 @@
         "name": "APP_KEY",
         "default": "",
         "description": "Container Variable: APP_KEY",
-        "required": false
+        "required": true
       },
       {
         "name": "APP_URL",
         "default": "",
         "description": "Container Variable: APP_URL",
-        "required": false
+        "required": true
       },
       {
         "name": "MYSQL_PORT_3306_TCP_ADDR",
         "default": "",
         "description": "Container Variable: MYSQL_PORT_3306_TCP_ADDR",
-        "required": false
+        "required": true
       },
       {
         "name": "MYSQL_PORT_3306_TCP_PORT",
         "default": "",
         "description": "Container Variable: MYSQL_PORT_3306_TCP_PORT",
-        "required": false
+        "required": true
       },
       {
         "name": "MYSQL_DATABASE",
         "default": "",
         "description": "Container Variable: MYSQL_DATABASE",
-        "required": false
+        "required": true
       },
       {
         "name": "MYSQL_USER",
         "default": "",
         "description": "Container Variable: MYSQL_USER",
-        "required": false
+        "required": true
       },
       {
         "name": "MYSQL_PASSWORD",
         "default": "",
         "description": "Container Variable: MYSQL_PASSWORD",
-        "required": false
+        "required": true
       },
       {
         "name": "APP_DEBUG",
@@ -185,7 +185,11 @@
   "ui": {
     "scheme": "http",
     "path": "",
-    "tips": {}
+    "tips": {
+      "before_install": {
+        "en_us": "Configure the required application and database settings before installing. This app requires an external MySQL service and will not start with empty defaults."
+      }
+    }
   },
   "compatibility": {
     "casaos": {

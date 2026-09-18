@@ -24,7 +24,7 @@
   "resources": {
     "youtube": "",
     "documentation": "",
-    "repository": "https://github.com/linuxserver/docker-${id}",
+    "repository": "https://github.com/linuxserver/docker-netbox",
     "issues": "",
     "support": "https://www.linuxserver.io/"
   },
@@ -63,61 +63,61 @@
         "name": "SUPERUSER_EMAIL",
         "default": "",
         "description": "Container Variable: SUPERUSER_EMAIL",
-        "required": false
+        "required": true
       },
       {
         "name": "SUPERUSER_PASSWORD",
         "default": "",
         "description": "Container Variable: SUPERUSER_PASSWORD",
-        "required": false
+        "required": true
       },
       {
         "name": "ALLOWED_HOST",
         "default": "",
         "description": "Container Variable: ALLOWED_HOST",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_NAME",
         "default": "",
         "description": "Container Variable: DB_NAME",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_USER",
         "default": "",
         "description": "Container Variable: DB_USER",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_PASSWORD",
         "default": "",
         "description": "Container Variable: DB_PASSWORD",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_HOST",
         "default": "",
         "description": "Container Variable: DB_HOST",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_PORT",
         "default": "",
         "description": "Container Variable: DB_PORT",
-        "required": false
+        "required": true
       },
       {
         "name": "REDIS_HOST",
         "default": "",
         "description": "Container Variable: REDIS_HOST",
-        "required": false
+        "required": true
       },
       {
         "name": "REDIS_PORT",
         "default": "",
         "description": "Container Variable: REDIS_PORT",
-        "required": false
+        "required": true
       },
       {
         "name": "REDIS_USERNAME",
@@ -209,7 +209,11 @@
   "ui": {
     "scheme": "http",
     "path": "",
-    "tips": {}
+    "tips": {
+      "before_install": {
+        "en_us": "Configure the required administrator, database, and Redis settings before installing. This app requires external services and will not start with empty defaults."
+      }
+    }
   },
   "compatibility": {
     "casaos": {

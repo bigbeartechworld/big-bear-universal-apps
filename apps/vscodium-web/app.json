@@ -24,7 +24,7 @@
   "resources": {
     "youtube": "",
     "documentation": "",
-    "repository": "https://github.com/linuxserver/docker-${id}",
+    "repository": "https://github.com/linuxserver/docker-vscodium-web",
     "issues": "",
     "support": "https://www.linuxserver.io/"
   },

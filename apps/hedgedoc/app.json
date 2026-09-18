@@ -24,7 +24,7 @@
   "resources": {
     "youtube": "",
     "documentation": "",
-    "repository": "https://github.com/linuxserver/docker-${id}",
+    "repository": "https://github.com/linuxserver/docker-hedgedoc",
     "issues": "",
     "support": "https://www.linuxserver.io/"
   },
@@ -63,37 +63,37 @@
         "name": "DB_HOST",
         "default": "",
         "description": "Container Variable: DB_HOST",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_PORT",
         "default": "",
         "description": "Container Variable: DB_PORT",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_USER",
         "default": "",
         "description": "Container Variable: DB_USER",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_PASS",
         "default": "",
         "description": "Container Variable: DB_PASS",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_NAME",
         "default": "",
         "description": "Container Variable: DB_NAME",
-        "required": false
+        "required": true
       },
       {
         "name": "CMD_DOMAIN",
         "default": "",
         "description": "Container Variable: CMD_DOMAIN",
-        "required": false
+        "required": true
       },
       {
         "name": "CMD_URL_ADDPORT",
@@ -123,7 +123,7 @@
         "name": "CMD_DB_DIALECT",
         "default": "",
         "description": "Container Variable: CMD_DB_DIALECT",
-        "required": false
+        "required": true
       }
     ],
     "volumes": [
@@ -143,7 +143,11 @@
   "ui": {
     "scheme": "http",
     "path": "",
-    "tips": {}
+    "tips": {
+      "before_install": {
+        "en_us": "Configure the required database and domain settings before installing. This app requires an external database and will not start with empty defaults."
+      }
+    }
   },
   "compatibility": {
     "casaos": {

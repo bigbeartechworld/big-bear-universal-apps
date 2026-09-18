@@ -24,7 +24,7 @@
   "resources": {
     "youtube": "",
     "documentation": "",
-    "repository": "https://github.com/linuxserver/docker-${id}",
+    "repository": "https://github.com/linuxserver/docker-calibre",
     "issues": "",
     "support": "https://www.linuxserver.io/"
   },
@@ -60,8 +60,14 @@
         "required": false
       },
       {
+        "name": "CUSTOM_USER",
+        "default": "admin",
+        "description": "Username for the Calibre desktop UI",
+        "required": false
+      },
+      {
         "name": "PASSWORD",
-        "default": "",
+        "default": "change-me-now",
         "description": "Container Variable: PASSWORD",
         "required": false
       },
@@ -99,7 +105,11 @@
   "ui": {
     "scheme": "http",
     "path": "",
-    "tips": {}
+    "tips": {
+      "before_install": {
+        "en_us": "Change the default PASSWORD before installing. The desktop UI is protected with CUSTOM_USER and PASSWORD."
+      }
+    }
   },
   "compatibility": {
     "casaos": {

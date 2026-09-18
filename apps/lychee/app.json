@@ -24,7 +24,7 @@
   "resources": {
     "youtube": "",
     "documentation": "",
-    "repository": "https://github.com/linuxserver/docker-${id}",
+    "repository": "https://github.com/linuxserver/docker-lychee",
     "issues": "",
     "support": "https://www.linuxserver.io/"
   },
@@ -63,49 +63,49 @@
         "name": "DB_CONNECTION",
         "default": "",
         "description": "Container Variable: DB_CONNECTION",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_HOST",
         "default": "",
         "description": "Container Variable: DB_HOST",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_PORT",
         "default": "",
         "description": "Container Variable: DB_PORT",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_USERNAME",
         "default": "",
         "description": "Container Variable: DB_USERNAME",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_PASSWORD",
         "default": "",
         "description": "Container Variable: DB_PASSWORD",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_DATABASE",
         "default": "",
         "description": "Container Variable: DB_DATABASE",
-        "required": false
+        "required": true
       },
       {
         "name": "APP_NAME",
         "default": "",
         "description": "Container Variable: APP_NAME",
-        "required": false
+        "required": true
       },
       {
         "name": "APP_URL",
         "default": "",
         "description": "Container Variable: APP_URL",
-        "required": false
+        "required": true
       },
       {
         "name": "TRUSTED_PROXIES",
@@ -135,7 +135,11 @@
   "ui": {
     "scheme": "http",
     "path": "",
-    "tips": {}
+    "tips": {
+      "before_install": {
+        "en_us": "Configure the required database, application name, and URL settings before installing. This app requires an external database and will not start with empty defaults."
+      }
+    }
   },
   "compatibility": {
     "casaos": {

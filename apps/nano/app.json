@@ -24,14 +24,14 @@
   "resources": {
     "youtube": "",
     "documentation": "",
-    "repository": "https://github.com/linuxserver/docker-${id}",
+    "repository": "https://github.com/linuxserver/docker-nano",
     "issues": "",
     "support": "https://www.linuxserver.io/"
   },
   "technical": {
     "architectures": [
       "amd64",
-      "arm",
+      "armv7",
       "arm64"
     ],
     "platform": "linux",

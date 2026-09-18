@@ -2276,7 +2276,7 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 icon: $APP_ICON
-submitter: $APP_AUTHOR
+submitter: BigBearTechWorld
 submission: https://github.com/bigbeartechworld/big-bear-universal-apps
 EOF
     

@@ -24,7 +24,7 @@
   "resources": {
     "youtube": "",
     "documentation": "",
-    "repository": "https://github.com/linuxserver/docker-${id}",
+    "repository": "https://github.com/linuxserver/docker-mastodon",
     "issues": "",
     "support": "https://www.linuxserver.io/"
   },
@@ -63,49 +63,49 @@
         "name": "LOCAL_DOMAIN",
         "default": "",
         "description": "Container Variable: LOCAL_DOMAIN",
-        "required": false
+        "required": true
       },
       {
         "name": "REDIS_HOST",
         "default": "",
         "description": "Container Variable: REDIS_HOST",
-        "required": false
+        "required": true
       },
       {
         "name": "REDIS_PORT",
         "default": "",
         "description": "Container Variable: REDIS_PORT",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_HOST",
         "default": "",
         "description": "Container Variable: DB_HOST",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_USER",
         "default": "",
         "description": "Container Variable: DB_USER",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_NAME",
         "default": "",
         "description": "Container Variable: DB_NAME",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_PASS",
         "default": "",
         "description": "Container Variable: DB_PASS",
-        "required": false
+        "required": true
       },
       {
         "name": "DB_PORT",
         "default": "",
         "description": "Container Variable: DB_PORT",
-        "required": false
+        "required": true
       },
       {
         "name": "ES_ENABLED",
@@ -117,43 +117,43 @@
         "name": "ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY",
         "default": "",
         "description": "Container Variable: ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY",
-        "required": false
+        "required": true
       },
       {
         "name": "ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY",
         "default": "",
         "description": "Container Variable: ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY",
-        "required": false
+        "required": true
       },
       {
         "name": "ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT",
         "default": "",
         "description": "Container Variable: ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT",
-        "required": false
+        "required": true
       },
       {
         "name": "SECRET_KEY_BASE",
         "default": "",
         "description": "Container Variable: SECRET_KEY_BASE",
-        "required": false
+        "required": true
       },
       {
         "name": "OTP_SECRET",
         "default": "",
         "description": "Container Variable: OTP_SECRET",
-        "required": false
+        "required": true
       },
       {
         "name": "VAPID_PRIVATE_KEY",
         "default": "",
         "description": "Container Variable: VAPID_PRIVATE_KEY",
-        "required": false
+        "required": true
       },
       {
         "name": "VAPID_PUBLIC_KEY",
         "default": "",
         "description": "Container Variable: VAPID_PUBLIC_KEY",
-        "required": false
+        "required": true
       },
       {
         "name": "SMTP_SERVER",
@@ -315,7 +315,11 @@
   "ui": {
     "scheme": "http",
     "path": "",
-    "tips": {}
+    "tips": {
+      "before_install": {
+        "en_us": "Configure the required database, Redis, domain, and encryption settings before installing. This app requires external services and will not start with empty defaults."
+      }
+    }
   },
   "compatibility": {
     "casaos": {
