@@ -9,8 +9,8 @@ services:
       - gateway
       - run
     ports:
-      - "8642:8642"
       - "9119:9119"
+      - "8642:8642"
     volumes:
       - hermes_data:/opt/data
     environment:
