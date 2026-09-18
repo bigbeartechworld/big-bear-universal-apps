@@ -1,0 +1,132 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "emby",
+    "name": "Emby",
+    "description": "Emby organizes video, music, live TV, and photos from personal media libraries and streams them to smart TVs, streaming boxes and mobile devices. This container is packaged as a standalone emby Media Server.",
+    "tagline": "Organizes video, music, live TV, and photos from personal media libraries and streams them to smart TVs, streaming boxes and mobile devices. This container is packaged as a standalone emby Media Server.",
+    "version": "4.10.0",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/emby",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.362Z",
+    "updated": "2026-09-17T18:10:57.362Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/emby-logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/emby-logo.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/emby-logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-emby",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8096",
+    "main_image": "linuxserver/emby",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/data/tvshows",
+        "description": "Container Path: /data/tvshows"
+      },
+      {
+        "container": "/data/movies",
+        "description": "Container Path: /data/movies"
+      },
+      {
+        "container": "/opt/vc/lib",
+        "description": "Container Path: /opt/vc/lib"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8096",
+        "host": "8096",
+        "protocol": "tcp"
+      },
+      {
+        "container": "8920",
+        "host": "8920",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "8096",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "8096"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "8096"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "8096"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "8096"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "8096"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

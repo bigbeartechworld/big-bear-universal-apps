@@ -1,0 +1,21 @@
+name: linuxserver-boinc
+services:
+  app:
+    image: linuxserver/boinc:8.2.8@sha256:150aad5041da33a83a36dc62d8d4f24b97840d2aa475f36ade1c70c2eb196e54
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+      PASSWORD: ''
+    ports:
+      - target: 8080
+        published: 8080
+        protocol: tcp
+      - target: 8181
+        published: 8181
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/boinc/config
+        target: /config

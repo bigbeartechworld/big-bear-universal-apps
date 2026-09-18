@@ -16,12 +16,12 @@
     "updated": "2026-08-21T01:04:38.479Z"
   },
   "visual": {
-    "icon": "https://gladysassistant.com/img/external/github-gladys-logo.png",
-    "thumbnail": "https://gladysassistant.com/img/home/main_screenshot/main_screenshot_en_j5czyj_c_scale,w_2526.png",
+    "icon": "https://images.weserv.nl/?url=https%3A%2F%2Fgladysassistant.com%2Fimg%2Fexternal%2Fgithub-gladys-logo.png",
+    "thumbnail": "https://images.weserv.nl/?url=https%3A%2F%2Fgladysassistant.com%2Fimg%2Fhome%2Fmain_screenshot%2Fmain_screenshot_en_j5czyj_c_scale%2Cw_2526.png",
     "screenshots": [
       "https://gladysassistant.com/img/home/main_screenshot/main_screenshot_en_j5czyj_c_scale,w_2526.png"
     ],
-    "logo": "https://gladysassistant.com/img/external/github-gladys-logo.png"
+    "logo": "https://images.weserv.nl/?url=https%3A%2F%2Fgladysassistant.com%2Fimg%2Fexternal%2Fgithub-gladys-logo.png"
   },
   "resources": {
     "youtube": "https://youtu.be/l4GPomJMIT0",

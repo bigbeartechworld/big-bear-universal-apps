@@ -1,0 +1,227 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "snipe-it",
+    "name": "Snipe-it",
+    "description": "Visit homepage: https://hub.docker.com/r/linuxserver/snipe-it/",
+    "tagline": "Makes asset management easy. It was built by people solving real-world IT and asset management problems, and a solid UX has always been a top priority. Straightforward design and bulk actions mean getting things done faster. ",
+    "version": "7.1.15",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/snipe-it",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:58.659Z",
+    "updated": "2026-09-17T18:10:58.659Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/snipe-it-logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/snipe-it-logo.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/snipe-it-logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-snipe-it",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8080",
+    "main_image": "linuxserver/snipe-it",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "APP_KEY",
+        "default": "",
+        "description": "Container Variable: APP_KEY",
+        "required": true
+      },
+      {
+        "name": "APP_URL",
+        "default": "",
+        "description": "Container Variable: APP_URL",
+        "required": true
+      },
+      {
+        "name": "MYSQL_PORT_3306_TCP_ADDR",
+        "default": "",
+        "description": "Container Variable: MYSQL_PORT_3306_TCP_ADDR",
+        "required": true
+      },
+      {
+        "name": "MYSQL_PORT_3306_TCP_PORT",
+        "default": "",
+        "description": "Container Variable: MYSQL_PORT_3306_TCP_PORT",
+        "required": true
+      },
+      {
+        "name": "MYSQL_DATABASE",
+        "default": "",
+        "description": "Container Variable: MYSQL_DATABASE",
+        "required": true
+      },
+      {
+        "name": "MYSQL_USER",
+        "default": "",
+        "description": "Container Variable: MYSQL_USER",
+        "required": true
+      },
+      {
+        "name": "MYSQL_PASSWORD",
+        "default": "",
+        "description": "Container Variable: MYSQL_PASSWORD",
+        "required": true
+      },
+      {
+        "name": "APP_DEBUG",
+        "default": "",
+        "description": "Container Variable: APP_DEBUG",
+        "required": false
+      },
+      {
+        "name": "APP_ENV",
+        "default": "",
+        "description": "Container Variable: APP_ENV",
+        "required": false
+      },
+      {
+        "name": "APP_FORCE_TLS",
+        "default": "",
+        "description": "Container Variable: APP_FORCE_TLS",
+        "required": false
+      },
+      {
+        "name": "APP_LOCALE",
+        "default": "",
+        "description": "Container Variable: APP_LOCALE",
+        "required": false
+      },
+      {
+        "name": "MAIL_PORT_587_TCP_ADDR",
+        "default": "",
+        "description": "Container Variable: MAIL_PORT_587_TCP_ADDR",
+        "required": false
+      },
+      {
+        "name": "MAIL_PORT_587_TCP_PORT",
+        "default": "",
+        "description": "Container Variable: MAIL_PORT_587_TCP_PORT",
+        "required": false
+      },
+      {
+        "name": "MAIL_ENV_FROM_ADDR",
+        "default": "",
+        "description": "Container Variable: MAIL_ENV_FROM_ADDR",
+        "required": false
+      },
+      {
+        "name": "MAIL_ENV_FROM_NAME",
+        "default": "",
+        "description": "Container Variable: MAIL_ENV_FROM_NAME",
+        "required": false
+      },
+      {
+        "name": "MAIL_ENV_ENCRYPTION",
+        "default": "",
+        "description": "Container Variable: MAIL_ENV_ENCRYPTION",
+        "required": false
+      },
+      {
+        "name": "MAIL_ENV_USERNAME",
+        "default": "",
+        "description": "Container Variable: MAIL_ENV_USERNAME",
+        "required": false
+      },
+      {
+        "name": "MAIL_ENV_PASSWORD",
+        "default": "",
+        "description": "Container Variable: MAIL_ENV_PASSWORD",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8080",
+        "host": "80",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Configure the required application and database settings before installing. This app requires an external MySQL service and will not start with empty defaults."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "8080",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "8080"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "8080"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "8080"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "8080"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "8080"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

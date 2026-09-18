@@ -1,0 +1,357 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "mastodon",
+    "name": "Mastodon",
+    "description": "Mastodon is a free, open-source social network server based on ActivityPub where users can follow friends and discover new ones..",
+    "tagline": "A free, open-source social network server based on ActivityPub where users can follow friends and discover new ones. .",
+    "version": "4.7.2",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/mastodon",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:58.287Z",
+    "updated": "2026-09-17T18:10:58.287Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/mastodon-banner.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/mastodon-banner.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/mastodon-banner.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-mastodon",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "80",
+    "main_image": "linuxserver/mastodon",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "LOCAL_DOMAIN",
+        "default": "",
+        "description": "Container Variable: LOCAL_DOMAIN",
+        "required": true
+      },
+      {
+        "name": "REDIS_HOST",
+        "default": "",
+        "description": "Container Variable: REDIS_HOST",
+        "required": true
+      },
+      {
+        "name": "REDIS_PORT",
+        "default": "",
+        "description": "Container Variable: REDIS_PORT",
+        "required": true
+      },
+      {
+        "name": "DB_HOST",
+        "default": "",
+        "description": "Container Variable: DB_HOST",
+        "required": true
+      },
+      {
+        "name": "DB_USER",
+        "default": "",
+        "description": "Container Variable: DB_USER",
+        "required": true
+      },
+      {
+        "name": "DB_NAME",
+        "default": "",
+        "description": "Container Variable: DB_NAME",
+        "required": true
+      },
+      {
+        "name": "DB_PASS",
+        "default": "",
+        "description": "Container Variable: DB_PASS",
+        "required": true
+      },
+      {
+        "name": "DB_PORT",
+        "default": "",
+        "description": "Container Variable: DB_PORT",
+        "required": true
+      },
+      {
+        "name": "ES_ENABLED",
+        "default": "",
+        "description": "Container Variable: ES_ENABLED",
+        "required": false
+      },
+      {
+        "name": "ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY",
+        "default": "",
+        "description": "Container Variable: ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY",
+        "required": true
+      },
+      {
+        "name": "ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY",
+        "default": "",
+        "description": "Container Variable: ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY",
+        "required": true
+      },
+      {
+        "name": "ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT",
+        "default": "",
+        "description": "Container Variable: ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT",
+        "required": true
+      },
+      {
+        "name": "SECRET_KEY_BASE",
+        "default": "",
+        "description": "Container Variable: SECRET_KEY_BASE",
+        "required": true
+      },
+      {
+        "name": "OTP_SECRET",
+        "default": "",
+        "description": "Container Variable: OTP_SECRET",
+        "required": true
+      },
+      {
+        "name": "VAPID_PRIVATE_KEY",
+        "default": "",
+        "description": "Container Variable: VAPID_PRIVATE_KEY",
+        "required": true
+      },
+      {
+        "name": "VAPID_PUBLIC_KEY",
+        "default": "",
+        "description": "Container Variable: VAPID_PUBLIC_KEY",
+        "required": true
+      },
+      {
+        "name": "SMTP_SERVER",
+        "default": "",
+        "description": "Container Variable: SMTP_SERVER",
+        "required": false
+      },
+      {
+        "name": "SMTP_PORT",
+        "default": "",
+        "description": "Container Variable: SMTP_PORT",
+        "required": false
+      },
+      {
+        "name": "SMTP_LOGIN",
+        "default": "",
+        "description": "Container Variable: SMTP_LOGIN",
+        "required": false
+      },
+      {
+        "name": "SMTP_PASSWORD",
+        "default": "",
+        "description": "Container Variable: SMTP_PASSWORD",
+        "required": false
+      },
+      {
+        "name": "SMTP_FROM_ADDRESS",
+        "default": "",
+        "description": "Container Variable: SMTP_FROM_ADDRESS",
+        "required": false
+      },
+      {
+        "name": "S3_ENABLED",
+        "default": "",
+        "description": "Container Variable: S3_ENABLED",
+        "required": false
+      },
+      {
+        "name": "WEB_DOMAIN",
+        "default": "",
+        "description": "Container Variable: WEB_DOMAIN",
+        "required": false
+      },
+      {
+        "name": "ES_HOST",
+        "default": "",
+        "description": "Container Variable: ES_HOST",
+        "required": false
+      },
+      {
+        "name": "ES_PORT",
+        "default": "",
+        "description": "Container Variable: ES_PORT",
+        "required": false
+      },
+      {
+        "name": "ES_USER",
+        "default": "",
+        "description": "Container Variable: ES_USER",
+        "required": false
+      },
+      {
+        "name": "ES_PASS",
+        "default": "",
+        "description": "Container Variable: ES_PASS",
+        "required": false
+      },
+      {
+        "name": "S3_BUCKET",
+        "default": "",
+        "description": "Container Variable: S3_BUCKET",
+        "required": false
+      },
+      {
+        "name": "AWS_ACCESS_KEY_ID",
+        "default": "",
+        "description": "Container Variable: AWS_ACCESS_KEY_ID",
+        "required": false
+      },
+      {
+        "name": "AWS_SECRET_ACCESS_KEY",
+        "default": "",
+        "description": "Container Variable: AWS_SECRET_ACCESS_KEY",
+        "required": false
+      },
+      {
+        "name": "S3_ALIAS_HOST",
+        "default": "",
+        "description": "Container Variable: S3_ALIAS_HOST",
+        "required": false
+      },
+      {
+        "name": "SIDEKIQ_ONLY",
+        "default": "",
+        "description": "Container Variable: SIDEKIQ_ONLY",
+        "required": false
+      },
+      {
+        "name": "SIDEKIQ_QUEUE",
+        "default": "",
+        "description": "Container Variable: SIDEKIQ_QUEUE",
+        "required": false
+      },
+      {
+        "name": "SIDEKIQ_DEFAULT",
+        "default": "",
+        "description": "Container Variable: SIDEKIQ_DEFAULT",
+        "required": false
+      },
+      {
+        "name": "SIDEKIQ_THREADS",
+        "default": "",
+        "description": "Container Variable: SIDEKIQ_THREADS",
+        "required": false
+      },
+      {
+        "name": "DB_POOL",
+        "default": "",
+        "description": "Container Variable: DB_POOL",
+        "required": false
+      },
+      {
+        "name": "NO_CHOWN",
+        "default": "",
+        "description": "Container Variable: NO_CHOWN",
+        "required": false
+      },
+      {
+        "name": "MASTODON_PROMETHEUS_EXPORTER_ENABLED",
+        "default": "",
+        "description": "Container Variable: MASTODON_PROMETHEUS_EXPORTER_ENABLED",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp"
+      },
+      {
+        "container": "443",
+        "host": "443",
+        "protocol": "tcp"
+      },
+      {
+        "container": "9394",
+        "host": "9394",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Configure the required database, Redis, domain, and encryption settings before installing. This app requires external services and will not start with empty defaults."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "80",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "80"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "80"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "80"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "80"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "80"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

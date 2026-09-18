@@ -1,0 +1,139 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "pairdrop",
+    "name": "Pairdrop",
+    "description": "PairDrop is a sublime alternative to AirDrop that works on all platforms. Send images, documents or text via peer to peer connection to devices in the same local network/Wi-Fi or to paired devices.",
+    "tagline": "A sublime alternative to AirDrop that works on all platforms. Send images, documents or text via peer to peer connection to devices in the same local network/Wi-Fi or to paired devices.",
+    "version": "1.11.2",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/pairdrop",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.025Z",
+    "updated": "2026-09-17T18:10:57.025Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/schlagmichdoch/PairDrop@master/public/images/android-chrome-512x512.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/schlagmichdoch/PairDrop@master/public/images/android-chrome-512x512.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/schlagmichdoch/PairDrop@master/public/images/android-chrome-512x512.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-pairdrop",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "3000",
+    "main_image": "linuxserver/pairdrop",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "RATE_LIMIT",
+        "default": "",
+        "description": "Container Variable: RATE_LIMIT",
+        "required": false
+      },
+      {
+        "name": "WS_FALLBACK",
+        "default": "",
+        "description": "Container Variable: WS_FALLBACK",
+        "required": false
+      },
+      {
+        "name": "RTC_CONFIG",
+        "default": "",
+        "description": "Container Variable: RTC_CONFIG",
+        "required": false
+      },
+      {
+        "name": "DEBUG_MODE",
+        "default": "",
+        "description": "Container Variable: DEBUG_MODE",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "3000",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "3000"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "3000"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "3000"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "3000"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "3000"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

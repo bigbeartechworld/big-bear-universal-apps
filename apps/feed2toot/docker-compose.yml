@@ -1,0 +1,14 @@
+name: linuxserver-feed2toot
+services:
+  app:
+    image: linuxserver/feed2toot:0.17.20250110@sha256:98e1d710c0a7b5aa7e419752be5b722891127c85690d62ff9ad0672ab67f832e
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+      FEED_LIMIT: ''
+    volumes:
+      - type: bind
+        source: /DATA/AppData/feed2toot/config
+        target: /config

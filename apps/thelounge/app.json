@@ -1,0 +1,115 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "thelounge",
+    "name": "Thelounge",
+    "description": "Thelounge (a fork of shoutIRC) is a web IRC client that you host on your own server.",
+    "tagline": "(a fork of shoutIRC) is a web IRC client that you host on your own server.",
+    "version": "4.5.2",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/thelounge",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:58.769Z",
+    "updated": "2026-09-17T18:10:58.769Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/thelounge/thelounge@master/client/public/img/logo-vertical-transparent-bg.svg",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/thelounge/thelounge@master/client/public/img/logo-vertical-transparent-bg.svg",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/thelounge/thelounge@master/client/public/img/logo-vertical-transparent-bg.svg"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-thelounge",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "9000",
+    "main_image": "linuxserver/thelounge",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "9000",
+        "host": "9000",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "9000",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "9000"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "9000"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "9000"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "9000"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "9000"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

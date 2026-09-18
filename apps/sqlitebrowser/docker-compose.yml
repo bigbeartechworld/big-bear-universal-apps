@@ -1,0 +1,20 @@
+name: linuxserver-sqlitebrowser
+services:
+  app:
+    image: linuxserver/sqlitebrowser:3.13.1@sha256:bf3b0efb60c64cc08de659cca4454297de3c6a574e34eece5213f9e0f1e396f3
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+      - target: 3001
+        published: 3001
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/sqlitebrowser/config
+        target: /config

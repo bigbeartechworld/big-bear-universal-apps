@@ -1,0 +1,17 @@
+name: linuxserver-python
+services:
+  app:
+    image: linuxserver/python:3.13.1@sha256:542deeea0056d747c468a12d7389874c7344d785909bb2dde44750a42a6102ea
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/python/config
+        target: /config

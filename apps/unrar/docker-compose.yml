@@ -1,0 +1,17 @@
+name: linuxserver-unrar
+services:
+  app:
+    image: linuxserver/unrar:7.0.9@sha256:3d59ac0161e7ee264a99bc2235a13ab775602313efeb4bd3272aa23f80843f8d
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/unrar/config
+        target: /config

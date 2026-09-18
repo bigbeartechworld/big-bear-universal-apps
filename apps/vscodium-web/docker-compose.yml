@@ -1,0 +1,22 @@
+name: linuxserver-vscodium-web
+services:
+  app:
+    image: linuxserver/vscodium-web:1.135.06055@sha256:b495aaa50ebccd76b1dd734e05fe646e7d4159c0e7bb57b9a3a13a187ea8acff
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+      CONNECTION_TOKEN: ''
+      CONNECTION_TOKEN_FILE: ''
+      SUDO_PASSWORD: ''
+      SUDO_PASSWORD_HASH: ''
+      CODE_ARGS: ''
+    ports:
+      - target: 8000
+        published: 8000
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/vscodium-web/config
+        target: /config

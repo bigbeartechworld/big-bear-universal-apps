@@ -1,0 +1,127 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "changedetection-io",
+    "name": "Changedetection.io",
+    "description": "Changedetection.io provides free, open-source web page monitoring, notification and change detection.",
+    "tagline": "Provides free, open-source web page monitoring, notification and change detection.",
+    "version": "0.60.6",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/changedetection.io",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.408Z",
+    "updated": "2026-09-17T18:10:57.408Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/changedetection-icon.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/changedetection-icon.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/changedetection-icon.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-changedetection.io",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "5000",
+    "main_image": "linuxserver/changedetection.io",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "BASE_URL",
+        "default": "",
+        "description": "Container Variable: BASE_URL",
+        "required": false
+      },
+      {
+        "name": "PLAYWRIGHT_DRIVER_URL",
+        "default": "",
+        "description": "Container Variable: PLAYWRIGHT_DRIVER_URL",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "5000",
+        "host": "5000",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "5000",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "5000"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "5000"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "5000"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "5000"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "5000"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}
