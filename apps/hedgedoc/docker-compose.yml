@@ -7,17 +7,17 @@ services:
       PUID: $PUID
       PGID: $PGID
       TZ: $TZ
-      DB_HOST: ''
-      DB_PORT: ''
-      DB_USER: ''
-      DB_PASS: ''
-      DB_NAME: ''
-      CMD_DOMAIN: ''
-      CMD_URL_ADDPORT: ''
-      CMD_PROTOCOL_USESSL: ''
-      CMD_PORT: ''
-      CMD_ALLOW_ORIGIN: ''
-      CMD_DB_DIALECT: ''
+      DB_HOST: $DB_HOST
+      DB_PORT: $DB_PORT
+      DB_USER: $DB_USER
+      DB_PASS: $DB_PASS
+      DB_NAME: $DB_NAME
+      CMD_DOMAIN: $CMD_DOMAIN
+      CMD_URL_ADDPORT: $CMD_URL_ADDPORT
+      CMD_PROTOCOL_USESSL: $CMD_PROTOCOL_USESSL
+      CMD_PORT: $CMD_PORT
+      CMD_ALLOW_ORIGIN: $CMD_ALLOW_ORIGIN
+      CMD_DB_DIALECT: $CMD_DB_DIALECT
     ports:
       - target: 3000
         published: 3000
