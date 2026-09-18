@@ -15,8 +15,8 @@ services:
       - hermes_data:/opt/data
     environment:
       HERMES_DASHBOARD: "1"
-      HERMES_DASHBOARD_BASIC_AUTH_USERNAME: ${HERMES_DASHBOARD_BASIC_AUTH_USERNAME:-zimaos}
-      HERMES_DASHBOARD_BASIC_AUTH_PASSWORD: ${HERMES_DASHBOARD_BASIC_AUTH_PASSWORD:-}
+      HERMES_DASHBOARD_BASIC_AUTH_USERNAME: zimaos
+      HERMES_DASHBOARD_BASIC_AUTH_PASSWORD: ""
     deploy:
       resources:
         reservations:
