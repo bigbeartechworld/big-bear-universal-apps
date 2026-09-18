@@ -5,7 +5,7 @@
     "name": "Feed2toot",
     "description": "Feed2toot automatically parses rss feeds, identifies new posts and posts them on the Mastodon social network.",
     "tagline": "Automatically parses rss feeds, identifies new posts and posts them on the Mastodon social network. ",
-    "version": "0.17.20250110",
+    "version": "0.17.20251115",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Other",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/feed2toot",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:57.148Z",
-    "updated": "2026-09-17T18:10:57.148Z"
+    "updated": "2026-09-18T06:33:19.231Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/WisdomSky/CasaOS-LinuxServer-AppStore@main/default-icon.svg",
