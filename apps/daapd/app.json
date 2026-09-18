@@ -5,7 +5,7 @@
     "name": "Daapd",
     "description": "Visit homepage: https://hub.docker.com/r/linuxserver/daapd/",
     "tagline": "(iTunes) media server with support for AirPlay devices, Apple Remote (and compatibles), Chromecast, MPD and internet radio. ",
-    "version": "28.10.20250108",
+    "version": "28.10.20250118",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Other",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/daapd",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:57.418Z",
-    "updated": "2026-09-17T18:10:57.418Z"
+    "updated": "2026-09-18T06:33:24.753Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/daapd-icon.png",
