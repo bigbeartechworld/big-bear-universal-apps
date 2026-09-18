@@ -39,6 +39,9 @@ __pycache__/
 test-output/
 coverage/
 
+.bigbear/
+docs/bigbear/
+
 # Generated docs — keep superpowers specs/plans tracked
 docs/*
 !docs/superpowers/
