@@ -5,7 +5,7 @@ services:
   # This is the main app service for Scrypted
   scrypted:
     container_name: scrypted
-    image: koush/scrypted:v0.146.1-noble-full@sha256:225338069329d78d6df407d79f197178f3bfc855a08ed65115e16a33681c099d # Docker image for Scrypted
+    image: koush/scrypted:v0.146.1-noble-full@sha256:c1ef767f1b90e9c541625d30993118a5607e1502de50b9bf0ae5bf4c3b6318ef # Docker image for Scrypted
     network_mode: host # Use host networking mode
     environment:
       # These environment variables are for Scrypted webhook configuration
