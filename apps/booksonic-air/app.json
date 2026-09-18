@@ -1,0 +1,133 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "booksonic-air",
+    "name": "Booksonic-air",
+    "description": "Visit homepage: https://hub.docker.com/r/linuxserver/booksonic-air/",
+    "tagline": "A platform for accessing the audiobooks you own wherever you are. At the moment the platform consists of: * Booksonic Air - A server for streaming your audiobooks, successor to the original Booksonic server and based on Airsonic. * Booksonic App - An DSub based Android app for connection to Booksonic-Air servers.",
+    "version": "2201.1.0",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/booksonic-air",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.110Z",
+    "updated": "2026-09-17T18:10:57.110Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/booksonic-air.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/booksonic-air.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/booksonic-air.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-booksonic-air",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "4040",
+    "main_image": "linuxserver/booksonic-air",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "CONTEXT_PATH",
+        "default": "",
+        "description": "Container Variable: CONTEXT_PATH",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/audiobooks",
+        "description": "Container Path: /audiobooks"
+      },
+      {
+        "container": "/podcasts",
+        "description": "Container Path: /podcasts"
+      },
+      {
+        "container": "/othermedia",
+        "description": "Container Path: /othermedia"
+      }
+    ],
+    "ports": [
+      {
+        "container": "4040",
+        "host": "4040",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "4040",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "4040"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "4040"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "4040"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "4040"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "4040"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

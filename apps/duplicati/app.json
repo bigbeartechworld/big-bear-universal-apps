@@ -1,0 +1,141 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "duplicati",
+    "name": "Duplicati",
+    "description": "Duplicati is a backup client that securely stores encrypted, incremental, compressed backups on local storage, cloud storage services and remote file servers. It works with standard protocols like FTP, SSH, WebDAV as well as popular services like Microsoft OneDrive, Amazon S3, Google Drive, box.com, Mega, B2, and many others.",
+    "tagline": "A backup client that securely stores encrypted, incremental, compressed backups on local storage, cloud storage services and remote file servers. It works with standard protocols like FTP, SSH, WebDAV as well as popular services like Microsoft OneDrive, Amazon S3, Google Drive, box. Com, Mega, B2, and many others.",
+    "version": "2.4.0",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/duplicati",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:58.648Z",
+    "updated": "2026-09-17T18:10:58.648Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/duplicati-icon.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/duplicati-icon.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/duplicati-icon.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-duplicati",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8200",
+    "main_image": "linuxserver/duplicati",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "SETTINGS_ENCRYPTION_KEY",
+        "default": "",
+        "description": "Container Variable: SETTINGS_ENCRYPTION_KEY",
+        "required": false
+      },
+      {
+        "name": "CLI_ARGS",
+        "default": "",
+        "description": "Container Variable: CLI_ARGS",
+        "required": false
+      },
+      {
+        "name": "DUPLICATI__WEBSERVICE_PASSWORD",
+        "default": "",
+        "description": "Container Variable: DUPLICATI__WEBSERVICE_PASSWORD",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/backups",
+        "description": "Container Path: /backups"
+      },
+      {
+        "container": "/source",
+        "description": "Container Path: /source"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8200",
+        "host": "8200",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "8200",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "8200"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "8200"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "8200"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "8200"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "8200"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

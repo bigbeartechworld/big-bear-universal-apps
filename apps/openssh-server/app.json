@@ -1,0 +1,175 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "openssh-server",
+    "name": "Openssh-server",
+    "description": "Openssh-server is a sandboxed environment that allows ssh access without giving keys to the entire server. Giving ssh access via private key often means giving full access to the server. This container creates a limited and sandboxed environment that others can ssh into. The users only have access to the folders mapped and the processes running inside this container.",
+    "tagline": "A sandboxed environment that allows ssh access without giving keys to the entire server. Giving ssh access via private key often means giving full access to the server. This container creates a limited and sandboxed environment that others can ssh into. The users only have access to the folders mapped and the processes running inside this container.",
+    "version": "0.0.0",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/openssh-server",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:56.895Z",
+    "updated": "2026-09-17T18:10:56.895Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/openssh-server-logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/openssh-server-logo.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/openssh-server-logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-openssh-server",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "2222",
+    "main_image": "linuxserver/openssh-server",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "PUBLIC_KEY",
+        "default": "",
+        "description": "Container Variable: PUBLIC_KEY",
+        "required": false
+      },
+      {
+        "name": "PUBLIC_KEY_FILE",
+        "default": "",
+        "description": "Container Variable: PUBLIC_KEY_FILE",
+        "required": false
+      },
+      {
+        "name": "PUBLIC_KEY_DIR",
+        "default": "",
+        "description": "Container Variable: PUBLIC_KEY_DIR",
+        "required": false
+      },
+      {
+        "name": "PUBLIC_KEY_URL",
+        "default": "",
+        "description": "Container Variable: PUBLIC_KEY_URL",
+        "required": false
+      },
+      {
+        "name": "SUDO_ACCESS",
+        "default": "",
+        "description": "Container Variable: SUDO_ACCESS",
+        "required": false
+      },
+      {
+        "name": "PASSWORD_ACCESS",
+        "default": "",
+        "description": "Container Variable: PASSWORD_ACCESS",
+        "required": false
+      },
+      {
+        "name": "USER_PASSWORD",
+        "default": "",
+        "description": "Container Variable: USER_PASSWORD",
+        "required": false
+      },
+      {
+        "name": "USER_PASSWORD_FILE",
+        "default": "",
+        "description": "Container Variable: USER_PASSWORD_FILE",
+        "required": false
+      },
+      {
+        "name": "USER_NAME",
+        "default": "",
+        "description": "Container Variable: USER_NAME",
+        "required": false
+      },
+      {
+        "name": "LOG_STDOUT",
+        "default": "",
+        "description": "Container Variable: LOG_STDOUT",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "2222",
+        "host": "2222",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "2222",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "2222"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "2222"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "2222"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "2222"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "2222"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

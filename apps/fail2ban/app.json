@@ -1,0 +1,173 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "fail2ban",
+    "name": "Fail2ban",
+    "description": "Fail2ban is a daemon to ban hosts that cause multiple authentication errors.",
+    "tagline": "A daemon to ban hosts that cause multiple authentication errors.",
+    "version": "1.1.0",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/fail2ban",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:58.041Z",
+    "updated": "2026-09-17T18:10:58.041Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/fail2ban-logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/fail2ban-logo.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/fail2ban-logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-fail2ban",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "80",
+    "main_image": "linuxserver/fail2ban",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "VERBOSITY",
+        "default": "",
+        "description": "Container Variable: VERBOSITY",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/var/log:ro",
+        "description": "Container Path: /var/log:ro"
+      },
+      {
+        "container": "/remotelogs/airsonic:ro",
+        "description": "Container Path: /remotelogs/airsonic:ro"
+      },
+      {
+        "container": "/remotelogs/apache2:ro",
+        "description": "Container Path: /remotelogs/apache2:ro"
+      },
+      {
+        "container": "/remotelogs/authelia:ro",
+        "description": "Container Path: /remotelogs/authelia:ro"
+      },
+      {
+        "container": "/remotelogs/emby:ro",
+        "description": "Container Path: /remotelogs/emby:ro"
+      },
+      {
+        "container": "/remotelogs/filebrowser:ro",
+        "description": "Container Path: /remotelogs/filebrowser:ro"
+      },
+      {
+        "container": "/remotelogs/homeassistant:ro",
+        "description": "Container Path: /remotelogs/homeassistant:ro"
+      },
+      {
+        "container": "/remotelogs/lighttpd:ro",
+        "description": "Container Path: /remotelogs/lighttpd:ro"
+      },
+      {
+        "container": "/remotelogs/nextcloud:ro",
+        "description": "Container Path: /remotelogs/nextcloud:ro"
+      },
+      {
+        "container": "/remotelogs/nginx:ro",
+        "description": "Container Path: /remotelogs/nginx:ro"
+      },
+      {
+        "container": "/remotelogs/overseerr:ro",
+        "description": "Container Path: /remotelogs/overseerr:ro"
+      },
+      {
+        "container": "/remotelogs/unificontroller:ro",
+        "description": "Container Path: /remotelogs/unificontroller:ro"
+      },
+      {
+        "container": "/remotelogs/vaultwarden:ro",
+        "description": "Container Path: /remotelogs/vaultwarden:ro"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "80",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "80"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "80"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "80"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "80"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "80"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

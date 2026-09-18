@@ -1,0 +1,123 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "beets",
+    "name": "Beets",
+    "description": "Beets is a music library manager and not, for the most part, a music player. It does include a simple player plugin and an experimental Web-based player, but it generally leaves actual sound-reproduction to specialized tools.",
+    "tagline": "A music library manager and not, for the most part, a music player. It does include a simple player plugin and an experimental Web-based player, but it generally leaves actual sound-reproduction to specialized tools.",
+    "version": "2.14.0",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/beets",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.949Z",
+    "updated": "2026-09-17T18:10:57.949Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/beets-icon.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/beets-icon.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/beets-icon.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-beets",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8337",
+    "main_image": "linuxserver/beets",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/music",
+        "description": "Container Path: /music"
+      },
+      {
+        "container": "/downloads",
+        "description": "Container Path: /downloads"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8337",
+        "host": "8337",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "8337",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "8337"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "8337"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "8337"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "8337"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "8337"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

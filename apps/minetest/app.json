@@ -1,0 +1,121 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "minetest",
+    "name": "Minetest",
+    "description": "Visit homepage: https://hub.docker.com/r/linuxserver/minetest/",
+    "tagline": "(server) is a near-infinite-world block sandbox game and a game engine, inspired by InfiniMiner, Minecraft, and the like. ",
+    "version": "5.10.0",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/minetest",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:58.443Z",
+    "updated": "2026-09-17T18:10:58.443Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/beta-templates@master/lsiodev/img/minetest-icon.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/beta-templates@master/lsiodev/img/minetest-icon.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/beta-templates@master/lsiodev/img/minetest-icon.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-minetest",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "30000",
+    "main_image": "linuxserver/minetest",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "CLI_ARGS",
+        "default": "",
+        "description": "Container Variable: CLI_ARGS",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config/.minetest",
+        "description": "Container Path: /config/.minetest"
+      }
+    ],
+    "ports": [
+      {
+        "container": "30000",
+        "host": "30000",
+        "protocol": "udp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "30000",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "30000"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "30000"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "30000"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "30000"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "30000"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}
