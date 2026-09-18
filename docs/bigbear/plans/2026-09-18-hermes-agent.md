@@ -334,10 +334,10 @@ Expected: `true`.
 Run:
 
 ```bash
-bun test
+bun run test
 ```
 
-Expected: exit `0` with all tests passing.
+Expected: exit `0` with all 7 tests passing from `./.github/scripts/update-app-version.test.js`.
 
 - [ ] **Step 8: Check scope and forbidden content**
 
