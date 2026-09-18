@@ -296,7 +296,7 @@ Expected: `true`.
 Run:
 
 ```bash
-yq eval -e '
+yq eval -o=json '.' apps/hermes/docker-compose.yml | jq -e '
   .name == "hermes" and
   (.services | keys) == ["hermes"] and
   .services.hermes.image == "nousresearch/hermes-agent:v2026.9.14" and
@@ -310,11 +310,11 @@ yq eval -e '
   .services.hermes.environment.HERMES_DASHBOARD_BASIC_AUTH_PASSWORD == "${HERMES_DASHBOARD_BASIC_AUTH_PASSWORD:-}" and
   .services.hermes.deploy.resources.reservations.memory == "1G" and
   .volumes.hermes_data == {"name": "hermes_data", "driver": "local"}
-' apps/hermes/docker-compose.yml
+'
 HERMES_DASHBOARD_BASIC_AUTH_PASSWORD=private-test-password docker compose -f apps/hermes/docker-compose.yml config --quiet
 ```
 
-Expected: `yq` prints `true`; Compose exits `0` without output.
+Expected: `jq` prints `true`; Compose exits `0` without output.
 
 - [ ] **Step 6: Verify the published image architectures without pulling it**
 
