@@ -77,7 +77,7 @@ The installer presents the three environment settings and the pre-install warnin
 - `app.json` parses with `jq` and `./scripts/validate-apps.sh -a hermes` confirms the required metadata, technical, and deployment structure without warnings. Its `technical.main_service`, `technical.main_image`, `technical.default_port`, deployment ports and volume, and three environment settings exactly match the Compose service, image, dashboard port, mappings, and environment names. The password setting has `default` `""` and `required` `true`.
 - Compose parses as YAML and `docker compose -f apps/hermes/docker-compose.yml config` succeeds when a non-empty dashboard password is supplied.
 - `./scripts/validate-apps.sh -a hermes` passes without warnings.
-- `bun test` passes.
+- `bun run test` passes.
 - The image tag exists and provides Linux `amd64` and `arm64` manifests.
 - No placeholder text, insecure dashboard flag, plaintext shared password, local asset, or platform-specific Compose extension is present.
 
