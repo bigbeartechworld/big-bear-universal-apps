@@ -61,15 +61,15 @@
       },
       {
         "name": "CUSTOM_USER",
-        "default": "admin",
-        "description": "Username for the Calibre desktop UI",
-        "required": false
+        "default": "",
+        "description": "Username for the Calibre desktop UI (required)",
+        "required": true
       },
       {
         "name": "PASSWORD",
-        "default": "change-me-now",
-        "description": "Container Variable: PASSWORD",
-        "required": false
+        "default": "",
+        "description": "Password for the Calibre desktop UI (required)",
+        "required": true
       },
       {
         "name": "CLI_ARGS",
@@ -107,7 +107,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Change the default PASSWORD before installing. The desktop UI is protected with CUSTOM_USER and PASSWORD."
+        "en_us": "Set a unique CUSTOM_USER and PASSWORD before installing. The desktop UI is protected with these credentials."
       }
     }
   },
