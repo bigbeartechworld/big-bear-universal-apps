@@ -1,0 +1,167 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "unifi-controller",
+    "name": "Unifi-controller",
+    "description": "Visit homepage: https://hub.docker.com/r/linuxserver/unifi-controller/",
+    "tagline": "The Unifi-controller software is a powerful, enterprise wireless software engine ideal for high-density client deployments requiring low latency and high uptime performance.",
+    "version": "8.0.24",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/unifi-controller",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.903Z",
+    "updated": "2026-09-17T18:10:57.903Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/unifi-controller-icon.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/unifi-banner.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/unifi-controller-icon.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-unifi-controller",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8443",
+    "main_image": "linuxserver/unifi-controller",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "MEM_LIMIT",
+        "default": "",
+        "description": "Container Variable: MEM_LIMIT",
+        "required": false
+      },
+      {
+        "name": "MEM_STARTUP",
+        "default": "",
+        "description": "Container Variable: MEM_STARTUP",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8443",
+        "host": "8443",
+        "protocol": "tcp"
+      },
+      {
+        "container": "3478",
+        "host": "3478",
+        "protocol": "udp"
+      },
+      {
+        "container": "10001",
+        "host": "10001",
+        "protocol": "udp"
+      },
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp"
+      },
+      {
+        "container": "1900",
+        "host": "1900",
+        "protocol": "udp"
+      },
+      {
+        "container": "8843",
+        "host": "8843",
+        "protocol": "tcp"
+      },
+      {
+        "container": "8880",
+        "host": "8880",
+        "protocol": "tcp"
+      },
+      {
+        "container": "6789",
+        "host": "6789",
+        "protocol": "tcp"
+      },
+      {
+        "container": "5514",
+        "host": "5514",
+        "protocol": "udp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "8443",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "8443"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "8443"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "8443"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "8443"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "8443"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

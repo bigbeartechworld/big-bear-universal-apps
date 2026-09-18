@@ -1,0 +1,139 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "plex-meta-manager",
+    "name": "Plex-meta-manager",
+    "description": "Plex-meta-manager is a Python 3 script that can be continuously run using YAML configuration files to update on a schedule the metadata of the movies, shows, and collections in your libraries as well as automatically build collections based on various methods all detailed in the wiki.",
+    "tagline": "A Python 3 script that can be continuously run using YAML configuration files to update on a schedule the metadata of the movies, shows, and collections in your libraries as well as automatically build collections based on various methods all detailed in the wiki.",
+    "version": "1.21.1",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/plex-meta-manager",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.967Z",
+    "updated": "2026-09-17T18:10:57.967Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/plex-meta-manager-banner.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/plex-meta-manager-banner.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/plex-meta-manager-banner.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-plex-meta-manager",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8080",
+    "main_image": "linuxserver/plex-meta-manager",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "PMM_CONFIG",
+        "default": "",
+        "description": "Container Variable: PMM_CONFIG",
+        "required": false
+      },
+      {
+        "name": "PMM_TIME",
+        "default": "",
+        "description": "Container Variable: PMM_TIME",
+        "required": false
+      },
+      {
+        "name": "PMM_RUN",
+        "default": "",
+        "description": "Container Variable: PMM_RUN",
+        "required": false
+      },
+      {
+        "name": "PMM_TEST",
+        "default": "",
+        "description": "Container Variable: PMM_TEST",
+        "required": false
+      },
+      {
+        "name": "PMM_NO_MISSING",
+        "default": "",
+        "description": "Container Variable: PMM_NO_MISSING",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": []
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "8080",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "8080"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "8080"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "8080"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "8080"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "8080"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

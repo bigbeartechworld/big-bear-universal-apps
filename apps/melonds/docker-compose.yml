@@ -1,0 +1,20 @@
+name: linuxserver-melonds
+services:
+  app:
+    image: linuxserver/melonds:1.1.20260907@sha256:643b9596329df948ab1dc54f357f38c4af87dc2075c45927a0b666847c837a99
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+      - target: 3001
+        published: 3001
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/melonds/config
+        target: /config

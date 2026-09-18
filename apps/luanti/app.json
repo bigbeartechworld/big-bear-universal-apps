@@ -1,0 +1,121 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "luanti",
+    "name": "Luanti",
+    "description": "Luanti (formerly Minetest) is an open source voxel game-creation platform with easy modding and game creation",
+    "tagline": "(formerly Minetest) is an open source voxel game-creation platform with easy modding and game creation",
+    "version": "5.17.0",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/luanti",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.807Z",
+    "updated": "2026-09-17T18:10:57.807Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/minetest-icon.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/minetest-icon.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/minetest-icon.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-luanti",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "30000",
+    "main_image": "linuxserver/luanti",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "CLI_ARGS",
+        "default": "",
+        "description": "Container Variable: CLI_ARGS",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config/.minetest",
+        "description": "Container Path: /config/.minetest"
+      }
+    ],
+    "ports": [
+      {
+        "container": "30000",
+        "host": "30000",
+        "protocol": "udp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "30000",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "30000"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "30000"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "30000"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "30000"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "30000"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

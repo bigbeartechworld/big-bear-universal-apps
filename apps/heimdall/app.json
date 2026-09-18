@@ -1,0 +1,126 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "heimdall",
+    "name": "Heimdall",
+    "description": "Heimdall is a way to organise all those links to your most used web sites and web applications in a simple way. Simplicity is the key to Heimdall. Why not use it as your browser start page? It even has the ability to include a search bar using either Google, Bing or DuckDuckGo.",
+    "tagline": "A way to organise all those links to your most used web sites and web applications in a simple way. Simplicity is the key to Heimdall. Why not use it as your browser start page. It even has the ability to include a search bar using either Google, Bing or DuckDuckGo.",
+    "version": "2.8.3",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/heimdall",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.054Z",
+    "updated": "2026-09-17T18:10:57.054Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/heimdall-banner.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/heimdall-banner.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/heimdall-banner.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-heimdall",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "80",
+    "main_image": "linuxserver/heimdall",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "ALLOW_INTERNAL_REQUESTS",
+        "default": "",
+        "description": "Container Variable: ALLOW_INTERNAL_REQUESTS",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp"
+      },
+      {
+        "container": "443",
+        "host": "443",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "80",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "80"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "80"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "80"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "80"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "80"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

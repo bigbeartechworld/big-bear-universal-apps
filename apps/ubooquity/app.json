@@ -1,0 +1,138 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "ubooquity",
+    "name": "Ubooquity",
+    "description": "Ubooquity is a free, lightweight and easy-to-use home server for your comics and ebooks. Use it to access your files from anywhere, with a tablet, an e-reader, a phone or a computer.",
+    "tagline": "A free, lightweight and easy-to-use home server for your comics and ebooks. Use it to access your files from anywhere, with a tablet, an e-reader, a phone or a computer.",
+    "version": "3.1.0",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/ubooquity",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:58.625Z",
+    "updated": "2026-09-17T18:10:58.625Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/ubooquity-banner.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/ubooquity-banner.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/ubooquity-banner.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-ubooquity",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "2202",
+    "main_image": "linuxserver/ubooquity",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "MAXMEM",
+        "default": "",
+        "description": "Container Variable: MAXMEM",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/books",
+        "description": "Container Path: /books"
+      },
+      {
+        "container": "/comics",
+        "description": "Container Path: /comics"
+      },
+      {
+        "container": "/files",
+        "description": "Container Path: /files"
+      }
+    ],
+    "ports": [
+      {
+        "container": "2202",
+        "host": "2202",
+        "protocol": "tcp"
+      },
+      {
+        "container": "2203",
+        "host": "2203",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "2202",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "2202"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "2202"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "2202"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "2202"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "2202"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

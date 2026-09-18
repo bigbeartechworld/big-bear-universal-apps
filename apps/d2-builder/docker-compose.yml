@@ -1,0 +1,17 @@
+name: linuxserver-d2-builder
+services:
+  app:
+    image: linuxserver/d2-builder:0.6.8@sha256:539880f90da7cd9133ba7b7d07e0a4d07a9f77d93587ed8422c1dd3dc1f4adb0
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/d2-builder/config
+        target: /config
