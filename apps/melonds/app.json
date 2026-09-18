@@ -5,7 +5,7 @@
     "name": "Melonds",
     "description": "melonDS aims at providing fast and accurate Nintendo DS emulation.",
     "tagline": "Aims at providing fast and accurate Nintendo DS emulation.",
-    "version": "1.1.20260907",
+    "version": "1.1.20261229",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/melonds",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:56.753Z",
-    "updated": "2026-09-17T18:10:56.753Z"
+    "updated": "2026-09-18T06:33:32.304Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/melonds-logo.png",
