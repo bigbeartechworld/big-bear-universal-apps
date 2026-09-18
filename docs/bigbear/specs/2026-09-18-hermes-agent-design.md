@@ -74,7 +74,7 @@ The installer presents the three environment settings and the pre-install warnin
 ## Acceptance Criteria
 
 - Only `apps/hermes/app.json` and `apps/hermes/docker-compose.yml` are added during implementation.
-- `app.json` parses with `jq`, contains the schema-required structure, and agrees with Compose on service, image, ports, volume, and environment settings.
+- `app.json` parses with `jq` and `./scripts/validate-apps.sh -a hermes` confirms the required metadata, technical, and deployment structure without warnings. Its `technical.main_service`, `technical.main_image`, `technical.default_port`, deployment ports and volume, and three environment settings exactly match the Compose service, image, dashboard port, mappings, and environment names. The password setting has `default` `""` and `required` `true`.
 - Compose parses as YAML and `docker compose -f apps/hermes/docker-compose.yml config` succeeds when a non-empty dashboard password is supplied.
 - `./scripts/validate-apps.sh -a hermes` passes without warnings.
 - `bun test` passes.
