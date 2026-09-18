@@ -5,7 +5,7 @@
     "name": "Mullvad-browser",
     "description": "The Mullvad Browser is a privacy-focused web browser developed in a collaboration between Mullvad VPN and the Tor Project. It’s designed to minimize tracking and fingerprinting. You could say it’s a Tor Browser to use without the Tor Network. Instead, you can use it with a trustworthy VPN.",
     "tagline": "The Mullvad Browser is a privacy-focused web browser developed in a collaboration between Mullvad VPN and the Tor Project. It’s designed to minimize tracking and fingerprinting. You could say it’s a Tor Browser to use without the Tor Network. Instead, you can use it with a trustworthy VPN.",
-    "version": "15.0.21",
+    "version": "15.0.20251116",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/mullvad-browser",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:58.337Z",
-    "updated": "2026-09-17T18:10:58.337Z"
+    "updated": "2026-09-18T06:33:54.074Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/mullvad-browser-logo.png",
