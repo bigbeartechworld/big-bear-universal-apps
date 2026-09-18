@@ -5,7 +5,7 @@
     "name": "Boinc",
     "description": "BOINC is a platform for high-throughput computing on a large scale (thousands or millions of computers). It can be used for volunteer computing (using consumer devices) or grid computing (using organizational resources). It supports virtualized, parallel, and GPU-based applications.",
     "tagline": "A platform for high-throughput computing on a large scale (thousands or millions of computers). It can be used for volunteer computing (using consumer devices) or grid computing (using organizational resources). It supports virtualized, parallel, and GPU-based applications.",
-    "version": "8.2.8",
+    "version": "18.04.1",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/boinc",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:56.800Z",
-    "updated": "2026-09-17T18:10:56.800Z"
+    "updated": "2026-09-18T06:40:03.118Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/BOINC/boinc@master/doc/logo/boinc_logo_black.jpg",
