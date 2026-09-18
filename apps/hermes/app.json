@@ -1,0 +1,149 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "hermes",
+    "name": "Hermes Agent",
+    "description": "Hermes Agent 0.21.3 is a self-hosted AI agent with a gateway API and an authenticated web dashboard.",
+    "version": "v2026.9.14",
+    "author": "BigBearCommunity",
+    "developer": "Nous Research",
+    "category": "BigBearCasaOS",
+    "license": "MIT",
+    "homepage": "https://hermes-agent.nousresearch.com/",
+    "source": "big-bear-universal",
+    "created": "2026-09-18T00:00:00Z",
+    "updated": "2026-09-18T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Hermes/icon.svg",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Hermes/thumbnail.png",
+    "screenshots": [
+      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Hermes/screenshot-1.png",
+      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Hermes/screenshot-2.png",
+      "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Hermes/screenshot-3.png"
+    ],
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Hermes/icon.svg"
+  },
+  "resources": {
+    "documentation": "https://hermes-agent.nousresearch.com/docs/",
+    "repository": "https://github.com/NousResearch/hermes-agent",
+    "issues": "https://github.com/NousResearch/hermes-agent/issues"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "hermes",
+    "default_port": "9119",
+    "main_image": "nousresearch/hermes-agent",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "HERMES_DASHBOARD",
+        "default": "1",
+        "description": "Enable the Hermes web dashboard.",
+        "required": false
+      },
+      {
+        "name": "HERMES_DASHBOARD_BASIC_AUTH_USERNAME",
+        "default": "zimaos",
+        "description": "Username for dashboard basic authentication.",
+        "required": false
+      },
+      {
+        "name": "HERMES_DASHBOARD_BASIC_AUTH_PASSWORD",
+        "default": "",
+        "description": "Provide a private password before startup. The dashboard refuses an empty password.",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/opt/data",
+        "description": "Persistent Hermes user data"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8642",
+        "host": "8642",
+        "protocol": "tcp",
+        "description": "Gateway API"
+      },
+      {
+        "container": "9119",
+        "host": "9119",
+        "protocol": "tcp",
+        "description": "Authenticated web dashboard"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Set a private HERMES_DASHBOARD_BASIC_AUTH_PASSWORD before startup. The dashboard refuses an empty password. The default username is zimaos."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "9119",
+      "category": "AI",
+      "volume_mappings": {
+        "hermes_data": "/DATA/AppData/$AppID/"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "hermes_data": "data"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "hermes_data": "data"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "ai",
+    "agent",
+    "automation"
+  ]
+}
