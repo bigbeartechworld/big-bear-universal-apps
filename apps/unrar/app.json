@@ -5,7 +5,7 @@
     "name": "Unrar",
     "description": "This container needs special attention. Please check https://hub.docker.com/r/linuxserver/unrar for details.",
     "tagline": "This container needs special attention. Please check https://hub. Docker. Com/r/linuxserver/unrar for details. ",
-    "version": "7.0.9",
+    "version": "7.2.7",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Other",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/unrar",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:57.446Z",
-    "updated": "2026-09-17T18:10:57.446Z"
+    "updated": "2026-09-18T06:38:11.933Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/WisdomSky/CasaOS-LinuxServer-AppStore@main/default-icon.svg",
