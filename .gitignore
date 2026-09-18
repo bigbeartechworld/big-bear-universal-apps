@@ -39,4 +39,7 @@ __pycache__/
 test-output/
 coverage/
 
+.bigbear/
+docs/bigbear/
+
 docs/*
