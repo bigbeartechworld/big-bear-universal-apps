@@ -147,7 +147,7 @@
         "snipe-it-v8_db_data": "db_data"
       },
       "port": "10206",
-      "app_port": "8086"
+      "app_port": "80"
     }
   },
   "tags": [
