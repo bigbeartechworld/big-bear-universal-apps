@@ -62,7 +62,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Mount your music library read-only at /music before starting the app."
+        "en_us": "Point the /music volume at your existing music library before starting the app. CasaOS defaults to /DATA/Media/Music and lets you change the host path in app settings."
       }
     }
   },
@@ -71,7 +71,10 @@
       "supported": true,
       "port_map": "4533",
       "port": "4533",
-      "category": "Media"
+      "category": "Media",
+      "volume_mappings": {
+        "navidrome_music": "/DATA/Media/Music"
+      }
     },
     "portainer": {
       "supported": true,

@@ -8,5 +8,9 @@ services:
       - "4533:4533"
     volumes:
       - ./data:/data
-      - ./music:/music:ro
+      - navidrome_music:/music:ro
     restart: unless-stopped
+
+volumes:
+  navidrome_music:
+    name: navidrome_music
