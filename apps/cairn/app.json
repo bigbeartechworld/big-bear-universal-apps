@@ -1,0 +1,132 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "cairn",
+    "name": "cairn",
+    "description": "cairn is the page you hand to the people you host services for: family, a club, whoever ends up using your server. One YAML file in, a static multilingual directory out, with no account to create, no database and no outbound requests. It shows your services and nothing else: no widgets, no Docker socket, no metrics. Each service can show a live status pill pulled from Gatus or Uptime Kuma, so visitors see what is up before they click, and cairn serves its own legal and privacy pages. It ships as a single static Go binary in a FROM scratch image, around 4 MB to pull, and it writes nothing at runtime, so it runs read-only with every Linux capability dropped.",
+    "tagline": "The directory page for the people you host services for",
+    "version": "1.19.3",
+    "author": "MorganKryze",
+    "developer": "MorganKryze",
+    "category": "Productivity",
+    "license": "GPL-3.0",
+    "homepage": "https://cairn.libresoftware.cloud",
+    "source": "big-bear-universal",
+    "created": "2026-08-19T00:00:00Z",
+    "updated": "2026-08-19T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/cairn.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/cairn.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://github.com/MorganKryze/cairn/tree/main/docs",
+    "repository": "https://github.com/MorganKryze/cairn",
+    "issues": "https://github.com/MorganKryze/cairn/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8080",
+    "main_image": "morgankryze/cairn",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "The YAML files that describe your services; cairn only ever reads this folder"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "/",
+    "tips": {
+      "before_install": {
+        "en_us": "cairn needs no environment variable and no secret to run. It is configured entirely by YAML files you place in its config folder, so there is nothing to fill in before installing."
+      },
+      "after_install": {
+        "en_us": "Open http://your-server:8080. With an empty config folder cairn serves a getting-started page instead of failing, so the first run always works. Create a services.yaml in the config folder and cairn picks it up within seconds, with no restart. If a file is invalid, cairn keeps the previous configuration and logs which key it did not recognise. Full reference: https://github.com/MorganKryze/cairn/tree/main/docs"
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080",
+      "volume_mappings": {
+        "cairn_config": "/DATA/AppData/$AppID/config"
+      },
+      "category": "Productivity"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Productivity",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8080"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "port": "8080",
+      "volume_mappings": {
+        "cairn_config": "cairn/config"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8080"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8080"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "18080",
+      "volume_mappings": {
+        "cairn_config": "cairn/config"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "dashboard",
+    "homepage",
+    "startpage",
+    "directory",
+    "multilingual"
+  ]
+}

@@ -1,0 +1,31 @@
+name: cairn
+
+services:
+  app:
+    image: morgankryze/cairn:1.19.3@sha256:a3e1d149e5aa31bcb7b21f62370ddb4a5369d90c3cdf2fc3ac34fad820e88471
+    container_name: cairn
+    ports:
+      - "8080:8080"
+    volumes:
+      - cairn_config:/config:ro
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "/cairn", "-healthcheck"]
+      interval: 30s
+      start_period: 5s
+    restart: unless-stopped
+    networks:
+      - cairn-network
+
+networks:
+  cairn-network:
+    driver: bridge
+
+volumes:
+  cairn_config:
+    name: cairn_config
+    driver: local
