@@ -1,0 +1,159 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "snipe-it-v8",
+    "name": "Snipe-IT v8",
+    "description": "Snipe-IT is a free, open source IT asset management system.",
+    "tagline": "Open source IT asset management",
+    "version": "8.7.2",
+    "author": "BigBearTechWorld",
+    "developer": "Grokability",
+    "category": "Other",
+    "license": "AGPL-3.0",
+    "homepage": "https://snipe-it.readme.io/docs/docker",
+    "source": "big-bear-universal",
+    "created": "2026-09-18T00:00:00Z",
+    "updated": "2026-09-18T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/snipe-it.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/snipe-it.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://snipe-it.readme.io/docs/docker",
+    "repository": "https://github.com/snipe/snipe-it",
+    "issues": "https://github.com/snipe/snipe-it/issues",
+    "support": "https://snipe-it.readme.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8086",
+    "main_image": "snipe/snipe-it",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "APP_KEY",
+        "default": "",
+        "description": "Persistent Laravel application key. Generate it before first start and never rotate it during migration.",
+        "required": true
+      },
+      {
+        "name": "APP_URL",
+        "default": "",
+        "description": "URL used to access Snipe-IT.",
+        "required": true
+      },
+      {
+        "name": "DB_PASSWORD",
+        "default": "",
+        "description": "Snipe-IT database password.",
+        "required": true
+      },
+      {
+        "name": "MYSQL_ROOT_PASSWORD",
+        "default": "",
+        "description": "MariaDB root password.",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/var/lib/snipeit",
+        "description": "Snipe-IT application storage"
+      },
+      {
+        "container": "/var/lib/mysql",
+        "description": "MariaDB database storage"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "8086",
+        "protocol": "tcp",
+        "description": "Snipe-IT web interface"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "This is a separate Snipe-IT v8 app. Migration from the legacy Snipe-IT app is manual; configure APP_KEY, APP_URL, DB_PASSWORD, and MYSQL_ROOT_PASSWORD before installing."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8086",
+      "volume_mappings": {
+        "snipe-it-v8_storage": "/DATA/AppData/$AppID/storage",
+        "snipe-it-v8_db_data": "/DATA/AppData/$AppID/db_data"
+      },
+      "port": "8086",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8086"
+    },
+    "runtipi": {
+      "supported": false,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "snipe-it-v8_storage": "storage",
+        "snipe-it-v8_db_data": "db_data"
+      },
+      "port": "8086"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8086"
+    },
+    "cosmos": {
+      "supported": false,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8086"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "snipe-it-v8_storage": "storage",
+        "snipe-it-v8_db_data": "db_data"
+      },
+      "port": "10206",
+      "app_port": "80"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "asset-management",
+    "snipe-it"
+  ]
+}
