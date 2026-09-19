@@ -5,7 +5,7 @@
     "name": "Diskover",
     "description": "Diskover is an open source file system indexer that uses Elasticsearch to index and manage data across heterogeneous storage systems.",
     "tagline": "An open source file system indexer that uses Elasticsearch to index and manage data across heterogeneous storage systems.",
-    "version": "2.3.5",
+    "version": "5.0.13",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/diskover",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:56.829Z",
-    "updated": "2026-09-17T18:10:56.829Z"
+    "updated": "2026-09-19T04:23:20.495Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/diskoverdata/diskover-community@master/diskover-web/public/images/diskover.png",
