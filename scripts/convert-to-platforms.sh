@@ -845,6 +845,14 @@ convert_to_casaos() {
                         # Check if this volume entry uses the named volume
                         if [[ "$vol_entry" == "${vol_name}:"* ]]; then
                             container_path="${vol_entry#*:}"
+                            local mount_options=""
+                            if [[ "$container_path" == *":ro" ]]; then
+                                mount_options=":ro"
+                                container_path="${container_path%:ro}"
+                            elif [[ "$container_path" == *":rw" ]]; then
+                                mount_options=":rw"
+                                container_path="${container_path%:rw}"
+                            fi
                             container_path="${container_path%%:*}"
                             if [[ "$container_path" == /* ]] || [[ "$container_path" == ./* ]]; then
                                 is_match=true
@@ -861,7 +869,7 @@ convert_to_casaos() {
                         local casaos_path
                         if [[ -n "$custom_mapping" && "$custom_mapping" != "null" ]]; then
                             # Use the custom mapping from app.json
-                            casaos_path="${custom_mapping}:${container_path}"
+                            casaos_path="${custom_mapping}:${container_path}${mount_options}"
                         else
                             # Fall back to default conversion logic
                             # Convert volume name to a simple folder name (remove app prefix if exists)
@@ -871,7 +879,7 @@ convert_to_casaos() {
                             # Convert underscores to slashes for nested paths (e.g., data_work -> data/work)
                             folder_suffix="${folder_suffix//_//}"
 
-                            casaos_path="/DATA/AppData/\$AppID/${folder_suffix}:${container_path}"
+                            casaos_path="/DATA/AppData/\$AppID/${folder_suffix}:${container_path}${mount_options}"
                         fi
 
                         # Replace the volume entry with a short-form bind mount string
