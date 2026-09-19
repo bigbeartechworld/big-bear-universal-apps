@@ -5,7 +5,7 @@
     "name": "Paperless-ngx",
     "description": "Paperless-ngx is a community-supported open-source document management system that transforms your physical documents into a searchable online archive so you can keep, well, less paper.",
     "tagline": "Paperless-ngx",
-    "version": "2.20.15",
+    "version": "3.2.0",
     "author": "BigBearTechWorld",
     "developer": "paperless-ngx",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/paperless-ngx/paperless-ngx",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:09Z",
-    "updated": "2026-07-16T19:30:44.933Z"
+    "updated": "2026-09-19T04:54:33Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/paperless-ngx.png",
@@ -100,6 +100,12 @@
         "default": "",
         "description": "Container Path: /usr/src/paperless/data",
         "required": false
+      },
+      {
+        "name": "PAPERLESS_SECRET_KEY",
+        "default": "",
+        "description": "Persistent secret required by Paperless-ngx v3. Keep the same value across restarts and upgrades.",
+        "required": true
       }
     ],
     "volumes": [
@@ -134,7 +140,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Read this before installing: https://community.bigbeartechworld.com/t/added-paperlessngx-to-bigbearcasaos/1954#p-3625-documentation-4\n"
+        "en_us": "Paperless-ngx v3 requires PAPERLESS_SECRET_KEY and PAPERLESS_DBENGINE=postgresql. Back up the database and media before upgrading from v2.20.15. Decrypt encrypted documents before the upgrade because v3 does not support encrypted documents. Keep the same PAPERLESS_SECRET_KEY for the lifetime of this installation. See https://docs.paperless-ngx.com/migration-v3/."
       }
     }
   },
