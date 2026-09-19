@@ -1,0 +1,76 @@
+# Configuration for Popcornn - Modern Torrent Streaming Platform
+
+# Application Name
+name: big-bear-popcornn
+
+# Services used in the application
+services:
+  # Frontend service - React web interface
+  popcornn-client:
+    container_name: big-bear-popcornn-client
+    image: bobdivx/popcorn-frontend:1.3.56
+    restart: unless-stopped
+    ports:
+      - "4325:80"
+    environment:
+      # Use Compose service names (not container_name): Umbrel strips container_name
+      - BACKEND_URL=http://popcornn-server:3000
+      - PUBLIC_BACKEND_URL=
+      - HOST=0.0.0.0
+      - NODE_ENV=production
+      - PORT=80
+    depends_on:
+      - popcornn-server
+    networks:
+      - big_bear_popcornn_network
+
+  # Backend service - Rust streaming server
+  popcornn-server:
+    container_name: big-bear-popcornn-server
+    image: bobdivx/popcorn-backend:1.2.51
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+      - "4240:4240"
+      - "4240:4240/udp"
+    environment:
+      - API_USERNAME=admin
+      - API_PASSWORD=popcorn_password_secure
+      - DOWNLOAD_DIR=/app/downloads
+      - FLARESOLVERR_URL=http://popcornn-flaresolverr:8191
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PORT=3000
+      - RUST_LOG=info
+      - RUN_AS_ROOT=1
+    volumes:
+      - popcornn_data:/app/.data
+      - popcornn_downloads:/app/downloads
+    depends_on:
+      - popcornn-flaresolverr
+    networks:
+      - big_bear_popcornn_network
+
+  # FlareSolverr service - Bypass Cloudflare protection
+  popcornn-flaresolverr:
+    container_name: big-bear-popcornn-flaresolverr
+    image: ghcr.io/flaresolverr/flaresolverr:v3.4.6
+    restart: unless-stopped
+    environment:
+      - LOG_LEVEL=info
+    networks:
+      - big_bear_popcornn_network
+
+# Networks
+networks:
+  big_bear_popcornn_network:
+    name: big_bear_popcornn_network
+    driver: bridge
+
+# Volumes for persistent data
+volumes:
+  popcornn_data:
+    name: popcornn_data
+    driver: local
+  popcornn_downloads:
+    name: popcornn_downloads
+    driver: local
