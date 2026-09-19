@@ -1,0 +1,47 @@
+name: romarr
+
+services:
+  romarr:
+    image: ghcr.io/blizzhacker/romarr:0.7.0@sha256:106b336bf174813e1f2a6f610b567f9b384efba2ac2563ccc415015703786cbe
+    container_name: romarr
+    ports:
+      - "6868:6868"
+    volumes:
+      - romarr_config:/config
+      - romarr_roms:/roms
+      - romarr_downloads:/downloads
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-UTC}
+      - PROWLARR_URL=${PROWLARR_URL:-}
+      - PROWLARR_API_KEY=${PROWLARR_API_KEY:-}
+      - LIBRARY_KIND=${LIBRARY_KIND:-romm}
+      - LIBRARY_URL=${LIBRARY_URL:-}
+      - LIBRARY_USERNAME=${LIBRARY_USERNAME:-}
+      - LIBRARY_PASSWORD=${LIBRARY_PASSWORD:-}
+      - LIBRARY_PATH=${LIBRARY_PATH:-/roms}
+      - QBITTORRENT_URL=${QBITTORRENT_URL:-}
+      - QBITTORRENT_USER=${QBITTORRENT_USER:-}
+      - QBITTORRENT_PASS=${QBITTORRENT_PASS:-}
+      - SABNZBD_URL=${SABNZBD_URL:-}
+      - SABNZBD_API_KEY=${SABNZBD_API_KEY:-}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    restart: unless-stopped
+    networks:
+      - romarr-network
+
+networks:
+  romarr-network:
+    driver: bridge
+
+volumes:
+  romarr_config:
+    name: romarr_config
+    driver: local
+  romarr_roms:
+    name: romarr_roms
+    driver: local
+  romarr_downloads:
+    name: romarr_downloads
+    driver: local
