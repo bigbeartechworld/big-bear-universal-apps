@@ -11,4 +11,3 @@ services:
     environment:
       SIGNUPS_ALLOWED: "false"
     restart: unless-stopped
-    network_mode: bridge

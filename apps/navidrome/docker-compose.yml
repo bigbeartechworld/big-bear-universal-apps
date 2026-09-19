@@ -10,4 +10,3 @@ services:
       - ./data:/data
       - ./music:/music:ro
     restart: unless-stopped
-    network_mode: bridge

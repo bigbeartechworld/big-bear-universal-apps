@@ -29,7 +29,7 @@
     "support": "https://community.bigbeartechworld.com/"
   },
   "technical": {
-    "architectures": ["amd64", "arm64", "armv7", "i386"],
+    "architectures": ["amd64", "arm64"],
     "platform": "linux",
     "main_service": "app",
     "default_port": "4533",
@@ -62,7 +62,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Place your music in apps/navidrome/music before starting the app."
+        "en_us": "Mount your music library read-only at /music before starting the app."
       }
     }
   },
@@ -82,7 +82,7 @@
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
-      "supported_architectures": ["amd64", "arm64", "armv7", "i386"]
+      "supported_architectures": ["amd64", "arm64"]
     },
     "dockge": {
       "supported": true,

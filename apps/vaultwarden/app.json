@@ -29,7 +29,7 @@
     "support": "https://community.bigbeartechworld.com/"
   },
   "technical": {
-    "architectures": ["amd64", "arm64", "armv7", "armv6"],
+    "architectures": ["amd64", "arm64"],
     "platform": "linux",
     "main_service": "app",
     "default_port": "80",
@@ -63,7 +63,11 @@
   "ui": {
     "scheme": "http",
     "path": "",
-    "tips": {}
+    "tips": {
+      "before_install": {
+        "en_us": "The web vault requires an HTTPS reverse proxy outside localhost. To create the first account, temporarily set SIGNUPS_ALLOWED=true, register, then set it back to false."
+      }
+    }
   },
   "compatibility": {
     "casaos": {
@@ -81,7 +85,8 @@
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
-      "supported_architectures": ["amd64", "arm64", "armv7", "armv6"]
+      "supported_architectures": ["amd64", "arm64"],
+      "port": "80"
     },
     "dockge": {
       "supported": true,
