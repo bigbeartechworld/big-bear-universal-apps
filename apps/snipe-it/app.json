@@ -5,7 +5,7 @@
     "name": "Snipe-it",
     "description": "Visit homepage: https://hub.docker.com/r/linuxserver/snipe-it/",
     "tagline": "Makes asset management easy. It was built by people solving real-world IT and asset management problems, and a solid UX has always been a top priority. Straightforward design and bulk actions mean getting things done faster. ",
-    "version": "7.1.17",
+    "version": "8.0.4",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Other",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/snipe-it",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:58.659Z",
-    "updated": "2026-09-18T06:35:57.185Z"
+    "updated": "2026-09-19T04:23:50.908Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/snipe-it-logo.png",
