@@ -1,0 +1,14 @@
+name: vaultwarden
+
+services:
+  app:
+    image: vaultwarden/server:1.36.0@sha256:d626d04934cd1192ad8ced1adb975099fca78cec33ab467d2d3c923cde7f3b0c
+    container_name: vaultwarden
+    ports:
+      - "80:80"
+    volumes:
+      - ./data:/data
+    environment:
+      SIGNUPS_ALLOWED: "false"
+    restart: unless-stopped
+    network_mode: bridge

@@ -1,0 +1,102 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "navidrome",
+    "name": "Navidrome",
+    "description": "Modern web-based music server and streamer for your personal music collection.",
+    "tagline": "Modern music server and streamer",
+    "version": "0.61.2",
+    "author": "BigBearCommunity",
+    "developer": "Navidrome",
+    "category": "Media",
+    "license": "GPL-3.0",
+    "homepage": "https://www.navidrome.org/",
+    "source": "big-bear-universal",
+    "created": "2026-09-18T00:00:00Z",
+    "updated": "2026-09-18T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/navidrome.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/navidrome.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/navidrome.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://www.navidrome.org/docs/",
+    "repository": "https://github.com/navidrome/navidrome",
+    "issues": "https://github.com/navidrome/navidrome/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": ["amd64", "arm64", "armv7", "i386"],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "4533",
+    "main_image": "deluan/navidrome",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Navidrome database and configuration"
+      },
+      {
+        "container": "/music",
+        "description": "Read-only music library"
+      }
+    ],
+    "ports": [
+      {
+        "container": "4533",
+        "host": "4533",
+        "protocol": "tcp",
+        "description": "Web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Place your music in apps/navidrome/music before starting the app."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "4533",
+      "port": "4533",
+      "category": "Media"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": ["Media", "selfhosted"],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": ["amd64", "arm64", "armv7", "i386"]
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1
+    }
+  },
+  "tags": ["selfhosted", "docker", "media", "music", "streaming"]
+}
