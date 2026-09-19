@@ -1,7 +1,7 @@
 name: linuxserver-snipe-it
 services:
   app:
-    image: linuxserver/snipe-it:7.1.17@sha256:d75283795506f371fe5059f13312c84de01225de373ef3aec154d562bbed9dd4
+    image: linuxserver/snipe-it:8.0.4@sha256:60bb523aeca290d65fe8bcef33654020eaa7f82fb4a14df52e75a31e3b2d3764
     restart: unless-stopped
     environment:
       PUID: $PUID
