@@ -1532,7 +1532,7 @@ convert_to_cosmos() {
       ],"
     fi
 
-    local temp_cosmos_compose=$(mktemp -p $TEMP_DIR)
+    local temp_cosmos_compose=$(mktemp)
     local cosmos_services=$(yq eval -o=json '.services' "$temp_compose")
     if [[ -n "$routes" ]]; then
         cosmos_services=$(VAL=$routes yq eval -o=json '.services | to_entries | .[0].value.routes = env(VAL) | from_entries' "$temp_compose")
