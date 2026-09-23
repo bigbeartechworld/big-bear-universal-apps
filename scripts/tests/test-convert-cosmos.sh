@@ -313,6 +313,14 @@ CASA_EP_TYPE="$(yq eval '.services.app.entrypoint | type' "$TMP/casaos/glance/do
 assert_eq "$CASA_EP_TYPE" "!!seq" "casaos glance entrypoint stays a sequence"
 rm -rf "$TMP"
 
+section "domainlocker Cosmos route uses the container port"
+TMP="$(mktemp -d)"
+bash "$REPO/scripts/convert-to-platforms.sh" -p cosmos -a domainlocker -o "$TMP" >/dev/null 2>&1
+assert_eq "$?" "0" "domainlocker Cosmos conversion exits 0"
+assert_eq "$(jq -r '."cosmos-installer".routes[0].target' "$TMP/cosmos/domainlocker/cosmos-compose.json")" \
+  "http://domainlocker:3000" "domainlocker Cosmos route targets the container port"
+rm -rf "$TMP"
+
 if [[ "$fail" -ne 0 ]]; then echo; echo "FAILED"; exit 1; fi
 echo; echo "All cosmos converter tests passed"
 exit 0
