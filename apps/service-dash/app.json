@@ -3,9 +3,9 @@
   "metadata": {
     "id": "service-dash",
     "name": "Service Dash",
-    "description": "Service Dash turns an existing Uptime Kuma status page into a homelab dashboard. Each service gets one card carrying both of its addresses - the internal (local) URL you use at home and the external (public) URL you use away from it - so you open either one without keeping a second bookmark list. A switch in the top bar moves every card between the two at once. The pairing comes from Uptime Kuma itself: monitors named 'Plex' and 'Plex local' become one card with two addresses, so there is nothing to configure. Alongside the cards, a bundled Netdata Agent reports the health of the host itself: CPU, RAM, storage and live network throughput, plus the machine's LAN and WAN addresses. Around 2,900 service icons are matched automatically, with a searchable picker per card. Card settings and notes are shared across every browser that opens the dashboard, and changing them asks Uptime Kuma whether your session is real, so there is no second account to create. Optionally, how much of your Claude or ChatGPT plan is left shows as dials above the grid, from two reporters that stay idle until you sign in to them. Signed out, service URLs and the host's own addresses are withheld entirely, so the dashboard can sit on a screen other people can see.",
+    "description": "Service Dash turns an existing Uptime Kuma status page into a homelab dashboard. Each service gets one card carrying both of its addresses - the internal (local) URL you use at home and the external (public) URL you use away from it - so you open either one without keeping a second bookmark list. A switch in the top bar moves every card between the two at once. The pairing comes from Uptime Kuma itself: monitors named 'Plex' and 'Plex local' become one card with two addresses, so there is nothing to configure. Alongside the cards, a bundled Netdata Agent reports the health of the host itself: CPU, RAM, storage and live network throughput, plus the machine's LAN and WAN addresses. Around 2,900 service icons are matched automatically, with a searchable picker per card. Card settings and notes are shared across every browser that opens the dashboard, and changing them asks Uptime Kuma whether your session is real, so there is no second account to create. Optionally, how much of your Claude or ChatGPT plan is left shows as dials above the grid, from two reporters that stay idle until you sign in to them. Signed out, service URLs and the host's own addresses are never requested, so they do not reach the browser at all and the dashboard can sit on a screen other people can see; it is a screen-level control rather than an access control on the endpoints themselves.",
     "tagline": "Every service's local and public URL on one card, beside the live health of the box running them",
-    "version": "1.5.2",
+    "version": "1.5.4",
     "author": "Chintan Vaghela",
     "developer": "Chintan Vaghela",
     "category": "Monitoring",
@@ -13,7 +13,7 @@
     "homepage": "https://github.com/cvaghela/service-dash",
     "source": "big-bear-universal",
     "created": "2026-08-27T00:00:00Z",
-    "updated": "2026-08-30T00:00:00Z"
+    "updated": "2026-09-23T00:00:00Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/cvaghela/service-dash@main/appstore/Apps/ServiceDash/icon.png",
@@ -111,7 +111,7 @@
       },
       {
         "container": "/status",
-        "description": "Shared by the two AI usage reporters; served read-only by the dashboard"
+        "description": "Shared by the two AI usage reporters; the dashboard serves what they write"
       },
       {
         "container": "/root/.claude",

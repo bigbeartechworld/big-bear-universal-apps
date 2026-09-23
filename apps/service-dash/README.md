@@ -42,17 +42,22 @@ docker exec -it service-dash-codex-usage codex login --device-auth
 ```
 
 `--device-auth` is not optional in a container: the default flow opens a browser
-at the container's own localhost and hangs. Idle, the two cost about 12MB of RAM
-between them.
+at the container's own localhost and hangs. Idle they hold very little — about
+0.1MB of anonymous memory each. `docker stats` reports far more for the Claude
+reporter, because its image is large and the page cache it reads is charged to
+the container; that memory is reclaimable rather than held.
 
 ## Why it needs rootful Docker
 
-The bundled Netdata Agent uses `pid: host`, `SYS_PTRACE`, `SYS_ADMIN` and
-read-only mounts of the host root, `/proc` and `/sys`. That is what produces
-real host metrics rather than the container's own, and rootless Docker cannot
-grant it.
+The bundled Netdata Agent uses `pid: host`, `SYS_PTRACE`, `SYS_ADMIN`, an
+unconfined AppArmor profile and read-only mounts of the host root, `/proc` and
+`/sys`. That is what produces real host metrics rather than the container's own,
+and rootless Docker cannot grant it. The `network-info` sidecar uses
+`network_mode: host` to read the host's default route; it publishes no port and
+needs neither host PID visibility nor `SYS_ADMIN`.
 
-Nothing else in the stack is privileged. The Docker socket goes only to
+Nothing else in the stack asks for anything: every other service runs with
+`no-new-privileges`, and all but the reporters are `read_only`. The Docker socket goes only to
 [CetusGuard](https://github.com/hectorm/cetusguard), and never to the dashboard.
 Its allowlist permits three read-only endpoints: two network queries, and
 inspection of a single container. `POST /containers/create` answers 403.

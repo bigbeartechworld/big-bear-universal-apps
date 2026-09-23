@@ -2,7 +2,7 @@ name: big-bear-service-dash
 
 services:
   service-dash:
-    image: ghcr.io/cvaghela/service-dash:1.5.2@sha256:651a1ffe1ef73be124c7bd11e5c9c07b85b502b220cbb9d53ce6e1fcb9fb4a5b
+    image: ghcr.io/cvaghela/service-dash:1.5.4@sha256:d2d90252281dd82a6f80ef21a2574387a7b1407f48929273b3b70f93fe16a01a
     container_name: service-dash
     ports:
       # Change 8888 only when a different host port is required.
@@ -37,7 +37,7 @@ services:
   # Answers one question for nginx: is this browser really signed in to Uptime
   # Kuma? Without it, saving settings would have to trust the browser's word.
   kuma-auth:
-    image: ghcr.io/cvaghela/service-dash-kuma-auth:1.5.2@sha256:1d4ea01a5ec9a115e8c102d40fedf6b841bd7992a609e9ecb614636279c8408b
+    image: ghcr.io/cvaghela/service-dash-kuma-auth:1.5.4@sha256:7ca4c1d9a60b37fcdd8c19a06d5e9392e186c234c8d3b55de83e7c3eb16f16ca
     container_name: service-dash-kuma-auth
     environment:
       # Must point at the same Uptime Kuma as KUMA_PORT above — if you change
@@ -57,7 +57,7 @@ services:
     restart: unless-stopped
 
   network-info:
-    image: ghcr.io/cvaghela/service-dash-network-info:1.5.2@sha256:3af5d95c109072d709c94c9b682c86fce2e19354bab2251a57f3a7216038fc8d
+    image: ghcr.io/cvaghela/service-dash-network-info:1.5.4@sha256:ea919a8b95dc1e1bfb8516c610cf7bdb63ef7b269cb8cd2637c04e01441d9dd6
     container_name: service-dash-network-info
     network_mode: host
     read_only: true
@@ -132,7 +132,7 @@ services:
   # the panel on:
   #   docker exec -it service-dash-claude-usage claude auth login
   claude-usage:
-    image: ghcr.io/cvaghela/service-dash-claude-usage:1.5.2@sha256:300ee7eb003405d23b12a5399febc6f061db69c9faa490d7bcf26279059b6e67
+    image: ghcr.io/cvaghela/service-dash-claude-usage:1.5.4@sha256:68b4725fced4ac2d34dd52875aebd09ef972497e489a8e2c93dbd23d8f59c7b6
     container_name: service-dash-claude-usage
     environment:
       # Plan windows move slowly; polling harder gains nothing.
@@ -150,7 +150,7 @@ services:
   # localhost and hangs rather than failing.
   #   docker exec -it service-dash-codex-usage codex login --device-auth
   codex-usage:
-    image: ghcr.io/cvaghela/service-dash-codex-usage:1.5.2@sha256:9e6f78bce9178258fcdd6881a7f62e0d715174c692cced659499a368bf220b4a
+    image: ghcr.io/cvaghela/service-dash-codex-usage:1.5.4@sha256:b591e4c5bf438d0bbb0fe3e163e5d4e1ad89dc0e1166e682266dd46fc6b09763
     container_name: service-dash-codex-usage
     environment:
       CODEX_USAGE_REFRESH_SECONDS: "300"
