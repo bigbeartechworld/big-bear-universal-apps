@@ -2,7 +2,7 @@ name: big-bear-cantinarr
 
 services:
   app:
-    image: ghcr.io/windoze95/cantinarr:0.3.0@sha256:d49dd64daf7f7b0c90dd56989b565783130b9ddf24603a4ec8317c55d6bd1797
+    image: ghcr.io/windoze95/cantinarr:0.15.0@sha256:29e23ca46bc78d6055434d5c83b037af991ecb38a68ee1f316fdcd41193838e7
     container_name: big-bear-cantinarr
     restart: unless-stopped
     ports:
