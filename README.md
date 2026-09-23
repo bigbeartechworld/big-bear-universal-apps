@@ -273,6 +273,7 @@ Validate apps against the JSON schema:
 | **Filezilla** | FIleZilla Client is a fast and reliable cross-platform FTP, FTPS and SFTP client with lots of use... | `linuxserver/filezilla` | 3.69.6 | 3000 |  |  |
 | **Financial Freedom** | Keep investors and their buyers out of your financial data. Own 100% of your data and start build... | `serversideup/financial-freedom` | v0.2.0-alpha1 | 8443 |  |  |
 | **Firefox** | This Image contains a browser-accessible version of Firefox. | `linuxserver/firefox` | 1155.0.1 | 3000 | [▶️](https://youtu.be/RPBshN5hGWQ) |  |
+| **Fireshare** | Fireshare lets you host your own video and image content and share it with others via public or p... | `shaneisrael/fireshare` | 1.7.1 | 8585 |  | [📖](https://github.com/ShaneIsrael/fireshare#readme) |
 | **Flame** | Flame is a self-hosted startpage for your server. Its design is heavily inspired by SUI. Flame is... | `pawelmalak/flame` | multiarch2.3.1 | 5005 | [▶️](https://youtu.be/p_P_jKmJRz8) |  |
 | **FlContainers Guacamole** | A Docker Container for Apache Guacamole, a client-less remote desktop gateway. It supports standa... | `flcontainers/guacamole` | 1.6.0 | 8080 |  |  |
 | **Fleet** | Fleet provides an online web interface which displays a set of maintained images from one or more... | `linuxserver/fleet` | 2.3.3 | 8080 |  |  |
