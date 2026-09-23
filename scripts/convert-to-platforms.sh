@@ -1569,10 +1569,12 @@ EOF
         main_image="${base_url2}${main_image#docker.io/library/}"
     elif [[ "$main_image" == docker.io/* ]]; then
         main_image="${base_url1}${main_image#docker.io/}"
-    elif [[ "$main_image" == */* ]]; then
-        main_image="${base_url1}${main_image}"
     elif [[ "$main_image" != *.*/* && "$main_image" != *:*/* ]]; then
-        main_image="${base_url2}${main_image}"
+        if [[ "$main_image" == */* ]]; then
+            main_image="${base_url1}${main_image}"
+        else
+            main_image="${base_url2}${main_image}"
+        fi
     fi
     # fallback/default is just the image URI, works for quay.io
     
