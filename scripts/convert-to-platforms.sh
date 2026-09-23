@@ -492,29 +492,31 @@ adjust_compose_for_platform() {
     local platform="$3"
     local app_name="$4"
     
+    # Copy the compose file
+    cp "$input_file" "$output_file"
     case "$platform" in
         casaos)
-            # Copy compose and add x-casaos sections
-            cp "$input_file" "$output_file"
+            # Add x-casaos sections
             # Will add x-casaos extensions in convert_to_casaos function
             ;;
+        cosmos)
+            # Convert environment map to array
+            yq eval -o=json 'with(.services[] | select(.environment | kind == "map"); .environment |= (to_entries | map(.key + "=" + (.value | to_string))))' -i "$output_file"
+            ;&
         portainer|dockge|cosmos)
-            # Copy the compose file and add big-bear- prefix to volume names
-            cp "$input_file" "$output_file"
+            # Add big-bear- prefix to volume names
             add_bigbear_volume_prefix "$output_file"
             # Remove the 'name' field for Portainer, Dockge, and Cosmos
             yq eval 'del(.name)' -i "$output_file"
             ;;
         runtipi)
-            # Copy compose, add runtipi.managed label and tipi_main_network
-            cp "$input_file" "$output_file"
+            # Add runtipi.managed label and tipi_main_network
             # Remove the 'name' field for Runtipi
             yq eval 'del(.name)' -i "$output_file"
             # Will be modified in convert_to_runtipi function
             ;;
         umbrel)
             # Use clean compose as-is
-            cp "$input_file" "$output_file"
             # Remove the 'name' field for Umbrel as well
             yq eval 'del(.name)' -i "$output_file"
             ;;
@@ -1510,17 +1512,17 @@ convert_to_cosmos() {
     name_for_routes="${name_for_routes//$'\t'/\\t}"
     
     # Create cosmos-compose.json with routes
-    local cosmos_port="${PORT_COSMOS:-$APP_DEFAULT_PORT}"
+    local cosmos_port="$(jq -r '.[0].container // empty' <<< "$APP_PORTS")"
     # Ensure port is a single value (take first port if multiple)
     cosmos_port=$(echo "$cosmos_port" | head -1 | tr -d '\n\r')
     local routes=""
     if [[ -n "$cosmos_port" ]]; then
-        routes="\"routes\": [
+        routes="[
         {
           \"name\": \"$name_for_routes\",
           \"description\": \"Web UI\",
           \"useHost\": true,
-          \"target\": \"http://$app_name:$cosmos_port\",
+          \"target\": \"http://$APP_MAIN_SERVICE:$cosmos_port\",
           \"mode\": \"SERVAPP\",
           \"Timeout\": 14400000,
           \"ThrottlePerMinute\": 12000,
@@ -1531,14 +1533,14 @@ convert_to_cosmos() {
     fi
 
     local temp_cosmos_compose=$(mktemp -p $TEMP_DIR)
+    local cosmos_services=$(yq eval -o=json '.services' "$temp_compose")
+    if [[ -n "$routes" ]]; then
+        cosmos_services=$(VAL=$routes yq eval -o=json '.services | to_entries | .[0].value.routes = env(VAL) | from_entries' "$temp_compose")
+    fi
     cat > "$temp_cosmos_compose" << EOF
 {
-  "cosmos-installer": {
-    $routes
-    "services": {
-      "$app_name": $(yq eval -o=json ".services.[\"$APP_MAIN_SERVICE\"] // (.services | to_entries[0].value)" "$temp_compose")
-    }
-  }
+  "cosmos-installer": {},
+  "services": $cosmos_services
 }
 EOF
 
