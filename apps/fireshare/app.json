@@ -142,6 +142,7 @@
       "supported": true,
       "port_map": "8585",
       "port": "8585",
+      "category": "Media",
       "volume_mappings": {
         "fireshare_data": "/DATA/AppData/$AppID/data",
         "fireshare_processed": "/DATA/AppData/$AppID/processed",

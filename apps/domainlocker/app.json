@@ -123,6 +123,7 @@
         "amd64",
         "arm64"
       ],
+      "port": "3000",
       "volume_mappings": {
         "domainlocker_postgres_data": "postgres_data"
       }
@@ -134,7 +135,8 @@
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,
