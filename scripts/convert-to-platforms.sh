@@ -1560,19 +1560,21 @@ EOF
     if [[ "$main_image" == ghcr.io* ]]; then
         main_image="https://${main_image}"
     elif [[ "$main_image" == lscr.io/linuxserver* ]]; then
-        main_image="${main_image#lscr.io/linuxserver/}"
-        main_image="https://docs.linuxserver.io/images/docker-${main_image}"
+        main_image="https://docs.linuxserver.io/images/docker-${main_image#lscr.io/linuxserver/}"
     elif [[ "$main_image" == registry.gitlab.com* ]]; then
-        main_image="${main_image#registry.}"
-        main_image="https://$main_image/container_registry"
+        main_image="https://${main_image#registry.}/container_registry"
     elif [[ "$main_image" == codeberg.org* ]]; then
-        main_image="${main_image#codeberg.org/}"
-        main_image="https://codeberg.org/${main_image}/packages"
+        main_image="https://codeberg.org/${main_image#codeberg.org/}/packages"
+    elif [[ "$main_image" == docker.io/library/* ]]; then
+        main_image="${base_url2}${main_image#docker.io/library/}"
+    elif [[ "$main_image" == docker.io/* ]]; then
+        main_image="${base_url1}${main_image#docker.io/}"
     elif [[ "$main_image" == */* ]]; then
         main_image="${base_url1}${main_image}"
-    else
+    elif [[ "$main_image" != *.*/* && "$main_image" != *:*/* ]]; then
         main_image="${base_url2}${main_image}"
     fi
+    # fallback/default is just the image URI, works for quay.io
     
     # Create description.json using jq to properly escape all strings
     jq -n \
