@@ -231,12 +231,15 @@ TMP_MS="$(mktemp -d)"
 bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a domainlocker -o "$TMP_MS/out" > "$TMP_MS/run.log" 2>&1
 assert_eq "$?" "0" "domainlocker run exits 0"
 MS_COMPOSE="$TMP_MS/out/runtipi/domainlocker/docker-compose.yml"
+MS_JSON="$TMP_MS/out/runtipi/domainlocker/docker-compose.json"
 assert_eq "$(yq eval '.services.domainlocker.image' "$MS_COMPOSE" | cut -d: -f1)" \
   "ghcr.io/lissy93/domain-locker" "promoted service carries the app image, not the db"
 assert_eq "$(yq eval '.services.domainlocker.ports | length' "$MS_COMPOSE")" "1" \
   "promoted service owns the host port"
 assert_eq "$(yq eval '.services.domainlocker.ports[0]' "$MS_COMPOSE")" '${APP_PORT}:3000' \
   "promoted service port is rewritten to APP_PORT"
+assert_eq "$(jq -r '[.services[] | select(.isMain == true) | .internalPort][0]' "$MS_JSON")" "3000" \
+  "domainlocker Runtipi internalPort uses the container port"
 assert_eq "$(yq eval '.services.postgres.ports // "none"' "$MS_COMPOSE")" "none" \
   "non-main service keeps no host port"
 assert_eq "$(yq eval '[.services[] | select(.image | test("^postgres:"))] | length' "$MS_COMPOSE")" "1" \
