@@ -1,0 +1,20 @@
+name: linuxserver-cura
+services:
+  app:
+    image: linuxserver/cura:5.13.0@sha256:1b111783e5bd9e7cc495a9a1f942f73f525730b2f8c59d72b9181bca7d1c3074
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+      - target: 3001
+        published: 3001
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/cura/config
+        target: /config

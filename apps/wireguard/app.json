@@ -1,0 +1,167 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "wireguard",
+    "name": "Wireguard",
+    "description": "WireGuard® is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography. It aims to be faster, simpler, leaner, and more useful than IPsec, while avoiding the massive headache. It intends to be considerably more performant than OpenVPN. WireGuard is designed as a general purpose VPN for running on embedded interfaces and super computers alike, fit for many different circumstances. Initially released for the Linux kernel, it is now cross-platform (Windows, macOS, BSD, iOS, Android) and widely deployable. It is currently under heavy development, but already it might be regarded as the most secure, easiest to use, and simplest VPN solution in the industry.",
+    "tagline": "An extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography. It aims to be faster, simpler, leaner, and more useful than IPsec, while avoiding the massive headache. It intends to be considerably more performant than OpenVPN. WireGuard is designed as a general purpose VPN for running on embedded interfaces and super computers alike, fit for many different circumstances. Initially released for the Linux kernel, it is now cross-platform (Windows, macOS, BSD, iOS, Android) and widely deployable. It is currently under heavy development, but already it might be regarded as the most secure, easiest to use, and simplest VPN solution in the industry.",
+    "version": "1.0.20260223",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/wireguard",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:56.988Z",
+    "updated": "2026-09-17T18:10:56.988Z"
+  },
+  "visual": {
+    "screenshots": [],
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/wireguard.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/wireguard.png",
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/wireguard.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-wireguard",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "51820",
+    "main_image": "linuxserver/wireguard",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "SERVERURL",
+        "default": "",
+        "description": "Container Variable: SERVERURL",
+        "required": false
+      },
+      {
+        "name": "SERVERPORT",
+        "default": "",
+        "description": "Container Variable: SERVERPORT",
+        "required": false
+      },
+      {
+        "name": "PEERS",
+        "default": "",
+        "description": "Container Variable: PEERS",
+        "required": false
+      },
+      {
+        "name": "PEERDNS",
+        "default": "",
+        "description": "Container Variable: PEERDNS",
+        "required": false
+      },
+      {
+        "name": "INTERNAL_SUBNET",
+        "default": "",
+        "description": "Container Variable: INTERNAL_SUBNET",
+        "required": false
+      },
+      {
+        "name": "ALLOWEDIPS",
+        "default": "",
+        "description": "Container Variable: ALLOWEDIPS",
+        "required": false
+      },
+      {
+        "name": "PERSISTENTKEEPALIVE_PEERS",
+        "default": "",
+        "description": "Container Variable: PERSISTENTKEEPALIVE_PEERS",
+        "required": false
+      },
+      {
+        "name": "LOG_CONFS",
+        "default": "",
+        "description": "Container Variable: LOG_CONFS",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/lib/modules",
+        "description": "Container Path: /lib/modules"
+      }
+    ],
+    "ports": [
+      {
+        "container": "51820",
+        "host": "51820",
+        "protocol": "udp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "51820",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "51820"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "51820"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "51820"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "51820"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "51820"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

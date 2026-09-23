@@ -24,7 +24,7 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
       - "speedtest-tracker_config:/config"
       - "speedtest-tracker_web:/etc/ssl/web"
-    image: "linuxserver/speedtest-tracker:1.14.8@sha256:4829a2ea61edd50370adc58050e6fbb93c96ed0c5d0215673b41df8347c9b2a2"
+    image: "linuxserver/speedtest-tracker:1.15.0@sha256:52ffdb011dda2d11dd966e2c50df9202d70385f5c30bee9e0663f9e39b9bf3ba"
     restart: unless-stopped
     depends_on:
       - big-bear-speedtest-tracker-db

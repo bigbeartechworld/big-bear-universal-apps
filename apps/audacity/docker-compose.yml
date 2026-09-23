@@ -1,0 +1,20 @@
+name: linuxserver-audacity
+services:
+  app:
+    image: linuxserver/audacity:4.0.0@sha256:f372d378bef84eee5fd709f612da66be7647223f7954f100771b64823910ca71
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+      - target: 3001
+        published: 3001
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/audacity/config
+        target: /config

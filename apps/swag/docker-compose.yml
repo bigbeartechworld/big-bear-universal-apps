@@ -1,0 +1,37 @@
+name: linuxserver-swag
+services:
+  app:
+    image: linuxserver/swag:5.8.0@sha256:6679fd0dca64d2caf39377c254e48742ef4ef3b80a3eb90b0d8e8025131521cf
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+      URL: ''
+      VALIDATION: ''
+      SUBDOMAINS: ''
+      CERTPROVIDER: ''
+      CERT_PROFILE: ''
+      DNSPLUGIN: ''
+      PROPAGATION: ''
+      EMAIL: ''
+      ONLY_SUBDOMAINS: ''
+      EXTRA_DOMAINS: ''
+      STAGING: ''
+      DISABLE_F2B: ''
+      SWAG_AUTORELOAD: ''
+      SWAG_AUTORELOAD_WATCHLIST: ''
+    ports:
+      - target: 443
+        published: 443
+        protocol: tcp
+      - target: 80
+        published: 80
+        protocol: tcp
+      - target: 443
+        published: 443
+        protocol: udp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/swag/config
+        target: /config

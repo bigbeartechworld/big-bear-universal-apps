@@ -1,0 +1,20 @@
+name: linuxserver-telegram
+services:
+  app:
+    image: linuxserver/telegram:7.2.8@sha256:84db4e8137d8fcfd07eb92869f307810e1531284499e68c6daca238df4ef49aa
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+      - target: 3001
+        published: 3001
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/telegram/config
+        target: /config

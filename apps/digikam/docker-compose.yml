@@ -1,0 +1,20 @@
+name: linuxserver-digikam
+services:
+  app:
+    image: linuxserver/digikam:9.1.0@sha256:b04203ab374fd32d2d44a017c8ef4d01d7ea834b1e4905d8c225440b00bf38ec
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+      - target: 3001
+        published: 3001
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/digikam/config
+        target: /config

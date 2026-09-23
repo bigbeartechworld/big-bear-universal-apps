@@ -2,7 +2,7 @@ name: ente
 
 services:
   museum:
-    image: ghcr.io/ente/server:latest@sha256:f646b68a1b8d27e3375a67e3719ed6af97e9501a81e0af9a2ec7f57ce2b3264e
+    image: ghcr.io/ente/server:latest@sha256:3511ff25db3bf950abeb3983928eeadeed7f53b690ee94704c14be72fa719b1d
     container_name: ente-museum
     ports:
       - "8080:8080"
@@ -36,7 +36,7 @@ services:
       - ente_network
 
   socat:
-    image: alpine/socat@sha256:3d9e7966201dd3a065df591020a09fd3c70845de7e7086e3531ea69db774406b
+    image: alpine/socat@sha256:24220ef2c80a2a421ea08e4624488e985330c421b6aa3329bae14b0933a1d403
     container_name: ente-socat
     network_mode: service:museum
     depends_on:
@@ -46,7 +46,7 @@ services:
     restart: unless-stopped
 
   web:
-    image: ghcr.io/ente/web:latest@sha256:a2a00d1c5de0cf236bfae4c6fba77900035269c34009f97f055fa8ca4eb807b8
+    image: ghcr.io/ente/web:latest@sha256:3fc9b2a59ace953b62767aae11ce9064ed483722f78ce51632f2dc2a45a086b0
     container_name: ente-web
     ports:
       - "3000:3000"

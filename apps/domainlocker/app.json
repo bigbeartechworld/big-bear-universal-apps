@@ -35,7 +35,7 @@
     ],
     "platform": "linux",
     "main_service": "app",
-    "default_port": "8083",
+    "default_port": "8180",
     "main_image": "ghcr.io/lissy93/domain-locker",
     "compose_file": "docker-compose.yml"
   },
@@ -87,7 +87,7 @@
     "ports": [
       {
         "container": "3000",
-        "host": "8083",
+        "host": "8180",
         "protocol": "tcp",
         "description": "Web UI"
       }
@@ -101,10 +101,11 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8083",
+      "port_map": "8180",
       "volume_mappings": {
         "domainlocker_postgres_data": "/DATA/AppData/$AppID/postgres_data"
-      }
+      },
+      "category": "Others"
     },
     "portainer": {
       "supported": true,
@@ -122,6 +123,7 @@
         "amd64",
         "arm64"
       ],
+      "port": "3000",
       "volume_mappings": {
         "domainlocker_postgres_data": "postgres_data"
       }
@@ -133,7 +135,8 @@
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,

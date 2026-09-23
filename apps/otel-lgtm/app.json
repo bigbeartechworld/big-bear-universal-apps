@@ -5,7 +5,7 @@
     "name": "OTEL LGTM",
     "description": "An OpenTelemetry Backend in a Docker Image.",
     "tagline": "OpenTelemetry Backend",
-    "version": "0.30.2",
+    "version": "0.33.0",
     "author": "Konrad Botor (Forinil)",
     "developer": "Grafana Labs",
     "category": "BigBearCasaOS",
@@ -13,13 +13,13 @@
     "homepage": "https://hub.docker.com/r/grafana/otel-lgtm",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:08Z",
-    "updated": "2026-08-17T10:03:37.524Z"
+    "updated": "2026-09-18T06:36:47.711Z"
   },
   "visual": {
-    "icon": "https://www.gravatar.com/avatar/31cea69afa424609b2d83621b4d47f1d?s=120&r=g&d=404",
-    "thumbnail": "https://raw.githubusercontent.com/grafana/docker-otel-lgtm/main/img/overview.png",
+    "icon": "https://images.weserv.nl/?url=https%3A%2F%2Fwww.gravatar.com%2Favatar%2F31cea69afa424609b2d83621b4d47f1d%3Fs%3D120%26r%3Dg%26d%3D404",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/grafana/docker-otel-lgtm@main/img/overview.png",
     "screenshots": [],
-    "logo": "https://www.gravatar.com/avatar/31cea69afa424609b2d83621b4d47f1d?s=120&r=g&d=404"
+    "logo": "https://images.weserv.nl/?url=https%3A%2F%2Fwww.gravatar.com%2Favatar%2F31cea69afa424609b2d83621b4d47f1d%3Fs%3D120%26r%3Dg%26d%3D404"
   },
   "resources": {
     "youtube": "",

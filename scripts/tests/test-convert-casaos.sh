@@ -153,4 +153,15 @@ assert_eq "$(yq eval '.services | keys | length' "$DCF" 2>/dev/null)" "1" "dotte
 assert_eq "$(yq eval '.services["svc.v2"].volumes[0]' "$DCF" 2>/dev/null)" '/DATA/AppData/$AppID/testvol:/data' "dotted name: volume converted to bind mount"
 rm -rf "$TMP_DOT"
 
+TMP_VOL="$(mktemp -d)"
+cp -R "$REPO/apps/." "$TMP_VOL/apps/"
+VOL_DIR="$TMP_VOL/apps/uptime-kuma"
+VOL_SVC=$(yq eval '.services | keys | .[0]' "$VOL_DIR/docker-compose.yml")
+VOL_SVC="$VOL_SVC" yq eval '.volumes.media_library = null | .services[strenv(VOL_SVC)].volumes = ["media_library:/media:ro"]' -i "$VOL_DIR/docker-compose.yml"
+jq '.compatibility.casaos.volume_mappings = {"media_library": "/DATA/Media/Music"}' "$VOL_DIR/app.json" > "$VOL_DIR/app.json.tmp" && mv "$VOL_DIR/app.json.tmp" "$VOL_DIR/app.json"
+bash "$REPO/scripts/convert-to-platforms.sh" -p casaos -a uptime-kuma -i "$TMP_VOL/apps" -o "$TMP_VOL/out" >/dev/null 2>&1
+VOL_CF="$TMP_VOL/out/casaos/uptime-kuma/docker-compose.yml"
+assert_eq "$(yq eval ".services[\"$VOL_SVC\"].volumes[0]" "$VOL_CF" 2>/dev/null)" '/DATA/Media/Music:/media:ro' "custom mapping: read-only mount preserved"
+rm -rf "$TMP_VOL"
+
 exit $fail

@@ -1,0 +1,20 @@
+name: linuxserver-mysql-workbench
+services:
+  app:
+    image: linuxserver/mysql-workbench:8.0.47@sha256:af86f67fcbf7d1e0da9610fb2bf05eda77228ca4995df58976b6f35e42ebd1ac
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+      - target: 3001
+        published: 3001
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/mysql-workbench/config
+        target: /config

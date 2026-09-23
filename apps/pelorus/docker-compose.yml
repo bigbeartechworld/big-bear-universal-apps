@@ -1,0 +1,17 @@
+name: linuxserver-pelorus
+services:
+  app:
+    image: linuxserver/pelorus:0.2.3@sha256:0a99f40dfd7631fca3c35d16a72719905a47192bdf4ce5bc375f1bc2cc45702b
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - target: 3001
+        published: 3001
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/pelorus/config
+        target: /config

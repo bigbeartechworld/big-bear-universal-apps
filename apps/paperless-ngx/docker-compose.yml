@@ -10,11 +10,13 @@ services:
     # Name of the container
     container_name: big-bear-paperless-ngx
     # Image to be used for the container
-    image: ghcr.io/paperless-ngx/paperless-ngx:2.20.15@sha256:6c86cad803970ea782683a8e80e7403444c5bf3cf70de63b4d3c8e87500db92f
+    image: ghcr.io/paperless-ngx/paperless-ngx:3.2.0@sha256:22dc423ff48ac1629977dbf0c9625ba9f60d3bd1291a2ff173c65351984a14c2
     # Container restart policy
     restart: unless-stopped
     # environment variables
     environment:
+      PAPERLESS_DBENGINE: postgresql
+      PAPERLESS_SECRET_KEY: $PAPERLESS_SECRET_KEY
       PAPERLESS_REDIS: redis://big-bear-paperless-ngx-broker:6379
       PAPERLESS_DBHOST: big-bear-paperless-ngx-db
       PAPERLESS_DBUSER: bigbear
@@ -45,7 +47,7 @@ services:
       - big-bear-paperless-ngx-network
   big-bear-paperless-ngx-broker:
     container_name: big-bear-paperless-ngx-broker
-    image: docker.io/library/redis:8.10.0@sha256:344e3945a0b431c8ff1eecd58c5573538126bd756f02fc7e218ddf1fc2546366
+    image: docker.io/library/redis:8.10.1@sha256:8a1efc5f479551822b47424ccae982026b633f28818eab0387348120a61e10e2
     restart: unless-stopped
     volumes:
       - paperless-ngx_redis:/data
@@ -78,7 +80,7 @@ services:
   # /tmp directory to prevent potential security issues.
   big-bear-paperless-ngx-gotenberg:
     container_name: big-bear-paperless-ngx-gotenberg
-    image: gotenberg/gotenberg:8.36@sha256:87c16b9f364279d321bc9772d31fa58aa6abe036423c270698bd636c3a8e9466
+    image: gotenberg/gotenberg:8.37@sha256:f29984bd1e226bf1b93ba90af06000afa8b315853e99d27b9aaa41b93f15c769
     restart: unless-stopped
     # The gotenberg chromium route is used to convert .eml files. We do not
     # want to allow external content like tracking pixels or even javascript.

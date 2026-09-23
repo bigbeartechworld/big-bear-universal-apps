@@ -46,6 +46,7 @@
   "dockhand": "Developer",
   "dockpeek": "Developer",
   "docmost": "Productivity",
+  "domainlocker": "Others",
   "dozzle": "Developer",
   "ejbca-ce": "Social",
   "ente": "Media",
@@ -125,6 +126,7 @@
   "neko-firefox": "Developer",
   "netalertx": "Networking",
   "netalertx-v26": "Networking",
+  "netboot-xyz": "Networking",
   "netpulse": "Networking",
   "nextcloud": "Media",
   "nextcloud-ls": "Media",
@@ -241,5 +243,7 @@
   "zipline": "Others",
   "zotero": "Others",
   "buzz": "Developer",
-  "glance": "Others"
+  "glance": "Others",
+  "drawio": "Productivity",
+  "navidrome": "Media"
 }

@@ -5,7 +5,7 @@
     "name": "Immich AIO Alpine",
     "description": "AIO Alpine. Self-hosted photo and video storage.",
     "tagline": "Immich All In One Alpine",
-    "version": "2.0.0-alpine",
+    "version": "3.2.2",
     "author": "BigBearTechWorld",
     "developer": "imagegenius",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/imagegenius/immich",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:53Z",
-    "updated": "2025-10-27T02:41:53Z"
+    "updated": "2026-09-19T04:54:32Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/immich.png",
@@ -148,7 +148,11 @@
   "ui": {
     "scheme": "http",
     "path": "",
-    "tips": {}
+    "tips": {
+      "before_install": {
+        "en_us": "Immich AIO Alpine v3 changes the PostgreSQL vector extension from pgvecto.rs to VectorChord. Back up the database before upgrading and allow the migration and reindex to finish before using the app. Do not downgrade after the database migration completes. See https://docs.immich.app/install/upgrading/."
+      }
+    }
   },
   "compatibility": {
     "casaos": {

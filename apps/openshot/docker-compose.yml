@@ -1,0 +1,20 @@
+name: linuxserver-openshot
+services:
+  app:
+    image: linuxserver/openshot:4.0.0@sha256:01737ed98a46cb4fc93d4474b9f91e3cf00c4c60b0cc2017becdc1d51a7ac237
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+      - target: 3001
+        published: 3001
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/openshot/config
+        target: /config

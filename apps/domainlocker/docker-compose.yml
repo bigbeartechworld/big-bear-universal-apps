@@ -30,7 +30,7 @@ services:
       DL_PG_PASSWORD: changeme2420
       DL_PG_NAME: domain_locker
     ports:
-      - 8083:3000
+      - 8180:3000
     depends_on:
       postgres:
         condition: service_healthy
@@ -44,7 +44,7 @@ services:
       - big_bear_domainlocker_network
   updater:
     container_name: domain-locker-updater
-    image: alpine:3.20@sha256:d9e853e87e55526f6b2917df91a2115c36dd7c696a35be12163d44e6e2a4b6bc
+    image: alpine:3.24@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6
     restart: unless-stopped
     depends_on:
       app:

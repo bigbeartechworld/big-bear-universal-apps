@@ -1,0 +1,20 @@
+name: linuxserver-gzdoom
+services:
+  app:
+    image: linuxserver/gzdoom:4.14.2@sha256:c19b50ceabef5835463f8a6ed8d8af4cab0a9e1530d335f795a478d0fc8c9a8c
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+      - target: 3001
+        published: 3001
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/gzdoom/config
+        target: /config

@@ -360,6 +360,10 @@
             "supported": {
               "type": "boolean"
             },
+            "port": {
+              "type": "string",
+              "description": "Override internal container port for Runtipi docker-compose.json internalPort"
+            },
             "tipi_version": {
               "type": "integer"
             },
@@ -416,6 +420,10 @@
             },
             "routes_required": {
               "type": "boolean"
+            },
+            "port": {
+              "type": "string",
+              "description": "Override internal container port for Cosmos route targets"
             },
             "folder_name": {
               "type": "string",

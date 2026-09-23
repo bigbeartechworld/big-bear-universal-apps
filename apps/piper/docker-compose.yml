@@ -1,0 +1,24 @@
+name: linuxserver-piper
+services:
+  app:
+    image: linuxserver/piper:2.5.2@sha256:5b7648e9479372a2c650c9aa78a6ce8c047366f5105a6ddeeb39f64a67571920
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+      PIPER_VOICE: ''
+      LOCAL_ONLY: ''
+      PIPER_LENGTH: ''
+      PIPER_NOISE: ''
+      PIPER_NOISEW: ''
+      PIPER_SPEAKER: ''
+      NO_STREAMING: ''
+    ports:
+      - target: 10200
+        published: 10200
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/piper/config
+        target: /config

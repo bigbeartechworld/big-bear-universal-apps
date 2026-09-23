@@ -1,0 +1,151 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "mariadb",
+    "name": "Mariadb",
+    "description": "Mariadb is one of the most popular database servers. Made by the original developers of MySQL.",
+    "tagline": "One of the most popular database servers. Made by the original developers of MySQL.",
+    "version": "11.8.8",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/mariadb",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:58.377Z",
+    "updated": "2026-09-17T18:10:58.377Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/mariadb-git.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/mariadb-git.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/mariadb-git.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-mariadb",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "3306",
+    "main_image": "linuxserver/mariadb",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "MYSQL_ROOT_PASSWORD",
+        "default": "",
+        "description": "Container Variable: MYSQL_ROOT_PASSWORD",
+        "required": false
+      },
+      {
+        "name": "MYSQL_DATABASE",
+        "default": "",
+        "description": "Container Variable: MYSQL_DATABASE",
+        "required": false
+      },
+      {
+        "name": "MYSQL_USER",
+        "default": "",
+        "description": "Container Variable: MYSQL_USER",
+        "required": false
+      },
+      {
+        "name": "MYSQL_PASSWORD",
+        "default": "",
+        "description": "Container Variable: MYSQL_PASSWORD",
+        "required": false
+      },
+      {
+        "name": "REMOTE_SQL",
+        "default": "",
+        "description": "Container Variable: REMOTE_SQL",
+        "required": false
+      },
+      {
+        "name": "CLI_OPTS",
+        "default": "",
+        "description": "Container Variable: CLI_OPTS",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3306",
+        "host": "3306",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "3306",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "3306"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "3306"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "3306"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "3306"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "3306"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

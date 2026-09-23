@@ -1,0 +1,20 @@
+name: linuxserver-github-desktop
+services:
+  app:
+    image: linuxserver/github-desktop:3.4.13@sha256:cb31c4f5abd0e89d02532c932a37f4fd62b79d39f2163975eace8c8a732c969b
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+      - target: 3001
+        published: 3001
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/github-desktop/config
+        target: /config

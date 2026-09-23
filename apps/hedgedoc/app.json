@@ -1,0 +1,185 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "hedgedoc",
+    "name": "Hedgedoc",
+    "description": "HedgeDoc gives you access to all your files wherever you are. HedgeDoc is a real-time, multi-platform collaborative markdown note editor. This means that you can write notes with other people on your desktop, tablet or even on the phone. You can sign-in via multiple auth providers like Facebook, Twitter, GitHub and many more on the homepage.",
+    "tagline": "Gives you access to all your files wherever you are. HedgeDoc is a real-time, multi-platform collaborative markdown note editor. This means that you can write notes with other people on your desktop, tablet or even on the phone. You can sign-in via multiple auth providers like Facebook, Twitter, GitHub and many more on the homepage.",
+    "version": "1.12.0",
+    "author": "WisdomSky",
+    "developer": "LinuxServer.io",
+    "category": "Smart Home",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/linuxserver/hedgedoc",
+    "source": "linuxserver-appstore",
+    "created": "2026-09-17T18:10:57.251Z",
+    "updated": "2026-09-17T18:10:57.251Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/hedgedoc-banner.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/hedgedoc-banner.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/hedgedoc-banner.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "https://github.com/linuxserver/docker-hedgedoc",
+    "issues": "",
+    "support": "https://www.linuxserver.io/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "3000",
+    "main_image": "linuxserver/hedgedoc",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "",
+        "description": "Container Variable: TZ",
+        "required": false
+      },
+      {
+        "name": "DB_HOST",
+        "default": "",
+        "description": "Container Variable: DB_HOST",
+        "required": true
+      },
+      {
+        "name": "DB_PORT",
+        "default": "",
+        "description": "Container Variable: DB_PORT",
+        "required": true
+      },
+      {
+        "name": "DB_USER",
+        "default": "",
+        "description": "Container Variable: DB_USER",
+        "required": true
+      },
+      {
+        "name": "DB_PASS",
+        "default": "",
+        "description": "Container Variable: DB_PASS",
+        "required": true
+      },
+      {
+        "name": "DB_NAME",
+        "default": "",
+        "description": "Container Variable: DB_NAME",
+        "required": true
+      },
+      {
+        "name": "CMD_DOMAIN",
+        "default": "",
+        "description": "Container Variable: CMD_DOMAIN",
+        "required": true
+      },
+      {
+        "name": "CMD_URL_ADDPORT",
+        "default": "",
+        "description": "Container Variable: CMD_URL_ADDPORT",
+        "required": false
+      },
+      {
+        "name": "CMD_PROTOCOL_USESSL",
+        "default": "",
+        "description": "Container Variable: CMD_PROTOCOL_USESSL",
+        "required": false
+      },
+      {
+        "name": "CMD_PORT",
+        "default": "",
+        "description": "Container Variable: CMD_PORT",
+        "required": false
+      },
+      {
+        "name": "CMD_ALLOW_ORIGIN",
+        "default": "",
+        "description": "Container Variable: CMD_ALLOW_ORIGIN",
+        "required": false
+      },
+      {
+        "name": "CMD_DB_DIALECT",
+        "default": "",
+        "description": "Container Variable: CMD_DB_DIALECT",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "3000",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Configure the required database and domain settings before installing. This app requires an external database and will not start with empty defaults."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port": "3000",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "port": "3000"
+    },
+    "runtipi": {
+      "supported": true,
+      "port": "3000"
+    },
+    "dockge": {
+      "supported": true,
+      "port": "3000"
+    },
+    "cosmos": {
+      "supported": true,
+      "port": "3000"
+    },
+    "umbrel": {
+      "supported": true,
+      "port": "3000"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "linuxserver",
+    "linuxserver-appstore"
+  ]
+}

@@ -1,0 +1,20 @@
+name: linuxserver-libreoffice
+services:
+  app:
+    image: linuxserver/libreoffice:25.8.7@sha256:75295ed8efc36ab808714787d4e2062621d016295f19d3f7a953d8fef016c24f
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+      - target: 3001
+        published: 3001
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/libreoffice/config
+        target: /config

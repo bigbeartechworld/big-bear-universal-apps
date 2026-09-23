@@ -1,0 +1,20 @@
+name: linuxserver-retroarch
+services:
+  app:
+    image: linuxserver/retroarch:1.22.2@sha256:2440c95f043100d8c1bdd31fcf7f5a44427ae2395f0fd9a0d087cdb9ef04041c
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+      - target: 3001
+        published: 3001
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/retroarch/config
+        target: /config

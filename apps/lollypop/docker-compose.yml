@@ -1,0 +1,20 @@
+name: linuxserver-lollypop
+services:
+  app:
+    image: linuxserver/lollypop:1.4.45@sha256:2ba2b291113664029c6aec0383723f4a7ef19f22c28f77ce1bcb0acb31c7d6d8
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+      - target: 3001
+        published: 3001
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/lollypop/config
+        target: /config

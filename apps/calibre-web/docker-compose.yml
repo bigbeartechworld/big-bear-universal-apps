@@ -1,0 +1,22 @@
+name: linuxserver-calibre-web
+services:
+  app:
+    image: linuxserver/calibre-web:0.6.27@sha256:802729966faed5e32d671cd4f92ba6196e9e754a6c0f740ce1ee9acd86b10e55
+    restart: unless-stopped
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+      DOCKER_MODS: ''
+      OAUTHLIB_RELAX_TOKEN_SCOPE: ''
+    ports:
+      - target: 8083
+        published: 8083
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/AppData/calibre-web/config
+        target: /config
+      - type: bind
+        source: /DATA/AppData/calibre-web/books
+        target: /books
