@@ -53,8 +53,13 @@ real host metrics rather than the container's own, and rootless Docker cannot
 grant it.
 
 Nothing else in the stack is privileged. The Docker socket goes only to
-[CetusGuard](https://github.com/hectorm/cetusguard), restricted to two
-read-only network endpoints, and never to the dashboard.
+[CetusGuard](https://github.com/hectorm/cetusguard), and never to the dashboard.
+Its allowlist permits three read-only endpoints: two network queries, and
+inspection of a single container. `POST /containers/create` answers 403.
+
+The Netdata Agent needs Docker to turn a cgroup id into a container name —
+without it every per-container chart reads as a truncated id — so it reaches
+CetusGuard over `DOCKER_HOST` rather than mounting the socket itself.
 
 ## Platforms
 

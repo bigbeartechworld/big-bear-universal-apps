@@ -88,6 +88,7 @@ services:
       CETUSGUARD_RULES: |
         GET %API_PREFIX_NETWORKS%(\?.*)?
         GET %API_PREFIX_NETWORKS%/%NETWORK_ID_OR_NAME%(\?.*)?
+        GET %API_PREFIX_CONTAINERS%/%CONTAINER_ID_OR_NAME%/json(\?.*)?
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     security_opt:
@@ -100,6 +101,10 @@ services:
     pid: host
     environment:
       DISABLE_TELEMETRY: "1"
+      # Container names only, through the CetusGuard allowlist rather than a
+      # socket of its own. ":ro" on a socket mount restricts the mount, not the
+      # Docker API, so it was never the safeguard it looked like.
+      DOCKER_HOST: tcp://docker-metadata:2375
     cap_add:
       - SYS_PTRACE
       - SYS_ADMIN
@@ -118,7 +123,6 @@ services:
       - /sys:/host/sys:ro
       - /etc/os-release:/host/etc/os-release:ro
       - /var/log:/host/var/log:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
       - /run/dbus:/run/dbus:ro
     restart: unless-stopped
 
