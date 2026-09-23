@@ -16,14 +16,14 @@
     "updated": "2026-09-23T00:00:00Z"
   },
   "visual": {
-    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/cantinarr/logo.png",
+    "icon": "https://raw.githubusercontent.com/windoze95/cantinarr/main/app/web/icons/Icon-512.png",
     "thumbnail": "",
     "screenshots": [
       "https://raw.githubusercontent.com/windoze95/cantinarr-unraid/main/screenshots/01-discover.jpg",
       "https://raw.githubusercontent.com/windoze95/cantinarr-unraid/main/screenshots/05-phone-discover.jpg",
       "https://raw.githubusercontent.com/windoze95/cantinarr-unraid/main/screenshots/04-request.png"
     ],
-    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/cantinarr/logo.png"
+    "logo": "https://raw.githubusercontent.com/windoze95/cantinarr/main/app/web/icons/Icon-512.png"
   },
   "resources": {
     "youtube": "",
