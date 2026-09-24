@@ -5,7 +5,7 @@
     "name": "Navidrome",
     "description": "Modern web-based music server and streamer for your personal music collection.",
     "tagline": "Modern music server and streamer",
-    "version": "0.61.2",
+    "version": "0.64.0",
     "author": "BigBearCommunity",
     "developer": "Navidrome",
     "category": "Media",
@@ -13,7 +13,7 @@
     "homepage": "https://www.navidrome.org/",
     "source": "big-bear-universal",
     "created": "2026-09-18T00:00:00Z",
-    "updated": "2026-09-18T00:00:00Z"
+    "updated": "2026-09-24T19:26:55.516Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/navidrome.png",
@@ -29,7 +29,10 @@
     "support": "https://community.bigbeartechworld.com/"
   },
   "technical": {
-    "architectures": ["amd64", "arm64"],
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "4533",
@@ -79,13 +82,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["Media", "selfhosted"],
+      "categories": [
+        "Media",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
-      "supported_architectures": ["amd64", "arm64"]
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -101,5 +110,11 @@
       "manifest_version": 1
     }
   },
-  "tags": ["selfhosted", "docker", "media", "music", "streaming"]
+  "tags": [
+    "selfhosted",
+    "docker",
+    "media",
+    "music",
+    "streaming"
+  ]
 }
