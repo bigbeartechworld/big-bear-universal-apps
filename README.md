@@ -646,6 +646,8 @@ Automated workflows handle:
 - 🤖 Creating pull requests in platform repos
 - 🔄 Renovate bot for version updates
 
+PR conversion checks honor supported platforms and custom output folder names, including Umbrel's default `big-bear-umbrel-` prefix. Fork PRs report results through checks; the summary comment is limited to same-repository PRs because fork workflow tokens are read-only.
+
 ## 💬 Community
 
 - **YouTube:** [Big Bear Tech World](https://youtube.com/@bigbeartechworld)
