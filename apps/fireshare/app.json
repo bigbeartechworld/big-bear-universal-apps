@@ -5,7 +5,7 @@
     "name": "Fireshare",
     "description": "Fireshare lets you host your own video and image content and share it with others via public or private links — no third-party services required. Drop videos into a watched folder and Fireshare automatically scans, generates thumbnails, and organizes them into a clean, searchable library with folder support. Great for game clips, screen recordings, screenshots, and home videos. Features include public/private share links, an admin login, automatic video scanning, OpenGraph link previews, and optional GPU transcoding.",
     "tagline": "Store and share your video game clips and screenshots",
-    "version": "1.7.1",
+    "version": "1.8.1",
     "author": "BigBearCommunity",
     "developer": "Shane Israel",
     "category": "Media",
@@ -13,7 +13,7 @@
     "homepage": "https://github.com/ShaneIsrael/fireshare",
     "source": "big-bear-universal",
     "created": "2026-06-18T00:00:00Z",
-    "updated": "2026-06-18T00:00:00Z"
+    "updated": "2026-09-24T19:30:40.399Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/fireshare.png",
@@ -34,7 +34,10 @@
     "support": "https://community.bigbeartechworld.com/"
   },
   "technical": {
-    "architectures": ["amd64", "arm64"],
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "fireshare",
     "default_port": "8585",
@@ -153,14 +156,20 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["Media", "selfhosted"],
+      "categories": [
+        "Media",
+        "selfhosted"
+      ],
       "administrator_only": false,
       "port": "8585"
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
-      "supported_architectures": ["amd64", "arm64"],
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
       "port": "8585",
       "volume_mappings": {
         "fireshare_data": "fireshare/data",
