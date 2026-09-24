@@ -5,7 +5,7 @@
     "name": "Blade-of-agony",
     "description": "Wolfenstein: Blade of Agony is a story-driven WWII shooter inspired by Wolfenstein and Doom.",
     "tagline": "A story-driven WWII shooter inspired by Wolfenstein and Doom.",
-    "version": "3.1.20260910",
+    "version": "3.1.20260917",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/blade-of-agony",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:57.167Z",
-    "updated": "2026-09-17T18:10:57.167Z"
+    "updated": "2026-09-24T19:23:08.285Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/boa-logo.png",
