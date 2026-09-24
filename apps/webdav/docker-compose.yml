@@ -1,0 +1,17 @@
+name: webdav
+services:
+  app:
+    image: bytemark/webdav:latest
+    restart: unless-stopped
+    environment:
+      AUTH_TYPE: Digest
+      USERNAME: casaos
+      PASSWORD: casaos
+    ports:
+      - target: 80
+        published: 8080
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /DATA/Documents
+        target: /var/lib/dav

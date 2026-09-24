@@ -1,0 +1,20 @@
+name: flaresolverr
+services:
+  app:
+    image: flaresolverr/flaresolverr:v3.5.2
+    restart: unless-stopped
+    environment:
+      LOG_LEVEL: info
+      LOG_HTML: false
+      PROMETHEUS_ENABLED: false
+      CAPTCHA_SOLVER: none
+      PORT: 8191
+      PROMETHEUS_PORT: 8192
+      TZ: $TZ
+    ports:
+      - target: 8191
+        published: 8191
+        protocol: tcp
+      - target: 8192
+        published: 8192
+        protocol: tcp

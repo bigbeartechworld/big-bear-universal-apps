@@ -1,0 +1,123 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "mosquitto",
+    "name": "Eclipse Mosquitto",
+    "description": "Eclipse Mosquitto is an open source implementation of a server for versions 5, 3.1.1, and 3.1 of the MQTT protocol. You will need to create /portainer/Files/AppData/Config/Mosquitto/config/mosquitto.conf and if needed your password file. Have a look on https://mosquitto.org/man/mosquitto_passwd-1.html",
+    "tagline": "Eclipse Mosquitto Is An Open Source Implementation Of A Server For Versions 5, 3.1.1, And 3.1 Of The Mqtt Protocol. you Will Need To Create /portainer/files/appdata/config/mosquitto/config/mosquitto.conf And If Needed Your Password File. have A Look On Https://mosquitto.org/man/mosquitto_passwd-1.html",
+    "version": "2",
+    "author": "WisdomSky",
+    "developer": "",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://github.com/WisdomSky/CasaOS-Coolstore/tree/main/Apps/mosquitto",
+    "source": "casaos-coolstore",
+    "created": "2026-09-24T18:00:00Z",
+    "updated": "2026-09-24T18:00:00Z"
+  },
+  "visual": {
+    "icon": "https://raw.githubusercontent.com/docker-library/docs/757578e3a44e5460a8a11d32a81776f8b74231a9/eclipse-mosquitto/logo.png",
+    "thumbnail": "https://raw.githubusercontent.com/docker-library/docs/757578e3a44e5460a8a11d32a81776f8b74231a9/eclipse-mosquitto/logo.png",
+    "screenshots": [],
+    "logo": "https://raw.githubusercontent.com/docker-library/docs/757578e3a44e5460a8a11d32a81776f8b74231a9/eclipse-mosquitto/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "armv7",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "1883",
+    "main_image": "eclipse-mosquitto",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+      {
+        "container": "/mosquitto/config",
+        "description": "Container Path: /mosquitto/config"
+      },
+      {
+        "container": "/mosquitto/data",
+        "description": "Container Path: /mosquitto/data"
+      },
+      {
+        "container": "/mosquitto/log",
+        "description": "Container Path: /mosquitto/log"
+      }
+    ],
+    "ports": [
+      {
+        "container": "1883",
+        "host": "1883",
+        "protocol": "tcp",
+        "description": "Container Port: 1883"
+      },
+      {
+        "container": "9001",
+        "host": "9001",
+        "protocol": "tcp",
+        "description": "Container Port: 9001"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "1883",
+      "port": "1883",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Other",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "1883"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "armv7",
+        "arm64"
+      ],
+      "port": "1883"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "1883"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "1883"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "1883"
+    }
+  }
+}

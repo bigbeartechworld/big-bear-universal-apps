@@ -1,0 +1,198 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "statping",
+    "name": "Statping",
+    "description": "An easy to use Status Page for your websites and applications. Statping will automatically fetch the application and render a beautiful status page with tons of features for you to build an even better status page.",
+    "tagline": "An Easy To Use Status Page For Your Websites And Applications. Statping Will Automatically Fetch The Application And Render A Beautiful Status Page With Tons Of Features For You To Build An Even Better Status Page.",
+    "version": "v0.90.74",
+    "author": "WisdomSky",
+    "developer": "",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://github.com/WisdomSky/CasaOS-Coolstore/tree/main/Apps/statping",
+    "source": "casaos-coolstore",
+    "created": "2026-09-24T18:00:00Z",
+    "updated": "2026-09-24T18:00:00Z"
+  },
+  "visual": {
+    "icon": "https://raw.githubusercontent.com/xneo1/portainer_templates/master/Images/statping.png",
+    "thumbnail": "https://raw.githubusercontent.com/xneo1/portainer_templates/master/Images/statping.png",
+    "screenshots": [],
+    "logo": "https://raw.githubusercontent.com/xneo1/portainer_templates/master/Images/statping.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "armv7",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8080",
+    "main_image": "statping/statping",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "VIRTUAL_PORT",
+        "default": "8080",
+        "description": "Container Variable: VIRTUAL_PORT",
+        "required": false
+      },
+      {
+        "name": "DB_CONN",
+        "default": "postgres",
+        "description": "Container Variable: DB_CONN",
+        "required": false
+      },
+      {
+        "name": "DB_HOST",
+        "default": "db",
+        "description": "Container Variable: DB_HOST",
+        "required": false
+      },
+      {
+        "name": "DB_USER",
+        "default": "casaos",
+        "description": "Container Variable: DB_USER",
+        "required": false
+      },
+      {
+        "name": "DB_PASS",
+        "default": "casaos",
+        "description": "Container Variable: DB_PASS",
+        "required": false
+      },
+      {
+        "name": "DB_DATABASE",
+        "default": "casaos",
+        "description": "Container Variable: DB_DATABASE",
+        "required": false
+      },
+      {
+        "name": "NAME",
+        "default": "",
+        "description": "Container Variable: NAME",
+        "required": false
+      },
+      {
+        "name": "DESCRIPTION",
+        "default": "",
+        "description": "Container Variable: DESCRIPTION",
+        "required": false
+      },
+      {
+        "name": "PUID",
+        "default": "$PUID",
+        "description": "for UserID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "$PGID",
+        "description": "for GroupID",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "$TZ",
+        "description": "specify a timezone to use, see this list.",
+        "required": false
+      },
+      {
+        "name": "POSTGRES_USER",
+        "default": "casaos",
+        "description": "Postgres server username",
+        "required": false
+      },
+      {
+        "name": "POSTGRES_PASSWORD",
+        "default": "casaos",
+        "description": "Postgres server password",
+        "required": false
+      },
+      {
+        "name": "POSTGRES_DB",
+        "default": "casaos",
+        "description": "Specify the name of a database to be created on image startup.",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/app",
+        "description": "Container Path: /app"
+      },
+      {
+        "container": "/var/lib/postgresql/data",
+        "description": "Directory where Postgres database data is stored"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Container Port: 8080"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080",
+      "port": "8080",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Other",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8080"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "armv7",
+        "arm64"
+      ],
+      "port": "8080"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8080"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8080"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "8080"
+    }
+  }
+}

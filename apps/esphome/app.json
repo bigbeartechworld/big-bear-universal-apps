@@ -1,0 +1,123 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "esphome",
+    "name": "ESPHome",
+    "description": "ESPHome is a system to control your microcontrollers by simple yet powerful configuration files and control them remotely through Home Automation systems.",
+    "tagline": "ESPHome is a system to control your microcontrollers by simple yet powerful configuration files and control them remotely through Home Automation systems.",
+    "version": "2026.9",
+    "author": "WisdomSky",
+    "developer": "ESPHome",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://github.com/WisdomSky/CasaOS-Coolstore/tree/main/Apps/esphome",
+    "source": "casaos-coolstore",
+    "created": "2026-09-24T18:00:00Z",
+    "updated": "2026-09-24T18:00:00Z"
+  },
+  "visual": {
+    "icon": "https://avatars.githubusercontent.com/u/45919759",
+    "thumbnail": "https://avatars.githubusercontent.com/u/45919759",
+    "screenshots": [],
+    "logo": "https://avatars.githubusercontent.com/u/45919759"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64",
+      "armv7"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "6052",
+    "main_image": "esphome/esphome",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "USERNAME",
+        "default": "casaos",
+        "description": "Container Variable: USERNAME",
+        "required": false
+      },
+      {
+        "name": "PASSWORD",
+        "default": "casaos",
+        "description": "Container Variable: PASSWORD",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/etc/localtime",
+        "description": "Container Path: /etc/localtime"
+      }
+    ],
+    "ports": []
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "| Label | Value |\n| --- | --- |\n| Username | `casaos` |\n| Password | `casaos` |"
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "6052",
+      "port": "6052",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Other",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "6052"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64",
+        "armv7"
+      ],
+      "port": "6052"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "6052"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "6052"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "6052"
+    }
+  }
+}

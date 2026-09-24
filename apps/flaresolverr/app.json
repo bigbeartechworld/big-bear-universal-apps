@@ -1,0 +1,153 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "flaresolverr",
+    "name": "FlareSolverr",
+    "description": "FlareSolverr is a proxy server to bypass Cloudflare protection. FlareSolverr starts a proxy server, and it waits for user requests in an idle state using few resources. When some request arrives, it uses Selenium with the undetected-chromedriver to create a web browser (Chrome). It opens the URL with user parameters and waits until the Cloudflare challenge is solved (or timeout). The HTML code and the cookies are sent back to the user, and those cookies can be used to bypass Cloudflare using other HTTP clients.",
+    "tagline": "FlareSolverr is a proxy server to bypass Cloudflare protection.",
+    "version": "v3.5.2",
+    "author": "WisdomSky",
+    "developer": "FlareSolverr",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://github.com/WisdomSky/CasaOS-Coolstore/tree/main/Apps/flaresolverr",
+    "source": "casaos-coolstore",
+    "created": "2026-09-24T18:00:00Z",
+    "updated": "2026-09-24T18:00:00Z"
+  },
+  "visual": {
+    "icon": "https://avatars.githubusercontent.com/u/10577978",
+    "thumbnail": "https://avatars.githubusercontent.com/u/10577978",
+    "screenshots": [],
+    "logo": "https://avatars.githubusercontent.com/u/10577978"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "armv7",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8191",
+    "main_image": "flaresolverr/flaresolverr",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "LOG_LEVEL",
+        "default": "info",
+        "description": "Container Variable: LOG_LEVEL",
+        "required": false
+      },
+      {
+        "name": "LOG_HTML",
+        "default": "false",
+        "description": "Container Variable: LOG_HTML",
+        "required": false
+      },
+      {
+        "name": "PROMETHEUS_ENABLED",
+        "default": "false",
+        "description": "Container Variable: PROMETHEUS_ENABLED",
+        "required": false
+      },
+      {
+        "name": "CAPTCHA_SOLVER",
+        "default": "none",
+        "description": "Container Variable: CAPTCHA_SOLVER",
+        "required": false
+      },
+      {
+        "name": "PORT",
+        "default": "8191",
+        "description": "Container Variable: PORT",
+        "required": false
+      },
+      {
+        "name": "PROMETHEUS_PORT",
+        "default": "8192",
+        "description": "Container Variable: PROMETHEUS_PORT",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "$TZ",
+        "description": "Container Variable: TZ",
+        "required": false
+      }
+    ],
+    "volumes": [],
+    "ports": [
+      {
+        "container": "8191",
+        "host": "8191",
+        "protocol": "tcp",
+        "description": "Container Port: 8191"
+      },
+      {
+        "container": "8192",
+        "host": "8192",
+        "protocol": "tcp",
+        "description": "Container Port: 8192"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8191",
+      "port": "8191",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Other",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8191"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "armv7",
+        "arm64"
+      ],
+      "port": "8191"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8191"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8191"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "8191"
+    }
+  }
+}

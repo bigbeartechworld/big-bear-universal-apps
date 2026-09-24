@@ -1,0 +1,136 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "joomla",
+    "name": "Joomla",
+    "description": "Another free and open-source CMS",
+    "tagline": "Another Free And Open-source Cms",
+    "version": "6.1.3-apache",
+    "author": "WisdomSky",
+    "developer": "",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://github.com/WisdomSky/CasaOS-Coolstore/tree/main/Apps/joomla",
+    "source": "casaos-coolstore",
+    "created": "2026-09-24T18:00:00Z",
+    "updated": "2026-09-24T18:00:00Z"
+  },
+  "visual": {
+    "icon": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/joomla.png",
+    "thumbnail": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/joomla.png",
+    "screenshots": [],
+    "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/joomla.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "armv7",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "80",
+    "main_image": "joomla",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "JOOMLA_DB_HOST",
+        "default": "joomladb",
+        "description": "Container Variable: JOOMLA_DB_HOST",
+        "required": false
+      },
+      {
+        "name": "JOOMLA_DB_PASSWORD",
+        "default": "casaos",
+        "description": "Container Variable: JOOMLA_DB_PASSWORD",
+        "required": false
+      },
+      {
+        "name": "MYSQL_ROOT_PASSWORD",
+        "default": "casaos",
+        "description": "Container Variable: MYSQL_ROOT_PASSWORD",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/var/www/html",
+        "description": "Container Path: /var/www/html"
+      },
+      {
+        "container": "/var/lib/mysql",
+        "description": "Container Path: /var/lib/mysql"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "80",
+        "protocol": "tcp",
+        "description": "Container Port: 80"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "For database connection, select `MySQL` then on the `database host` field put `joomladb`, for `database user` put `root` and for `database password` put `casaos`"
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "80",
+      "port": "80",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Other",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "80"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "armv7",
+        "arm64"
+      ],
+      "port": "80"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "80"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "80"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "80"
+    }
+  }
+}
