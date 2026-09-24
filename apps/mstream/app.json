@@ -5,7 +5,7 @@
     "name": "Mstream",
     "description": "Mstream is a personal music streaming server. You can use mStream to stream your music from your home computer to any device, anywhere. There are mobile apps available for both Android and iPhone.",
     "tagline": "A personal music streaming server. You can use mStream to stream your music from your home computer to any device, anywhere. There are mobile apps available for both Android and iPhone.",
-    "version": "6.28.1",
+    "version": "6.29.0",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/mstream",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:58.606Z",
-    "updated": "2026-09-17T18:10:58.606Z"
+    "updated": "2026-09-24T19:28:54.093Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/mstream-icon.png",
