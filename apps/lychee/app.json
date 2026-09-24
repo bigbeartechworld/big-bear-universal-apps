@@ -5,7 +5,7 @@
     "name": "Lychee",
     "description": "Lychee is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.",
     "tagline": "A free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.",
-    "version": "7.8.3",
+    "version": "7.8.4",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/lychee",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:57.846Z",
-    "updated": "2026-09-17T18:10:57.846Z"
+    "updated": "2026-09-24T19:23:44.763Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/lychee-icon.png",
