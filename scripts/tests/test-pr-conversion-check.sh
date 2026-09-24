@@ -60,3 +60,61 @@ check 1 fixture "missing supported output still fails"
 mkdir -p "$TMP/converted/umbrel/big-bear-umbrel-custom-fixture"
 export CONVERTER_EXIT_CODE=1
 check 1 fixture "converter failure still fails"
+
+# Build real commit history for both changed-app discovery steps. Use a base
+# other than main so accidentally hard-coding the branch cannot pass the test.
+HISTORY="$TMP/history"
+git init -q "$HISTORY"
+git -C "$HISTORY" config user.name "Workflow Test"
+git -C "$HISTORY" config user.email "workflow-test@example.invalid"
+git -C "$HISTORY" read-tree --empty
+base=$(git -C "$HISTORY" -c commit.gpgsign=false commit-tree "$(git -C "$HISTORY" write-tree)" -m base)
+git -C "$HISTORY" update-ref refs/remotes/origin/fixture-base "$base"
+
+printf 'Documentation only\n' > "$HISTORY/README.md"
+git -C "$HISTORY" add README.md
+docs=$(git -C "$HISTORY" -c commit.gpgsign=false commit-tree "$(git -C "$HISTORY" write-tree)" -p "$base" -m docs)
+git -C "$HISTORY" update-ref --no-deref HEAD "$docs"
+
+for job in validate-apps test-conversion; do
+  CHECK_JOB="$job" yq -r '.jobs[strenv(CHECK_JOB)].steps[] | select(.id == "changed-apps") | .run' \
+    "$REPO/.github/workflows/validate-pr.yml" > "$TMP/detect-$job.sh"
+done
+
+check_detection() {
+  local expected="$1" label="$2" job actual
+  for job in validate-apps test-conversion; do
+    : > "$TMP/detected"
+    if ! (cd "$HISTORY" && BASE_REF=fixture-base GITHUB_OUTPUT="$TMP/detected" \
+      bash -e -o pipefail "$TMP/detect-$job.sh") > "$TMP/run.log" 2>&1; then
+      echo "FAIL: $job $label"
+      cat "$TMP/run.log"
+      exit 1
+    fi
+    actual=$(cat "$TMP/detected")
+    if [[ "$actual" != $'changed_apps<<EOF\n'"$expected"$'\nEOF' ]]; then
+      echo "FAIL: $job $label (unexpected output: $actual)"
+      exit 1
+    fi
+    echo "ok: $job $label"
+  done
+}
+
+check_detection '' "documentation-only history produces no changed apps"
+mkdir -p "$HISTORY/apps/alpha" "$HISTORY/apps/zeta"
+printf '{}\n' > "$HISTORY/apps/alpha/app.json"
+printf 'services: {}\n' > "$HISTORY/apps/alpha/docker-compose.yml"
+printf '{}\n' > "$HISTORY/apps/zeta/app.json"
+git -C "$HISTORY" add apps
+apps=$(git -C "$HISTORY" -c commit.gpgsign=false commit-tree "$(git -C "$HISTORY" write-tree)" -p "$docs" -m apps)
+git -C "$HISTORY" update-ref --no-deref HEAD "$apps"
+check_detection $'alpha\nzeta' "finds and deduplicates changed app directories"
+
+for job in validate-apps test-conversion; do
+  if (cd "$HISTORY" && BASE_REF=missing GITHUB_OUTPUT="$TMP/detected" \
+    bash -e -o pipefail "$TMP/detect-$job.sh") > "$TMP/run.log" 2>&1; then
+    echo "FAIL: $job must reject a missing base ref"
+    exit 1
+  fi
+  echo "ok: $job missing base ref fails instead of reporting no changed apps"
+done

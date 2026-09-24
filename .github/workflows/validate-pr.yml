@@ -77,9 +77,11 @@ jobs:
 
       - name: Get changed apps
         id: changed-apps
+        env:
+          BASE_REF: ${{ github.base_ref }}
         run: |
           # Get list of changed app directories
-          changed_dirs=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD" -- apps/ | cut -d'/' -f2 | sort -u)
+          changed_dirs=$(git diff --name-only "origin/$BASE_REF...HEAD" -- apps/ | cut -d'/' -f2 | sort -u)
           {
             echo "changed_apps<<EOF"
             echo "$changed_dirs"
@@ -133,8 +135,10 @@ jobs:
 
       - name: Get changed apps
         id: changed-apps
+        env:
+          BASE_REF: ${{ github.base_ref }}
         run: |
-          changed_dirs=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD" -- apps/ | cut -d'/' -f2 | sort -u)
+          changed_dirs=$(git diff --name-only "origin/$BASE_REF...HEAD" -- apps/ | cut -d'/' -f2 | sort -u)
           {
             echo "changed_apps<<EOF"
             echo "$changed_dirs"
