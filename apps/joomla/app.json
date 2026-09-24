@@ -50,13 +50,13 @@
       },
       {
         "name": "JOOMLA_DB_PASSWORD",
-        "default": "casaos",
+        "default": "15311349-803b-40a2-9153-5b13f8d4022e",
         "description": "Container Variable: JOOMLA_DB_PASSWORD",
         "required": false
       },
       {
         "name": "MYSQL_ROOT_PASSWORD",
-        "default": "casaos",
+        "default": "15311349-803b-40a2-9153-5b13f8d4022e",
         "description": "Container Variable: MYSQL_ROOT_PASSWORD",
         "required": false
       }

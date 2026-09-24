@@ -10,8 +10,8 @@ services:
       DB_HOST: 0.0.0.0
       DB_PORT: 33066
       DB_DATABASE: casaos
-      DB_USERNAME: casaos
-      DB_PASSWORD: casaos
+      DB_USERNAME: bigbear
+      DB_PASSWORD: fe8a627d-d00f-4486-9bb4-20d58b8b6d3e
     volumes:
       - /usr/bin/casaos-cli:/usr/bin/casaos-cli
       - /etc/casaos/gateway.ini:/casaos/gateway.ini
@@ -21,10 +21,10 @@ services:
     image: mariadb:13.0.2
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: casaos
+      MYSQL_ROOT_PASSWORD: 05e5827c-ff33-4a7d-9b95-fddbf290b839
       MYSQL_DATABASE: casaos
-      MYSQL_USER: casaos
-      MYSQL_PASSWORD: casaos
+      MYSQL_USER: bigbear
+      MYSQL_PASSWORD: fe8a627d-d00f-4486-9bb4-20d58b8b6d3e
     ports:
       - target: 3306
         published: '33066'

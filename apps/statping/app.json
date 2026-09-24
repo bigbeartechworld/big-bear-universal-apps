@@ -62,13 +62,13 @@
       },
       {
         "name": "DB_USER",
-        "default": "casaos",
+        "default": "bigbear",
         "description": "Container Variable: DB_USER",
         "required": false
       },
       {
         "name": "DB_PASS",
-        "default": "casaos",
+        "default": "dc640cd4-0450-4a94-aedb-ee5b43b32a45",
         "description": "Container Variable: DB_PASS",
         "required": false
       },
@@ -110,13 +110,13 @@
       },
       {
         "name": "POSTGRES_USER",
-        "default": "casaos",
+        "default": "bigbear",
         "description": "Postgres server username",
         "required": false
       },
       {
         "name": "POSTGRES_PASSWORD",
-        "default": "casaos",
+        "default": "dc640cd4-0450-4a94-aedb-ee5b43b32a45",
         "description": "Postgres server password",
         "required": false
       },

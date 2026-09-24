@@ -78,19 +78,19 @@
       },
       {
         "name": "DB_USERNAME",
-        "default": "casaos",
+        "default": "bigbear",
         "description": "Container Variable: DB_USERNAME",
         "required": false
       },
       {
         "name": "DB_PASSWORD",
-        "default": "casaos",
+        "default": "fe8a627d-d00f-4486-9bb4-20d58b8b6d3e",
         "description": "Container Variable: DB_PASSWORD",
         "required": false
       },
       {
         "name": "MYSQL_ROOT_PASSWORD",
-        "default": "casaos",
+        "default": "05e5827c-ff33-4a7d-9b95-fddbf290b839",
         "description": "Container Variable: MYSQL_ROOT_PASSWORD",
         "required": false
       },
@@ -102,13 +102,13 @@
       },
       {
         "name": "MYSQL_USER",
-        "default": "casaos",
+        "default": "bigbear",
         "description": "Container Variable: MYSQL_USER",
         "required": false
       },
       {
         "name": "MYSQL_PASSWORD",
-        "default": "casaos",
+        "default": "fe8a627d-d00f-4486-9bb4-20d58b8b6d3e",
         "description": "Container Variable: MYSQL_PASSWORD",
         "required": false
       }

@@ -5,8 +5,8 @@ services:
     restart: unless-stopped
     environment:
       AUTH_TYPE: Digest
-      USERNAME: casaos
-      PASSWORD: casaos
+      USERNAME: bigbear
+      PASSWORD: 437830b0-693e-47c3-863c-465522d720db
     ports:
       - target: 80
         published: 8080

@@ -48,13 +48,13 @@
       },
       {
         "name": "USERNAME",
-        "default": "casaos",
+        "default": "bigbear",
         "description": "Container Variable: USERNAME",
         "required": false
       },
       {
         "name": "PASSWORD",
-        "default": "casaos",
+        "default": "437830b0-693e-47c3-863c-465522d720db",
         "description": "Container Variable: PASSWORD",
         "required": false
       }
@@ -79,7 +79,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "| Label | Value |\n| --- | --- |\n| Username | `casaos` |\n| Password | `casaos` |\n| Port | `8080` |\n| Files Path | `/DATA/Documents` |"
+        "en_us": "| Label | Value |\n| --- | --- |\n| Username | `bigbear` |\n| Password | `437830b0-693e-47c3-863c-465522d720db` |\n| Port | `8080` |\n| Files Path | `/DATA/Documents` |"
       }
     }
   },

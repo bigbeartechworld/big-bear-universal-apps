@@ -9,8 +9,8 @@ services:
       VIRTUAL_PORT: 8080
       DB_CONN: postgres
       DB_HOST: db
-      DB_USER: casaos
-      DB_PASS: casaos
+      DB_USER: bigbear
+      DB_PASS: dc640cd4-0450-4a94-aedb-ee5b43b32a45
       DB_DATABASE: casaos
       NAME: ''
       DESCRIPTION: ''
@@ -29,8 +29,8 @@ services:
       PUID: $PUID
       PGID: $PGID
       TZ: $TZ
-      POSTGRES_USER: casaos
-      POSTGRES_PASSWORD: casaos
+      POSTGRES_USER: bigbear
+      POSTGRES_PASSWORD: dc640cd4-0450-4a94-aedb-ee5b43b32a45
       POSTGRES_DB: casaos
     volumes:
       - type: bind

@@ -44,13 +44,13 @@
     "environment_variables": [
       {
         "name": "USERNAME",
-        "default": "casaos",
+        "default": "bigbear",
         "description": "Container Variable: USERNAME",
         "required": false
       },
       {
         "name": "PASSWORD",
-        "default": "casaos",
+        "default": "f87989f5-0dd4-44af-a286-6c6a325001cc",
         "description": "Container Variable: PASSWORD",
         "required": false
       }
@@ -72,7 +72,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "| Label | Value |\n| --- | --- |\n| Username | `casaos` |\n| Password | `casaos` |"
+        "en_us": "| Label | Value |\n| --- | --- |\n| Username | `bigbear` |\n| Password | `f87989f5-0dd4-44af-a286-6c6a325001cc` |"
       }
     }
   },
