@@ -16,14 +16,14 @@
     "updated": "2026-09-24T18:00:00Z"
   },
   "visual": {
-    "icon": "https://cdn.jsdelivr.net/gh/WisdomSky/CasaOS-Coolstore@main/Apps/casaos-toolbox/icon.png",
-    "thumbnail": "https://cdn.jsdelivr.net/gh/WisdomSky/CasaOS-Coolstore@main/Apps/casaos-toolbox/icon.png",
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/casaos-toolbox/logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/casaos-toolbox/logo.png",
     "screenshots": [
-      "https://cdn.jsdelivr.net/gh/WisdomSky/CasaOS-Coolstore@main/Apps/casaos-toolbox/screenshot-1.png",
-      "https://cdn.jsdelivr.net/gh/WisdomSky/CasaOS-Coolstore@main/Apps/casaos-toolbox/screenshot-2.png",
-      "https://cdn.jsdelivr.net/gh/WisdomSky/CasaOS-Coolstore@main/Apps/casaos-toolbox/screenshot-3.png"
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/casaos-toolbox/screenshots/screenshot-1.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/casaos-toolbox/screenshots/screenshot-2.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/casaos-toolbox/screenshots/screenshot-3.png"
     ],
-    "logo": "https://cdn.jsdelivr.net/gh/WisdomSky/CasaOS-Coolstore@main/Apps/casaos-toolbox/icon.png"
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/casaos-toolbox/logo.png"
   },
   "resources": {
     "youtube": "",
