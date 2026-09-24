@@ -77,7 +77,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Cantinarr runs as a single container and serves its web app and API on port 8585. Radarr, Sonarr, Chaptarr, Lidarr, download clients, Tautulli, and Plex are all optional and are added from the admin UI after first run. Push notifications to the companion iPhone and Android apps work out of the box through the preset push gateway; clear CANTINARR_PUSH_GATEWAY_URL to turn them off. If your arr containers cannot reach the address you browse Cantinarr on, set CANTINARR_ARR_CALLBACK_URL to an origin they can dial so instant updates work."
+        "en_us": "Cantinarr runs as a single container and serves its web app and API on port 8585. Keep direct HTTP access on your trusted network and use an HTTPS reverse proxy for remote access. Radarr, Sonarr, Chaptarr, Lidarr, download clients, Tautulli, and Plex are all optional and are added from the admin UI after first run. Push notifications to the companion iPhone and Android apps work out of the box through the preset push gateway; clear CANTINARR_PUSH_GATEWAY_URL to turn them off. If your arr containers cannot reach the address you browse Cantinarr on, set CANTINARR_ARR_CALLBACK_URL to an origin they can dial so instant updates work."
       }
     }
   },
