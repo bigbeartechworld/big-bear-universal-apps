@@ -22,7 +22,7 @@ JSON
 
 check() {
   local expected="$1" changed_apps="$2" label="$3" actual
-  if (cd "$TMP" && CHANGED_APPS="$changed_apps" bash -e -o pipefail step.sh) > "$TMP/run.log" 2>&1; then
+  if (cd "$TMP" && CHANGED_APPS="$changed_apps" bash -e step.sh) > "$TMP/run.log" 2>&1; then
     actual=0
   else
     actual=$?
@@ -81,12 +81,27 @@ for job in validate-apps test-conversion; do
     "$REPO/.github/workflows/validate-pr.yml" > "$TMP/detect-$job.sh"
 done
 
+run_detection() {
+  local job="$1" base_ref="$2" step_shell
+  local -a command
+  step_shell=$(CHECK_JOB="$job" yq -r '.jobs[strenv(CHECK_JOB)].steps[] | select(.id == "changed-apps") | .shell // ""' \
+    "$REPO/.github/workflows/validate-pr.yml")
+  # Match GitHub's Linux runner: an explicit bash shell enables pipefail,
+  # while the implicit bash shell does not. Removing it must fail this suite.
+  case "$step_shell" in
+    bash) command=(bash --noprofile --norc -eo pipefail) ;;
+    '') command=(bash -e) ;;
+    *) echo "Unsupported workflow shell: $step_shell" >&2; return 1 ;;
+  esac
+  (cd "$HISTORY" && BASE_REF="$base_ref" GITHUB_OUTPUT="$TMP/detected" \
+    "${command[@]}" "$TMP/detect-$job.sh")
+}
+
 check_detection() {
   local expected="$1" label="$2" job actual
   for job in validate-apps test-conversion; do
     : > "$TMP/detected"
-    if ! (cd "$HISTORY" && BASE_REF=fixture-base GITHUB_OUTPUT="$TMP/detected" \
-      bash -e -o pipefail "$TMP/detect-$job.sh") > "$TMP/run.log" 2>&1; then
+    if ! run_detection "$job" fixture-base > "$TMP/run.log" 2>&1; then
       echo "FAIL: $job $label"
       cat "$TMP/run.log"
       exit 1
@@ -111,8 +126,7 @@ git -C "$HISTORY" update-ref --no-deref HEAD "$apps"
 check_detection $'alpha\nzeta' "finds and deduplicates changed app directories"
 
 for job in validate-apps test-conversion; do
-  if (cd "$HISTORY" && BASE_REF=missing GITHUB_OUTPUT="$TMP/detected" \
-    bash -e -o pipefail "$TMP/detect-$job.sh") > "$TMP/run.log" 2>&1; then
+  if run_detection "$job" missing > "$TMP/run.log" 2>&1; then
     echo "FAIL: $job must reject a missing base ref"
     exit 1
   fi
