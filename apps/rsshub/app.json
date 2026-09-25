@@ -1,0 +1,132 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "rsshub",
+    "name": "RSShub",
+    "description": "RSSHub is an open source, easy to use, and extensible RSS feed generator. It's capable of generating RSS feeds from pretty much everything. RSSHub delivers millions of contents aggregated from all kinds of sources, our vibrant open source community is ensuring the deliver of RSSHub's new routes, new features and bug fixes. RSSHub can be used with browser extension RSSHub Radar and mobile auxiliary app RSSBud (iOS) and RSSAid (Android)",
+    "tagline": "RSSHub is an open source, easy to use, and extensible RSS feed generator. It's capable of generating RSS feeds from pretty much everything.",
+    "version": "2026-09-24",
+    "author": "WisdomSky",
+    "developer": "DIYgod",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://github.com/WisdomSky/CasaOS-Coolstore/tree/main/Apps/rsshub",
+    "source": "casaos-coolstore",
+    "created": "2026-09-24T18:00:00Z",
+    "updated": "2026-09-24T18:00:00Z"
+  },
+  "visual": {
+    "icon": "https://docs.rsshub.app/logo.png",
+    "thumbnail": "https://docs.rsshub.app/logo.png",
+    "screenshots": [],
+    "logo": "https://docs.rsshub.app/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "1200",
+    "main_image": "diygod/rsshub",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "NODE_ENV",
+        "default": "production",
+        "description": "Container Variable: NODE_ENV",
+        "required": false
+      },
+      {
+        "name": "CACHE_TYPE",
+        "default": "redis",
+        "description": "Container Variable: CACHE_TYPE",
+        "required": false
+      },
+      {
+        "name": "REDIS_URL",
+        "default": "redis://redis:6379/",
+        "description": "Container Variable: REDIS_URL",
+        "required": false
+      },
+      {
+        "name": "PUPPETEER_WS_ENDPOINT",
+        "default": "ws://browserless:3000",
+        "description": "Container Variable: PUPPETEER_WS_ENDPOINT",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      }
+    ],
+    "ports": [
+      {
+        "container": "1200",
+        "host": "1200",
+        "protocol": "tcp",
+        "description": "Container Port: 1200"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "1200",
+      "port": "1200",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Other",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "1200"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "port": "1200"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "1200"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "1200"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "1200"
+    }
+  }
+}

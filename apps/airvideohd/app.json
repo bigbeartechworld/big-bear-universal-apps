@@ -1,0 +1,110 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "airvideohd",
+    "name": "Air Video HD",
+    "description": "Watch videos streamed instantly from your computer on your iPhone, iPad, iPod touch or Apple TV.",
+    "tagline": "Watch videos streamed instantly from your computer on your iPhone, iPad, iPod touch or Apple TV.",
+    "version": "latest",
+    "author": "WisdomSky",
+    "developer": "InMethod",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://github.com/WisdomSky/CasaOS-Coolstore/tree/main/Apps/airvideohd",
+    "source": "casaos-coolstore",
+    "created": "2026-09-24T18:00:00Z",
+    "updated": "2026-09-24T18:00:00Z"
+  },
+  "visual": {
+    "icon": "https://airvideo.app/images/icon.png",
+    "thumbnail": "https://airvideo.app/images/icon.png",
+    "screenshots": [],
+    "logo": "https://airvideo.app/images/icon.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8080",
+    "main_image": "dmaxwell/airvideohd",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/conversionPath",
+        "description": "Container Path: /conversionPath"
+      },
+      {
+        "container": "/videos",
+        "description": "Container Path: /videos"
+      }
+    ],
+    "ports": []
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "### Note\n\nTo find your `Server PIN`, look in the `network.log` file in `/DATA/AppData/airvideohd/config/logs` after the server has started."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080",
+      "port": "8080",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Other",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8080"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64"
+      ],
+      "port": "8080"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8080"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8080"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "8080"
+    }
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "webdav",
+    "name": "WebDAV",
+    "description": "Web-based distributed authoring and versioning (WebDAV) is a set of extensions to the HTTP protocol that allows WebDAV clients (such as Microsoft Web Folders) to collaboratively edit and manage files on remote Web servers.",
+    "tagline": "Web-based distributed authoring and versioning (WebDAV) is a set of extensions to the HTTP protocol that allows WebDAV clients (such as Microsoft Web Folders) to collaboratively edit and manage files on remote Web servers.",
+    "version": "latest",
+    "author": "WisdomSky",
+    "developer": "Bytemark",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://github.com/WisdomSky/CasaOS-Coolstore/tree/main/Apps/webdav",
+    "source": "casaos-coolstore",
+    "created": "2026-09-24T18:00:00Z",
+    "updated": "2026-09-24T18:00:00Z"
+  },
+  "visual": {
+    "icon": "https://debrid-link.com/screen/webdav_logo.png",
+    "thumbnail": "https://debrid-link.com/screen/webdav_logo.png",
+    "screenshots": [],
+    "logo": "https://debrid-link.com/screen/webdav_logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "48108",
+    "main_image": "bytemark/webdav",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "AUTH_TYPE",
+        "default": "Digest",
+        "description": "Container Variable: AUTH_TYPE",
+        "required": false
+      },
+      {
+        "name": "USERNAME",
+        "default": "bigbear",
+        "description": "Container Variable: USERNAME",
+        "required": false
+      },
+      {
+        "name": "PASSWORD",
+        "default": "437830b0-693e-47c3-863c-465522d720db",
+        "description": "Container Variable: PASSWORD",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/var/lib/dav",
+        "description": "Container Path: /var/lib/dav"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "48108",
+        "protocol": "tcp",
+        "description": "Container Port: 80"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "| Label | Value |\n| --- | --- |\n| Username | `bigbear` |\n| Password | `437830b0-693e-47c3-863c-465522d720db` |\n| Port | `48108` |\n| Files Path | `/DATA/Documents` |"
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "48108",
+      "port": "48108",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Other",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "48108"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64"
+      ],
+      "port": "48108"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "48108"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "48108"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "48108"
+    }
+  }
+}

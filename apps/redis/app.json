@@ -1,0 +1,115 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "redis",
+    "name": "Redis",
+    "description": "Redis is an open source (BSD licensed), in-memory data structure store used as a database, cache, message broker, and streaming engine. Redis provides data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs, geospatial indexes, and streams. Redis has built-in replication, Lua scripting, LRU eviction, transactions, and different levels of on-disk persistence, and provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.",
+    "tagline": "Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache, and message broker.",
+    "version": "8.8.3",
+    "author": "WisdomSky",
+    "developer": "Redis",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://github.com/WisdomSky/CasaOS-Coolstore/tree/main/Apps/redis",
+    "source": "casaos-coolstore",
+    "created": "2026-09-24T18:00:00Z",
+    "updated": "2026-09-24T18:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn4.iconfinder.com/data/icons/redis-2/1451/Untitled-2-512.png",
+    "thumbnail": "https://cdn4.iconfinder.com/data/icons/redis-2/1451/Untitled-2-512.png",
+    "screenshots": [],
+    "logo": "https://cdn4.iconfinder.com/data/icons/redis-2/1451/Untitled-2-512.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64",
+      "armv7",
+      "i386"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "48110",
+    "main_image": "redis",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      },
+      {
+        "container": "/usr/local/etc/redis",
+        "description": "Container Path: /usr/local/etc/redis"
+      }
+    ],
+    "ports": [
+      {
+        "container": "6379",
+        "host": "48110",
+        "protocol": "tcp",
+        "description": "Container Port: 6379"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "48110",
+      "port": "48110",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Other",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "48110"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64",
+        "armv7",
+        "i386"
+      ],
+      "port": "48110"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "48110"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "48110"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "48110"
+    }
+  }
+}

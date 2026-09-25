@@ -1,0 +1,128 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "hestiacp",
+    "name": "Hestia CP",
+    "description": "Hestia Control Panel (HestiaCP) is an open-source web hosting control panel that allows users to manage their websites, domains, email accounts, databases, and more. It provides a user-friendly interface for managing web hosting environments and simplifies various administrative tasks.",
+    "tagline": "An open-source web hosting control panel that allows users to manage their websites, domains, email accounts, databases, and more. It provides a user-friendly interface for managing web hosting environments and simplifies various administrative tasks.",
+    "version": "latest",
+    "author": "WisdomSky",
+    "developer": "",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://github.com/WisdomSky/CasaOS-Coolstore/tree/main/Apps/hestiacp",
+    "source": "casaos-coolstore",
+    "created": "2026-09-24T18:00:00Z",
+    "updated": "2026-09-24T18:00:00Z"
+  },
+  "visual": {
+    "icon": "https://raw.githubusercontent.com/hestiacp/hestiacp/main/web/images/logo.png",
+    "thumbnail": "https://raw.githubusercontent.com/hestiacp/hestiacp/main/web/images/logo.png",
+    "screenshots": [],
+    "logo": "https://raw.githubusercontent.com/hestiacp/hestiacp/main/web/images/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "armv7",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "48112",
+    "main_image": "artsemkniazeu/hestiacp",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "TZ",
+        "default": "$TZ",
+        "description": "Container Variable: TZ",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/hestia",
+        "description": "Container Path: /hestia"
+      },
+      {
+        "container": "/home",
+        "description": "Container Path: /home"
+      },
+      {
+        "container": "/backup",
+        "description": "Container Path: /backup"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8083",
+        "host": "48112",
+        "protocol": "tcp",
+        "description": "Container Port: 8083"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Default `username` is `admin` and the default password can be found inside the `/DATA/AppData/hestiacp/config/root/password.txt` file."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "48112",
+      "port": "48112",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Other",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "48112"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "armv7",
+        "arm64"
+      ],
+      "port": "48112"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "48112"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "48112"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "48112"
+    }
+  }
+}
