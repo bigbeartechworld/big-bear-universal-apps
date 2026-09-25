@@ -5,7 +5,7 @@
     "name": "Librewolf",
     "description": "LibreWolf is a custom and independent version of Firefox, with the primary goals of privacy, security and user freedom. LibreWolf also aims to remove all the telemetry, data collection and annoyances, as well as disabling anti-freedom features like DRM.",
     "tagline": "A custom and independent version of Firefox, with the primary goals of privacy, security and user freedom. LibreWolf also aims to remove all the telemetry, data collection and annoyances, as well as disabling anti-freedom features like DRM.",
-    "version": "155.0.1",
+    "version": "156.0.1",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/librewolf",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:56.744Z",
-    "updated": "2026-09-17T18:10:56.744Z"
+    "updated": "2026-09-25T19:50:23.237Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/librewolf-logo.png",
