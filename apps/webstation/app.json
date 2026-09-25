@@ -5,7 +5,7 @@
     "name": "Webstation",
     "description": "Webstation is a web native emulation focused LXQt desktop based on Ubuntu.",
     "tagline": "A web native emulation focused LXQt desktop based on Ubuntu.",
-    "version": "0.8.4-romm",
+    "version": "0.8.5-romm",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/webstation",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:56.763Z",
-    "updated": "2026-09-17T18:10:56.763Z"
+    "updated": "2026-09-25T19:47:52.228Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/webstation-logo.png",
