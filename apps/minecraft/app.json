@@ -1,0 +1,116 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "minecraft",
+    "name": "Minecraft Server",
+    "description": "This docker image provides a Minecraft Server that will automatically download the latest stable version at startup. You can also run/upgrade to any specific version or the latest snapshot. See the Versions section below for more information.",
+    "tagline": "This Docker Image Provides A Minecraft Server That Will Automatically Download The Latest Stable Version At Startup. You Can Also Run/upgrade To Any Specific Version Or The Latest Snapshot. See The Versions Section Below For More Information.",
+    "version": "2026.9.1",
+    "author": "WisdomSky",
+    "developer": "",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://github.com/WisdomSky/CasaOS-Coolstore/tree/main/Apps/minecraft",
+    "source": "casaos-coolstore",
+    "created": "2026-09-24T18:00:00Z",
+    "updated": "2026-09-24T18:00:00Z"
+  },
+  "visual": {
+    "icon": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/minecraft.png",
+    "thumbnail": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/minecraft.png",
+    "screenshots": [],
+    "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/minecraft.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "armv7",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "25565",
+    "main_image": "itzg/minecraft-server",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "EULA",
+        "default": "true",
+        "description": "Container Variable: EULA",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      }
+    ],
+    "ports": [
+      {
+        "container": "25565",
+        "host": "25565",
+        "protocol": "tcp",
+        "description": "Container Port: 25565"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "25565",
+      "port": "25565",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Other",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "25565"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "armv7",
+        "arm64"
+      ],
+      "port": "25565"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "25565"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "25565"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "25565"
+    }
+  }
+}

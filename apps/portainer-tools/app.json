@@ -1,0 +1,142 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "portainer-tools",
+    "name": "Portainer Tools",
+    "description": "Portainer Tools allows you to add your own Portainer App Template definitions, merge them with existing ones and host them on your own server. You can set the Portainer App Templates URL from within the application to easily switch App Template definitions. Detailed information about installing and using the application and more can be found on https://www.technorabilia.com/portainer-tools-merge-and-host-app-template-definitions.",
+    "tagline": "Portainer Tools allows you to add your own Portainer App Template definitions, merge them with existing ones and host them on your own server.",
+    "version": "latest",
+    "author": "WisdomSky",
+    "developer": "Technorabilia",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://github.com/WisdomSky/CasaOS-Coolstore/tree/main/Apps/portainer-tools",
+    "source": "casaos-coolstore",
+    "created": "2026-09-24T18:00:00Z",
+    "updated": "2026-09-24T18:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Portainer/icon.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Portainer/icon.png",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Portainer/icon.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "9999",
+    "main_image": "technorabilia/portainer-tools",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "$PUID",
+        "description": "Container Variable: PUID",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "$PGID",
+        "description": "Container Variable: PGID",
+        "required": false
+      },
+      {
+        "name": "PORTAINER_USERNAME",
+        "default": "",
+        "description": "Portainer admin username",
+        "required": false
+      },
+      {
+        "name": "PORTAINER_PASSWORD",
+        "default": "",
+        "description": "Portainer admin password",
+        "required": false
+      },
+      {
+        "name": "PORTAINER_URL",
+        "default": "0.0.0.0:9000",
+        "description": "Portainer Base URL",
+        "required": false
+      },
+      {
+        "name": "SERVER_URL",
+        "default": "http://0.0.0.0:9999",
+        "description": "Container Variable: SERVER_URL",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Config for portainer tools"
+      }
+    ],
+    "ports": [
+      {
+        "container": "9999",
+        "host": "9999",
+        "protocol": "tcp",
+        "description": "Container Port: 9999"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "9999",
+      "port": "9999",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Other",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "9999"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64"
+      ],
+      "port": "9999"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "9999"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "9999"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "9999"
+    }
+  }
+}

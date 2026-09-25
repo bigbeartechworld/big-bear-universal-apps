@@ -1,0 +1,140 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "archivebox",
+    "name": "Archivebox",
+    "description": "ArchiveBox is a powerful, self-hosted internet archiving solution to collect, save, and view sites you want to preserve offline.",
+    "tagline": "Archivebox Is A Powerful, Self-hosted Internet Archiving Solution To Collect, Save, And View Sites You Want To Preserve Offline.",
+    "version": "0.9.51",
+    "author": "WisdomSky",
+    "developer": "",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://github.com/WisdomSky/CasaOS-Coolstore/tree/main/Apps/archivebox",
+    "source": "casaos-coolstore",
+    "created": "2026-09-24T18:00:00Z",
+    "updated": "2026-09-24T18:00:00Z"
+  },
+  "visual": {
+    "icon": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/archivebox.png",
+    "thumbnail": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/archivebox.png",
+    "screenshots": [],
+    "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/archivebox.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "armv7",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8002",
+    "main_image": "archivebox/archivebox",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "ALLOWED_HOSTS",
+        "default": "*",
+        "description": "Container Variable: ALLOWED_HOSTS",
+        "required": false
+      },
+      {
+        "name": "MEDIA_MAX_SIZE",
+        "default": "500m",
+        "description": "Container Variable: MEDIA_MAX_SIZE",
+        "required": false
+      },
+      {
+        "name": "PUBLIC_INDEX",
+        "default": "true",
+        "description": "Container Variable: PUBLIC_INDEX",
+        "required": false
+      },
+      {
+        "name": "PUBLIC_SNAPSHOTS",
+        "default": "true",
+        "description": "Container Variable: PUBLIC_SNAPSHOTS",
+        "required": false
+      },
+      {
+        "name": "PUBLIC_ADD_VIEW",
+        "default": "true",
+        "description": "Container Variable: PUBLIC_ADD_VIEW",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8000",
+        "host": "8002",
+        "protocol": "tcp",
+        "description": "Container Port: 8000"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8002",
+      "port": "8002",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Other",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8002"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "armv7",
+        "arm64"
+      ],
+      "port": "8002"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8002"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8002"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "8002"
+    }
+  }
+}

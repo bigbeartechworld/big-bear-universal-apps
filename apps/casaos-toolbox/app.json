@@ -1,0 +1,196 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "casaos-toolbox",
+    "name": "CasaOS Toolbox",
+    "description": "CasaOS Toolbox is an extension application that provides additional features to CasaOS.",
+    "tagline": "Provides additional features to CasaOS.",
+    "version": "0.2",
+    "author": "WisdomSky",
+    "developer": "WisdomSky",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://github.com/WisdomSky/CasaOS-Coolstore/tree/main/Apps/casaos-toolbox",
+    "source": "casaos-coolstore",
+    "created": "2026-09-24T18:00:00Z",
+    "updated": "2026-09-24T18:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/casaos-toolbox/logo.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/casaos-toolbox/logo.png",
+    "screenshots": [
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/casaos-toolbox/screenshots/screenshot-1.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/casaos-toolbox/screenshots/screenshot-2.png",
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/casaos-toolbox/screenshots/screenshot-3.png"
+    ],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps@main/apps/casaos-toolbox/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "armv7",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8088",
+    "main_image": "wisdomsky/casaos-toolbox",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "FORCE_HTTPS",
+        "default": "false",
+        "description": "Container Variable: FORCE_HTTPS",
+        "required": false
+      },
+      {
+        "name": "WEBUI_PORT",
+        "default": "8088",
+        "description": "Container Variable: WEBUI_PORT",
+        "required": false
+      },
+      {
+        "name": "DB_HOST",
+        "default": "0.0.0.0",
+        "description": "Container Variable: DB_HOST",
+        "required": false
+      },
+      {
+        "name": "DB_PORT",
+        "default": "33066",
+        "description": "Container Variable: DB_PORT",
+        "required": false
+      },
+      {
+        "name": "DB_DATABASE",
+        "default": "casaos",
+        "description": "Container Variable: DB_DATABASE",
+        "required": false
+      },
+      {
+        "name": "DB_USERNAME",
+        "default": "bigbear",
+        "description": "Container Variable: DB_USERNAME",
+        "required": false
+      },
+      {
+        "name": "DB_PASSWORD",
+        "default": "fe8a627d-d00f-4486-9bb4-20d58b8b6d3e",
+        "description": "Container Variable: DB_PASSWORD",
+        "required": false
+      },
+      {
+        "name": "MYSQL_ROOT_PASSWORD",
+        "default": "05e5827c-ff33-4a7d-9b95-fddbf290b839",
+        "description": "Container Variable: MYSQL_ROOT_PASSWORD",
+        "required": false
+      },
+      {
+        "name": "MYSQL_DATABASE",
+        "default": "casaos",
+        "description": "Container Variable: MYSQL_DATABASE",
+        "required": false
+      },
+      {
+        "name": "MYSQL_USER",
+        "default": "bigbear",
+        "description": "Container Variable: MYSQL_USER",
+        "required": false
+      },
+      {
+        "name": "MYSQL_PASSWORD",
+        "default": "fe8a627d-d00f-4486-9bb4-20d58b8b6d3e",
+        "description": "Container Variable: MYSQL_PASSWORD",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/usr/bin/casaos-cli",
+        "description": "Container Path: /usr/bin/casaos-cli"
+      },
+      {
+        "container": "/casaos/gateway.ini",
+        "description": "Container Path: /casaos/gateway.ini"
+      },
+      {
+        "container": "/casaos/apps",
+        "description": "Container Path: /casaos/apps"
+      },
+      {
+        "container": "/casaos/www",
+        "description": "Container Path: /casaos/www"
+      },
+      {
+        "container": "/var/lib/mysql",
+        "description": "Container Path: /var/lib/mysql"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3306",
+        "host": "33066",
+        "protocol": "tcp",
+        "description": "Container Port: 3306"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8088",
+      "port": "8088",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Other",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8088"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "armv7",
+        "arm64"
+      ],
+      "port": "8088"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8088"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8088"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "8088"
+    }
+  }
+}

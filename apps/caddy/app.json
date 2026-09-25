@@ -1,0 +1,129 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "caddy",
+    "name": "Caddy",
+    "description": "Caddy - The Ultimate Server with Automatic HTTPS.",
+    "tagline": "Caddy - The Ultimate Server With Automatic Https.",
+    "version": "2.11.4",
+    "author": "WisdomSky",
+    "developer": "",
+    "category": "Other",
+    "license": "",
+    "homepage": "https://github.com/WisdomSky/CasaOS-Coolstore/tree/main/Apps/caddy",
+    "source": "casaos-coolstore",
+    "created": "2026-09-24T18:00:00Z",
+    "updated": "2026-09-24T18:00:00Z"
+  },
+  "visual": {
+    "icon": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/caddy.png",
+    "thumbnail": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/caddy.png",
+    "screenshots": [],
+    "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/caddy.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "armv7",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "48100",
+    "main_image": "caddy",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Container Path: /data"
+      },
+      {
+        "container": "/config",
+        "description": "Container Path: /config"
+      },
+      {
+        "container": "/etc/caddy/caddyfile",
+        "description": "Container Path: /etc/caddy/caddyfile"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "48100",
+        "protocol": "tcp",
+        "description": "Container Port: 80"
+      },
+      {
+        "container": "443",
+        "host": "48101",
+        "protocol": "tcp",
+        "description": "Container Port: 443"
+      },
+      {
+        "container": "2019",
+        "host": "2019",
+        "protocol": "tcp",
+        "description": "Container Port: 2019"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {}
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "48100",
+      "port": "48100",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Other",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "48100"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "armv7",
+        "arm64"
+      ],
+      "port": "48100"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "48100"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "48100"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "48100"
+    }
+  }
+}
