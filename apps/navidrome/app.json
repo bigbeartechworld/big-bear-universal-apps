@@ -5,7 +5,7 @@
     "name": "Navidrome",
     "description": "Modern web-based music server and streamer for your personal music collection.",
     "tagline": "Modern music server and streamer",
-    "version": "0.64.0",
+    "version": "0.64.1",
     "author": "BigBearCommunity",
     "developer": "Navidrome",
     "category": "Media",
@@ -13,7 +13,7 @@
     "homepage": "https://www.navidrome.org/",
     "source": "big-bear-universal",
     "created": "2026-09-18T00:00:00Z",
-    "updated": "2026-09-24T19:26:55.516Z"
+    "updated": "2026-09-25T19:47:33.928Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/navidrome.png",
