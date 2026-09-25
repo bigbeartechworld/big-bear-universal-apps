@@ -16,7 +16,7 @@ services:
       DESCRIPTION: ''
     ports:
       - target: 8080
-        published: 8080
+        published: 48107
         protocol: tcp
     volumes:
       - type: bind

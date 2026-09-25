@@ -36,7 +36,7 @@
     ],
     "platform": "linux",
     "main_service": "app",
-    "default_port": "8080",
+    "default_port": "48104",
     "main_image": "traefik",
     "compose_file": "docker-compose.yml"
   },
@@ -104,19 +104,19 @@
     "ports": [
       {
         "container": "80",
-        "host": "80",
+        "host": "48102",
         "protocol": "tcp",
         "description": "Container Port: 80"
       },
       {
         "container": "443",
-        "host": "443",
+        "host": "48103",
         "protocol": "tcp",
         "description": "Container Port: 443"
       },
       {
         "container": "8080",
-        "host": "8080",
+        "host": "48104",
         "protocol": "tcp",
         "description": "Container Port: 8080"
       }
@@ -130,8 +130,8 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080",
-      "port": "8080",
+      "port_map": "48104",
+      "port": "48104",
       "category": "Others"
     },
     "portainer": {
@@ -142,7 +142,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "8080"
+      "port": "48104"
     },
     "runtipi": {
       "supported": true,
@@ -152,23 +152,23 @@
         "armv7",
         "arm64"
       ],
-      "port": "8080"
+      "port": "48104"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "8080"
+      "port": "48104"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "8080"
+      "port": "48104"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
-      "port": "8080"
+      "port": "48104"
     }
   }
 }

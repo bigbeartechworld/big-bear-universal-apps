@@ -37,7 +37,7 @@
     ],
     "platform": "linux",
     "main_service": "app",
-    "default_port": "3000",
+    "default_port": "48109",
     "main_image": "furier/websync",
     "compose_file": "docker-compose.yml"
   },
@@ -52,7 +52,7 @@
     "ports": [
       {
         "container": "3000",
-        "host": "3000",
+        "host": "48109",
         "protocol": "tcp",
         "description": "Container Port: 3000"
       }
@@ -66,8 +66,8 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "3000",
-      "port": "3000",
+      "port_map": "48109",
+      "port": "48109",
       "category": "Others"
     },
     "portainer": {
@@ -78,7 +78,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "3000"
+      "port": "48109"
     },
     "runtipi": {
       "supported": true,
@@ -86,23 +86,23 @@
       "supported_architectures": [
         "amd64"
       ],
-      "port": "3000"
+      "port": "48109"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "3000"
+      "port": "48109"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "3000"
+      "port": "48109"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
-      "port": "3000"
+      "port": "48109"
     }
   }
 }

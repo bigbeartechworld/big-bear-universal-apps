@@ -37,7 +37,7 @@
     ],
     "platform": "linux",
     "main_service": "app",
-    "default_port": "6379",
+    "default_port": "48110",
     "main_image": "redis",
     "compose_file": "docker-compose.yml"
   },
@@ -56,7 +56,7 @@
     "ports": [
       {
         "container": "6379",
-        "host": "6379",
+        "host": "48110",
         "protocol": "tcp",
         "description": "Container Port: 6379"
       }
@@ -70,8 +70,8 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "6379",
-      "port": "6379",
+      "port_map": "48110",
+      "port": "48110",
       "category": "Others"
     },
     "portainer": {
@@ -82,7 +82,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "6379"
+      "port": "48110"
     },
     "runtipi": {
       "supported": true,
@@ -93,23 +93,23 @@
         "armv7",
         "i386"
       ],
-      "port": "6379"
+      "port": "48110"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "6379"
+      "port": "48110"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "6379"
+      "port": "48110"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
-      "port": "6379"
+      "port": "48110"
     }
   }
 }

@@ -9,7 +9,7 @@ services:
       PASSWORD: 437830b0-693e-47c3-863c-465522d720db
     ports:
       - target: 80
-        published: 8080
+        published: 48108
         protocol: tcp
     volumes:
       - type: bind

@@ -12,13 +12,13 @@ services:
       TRAEFIK_API_INSECURE: false
     ports:
       - target: 80
-        published: 80
+        published: 48102
         protocol: tcp
       - target: 443
-        published: 443
+        published: 48103
         protocol: tcp
       - target: 8080
-        published: 8080
+        published: 48104
         protocol: tcp
     volumes:
       - type: bind

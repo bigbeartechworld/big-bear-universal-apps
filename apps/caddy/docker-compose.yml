@@ -5,10 +5,10 @@ services:
     restart: unless-stopped
     ports:
       - target: 80
-        published: 80
+        published: 48100
         protocol: tcp
       - target: 443
-        published: 443
+        published: 48101
         protocol: tcp
       - target: 2019
         published: 2019

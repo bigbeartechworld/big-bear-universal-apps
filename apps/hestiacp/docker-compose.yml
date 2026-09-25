@@ -10,7 +10,7 @@ services:
         ipv4_address: 10.1.1.0
     ports:
       - target: 8083
-        published: 8083
+        published: 48112
         protocol: tcp
     volumes:
       - type: bind

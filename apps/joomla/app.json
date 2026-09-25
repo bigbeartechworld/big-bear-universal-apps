@@ -36,7 +36,7 @@
     ],
     "platform": "linux",
     "main_service": "app",
-    "default_port": "80",
+    "default_port": "48105",
     "main_image": "joomla",
     "compose_file": "docker-compose.yml"
   },
@@ -74,7 +74,7 @@
     "ports": [
       {
         "container": "80",
-        "host": "80",
+        "host": "48105",
         "protocol": "tcp",
         "description": "Container Port: 80"
       }
@@ -92,8 +92,8 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "80",
-      "port": "80",
+      "port_map": "48105",
+      "port": "48105",
       "category": "Others"
     },
     "portainer": {
@@ -104,7 +104,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "80"
+      "port": "48105"
     },
     "runtipi": {
       "supported": true,
@@ -114,23 +114,23 @@
         "armv7",
         "arm64"
       ],
-      "port": "80"
+      "port": "48105"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "80"
+      "port": "48105"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "80"
+      "port": "48105"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
-      "port": "80"
+      "port": "48105"
     }
   }
 }

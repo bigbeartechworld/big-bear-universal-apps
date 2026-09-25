@@ -65,7 +65,7 @@
       },
       {
         "container": "9001",
-        "host": "9001",
+        "host": "48114",
         "protocol": "tcp",
         "description": "Container Port: 9001"
       }

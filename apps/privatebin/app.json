@@ -36,7 +36,7 @@
     ],
     "platform": "linux",
     "main_service": "app",
-    "default_port": "8080",
+    "default_port": "48106",
     "main_image": "privatebin/nginx-fpm-alpine",
     "compose_file": "docker-compose.yml"
   },
@@ -68,7 +68,7 @@
     "ports": [
       {
         "container": "8080",
-        "host": "8080",
+        "host": "48106",
         "protocol": "tcp",
         "description": "Container Port: 8080"
       }
@@ -82,8 +82,8 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080",
-      "port": "8080",
+      "port_map": "48106",
+      "port": "48106",
       "category": "Others"
     },
     "portainer": {
@@ -94,7 +94,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "8080"
+      "port": "48106"
     },
     "runtipi": {
       "supported": true,
@@ -104,23 +104,23 @@
         "armv7",
         "arm64"
       ],
-      "port": "8080"
+      "port": "48106"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "8080"
+      "port": "48106"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "8080"
+      "port": "48106"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
-      "port": "8080"
+      "port": "48106"
     }
   }
 }

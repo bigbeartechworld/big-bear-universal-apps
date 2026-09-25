@@ -36,7 +36,7 @@
     ],
     "platform": "linux",
     "main_service": "app",
-    "default_port": "8080",
+    "default_port": "48107",
     "main_image": "statping/statping",
     "compose_file": "docker-compose.yml"
   },
@@ -140,7 +140,7 @@
     "ports": [
       {
         "container": "8080",
-        "host": "8080",
+        "host": "48107",
         "protocol": "tcp",
         "description": "Container Port: 8080"
       }
@@ -154,8 +154,8 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8080",
-      "port": "8080",
+      "port_map": "48107",
+      "port": "48107",
       "category": "Others"
     },
     "portainer": {
@@ -166,7 +166,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "8080"
+      "port": "48107"
     },
     "runtipi": {
       "supported": true,
@@ -176,23 +176,23 @@
         "armv7",
         "arm64"
       ],
-      "port": "8080"
+      "port": "48107"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "8080"
+      "port": "48107"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "8080"
+      "port": "48107"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
-      "port": "8080"
+      "port": "48107"
     }
   }
 }

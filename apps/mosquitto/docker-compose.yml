@@ -8,7 +8,7 @@ services:
         published: 1883
         protocol: tcp
       - target: 9001
-        published: 9001
+        published: 48114
         protocol: tcp
     volumes:
       - type: bind

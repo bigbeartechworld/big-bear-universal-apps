@@ -9,7 +9,7 @@ services:
       DARK_MODE: true
     ports:
       - target: 8081
-        published: 8081
+        published: 48111
         protocol: tcp
     volumes:
       - type: bind

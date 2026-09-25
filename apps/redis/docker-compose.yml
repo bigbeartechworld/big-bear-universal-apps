@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     ports:
       - target: 6379
-        published: '6379'
+        published: '48110'
         protocol: tcp
     volumes:
       - type: bind

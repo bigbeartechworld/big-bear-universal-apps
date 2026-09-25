@@ -9,7 +9,7 @@ services:
       - server.js
     ports:
       - target: 3000
-        published: 3000
+        published: 48109
         protocol: tcp
     volumes:
       - type: bind

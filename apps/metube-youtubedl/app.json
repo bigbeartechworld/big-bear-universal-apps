@@ -36,7 +36,7 @@
     ],
     "platform": "linux",
     "main_service": "app",
-    "default_port": "8081",
+    "default_port": "48111",
     "main_image": "alexta69/metube",
     "compose_file": "docker-compose.yml"
   },
@@ -70,7 +70,7 @@
     "ports": [
       {
         "container": "8081",
-        "host": "8081",
+        "host": "48111",
         "protocol": "tcp",
         "description": "Container Port: 8081"
       }
@@ -84,8 +84,8 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8081",
-      "port": "8081",
+      "port_map": "48111",
+      "port": "48111",
       "category": "Others"
     },
     "portainer": {
@@ -96,7 +96,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "8081"
+      "port": "48111"
     },
     "runtipi": {
       "supported": true,
@@ -106,23 +106,23 @@
         "armv7",
         "arm64"
       ],
-      "port": "8081"
+      "port": "48111"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "8081"
+      "port": "48111"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "8081"
+      "port": "48111"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
-      "port": "8081"
+      "port": "48111"
     }
   }
 }
