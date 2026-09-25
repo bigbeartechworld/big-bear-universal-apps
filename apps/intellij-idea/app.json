@@ -5,7 +5,7 @@
     "name": "Intellij-idea",
     "description": "IntelliJ IDEA helps you write code faster with tools that eliminate tedious tasks and let you focus on what matters – building great software.",
     "tagline": "Helps you write code faster with tools that eliminate tedious tasks and let you focus on what matters – building great software.",
-    "version": "42026.2.2",
+    "version": "42026.2.3",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/intellij-idea",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:58.730Z",
-    "updated": "2026-09-17T18:10:58.730Z"
+    "updated": "2026-09-25T19:48:43.065Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/intellij-idea-logo.png",
