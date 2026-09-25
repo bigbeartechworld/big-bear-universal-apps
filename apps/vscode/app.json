@@ -5,7 +5,7 @@
     "name": "Vscode",
     "description": "VS Code is an integrated development environment developed by Microsoft. This container runs the full desktop application, for a web native version see Code Server.",
     "tagline": "An integrated development environment developed by Microsoft. This container runs the full desktop application, for a web native version see Code Server.",
-    "version": "1.137.0",
+    "version": "1.138.0",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/vscode",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:56.961Z",
-    "updated": "2026-09-17T18:10:56.961Z"
+    "updated": "2026-09-25T19:48:47.192Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/vscode-logo.png",
