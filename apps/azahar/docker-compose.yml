@@ -1,7 +1,7 @@
 name: linuxserver-azahar
 services:
   app:
-    image: linuxserver/azahar:12125.1.3@sha256:4bc384663b37a8156ead374a3dde70a69b913e8fd791ab02e0951c6e1f1a979e
+    image: linuxserver/azahar:12126.1.2@sha256:496cc371eca09b92a08c8d1b5e816326dea3d1c6d8d3ed303651deeafe720260
     restart: unless-stopped
     environment:
       PUID: $PUID
