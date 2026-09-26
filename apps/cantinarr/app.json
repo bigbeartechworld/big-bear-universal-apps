@@ -1,0 +1,152 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "cantinarr",
+    "name": "Cantinarr",
+    "description": "Cantinarr brings media requests and server management into one app. Household members browse and request movies, shows, books, and music, follow downloads, and get notified when content is ready. Admins manage Radarr, Sonarr, Chaptarr, Lidarr, and download clients, review approvals, and investigate stuck downloads from a phone or browser. Connect the services you use after setup. AI is optional: an assistant can help with library questions and requests, while the repair agent investigates persistent download problems and proposes actions for an administrator to review. Cantinarr also offers MCP tools for authorized clients. Service credentials stay server-side and are encrypted at rest.",
+    "tagline": "Media requests and server management in one app",
+    "version": "0.16.0",
+    "author": "windoze95",
+    "developer": "windoze95",
+    "category": "Media",
+    "license": "AGPL-3.0",
+    "homepage": "https://cantinarr.com",
+    "source": "big-bear-universal",
+    "created": "2026-08-17T00:00:00Z",
+    "updated": "2026-09-24T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://raw.githubusercontent.com/windoze95/cantinarr/main/app/web/icons/Icon-512.png",
+    "screenshots": [
+      "https://raw.githubusercontent.com/windoze95/cantinarr-unraid/main/screenshots/01-discover.jpg",
+      "https://raw.githubusercontent.com/windoze95/cantinarr-unraid/main/screenshots/05-phone-discover.jpg",
+      "https://raw.githubusercontent.com/windoze95/cantinarr-unraid/main/screenshots/04-request.png"
+    ],
+    "logo": "https://raw.githubusercontent.com/windoze95/cantinarr/main/app/web/icons/Icon-512.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://github.com/windoze95/cantinarr#readme",
+    "repository": "https://github.com/windoze95/cantinarr",
+    "issues": "https://github.com/windoze95/cantinarr/issues",
+    "support": "https://github.com/windoze95/cantinarr/issues"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8585",
+    "main_image": "ghcr.io/windoze95/cantinarr",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "CANTINARR_PUSH_GATEWAY_URL",
+        "default": "https://push.cantinarr.com",
+        "description": "Push gateway for the companion iOS and Android apps. The server enrolls itself on first start with no signup; clear the value to disable push, or point it at your own gateway.",
+        "required": false
+      },
+      {
+        "name": "CANTINARR_ARR_CALLBACK_URL",
+        "default": "",
+        "description": "Origin your Radarr, Sonarr, Chaptarr, and Lidarr containers POST webhooks back to, for example http://192.168.1.10:8585. Leave blank to use whatever address you browse to. This is not the address people reach Cantinarr at; set that in the app under Settings, External Address. Formerly named CANTINARR_PUBLIC_URL, which existing containers can keep using.",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "Cantinarr's database and its generated encryption key. Instance API keys and download-client passwords are AES-256-GCM encrypted with that key, so back this folder up."
+      }
+    ],
+    "ports": [
+      {
+        "container": "8585",
+        "host": "8585",
+        "protocol": "tcp",
+        "description": "Web UI and API"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Cantinarr runs as a single container and serves its web app and API on port 8585. Keep direct HTTP access on your trusted network and use an HTTPS reverse proxy for remote access. Radarr, Sonarr, Chaptarr, Lidarr, download clients, Tautulli, and Plex are all optional and are added from the admin UI after first run. Push notifications to the companion iPhone and Android apps work out of the box through the preset push gateway; clear CANTINARR_PUSH_GATEWAY_URL to turn them off. If your arr containers cannot reach the address you browse Cantinarr on, set CANTINARR_ARR_CALLBACK_URL to an origin they can dial so instant updates work."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8585",
+      "port": "8585",
+      "category": "Media",
+      "volume_mappings": {
+        "cantinarr_config": "/DATA/AppData/$AppID/config"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Media",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8585"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "port": "8585",
+      "volume_mappings": {
+        "cantinarr_config": "config"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8585"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8585"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "10585",
+      "app_port": "8585",
+      "volume_mappings": {
+        "cantinarr_config": "config"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "media",
+    "requests",
+    "radarr",
+    "sonarr",
+    "chaptarr",
+    "lidarr",
+    "music",
+    "plex",
+    "mcp",
+    "ai"
+  ]
+}
