@@ -3,6 +3,7 @@ name: Validate Pull Requests
 on:
   pull_request:
     paths:
+      - '.github/workflows/validate-pr.yml'
       - 'apps/**'
       - 'docs/superpowers/**'
       - 'schemas/**'
@@ -55,12 +56,17 @@ jobs:
       - name: Run Cosmos converter test suite
         run: bash scripts/tests/test-convert-cosmos.sh
 
+      - name: Run PR conversion check tests
+        run: bash scripts/tests/test-pr-conversion-check.sh
+
   validate-apps:
     name: Validate App Definitions
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install dependencies
         run: |
@@ -71,12 +77,17 @@ jobs:
 
       - name: Get changed apps
         id: changed-apps
+        shell: bash
+        env:
+          BASE_REF: ${{ github.base_ref }}
         run: |
           # Get list of changed app directories
-          changed_dirs=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '^apps/' | cut -d'/' -f2 | sort -u)
-          echo "changed_apps<<EOF" >> $GITHUB_OUTPUT
-          echo "$changed_dirs" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          changed_dirs=$(git diff --name-only "origin/$BASE_REF...HEAD" -- apps/ | cut -d'/' -f2 | sort -u)
+          {
+            echo "changed_apps<<EOF"
+            echo "$changed_dirs"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Validate changed apps
         run: |
@@ -113,6 +124,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install dependencies
         run: |
@@ -123,15 +136,22 @@ jobs:
 
       - name: Get changed apps
         id: changed-apps
+        shell: bash
+        env:
+          BASE_REF: ${{ github.base_ref }}
         run: |
-          changed_dirs=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '^apps/' | cut -d'/' -f2 | sort -u)
-          echo "changed_apps<<EOF" >> $GITHUB_OUTPUT
-          echo "$changed_dirs" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          changed_dirs=$(git diff --name-only "origin/$BASE_REF...HEAD" -- apps/ | cut -d'/' -f2 | sort -u)
+          {
+            echo "changed_apps<<EOF"
+            echo "$changed_dirs"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Test conversion for changed apps
+        env:
+          CHANGED_APPS: ${{ steps.changed-apps.outputs.changed_apps }}
         run: |
-          changed_apps="${{ steps.changed-apps.outputs.changed_apps }}"
+          changed_apps="$CHANGED_APPS"
           
           if [ -z "$changed_apps" ]; then
             echo "No apps changed"
@@ -144,6 +164,10 @@ jobs:
           
           failed=0
           for app in $changed_apps; do
+            if [ "$app" = "_example" ]; then
+              echo "Skipping the example template"
+              continue
+            fi
             if [ -d "apps/$app" ]; then
               echo "Converting $app to all platforms..."
               if ./scripts/convert-to-platforms.sh -a "$app"; then
@@ -151,10 +175,21 @@ jobs:
                 
                 # Check that conversion created files
                 for platform in casaos portainer runtipi dockge cosmos umbrel; do
-                  if [ -d "converted/$platform/$app" ]; then
+                  if jq -e --arg platform "$platform" '.compatibility[$platform].supported == false' "apps/$app/app.json" > /dev/null; then
+                    echo "  - $platform is not supported"
+                    continue
+                  fi
+                  folder_name=$(jq -r --arg platform "$platform" '.compatibility[$platform].folder_name // .metadata.id' "apps/$app/app.json")
+                  if [ -z "$folder_name" ] || [ "$folder_name" = "null" ] || [ "$folder_name" = "$app" ]; then
+                    folder_name="$app"
+                    if [ "$platform" = "umbrel" ]; then
+                      folder_name="big-bear-umbrel-$app"
+                    fi
+                  fi
+                  if [ -d "converted/$platform/$folder_name" ]; then
                     echo "  ✓ $platform format created"
                   else
-                    echo "  ✗ $platform format missing"
+                    echo "  ✗ $platform format missing: converted/$platform/$folder_name"
                     failed=1
                   fi
                 done
@@ -179,7 +214,7 @@ jobs:
     name: Comment on PR
     runs-on: ubuntu-latest
     needs: [validate-apps, test-conversion]
-    if: always()
+    if: always() && github.event.pull_request.head.repo.full_name == github.repository
     permissions:
       pull-requests: write
     steps:
