@@ -5,7 +5,7 @@
     "name": "Audacity",
     "description": "Audacity is an easy-to-use, multi-track audio editor and recorder. Developed by a group of volunteers as open source.",
     "tagline": "An easy-to-use, multi-track audio editor and recorder. Developed by a group of volunteers as open source.",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/audacity",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:58.317Z",
-    "updated": "2026-09-17T18:10:58.317Z"
+    "updated": "2026-10-03T17:23:21.433Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/audacity-logo.png",
