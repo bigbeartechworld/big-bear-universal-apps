@@ -10,10 +10,10 @@
 #
 # FOR MIGRATION FROM HOMARR V1:
 # - Do NOT uninstall the existing 'homarr-v1' app until the new one works
-# - Copy the v1 /appdata directory into this app's appdata volume
-# - Use the same SECRET_ENCRYPTION_KEY. A new key makes encrypted secrets unrecoverable
+# - SQLite (the default) lives in /appdata. Copy that directory into this app's appdata volume
+# - Set SECRET_ENCRYPTION_KEY to the v1 key. A new key makes encrypted secrets unrecoverable
+# - An external PostgreSQL database is not inside /appdata. Set DB_DIALECT=postgresql and the same DB_URL
 # - MySQL is not supported. Convert MySQL data to SQLite before starting v2
-# - PostgreSQL and SQLite migrate when the v2 container starts
 #
 # Migration: https://homarr.dev/blog/2026/09/03/homarr-2.0/
 
@@ -27,7 +27,9 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - homarr-v2_appdata:/appdata
     environment:
-      - SECRET_ENCRYPTION_KEY=
+      - SECRET_ENCRYPTION_KEY=${SECRET_ENCRYPTION_KEY}
+      - DB_DIALECT=${DB_DIALECT:-sqlite}
+      - DB_URL=${DB_URL:-/appdata/db/db.sqlite}
     ports:
       - "7576:7575"
 volumes:
