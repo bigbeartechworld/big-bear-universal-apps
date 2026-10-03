@@ -1,0 +1,134 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "solidping",
+    "name": "SolidPing",
+    "description": "SolidPing monitors HTTP(S) endpoints, TCP/UDP ports, DNS records, SSL certificates, ICMP ping, and databases, plus scriptable browser and JavaScript checks for anything those don't cover. Alerts go out over email, Slack, Discord, Telegram, WhatsApp and generic webhooks, with escalation policies and maintenance windows. Public status pages, a multi-region distributed worker system, and multi-user organizations with role-based access are included. Existing Uptime Kuma users can import their monitors directly. Single Go binary, SQLite by default.",
+    "tagline": "Uptime monitoring, alerting and status pages, self-hosted",
+    "version": "0.37.0",
+    "author": "fclairamb",
+    "developer": "Florent Clairambault",
+    "category": "Monitoring",
+    "license": "AGPL-3.0",
+    "homepage": "https://www.solidping.io",
+    "source": "big-bear-universal",
+    "created": "2026-10-04T00:00:00Z",
+    "updated": "2026-10-04T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://raw.githubusercontent.com/fclairamb/solidping/main/res/favicons/favicon-512.png",
+    "thumbnail": "https://raw.githubusercontent.com/fclairamb/solidping/main/deploy/casaos/solidping/thumbnail.png",
+    "screenshots": [
+      "https://raw.githubusercontent.com/fclairamb/solidping/main/deploy/casaos/solidping/screenshot-1.png",
+      "https://raw.githubusercontent.com/fclairamb/solidping/main/deploy/casaos/solidping/screenshot-2.png",
+      "https://raw.githubusercontent.com/fclairamb/solidping/main/deploy/casaos/solidping/screenshot-3.png"
+    ],
+    "logo": "https://raw.githubusercontent.com/fclairamb/solidping/main/res/favicons/favicon-512.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://solidping.io/docs",
+    "repository": "https://github.com/fclairamb/solidping",
+    "issues": "https://github.com/fclairamb/solidping/issues",
+    "support": "https://github.com/fclairamb/solidping/issues"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "4000",
+    "main_image": "ghcr.io/fclairamb/solidping",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "SQLite database and uploaded files."
+      }
+    ],
+    "ports": [
+      {
+        "container": "4000",
+        "host": "4000",
+        "protocol": "tcp",
+        "description": "Web UI and API"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "First login: admin@solidping.io / solidpass, organization \"default\". You are asked to set a new password immediately."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "4000",
+      "port": "4000",
+      "category": "Networking",
+      "volume_mappings": {
+        "solidping_data": "/DATA/AppData/$AppID/data"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Monitoring",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "4000"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "port": "4000",
+      "volume_mappings": {
+        "solidping_data": "data"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "4000"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "4000"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "10400",
+      "app_port": "4000",
+      "volume_mappings": {
+        "solidping_data": "data"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "monitoring",
+    "uptime",
+    "status-page",
+    "alerting"
+  ]
+}
