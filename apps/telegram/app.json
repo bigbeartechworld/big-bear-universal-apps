@@ -5,7 +5,7 @@
     "name": "Telegram",
     "description": "Telegram is a cloud-based mobile and desktop messaging app.",
     "tagline": "A cloud-based mobile and desktop messaging app.",
-    "version": "7.2.8",
+    "version": "7.2.9",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/telegram",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:57.464Z",
-    "updated": "2026-09-17T18:10:57.464Z"
+    "updated": "2026-10-03T16:58:15.918Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/telegram-logo.png",
