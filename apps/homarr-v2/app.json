@@ -1,0 +1,134 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "homarr-v2",
+    "name": "Homarr v2",
+    "description": "Homarr v2 dashboard. This is a new app, separate from Homarr v1. SQLite and PostgreSQL databases move by copying /appdata and keeping the same SECRET_ENCRYPTION_KEY. MySQL is no longer supported; convert existing MySQL data to SQLite before starting v2. Not compatible with legacy Homarr (v0.x) data without migration.",
+    "tagline": "Homarr v2",
+    "version": "v2.0.0",
+    "author": "BigBearTechWorld",
+    "developer": "homarr-labs",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "https://homarr.dev/",
+    "source": "big-bear-universal",
+    "created": "2026-10-03T00:00:00Z",
+    "updated": "2026-10-03T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/homarr.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/homarr.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://homarr.dev/blog/2026/09/03/homarr-2.0/",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "big-bear-homarr-v2",
+    "default_port": "7576",
+    "main_image": "ghcr.io/homarr-labs/homarr",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "SECRET_ENCRYPTION_KEY",
+        "default": "",
+        "description": "64 character hex string. Generate with: openssl rand -hex 32. Keep the v1 key if you copy its appdata.",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/appdata",
+        "description": "Container Path: /appdata"
+      }
+    ],
+    "ports": [
+      {
+        "container": "7575",
+        "host": "7576",
+        "protocol": "tcp",
+        "description": "Container Port: 7575 (host port 7576 to avoid conflict with Homarr v1)"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "NEW APP - HOMARR V2\n\nThis is a NEW app, separate from 'homarr-v1' (v1.63.0) and from 'homarr' (v0.16). Both can run at the same time.\n\nFOR NEW USERS:\n- Install this app for new Homarr 2 deployments\n- Generate SECRET_ENCRYPTION_KEY with: openssl rand -hex 32\n- Web UI is on host port 7576\n\nFOR HOMARR V1 USERS:\n- Do NOT uninstall your existing 'homarr-v1' app until this one works\n- Copy the v1 /appdata directory into this app's appdata volume\n- Use the same SECRET_ENCRYPTION_KEY. A new key makes encrypted secrets unrecoverable\n- MySQL is not supported. Convert MySQL data to SQLite before starting v2\n- SQLite and PostgreSQL migrate when the v2 container starts\n\nMigration: https://homarr.dev/blog/2026/09/03/homarr-2.0/"
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "7576",
+      "volume_mappings": {
+        "homarr-v2_appdata": "/DATA/AppData/$AppID/appdata"
+      },
+      "port": "7576",
+      "category": "Productivity"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "7576"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "homarr-v2_appdata": "appdata"
+      },
+      "port": "7575"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "7576"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "7575"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "homarr-v2_appdata": "appdata"
+      },
+      "port": "10065"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

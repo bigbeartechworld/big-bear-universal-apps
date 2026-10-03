@@ -184,6 +184,11 @@
       "matchPackageNames": ["odoo"],
       "matchFileNames": ["apps/odoo/docker-compose.yml"],
       "enabled": false
+    },
+    {
+      "matchPackageNames": ["ghcr.io/homarr-labs/homarr"],
+      "matchFileNames": ["apps/homarr-v1/docker-compose.yml"],
+      "enabled": false
     }
   ],
   "customManagers": []

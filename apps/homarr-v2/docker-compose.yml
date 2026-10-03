@@ -1,0 +1,36 @@
+# HOMARR V2 - NEW DEPLOYMENT
+# ===========================
+# This is a SEPARATE app from 'homarr-v1' (Homarr 1.63.0) and from 'homarr' (v0.16).
+# They can coexist. Host port 7576 avoids the v1 app on 7575.
+#
+# FOR NEW INSTALLATIONS:
+# - Deploy this app for new Homarr 2 instances
+# - Generate SECRET_ENCRYPTION_KEY with: openssl rand -hex 32
+# - Data is stored at /appdata (SQLite by default)
+#
+# FOR MIGRATION FROM HOMARR V1:
+# - Do NOT uninstall the existing 'homarr-v1' app until the new one works
+# - Copy the v1 /appdata directory into this app's appdata volume
+# - Use the same SECRET_ENCRYPTION_KEY. A new key makes encrypted secrets unrecoverable
+# - MySQL is not supported. Convert MySQL data to SQLite before starting v2
+# - PostgreSQL and SQLite migrate when the v2 container starts
+#
+# Migration: https://homarr.dev/blog/2026/09/03/homarr-2.0/
+
+name: big-bear-homarr-v2
+services:
+  big-bear-homarr-v2:
+    container_name: big-bear-homarr-v2
+    image: ghcr.io/homarr-labs/homarr:v2.0.0@sha256:3eeef80bfc58f6588844e9405da47550f681006d3019005a34f9388b5c00eb73
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - homarr-v2_appdata:/appdata
+    environment:
+      - SECRET_ENCRYPTION_KEY=
+    ports:
+      - "7576:7575"
+volumes:
+  homarr-v2_appdata:
+    name: homarr-v2_appdata
+    driver: local
