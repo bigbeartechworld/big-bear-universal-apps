@@ -5,7 +5,7 @@
     "name": "Odoo",
     "description": "Open-source business management software suite designed to streamline various aspects of business operations. With its modular structure, users can choose and integrate specific applications such as accounting, inventory, and sales. Odoo provides a user-friendly interface, scalability for businesses of all sizes, and is available in both community (free) and enterprise editions. Its integrated approach and customization options make it a popular choice for comprehensive ERP (Enterprise Resource Planning) solutions.",
     "tagline": "Open-source business management software with modular applications for streamlined operations.",
-    "version": "19",
+    "version": "20",
     "author": "BigBearTechWorld",
     "developer": "odoo",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/odoo",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:06Z",
-    "updated": "2025-10-27T02:42:06Z"
+    "updated": "2026-10-03T17:25:04.981Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/odoo/logo.jpg",
