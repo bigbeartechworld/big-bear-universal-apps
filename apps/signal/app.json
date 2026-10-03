@@ -5,7 +5,7 @@
     "name": "Signal",
     "description": "Signal is a messaging app with privacy at its core. It is free and easy to use, with strong end-to-end encryption that keeps your communication completely private.",
     "tagline": "A messaging app with privacy at its core. It is free and easy to use, with strong end-to-end encryption that keeps your communication completely private.",
-    "version": "8.27.0",
+    "version": "8.28.0",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/signal",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:56.867Z",
-    "updated": "2026-09-17T18:10:56.867Z"
+    "updated": "2026-10-03T17:14:39.972Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/signal-logo.png",
