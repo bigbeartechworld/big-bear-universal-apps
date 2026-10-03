@@ -5,7 +5,7 @@
     "name": "Pydio-cells",
     "description": "Pydio-cells is the nextgen file sharing platform for organizations. It is a full rewrite of the Pydio project using the Go language following a micro-service architecture.",
     "tagline": "The nextgen file sharing platform for organizations. It is a full rewrite of the Pydio project using the Go language following a micro-service architecture.",
-    "version": "5.0.2",
+    "version": "5.0.3",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/pydio-cells",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:58.130Z",
-    "updated": "2026-09-17T18:10:58.130Z"
+    "updated": "2026-10-03T16:56:58.074Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/pydio-cells-icon.png",
