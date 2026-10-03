@@ -5,7 +5,7 @@
     "name": "Kometa",
     "description": "Kometa is a powerful tool designed to give you complete control over your media libraries. With Kometa, you can take your customization to the next level, with granular control over metadata, collections, overlays, and much more.",
     "tagline": "A powerful tool designed to give you complete control over your media libraries. With Kometa, you can take your customization to the next level, with granular control over metadata, collections, overlays, and much more.",
-    "version": "2.4.8",
+    "version": "2.5.1",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/kometa",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:57.298Z",
-    "updated": "2026-09-17T18:10:57.298Z"
+    "updated": "2026-10-03T16:56:21.137Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/kometa-banner.png",
