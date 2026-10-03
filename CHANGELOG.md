@@ -10,7 +10,7 @@ Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within
 
 ### Changed
 - `apps/odoo/` — renamed to "Odoo (Legacy)" and pinned in `renovate.json` at Odoo 19 with PostgreSQL 15.
-- `apps/homarr-v1/` — display name is now "Homarr v2" after the image bump. The app id stays `homarr-v1` so existing installs update in place. SQLite and PostgreSQL migrate automatically; MySQL is no longer supported.
+- `apps/homarr-v1/` — display name is now "Homarr v2" after the image bump. The app id stays `homarr-v1` so existing installs update in place. SQLite and PostgreSQL migrate automatically. MySQL is no longer supported; convert existing MySQL data to SQLite before updating.
 
 ### Updated
 - `apps/drawio/` — 31.5.3 → 32.0.1 (#3776)

@@ -24,6 +24,7 @@ services:
     volumes:
       - odoo-v20_data_etc:/etc/odoo
       - odoo-v20_data_addons:/mnt/extra-addons
+      - odoo-v20_data_filestore:/var/lib/odoo
     ports:
       - "8070:8069"
     environment:
@@ -57,4 +58,7 @@ volumes:
     driver: local
   odoo-v20_data_postgresql:
     name: odoo-v20_data_postgresql
+    driver: local
+  odoo-v20_data_filestore:
+    name: odoo-v20_data_filestore
     driver: local

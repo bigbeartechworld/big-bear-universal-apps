@@ -3,7 +3,7 @@
   "metadata": {
     "id": "homarr-v1",
     "name": "Homarr v2",
-    "description": "Homarr v2 dashboard. SQLite and PostgreSQL databases migrate in place from v1 when the image is updated. MySQL is no longer supported. Keep the existing SECRET_ENCRYPTION_KEY. Not compatible with legacy Homarr (v0.x) data without migration.",
+    "description": "Homarr v2 dashboard. SQLite and PostgreSQL databases migrate in place from v1 when the image is updated. MySQL is no longer supported; convert existing MySQL data to SQLite before updating to v2. Keep the existing SECRET_ENCRYPTION_KEY. Not compatible with legacy Homarr (v0.x) data without migration.",
     "tagline": "Homarr v2",
     "version": "v2.0.0",
     "author": "BigBearTechWorld",

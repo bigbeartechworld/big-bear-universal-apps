@@ -5,7 +5,7 @@
     "name": "Odoo v20",
     "description": "Open-source business management software suite designed to streamline various aspects of business operations. With its modular structure, users can choose and integrate specific applications such as accounting, inventory, and sales. Odoo provides a user-friendly interface, scalability for businesses of all sizes, and is available in both community (free) and enterprise editions. Its integrated approach and customization options make it a popular choice for comprehensive ERP (Enterprise Resource Planning) solutions.",
     "tagline": "Odoo 20 with PostgreSQL 16",
-    "version": "20",
+    "version": "20.0.0",
     "author": "BigBearTechWorld",
     "developer": "odoo",
     "category": "BigBearCasaOS",
@@ -68,6 +68,10 @@
       {
         "container": "/mnt/extra-addons",
         "description": "Container Path: /mnt/extra-addons"
+      },
+      {
+        "container": "/var/lib/odoo",
+        "description": "Container Path: /var/lib/odoo"
       }
     ],
     "ports": [
@@ -95,7 +99,8 @@
       "volume_mappings": {
         "odoo-v20_data_addons": "/DATA/AppData/$AppID/data/addons",
         "odoo-v20_data_etc": "/DATA/AppData/$AppID/data/etc",
-        "odoo-v20_data_postgresql": "/DATA/AppData/$AppID/data/postgresql"
+        "odoo-v20_data_postgresql": "/DATA/AppData/$AppID/data/postgresql",
+        "odoo-v20_data_filestore": "/DATA/AppData/$AppID/data/filestore"
       },
       "port": "8070",
       "category": "Finance"
@@ -120,9 +125,10 @@
       "volume_mappings": {
         "odoo-v20_data_addons": "data/addons",
         "odoo-v20_data_etc": "data/etc",
-        "odoo-v20_data_postgresql": "data/postgresql"
+        "odoo-v20_data_postgresql": "data/postgresql",
+        "odoo-v20_data_filestore": "data/filestore"
       },
-      "port": "8070"
+      "port": "8069"
     },
     "dockge": {
       "supported": true,
@@ -133,7 +139,7 @@
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "8070"
+      "port": "8069"
     },
     "umbrel": {
       "supported": true,
@@ -141,7 +147,8 @@
       "volume_mappings": {
         "odoo-v20_data_addons": "data/addons",
         "odoo-v20_data_etc": "data/etc",
-        "odoo-v20_data_postgresql": "data/postgresql"
+        "odoo-v20_data_postgresql": "data/postgresql",
+        "odoo-v20_data_filestore": "data/filestore"
       },
       "port": "10141"
     }
