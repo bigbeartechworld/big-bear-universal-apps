@@ -179,6 +179,11 @@
       "matchPackageNames": ["linuxserver/snipe-it"],
       "matchFileNames": ["apps/snipe-it/docker-compose.yml"],
       "enabled": false
+    },
+    {
+      "matchPackageNames": ["odoo"],
+      "matchFileNames": ["apps/odoo/docker-compose.yml"],
+      "enabled": false
     }
   ],
   "customManagers": []

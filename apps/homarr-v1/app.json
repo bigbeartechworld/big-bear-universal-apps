@@ -2,9 +2,9 @@
   "spec_version": "1.0",
   "metadata": {
     "id": "homarr-v1",
-    "name": "Homarr v1",
-    "description": "Homarr v1 - A sleek, modern dashboard for your server. This is the latest major version (v1.x) from homarr-labs with improved architecture and features. Note: This version uses a different data structure and requires SECRET_ENCRYPTION_KEY. Not compatible with legacy Homarr (v0.x) data without migration.",
-    "tagline": "Homarr v1 (Latest)",
+    "name": "Homarr v2",
+    "description": "Homarr v2 dashboard. SQLite and PostgreSQL databases migrate in place from v1 when the image is updated. MySQL is no longer supported. Keep the existing SECRET_ENCRYPTION_KEY. Not compatible with legacy Homarr (v0.x) data without migration.",
+    "tagline": "Homarr v2",
     "version": "v2.0.0",
     "author": "BigBearTechWorld",
     "developer": "homarr-labs",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/homarr-labs/homarr",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:41:52Z",
-    "updated": "2026-10-03T17:24:14.414Z"
+    "updated": "2026-10-03T00:00:00Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/homarr.png",

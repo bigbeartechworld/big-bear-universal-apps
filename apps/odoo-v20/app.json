@@ -1,29 +1,29 @@
 {
   "spec_version": "1.0",
   "metadata": {
-    "id": "odoo",
-    "name": "Odoo (Legacy)",
+    "id": "odoo-v20",
+    "name": "Odoo v20",
     "description": "Open-source business management software suite designed to streamline various aspects of business operations. With its modular structure, users can choose and integrate specific applications such as accounting, inventory, and sales. Odoo provides a user-friendly interface, scalability for businesses of all sizes, and is available in both community (free) and enterprise editions. Its integrated approach and customization options make it a popular choice for comprehensive ERP (Enterprise Resource Planning) solutions.",
-    "tagline": "Open-source business management software with modular applications for streamlined operations.",
-    "version": "19",
+    "tagline": "Odoo 20 with PostgreSQL 16",
+    "version": "20",
     "author": "BigBearTechWorld",
     "developer": "odoo",
     "category": "BigBearCasaOS",
     "license": "",
     "homepage": "https://hub.docker.com/r/odoo",
     "source": "big-bear-universal",
-    "created": "2025-10-27T02:42:06Z",
-    "updated": "2025-10-27T02:42:06Z"
+    "created": "2026-10-03T00:00:00Z",
+    "updated": "2026-10-03T00:00:00Z"
   },
   "visual": {
-    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/odoo/logo.jpg",
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/odoo-v20/logo.jpg",
     "thumbnail": "",
     "screenshots": [],
-    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/odoo/logo.jpg"
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/odoo-v20/logo.jpg"
   },
   "resources": {
     "youtube": "",
-    "documentation": "https://community.bigbeartechworld.com/t/added-odoo-to-bigbearcasaos/1115?u=dragonfire1119",
+    "documentation": "https://www.odoo.com/documentation/master/administration/upgrade.html",
     "repository": "",
     "issues": "",
     "support": "https://community.bigbeartechworld.com/"
@@ -34,8 +34,8 @@
       "arm64"
     ],
     "platform": "linux",
-    "main_service": "big-bear-odoo",
-    "default_port": "8069",
+    "main_service": "big-bear-odoo-v20",
+    "default_port": "8070",
     "main_image": "odoo",
     "compose_file": "docker-compose.yml"
   },
@@ -44,7 +44,7 @@
       {
         "name": "HOST",
         "default": "",
-        "description": "Container Host: big-bear-odoo-db",
+        "description": "Container Host: big-bear-odoo-v20-db",
         "required": false
       },
       {
@@ -56,7 +56,7 @@
       {
         "name": "PASSWORD",
         "default": "",
-        "description": "Container Password: a8d785b6-bc00-49cc-8675-d404093d1507",
+        "description": "Container Password: c9983a93-bf4f-491a-bfef-c42eca42f04d",
         "required": false
       }
     ],
@@ -73,9 +73,9 @@
     "ports": [
       {
         "container": "8069",
-        "host": "8069",
+        "host": "8070",
         "protocol": "tcp",
-        "description": "Container Port: 8069"
+        "description": "Container Port: 8069 (host port 8070 to avoid conflict with Odoo 19)"
       }
     ]
   },
@@ -84,20 +84,20 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Documentation: https://community.bigbeartechworld.com/t/added-odoo-to-bigbearcasaos/1115?u=dragonfire1119\n"
+        "en_us": "NEW APP - ODOO V20\n\nThis is a NEW app, separate from 'odoo' (Odoo 19 on PostgreSQL 15). Both can run at the same time.\n\nFOR NEW USERS:\n- Install this app for new Odoo 20 deployments\n- Bundles PostgreSQL 16, which Odoo 20 requires\n- Web UI is on host port 8070\n\nFOR ODOO 19 USERS:\n- Do NOT uninstall your existing 'odoo' app\n- Do NOT point this app at the Odoo 19 database\n- Major upgrades need Odoo's upgrade service; swapping the image will not migrate the database\n- The PostgreSQL 15 data directory cannot be reused with PostgreSQL 16\n\nUpgrade guide: https://www.odoo.com/documentation/master/administration/upgrade.html"
       }
     }
   },
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8069",
+      "port_map": "8070",
       "volume_mappings": {
-        "odoo_data_addons": "/DATA/AppData/$AppID/data/addons",
-        "odoo_data_etc": "/DATA/AppData/$AppID/data/etc",
-        "odoo_data_postgresql": "/DATA/AppData/$AppID/data/postgresql"
+        "odoo-v20_data_addons": "/DATA/AppData/$AppID/data/addons",
+        "odoo-v20_data_etc": "/DATA/AppData/$AppID/data/etc",
+        "odoo-v20_data_postgresql": "/DATA/AppData/$AppID/data/postgresql"
       },
-      "port": "8069",
+      "port": "8070",
       "category": "Finance"
     },
     "portainer": {
@@ -108,7 +108,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "8069"
+      "port": "8070"
     },
     "runtipi": {
       "supported": true,
@@ -118,32 +118,32 @@
         "arm64"
       ],
       "volume_mappings": {
-        "odoo_data_addons": "data/addons",
-        "odoo_data_etc": "data/etc",
-        "odoo_data_postgresql": "data/postgresql"
+        "odoo-v20_data_addons": "data/addons",
+        "odoo-v20_data_etc": "data/etc",
+        "odoo-v20_data_postgresql": "data/postgresql"
       },
-      "port": "8069"
+      "port": "8070"
     },
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "8069"
+      "port": "8070"
     },
     "cosmos": {
       "supported": true,
       "servapp": true,
       "routes_required": true,
-      "port": "8069"
+      "port": "8070"
     },
     "umbrel": {
       "supported": true,
       "manifest_version": 1,
       "volume_mappings": {
-        "odoo_data_addons": "data/addons",
-        "odoo_data_etc": "data/etc",
-        "odoo_data_postgresql": "data/postgresql"
+        "odoo-v20_data_addons": "data/addons",
+        "odoo-v20_data_etc": "data/etc",
+        "odoo-v20_data_postgresql": "data/postgresql"
       },
-      "port": "10120"
+      "port": "10141"
     }
   },
   "tags": [

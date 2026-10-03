@@ -3,6 +3,29 @@
 All notable changes to Big Bear Universal Apps are documented here.
 Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within the month)
 
+## [2026.10.1]
+
+### Added
+- `apps/odoo-v20/` — Odoo 20 paired with PostgreSQL 16, on host port 8070. Odoo 20 raises the database minimum from PostgreSQL 13 to 16, and a major upgrade is not an image swap.
+
+### Changed
+- `apps/odoo/` — renamed to "Odoo (Legacy)" and pinned in `renovate.json` at Odoo 19 with PostgreSQL 15.
+- `apps/homarr-v1/` — display name is now "Homarr v2" after the image bump. The app id stays `homarr-v1` so existing installs update in place. SQLite and PostgreSQL migrate automatically; MySQL is no longer supported.
+
+### Updated
+- `apps/drawio/` — 31.5.3 → 32.0.1 (#3776)
+- `apps/ungoogled-chromium/` — 153.0.8010 → 154.0.8037 (#3772)
+- `apps/apprise-api/` — 1.5.4 → 2.0.0 (#3771). Password protection stays off unless `APPRISE_AUTH_REQUIRED=yes`.
+- `apps/gitea/` — 1.27.3 → 28.0.0 (#3770). The 1.x prefix is gone. Review egress allow and block lists before upgrading; new installs have self-registration off; Actions runs expire after 400 days unless `RUN_RETENTION_DAYS` is changed.
+- `apps/homarr-v1/` — v1.63.0 → v2.0.0 (#3769)
+- `apps/umbrel-os/` — 1.7.4 → 2.0.0 (#3768). Same `/data` volume. The first start rewrites app configs, so going back to 1.x needs a backup.
+- `apps/msedge/` — 153.0.4234 → 154.0.4258 (#3579)
+- `apps/stirling-pdf/` — 2.14.3 → 3.0.2 (#3543)
+- `apps/librewolf/` — 155.0.1 → 156.0.1 (#3541)
+- `apps/azahar/` — 12125.1.3 → 12126.1.2 (#3540)
+- `apps/bookorbit/` — 2.7.0 → 3.2.0 (#3539). Database migrations run on startup.
+- `apps/nextcloud/` and `apps/nextcloud-with-smbclient/` — 34.0.3 → 35.0.1 (#3538). PostgreSQL 14 remains supported.
+
 ## [2026.07.1]
 
 ### Added
