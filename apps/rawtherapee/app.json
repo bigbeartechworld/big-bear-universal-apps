@@ -5,7 +5,7 @@
     "name": "Rawtherapee",
     "description": "RawTherapee is a free, cross-platform raw image processing program!",
     "tagline": "A free, cross-platform raw image processing program.",
-    "version": "5.13.20260913",
+    "version": "5.13.20260927",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/rawtherapee",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:57.769Z",
-    "updated": "2026-09-17T18:10:57.769Z"
+    "updated": "2026-10-03T16:57:20.135Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/rawtherapee-logo.png",
