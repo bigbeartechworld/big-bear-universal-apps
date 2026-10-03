@@ -7,7 +7,7 @@ Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within
 
 ### Added
 - `apps/odoo-v20/` — Odoo 20 paired with PostgreSQL 16, on host port 8070. Odoo 20 raises the database minimum from PostgreSQL 13 to 16, and a major upgrade is not an image swap.
-- `apps/homarr-v2/` — Homarr 2.0.0 on host port 7576. The default SQLite database moves by copying `/appdata` and setting the same `SECRET_ENCRYPTION_KEY`. An external PostgreSQL database stays where it is; set `DB_DIALECT` and `DB_URL`. MySQL must be converted to SQLite first.
+- `apps/homarr-v2/` — Homarr 2.0.0 on host port 7576. The default SQLite database moves by copying `/appdata` and setting the same `SECRET_ENCRYPTION_KEY`. An external PostgreSQL database stays where it is. Stop v1, back up that database, then set `DB_DIALECT` and `DB_URL` and leave v1 stopped while v2 migrates it. MySQL must be converted to SQLite first.
 
 ### Changed
 - `apps/odoo/` — renamed to "Odoo (Legacy)" and pinned in `renovate.json` at Odoo 19 with PostgreSQL 15.
