@@ -5,7 +5,7 @@
     "name": "Qdirstat",
     "description": "QDirStat Qt-based directory statistics: KDirStat without any KDE -- from the author of the original KDirStat.",
     "tagline": "Qt-based directory statistics: KDirStat without any KDE -- from the author of the original KDirStat.",
-    "version": "2.0.20260913",
+    "version": "2.0.20260928",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/qdirstat",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:58.469Z",
-    "updated": "2026-09-17T18:10:58.469Z"
+    "updated": "2026-10-03T16:57:14.419Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/qdirstat-logo.png",
