@@ -5,7 +5,7 @@
     "name": "Changedetection.io",
     "description": "Changedetection.io provides free, open-source web page monitoring, notification and change detection.",
     "tagline": "Provides free, open-source web page monitoring, notification and change detection.",
-    "version": "0.60.6",
+    "version": "0.60.7",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/changedetection.io",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:57.408Z",
-    "updated": "2026-09-17T18:10:57.408Z"
+    "updated": "2026-10-03T16:55:31.463Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/changedetection-icon.png",
