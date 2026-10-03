@@ -5,7 +5,7 @@
     "name": "Draw.io",
     "description": "Draw.io is a structured diagram editor for creating flowcharts, network diagrams, and other visual documentation.",
     "tagline": "Structured diagram editor",
-    "version": "31.4.6",
+    "version": "32.0.1",
     "author": "BigBearCommunity",
     "developer": "JGraph",
     "category": "Productivity",
@@ -13,7 +13,7 @@
     "homepage": "https://www.drawio.com/",
     "source": "big-bear-universal",
     "created": "2026-09-18T00:00:00Z",
-    "updated": "2026-09-18T00:00:00Z"
+    "updated": "2026-10-03T17:24:53.126Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/drawio.png",
@@ -29,7 +29,10 @@
     "support": "https://community.bigbeartechworld.com/"
   },
   "technical": {
-    "architectures": ["amd64", "arm64"],
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
     "platform": "linux",
     "main_service": "app",
     "default_port": "8080",
@@ -62,13 +65,19 @@
     "portainer": {
       "supported": true,
       "template_type": 2,
-      "categories": ["Productivity", "selfhosted"],
+      "categories": [
+        "Productivity",
+        "selfhosted"
+      ],
       "administrator_only": false
     },
     "runtipi": {
       "supported": true,
       "tipi_version": 1,
-      "supported_architectures": ["amd64", "arm64"]
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ]
     },
     "dockge": {
       "supported": true,
@@ -84,5 +93,10 @@
       "manifest_version": 1
     }
   },
-  "tags": ["selfhosted", "docker", "diagrams", "productivity"]
+  "tags": [
+    "selfhosted",
+    "docker",
+    "diagrams",
+    "productivity"
+  ]
 }
