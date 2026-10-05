@@ -1,0 +1,196 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "trackie",
+    "name": "Trackie",
+    "description": "Trackie is a New Zealand Actual Budget server image. Sign-in is OpenID Connect, and optional per-user Akahu bank tokens are encrypted at rest.",
+    "tagline": "New Zealand Actual Budget",
+    "version": "26.9.0",
+    "author": "BigBearTechWorld",
+    "developer": "trackie-nz",
+    "category": "BigBearCasaOS",
+    "license": "MIT",
+    "homepage": "https://trackie.nz/",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://trackie.nz/apple-touch-icon.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://trackie.nz/apple-touch-icon.png"
+  },
+  "resources": {
+    "documentation": "https://github.com/trackie-nz/trackie/blob/main/app/compose.yml",
+    "repository": "https://github.com/trackie-nz/trackie",
+    "issues": "https://github.com/trackie-nz/trackie/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64"
+    ],
+    "platform": "linux",
+    "main_service": "trackie",
+    "default_port": "20005",
+    "main_image": "ghcr.io/trackie-nz/trackie",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "NODE_ENV",
+        "default": "production",
+        "description": "Node environment.",
+        "required": true
+      },
+      {
+        "name": "ACTUAL_LOGIN_METHOD",
+        "default": "openid",
+        "description": "Login method. Trackie self-host uses OpenID Connect.",
+        "required": true
+      },
+      {
+        "name": "ACTUAL_OPENID_ENFORCE",
+        "default": "true",
+        "description": "Require the identity provider and disable password login.",
+        "required": true
+      },
+      {
+        "name": "ACTUAL_USER_CREATION_MODE",
+        "default": "login",
+        "description": "Auto-provision a user on the first successful identity-provider login.",
+        "required": true
+      },
+      {
+        "name": "ACTUAL_OPENID_DISCOVERY_URL",
+        "default": "",
+        "description": "OIDC discovery URL. The provider must return a verified email claim.",
+        "required": true
+      },
+      {
+        "name": "ACTUAL_OPENID_CLIENT_ID",
+        "default": "",
+        "description": "OIDC client id. Register callback SERVER_HOSTNAME/openid/callback.",
+        "required": true
+      },
+      {
+        "name": "ACTUAL_OPENID_CLIENT_SECRET",
+        "default": "",
+        "description": "OIDC client secret.",
+        "required": true
+      },
+      {
+        "name": "ACTUAL_OPENID_SERVER_HOSTNAME",
+        "default": "http://localhost:20005",
+        "description": "Public URL of this server. Official compose uses port 5006. This listing publishes 20005 because 5006 is already used.",
+        "required": true
+      },
+      {
+        "name": "ACTUAL_TOKEN_EXPIRATION",
+        "default": "7776000",
+        "description": "Session lifetime in seconds (90 days).",
+        "required": true
+      },
+      {
+        "name": "ACTUAL_IDENTITY_SECRET",
+        "default": "v3smK3KDuHTlcUVTDXPLGCilbm3y3-0OGF6PYX-iIQ0",
+        "description": "HMAC key that derives stored user identity from verified email. Do not rotate it.",
+        "required": true
+      },
+      {
+        "name": "ACTUAL_AKAHU_TOKEN_SECRET",
+        "default": "jQBA8ydLKvkPN8tc1duO2vQRY-yhpXI0fq6Xxc1sNhQ",
+        "description": "Key that encrypts optional per-user Akahu tokens. Rotating it only forces users to paste tokens again.",
+        "required": true
+      },
+      {
+        "name": "TZ",
+        "default": "Pacific/Auckland",
+        "description": "Server timezone used to bucket transaction dates.",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Actual Budget server data"
+      }
+    ],
+    "ports": [
+      {
+        "container": "5006",
+        "host": "20005",
+        "protocol": "tcp",
+        "description": "Web UI. Official host port 5006 is already published by actual-server, so this listing uses 20005."
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Set ACTUAL_OPENID_DISCOVERY_URL, ACTUAL_OPENID_CLIENT_ID, and ACTUAL_OPENID_CLIENT_SECRET before startup. Register the callback at ACTUAL_OPENID_SERVER_HOSTNAME/openid/callback. Do not rotate ACTUAL_IDENTITY_SECRET after users exist."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "20005",
+      "volume_mappings": {
+        "trackie_data": "/DATA/AppData/$AppID/data"
+      },
+      "port": "20005",
+      "category": "Finance"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64"
+      ],
+      "volume_mappings": {
+        "trackie_data": "data"
+      },
+      "port": "5006"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "trackie_data": "data"
+      },
+      "port": "20005"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "finance",
+    "budget",
+    "new-zealand"
+  ]
+}

@@ -1,0 +1,302 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "indelible",
+    "name": "Indelible",
+    "description": "Indelible is a self-hosted read-it-later and knowledge library. It stores articles, newsletters, PDFs, and EPUBs in PostgreSQL and an S3-compatible object store, and the API serves the web app on the same port.",
+    "tagline": "Self-hosted read-it-later library",
+    "version": "0.1.1",
+    "author": "BigBearTechWorld",
+    "developer": "useindelible",
+    "category": "BigBearCasaOS",
+    "license": "AGPL-3.0",
+    "homepage": "https://useindelible.com/",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/useindelible/indelible@v0.1.1/web/static/favicon.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/useindelible/indelible@v0.1.1/web/static/favicon.png"
+  },
+  "resources": {
+    "documentation": "https://useindelible.com/docs/self-hosting/install/",
+    "repository": "https://github.com/useindelible/indelible",
+    "issues": "https://github.com/useindelible/indelible/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "indelible",
+    "default_port": "38473",
+    "main_image": "ghcr.io/useindelible/ind-api",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "IND_ENV",
+        "default": "development",
+        "description": "Local trial mode. Production requires an https IND_BASE_URL and refuses plain HTTP.",
+        "required": true
+      },
+      {
+        "name": "DATABASE_URL",
+        "default": "postgres://indelible:y_ozew8o0v-qGRTW6oJOFM-njwtQu9s0RPag9lLeyxw@postgres:5432/indelible",
+        "description": "PostgreSQL connection string for the postgres service. The database must provide pgvector.",
+        "required": true
+      },
+      {
+        "name": "S3_ENDPOINT",
+        "default": "http://silo:9000",
+        "description": "S3-compatible endpoint for the bundled Silo service.",
+        "required": true
+      },
+      {
+        "name": "S3_REGION",
+        "default": "us-east-1",
+        "description": "Region sent to Silo.",
+        "required": true
+      },
+      {
+        "name": "S3_BUCKET",
+        "default": "indelible",
+        "description": "Bucket created by indelible-silo-init.",
+        "required": true
+      },
+      {
+        "name": "S3_ACCESS_KEY",
+        "default": "indelible",
+        "description": "Silo access key. Matches MINIO_ROOT_USER.",
+        "required": true
+      },
+      {
+        "name": "S3_SECRET_KEY",
+        "default": "Xhif_MYq3o5QEaU9UGtmCrDV-TY-gPLn83bPB7iMh5g",
+        "description": "Silo secret. Matches MINIO_ROOT_PASSWORD.",
+        "required": true
+      },
+      {
+        "name": "S3_FORCE_PATH_STYLE",
+        "default": "true",
+        "description": "Path-style URLs, required for Silo.",
+        "required": true
+      },
+      {
+        "name": "AUTH_CREDENTIAL_KEY",
+        "default": "PFy8QhmU0ZU6H1RFu/ZiIYaEZxVBFPMs4JqHWJ840ZI=",
+        "description": "Base64 of 32 random bytes. Must be identical on the API and worker.",
+        "required": true
+      },
+      {
+        "name": "EGRESS_ALLOW_PRIVATE_TARGETS",
+        "default": "false",
+        "description": "Keep the SSRF guard closed. Set true only to reach an AI server on the host.",
+        "required": true
+      },
+      {
+        "name": "IND_HOST",
+        "default": "0.0.0.0",
+        "description": "API bind address.",
+        "required": true
+      },
+      {
+        "name": "IND_PORT",
+        "default": "8080",
+        "description": "Port the published API image listens on.",
+        "required": true
+      },
+      {
+        "name": "IND_BASE_URL",
+        "default": "http://localhost:38473",
+        "description": "Public URL of this instance for the local trial.",
+        "required": true
+      },
+      {
+        "name": "FRONTEND_URL",
+        "default": "http://localhost:38473",
+        "description": "Web origin. Must match IND_BASE_URL.",
+        "required": true
+      },
+      {
+        "name": "CORS_ORIGINS",
+        "default": "http://localhost:38473",
+        "description": "Origins allowed to refresh a session.",
+        "required": true
+      },
+      {
+        "name": "EXTENSION_REDIRECT_URIS",
+        "default": "https://jidilhjojlgndbpeooeeceohmkedooef.chromiumapp.org/indelible,https://38bd18db5de5caccb6ab6c1271fec03ec1662d5c.extensions.allizom.org/indelible",
+        "description": "Browser extension identity callbacks from the v0.1.1 local compose.",
+        "required": false
+      },
+      {
+        "name": "JWT_SECRET",
+        "default": "GuLcGAJ92GTP4Xg-iUJCs44iB6bf7vebfRVEofYB0OM",
+        "description": "Signs session tokens.",
+        "required": true
+      },
+      {
+        "name": "CSRF_SECRET",
+        "default": "F3uBgXCtF4d79aPkxskk5aBEjTP4nhiMXe-FN2A15Co",
+        "description": "CSRF secret.",
+        "required": true
+      },
+      {
+        "name": "ASSET_COOKIE_SECRET",
+        "default": "32e43181ad36e8465cb37f846b0d4117ef56402764aa5f9757055b3fac419e98",
+        "description": "64 hex characters. Signs short-lived asset cookies.",
+        "required": true
+      },
+      {
+        "name": "OIDC_ENABLED",
+        "default": "false",
+        "description": "Leave false unless OIDC issuer, client id, and client secret are set.",
+        "required": false
+      },
+      {
+        "name": "RENDERER_HOST",
+        "default": "0.0.0.0",
+        "description": "Renderer bind address.",
+        "required": true
+      },
+      {
+        "name": "RENDERER_PORT",
+        "default": "3100",
+        "description": "Renderer listen port on the compose network.",
+        "required": true
+      },
+      {
+        "name": "RENDERER_URL",
+        "default": "http://renderer:3100",
+        "description": "Worker address for the renderer service.",
+        "required": true
+      },
+      {
+        "name": "POSTGRES_USER",
+        "default": "indelible",
+        "description": "PostgreSQL user.",
+        "required": true
+      },
+      {
+        "name": "POSTGRES_PASSWORD",
+        "default": "y_ozew8o0v-qGRTW6oJOFM-njwtQu9s0RPag9lLeyxw",
+        "description": "PostgreSQL password. Must match DATABASE_URL.",
+        "required": true
+      },
+      {
+        "name": "POSTGRES_DB",
+        "default": "indelible",
+        "description": "PostgreSQL database name.",
+        "required": true
+      },
+      {
+        "name": "MINIO_ROOT_USER",
+        "default": "indelible",
+        "description": "Silo root user.",
+        "required": true
+      },
+      {
+        "name": "MINIO_ROOT_PASSWORD",
+        "default": "Xhif_MYq3o5QEaU9UGtmCrDV-TY-gPLn83bPB7iMh5g",
+        "description": "Silo root password. Must match S3_SECRET_KEY.",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/var/lib/postgresql",
+        "description": "PostgreSQL data for pgvector pg18"
+      },
+      {
+        "container": "/data",
+        "description": "Silo object storage"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8080",
+        "host": "38473",
+        "protocol": "tcp",
+        "description": "Web app and API"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Open http://localhost:38473 and create the first account. Signups close after that account exists. This is the official localhost trial: plain HTTP, not the production compose. A public hostname needs HTTPS, and production mode refuses to boot without it."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "38473",
+      "port": "38473",
+      "category": "Productivity",
+      "volume_mappings": {
+        "indelible_pgdata": "/DATA/AppData/$AppID/pgdata",
+        "indelible_silodata": "/DATA/AppData/$AppID/silodata"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "port": "8080",
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "indelible_pgdata": "data/pgdata",
+        "indelible_silodata": "data/silodata"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8080"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "38473",
+      "volume_mappings": {
+        "indelible_pgdata": "data/pgdata",
+        "indelible_silodata": "data/silodata"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "read-it-later",
+    "knowledge",
+    "reading"
+  ]
+}

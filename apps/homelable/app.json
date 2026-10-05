@@ -1,0 +1,170 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "homelable",
+    "name": "Homelable",
+    "description": "Homelable 3.5.1 is a self-hosted homelab diagram with live status monitoring.",
+    "tagline": "Homelab network diagram",
+    "version": "3.5.1",
+    "author": "BigBearTechWorld",
+    "developer": "Pouzor",
+    "category": "BigBearCasaOS",
+    "license": "MIT",
+    "homepage": "https://homelable.net",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/homelable.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/homelable.png"
+  },
+  "resources": {
+    "documentation": "https://github.com/Pouzor/homelable/blob/main/INSTALLATION.md",
+    "repository": "https://github.com/Pouzor/homelable",
+    "issues": "https://github.com/Pouzor/homelable/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "homelable",
+    "default_port": "20033",
+    "main_image": "ghcr.io/pouzor/homelable-frontend",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "BACKEND_UPSTREAM",
+        "default": "backend:8000",
+        "description": "Nginx upstream for the API. The backend service name must stay backend.",
+        "required": true
+      },
+      {
+        "name": "SECRET_KEY",
+        "default": "j1Y2R1xaVZDUSdCvOXz7dvJhkfljx1PZJyH3pjffwMA",
+        "description": "Backend secret key.",
+        "required": true
+      },
+      {
+        "name": "SQLITE_PATH",
+        "default": "/app/data/homelab.db",
+        "description": "SQLite database path inside the data volume.",
+        "required": true
+      },
+      {
+        "name": "CORS_ORIGINS",
+        "default": "[\"http://localhost:20033\"]",
+        "description": "Browser origins allowed to call the API.",
+        "required": true
+      },
+      {
+        "name": "AUTH_MODE",
+        "default": "local",
+        "description": "Local username and password authentication.",
+        "required": true
+      },
+      {
+        "name": "AUTH_USERNAME",
+        "default": "admin",
+        "description": "Local login username.",
+        "required": true
+      },
+      {
+        "name": "AUTH_PASSWORD_HASH",
+        "default": "$2y$12$.578Mwn8ZZsSrG.o1.zDR.N3sIHeeLWcXOQsfeT1v5l9Vz2zqMJTi",
+        "description": "bcrypt hash of the local login password. Dollar signs are escaped in the compose file.",
+        "required": true
+      },
+      {
+        "name": "SCANNER_RANGES",
+        "default": "[]",
+        "description": "JSON array of CIDR ranges to scan. Empty until you set your LAN.",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/app/data",
+        "description": "Homelable SQLite database and uploads"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "20033",
+        "protocol": "tcp",
+        "description": "Homelable web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Open http://localhost:20033 and sign in as admin with password fqeIbapsJuTB7G2hkxVQpvfw. If you open Homelable by another hostname or IP, add that origin to CORS_ORIGINS. Set SCANNER_RANGES to your LAN CIDR before scanning. On the Docker bridge, scans do not return MAC addresses. Host networking would, and it is Linux-only, so it is not enabled here. Host port 3000 is already used, so this listing publishes 20033. The frontend proxies /api to the backend service, which must keep the name backend."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "20033",
+      "category": "Home",
+      "volume_mappings": {
+        "homelable_data": "/DATA/AppData/$AppID/data"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "homelable_data": "data"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "homelable_data": "data"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "homelab",
+    "diagram"
+  ]
+}

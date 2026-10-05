@@ -1,0 +1,152 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "continuwuity",
+    "name": "Continuwuity",
+    "description": "Continuwuity v26.7.2 is a community-driven Matrix homeserver and the continuation of conduwuit.",
+    "tagline": "Community Matrix homeserver",
+    "version": "v26.7.2",
+    "author": "BigBearTechWorld",
+    "developer": "continuwuation",
+    "category": "BigBearCasaOS",
+    "license": "Apache-2.0",
+    "homepage": "https://continuwuity.org",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/continuwuity.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/continuwuity.png"
+  },
+  "resources": {
+    "documentation": "https://continuwuity.org/deploying/docker",
+    "repository": "https://github.com/continuwuity/continuwuity",
+    "issues": "https://github.com/continuwuity/continuwuity/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "continuwuity",
+    "default_port": "8008",
+    "main_image": "forgejo.ellis.link/continuwuation/continuwuity",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "CONTINUWUITY_SERVER_NAME",
+        "default": "matrix.localhost",
+        "description": "Matrix server name. Cannot be changed after the first start without wiping the database.",
+        "required": true
+      },
+      {
+        "name": "CONTINUWUITY_DATABASE_PATH",
+        "default": "/var/lib/continuwuity",
+        "description": "Database directory. Must match the data volume mount.",
+        "required": true
+      },
+      {
+        "name": "CONTINUWUITY_ADDRESS",
+        "default": "0.0.0.0",
+        "description": "Bind address. 0.0.0.0 listens on all interfaces inside the container.",
+        "required": true
+      },
+      {
+        "name": "CONTINUWUITY_PORT",
+        "default": "8008",
+        "description": "Port Continuwuity listens on inside the container.",
+        "required": true
+      },
+      {
+        "name": "CONTINUWUITY_ALLOW_FEDERATION",
+        "default": "false",
+        "description": "Federation is off until a reverse proxy serves this homeserver over HTTPS.",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/var/lib/continuwuity",
+        "description": "Continuwuity database"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8008",
+        "host": "8008",
+        "protocol": "tcp",
+        "description": "Matrix client API"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Set CONTINUWUITY_SERVER_NAME to your real Matrix domain before the first start. It cannot be changed later without wiping the database. Federation is disabled. Put an HTTPS reverse proxy in front of port 8008 before you set CONTINUWUITY_ALLOW_FEDERATION to true. The first start prints a one-time registration token in the container logs."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8008",
+      "category": "Social",
+      "volume_mappings": {
+        "continuwuity_data": "/DATA/AppData/$AppID/data"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "continuwuity_data": "data"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "continuwuity_data": "data"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "matrix",
+    "chat"
+  ]
+}

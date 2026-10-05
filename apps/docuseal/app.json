@@ -1,0 +1,121 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "docuseal",
+    "name": "DocuSeal",
+    "description": "DocuSeal 3.3.1 is an open-source platform to create, fill, and sign PDF documents.",
+    "tagline": "Open source PDF signing",
+    "version": "3.3.1",
+    "author": "BigBearTechWorld",
+    "developer": "DocuSeal",
+    "category": "BigBearCasaOS",
+    "license": "AGPL-3.0",
+    "homepage": "https://www.docuseal.com",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/docuseal.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/docuseal.png"
+  },
+  "resources": {
+    "documentation": "https://github.com/docusealco/docuseal",
+    "repository": "https://github.com/docusealco/docuseal",
+    "issues": "https://github.com/docusealco/docuseal/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "docuseal",
+    "default_port": "20031",
+    "main_image": "docuseal/docuseal",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "DocuSeal SQLite database and files"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "20031",
+        "protocol": "tcp",
+        "description": "DocuSeal web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Open http://localhost:20031 and finish the first-run setup. Data stays in the SQLite database on the docuseal_data volume. Host port 3000 is already used by other apps, so this listing publishes 20031."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "20031",
+      "category": "Productivity",
+      "volume_mappings": {
+        "docuseal_data": "/DATA/AppData/$AppID/data"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "docuseal_data": "data"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "docuseal_data": "data"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "documents",
+    "signing"
+  ]
+}

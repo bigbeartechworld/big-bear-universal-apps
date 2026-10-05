@@ -1,0 +1,236 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "documenso",
+    "name": "Documenso",
+    "description": "Documenso v2.19.0 is an open-source document signing platform backed by PostgreSQL.",
+    "tagline": "Open source document signing",
+    "version": "v2.19.0",
+    "author": "BigBearTechWorld",
+    "developer": "Documenso",
+    "category": "BigBearCasaOS",
+    "license": "AGPL-3.0",
+    "homepage": "https://documenso.com",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/documenso.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/documenso.png"
+  },
+  "resources": {
+    "documentation": "https://docs.documenso.com/docs/self-hosting/deployment/docker-compose",
+    "repository": "https://github.com/documenso/documenso",
+    "issues": "https://github.com/documenso/documenso/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "documenso",
+    "default_port": "20030",
+    "main_image": "documenso/documenso",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PORT",
+        "default": "3000",
+        "description": "Port Documenso listens on inside the container.",
+        "required": true
+      },
+      {
+        "name": "NEXTAUTH_SECRET",
+        "default": "HlLbSGA2KdCiFkgFK2QCbocNRMQYCuyHcdw0HybLaks",
+        "description": "Session secret.",
+        "required": true
+      },
+      {
+        "name": "NEXT_PRIVATE_ENCRYPTION_KEY",
+        "default": "z7k14oDge1HeVUG2LlT3aQeypUTr8NH-JID_K6tYUO0",
+        "description": "Primary encryption key. At least 32 characters.",
+        "required": true
+      },
+      {
+        "name": "NEXT_PRIVATE_ENCRYPTION_SECONDARY_KEY",
+        "default": "utotV_gd2gwCIO5BGo-E72vSqI24hOittOVkWfbqBAg",
+        "description": "Secondary encryption key. At least 32 characters.",
+        "required": true
+      },
+      {
+        "name": "NEXT_PUBLIC_WEBAPP_URL",
+        "default": "http://localhost:20030",
+        "description": "Public URL where browsers reach Documenso.",
+        "required": true
+      },
+      {
+        "name": "NEXT_PRIVATE_INTERNAL_WEBAPP_URL",
+        "default": "http://localhost:3000",
+        "description": "URL the app uses to call itself inside the container.",
+        "required": true
+      },
+      {
+        "name": "NEXT_PRIVATE_DATABASE_URL",
+        "default": "postgresql://documenso:GDnYQQ_jrPV7XOwPlYbmd3L9mWi0s_6E@documenso-db:5432/documenso",
+        "description": "PostgreSQL connection string. Must match the database service.",
+        "required": true
+      },
+      {
+        "name": "NEXT_PRIVATE_DIRECT_DATABASE_URL",
+        "default": "postgresql://documenso:GDnYQQ_jrPV7XOwPlYbmd3L9mWi0s_6E@documenso-db:5432/documenso",
+        "description": "Direct PostgreSQL connection string used for migrations.",
+        "required": true
+      },
+      {
+        "name": "NEXT_PUBLIC_UPLOAD_TRANSPORT",
+        "default": "database",
+        "description": "Store uploaded files in PostgreSQL.",
+        "required": false
+      },
+      {
+        "name": "NEXT_PRIVATE_SMTP_TRANSPORT",
+        "default": "smtp-auth",
+        "description": "Email transport. smtp-auth is username and password SMTP.",
+        "required": true
+      },
+      {
+        "name": "NEXT_PRIVATE_SMTP_HOST",
+        "default": "smtp.example.com",
+        "description": "SMTP server hostname. Replace with a real server before sending mail.",
+        "required": true
+      },
+      {
+        "name": "NEXT_PRIVATE_SMTP_PORT",
+        "default": "587",
+        "description": "SMTP server port.",
+        "required": true
+      },
+      {
+        "name": "NEXT_PRIVATE_SMTP_USERNAME",
+        "default": "documenso-4RI74RoG",
+        "description": "SMTP username. Replace with the real account.",
+        "required": true
+      },
+      {
+        "name": "NEXT_PRIVATE_SMTP_PASSWORD",
+        "default": "_QDGh5oFrd3NgFD21CHkgqG1",
+        "description": "SMTP password. Replace with the real account password.",
+        "required": true
+      },
+      {
+        "name": "NEXT_PRIVATE_SMTP_FROM_NAME",
+        "default": "Documenso",
+        "description": "Display name on outgoing email.",
+        "required": true
+      },
+      {
+        "name": "NEXT_PRIVATE_SMTP_FROM_ADDRESS",
+        "default": "noreply@localhost",
+        "description": "From address on outgoing email.",
+        "required": true
+      },
+      {
+        "name": "POSTGRES_USER",
+        "default": "documenso",
+        "description": "PostgreSQL user for the documenso-db service.",
+        "required": true
+      },
+      {
+        "name": "POSTGRES_PASSWORD",
+        "default": "GDnYQQ_jrPV7XOwPlYbmd3L9mWi0s_6E",
+        "description": "PostgreSQL password. Must match the database URLs.",
+        "required": true
+      },
+      {
+        "name": "POSTGRES_DB",
+        "default": "documenso",
+        "description": "PostgreSQL database name.",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/var/lib/postgresql/data",
+        "description": "PostgreSQL data for Documenso"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "20030",
+        "protocol": "tcp",
+        "description": "Documenso web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Open http://localhost:20030. Set NEXT_PUBLIC_WEBAPP_URL to the URL people will use to reach this instance. Replace NEXT_PRIVATE_SMTP_HOST, NEXT_PRIVATE_SMTP_USERNAME, and NEXT_PRIVATE_SMTP_PASSWORD with a real mail server before sending email. The app starts without a signing certificate, but document signing fails until you add a PKCS#12 file and NEXT_PRIVATE_SIGNING_PASSPHRASE. See https://docs.documenso.com/docs/self-hosting/configuration/signing-certificate."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "20030",
+      "category": "Productivity",
+      "volume_mappings": {
+        "documenso_database": "/DATA/AppData/$AppID/database"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "documenso_database": "database"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "documenso_database": "database"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "documents",
+    "signing"
+  ]
+}

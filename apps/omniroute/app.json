@@ -1,0 +1,177 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "omniroute",
+    "name": "OmniRoute",
+    "description": "OmniRoute is a self-hosted LLM router. The dashboard and an OpenAI-compatible endpoint on one port send requests to the provider accounts you connect, with Redis for rate limiting.",
+    "tagline": "Self-hosted LLM router",
+    "version": "3.8.51",
+    "author": "BigBearTechWorld",
+    "developer": "diegosouzapw",
+    "category": "BigBearCasaOS",
+    "license": "MIT",
+    "homepage": "https://github.com/diegosouzapw/OmniRoute",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/omniroute.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/omniroute.png"
+  },
+  "resources": {
+    "documentation": "https://github.com/diegosouzapw/OmniRoute/blob/main/docs/getting-started/SELF_HOST_GUIDE.md",
+    "repository": "https://github.com/diegosouzapw/OmniRoute",
+    "issues": "https://github.com/diegosouzapw/OmniRoute/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "omniroute",
+    "default_port": "20128",
+    "main_image": "diegosouzapw/omniroute",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "DATA_DIR",
+        "default": "/app/data",
+        "description": "SQLite data directory. Must match the data volume.",
+        "required": true
+      },
+      {
+        "name": "REDIS_URL",
+        "default": "redis://redis:6379",
+        "description": "Redis on the compose network. Not published to the host.",
+        "required": true
+      },
+      {
+        "name": "REQUIRE_API_KEY",
+        "default": "true",
+        "description": "Require a dashboard login and an API key. Required because the ports are published on all interfaces.",
+        "required": true
+      },
+      {
+        "name": "INITIAL_PASSWORD",
+        "default": "PESi-5Y_9dZj5UzCkz1aop62yIdgCJb3",
+        "description": "Dashboard password created on first boot.",
+        "required": true
+      },
+      {
+        "name": "OMNIROUTE_MEMORY_MB",
+        "default": "2048",
+        "description": "V8 heap ceiling from the self-host env example.",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/app/data",
+        "description": "SQLite databases, migrations, and encrypted provider keys"
+      },
+      {
+        "container": "/data",
+        "description": "Redis persistence"
+      }
+    ],
+    "ports": [
+      {
+        "container": "20128",
+        "host": "20128",
+        "protocol": "tcp",
+        "description": "Dashboard and /v1 API"
+      },
+      {
+        "container": "20129",
+        "host": "20129",
+        "protocol": "tcp",
+        "description": "API port"
+      },
+      {
+        "container": "20132",
+        "host": "20132",
+        "protocol": "tcp",
+        "description": "Live WebSocket"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Open http://localhost:20128 and sign in with INITIAL_PASSWORD from this compose file. REQUIRE_API_KEY is on because the ports are published beyond loopback. Add a provider key in the dashboard. Redis is not published to the host. The base image has no Chromium, so web-cookie providers are not included."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "20128",
+      "port": "20128",
+      "category": "AI",
+      "volume_mappings": {
+        "omniroute_data": "/DATA/AppData/$AppID/data",
+        "omniroute_redis": "/DATA/AppData/$AppID/redis"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "port": "20128",
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "omniroute_data": "data",
+        "omniroute_redis": "data/redis"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "20128"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "20128",
+      "app_port": "20128",
+      "volume_mappings": {
+        "omniroute_data": "data",
+        "omniroute_redis": "data/redis"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "ai",
+    "llm",
+    "router"
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "web-check",
+    "name": "Web-Check",
+    "description": "Web-Check is an on-demand OSINT tool for analysing any website: server, security headers, technologies, DNS, and related public signals.",
+    "tagline": "OSINT for any website",
+    "version": "2.3.2",
+    "author": "BigBearTechWorld",
+    "developer": "Alicia Sykes",
+    "category": "BigBearCasaOS",
+    "license": "MIT",
+    "homepage": "https://web-check.xyz",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/web-check.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/web-check.png"
+  },
+  "resources": {
+    "documentation": "https://github.com/lissy93/web-check/blob/master/README.md",
+    "repository": "https://github.com/lissy93/web-check",
+    "issues": "https://github.com/lissy93/web-check/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "web-check",
+    "default_port": "20003",
+    "main_image": "lissy93/web-check",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "20003",
+        "protocol": "tcp",
+        "description": "Web UI. Official host port 3000 is already published, so this listing uses 20003."
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Open the UI on host port 20003. The container still listens on 3000. Optional API keys from the project .env.sample are not set."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "20003",
+      "volume_mappings": {},
+      "port": "20003",
+      "category": "Networking"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {},
+      "port": "3000"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {},
+      "port": "20003"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "osint",
+    "networking"
+  ]
+}

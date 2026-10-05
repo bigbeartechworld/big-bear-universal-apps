@@ -1,0 +1,169 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "zimabrain",
+    "name": "ZimaBrain CE",
+    "description": "ZimaBrain CE is a local verifier-first diagnostic assistant for ZimaOS. It checks host evidence and keeps monitor history in a local SQLite database.",
+    "tagline": "Local ZimaOS diagnostic assistant",
+    "version": "1.6.0-beta",
+    "author": "BigBearTechWorld",
+    "developer": "gelbuilding",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "https://github.com/Jacko88888/zimabrain-ce",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://raw.githubusercontent.com/Jacko88888/zimabrain-ce/main/app/assets/zimabrain-ce-logo.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://raw.githubusercontent.com/Jacko88888/zimabrain-ce/main/app/assets/zimabrain-ce-logo.png"
+  },
+  "resources": {
+    "documentation": "https://github.com/Jacko88888/zimabrain-ce/blob/main/README.md",
+    "repository": "https://github.com/Jacko88888/zimabrain-ce",
+    "issues": "https://github.com/Jacko88888/zimabrain-ce/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64"
+    ],
+    "platform": "linux",
+    "main_service": "zimabrain",
+    "default_port": "8601",
+    "main_image": "gelbuilding/zimabrain-ce",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "ZIMABRAIN_PASSWORD",
+        "default": "a9e3GO5kwUcEDGlGv_JLEGWZ",
+        "description": "Login password for the ZimaBrain web UI.",
+        "required": true
+      },
+      {
+        "name": "ZIMABRAIN_SECRET_KEY",
+        "default": "qC57Chx7nDu_juH55MXIma7EsHMKLSwBN9CgWFESkqU",
+        "description": "Internal session key. Not the login password.",
+        "required": true
+      },
+      {
+        "name": "ZIMABRAIN_MONITOR_ENABLED",
+        "default": "true",
+        "description": "Collect local CPU, memory, disk, and container samples.",
+        "required": false
+      },
+      {
+        "name": "ZIMABRAIN_MONITOR_INTERVAL_SECONDS",
+        "default": "60",
+        "description": "Seconds between monitor samples.",
+        "required": false
+      },
+      {
+        "name": "ZIMABRAIN_MONITOR_RETENTION_DAYS",
+        "default": "7",
+        "description": "Days of monitor history to keep.",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "ZimaBrain data, reports, and trend database"
+      },
+      {
+        "container": "/host/proc",
+        "description": "Read-only host proc for local diagnostics"
+      },
+      {
+        "container": "/host/sys",
+        "description": "Read-only host sysfs for local diagnostics"
+      },
+      {
+        "container": "/host/etc/hostname",
+        "description": "Read-only host hostname"
+      },
+      {
+        "container": "/var/run/docker.sock",
+        "description": "Read-only Docker socket for container diagnostics"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8601",
+        "host": "8601",
+        "protocol": "tcp",
+        "description": "Web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Log in with ZIMABRAIN_PASSWORD. ZIMABRAIN_SECRET_KEY is only a session key. The container is privileged and reads host proc, sysfs, hostname, and the Docker socket so it can diagnose this machine. No download or torrent sidecar is included."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8601",
+      "volume_mappings": {
+        "zimabrain_data": "/DATA/AppData/$AppID/data"
+      },
+      "port": "8601",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64"
+      ],
+      "volume_mappings": {
+        "zimabrain_data": "data"
+      },
+      "port": "8601"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "zimabrain_data": "data"
+      },
+      "port": "8601"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "diagnostics",
+    "zimaos"
+  ]
+}

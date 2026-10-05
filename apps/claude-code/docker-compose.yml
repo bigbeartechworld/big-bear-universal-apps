@@ -1,0 +1,60 @@
+name: claude-code
+
+services:
+  claude-code:
+    image: ghcr.io/worph/claude-code-container:1.0.28@sha256:a73863d23af0222037a0d51cef0c350bfd86825f693cc9bbf889a6484aad2f94
+    container_name: claude-code
+    restart: unless-stopped
+    ports:
+      - "20041:9090"
+    environment:
+      ANTHROPIC_API_KEY: ""
+      AUTH_PASSWORD: "BpDXu0QIHtDFyg1-ssr-1OAQIZ--doTw8O8h9UIBWrU"
+      MCP_ENABLED: "true"
+      CLAUDE_SESSION_TTL: "1800"
+    volumes:
+      - claude_code_workspace:/home/claude/workspace
+      - claude_code_config:/home/claude/.claude
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  caddy:
+    image: caddy:2.11.6@sha256:3422ce6de165df66534f9b9ba50efaf457114ec961763cc52f5dbdaac2972d73
+    container_name: claude-code-caddy
+    restart: unless-stopped
+    depends_on:
+      - claude-code
+    ports:
+      - "20040:8080"
+    configs:
+      - source: caddyfile
+        target: /etc/caddy/Caddyfile
+
+configs:
+  caddyfile:
+    content: |
+      :8080 {
+        handle /login* {
+          reverse_proxy claude-code:9090
+        }
+        handle /logout {
+          reverse_proxy claude-code:9090
+        }
+        handle {
+          forward_auth claude-code:9090 {
+            uri /auth
+            @unauthorized status 401
+            handle_response @unauthorized {
+              redir * /login
+            }
+          }
+          reverse_proxy claude-code:8080
+        }
+      }
+
+volumes:
+  claude_code_workspace:
+    name: claude_code_workspace
+    driver: local
+  claude_code_config:
+    name: claude_code_config
+    driver: local

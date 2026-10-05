@@ -1,0 +1,171 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "gamevault",
+    "name": "GameVault",
+    "description": "GameVault 17.0.1 is a self-hosted library for DRM-free games, with a web UI and PostgreSQL.",
+    "tagline": "Self-hosted DRM-free game library",
+    "version": "17.0.1",
+    "author": "BigBearTechWorld",
+    "developer": "Phalcode",
+    "category": "BigBearCasaOS",
+    "license": "CC-BY-NC-SA-4.0",
+    "homepage": "https://gamevau.lt",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/gamevault.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/gamevault.png"
+  },
+  "resources": {
+    "documentation": "https://gamevau.lt/docs/server-docs/setup/docker-compose/",
+    "repository": "https://github.com/Phalcode/gamevault-backend",
+    "issues": "https://github.com/Phalcode/gamevault-backend/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "gamevault",
+    "default_port": "20032",
+    "main_image": "phalcode/gamevault-backend",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "DB_HOST",
+        "default": "gamevault-db",
+        "description": "PostgreSQL hostname. Must be the database service name.",
+        "required": true
+      },
+      {
+        "name": "DB_USERNAME",
+        "default": "gamevault",
+        "description": "PostgreSQL user. Must match POSTGRES_USER.",
+        "required": true
+      },
+      {
+        "name": "DB_PASSWORD",
+        "default": "A2PC0dslsE9NOJLYON0w0PFchCxqRUGv",
+        "description": "PostgreSQL password. Must match POSTGRES_PASSWORD and must not be empty.",
+        "required": true
+      },
+      {
+        "name": "POSTGRES_USER",
+        "default": "gamevault",
+        "description": "PostgreSQL user for the gamevault-db service.",
+        "required": true
+      },
+      {
+        "name": "POSTGRES_PASSWORD",
+        "default": "A2PC0dslsE9NOJLYON0w0PFchCxqRUGv",
+        "description": "PostgreSQL password for the gamevault-db service.",
+        "required": true
+      },
+      {
+        "name": "POSTGRES_DB",
+        "default": "gamevault",
+        "description": "PostgreSQL database name.",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/files",
+        "description": "DRM-free game files"
+      },
+      {
+        "container": "/media",
+        "description": "GameVault media"
+      },
+      {
+        "container": "/var/lib/postgresql",
+        "description": "PostgreSQL data for GameVault"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8080",
+        "host": "20032",
+        "protocol": "tcp",
+        "description": "GameVault web UI and API"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Open http://localhost:20032. Put DRM-free game files in the gamevault_files volume, which is mounted at /files. Media is stored at /media. Host port 8080 is already used by other apps, so this listing publishes 20032. Keep DB_PASSWORD and POSTGRES_PASSWORD the same."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "20032",
+      "category": "Media",
+      "volume_mappings": {
+        "gamevault_files": "/DATA/AppData/$AppID/files",
+        "gamevault_media": "/DATA/AppData/$AppID/media",
+        "gamevault_database": "/DATA/AppData/$AppID/database"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "gamevault_files": "files",
+        "gamevault_media": "media",
+        "gamevault_database": "database"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "gamevault_files": "files",
+        "gamevault_media": "media",
+        "gamevault_database": "database"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "games"
+  ]
+}

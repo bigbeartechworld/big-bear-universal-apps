@@ -1,0 +1,189 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "cloudreve-pro",
+    "name": "Cloudreve Fork",
+    "description": "Cloudreve Fork v4.23.0 is the Dvorinka open-source Cloudreve server. It uses the same Postgres and Redis layout as upstream and is not the official paid Pro image.",
+    "version": "v4.23.0",
+    "author": "BigBearTechWorld",
+    "developer": "Dvorinka",
+    "category": "BigBearCasaOS",
+    "license": "GPL-3.0",
+    "homepage": "https://github.com/Dvorinka/cloudreve",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/cloudreve.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/cloudreve.png"
+  },
+  "resources": {
+    "documentation": "https://github.com/Dvorinka/cloudreve/blob/master/README.md",
+    "repository": "https://github.com/Dvorinka/cloudreve",
+    "issues": "https://github.com/Dvorinka/cloudreve/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "cloudreve-pro",
+    "default_port": "20042",
+    "main_image": "ghcr.io/dvorinka/cloudreve",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "CR_CONF_Database.Type",
+        "default": "postgres",
+        "description": "Database driver.",
+        "required": false
+      },
+      {
+        "name": "CR_CONF_Database.Host",
+        "default": "postgresql",
+        "description": "Postgres service hostname.",
+        "required": false
+      },
+      {
+        "name": "CR_CONF_Database.User",
+        "default": "cloudreve",
+        "description": "Postgres user. Matches POSTGRES_USER.",
+        "required": false
+      },
+      {
+        "name": "CR_CONF_Database.Name",
+        "default": "cloudreve",
+        "description": "Postgres database name. Matches POSTGRES_DB.",
+        "required": false
+      },
+      {
+        "name": "CR_CONF_Database.Port",
+        "default": "5432",
+        "description": "Postgres port inside the Compose network.",
+        "required": false
+      },
+      {
+        "name": "CR_CONF_Redis.Server",
+        "default": "redis:6379",
+        "description": "Redis address on the Compose network.",
+        "required": false
+      },
+      {
+        "name": "POSTGRES_USER",
+        "default": "cloudreve",
+        "description": "Postgres role created on first start.",
+        "required": false
+      },
+      {
+        "name": "POSTGRES_DB",
+        "default": "cloudreve",
+        "description": "Postgres database created on first start.",
+        "required": false
+      },
+      {
+        "name": "POSTGRES_HOST_AUTH_METHOD",
+        "default": "trust",
+        "description": "Auth method from the project Compose file. Connections on the Compose network do not use a password.",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/cloudreve/data",
+        "description": "Cloudreve configuration and local storage"
+      },
+      {
+        "container": "/var/lib/postgresql/data",
+        "description": "Postgres data"
+      },
+      {
+        "container": "/data",
+        "description": "Redis data"
+      }
+    ],
+    "ports": [
+      {
+        "container": "5212",
+        "host": "20042",
+        "protocol": "tcp",
+        "description": "Cloudreve web UI. Host port 5212 is already used by the cloudreve listing."
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "This listing runs the Dvorinka open-source fork (ghcr.io/dvorinka/cloudreve), not the official Cloudreve Pro image from release.cloudreve.org. Open http://localhost:20042 and register an account. The first account becomes the administrator. Host port 5212 is already used by the Cloudreve listing, so this app publishes 20042. Postgres uses trust authentication on the internal network."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "20042",
+      "category": "Others",
+      "volume_mappings": {
+        "cloudreve_pro_data": "/DATA/AppData/$AppID/data",
+        "cloudreve_pro_postgres": "/DATA/AppData/$AppID/postgres",
+        "cloudreve_pro_redis": "/DATA/AppData/$AppID/redis"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "cloudreve_pro_data": "data",
+        "cloudreve_pro_postgres": "postgres",
+        "cloudreve_pro_redis": "redis"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "cloudreve_pro_data": "data",
+        "cloudreve_pro_postgres": "postgres",
+        "cloudreve_pro_redis": "redis"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "files",
+    "storage"
+  ]
+}

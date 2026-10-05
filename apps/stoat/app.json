@@ -1,0 +1,367 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "stoat",
+    "name": "Stoat",
+    "description": "Stoat is a self-hosted chat server, formerly Revolt. This stack runs the API, web app, file server, proxy, and voice ingress behind Caddy.",
+    "tagline": "Self-hosted chat, formerly Revolt",
+    "version": "4017c18",
+    "author": "BigBearTechWorld",
+    "developer": "stoatchat",
+    "category": "BigBearCasaOS",
+    "license": "AGPL-3.0",
+    "homepage": "https://stoat.chat/",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/stoat.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/stoat.png"
+  },
+  "resources": {
+    "documentation": "https://github.com/stoatchat/self-hosted/blob/main/README.md",
+    "repository": "https://github.com/stoatchat/stoatchat",
+    "issues": "https://github.com/stoatchat/self-hosted/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64"
+    ],
+    "platform": "linux",
+    "main_service": "web",
+    "default_port": "20002",
+    "main_image": "ghcr.io/stoatchat/for-web",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "STOAT_DOMAIN",
+        "default": "",
+        "description": "Public hostname. Required before startup. Compose fails if it is unset. Point DNS at this host.",
+        "required": true
+      },
+      {
+        "name": "HOSTNAME",
+        "default": "https://${STOAT_DOMAIN}",
+        "description": "Caddy site address and web client hostname.",
+        "required": true
+      },
+      {
+        "name": "VITE_HOST",
+        "default": "${STOAT_DOMAIN}",
+        "description": "Web client host.",
+        "required": true
+      },
+      {
+        "name": "VITE_API_URL",
+        "default": "https://${STOAT_DOMAIN}/api",
+        "description": "Web client API URL.",
+        "required": true
+      },
+      {
+        "name": "VITE_DEV_GIFBOX_URL",
+        "default": "https://${STOAT_DOMAIN}/gifbox",
+        "description": "Web client gifbox URL.",
+        "required": true
+      },
+      {
+        "name": "RABBITMQ_DEFAULT_USER",
+        "default": "rabbituser",
+        "description": "RabbitMQ user. Must match REVOLT__RABBIT__USERNAME.",
+        "required": true
+      },
+      {
+        "name": "RABBITMQ_DEFAULT_PASS",
+        "default": "clQJdDnzWtSAtMVNLs1EJl1H274c5OLC",
+        "description": "RabbitMQ password. Must match REVOLT__RABBIT__PASSWORD.",
+        "required": true
+      },
+      {
+        "name": "MINIO_ROOT_USER",
+        "default": "stoatfiles",
+        "description": "Silo root user. Must match the S3 access key.",
+        "required": true
+      },
+      {
+        "name": "MINIO_ROOT_PASSWORD",
+        "default": "vhbfFtvUYm3aAIgoBkAcGwgJUoX0cEJR",
+        "description": "Silo root password. Must match the S3 secret.",
+        "required": true
+      },
+      {
+        "name": "MINIO_DOMAIN",
+        "default": "minio",
+        "description": "Silo domain used for bucket aliases.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__DATABASE__MONGODB",
+        "default": "mongodb://database",
+        "description": "MongoDB URL for the database service.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__DATABASE__REDIS",
+        "default": "redis://redis/",
+        "description": "Valkey URL for the redis service.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__RABBIT__HOST",
+        "default": "rabbit",
+        "description": "RabbitMQ hostname.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__RABBIT__PORT",
+        "default": "5672",
+        "description": "RabbitMQ port.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__RABBIT__USERNAME",
+        "default": "rabbituser",
+        "description": "RabbitMQ username.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__RABBIT__PASSWORD",
+        "default": "clQJdDnzWtSAtMVNLs1EJl1H274c5OLC",
+        "description": "RabbitMQ password.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__FILES__ENCRYPTION_KEY",
+        "default": "FY1cZSuVSyKLXmwdbFOp4YnhRiMCWhGvwO-ba9c8XEU",
+        "description": "File encryption key. Losing it loses access to stored files.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__FILES__S3__ENDPOINT",
+        "default": "http://minio:9000",
+        "description": "S3 endpoint for the silo service.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__FILES__S3__REGION",
+        "default": "minio",
+        "description": "S3 region name.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__FILES__S3__ACCESS_KEY_ID",
+        "default": "stoatfiles",
+        "description": "S3 access key.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__FILES__S3__SECRET_ACCESS_KEY",
+        "default": "vhbfFtvUYm3aAIgoBkAcGwgJUoX0cEJR",
+        "description": "S3 secret key.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__FILES__S3__DEFAULT_BUCKET",
+        "default": "revolt-uploads",
+        "description": "Upload bucket created at startup.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__PUSHD__VAPID__PRIVATE_KEY",
+        "default": "LS0tLS1CRUdJTiBFQyBQUklWQVRFIEtFWS0tLS0tCk1IY0NBUUVFSUNEZ201aEprR2xzbEc0ZlNOekREMTQwQ2drUjkxUFYrcGVBK2I0TmNtNFlvQW9HQ0NxR1NNNDkKQXdFSG9VUURRZ0FFU3A4YmFIUGE1aFVsTHNFaCtjbkUySFZzY1lDVG9aeVhkS1ovckVWajVtcEJWM2o3M3ZHNwpRcXllcHNFNVJYejYvRm9QNmJ2eGlTR0M4dGxWdFphNktBPT0KLS0tLS1FTkQgRUMgUFJJVkFURSBLRVktLS0tLQo",
+        "description": "Web push VAPID private key.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__PUSHD__VAPID__PUBLIC_KEY",
+        "default": "BEqfG2hz2uYVJS7BIfnJxNh1bHGAk6Gcl3Smf6xFY-ZqQVd4-97xu0KsnqbBOUV8-vxaD-m78YkhgvLZVbWWuig",
+        "description": "Web push VAPID public key.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__API__LIVEKIT__NODES__WORLDWIDE__KEY",
+        "default": "8011099a9cb9",
+        "description": "LiveKit API key. Must match livekit.yml.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__API__LIVEKIT__NODES__WORLDWIDE__SECRET",
+        "default": "58ca27af8342a4b8a14815bd31a810f0985d4f8db2eb6336",
+        "description": "LiveKit API secret. Must match livekit.yml.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__HOSTS__APP",
+        "default": "https://${STOAT_DOMAIN}",
+        "description": "Public web origin.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__HOSTS__API",
+        "default": "https://${STOAT_DOMAIN}/api",
+        "description": "Public API origin.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__HOSTS__EVENTS",
+        "default": "wss://${STOAT_DOMAIN}/ws",
+        "description": "Public events websocket origin.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__HOSTS__AUTUMN",
+        "default": "https://${STOAT_DOMAIN}/autumn",
+        "description": "Public file server origin.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__HOSTS__JANUARY",
+        "default": "https://${STOAT_DOMAIN}/january",
+        "description": "Public image proxy origin.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__HOSTS__GIFBOX",
+        "default": "https://${STOAT_DOMAIN}/gifbox",
+        "description": "Public gifbox origin.",
+        "required": true
+      },
+      {
+        "name": "REVOLT__HOSTS__LIVEKIT__WORLDWIDE",
+        "default": "wss://${STOAT_DOMAIN}/livekit",
+        "description": "Public LiveKit websocket origin.",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data/db",
+        "description": "MongoDB data"
+      },
+      {
+        "container": "/var/lib/rabbitmq",
+        "description": "RabbitMQ data"
+      },
+      {
+        "container": "/data",
+        "description": "Silo object storage"
+      },
+      {
+        "container": "/data",
+        "description": "Caddy certificates and data"
+      },
+      {
+        "container": "/config",
+        "description": "Caddy config"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "20001",
+        "protocol": "tcp",
+        "description": "Caddy HTTP. Official host port 80 is already published, so this listing uses 20001."
+      },
+      {
+        "container": "443",
+        "host": "20002",
+        "protocol": "tcp",
+        "description": "Caddy HTTPS. Official host port 443 is already published, so this listing uses 20002."
+      },
+      {
+        "container": "7881",
+        "host": "7881",
+        "protocol": "tcp",
+        "description": "LiveKit RTC TCP"
+      },
+      {
+        "container": "21028-21128",
+        "host": "21028-21128",
+        "protocol": "udp",
+        "description": "LiveKit RTC UDP. Official ports 50000-50100 overlap habridge on 50000, so LiveKit and the published range both use 21028-21128."
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "https",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Set STOAT_DOMAIN to the public hostname and point DNS at this machine. Forward external port 80 to host 20001 and external port 443 to host 20002. Keep the file encryption key. Forward UDP 21028-21128 and TCP 7881 for voice. LiveKit announces that same UDP range because host port 50000 is already used. The web image publishes amd64 only."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "20002",
+      "volume_mappings": {
+        "stoat_db": "/DATA/AppData/$AppID/db",
+        "stoat_rabbit": "/DATA/AppData/$AppID/rabbit",
+        "stoat_minio": "/DATA/AppData/$AppID/minio",
+        "stoat_caddy_data": "/DATA/AppData/$AppID/caddy-data",
+        "stoat_caddy_config": "/DATA/AppData/$AppID/caddy-config"
+      },
+      "port": "20002",
+      "category": "Social"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64"
+      ],
+      "volume_mappings": {
+        "stoat_db": "db",
+        "stoat_rabbit": "rabbit",
+        "stoat_minio": "minio",
+        "stoat_caddy_data": "caddy-data",
+        "stoat_caddy_config": "caddy-config"
+      },
+      "port": "443"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "stoat_db": "db",
+        "stoat_rabbit": "rabbit",
+        "stoat_minio": "minio",
+        "stoat_caddy_data": "caddy-data",
+        "stoat_caddy_config": "caddy-config"
+      },
+      "port": "20002"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "chat",
+    "social"
+  ]
+}

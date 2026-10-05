@@ -1,0 +1,171 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "coder",
+    "name": "Coder",
+    "description": "Coder v2.36.7 is a self-hosted development-platform control plane with Postgres and a Docker socket for workspace templates.",
+    "version": "v2.36.7",
+    "author": "BigBearTechWorld",
+    "developer": "Coder",
+    "category": "BigBearCasaOS",
+    "license": "AGPL-3.0",
+    "homepage": "https://coder.com",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/coder.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/coder.png"
+  },
+  "resources": {
+    "documentation": "https://coder.com/docs/install/docker",
+    "repository": "https://github.com/coder/coder",
+    "issues": "https://github.com/coder/coder/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64",
+      "armv7"
+    ],
+    "platform": "linux",
+    "main_service": "coder",
+    "default_port": "7080",
+    "main_image": "ghcr.io/coder/coder",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "CODER_PG_CONNECTION_URL",
+        "default": "postgresql://coder:0FahAZNndH79lnkeKDCJkZP1NykgzDfMYLfxCJQOghw@database/coder?sslmode=disable",
+        "description": "Postgres connection URL. User, password, host, and database match the database service.",
+        "required": false
+      },
+      {
+        "name": "CODER_HTTP_ADDRESS",
+        "default": "0.0.0.0:7080",
+        "description": "Address the Coder control plane listens on inside the container.",
+        "required": false
+      },
+      {
+        "name": "CODER_ACCESS_URL",
+        "default": "http://localhost:7080",
+        "description": "URL that users and workspaces use to reach Coder. Localhost works for Docker templates on this host only.",
+        "required": true
+      },
+      {
+        "name": "POSTGRES_USER",
+        "default": "coder",
+        "description": "Postgres role created on first start.",
+        "required": false
+      },
+      {
+        "name": "POSTGRES_PASSWORD",
+        "default": "0FahAZNndH79lnkeKDCJkZP1NykgzDfMYLfxCJQOghw",
+        "description": "Postgres password. The same value is embedded in CODER_PG_CONNECTION_URL.",
+        "required": true
+      },
+      {
+        "name": "POSTGRES_DB",
+        "default": "coder",
+        "description": "Postgres database created on first start.",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/var/run/docker.sock",
+        "description": "Host Docker socket used by Docker-based workspace templates"
+      },
+      {
+        "container": "/home/coder",
+        "description": "Coder home directory, including the dev tunnel URL"
+      },
+      {
+        "container": "/var/lib/postgresql/data",
+        "description": "Postgres data"
+      }
+    ],
+    "ports": [
+      {
+        "container": "7080",
+        "host": "7080",
+        "protocol": "tcp",
+        "description": "Coder web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Open http://localhost:7080 and create the first user. Set CODER_ACCESS_URL to an address workspaces can reach before using templates that are not on this Docker host. The Docker socket is mounted. On Linux, if Coder cannot write to the socket, add the host docker group id with group_add. The official Compose file leaves that value commented because it differs per host."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "7080",
+      "category": "Developer",
+      "volume_mappings": {
+        "coder_home": "/DATA/AppData/$AppID/home",
+        "coder_data": "/DATA/AppData/$AppID/postgres"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64",
+        "armv7"
+      ],
+      "volume_mappings": {
+        "coder_home": "home",
+        "coder_data": "postgres"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "coder_home": "home",
+        "coder_data": "postgres"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "developer",
+    "ide",
+    "workspaces"
+  ]
+}

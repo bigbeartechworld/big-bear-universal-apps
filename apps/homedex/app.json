@@ -1,0 +1,200 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "homedex",
+    "name": "Homedex",
+    "description": "Homedex 0.2.5 is a read-only homelab inventory of services, ports, routes, and certificate expiry.",
+    "tagline": "Read-only homelab inventory",
+    "version": "0.2.5",
+    "author": "BigBearTechWorld",
+    "developer": "Harsh Shah",
+    "category": "BigBearCasaOS",
+    "license": "MIT",
+    "homepage": "https://github.com/HarshShah0203/homedex",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/homedex.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/homedex.png"
+  },
+  "resources": {
+    "documentation": "https://github.com/HarshShah0203/homedex",
+    "repository": "https://github.com/HarshShah0203/homedex",
+    "issues": "https://github.com/HarshShah0203/homedex/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64",
+      "armv7"
+    ],
+    "platform": "linux",
+    "main_service": "homedex",
+    "default_port": "7377",
+    "main_image": "ghcr.io/harshshah0203/homedex",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "HOMEDEX_DATA_DIR",
+        "default": "/data",
+        "description": "Directory for the SQLite inventory.",
+        "required": true
+      },
+      {
+        "name": "HOMEDEX_LISTEN",
+        "default": ":7377",
+        "description": "Address and port Homedex listens on inside the container.",
+        "required": true
+      },
+      {
+        "name": "HOMEDEX_ADMIN_PASSWORD",
+        "default": "TA1qfYJ-JufxXFGzQUWmuA",
+        "description": "Admin password stored as an Argon2id hash on first start. Must be at least 12 characters. Ignored after an admin exists.",
+        "required": true
+      },
+      {
+        "name": "CONTAINERS",
+        "default": "1",
+        "description": "Allow the socket proxy to read Docker containers.",
+        "required": true
+      },
+      {
+        "name": "IMAGES",
+        "default": "1",
+        "description": "Allow the socket proxy to read Docker images.",
+        "required": true
+      },
+      {
+        "name": "INFO",
+        "default": "1",
+        "description": "Allow the socket proxy to read Docker info.",
+        "required": true
+      },
+      {
+        "name": "NETWORKS",
+        "default": "1",
+        "description": "Allow the socket proxy to read Docker networks.",
+        "required": true
+      },
+      {
+        "name": "VERSION",
+        "default": "1",
+        "description": "Allow the socket proxy to read the Docker version.",
+        "required": true
+      },
+      {
+        "name": "POST",
+        "default": "0",
+        "description": "Disable mutating Docker API calls on the socket proxy.",
+        "required": true
+      },
+      {
+        "name": "ALLOW_START",
+        "default": "0",
+        "description": "Deny container start through the socket proxy.",
+        "required": true
+      },
+      {
+        "name": "ALLOW_STOP",
+        "default": "0",
+        "description": "Deny container stop through the socket proxy.",
+        "required": true
+      },
+      {
+        "name": "ALLOW_RESTARTS",
+        "default": "0",
+        "description": "Deny container restart through the socket proxy.",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Homedex SQLite inventory"
+      },
+      {
+        "container": "/var/run/docker.sock",
+        "description": "Docker socket, read by the filtering proxy only"
+      }
+    ],
+    "ports": [
+      {
+        "container": "7377",
+        "host": "7377",
+        "protocol": "tcp",
+        "description": "Homedex web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Open http://localhost:7377 and sign in with admin password TA1qfYJ-JufxXFGzQUWmuA. The password is stored as a hash on first start and is not replaced later. Add the prefilled Docker source tcp://docker-socket-proxy:2375. That proxy mounts the Docker socket read-only and rejects mutating API calls."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "7377",
+      "category": "Home",
+      "volume_mappings": {
+        "homedex_data": "/DATA/AppData/$AppID/data"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64",
+        "armv7"
+      ],
+      "volume_mappings": {
+        "homedex_data": "data"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "homedex_data": "data"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "inventory",
+    "homelab"
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "yuvomi",
+    "name": "Yuvomi",
+    "description": "Yuvomi is a self-hosted family planner for tasks, calendar, meals, shopping, budget, and documents. It stores data in one SQLite database on your server.",
+    "tagline": "Self-hosted family planner",
+    "version": "2.73.0",
+    "author": "BigBearTechWorld",
+    "developer": "ulsklyc",
+    "category": "BigBearCasaOS",
+    "license": "MIT",
+    "homepage": "https://yuvomi.cloud/",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/yuvomi.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/yuvomi.png"
+  },
+  "resources": {
+    "documentation": "https://github.com/ulsklyc/yuvomi/blob/main/README.md",
+    "repository": "https://github.com/ulsklyc/yuvomi",
+    "issues": "https://github.com/ulsklyc/yuvomi/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "yuvomi",
+    "default_port": "20004",
+    "main_image": "ghcr.io/ulsklyc/yuvomi",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "NODE_ENV",
+        "default": "production",
+        "description": "Node environment.",
+        "required": true
+      },
+      {
+        "name": "PORT",
+        "default": "3000",
+        "description": "Port the app listens on inside the container.",
+        "required": true
+      },
+      {
+        "name": "DB_PATH",
+        "default": "/data/yuvomi.db",
+        "description": "SQLite database path inside the data volume.",
+        "required": true
+      },
+      {
+        "name": "BACKUP_DIR",
+        "default": "/backups",
+        "description": "Directory for scheduled backups.",
+        "required": true
+      },
+      {
+        "name": "MODULES_DIR",
+        "default": "/app/modules",
+        "description": "Drop-in modules directory.",
+        "required": true
+      },
+      {
+        "name": "SESSION_SECRET",
+        "default": "PtfaK2EYBfghFZZH_zV8spJAnLX-t4cXt-rMFwRn9mVKpdaU0PTD2gpEqheIx7Jk",
+        "description": "Session signing secret. Changing it signs everyone out.",
+        "required": true
+      },
+      {
+        "name": "DB_ENCRYPTION_KEY",
+        "default": "12C_F5m7nZC69qeJlJL0BqgCNd8lH3m1zqAeERMcG3g",
+        "description": "AES-256 key for the database at rest. A lost or changed key cannot open an existing database.",
+        "required": true
+      },
+      {
+        "name": "SESSION_SECURE",
+        "default": "false",
+        "description": "Set true only behind HTTPS. Direct HTTP login needs false.",
+        "required": true
+      },
+      {
+        "name": "TRUST_PROXY",
+        "default": "loopback",
+        "description": "Proxy trust for direct HTTP. Use 1 behind a single reverse proxy.",
+        "required": true
+      },
+      {
+        "name": "DOCUMENT_STORAGE_LOCAL_ENABLED",
+        "default": "false",
+        "description": "Store uploaded documents on the documents volume when true.",
+        "required": false
+      },
+      {
+        "name": "DOCUMENT_STORAGE_LOCAL_PATH",
+        "default": "/documents",
+        "description": "In-container path for local document storage.",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "SQLite database and app data"
+      },
+      {
+        "container": "/backups",
+        "description": "Scheduled backups"
+      },
+      {
+        "container": "/app/modules",
+        "description": "Drop-in modules"
+      },
+      {
+        "container": "/documents",
+        "description": "Optional local document files"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "20004",
+        "protocol": "tcp",
+        "description": "Web UI. Official host port 3000 is already published, so this listing uses 20004."
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Open host port 20004. Keep DB_ENCRYPTION_KEY. A lost key cannot reopen the database. Optional weather, calendar, and OIDC settings are unset."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "20004",
+      "volume_mappings": {
+        "yuvomi_data": "/DATA/AppData/$AppID/data",
+        "yuvomi_backups": "/DATA/AppData/$AppID/backups",
+        "yuvomi_modules": "/DATA/AppData/$AppID/modules",
+        "yuvomi_documents": "/DATA/AppData/$AppID/documents"
+      },
+      "port": "20004",
+      "category": "Home"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "yuvomi_data": "data",
+        "yuvomi_backups": "backups",
+        "yuvomi_modules": "modules",
+        "yuvomi_documents": "documents"
+      },
+      "port": "3000"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "yuvomi_data": "data",
+        "yuvomi_backups": "backups",
+        "yuvomi_modules": "modules",
+        "yuvomi_documents": "documents"
+      },
+      "port": "20004"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "family",
+    "calendar",
+    "household"
+  ]
+}

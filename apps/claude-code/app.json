@@ -1,0 +1,163 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "claude-code",
+    "name": "Claude Code Container",
+    "description": "Claude Code Container 1.0.28 runs Anthropic Claude Code in a browser terminal and an MCP API.",
+    "version": "1.0.28",
+    "author": "BigBearTechWorld",
+    "developer": "worph",
+    "category": "BigBearCasaOS",
+    "license": "MIT",
+    "homepage": "https://github.com/worph/claude-code-container",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/claude.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/claude.png"
+  },
+  "resources": {
+    "documentation": "https://github.com/worph/claude-code-container/blob/main/README.md",
+    "repository": "https://github.com/worph/claude-code-container",
+    "issues": "https://github.com/worph/claude-code-container/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "claude-code",
+    "default_port": "20040",
+    "main_image": "ghcr.io/worph/claude-code-container",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "ANTHROPIC_API_KEY",
+        "default": "",
+        "description": "Anthropic API key. Leave empty to sign in with OAuth in the web terminal.",
+        "required": false
+      },
+      {
+        "name": "AUTH_PASSWORD",
+        "default": "BpDXu0QIHtDFyg1-ssr-1OAQIZ--doTw8O8h9UIBWrU",
+        "description": "Password for the web terminal and bearer token for the MCP API.",
+        "required": true
+      },
+      {
+        "name": "MCP_ENABLED",
+        "default": "true",
+        "description": "Enable the MCP endpoint. Web login still runs when this is false.",
+        "required": false
+      },
+      {
+        "name": "CLAUDE_SESSION_TTL",
+        "default": "1800",
+        "description": "Seconds of inactivity before the web terminal session is closed.",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/home/claude/workspace",
+        "description": "Claude Code workspace files"
+      },
+      {
+        "container": "/home/claude/.claude",
+        "description": "Claude settings and history"
+      },
+      {
+        "container": "/var/run/docker.sock",
+        "description": "Host Docker socket. Grants control of the host Docker daemon."
+      }
+    ],
+    "ports": [
+      {
+        "container": "8080",
+        "host": "20040",
+        "protocol": "tcp",
+        "description": "Caddy web UI. ttyd stays on the Compose network. Host port 8080 is already used in this catalog."
+      },
+      {
+        "container": "9090",
+        "host": "20041",
+        "protocol": "tcp",
+        "description": "MCP API. Host port 9090 is already used in this catalog."
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Open http://localhost:20040 and sign in with AUTH_PASSWORD. Caddy checks that password before it proxies to ttyd. ttyd itself is not published. The MCP API is http://localhost:20041/mcp with the same value as a bearer token. Leave ANTHROPIC_API_KEY empty to authenticate with OAuth in the terminal. OAuth state in /home/claude/.claude.json is lost when the container is recreated. Settings under /home/claude/.claude persist. The Docker socket is mounted and can control the host Docker daemon. Host ports 8080 and 9090 were already published, so this listing uses 20040 and 20041."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "20040",
+      "category": "AI",
+      "volume_mappings": {
+        "claude_code_workspace": "/DATA/AppData/$AppID/workspace",
+        "claude_code_config": "/DATA/AppData/$AppID/config"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "claude_code_workspace": "workspace",
+        "claude_code_config": "config"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "claude_code_workspace": "workspace",
+        "claude_code_config": "config"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "ai",
+    "claude",
+    "developer"
+  ]
+}

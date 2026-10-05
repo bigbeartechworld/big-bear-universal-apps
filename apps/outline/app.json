@@ -1,0 +1,224 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "outline",
+    "name": "Outline",
+    "description": "Outline is a self-hosted team wiki and knowledge base. This stack runs the Outline server with PostgreSQL 18 and Redis, and stores uploads on a local volume.",
+    "tagline": "Self-hosted team wiki",
+    "version": "1.10.1",
+    "author": "BigBearTechWorld",
+    "developer": "Outline",
+    "category": "BigBearCasaOS",
+    "license": "BUSL-1.1",
+    "homepage": "https://www.getoutline.com/",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/outline.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/outline.png"
+  },
+  "resources": {
+    "documentation": "https://docs.getoutline.com/s/hosting/doc/docker-7pfeLP5a8t",
+    "repository": "https://github.com/outline/outline",
+    "issues": "https://github.com/outline/outline/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "outline",
+    "default_port": "23000",
+    "main_image": "docker.getoutline.com/outlinewiki/outline",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "NODE_ENV",
+        "default": "production",
+        "description": "Production mode from the Outline env sample.",
+        "required": true
+      },
+      {
+        "name": "URL",
+        "default": "http://localhost:23000",
+        "description": "Public URL of this instance. Change it if you serve Outline on another address.",
+        "required": true
+      },
+      {
+        "name": "PORT",
+        "default": "3000",
+        "description": "Port Outline listens on inside the container.",
+        "required": true
+      },
+      {
+        "name": "SECRET_KEY",
+        "default": "6f3cbf7b3415ec195adc0cc98a3fc7f5953de9e8b77bff78e34584867ecb60f4",
+        "description": "Hex-encoded 32-byte key used to encrypt data.",
+        "required": true
+      },
+      {
+        "name": "UTILS_SECRET",
+        "default": "X8p5_gwAyZJW_MION_hihkRrU77tZHpu_4oJvLgWY4E",
+        "description": "Second random secret from the env sample.",
+        "required": true
+      },
+      {
+        "name": "DATABASE_URL",
+        "default": "postgres://outline:I9jpLBha7QOn8ysyzrNmhEbh-7fBS5El6ou74pz7Ar8@postgres:5432/outline",
+        "description": "PostgreSQL connection string. User, password, and database match the postgres service.",
+        "required": true
+      },
+      {
+        "name": "PGSSLMODE",
+        "default": "disable",
+        "description": "Disable Postgres SSL for the database on the compose network.",
+        "required": true
+      },
+      {
+        "name": "REDIS_URL",
+        "default": "redis://redis:6379",
+        "description": "Redis on the compose network.",
+        "required": true
+      },
+      {
+        "name": "FILE_STORAGE",
+        "default": "local",
+        "description": "Store uploads on the local volume instead of S3.",
+        "required": true
+      },
+      {
+        "name": "FILE_STORAGE_LOCAL_ROOT_DIR",
+        "default": "/var/lib/outline/data",
+        "description": "Local upload directory. Must match the storage volume.",
+        "required": true
+      },
+      {
+        "name": "FILE_STORAGE_UPLOAD_MAX_SIZE",
+        "default": "262144000",
+        "description": "Maximum upload size in bytes from the env sample.",
+        "required": false
+      },
+      {
+        "name": "FORCE_HTTPS",
+        "default": "false",
+        "description": "Do not redirect to HTTPS. This listing is served over HTTP.",
+        "required": true
+      },
+      {
+        "name": "POSTGRES_USER",
+        "default": "outline",
+        "description": "PostgreSQL user.",
+        "required": true
+      },
+      {
+        "name": "POSTGRES_PASSWORD",
+        "default": "I9jpLBha7QOn8ysyzrNmhEbh-7fBS5El6ou74pz7Ar8",
+        "description": "PostgreSQL password. Must match DATABASE_URL.",
+        "required": true
+      },
+      {
+        "name": "POSTGRES_DB",
+        "default": "outline",
+        "description": "PostgreSQL database name.",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/var/lib/outline/data",
+        "description": "Local file storage"
+      },
+      {
+        "container": "/var/lib/postgresql",
+        "description": "PostgreSQL 18 data directory"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "23000",
+        "protocol": "tcp",
+        "description": "Outline web UI. Host port 3000 is already published by other apps."
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Open http://localhost:23000. Outline will not offer a sign-in method until you add one provider: Slack, Google, Azure, Discord, or OIDC. Put that provider's client id and secret on the outline service, and set URL to the address you actually use. https-portal is not included."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "23000",
+      "port": "23000",
+      "category": "Productivity",
+      "volume_mappings": {
+        "outline_database": "/DATA/AppData/$AppID/database",
+        "outline_storage": "/DATA/AppData/$AppID/storage"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "port": "3000",
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "outline_database": "data/database",
+        "outline_storage": "data/storage"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "3000"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "23000",
+      "volume_mappings": {
+        "outline_database": "data/database",
+        "outline_storage": "data/storage"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "wiki",
+    "knowledge",
+    "productivity"
+  ]
+}

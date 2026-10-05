@@ -1,0 +1,138 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "autoxpose",
+    "name": "autoxpose",
+    "description": "autoxpose 0.5.2 watches Docker labels and creates DNS records plus reverse-proxy hosts.",
+    "version": "0.5.2",
+    "author": "BigBearTechWorld",
+    "developer": "mostafa-wahied",
+    "category": "BigBearCasaOS",
+    "license": "MIT",
+    "homepage": "https://github.com/mostafa-wahied/autoxpose",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/mostafa-wahied/autoxpose@main/packages/frontend/public/autoxpose-logo.svg",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/mostafa-wahied/autoxpose@main/packages/frontend/public/autoxpose-logo.svg"
+  },
+  "resources": {
+    "documentation": "https://github.com/mostafa-wahied/autoxpose/blob/main/README.md",
+    "repository": "https://github.com/mostafa-wahied/autoxpose",
+    "issues": "https://github.com/mostafa-wahied/autoxpose/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "autoxpose",
+    "default_port": "4949",
+    "main_image": "mostafawahied/autoxpose",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "SERVER_IP",
+        "default": "",
+        "description": "Public IP or hostname written into DNS A records.",
+        "required": true
+      },
+      {
+        "name": "LAN_IP",
+        "default": "",
+        "description": "LAN address the reverse proxy uses as the upstream target.",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/app/packages/backend/data",
+        "description": "autoxpose SQLite data"
+      },
+      {
+        "container": "/var/run/docker.sock",
+        "description": "Read-only Docker socket used to discover labeled containers"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "4949",
+        "protocol": "tcp",
+        "description": "autoxpose web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Set SERVER_IP to the public address used for DNS A records and LAN_IP to the address the reverse proxy should target. Open http://localhost:4949 and add a DNS provider, then Nginx Proxy Manager or Caddy. The container reads the Docker socket read-only."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "4949",
+      "category": "Networking",
+      "volume_mappings": {
+        "autoxpose_data": "/DATA/AppData/$AppID/data"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "autoxpose_data": "data"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "autoxpose_data": "data"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "dns",
+    "reverse-proxy",
+    "networking"
+  ]
+}

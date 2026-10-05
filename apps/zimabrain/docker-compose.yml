@@ -1,0 +1,36 @@
+name: zimabrain
+
+services:
+  zimabrain:
+    image: gelbuilding/zimabrain-ce:1.6.0-beta@sha256:930c689a0f4389b767d726dbc41766590ca5d58cd030f840099ec0ddf382cca5
+    container_name: zimabrain
+    restart: unless-stopped
+    privileged: true
+    pid: host
+    ports:
+      - "8601:8601"
+    environment:
+      ZIMABRAIN_PASSWORD: a9e3GO5kwUcEDGlGv_JLEGWZ
+      ZIMABRAIN_SECRET_KEY: qC57Chx7nDu_juH55MXIma7EsHMKLSwBN9CgWFESkqU
+      ZIMABRAIN_MONITOR_ENABLED: "true"
+      ZIMABRAIN_MONITOR_INTERVAL_SECONDS: "60"
+      ZIMABRAIN_MONITOR_RETENTION_DAYS: "7"
+    volumes:
+      - zimabrain_data:/data
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /etc/hostname:/host/etc/hostname:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8601/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+volumes:
+  zimabrain_data:
+    name: zimabrain_data
+    driver: local
