@@ -89,6 +89,11 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+if [[ "$REPLACE_ALL" == "true" ]] && [[ -n "$SPECIFIC_APP" ]]; then
+    print_error "--replace-all cannot be combined with --app"
+    exit 1
+fi
+
 # Validate directories
 validate_directories() {
     if [[ ! -d "$CONVERTED_DIR" ]]; then
@@ -262,7 +267,11 @@ sync_platform() {
 # Post-sync tasks for specific platforms
 post_sync_platform() {
     local platform="$1"
-    
+
+    if [[ -n "$SPECIFIC_APP" ]]; then
+        return
+    fi
+
     case "$platform" in
         portainer)
             # Copy master templates.json and .template_id_counter to root
