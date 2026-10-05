@@ -16,14 +16,14 @@
     "updated": "2026-10-04T00:00:00Z"
   },
   "visual": {
-    "icon": "https://raw.githubusercontent.com/fclairamb/solidping/main/res/favicons/favicon-512.png",
-    "thumbnail": "https://raw.githubusercontent.com/fclairamb/solidping/main/deploy/casaos/solidping/thumbnail.png",
+    "icon": "https://cdn.jsdelivr.net/gh/fclairamb/solidping@main/res/favicons/favicon-512.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/fclairamb/solidping@main/deploy/casaos/solidping/thumbnail.png",
     "screenshots": [
-      "https://raw.githubusercontent.com/fclairamb/solidping/main/deploy/casaos/solidping/screenshot-1.png",
-      "https://raw.githubusercontent.com/fclairamb/solidping/main/deploy/casaos/solidping/screenshot-2.png",
-      "https://raw.githubusercontent.com/fclairamb/solidping/main/deploy/casaos/solidping/screenshot-3.png"
+      "https://cdn.jsdelivr.net/gh/fclairamb/solidping@main/deploy/casaos/solidping/screenshot-1.png",
+      "https://cdn.jsdelivr.net/gh/fclairamb/solidping@main/deploy/casaos/solidping/screenshot-2.png",
+      "https://cdn.jsdelivr.net/gh/fclairamb/solidping@main/deploy/casaos/solidping/screenshot-3.png"
     ],
-    "logo": "https://raw.githubusercontent.com/fclairamb/solidping/main/res/favicons/favicon-512.png"
+    "logo": "https://cdn.jsdelivr.net/gh/fclairamb/solidping@main/res/favicons/favicon-512.png"
   },
   "resources": {
     "youtube": "",
