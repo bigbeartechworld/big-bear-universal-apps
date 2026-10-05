@@ -5,7 +5,7 @@
     "name": "Rustdesk",
     "description": "RustDesk is a full-featured open source remote control alternative for self-hosting and security with minimal configuration.",
     "tagline": "A full-featured open source remote control alternative for self-hosting and security with minimal configuration.",
-    "version": "1.4.9",
+    "version": "1.5.0",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/rustdesk",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:58.423Z",
-    "updated": "2026-09-17T18:10:58.423Z"
+    "updated": "2026-10-05T10:08:34.707Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/rustdesk-logo.png",
