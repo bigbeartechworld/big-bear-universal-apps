@@ -53,6 +53,10 @@ on:
         type: boolean
         default: false
 
+concurrency:
+  group: convert-and-sync-${{ github.event_name == 'workflow_dispatch' && github.run_id || github.ref }}
+  cancel-in-progress: false
+
 jobs:
   validate:
     name: Validate Apps
