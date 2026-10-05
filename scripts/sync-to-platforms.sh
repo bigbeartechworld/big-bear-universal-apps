@@ -79,7 +79,14 @@ while [[ $# -gt 0 ]]; do
         -c|--converted) CONVERTED_DIR="$2"; shift 2 ;;
         -w|--workspace) WORKSPACE_DIR="$2"; shift 2 ;;
         -p|--platforms) IFS=',' read -ra PLATFORMS <<< "$2"; shift 2 ;;
-        -a|--app) SPECIFIC_APP="$2"; shift 2 ;;
+        -a|--app)
+            if [[ -z "${2:-}" ]]; then
+                print_error "--app requires a non-empty app name"
+                exit 1
+            fi
+            SPECIFIC_APP="$2"
+            shift 2
+            ;;
         --dry-run) DRY_RUN=true; shift ;;
         --force) FORCE=true; shift ;;
         --replace-all) REPLACE_ALL=true; shift ;;
@@ -268,12 +275,13 @@ sync_platform() {
 post_sync_platform() {
     local platform="$1"
 
-    if [[ -n "$SPECIFIC_APP" ]]; then
-        return
-    fi
-
     case "$platform" in
         portainer)
+            if [[ -n "$SPECIFIC_APP" ]]; then
+                print_warning "Skipping Portainer templates.json update for a single-app sync; run a full sync to publish it"
+                return
+            fi
+
             # Copy master templates.json and .template_id_counter to root
             local master_template="$CONVERTED_DIR/portainer/templates.json"
             local counter_file="$CONVERTED_DIR/portainer/.template_id_counter"

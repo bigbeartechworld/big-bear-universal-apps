@@ -2,12 +2,20 @@
 set -uo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO="$(dirname "$(dirname "$SCRIPT_DIR")")"
-set +e
 
 fail=0
+SYNC_OUTPUT=""
 assert_eq() {
   local actual="$1" expected="$2" label="$3"
-  if [[ "$actual" != "$expected" ]]; then echo "FAIL: $label — got '$actual' want '$expected'"; fail=1; else echo "ok: $label"; fi
+  if [[ "$actual" != "$expected" ]]; then
+    echo "FAIL: $label — got '$actual' want '$expected'"
+    echo "--- last sync output ---"
+    echo "$SYNC_OUTPUT"
+    echo "------------------------"
+    fail=1
+  else
+    echo "ok: $label"
+  fi
 }
 section() { echo; echo "== $1 =="; }
 
@@ -36,8 +44,10 @@ prepare() {
 run_sync() {
   local platform="$1"
   shift
-  bash "$UNIVERSAL/scripts/sync-to-platforms.sh" -p "$platform" --force "$@" >/dev/null 2>&1
+  SYNC_OUTPUT="$(bash "$UNIVERSAL/scripts/sync-to-platforms.sh" -p "$platform" --force "$@" 2>&1)"
 }
+
+output_mentions() { grep -c -- "$1" <<< "$SYNC_OUTPUT"; }
 
 section "single-app sync keeps apps outside the converted set"
 prepare
@@ -72,6 +82,7 @@ prepare
 run_sync portainer --app foo
 assert_eq "$?" "0" "sync exits cleanly"
 assert_eq "$(cat "$PORTAINER/templates.json")" "full-catalog" "templates.json is not overwritten by a one-app catalog"
+assert_eq "$(output_mentions "Skipping Portainer templates.json update")" "1" "skipped catalog update is announced"
 
 section "full portainer sync publishes the catalog"
 prepare
@@ -84,7 +95,23 @@ prepare
 run_sync casaos --replace-all --app foo
 status=$?
 assert_eq "$([[ $status -ne 0 ]] && echo rejected || echo accepted)" "rejected" "combination exits non-zero"
+assert_eq "$(output_mentions "cannot be combined with --app")" "1" "rejection explains why"
 assert_eq "$(exists "$APPS/bar")" "yes" "nothing is deleted"
+
+section "empty --app value is rejected"
+prepare
+run_sync casaos --app ""
+status=$?
+assert_eq "$([[ $status -ne 0 ]] && echo rejected || echo accepted)" "rejected" "empty app name exits non-zero"
+assert_eq "$(output_mentions "requires a non-empty app name")" "1" "rejection explains why"
+assert_eq "$(exists "$APPS/bar")" "yes" "nothing is deleted"
+
+section "--app without a value is rejected"
+prepare
+run_sync casaos --app
+status=$?
+assert_eq "$([[ $status -ne 0 ]] && echo rejected || echo accepted)" "rejected" "missing app name exits non-zero"
+assert_eq "$(output_mentions "requires a non-empty app name")" "1" "rejection explains why"
 
 echo
 if [[ $fail -ne 0 ]]; then echo "FAILED"; exit 1; fi
