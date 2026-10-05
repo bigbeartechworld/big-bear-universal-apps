@@ -83,7 +83,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Open http://localhost:23001. The official compose publishes host port 3000, which is already used, so this listing publishes 23001 and sets BASE_URL to match. Change BASE_URL if you reach SkySend by another address."
+        "en_us": "Open http://localhost:23001. The official compose publishes host port 3000, which is already used, so this listing publishes 23001 and sets BASE_URL to match. Set BASE_URL to the public HTTPS URL before sharing links. The port stays published so CasaOS and ZimaOS can open it on the LAN. Those platforms do not substitute Compose variables."
       }
     }
   },

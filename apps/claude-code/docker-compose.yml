@@ -1,9 +1,9 @@
 name: claude-code
 
 services:
-  claude-code:
+  claude:
     image: ghcr.io/worph/claude-code-container:1.0.28@sha256:a73863d23af0222037a0d51cef0c350bfd86825f693cc9bbf889a6484aad2f94
-    container_name: claude-code
+    container_name: claude-code-app
     restart: unless-stopped
     ports:
       - "20041:9090"
@@ -22,9 +22,13 @@ services:
     container_name: claude-code-caddy
     restart: unless-stopped
     depends_on:
-      - claude-code
+      - claude
     ports:
       - "20040:8080"
+    networks:
+      default:
+        aliases:
+          - claude-code
     configs:
       - source: caddyfile
         target: /etc/caddy/Caddyfile
@@ -34,20 +38,20 @@ configs:
     content: |
       :8080 {
         handle /login* {
-          reverse_proxy claude-code:9090
+          reverse_proxy claude:9090
         }
         handle /logout {
-          reverse_proxy claude-code:9090
+          reverse_proxy claude:9090
         }
         handle {
-          forward_auth claude-code:9090 {
+          forward_auth claude:9090 {
             uri /auth
             @unauthorized status 401
             handle_response @unauthorized {
               redir * /login
             }
           }
-          reverse_proxy claude-code:8080
+          reverse_proxy claude:8080
         }
       }
 

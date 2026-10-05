@@ -32,7 +32,7 @@
       "arm64"
     ],
     "platform": "linux",
-    "main_service": "claude-code",
+    "main_service": "caddy",
     "default_port": "20040",
     "main_image": "ghcr.io/worph/claude-code-container",
     "compose_file": "docker-compose.yml"
@@ -48,7 +48,7 @@
       {
         "name": "AUTH_PASSWORD",
         "default": "BpDXu0QIHtDFyg1-ssr-1OAQIZ--doTw8O8h9UIBWrU",
-        "description": "Password for the web terminal and bearer token for the MCP API.",
+        "description": "Password for the web terminal and bearer token for the MCP API. The catalog value is public. Replace it in the install form before the first start. CasaOS and ZimaOS edit this literal; they do not substitute Compose variables.",
         "required": true
       },
       {
@@ -98,7 +98,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Open http://localhost:20040 and sign in with AUTH_PASSWORD. Caddy checks that password before it proxies to ttyd. ttyd itself is not published. The MCP API is http://localhost:20041/mcp with the same value as a bearer token. Leave ANTHROPIC_API_KEY empty to authenticate with OAuth in the terminal. OAuth state in /home/claude/.claude.json is lost when the container is recreated. Settings under /home/claude/.claude persist. The Docker socket is mounted and can control the host Docker daemon. Host ports 8080 and 9090 were already published, so this listing uses 20040 and 20041."
+        "en_us": "Open http://localhost:20040 and sign in with the AUTH_PASSWORD you set in the install form before the first start. The catalog value is public, and this container can control the host through the Docker socket. CasaOS and ZimaOS edit that literal environment value; they do not substitute Compose variables. Caddy checks the password before it proxies to ttyd. ttyd itself is not published. The MCP API is http://localhost:20041/mcp with the same value as a bearer token. Leave ANTHROPIC_API_KEY empty to authenticate with OAuth in the terminal. OAuth state in /home/claude/.claude.json is lost when the container is recreated. Settings under /home/claude/.claude persist. Host ports 8080 and 9090 were already published, so this listing uses 20040 and 20041."
       }
     }
   },
@@ -131,7 +131,8 @@
       "volume_mappings": {
         "claude_code_workspace": "workspace",
         "claude_code_config": "config"
-      }
+      },
+      "port": "8080"
     },
     "dockge": {
       "supported": true,
@@ -140,7 +141,8 @@
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,
@@ -148,7 +150,9 @@
       "volume_mappings": {
         "claude_code_workspace": "workspace",
         "claude_code_config": "config"
-      }
+      },
+      "port": "20040",
+      "app_port": "8080"
     }
   },
   "tags": [

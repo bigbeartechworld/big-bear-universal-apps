@@ -139,7 +139,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Open host port 20004. Keep DB_ENCRYPTION_KEY. A lost key cannot reopen the database. Optional weather, calendar, and OIDC settings are unset."
+        "en_us": "Open host port 20004. Replace SESSION_SECRET and DB_ENCRYPTION_KEY in the install form before creating data. The shipped values are public. A lost DB_ENCRYPTION_KEY cannot reopen the database, so keep the replacement. CasaOS and ZimaOS edit those literals; they do not substitute Compose variables. Optional weather, calendar, and OIDC settings are unset."
       }
     }
   },
@@ -187,7 +187,8 @@
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,

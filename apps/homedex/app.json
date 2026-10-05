@@ -138,7 +138,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Open http://localhost:7377 and sign in with admin password TA1qfYJ-JufxXFGzQUWmuA. The password is stored as a hash on first start and is not replaced later. Add the prefilled Docker source tcp://docker-socket-proxy:2375. That proxy mounts the Docker socket read-only and rejects mutating API calls."
+        "en_us": "Set HOMEDEX_ADMIN_PASSWORD in the install form before the first start. Homedex hashes it on first start and does not replace that hash later. The catalog value is public. CasaOS and ZimaOS edit the literal; they do not substitute Compose variables. Open http://localhost:7377 and sign in as admin. Add the prefilled Docker source tcp://docker-socket-proxy:2375. That proxy mounts the Docker socket read-only and rejects mutating API calls."
       }
     }
   },

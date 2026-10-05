@@ -132,7 +132,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Set ACTUAL_OPENID_DISCOVERY_URL, ACTUAL_OPENID_CLIENT_ID, and ACTUAL_OPENID_CLIENT_SECRET before startup. Register the callback at ACTUAL_OPENID_SERVER_HOSTNAME/openid/callback. Do not rotate ACTUAL_IDENTITY_SECRET after users exist."
+        "en_us": "Set ACTUAL_OPENID_DISCOVERY_URL, ACTUAL_OPENID_CLIENT_ID, and ACTUAL_OPENID_CLIENT_SECRET before startup. Those are literals in the install form. CasaOS and ZimaOS do not substitute Compose variables. Register the callback at ACTUAL_OPENID_SERVER_HOSTNAME/openid/callback. Replace ACTUAL_IDENTITY_SECRET and ACTUAL_AKAHU_TOKEN_SECRET before creating data, then do not rotate them. The shipped values are public."
       }
     }
   },
@@ -173,7 +173,8 @@
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "5006"
     },
     "umbrel": {
       "supported": true,

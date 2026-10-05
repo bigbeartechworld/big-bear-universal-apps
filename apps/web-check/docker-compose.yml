@@ -7,3 +7,6 @@ services:
     restart: unless-stopped
     ports:
       - "20003:3000"
+    environment:
+      API_BLOCKED_HOSTS: "localhost,local,metadata.google.internal,169.254.169.254,::1,0.0.0.0/8,10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.168.0.0/16"
+      API_ENABLE_RATE_LIMIT: "true"

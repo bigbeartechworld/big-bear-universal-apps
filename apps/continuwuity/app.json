@@ -91,7 +91,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Set CONTINUWUITY_SERVER_NAME to your real Matrix domain before the first start. It cannot be changed later without wiping the database. Federation is disabled. Put an HTTPS reverse proxy in front of port 8008 before you set CONTINUWUITY_ALLOW_FEDERATION to true. The first start prints a one-time registration token in the container logs."
+        "en_us": "Set CONTINUWUITY_SERVER_NAME to your real Matrix domain before the first start. It is a literal environment value. CasaOS and ZimaOS do not substitute Compose variables. It cannot be changed later without wiping the database. Federation is disabled. Put an HTTPS reverse proxy in front of port 8008 before you set CONTINUWUITY_ALLOW_FEDERATION to true. The first start prints a one-time registration token in the container logs."
       }
     }
   },

@@ -155,7 +155,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Open http://localhost:23000. Outline will not offer a sign-in method until you add one provider: Slack, Google, Azure, Discord, or OIDC. Put that provider's client id and secret on the outline service, and set URL to the address you actually use. https-portal is not included."
+        "en_us": "Open http://localhost:23000. Replace SECRET_KEY and UTILS_SECRET in the install form before storing pages. The catalog values are public. CasaOS and ZimaOS edit those literals; they do not substitute Compose variables. Outline will not offer a sign-in method until you add one provider: Slack, Google, Azure, Discord, or OIDC. Put that provider's client id and secret on the outline service, and set URL to the address you actually use. https-portal is not included."
       }
     }
   },

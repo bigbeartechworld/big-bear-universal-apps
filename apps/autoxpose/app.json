@@ -76,7 +76,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Set SERVER_IP to the public address used for DNS A records and LAN_IP to the address the reverse proxy should target. Open http://localhost:4949 and add a DNS provider, then Nginx Proxy Manager or Caddy. The container reads the Docker socket read-only."
+        "en_us": "Set SERVER_IP to the public address used for DNS A records and LAN_IP to the address the reverse proxy should target. Those are literal environment values in the install form. CasaOS and ZimaOS do not substitute Compose variables. Open http://localhost:4949 and add a DNS provider, then Nginx Proxy Manager or Caddy. The container reads the Docker socket read-only. The image entrypoint uses that socket file to match the Docker group before it drops privileges, so this listing does not replace the mount with a proxy."
       }
     }
   },
@@ -107,7 +107,8 @@
       ],
       "volume_mappings": {
         "autoxpose_data": "data"
-      }
+      },
+      "port": "3000"
     },
     "dockge": {
       "supported": true,
@@ -116,7 +117,8 @@
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,

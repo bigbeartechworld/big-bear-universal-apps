@@ -106,7 +106,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Log in with ZIMABRAIN_PASSWORD. ZIMABRAIN_SECRET_KEY is only a session key. The container is privileged and reads host proc, sysfs, hostname, and the Docker socket so it can diagnose this machine. No download or torrent sidecar is included."
+        "en_us": "Set ZIMABRAIN_PASSWORD and ZIMABRAIN_SECRET_KEY in the install form before the first start. The catalog values are public. CasaOS and ZimaOS edit those literals; they do not substitute Compose variables. ZIMABRAIN_SECRET_KEY is only a session key. The container is privileged and reads host proc, sysfs, hostname, and the Docker socket so it can diagnose this machine. No download or torrent sidecar is included."
       }
     }
   },

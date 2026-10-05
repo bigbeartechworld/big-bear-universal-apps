@@ -140,7 +140,8 @@
         "gamevault_files": "files",
         "gamevault_media": "media",
         "gamevault_database": "database"
-      }
+      },
+      "port": "8080"
     },
     "dockge": {
       "supported": true,
@@ -149,7 +150,8 @@
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "8080"
     },
     "umbrel": {
       "supported": true,

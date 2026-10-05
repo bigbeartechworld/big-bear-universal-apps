@@ -91,7 +91,8 @@
       ],
       "volume_mappings": {
         "docuseal_data": "data"
-      }
+      },
+      "port": "3000"
     },
     "dockge": {
       "supported": true,
@@ -100,7 +101,8 @@
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,

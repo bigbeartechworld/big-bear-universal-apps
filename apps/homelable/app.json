@@ -109,7 +109,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Open http://localhost:20033 and sign in as admin with password fqeIbapsJuTB7G2hkxVQpvfw. If you open Homelable by another hostname or IP, add that origin to CORS_ORIGINS. Set SCANNER_RANGES to your LAN CIDR before scanning. On the Docker bridge, scans do not return MAC addresses. Host networking would, and it is Linux-only, so it is not enabled here. Host port 3000 is already used, so this listing publishes 20033. The frontend proxies /api to the backend service, which must keep the name backend."
+        "en_us": "Replace AUTH_PASSWORD_HASH with a bcrypt hash of your own password before the first start. The shipped hash is public. CasaOS and ZimaOS edit that literal; they do not substitute Compose variables. Open http://localhost:20033 and sign in as admin. If you open Homelable by another hostname or IP, add that origin to CORS_ORIGINS. Set SCANNER_RANGES to your LAN CIDR before scanning. On the Docker bridge, scans do not return MAC addresses. Host networking would, and it is Linux-only, so it is not enabled here. Host port 3000 is already used, so this listing publishes 20033. The frontend proxies /api to the backend service, which must keep the name backend."
       }
     }
   },
@@ -140,7 +140,8 @@
       ],
       "volume_mappings": {
         "homelable_data": "data"
-      }
+      },
+      "port": "80"
     },
     "dockge": {
       "supported": true,
@@ -149,7 +150,8 @@
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "80"
     },
     "umbrel": {
       "supported": true,

@@ -57,32 +57,31 @@ services:
     image: caddy:2.11.6@sha256:3422ce6de165df66534f9b9ba50efaf457114ec961763cc52f5dbdaac2972d73
     restart: unless-stopped
     environment:
-      HOSTNAME: "https://${STOAT_DOMAIN:?Set STOAT_DOMAIN}"
+      HOSTNAME: "https://stoat.localhost"
     ports:
       - "20001:80"
       - "20002:443"
     configs:
       - source: caddyfile
         target: /etc/caddy/Caddyfile
-      - source: stoat_json
-        target: /stoat.json
     volumes:
       - stoat_caddy_data:/data
       - stoat_caddy_config:/config
     networks:
       default:
         aliases:
-          - "${STOAT_DOMAIN:?Set STOAT_DOMAIN}"
+          - stoat.localhost
+          - stoat
 
   web:
     image: ghcr.io/stoatchat/for-web:4017c18@sha256:07d87ec847b11adf39f37352af736b51c0b7ad3e21724f069e341d45d5ae755e
     container_name: stoat-web
     restart: unless-stopped
     environment:
-      HOSTNAME: "https://${STOAT_DOMAIN:?Set STOAT_DOMAIN}"
-      VITE_HOST: "${STOAT_DOMAIN:?Set STOAT_DOMAIN}"
-      VITE_API_URL: "https://${STOAT_DOMAIN:?Set STOAT_DOMAIN}/api"
-      VITE_DEV_GIFBOX_URL: "https://${STOAT_DOMAIN:?Set STOAT_DOMAIN}/gifbox"
+      HOSTNAME: "https://stoat.localhost"
+      VITE_HOST: "stoat.localhost"
+      VITE_API_URL: "https://stoat.localhost/api"
+      VITE_DEV_GIFBOX_URL: "https://stoat.localhost/gifbox"
 
   api:
     image: ghcr.io/stoatchat/api:v0.15.5@sha256:35d3c03f0fc4aad4a7b23eb73af88b38fd134a274f991435fb23b32724619b52
@@ -104,13 +103,13 @@ services:
       REVOLT__PUSHD__VAPID__PUBLIC_KEY: BEqfG2hz2uYVJS7BIfnJxNh1bHGAk6Gcl3Smf6xFY-ZqQVd4-97xu0KsnqbBOUV8-vxaD-m78YkhgvLZVbWWuig
       REVOLT__API__LIVEKIT__NODES__WORLDWIDE__KEY: 8011099a9cb9
       REVOLT__API__LIVEKIT__NODES__WORLDWIDE__SECRET: 58ca27af8342a4b8a14815bd31a810f0985d4f8db2eb6336
-      REVOLT__HOSTS__APP: "https://${STOAT_DOMAIN:?Set STOAT_DOMAIN}"
-      REVOLT__HOSTS__API: "https://${STOAT_DOMAIN:?Set STOAT_DOMAIN}/api"
-      REVOLT__HOSTS__EVENTS: "wss://${STOAT_DOMAIN:?Set STOAT_DOMAIN}/ws"
-      REVOLT__HOSTS__AUTUMN: "https://${STOAT_DOMAIN:?Set STOAT_DOMAIN}/autumn"
-      REVOLT__HOSTS__JANUARY: "https://${STOAT_DOMAIN:?Set STOAT_DOMAIN}/january"
-      REVOLT__HOSTS__GIFBOX: "https://${STOAT_DOMAIN:?Set STOAT_DOMAIN}/gifbox"
-      REVOLT__HOSTS__LIVEKIT__WORLDWIDE: "wss://${STOAT_DOMAIN:?Set STOAT_DOMAIN}/livekit"
+      REVOLT__HOSTS__APP: "https://stoat.localhost"
+      REVOLT__HOSTS__API: "https://stoat.localhost/api"
+      REVOLT__HOSTS__EVENTS: "wss://stoat.localhost/ws"
+      REVOLT__HOSTS__AUTUMN: "https://stoat.localhost/autumn"
+      REVOLT__HOSTS__JANUARY: "https://stoat.localhost/january"
+      REVOLT__HOSTS__GIFBOX: "https://stoat.localhost/gifbox"
+      REVOLT__HOSTS__LIVEKIT__WORLDWIDE: "wss://stoat.localhost/livekit"
     depends_on:
       database:
         condition: service_healthy
@@ -240,13 +239,8 @@ configs:
     content: |
       {$$HOSTNAME} {
       route /.well-known/stoat {
-      uri strip_prefix /.well-known/stoat
-      header {
-      Access-Control-Allow-Origin *
-      }
-      file_server {
-      root /stoat.json
-      }
+      header Access-Control-Allow-Origin *
+      respond "{\"api\":\"{$$HOSTNAME}/api\"}"
       }
 
       route /api* {
@@ -300,21 +294,18 @@ configs:
 
       reverse_proxy http://web:5000
       }
-  stoat_json:
-    content: |
-      {"api":"https://${STOAT_DOMAIN:?Set STOAT_DOMAIN}/api"}
   revolt_toml:
     content: |
       [hosts]
-      app = "https://${STOAT_DOMAIN:?Set STOAT_DOMAIN}"
-      api = "https://${STOAT_DOMAIN:?Set STOAT_DOMAIN}/api"
-      events = "wss://${STOAT_DOMAIN:?Set STOAT_DOMAIN}/ws"
-      autumn = "https://${STOAT_DOMAIN:?Set STOAT_DOMAIN}/autumn"
-      january = "https://${STOAT_DOMAIN:?Set STOAT_DOMAIN}/january"
-      gifbox = "https://${STOAT_DOMAIN:?Set STOAT_DOMAIN}/gifbox"
+      app = "https://stoat.localhost"
+      api = "https://stoat.localhost/api"
+      events = "wss://stoat.localhost/ws"
+      autumn = "https://stoat.localhost/autumn"
+      january = "https://stoat.localhost/january"
+      gifbox = "https://stoat.localhost/gifbox"
 
       [hosts.livekit]
-      worldwide = "wss://${STOAT_DOMAIN:?Set STOAT_DOMAIN}/livekit"
+      worldwide = "wss://stoat.localhost/livekit"
 
       [api.livekit.nodes.worldwide]
       url = "http://livekit:7880"

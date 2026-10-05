@@ -105,7 +105,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Open http://localhost:7080 and create the first user. Set CODER_ACCESS_URL to an address workspaces can reach before using templates that are not on this Docker host. The Docker socket is mounted. On Linux, if Coder cannot write to the socket, add the host docker group id with group_add. The official Compose file leaves that value commented because it differs per host."
+        "en_us": "Open http://localhost:7080 and create the first user. Set CODER_ACCESS_URL to an address workspaces can reach before using templates that are not on this Docker host. When Coder can write to the mounted Docker socket, it can control the host Docker daemon. On a rootful Docker host, users or templates that can make Coder issue Docker requests may gain host-root-equivalent access. Restrict Coder to trusted users and templates. On Linux, if Coder cannot write to the socket, add the host docker group id with group_add. The official Compose file leaves that value commented because it differs per host. The Postgres password is a catalog literal and the database port is not published. Replace it in both POSTGRES_PASSWORD and CODER_PG_CONNECTION_URL if this host is shared. CasaOS and ZimaOS edit those literals; they do not substitute Compose variables."
       }
     }
   },

@@ -107,7 +107,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Open http://localhost:20128 and sign in with INITIAL_PASSWORD from this compose file. REQUIRE_API_KEY is on because the ports are published beyond loopback. Add a provider key in the dashboard. Redis is not published to the host. The base image has no Chromium, so web-cookie providers are not included."
+        "en_us": "Set INITIAL_PASSWORD in the install form before the first start. The catalog value is public. CasaOS and ZimaOS edit that literal; they do not substitute Compose variables. Open http://localhost:20128 and sign in with that password. REQUIRE_API_KEY is on because the ports are published beyond loopback. Add a provider key in the dashboard. Redis is not published to the host. The base image has no Chromium, so web-cookie providers are not included."
       }
     }
   },

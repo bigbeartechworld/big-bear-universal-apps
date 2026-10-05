@@ -39,7 +39,20 @@
     "compose_file": "docker-compose.yml"
   },
   "deployment": {
-    "environment_variables": [],
+    "environment_variables": [
+      {
+        "name": "API_BLOCKED_HOSTS",
+        "default": "localhost,local,metadata.google.internal,169.254.169.254,::1,0.0.0.0/8,10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.168.0.0/16",
+        "description": "Hosts and CIDR ranges the API must not scan. Includes private, loopback, and link-local addresses.",
+        "required": false
+      },
+      {
+        "name": "API_ENABLE_RATE_LIMIT",
+        "default": "true",
+        "description": "Rate-limit the API.",
+        "required": false
+      }
+    ],
     "volumes": [],
     "ports": [
       {
@@ -55,7 +68,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Open the UI on host port 20003. The container still listens on 3000. Optional API keys from the project .env.sample are not set."
+        "en_us": "Open the UI on host port 20003. The container listens on 3000. API_BLOCKED_HOSTS rejects private, loopback, and link-local targets, including the headers check. The image still follows redirects, so do not expose this port to untrusted clients. Optional API keys from the project .env.sample are not set."
       }
     }
   },
@@ -93,7 +106,8 @@
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,

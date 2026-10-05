@@ -175,7 +175,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Open http://localhost:20030. Set NEXT_PUBLIC_WEBAPP_URL to the URL people will use to reach this instance. Replace NEXT_PRIVATE_SMTP_HOST, NEXT_PRIVATE_SMTP_USERNAME, and NEXT_PRIVATE_SMTP_PASSWORD with a real mail server before sending email. The app starts without a signing certificate, but document signing fails until you add a PKCS#12 file and NEXT_PRIVATE_SIGNING_PASSPHRASE. See https://docs.documenso.com/docs/self-hosting/configuration/signing-certificate."
+        "en_us": "Open http://localhost:20030. Set NEXT_PUBLIC_WEBAPP_URL to the URL people will use to reach this instance. Replace the shipped NEXTAUTH and encryption secrets in the install form before storing documents. The catalog values are public. CasaOS and ZimaOS edit those literals; they do not substitute Compose variables. Replace NEXT_PRIVATE_SMTP_HOST, NEXT_PRIVATE_SMTP_USERNAME, and NEXT_PRIVATE_SMTP_PASSWORD with a real mail server before sending email. The app starts without a signing certificate, but document signing fails until you add a PKCS#12 file and NEXT_PRIVATE_SIGNING_PASSPHRASE. See https://docs.documenso.com/docs/self-hosting/configuration/signing-certificate."
       }
     }
   },
@@ -206,7 +206,8 @@
       ],
       "volume_mappings": {
         "documenso_database": "database"
-      }
+      },
+      "port": "3000"
     },
     "dockge": {
       "supported": true,
@@ -215,7 +216,8 @@
     "cosmos": {
       "supported": true,
       "servapp": true,
-      "routes_required": true
+      "routes_required": true,
+      "port": "3000"
     },
     "umbrel": {
       "supported": true,

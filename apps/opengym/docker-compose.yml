@@ -44,9 +44,12 @@ services:
     entrypoint: ["/bin/sh", "-c"]
     command:
       - |
-        if [ -z "$$(ls -A /out/img 2>/dev/null)" ]; then
+        set -e
+        if [ -z "$$(ls -A /out/img 2>/dev/null)" ] || [ -z "$$(ls -A /out/gif 2>/dev/null)" ]; then
+          rm -rf /tmp/ds
           git clone --depth 1 https://github.com/hasaneyldrm/exercises-dataset /tmp/ds
-          cp /tmp/ds/images/*.jpg /out/img/ && cp /tmp/ds/videos/*.gif /out/gif/
+          cp /tmp/ds/images/*.jpg /out/img/
+          cp /tmp/ds/videos/*.gif /out/gif/
         fi
     volumes:
       - opengym_media_img:/out/img
