@@ -60,7 +60,7 @@ OPTIONS:
     --dry-run              Show what would be synced
     --force                Overwrite existing apps
     --replace-all          Delete all existing apps before syncing
-    --no-clean             Skip removing orphaned apps (apps removed by default when not in source)
+    --no-clean             Skip removing orphaned apps (apps removed by default when not in source; always skipped with --app)
     -v, --verbose          Verbose output
 
 EXAMPLES:
@@ -374,10 +374,7 @@ main() {
         sync_platform "$platform"
     done
     
-    # Always clean orphaned apps unless --no-clean is specified
-    # This ensures that when an app's "supported" flag is set to false,
-    # the app will be removed from the target platform repository
-    if [[ "$NO_CLEAN" != "true" ]]; then
+    if [[ "$NO_CLEAN" != "true" ]] && [[ -z "$SPECIFIC_APP" ]]; then
         for platform in "${PLATFORMS[@]}"; do
             clean_orphaned_apps "$platform"
         done
