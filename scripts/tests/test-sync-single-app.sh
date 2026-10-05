@@ -63,6 +63,8 @@ assert_eq "$(exists "$APPS/bar")" "no" "orphaned app is removed without --app"
 section "--no-clean keeps orphaned apps on a full sync"
 prepare
 run_sync casaos --no-clean
+assert_eq "$?" "0" "sync exits cleanly"
+assert_eq "$(cat "$APPS/foo/docker-compose.yml")" "updated-content" "app is synced"
 assert_eq "$(exists "$APPS/bar")" "yes" "orphaned app survives --no-clean"
 
 section "single-app portainer sync keeps the full catalog"
