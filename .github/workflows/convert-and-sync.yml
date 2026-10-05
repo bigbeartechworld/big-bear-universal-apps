@@ -57,11 +57,26 @@ concurrency:
   group: convert-and-sync-${{ github.event_name == 'workflow_dispatch' && github.run_id || github.ref }}
   cancel-in-progress: false
 
+env:
+  INPUT_APP_NAME: ${{ github.event.inputs.app_name }}
+  INPUT_PLATFORMS: ${{ github.event.inputs.platforms }}
+
 jobs:
   validate:
     name: Validate Apps
     runs-on: ubuntu-latest
     steps:
+      - name: Validate dispatch inputs
+        run: |
+          if [ -n "$INPUT_APP_NAME" ] && ! [[ "$INPUT_APP_NAME" =~ ^[A-Za-z0-9_][A-Za-z0-9._-]*$ ]]; then
+            echo "::error::app_name must match ^[A-Za-z0-9_][A-Za-z0-9._-]*$"
+            exit 1
+          fi
+          if ! [[ "$INPUT_PLATFORMS" =~ ^[a-z,]*$ ]]; then
+            echo "::error::platforms must be a comma-separated list of lowercase platform names"
+            exit 1
+          fi
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -73,12 +88,7 @@ jobs:
           sudo chmod +x /usr/local/bin/yq
 
       - name: Validate app definitions
-        run: |
-          APP_ARG=""
-          if [ -n "${{ github.event.inputs.app_name }}" ]; then
-            APP_ARG="--app ${{ github.event.inputs.app_name }}"
-          fi
-          ./scripts/validate-apps.sh $APP_ARG
+        run: ./scripts/validate-apps.sh ${INPUT_APP_NAME:+--app "$INPUT_APP_NAME"}
 
   convert:
     name: Convert to Platform Formats
@@ -99,17 +109,11 @@ jobs:
       - name: Convert apps to platforms
         run: |
           # Determine platforms to convert
-          PLATFORMS="${{ github.event.inputs.platforms }}"
+          PLATFORMS="$INPUT_PLATFORMS"
           if [ -z "$PLATFORMS" ] || [ "$PLATFORMS" == "all" ]; then
             PLATFORMS="casaos,portainer,runtipi,dockge,cosmos,umbrel"
           fi
-          
-          # Determine if specific app
-          APP_ARG=""
-          if [ -n "${{ github.event.inputs.app_name }}" ]; then
-            APP_ARG="--app ${{ github.event.inputs.app_name }}"
-          fi
-          
+
           # Determine if dry run
           DRY_RUN_ARG=""
           if [ "${{ github.event.inputs.dry_run }}" == "true" ]; then
@@ -117,7 +121,7 @@ jobs:
           fi
           
           echo "🔄 Converting apps for platforms: $PLATFORMS"
-          ./scripts/convert-to-platforms.sh -p "$PLATFORMS" $APP_ARG $DRY_RUN_ARG --verbose
+          ./scripts/convert-to-platforms.sh -p "$PLATFORMS" ${INPUT_APP_NAME:+--app "$INPUT_APP_NAME"} $DRY_RUN_ARG --verbose
 
       - name: Upload converted apps
         uses: actions/upload-artifact@v4
@@ -133,13 +137,13 @@ jobs:
           echo "## 📊 Conversion Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
-          if [ -n "${{ github.event.inputs.app_name }}" ]; then
-            echo "**App:** ${{ github.event.inputs.app_name }}" >> $GITHUB_STEP_SUMMARY
+          if [ -n "$INPUT_APP_NAME" ]; then
+            echo "**App:** $INPUT_APP_NAME" >> $GITHUB_STEP_SUMMARY
           else
             echo "**Apps:** All apps" >> $GITHUB_STEP_SUMMARY
           fi
           
-          PLATFORMS="${{ github.event.inputs.platforms || 'all' }}"
+          PLATFORMS="${INPUT_PLATFORMS:-all}"
           echo "**Platforms:** $PLATFORMS" >> $GITHUB_STEP_SUMMARY
           echo "**Dry Run:** ${{ github.event.inputs.dry_run || 'false' }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -181,7 +185,7 @@ jobs:
       - name: Check if platform should be synced
         id: check-platform
         run: |
-          PLATFORMS="${{ github.event.inputs.platforms }}"
+          PLATFORMS="$INPUT_PLATFORMS"
           CURRENT_PLATFORM="${{ matrix.platform }}"
           
           # If platforms input is empty or 'all', sync all platforms
@@ -235,9 +239,9 @@ jobs:
           SYNC_ARGS="-p ${{ matrix.platform }} --force"
           
           # Add app filter if specified
-          if [ -n "${{ github.event.inputs.app_name }}" ]; then
-            SYNC_ARGS="$SYNC_ARGS --app ${{ github.event.inputs.app_name }}"
-            echo "🎯 Syncing specific app: ${{ github.event.inputs.app_name }}"
+          if [ -n "$INPUT_APP_NAME" ]; then
+            SYNC_ARGS="$SYNC_ARGS --app $INPUT_APP_NAME"
+            echo "🎯 Syncing specific app: $INPUT_APP_NAME"
           fi
           
           echo "📦 Executing sync with args: $SYNC_ARGS"
