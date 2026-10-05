@@ -5,7 +5,7 @@
     "name": "Mastodon",
     "description": "Mastodon is a free, open-source social network server based on ActivityPub where users can follow friends and discover new ones..",
     "tagline": "A free, open-source social network server based on ActivityPub where users can follow friends and discover new ones. .",
-    "version": "4.7.2",
+    "version": "4.7.3",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/mastodon",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:58.287Z",
-    "updated": "2026-09-17T18:10:58.287Z"
+    "updated": "2026-10-05T02:51:43.618Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/mastodon-banner.png",
