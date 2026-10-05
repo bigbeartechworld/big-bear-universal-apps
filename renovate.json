@@ -5,6 +5,8 @@
   ],
   "automerge": true,
   "dependencyDashboard": true,
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 0,
   "enabledManagers": [
     "docker-compose",
     "dockerfile"
