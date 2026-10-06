@@ -5,7 +5,7 @@
     "name": "Manyfold",
     "description": "Manyfold is an open source, self-hosted web application for managing a collection of 3D models, particularly focused on 3D printing.",
     "tagline": "An open source, self-hosted web application for managing a collection of 3D models, particularly focused on 3D printing.",
-    "version": "0.149.0",
+    "version": "0.150.0",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/manyfold",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:57.314Z",
-    "updated": "2026-09-17T18:10:57.314Z"
+    "updated": "2026-10-06T04:32:56.607Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/manyfold.png",
