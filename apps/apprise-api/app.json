@@ -5,7 +5,7 @@
     "name": "Apprise-api",
     "description": "Apprise-api Takes advantage of Apprise through your network with a user-friendly API. * Send notifications to more than 100 services. * An incredibly lightweight gateway to Apprise. * A production ready micro-service at your disposal. * A Simple Website to verify and test your configuration with. Apprise API was designed to easily fit into existing (and new) eco-systems that are looking for a simple notification solution.",
     "tagline": "Takes advantage of Apprise through your network with a user-friendly API. * Send notifications to more than 100 services. * An incredibly lightweight gateway to Apprise. * A production ready micro-service at your disposal. * A Simple Website to verify and test your configuration with. Apprise API was designed to easily fit into existing (and new) eco-systems that are looking for a simple notification solution.",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/apprise-api",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:57.651Z",
-    "updated": "2026-10-03T17:24:44.447Z"
+    "updated": "2026-10-07T01:25:16.702Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/caronc/apprise-api@master/apprise_api/static/logo.png",
