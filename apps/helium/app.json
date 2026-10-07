@@ -5,7 +5,7 @@
     "name": "Helium",
     "description": "Helium is a Chromium-based web browser made for people, with love. Privacy-first with unbiased ad-blocking.",
     "tagline": "A Chromium-based web browser made for people, with love. Privacy-first with unbiased ad-blocking.",
-    "version": "0.18.2",
+    "version": "0.18.3",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/helium",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:58.078Z",
-    "updated": "2026-10-04T00:59:37.471Z"
+    "updated": "2026-10-07T16:29:15.638Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/helium-logo.png",
