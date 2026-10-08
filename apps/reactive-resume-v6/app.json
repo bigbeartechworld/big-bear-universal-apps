@@ -40,26 +40,7 @@
     "compose_file": "docker-compose.yml"
   },
   "deployment": {
-    "environment_variables": [
-      {
-        "name": "APP_URL",
-        "default": "http://[CASAOS_IP]:3028",
-        "description": "Exact address users type in the browser, including http:// or https://. Sign-in fails when this does not match.",
-        "required": true
-      },
-      {
-        "name": "AUTH_SECRET",
-        "default": "",
-        "description": "Session secret. Generate with: openssl rand -hex 32. Keep this value. Changing it signs everyone out.",
-        "required": true
-      },
-      {
-        "name": "POSTGRES_PASSWORD",
-        "default": "",
-        "description": "PostgreSQL password. Use hex only (openssl rand -hex 16). Characters such as @ : / # break DATABASE_URL.",
-        "required": true
-      }
-    ],
+    "environment_variables": [],
     "volumes": [
       {
         "container": "/app/data",
@@ -84,7 +65,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "NEW APP - REACTIVE RESUME V6\n\nThis is a NEW app, separate from 'reactive-resume' (v5.3.2). Do not treat the install as an upgrade of an existing v5 stack.\n\nFOR NEW USERS:\n- Install this app for new Reactive Resume v6 deployments\n- Set APP_URL to the exact browser address. The default is http://[CASAOS_IP]:3028\n- Set AUTH_SECRET to the output of: openssl rand -hex 32\n- Set POSTGRES_PASSWORD to hex only (openssl rand -hex 16). Characters such as @ : / # break the database URL\n- Web UI is on host port 3028\n- Uploads live in the reactive-resume-v6_data volume, mounted at /app/data\n\nFOR REACTIVE RESUME V5 USERS:\n- Do NOT uninstall the existing 'reactive-resume' app\n- Do NOT point this app at the v5 PostgreSQL volume or the v5 MinIO volume\n- v6 drops database columns that v5 still reads. Starting v6 on that database is one-way\n- This app bundles PostgreSQL 18. That image cannot open the v5 data directory\n- v5 pictures live in MinIO. A database dump does not move them. Copy uploads into /app/data, or configure S3 yourself, after you have a backup\n- Chrome, MinIO, and Redis are not part of this app. v6 renders PDFs itself\n\nUpgrade guide: https://docs.rxresu.me/self-hosting/upgrading-to-v6"
+        "en_us": "NEW APP - REACTIVE RESUME V6\n\nThis is a NEW app, separate from 'reactive-resume' (v5.3.2). Do not treat the install as an upgrade of an existing v5 stack.\n\nFOR NEW USERS:\n- Install this app for new Reactive Resume v6 deployments\n- Change [CASAOS_IP] to your CasaOS IP address in APP_URL\n- Web UI is on host port 3028\n- Uploads live in the reactive-resume-v6_data volume, mounted at /app/data\n\nFOR REACTIVE RESUME V5 USERS:\n- Do NOT uninstall the existing 'reactive-resume' app\n- Do NOT point this app at the v5 PostgreSQL volume or the v5 MinIO volume\n- v6 drops database columns that v5 still reads. Starting v6 on that database is one-way\n- This app bundles PostgreSQL 18. That image cannot open the v5 data directory\n- v5 pictures live in MinIO. A database dump does not move them. Copy uploads into /app/data, or configure S3 yourself, after you have a backup\n- Chrome, MinIO, and Redis are not part of this app. v6 renders PDFs itself\n\nUpgrade guide: https://docs.rxresu.me/self-hosting/upgrading-to-v6"
       }
     }
   },
