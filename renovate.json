@@ -191,6 +191,11 @@
       "matchPackageNames": ["ghcr.io/homarr-labs/homarr"],
       "matchFileNames": ["apps/homarr-v1/docker-compose.yml"],
       "enabled": false
+    },
+    {
+      "matchPackageNames": ["amruthpillai/reactive-resume"],
+      "matchFileNames": ["apps/reactive-resume/docker-compose.yml"],
+      "enabled": false
     }
   ],
   "customManagers": []
