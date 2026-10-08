@@ -6,7 +6,7 @@
 # - Deploy this app for new Reactive Resume v6 instances
 # - PostgreSQL 18 plus a local upload volume at /app/data
 # - PDFs render in the app. No Browserless, MinIO, or Redis
-# - Change [CASAOS_IP] to the CasaOS IP. CasaOS does not expand ${} variables
+# - APP_URL is http://localhost:3028. Change it if you open the app from another device
 # - Web UI is on host port 3028 (3001 is already used by other apps)
 #
 # FOR MIGRATION FROM V5:
@@ -29,7 +29,7 @@ services:
       big-bear-reactive-resume-v6-db:
         condition: service_healthy
     environment:
-      APP_URL: "http://[CASAOS_IP]:3028"
+      APP_URL: "http://localhost:3028"
       AUTH_SECRET: "access_token_secret"
       DATABASE_URL: "postgresql://postgres:postgres@big-bear-reactive-resume-v6-db:5432/postgres"
     volumes:
