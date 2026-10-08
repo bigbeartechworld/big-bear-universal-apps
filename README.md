@@ -197,7 +197,7 @@ Validate apps against the JSON schema:
 | **Budibase** | Low code platform for creating internal tools, workflows, and admin panels in minutes. Supports P... | `budibase/budibase` | v3.47.0 | 8080 |  |  |
 | **Build-agent** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/build-a... | `linuxserver/build-agent` | 0.0.0 | 80 |  |  |
 | **Buzz** | Buzz is a self-hostable workspace for humans and agents from Block. It runs a Nostr relay, a REST... | `ghcr.io/block/buzz` | latest | 3000 |  | [📖](https://engineering.block.xyz/blog/run-your-own-buzz-relay) |
-| **Caddy** | Caddy - The Ultimate Server with Automatic HTTPS. | `caddy` | 2.11.4 | 48100 |  |  |
+| **Caddy** | Caddy - The Ultimate Server with Automatic HTTPS. | `caddy` | 2.11.6 | 48100 |  |  |
 | **cAdvisor** | cAdvisor (Container Advisor) provides container users an understanding of the resource usage and ... | `gcr.io/cadvisor/cadvisor` | v0.55.1 | 8085 |  |  |
 | **Cal.com** | The open source Calendly successor. You are in charge of your own data, workflow, and appearance.... | `calcom/cal.com` | v6.2.0 | 3000 |  |  |
 | **Calibre** | Calibre is a powerful and easy to use e-book manager. Users say it's outstanding and a must-have.... | `linuxserver/calibre` | 9.15.0 | 8080 |  |  |
@@ -276,7 +276,7 @@ Validate apps against the JSON schema:
 | **Ferdium** | Ferdium is a desktop app that helps you organize how you use your favourite apps by combining the... | `linuxserver/ferdium` | 7.2.3 | 3000 |  |  |
 | **Ffmpeg** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/ffmpeg ... | `linuxserver/ffmpeg` | 8.1.2 | 80 |  |  |
 | **Filebrowser** | Reliable and Performant File Management Desktop Sync and File Sharing Tool. | `filebrowser/filebrowser` | v2.63.23-s6 | 8080 |  |  |
-| **FileBrowser Quantum** | A self-hosted web file manager forked from FileBrowser with advanced features including OIDC auth... | `gtstef/filebrowser` | 1.5.6-stable | 8700 |  |  |
+| **FileBrowser Quantum** | A self-hosted web file manager forked from FileBrowser with advanced features including OIDC auth... | `gtstef/filebrowser` | 1.5.8-stable | 8700 |  |  |
 | **Filezilla** | FIleZilla Client is a fast and reliable cross-platform FTP, FTPS and SFTP client with lots of use... | `linuxserver/filezilla` | 3.69.6 | 3000 |  |  |
 | **Financial Freedom** | Keep investors and their buyers out of your financial data. Own 100% of your data and start build... | `serversideup/financial-freedom` | v0.2.0-alpha1 | 8443 |  |  |
 | **Firefox** | This Image contains a browser-accessible version of Firefox. | `linuxserver/firefox` | 1155.0.1 | 3000 | [▶️](https://youtu.be/RPBshN5hGWQ) |  |
@@ -285,7 +285,7 @@ Validate apps against the JSON schema:
 | **FlContainers Guacamole** | A Docker Container for Apache Guacamole, a client-less remote desktop gateway. It supports standa... | `flcontainers/guacamole` | 1.6.0 | 8080 |  |  |
 | **Fleet** | Fleet provides an online web interface which displays a set of maintained images from one or more... | `linuxserver/fleet` | 2.3.3 | 8080 |  |  |
 | **Flowise AI** | Flowise AI is an Open source UI visual tool to build your customized LLM orchestration flow & AI ... | `flowiseai/flowise` | 3.1.4 | 8009 |  |  |
-| **Flycast** | Flycast is a multi-platform Sega Dreamcast, Naomi, Naomi 2, and Atomiswave emulator derived from ... | `linuxserver/flycast` | 2.7.20260927 | 3000 |  |  |
+| **Flycast** | Flycast is a multi-platform Sega Dreamcast, Naomi, Naomi 2, and Atomiswave emulator derived from ... | `linuxserver/flycast` | 2.7.20261004 | 3000 |  |  |
 | **Focalboard** | Focalboard is an open source, multilingual, self-hosted project management tool that's an alterna... | `mattermost/focalboard` | 7.11.4 | 8000 | [▶️](https://youtu.be/fBDpqpN8sks) |  |
 | **Foldingathome** | Folding@home is a distributed computing project for simulating protein dynamics, including the pr... | `linuxserver/foldingathome` | 8.5.6 | 80 |  |  |
 | **Freecad** | FreeCAD is a general-purpose parametric 3D computer-aided design (CAD) modeler and a building inf... | `linuxserver/freecad` | 1.1.4 | 3000 |  |  |
@@ -314,7 +314,7 @@ Validate apps against the JSON schema:
 | **Healthchecks** | Healthchecks is a watchdog for your cron jobs. It's a web server that listens for pings from your... | `linuxserver/healthchecks` | 4.4.20260921 | 8000 |  |  |
 | **Hedgedoc** | HedgeDoc gives you access to all your files wherever you are. HedgeDoc is a real-time, multi-plat... | `linuxserver/hedgedoc` | 1.12.0 | 3000 |  |  |
 | **Heimdall** | Heimdall is a way to organise all those links to your most used web sites and web applications in... | `linuxserver/heimdall` | 2.8.3 | 80 |  |  |
-| **Helium** | Helium is a Chromium-based web browser made for people, with love. Privacy-first with unbiased ad... | `linuxserver/helium` | 0.18.2 | 3000 |  |  |
+| **Helium** | Helium is a Chromium-based web browser made for people, with love. Privacy-first with unbiased ad... | `linuxserver/helium` | 0.18.3 | 3000 |  |  |
 | **Hermes Agent** | Hermes Agent 0.21.3 is a self-hosted AI agent with a gateway API and an authenticated web dashboard. | `nousresearch/hermes-agent` | v2026.9.24 | 9119 |  | [📖](https://hermes-agent.nousresearch.com/docs/) |
 | **Hestia CP** | Hestia Control Panel (HestiaCP) is an open-source web hosting control panel that allows users to ... | `artsemkniazeu/hestiacp` | latest | 48112 |  |  |
 | **Hishtory-server** | hiSHtory is a better shell history. It stores your shell history in context (what directory you r... | `linuxserver/hishtory-server` | 0.335.20260925 | 8080 |  |  |
@@ -562,12 +562,12 @@ Validate apps against the JSON schema:
 | **Thelounge** | Thelounge (a fork of shoutIRC) is a web IRC client that you host on your own server. | `linuxserver/thelounge` | 4.5.2 | 9000 |  |  |
 | **Thunderbird** | Thunderbird is a free and open-source personal information manager primarily used as an e-mail cl... | `linuxserver/thunderbird` | 1140.16.0 | 3000 |  |  |
 | **Tianji** | During our observations of the website. We often need to use multiple applications together. For ... | `moonrailgun/tianji` | 1.33.7 | 12345 |  |  |
-| **TP-Link Omada Controller** | Docker image for TP-Link Omada Controller to control TP-Link Omada Hardware | `mbentley/omada-controller` | 6.2 | 8088 | [▶️](https://youtu.be/aECteVrkt6s) |  |
+| **TP-Link Omada Controller** | Docker image for TP-Link Omada Controller to control TP-Link Omada Hardware | `mbentley/omada-controller` | 6.3 | 8088 | [▶️](https://youtu.be/aECteVrkt6s) |  |
 | **Traccar** | Traccar GPS Tracking System in Docker image. | `traccar/traccar` | 6.15-ubuntu | 8080 | [▶️](https://youtu.be/zn_tu9r6g-w) |  |
 | **Traefik** | Cloud-Native Networking Stack That Just Works. | `traefik` | v3.7.13 | 48104 |  |  |
 | **Trilium** | Build your personal knowledge base with Trilium Notes | `triliumnext/trilium` | v0.105.0 | 8080 | [▶️](https://youtu.be/h5ISPmUuBHs) |  |
 | **Tududi** | tududi is a task and project management web application built with Sinatra. It allows users to ef... | `chrisvel/tududi` | 0.87 | 9292 |  |  |
-| **Tugtainer** | Tugtainer is a self-hosted app for automating updates of your docker containers with a web UI. It... | `quenary/tugtainer` | v1.44.0 | 9412 |  |  |
+| **Tugtainer** | Tugtainer is a self-hosted app for automating updates of your docker containers with a web UI. It... | `quenary/tugtainer` | v1.44.1 | 9412 |  |  |
 | **Ubooquity** | Ubooquity is a free, lightweight and easy-to-use home server for your comics and ebooks. Use it t... | `linuxserver/ubooquity` | 3.1.0 | 2202 |  |  |
 | **UISP** | All-in-one docker image for Ubiquiti UISP (formerly UNMS). Supports x86_64 and ARM (Raspberry Pi). | `nico640/docker-unms` | 2.4.155.1 | 10443 |  |  |
 | **Umami** | Umami is a simple, fast, privacy-focused alternative to Google Analytics. | `ghcr.io/umami-software/umami` | postgresql-latest | 3000 | [▶️](https://youtu.be/4DEF5fNf8hU) |  |
@@ -596,7 +596,7 @@ Validate apps against the JSON schema:
 | **Webcord** | WebCord can be summarized as a pack of security and privacy hardenings, Discord features reimplem... | `linuxserver/webcord` | 4.14.0 | 3000 |  |  |
 | **WebDAV** | Web-based distributed authoring and versioning (WebDAV) is a set of extensions to the HTTP protoc... | `bytemark/webdav` | latest | 48108 |  |  |
 | **Webgrabplus** | Webgrabplus is a multi-site incremental xmltv epg grabber. It collects tv-program guide data from... | `linuxserver/webgrabplus` | 5.6.1 | 80 |  |  |
-| **Webstation** | Webstation is a web native emulation focused LXQt desktop based on Ubuntu. | `linuxserver/webstation` | 0.8.5-romm | 3000 |  |  |
+| **Webstation** | Webstation is a web native emulation focused LXQt desktop based on Ubuntu. | `linuxserver/webstation` | 0.14.0-romm | 3000 |  |  |
 | **Webtop** | Webtop - Alpine, Ubuntu, Fedora, and Arch based containers containing full desktop environments i... | `linuxserver/webtop` | 0.0.0 | 3000 |  |  |
 | **Weixin** | Weixin (WeChat) is an instant messaging, social media, and mobile payment app developed by Tencent. | `linuxserver/weixin` | 0.0.0 | 3000 |  |  |
 | **What's Up Docker** | Gets you notified when new versions of your Docker containers are available and lets you react th... | `fmartinou/whats-up-docker` | 6.6.1 | 3000 |  |  |
@@ -616,7 +616,7 @@ Validate apps against the JSON schema:
 | **Xvfb** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/xvfb fo... | `linuxserver/xvfb` | 0.0.0 | 80 |  |  |
 | **Yaak** | Yaak is a desktop API client for organizing and executing REST, GraphQL, and gRPC requests. It's ... | `linuxserver/yaak` | 2026.8.1 | 3000 |  |  |
 | **Your_spotify** | Your_spotify is a self-hosted application that tracks what you listen and offers you a dashboard ... | `linuxserver/your_spotify` | 1.20.0 | 80 |  |  |
-| **Yq** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/yq for ... | `linuxserver/yq` | 4.1.2 | 80 |  |  |
+| **Yq** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/yq for ... | `linuxserver/yq` | 4.4.0 | 80 |  |  |
 | **Zen** | Zen Browser is a free and open-source fork of Mozilla Firefox with a focus on privacy, customizab... | `linuxserver/zen` | 1.22.3 | 3000 |  |  |
 | **Zigbee to MQTT bridge** | Zigbee to MQTT bridge, get rid of your proprietary Zigbee bridges | `koenkk/zigbee2mqtt` | 2.14.2 | 8080 |  |  |
 | **zipline** | A ShareX/file upload server that is easy to use, packed with features, and with an easy setup! | `ghcr.io/diced/zipline` | 3.7.13 | 3000 |  |  |
