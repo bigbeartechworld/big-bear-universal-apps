@@ -5,7 +5,7 @@
     "name": "Homarr v2",
     "description": "Homarr v2 dashboard. This is a new app, separate from Homarr v1. The default SQLite database moves by copying /appdata and keeping the same SECRET_ENCRYPTION_KEY. An external PostgreSQL database is not in /appdata. Stop v1, back up that database, then set the same DB_DIALECT and DB_URL and leave v1 stopped while v2 migrates it. MySQL is no longer supported; convert existing MySQL data to SQLite before starting v2. Not compatible with legacy Homarr (v0.x) data without migration.",
     "tagline": "Homarr v2",
-    "version": "v2.0.0",
+    "version": "2.0.0",
     "author": "BigBearTechWorld",
     "developer": "homarr-labs",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://homarr.dev/",
     "source": "big-bear-universal",
     "created": "2026-10-03T00:00:00Z",
-    "updated": "2026-10-03T21:55:21.289Z"
+    "updated": "2026-10-03T00:00:00Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/homarr.png",

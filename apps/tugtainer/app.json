@@ -5,7 +5,7 @@
     "name": "Tugtainer",
     "description": "Tugtainer is a self-hosted app for automating updates of your docker containers with a web UI. It's like watchtower but with more control and a user-friendly interface.",
     "tagline": "Docker Container Update Automator",
-    "version": "v1.41.0",
+    "version": "v1.44.1",
     "author": "BigBearTechWorld",
     "developer": "Quenary",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/quenary/tugtainer",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:21Z",
-    "updated": "2026-09-18T06:38:44.694Z"
+    "updated": "2026-10-08T02:41:07.359Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/docker.png",
@@ -61,6 +61,12 @@
         "default": "",
         "description": "JWT secret key for authentication",
         "required": false
+      },
+      {
+        "name": "AGENT_SECRET",
+        "default": "",
+        "description": "Shared secret for backend-to-agent request signatures. Required for the built-in agent.",
+        "required": true
       },
       {
         "name": "ACCESS_TOKEN_LIFETIME_MIN",

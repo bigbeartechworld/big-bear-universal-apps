@@ -5,7 +5,7 @@
     "name": "Snipe-IT v8",
     "description": "Snipe-IT is a free, open source IT asset management system.",
     "tagline": "Open source IT asset management",
-    "version": "8.7.2",
+    "version": "v8.8.0",
     "author": "BigBearTechWorld",
     "developer": "Grokability",
     "category": "Other",
@@ -13,7 +13,7 @@
     "homepage": "https://snipe-it.readme.io/docs/docker",
     "source": "big-bear-universal",
     "created": "2026-09-18T00:00:00Z",
-    "updated": "2026-09-18T00:00:00Z"
+    "updated": "2026-10-04T01:00:03.281Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/snipe-it.png",

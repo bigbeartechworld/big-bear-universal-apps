@@ -10,7 +10,7 @@ services:
     # Name of the container
     container_name: big-bear-tugtainer
     # Image to be used for the container
-    image: quenary/tugtainer:v1.43.0@sha256:87515f7b5569890bcd108955d8c69672086f7839f6e3bfd0b7660dbb2c02515f
+    image: quenary/tugtainer:v1.44.1@sha256:a6cbdff790e30c1a7498449c24d3ff0f0814c64fe628c842e84e45f554563cae
     # Container restart policy
     restart: unless-stopped
     # Ports to expose from the container
@@ -21,6 +21,7 @@ services:
       TZ: "UTC"
       LOG_LEVEL: "warning"
       JWT_SECRET_KEY: "your-secret-key-here"
+      AGENT_SECRET: "your-secret-key-here"
       ACCESS_TOKEN_LIFETIME_MIN: "5"
       REFRESH_TOKEN_LIFETIME_MIN: "43200"
       HTTPS: "FALSE"

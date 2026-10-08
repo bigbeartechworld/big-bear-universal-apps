@@ -5,7 +5,7 @@
     "name": "Flycast",
     "description": "Flycast is a multi-platform Sega Dreamcast, Naomi, Naomi 2, and Atomiswave emulator derived from reicast.",
     "tagline": "A multi-platform Sega Dreamcast, Naomi, Naomi 2, and Atomiswave emulator derived from reicast.",
-    "version": "2.7.20260927",
+    "version": "2.7.20261004",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/flycast",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:58.348Z",
-    "updated": "2026-10-03T16:56:04.063Z"
+    "updated": "2026-10-07T23:06:58.705Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/flycast-logo.png",

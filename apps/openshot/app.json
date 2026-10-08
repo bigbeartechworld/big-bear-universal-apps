@@ -5,7 +5,7 @@
     "name": "Openshot",
     "description": "OpenShot Video Editor is an award-winning free and open-source video editor for Linux, Mac, and Windows, and is dedicated to delivering high quality video editing and animation solutions to the world.",
     "tagline": "Video Editor is an award-winning free and open-source video editor for Linux, Mac, and Windows, and is dedicated to delivering high quality video editing and animation solutions to the world.",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/openshot",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:58.218Z",
-    "updated": "2026-09-17T18:10:58.218Z"
+    "updated": "2026-10-06T04:33:17.136Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/openshot-logo.png",
