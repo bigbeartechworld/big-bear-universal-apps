@@ -3,6 +3,14 @@
 All notable changes to Big Bear Universal Apps are documented here.
 Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within the month)
 
+## [2026.10.2]
+
+### Added
+- `apps/reactive-resume-v6/` — Reactive Resume v6.0.0 on host port 3028, with PostgreSQL 18 and uploads at `/app/data`. v6 drops MinIO, Redis, and Browserless. The v5 database migration is one-way, and PostgreSQL 18 cannot open the v5 data directory.
+
+### Changed
+- `apps/reactive-resume/` — renamed to "Reactive Resume (Legacy)" and pinned in `renovate.json` at v5.3.2.
+
 ## [2026.10.1]
 
 ### Added

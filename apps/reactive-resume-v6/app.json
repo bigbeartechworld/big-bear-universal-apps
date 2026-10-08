@@ -1,0 +1,153 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "reactive-resume-v6",
+    "name": "Reactive Resume v6",
+    "description": "Reactive Resume v6 resume builder. This is a new app, separate from Reactive Resume v5. v6 stores uploads on a local volume, renders PDFs in the app, and bundles PostgreSQL 18. It does not include MinIO, Redis, or Browserless. Do not attach it to a v5 database volume. A v5 database migration is one-way, and PostgreSQL 18 cannot open the v5 data directory.",
+    "tagline": "Reactive Resume v6",
+    "version": "v6.0.0",
+    "author": "BigBearTechWorld",
+    "developer": "AmruthPillai",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/amruthpillai/reactive-resume",
+    "source": "big-bear-universal",
+    "created": "2026-10-08T00:00:00Z",
+    "updated": "2026-10-08T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/reactive-resume-v6/logo.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/reactive-resume-v6/logo.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://docs.rxresu.me/self-hosting/upgrading-to-v6",
+    "repository": "https://github.com/reactive-resume/reactive-resume",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "big-bear-reactive-resume-v6",
+    "default_port": "3028",
+    "main_image": "amruthpillai/reactive-resume",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "APP_URL",
+        "default": "http://[CASAOS_IP]:3028",
+        "description": "Exact address users type in the browser, including http:// or https://. Sign-in fails when this does not match.",
+        "required": true
+      },
+      {
+        "name": "AUTH_SECRET",
+        "default": "",
+        "description": "Session secret. Generate with: openssl rand -hex 32. Keep this value. Changing it signs everyone out.",
+        "required": true
+      },
+      {
+        "name": "POSTGRES_PASSWORD",
+        "default": "",
+        "description": "PostgreSQL password. Use hex only (openssl rand -hex 16). Characters such as @ : / # break DATABASE_URL.",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/app/data",
+        "description": "Container Path: /app/data"
+      },
+      {
+        "container": "/var/lib/postgresql",
+        "description": "Container Path: /var/lib/postgresql"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3000",
+        "host": "3028",
+        "protocol": "tcp",
+        "description": "Container Port: 3000 (host port 3028 so it does not collide with Reactive Resume v5 on 3000)"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "NEW APP - REACTIVE RESUME V6\n\nThis is a NEW app, separate from 'reactive-resume' (v5.3.2). Do not treat the install as an upgrade of an existing v5 stack.\n\nFOR NEW USERS:\n- Install this app for new Reactive Resume v6 deployments\n- Set APP_URL to the exact browser address. The default is http://[CASAOS_IP]:3028\n- Set AUTH_SECRET to the output of: openssl rand -hex 32\n- Set POSTGRES_PASSWORD to hex only (openssl rand -hex 16). Characters such as @ : / # break the database URL\n- Web UI is on host port 3028\n- Uploads live in the reactive-resume-v6_data volume, mounted at /app/data\n\nFOR REACTIVE RESUME V5 USERS:\n- Do NOT uninstall the existing 'reactive-resume' app\n- Do NOT point this app at the v5 PostgreSQL volume or the v5 MinIO volume\n- v6 drops database columns that v5 still reads. Starting v6 on that database is one-way\n- This app bundles PostgreSQL 18. That image cannot open the v5 data directory\n- v5 pictures live in MinIO. A database dump does not move them. Copy uploads into /app/data, or configure S3 yourself, after you have a backup\n- Chrome, MinIO, and Redis are not part of this app. v6 renders PDFs itself\n\nUpgrade guide: https://docs.rxresu.me/self-hosting/upgrading-to-v6"
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3028",
+      "volume_mappings": {
+        "reactive-resume-v6_data": "/DATA/AppData/$AppID/data",
+        "reactive-resume-v6_pg_data": "/DATA/AppData/$AppID/pg"
+      },
+      "port": "3028",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "3028"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "reactive-resume-v6_data": "data",
+        "reactive-resume-v6_pg_data": "pg"
+      },
+      "port": "3028"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "3028"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "3028"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "reactive-resume-v6_data": "data",
+        "reactive-resume-v6_pg_data": "pg"
+      },
+      "port": "10151"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}
