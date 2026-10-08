@@ -62,6 +62,9 @@ jobs:
       - name: Run platform sync tests
         run: bash scripts/tests/test-sync-single-app.sh
 
+      - name: Run Tugtainer AGENT_SECRET check
+        run: bash scripts/tests/test-tugtainer-agent-secret.sh
+
   validate-apps:
     name: Validate App Definitions
     runs-on: ubuntu-latest
