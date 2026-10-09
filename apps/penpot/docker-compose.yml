@@ -61,7 +61,7 @@ services:
   # Define the penpot-exporter service
   penpot-exporter:
     # Use the penpotapp/exporter:1.19.3 Docker image
-    image: penpotapp/exporter:2.18.2@sha256:4329b95d4b334b6ff95e80642fa634872a3111d6264f20e6262e43db4129ee58
+    image: penpotapp/exporter:2.18.3@sha256:418232d6ca3120b1c2bfde298a56a05a1f41f567cd8494deac3fe7fbc186cfbd
     # Set the container name to big-bear-penpot-exporter
     container_name: big-bear-penpot-exporter
     # Automatically restart the container unless stopped
