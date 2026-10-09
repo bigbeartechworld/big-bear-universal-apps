@@ -5,6 +5,9 @@ Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within
 
 ## [2026.10.2]
 
+### Fixed
+- `apps/homarr-v2/` — ship `SECRET_ENCRYPTION_KEY`, `DB_DIALECT=sqlite`, and `DB_URL=/appdata/db/db.sqlite` as Compose literals. CasaOS writes the install form onto those lines and does not substitute `${SECRET_ENCRYPTION_KEY}`. ZimaOS turned `${DB_DIALECT:-sqlite}` into an empty value, and Homarr then failed startup looking for `/app/db/migrations/migrate.cjs`. Portainer no longer lists those names as stack variables, because the Compose file does not interpolate them.
+
 ### Added
 - `apps/reactive-resume-v6/` — Reactive Resume v6.0.0 on host port 3028, with PostgreSQL 18 and uploads at `/app/data`. v6 drops MinIO, Redis, and Browserless. The v5 database migration is one-way, and PostgreSQL 18 cannot open the v5 data directory.
 
