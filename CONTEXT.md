@@ -15,3 +15,7 @@ _Avoid_: platform app, export
 **PXE app**:
 A Universal App that serves network boot (TFTP and usually a boot menu). It is not a DHCP server unless the compose explicitly runs one.
 _Avoid_: PXEboot server (when used to mean "DHCP + TFTP + menu in one container")
+
+**App icon**:
+The square mark a store shows for a Universal App. `visual.icon` and `visual.logo` are that same URL.
+_Avoid_: thumbnail, screenshot, app logo
