@@ -245,14 +245,37 @@ is_removable_app_dir() {
     return 0
 }
 
+folder_is_single_component() {
+    local folder="$1"
+    [[ -n "$folder" && "$folder" != "." && "$folder" != ".." ]] || return 1
+    [[ "$folder" != *"/"* && "$folder" != *"\\"* && "$folder" != *$'\n'* ]]
+}
+
 remove_named_dest_app() {
     local platform="$1"
     local folder="$2"
     local dest_dir
     dest_dir=$(get_platform_dest_dir "$platform")
-    local dest_app_dir="$dest_dir/$folder"
 
-    if [[ ! -d "$dest_app_dir" ]] || ! is_removable_app_dir "$platform" "$dest_app_dir"; then
+    if ! folder_is_single_component "$folder"; then
+        print_error "Refusing to remove '$folder' from $platform because it is not a single folder name"
+        return 1
+    fi
+
+    local dest_app_dir="$dest_dir/$folder"
+    if [[ ! -d "$dest_app_dir" ]]; then
+        return 1
+    fi
+
+    local resolved_dest resolved_root
+    resolved_dest=$(cd "$dest_app_dir" && pwd -P) || return 1
+    resolved_root=$(cd "$dest_dir" && pwd -P) || return 1
+    if [[ "$resolved_dest" != "$resolved_root/$folder" ]]; then
+        print_error "Refusing to remove '$folder' from $platform because it is not directly inside the app root"
+        return 1
+    fi
+
+    if ! is_removable_app_dir "$platform" "$dest_app_dir"; then
         return 1
     fi
 
@@ -284,8 +307,15 @@ resolved_sync_folder() {
     local app_json="$UNIVERSAL_REPO/apps/$app/app.json"
     local folder=""
 
-    if [[ -f "$app_json" ]] && command -v jq >/dev/null 2>&1; then
-        folder=$(jq -r --arg platform "$platform" '.compatibility[$platform].folder_name // .metadata.id // empty' "$app_json" 2>/dev/null || true)
+    if [[ -f "$app_json" ]]; then
+        if ! command -v jq >/dev/null 2>&1; then
+            print_error "jq is required to read $app_json for --app $app" >&2
+            return 1
+        fi
+        if ! folder=$(jq -r --arg platform "$platform" '.compatibility[$platform].folder_name // .metadata.id // empty' "$app_json"); then
+            print_error "Could not read the folder name for --app $app ($platform) from $app_json" >&2
+            return 1
+        fi
         if [[ -z "$folder" || "$folder" == "null" || "$folder" == "$app" ]]; then
             folder="$app"
             if [[ "$platform" == "umbrel" ]]; then
@@ -309,6 +339,17 @@ resolved_sync_folder() {
     printf '%s\n' "$app"
 }
 
+read_specific_folder() {
+    local platform="$1"
+    local dest_var="$2"
+    local resolved=""
+    if ! resolved=$(resolved_sync_folder "$platform" "$SPECIFIC_APP"); then
+        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+        return 1
+    fi
+    printf -v "$dest_var" '%s' "$resolved"
+}
+
 # Sync all apps for a platform
 sync_platform() {
     local platform="$1"
@@ -319,7 +360,10 @@ sync_platform() {
     if [[ ! -d "$platform_converted_dir" ]]; then
         print_warning "No converted apps for $platform"
         if [[ -n "$SPECIFIC_APP" ]]; then
-            settle_missing_specific_app "$platform" "$(resolved_sync_folder "$platform" "$SPECIFIC_APP")"
+            local folder=""
+            if read_specific_folder "$platform" folder; then
+                settle_missing_specific_app "$platform" "$folder"
+            fi
         fi
         return
     fi
@@ -342,7 +386,10 @@ sync_platform() {
     if [[ ${#apps[@]} -eq 0 ]]; then
         print_warning "No apps found in $platform"
         if [[ -n "$SPECIFIC_APP" ]]; then
-            settle_missing_specific_app "$platform" "$(resolved_sync_folder "$platform" "$SPECIFIC_APP")"
+            local folder=""
+            if read_specific_folder "$platform" folder; then
+                settle_missing_specific_app "$platform" "$folder"
+            fi
         fi
         return
     fi
@@ -352,7 +399,9 @@ sync_platform() {
     local expected_folder=""
     local matched_here=0
     if [[ -n "$SPECIFIC_APP" ]]; then
-        expected_folder=$(resolved_sync_folder "$platform" "$SPECIFIC_APP")
+        if ! read_specific_folder "$platform" expected_folder; then
+            return
+        fi
     fi
     
     # Sync each app

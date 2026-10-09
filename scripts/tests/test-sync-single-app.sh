@@ -225,6 +225,55 @@ assert_eq "$(exists "$UMBREL/custom-umbrel-name")" "no" "unsupported umbrel fold
 assert_eq "$(cat "$UMBREL/scripts/fix.sh")" "keep-scripts" "scripts survive unsupported-app removal"
 assert_eq "$(cat "$UMBREL/.git/config")" "gitkeep" ".git survives unsupported-app removal"
 
+section "targeted removal refuses a folder_name outside the app root"
+prepare
+mkdir -p "$UNIVERSAL/apps/foo" "$TMP/big-bear-casaos/docs"
+cat > "$UNIVERSAL/apps/foo/app.json" <<'JSON'
+{"metadata":{"id":"foo"},"compatibility":{"casaos":{"folder_name":"../docs"}}}
+JSON
+echo "keep-docs" > "$TMP/big-bear-casaos/docs/README.md"
+run_sync casaos --app foo
+status=$?
+assert_eq "$([[ $status -ne 0 ]] && echo rejected || echo accepted)" "rejected" "traversal folder exits non-zero"
+assert_eq "$(cat "$TMP/big-bear-casaos/docs/README.md")" "keep-docs" "folder outside the app root is not removed"
+assert_eq "$(exists "$APPS/bar")" "yes" "other app survives a rejected removal"
+
+section "targeted removal refuses a symlink that leaves the app root"
+prepare
+OUTSIDE="$TMP/outside-docs"
+mkdir -p "$OUTSIDE" "$UNIVERSAL/apps/foo"
+echo "keep-outside" > "$OUTSIDE/README.md"
+ln -s "$OUTSIDE" "$APPS/linked"
+rm -rf "$UNIVERSAL/converted/casaos/foo"
+cat > "$UNIVERSAL/apps/foo/app.json" <<'JSON'
+{"metadata":{"id":"foo"},"compatibility":{"casaos":{"folder_name":"linked"}}}
+JSON
+run_sync casaos --app foo
+status=$?
+assert_eq "$([[ $status -ne 0 ]] && echo rejected || echo accepted)" "rejected" "outside symlink exits non-zero"
+assert_eq "$(cat "$OUTSIDE/README.md")" "keep-outside" "symlink target outside the app root is not removed"
+assert_eq "$(exists "$APPS/linked")" "yes" "outside symlink is left in place"
+assert_eq "$(exists "$APPS/bar")" "yes" "other app survives a rejected symlink removal"
+
+section "unreadable app metadata does not delete the app id folder"
+prepare
+rm -rf "$UNIVERSAL/converted/casaos/foo"
+mkdir -p "$UNIVERSAL/apps/foo" "$UNIVERSAL/converted/casaos/custom-foo" "$TMP/bin"
+cat > "$UNIVERSAL/apps/foo/app.json" <<'JSON'
+{"metadata":{"id":"foo"},"compatibility":{"casaos":{"folder_name":"custom-foo"}}}
+JSON
+echo "updated-custom" > "$UNIVERSAL/converted/casaos/custom-foo/docker-compose.yml"
+printf '%s\n' '#!/bin/sh' 'exit 1' > "$TMP/bin/jq"
+chmod +x "$TMP/bin/jq"
+saved_path=$PATH
+PATH="$TMP/bin:$PATH"
+run_sync casaos --app foo
+status=$?
+PATH=$saved_path
+assert_eq "$([[ $status -ne 0 ]] && echo rejected || echo accepted)" "rejected" "failed metadata read exits non-zero"
+assert_eq "$(cat "$APPS/foo/docker-compose.yml")" "stale" "app id folder is not removed when metadata cannot be read"
+assert_eq "$(exists "$APPS/bar")" "yes" "other app survives a failed metadata read"
+
 section "--app that matches nothing warns and changes nothing"
 prepare
 run_sync casaos --app nope
