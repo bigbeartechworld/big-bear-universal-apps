@@ -23,13 +23,13 @@ UNIVERSAL_REPO="$(dirname "$SCRIPT_DIR")"
 CONVERTED_DIR="$UNIVERSAL_REPO/converted"
 WORKSPACE_DIR="$(dirname "$UNIVERSAL_REPO")"
 
-# Platform repository paths
-CASAOS_REPO="$WORKSPACE_DIR/big-bear-casaos"
-PORTAINER_REPO="$WORKSPACE_DIR/big-bear-portainer"
-RUNTIPI_REPO="$WORKSPACE_DIR/big-bear-runtipi"
-DOCKGE_REPO="$WORKSPACE_DIR/big-bear-dockge"
-COSMOS_REPO="$WORKSPACE_DIR/big-bear-cosmos"
-UMBREL_REPO="$WORKSPACE_DIR/big-bear-umbrel"
+# Platform repository paths are derived after argument parsing so -w/--workspace takes effect.
+CASAOS_REPO=""
+PORTAINER_REPO=""
+RUNTIPI_REPO=""
+DOCKGE_REPO=""
+COSMOS_REPO=""
+UMBREL_REPO=""
 
 PLATFORMS=("casaos" "portainer" "runtipi" "dockge" "cosmos" "umbrel")
 SPECIFIC_APP=""
@@ -60,7 +60,7 @@ OPTIONS:
     --dry-run              Show what would be synced
     --force                Overwrite existing apps
     --replace-all          Delete all existing apps before syncing
-    --no-clean             Skip removing orphaned apps (apps removed by default when not in source; always skipped with --app)
+    --no-clean             Skip removing orphaned apps (apps removed by default when not in source; a single-app sync removes only the named app)
     -v, --verbose          Verbose output
 
 EXAMPLES:
@@ -100,6 +100,13 @@ if [[ "$REPLACE_ALL" == "true" ]] && [[ -n "$SPECIFIC_APP" ]]; then
     print_error "--replace-all cannot be combined with --app"
     exit 1
 fi
+
+CASAOS_REPO="$WORKSPACE_DIR/big-bear-casaos"
+PORTAINER_REPO="$WORKSPACE_DIR/big-bear-portainer"
+RUNTIPI_REPO="$WORKSPACE_DIR/big-bear-runtipi"
+DOCKGE_REPO="$WORKSPACE_DIR/big-bear-dockge"
+COSMOS_REPO="$WORKSPACE_DIR/big-bear-cosmos"
+UMBREL_REPO="$WORKSPACE_DIR/big-bear-umbrel"
 
 # Validate directories
 validate_directories() {
@@ -157,6 +164,115 @@ check_platform_repo() {
     return 0
 }
 
+# Same folder rule as convert-to-platforms.sh: compatibility.<platform>.folder_name,
+# otherwise metadata.id, and Umbrel prefixes big-bear-umbrel- when that value is
+# still the app directory name.
+resolve_converted_folder_name() {
+    local platform="$1"
+    local app_name="$2"
+    local app_json="$UNIVERSAL_REPO/apps/$app_name/app.json"
+    local folder_name=""
+
+    if [[ -f "$app_json" ]] && command -v python3 >/dev/null 2>&1; then
+        folder_name="$(python3 - "$app_json" "$platform" << 'PY'
+import json, sys
+path, platform = sys.argv[1], sys.argv[2]
+try:
+    with open(path) as fh:
+        data = json.load(fh)
+except Exception as exc:
+    print(f"Cannot read {path}: {exc}", file=sys.stderr)
+    sys.exit(1)
+compat = (data.get("compatibility") or {}).get(platform) or {}
+folder = compat.get("folder_name")
+if folder in (None, "", "null"):
+    folder = (data.get("metadata") or {}).get("id") or ""
+if folder in (None, "null"):
+    folder = ""
+print(folder)
+PY
+)" || folder_name=""
+    elif [[ -f "$app_json" ]]; then
+        print_warning "python3 is required to read folder_name overrides for $app_name"
+    fi
+
+    if [[ "$platform" == "umbrel" ]]; then
+        if [[ -z "$folder_name" || "$folder_name" == "null" || "$folder_name" == "$app_name" ]]; then
+            folder_name="big-bear-umbrel-$app_name"
+        fi
+    elif [[ -z "$folder_name" || "$folder_name" == "null" ]]; then
+        folder_name="$app_name"
+    fi
+
+    printf '%s\n' "$folder_name"
+}
+
+# Umbrel apps live in the repository root, next to .git, scripts, schemas, and
+# any other top-level directory the store adds later. Only directories the
+# converter writes (they contain umbrel-app.yml) are apps.
+is_platform_app_dir() {
+    local platform="$1"
+    local dir="$2"
+    local name
+    name="$(basename "$dir")"
+
+    if [[ "$name" == "__tests__" ]]; then
+        return 1
+    fi
+    if [[ "$platform" == "umbrel" ]]; then
+        [[ -f "$dir/umbrel-app.yml" ]]
+        return
+    fi
+    return 0
+}
+
+remove_absent_app() {
+    local platform="$1"
+    local folder="$2"
+    local dest_dir source_dir dest_app_dir
+    dest_dir="$(get_platform_dest_dir "$platform")"
+    source_dir="$CONVERTED_DIR/$platform/$folder"
+    dest_app_dir="$dest_dir/$folder"
+
+    if [[ -d "$source_dir" || ! -d "$dest_app_dir" ]]; then
+        return 1
+    fi
+    if ! is_platform_app_dir "$platform" "$dest_app_dir"; then
+        return 1
+    fi
+
+    if [[ "$DRY_RUN" == "true" ]]; then
+        print_warning "DRY RUN: Would remove orphaned app: $folder"
+        return 0
+    fi
+
+    print_warning "Removing orphaned app: $folder"
+    rm -rf "$dest_app_dir"
+}
+
+# --app names an app that is no longer in converted/. Remove only that folder.
+conclude_specific_app() {
+    local platform="$1"
+    local resolved_folder="$2"
+
+    if [[ "$NO_CLEAN" == "true" ]]; then
+        local dest_dir
+        dest_dir="$(get_platform_dest_dir "$platform")"
+        if [[ ! -d "$dest_dir/$resolved_folder" && ! -d "$dest_dir/$SPECIFIC_APP" ]]; then
+            print_warning "No app matched '$SPECIFIC_APP' for $platform"
+        fi
+        return
+    fi
+
+    if remove_absent_app "$platform" "$resolved_folder"; then
+        return
+    fi
+    if [[ "$resolved_folder" != "$SPECIFIC_APP" ]] && remove_absent_app "$platform" "$SPECIFIC_APP"; then
+        return
+    fi
+    print_warning "No app matched '$SPECIFIC_APP' for $platform"
+}
+
 # Replace all apps in platform
 replace_all_apps() {
     local platform="$1"
@@ -172,7 +288,15 @@ replace_all_apps() {
     fi
     
     print_warning "Deleting all existing apps in $platform..."
-    find "$dest_dir" -mindepth 1 -maxdepth 1 -type d ! -name '__tests__' -exec rm -rf {} + 2>/dev/null || true
+    if [[ "$platform" == "umbrel" ]]; then
+        while IFS= read -r -d '' app_dir; do
+            if is_platform_app_dir "$platform" "$app_dir"; then
+                rm -rf "$app_dir"
+            fi
+        done < <(find "$dest_dir" -mindepth 1 -maxdepth 1 -type d -print0)
+    else
+        find "$dest_dir" -mindepth 1 -maxdepth 1 -type d ! -name '__tests__' -exec rm -rf {} + 2>/dev/null || true
+    fi
     print_success "Cleared $platform"
 }
 
@@ -218,11 +342,19 @@ sync_app_to_platform() {
 sync_platform() {
     local platform="$1"
     local platform_converted_dir="$CONVERTED_DIR/$platform"
+    local resolved_folder=""
+
+    if [[ -n "$SPECIFIC_APP" ]]; then
+        resolved_folder="$(resolve_converted_folder_name "$platform" "$SPECIFIC_APP")"
+    fi
     
     print_info "Syncing apps for $platform..."
     
     if [[ ! -d "$platform_converted_dir" ]]; then
         print_warning "No converted apps for $platform"
+        if [[ -n "$SPECIFIC_APP" ]] && check_platform_repo "$platform"; then
+            conclude_specific_app "$platform" "$resolved_folder"
+        fi
         return
     fi
     
@@ -243,11 +375,15 @@ sync_platform() {
     
     if [[ ${#apps[@]} -eq 0 ]]; then
         print_warning "No apps found in $platform"
+        if [[ -n "$SPECIFIC_APP" ]]; then
+            conclude_specific_app "$platform" "$resolved_folder"
+        fi
         return
     fi
     
     print_info "Found ${#apps[@]} apps for $platform"
     
+    local matched_specific=0
     # Sync each app
     for app_name in "${apps[@]}"; do
         # Skip _example template app
@@ -258,12 +394,23 @@ sync_platform() {
             continue
         fi
         
-        if [[ -n "$SPECIFIC_APP" ]] && [[ "$app_name" != "$SPECIFIC_APP" ]]; then
-            continue
+        if [[ -n "$SPECIFIC_APP" ]]; then
+            if [[ "$app_name" != "$resolved_folder" && "$app_name" != "$SPECIFIC_APP" ]]; then
+                continue
+            fi
+            # Prefer the converter folder when both it and the literal name exist.
+            if [[ "$app_name" != "$resolved_folder" && -d "$platform_converted_dir/$resolved_folder" ]]; then
+                continue
+            fi
+            matched_specific=1
         fi
         
         sync_app_to_platform "$platform" "$app_name"
     done
+
+    if [[ -n "$SPECIFIC_APP" && "$matched_specific" -eq 0 ]]; then
+        conclude_specific_app "$platform" "$resolved_folder"
+    fi
     
     # Post-sync tasks for specific platforms
     post_sync_platform "$platform"
@@ -324,8 +471,13 @@ clean_orphaned_apps() {
     while IFS= read -r -d '' dest_app_dir; do
         local app_name=$(basename "$dest_app_dir")
         
-        # Skip special directories (hidden dirs like .git, .github, and known non-app dirs)
-        if [[ "$app_name" == "__tests__" ]] || \
+        # Umbrel's destination is the repo root, so only directories that contain
+        # umbrel-app.yml are apps. Other platforms keep the existing denylist.
+        if [[ "$platform" == "umbrel" ]]; then
+            if ! is_platform_app_dir "$platform" "$dest_app_dir"; then
+                continue
+            fi
+        elif [[ "$app_name" == "__tests__" ]] || \
            [[ "$app_name" =~ ^\. ]] || \
            [[ "$app_name" == "scripts" ]] || \
            [[ "$app_name" == "templates" ]]; then
