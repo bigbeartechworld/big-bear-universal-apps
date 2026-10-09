@@ -40,26 +40,7 @@
     "compose_file": "docker-compose.yml"
   },
   "deployment": {
-    "environment_variables": [
-      {
-        "name": "SECRET_ENCRYPTION_KEY",
-        "default": "",
-        "description": "64 character hex string. Generate with: openssl rand -hex 32. Keep the v1 key if you copy its appdata.",
-        "required": true
-      },
-      {
-        "name": "DB_DIALECT",
-        "default": "sqlite",
-        "description": "Database dialect. Leave sqlite unless v1 used an external PostgreSQL database, in which case set postgresql.",
-        "required": false
-      },
-      {
-        "name": "DB_URL",
-        "default": "/appdata/db/db.sqlite",
-        "description": "Database URL. Leave the SQLite default, or set the same PostgreSQL URL used by Homarr v1. Stop v1 and back up that database before starting v2 against it. Copying /appdata does not copy an external database.",
-        "required": false
-      }
-    ],
+    "environment_variables": [],
     "volumes": [
       {
         "container": "/appdata",
