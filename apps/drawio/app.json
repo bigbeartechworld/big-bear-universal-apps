@@ -5,7 +5,7 @@
     "name": "Draw.io",
     "description": "Draw.io is a structured diagram editor for creating flowcharts, network diagrams, and other visual documentation.",
     "tagline": "Structured diagram editor",
-    "version": "32.0.2",
+    "version": "32.2.0",
     "author": "BigBearCommunity",
     "developer": "JGraph",
     "category": "Productivity",
@@ -13,7 +13,7 @@
     "homepage": "https://www.drawio.com/",
     "source": "big-bear-universal",
     "created": "2026-09-18T00:00:00Z",
-    "updated": "2026-10-08T05:26:14.627Z"
+    "updated": "2026-10-09T09:59:41.600Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/drawio.png",
