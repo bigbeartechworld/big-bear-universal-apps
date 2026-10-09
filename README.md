@@ -194,7 +194,7 @@ Validate apps against the JSON schema:
 | **Brave** | This Image contains a browser-accessible version of Brave. | `kasmweb/brave` | 1.15.0-rolling | 6901 | [▶️](https://youtu.be/CJ2x-yCW-co) |  |
 | **btop** | A monitor of resources. Software made by Aristocratos at https://github.com/aristocratos/btop | `bigbeartechworld/big-bear-btop` | 0.1.11 | 7681 | [▶️](https://youtu.be/mD52bujMt68) |  |
 | **Budge** | Budge is an open source 'budgeting with envelopes' personal finance app. | `linuxserver/budge` | 0.0.9 | 80 |  |  |
-| **Budibase** | Low code platform for creating internal tools, workflows, and admin panels in minutes. Supports P... | `budibase/budibase` | v3.47.0 | 8080 |  |  |
+| **Budibase** | Low code platform for creating internal tools, workflows, and admin panels in minutes. Supports P... | `budibase/budibase` | v3.48.0 | 8080 |  |  |
 | **Build-agent** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/build-a... | `linuxserver/build-agent` | 0.0.0 | 80 |  |  |
 | **Buzz** | Buzz is a self-hostable workspace for humans and agents from Block. It runs a Nostr relay, a REST... | `ghcr.io/block/buzz` | latest | 3000 |  | [📖](https://engineering.block.xyz/blog/run-your-own-buzz-relay) |
 | **Caddy** | Caddy - The Ultimate Server with Automatic HTTPS. | `caddy` | 2.11.6 | 48100 |  |  |
@@ -203,7 +203,7 @@ Validate apps against the JSON schema:
 | **Calibre** | Calibre is a powerful and easy to use e-book manager. Users say it's outstanding and a must-have.... | `linuxserver/calibre` | 9.15.0 | 8080 |  |  |
 | **Calibre-web** | Calibre-web is a web app providing a clean interface for browsing, reading and downloading eBooks... | `linuxserver/calibre-web` | 0.6.27 | 8083 |  |  |
 | **Calligra** | Calligra is an office and graphic art suite by KDE. It is available for desktop PCs, tablet compu... | `linuxserver/calligra` | 3.2.1 | 3000 |  |  |
-| **Cantinarr** | Cantinarr brings media requests and server management into one app. Household members browse and ... | `ghcr.io/windoze95/cantinarr` | 0.16.0 | 8585 |  | [📖](https://github.com/windoze95/cantinarr#readme) |
+| **Cantinarr** | Cantinarr brings media requests and server management into one app. Household members browse and ... | `ghcr.io/windoze95/cantinarr` | 1.0.0 | 8585 |  | [📖](https://github.com/windoze95/cantinarr#readme) |
 | **CasaOS Toolbox** | CasaOS Toolbox is an extension application that provides additional features to CasaOS. | `wisdomsky/casaos-toolbox` | 0.2 | 8088 |  |  |
 | **Celestory & Voltask** | The all-in-one no-code platform for interactive storytelling and Voltask automation engine. Paid ... | `celestory/gateway` | 1.1.2 | 1500 |  |  |
 | **Change Detection** | The best and simplest free open source website change detection, restock monitor and notification... | `ghcr.io/dgtlmoon/changedetection.io` | 0.55.3 | 5000 |  |  |
@@ -250,8 +250,8 @@ Validate apps against the JSON schema:
 | **Domoticz** | Visit homepage: https://hub.docker.com/r/linuxserver/domoticz/ | `linuxserver/domoticz` | 2023.2.20231129 | 8080 |  |  |
 | **Dosbox-staging** | DOSBox Staging is a modern continuation of DOSBox a free and open-source emulator that enables th... | `linuxserver/dosbox-staging` | 0.83.0 | 3000 |  |  |
 | **Doublecommander** | Double Commander is a free cross platform open source file manager with two panels side by side. ... | `linuxserver/doublecommander` | 0.0.0 | 3000 |  |  |
-| **Dozzle** | Dozzle is a real-time log viewer for docker containers. | `amir20/dozzle` | v11.2.0 | 8888 | [▶️](https://youtu.be/lLLNDcHNOuM) |  |
-| **Draw.io** | Draw.io is a structured diagram editor for creating flowcharts, network diagrams, and other visua... | `jgraph/drawio` | 32.0.1 | 8080 |  | [📖](https://www.drawio.com/doc/) |
+| **Dozzle** | Dozzle is a real-time log viewer for docker containers. | `amir20/dozzle` | v11.3.0 | 8888 | [▶️](https://youtu.be/lLLNDcHNOuM) |  |
+| **Draw.io** | Draw.io is a structured diagram editor for creating flowcharts, network diagrams, and other visua... | `jgraph/drawio` | 32.0.2 | 8080 |  | [📖](https://www.drawio.com/doc/) |
 | **Duckdns** | Duckdns is a free service which will point a DNS (sub domains of duckdns.org) to an IP of your ch... | `linuxserver/duckdns` | 0.0.0 | 80 |  |  |
 | **Duckstation** | DuckStation is a PS1 Emulator aiming for the best accuracy and game support. | `linuxserver/duckstation` | 0.0.0 | 3000 |  |  |
 | **Duplicati** | Duplicati is a backup client that securely stores encrypted, incremental, compressed backups on l... | `linuxserver/duplicati` | 2.4.0 | 8200 |  |  |
@@ -289,11 +289,11 @@ Validate apps against the JSON schema:
 | **Focalboard** | Focalboard is an open source, multilingual, self-hosted project management tool that's an alterna... | `mattermost/focalboard` | 7.11.4 | 8000 | [▶️](https://youtu.be/fBDpqpN8sks) |  |
 | **Foldingathome** | Folding@home is a distributed computing project for simulating protein dynamics, including the pr... | `linuxserver/foldingathome` | 8.5.6 | 80 |  |  |
 | **Freecad** | FreeCAD is a general-purpose parametric 3D computer-aided design (CAD) modeler and a building inf... | `linuxserver/freecad` | 1.1.4 | 3000 |  |  |
-| **Freshrss** | Freshrss is a free, self-hostable aggregator for rss feeds. | `linuxserver/freshrss` | 1.30.0 | 80 |  |  |
+| **Freshrss** | Freshrss is a free, self-hostable aggregator for rss feeds. | `linuxserver/freshrss` | 1.30.1 | 80 |  |  |
 | **GemDigest Bot** | Simplify your reads, amplify your time! 📚✨ GemDigest is a Telegram bot that summarizes articles ... | `piero24/gemdigest` | 1.0 | 3333 |  |  |
 | **Genmon** | Generac (and other models) Generator Monitoring using a Raspberry Pi and WiFi | `bigbeartechworld/big-bear-genmon` | 2.0.01 | 8000 | [▶️](https://youtu.be/b0_zuVVeIP4) |  |
 | **Ghost** | Ghost is a free and open source blogging platform written in JavaScript and distributed under the... | `ghost` | 6.67.0-alpine | 2368 | [▶️](https://youtu.be/oJZK9vH4W4Y) |  |
-| **Ghostfolio** | Open Source Wealth Management Software. Angular + NestJS + Prisma + Nx + TypeScript 🤍 | `ghostfolio/ghostfolio` | 3.75.0 | 3333 | [▶️](https://youtu.be/CNe4-8Vyhos) |  |
+| **Ghostfolio** | Open Source Wealth Management Software. Angular + NestJS + Prisma + Nx + TypeScript 🤍 | `ghostfolio/ghostfolio` | 3.79.0 | 3333 | [▶️](https://youtu.be/CNe4-8Vyhos) |  |
 | **Gimp** | GIMP is a free and open-source raster graphics editor used for image manipulation (retouching) an... | `linuxserver/gimp` | 0.0.0 | 3000 |  |  |
 | **Gitea** | Gitea is a painless self-hosted all-in-one software development service. It includes Git hosting,... | `gitea/gitea` | 28.0.0 | 3000 |  | [📖](https://docs.gitea.com/) |
 | **Gitea Mirror** | Gitea Mirror is a modern web app for automatically mirroring repositories from GitHub to your sel... | `ghcr.io/raylabshq/gitea-mirror` | v3.15.10 | 4321 |  | [📖](https://community.bigbeartechworld.com/t/added-gitea-mirror-to-bigbearcasaos/3515?u=dragonfire1119#p-5962-documentation-6) |
@@ -311,7 +311,7 @@ Validate apps against the JSON schema:
 | **Gzdoom** | GZDoom is a feature centric port for all Doom engine games, based on ZDoom, adding an OpenGL rend... | `linuxserver/gzdoom` | 4.14.2 | 3000 |  |  |
 | **Habridge** | Habridge emulates Philips Hue API to other home automation gateways such as an Amazon Echo/Dot Ge... | `linuxserver/habridge` | 5.4.1 | 8080 |  |  |
 | **Handbrake** | HandBrake is an open-source tool, built by volunteers, for converting video from nearly any forma... | `linuxserver/handbrake` | 1.11.2 | 3000 |  |  |
-| **Healthchecks** | Healthchecks is a watchdog for your cron jobs. It's a web server that listens for pings from your... | `linuxserver/healthchecks` | 4.4.20260921 | 8000 |  |  |
+| **Healthchecks** | Healthchecks is a watchdog for your cron jobs. It's a web server that listens for pings from your... | `linuxserver/healthchecks` | 4.4.20261005 | 8000 |  |  |
 | **Hedgedoc** | HedgeDoc gives you access to all your files wherever you are. HedgeDoc is a real-time, multi-plat... | `linuxserver/hedgedoc` | 1.12.0 | 3000 |  |  |
 | **Heimdall** | Heimdall is a way to organise all those links to your most used web sites and web applications in... | `linuxserver/heimdall` | 2.8.3 | 80 |  |  |
 | **Helium** | Helium is a Chromium-based web browser made for people, with love. Privacy-first with unbiased ad... | `linuxserver/helium` | 0.18.3 | 3000 |  |  |
@@ -350,7 +350,7 @@ Validate apps against the JSON schema:
 | **Kdenlive** | Kdenlive is a powerful free and open source cross-platform video editing program made by the KDE ... | `linuxserver/kdenlive` | 423.08.5 | 3000 |  |  |
 | **Keepassxc** | KeePassXC is a free and open-source password manager. It started as a community fork of KeePassX ... | `linuxserver/keepassxc` | 2.7.12 | 3000 |  |  |
 | **Kicad** | KiCad - A Cross Platform and Open Source Electronics Design Automation Suite. | `linuxserver/kicad` | 10.0.3 | 3000 |  |  |
-| **Kimai** | Kimai is a professional grade time-tracking application, free and open-source. It handles use-cas... | `linuxserver/kimai` | 2.67.0 | 80 |  |  |
+| **Kimai** | Kimai is a professional grade time-tracking application, free and open-source. It handles use-cas... | `linuxserver/kimai` | 2.68.0 | 80 |  |  |
 | **KitchenOwl** | KitchenOwl is a self-hosted grocery list and recipe manager. Track what you need to buy, add reci... | `tombursch/kitchenowl` | v0.7.10 | 9287 |  | [📖](https://docs.kitchenowl.org/) |
 | **Kiwix Server** | Kiwix Server is a web server for hosting .zim files | `ghcr.io/kiwix/kiwix-serve` | 3.7.0-2 | 8080 |  |  |
 | **Kometa** | Kometa is a powerful tool designed to give you complete control over your media libraries. With K... | `linuxserver/kometa` | 2.5.1 | 80 |  |  |
@@ -364,7 +364,7 @@ Validate apps against the JSON schema:
 | **Libreoffice** | LibreOffice is a free and powerful office suite, and a successor to OpenOffice.org (commonly know... | `linuxserver/libreoffice` | 25.8.7 | 3000 |  |  |
 | **Librespeed** | Librespeed is a very lightweight Speedtest implemented in Javascript, using XMLHttpRequest and We... | `linuxserver/librespeed` | 6.3.0 | 80 |  |  |
 | **LibreTranslate** | Free and Open Source Machine Translation API, entirely self-hosted. Unlike other APIs, it doesn't... | `libretranslate/libretranslate` | v1.9.6 | 5000 | [▶️](https://youtu.be/VJ5DrsuJ3oA) |  |
-| **Librewolf** | LibreWolf is a custom and independent version of Firefox, with the primary goals of privacy, secu... | `linuxserver/librewolf` | 156.0.1 | 3000 |  |  |
+| **Librewolf** | LibreWolf is a custom and independent version of Firefox, with the primary goals of privacy, secu... | `linuxserver/librewolf` | 157.0.1 | 3000 |  |  |
 | **Limnoria** | Limnoria A robust, full-featured, and user/programmer-friendly Python IRC bot, with many existing... | `linuxserver/limnoria` | 2026.5.8 | 8080 |  |  |
 | **LinkStack** | LinkStack is a link-in-bio tool that allows you to create a personalized and easily customizable ... | `linkstackorg/linkstack` | V4 | 10443 | [▶️](https://youtu.be/1KgFlCsItro) |  |
 | **Linkwarden** | ⚡️⚡️⚡️Self-hosted collaborative bookmark manager to collect, organize, and preserve webpages and ... | `ghcr.io/linkwarden/linkwarden` | v2.14.1 | 3000 | [▶️](https://youtu.be/KZXZAi9Vjs4) |  |
@@ -403,7 +403,7 @@ Validate apps against the JSON schema:
 | **Music Assistant** | Music Assistant is a music library manager for your offline and online music sources which can ea... | `ghcr.io/music-assistant/server` | 2.8.7 | 8095 |  |  |
 | **MySpeed** | MySpeed is a speed test analysis software that records your internet speed for up to 30 days. | `germannewsmaker/myspeed` | 1.0.9 | 5216 | [▶️](https://youtu.be/7roj87Fytz0) |  |
 | **Mysql-workbench** | MySQL Workbench is a unified visual tool for database architects, developers, and DBAs. MySQL Wor... | `linuxserver/mysql-workbench` | 8.0.47 | 3000 |  |  |
-| **n8n** | Free and open fair-code licensed node based Workflow Automation Tool. | `n8nio/n8n` | 2.42.2 | 5678 |  |  |
+| **n8n** | Free and open fair-code licensed node based Workflow Automation Tool. | `n8nio/n8n` | 2.42.3 | 5678 |  |  |
 | **Nano** | Nano is a digital payment protocol designed to be accessible and lightweight, with a focus on rem... | `linuxserver/nano` | 21.2.20220522 | 8075 |  |  |
 | **Nano-wallet** | Nano-wallet is a digital payment protocol designed to be accessible and lightweight, with a focus... | `linuxserver/nano-wallet` | 1.3.2 | 80 |  |  |
 | **Navidrome** | Modern web-based music server and streamer for your personal music collection. | `deluan/navidrome` | 0.64.2 | 4533 |  | [📖](https://www.navidrome.org/docs/) |
@@ -433,11 +433,11 @@ Validate apps against the JSON schema:
 | **OctoPrint** | OctoPrint is the snappy web interface for your 3D printer! | `octoprint/octoprint` | 1.11.8 | 1080 | [▶️](https://youtu.be/gQ0J9y8w2wE) |  |
 | **Odoo (Legacy)** | Open-source business management software suite designed to streamline various aspects of business... | `odoo` | 19 | 8069 |  | [📖](https://community.bigbeartechworld.com/t/added-odoo-to-bigbearcasaos/1115?u=dragonfire1119) |
 | **Odoo v20** | Open-source business management software suite designed to streamline various aspects of business... | `odoo` | 20.0.0 | 8070 |  | [📖](https://www.odoo.com/documentation/master/administration/upgrade.html) |
-| **Odysseus** | Odysseus is a self-hosted AI workspace. It bundles chat, web search via SearXNG, and a ChromaDB v... | `bigbeartechworld/big-bear-odysseus` | 2026.09.28 | 7000 |  | [📖](https://github.com/pewdiepie-archdaemon/odysseus) |
+| **Odysseus** | Odysseus is a self-hosted AI workspace. It bundles chat, web search via SearXNG, and a ChromaDB v... | `bigbeartechworld/big-bear-odysseus` | 2026.10.05 | 7000 |  | [📖](https://github.com/pewdiepie-archdaemon/odysseus) |
 | **Ollama - AMD** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.35.1-rocm | 11434 |  |  |
 | **Ollama - CPU** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.35.1 | 11434 |  |  |
 | **Ollama - NVIDIA** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.35.1 | 11434 |  |  |
-| **OneDev** | Self-hosted Git Server with Kanban and CI/CD | `1dev/server` | 16.8.3 | 6610 | [▶️](https://youtu.be/ps3JLYRB3SA) |  |
+| **OneDev** | Self-hosted Git Server with Kanban and CI/CD | `1dev/server` | 16.8.4 | 6610 | [▶️](https://youtu.be/ps3JLYRB3SA) |  |
 | **OnlyOffice** | Feature-rich web-based office suite with a vast range of collaborative capabilities | `onlyoffice/documentserver` | 9.1.0 | 7400 |  |  |
 | **Open WebUI** | Open WebUI is an extensible, feature-rich, and user-friendly self-hosted WebUI designed to operat... | `ghcr.io/open-webui/open-webui` | git-33e54a9 | 8080 |  |  |
 | **OpenClaw** | OpenClaw is a self-hosted AI agent platform that provides Claude AI integration through a local g... | `ghcr.io/openclaw/openclaw` | 2026.5.3-1 | 18789 |  | [📖](https://docs.openclaw.ai/install/docker) |
@@ -445,7 +445,7 @@ Validate apps against the JSON schema:
 | **Openssh-server** | Openssh-server is a sandboxed environment that allows ssh access without giving keys to the entir... | `linuxserver/openssh-server` | 0.0.0 | 2222 |  |  |
 | **OpenVPN** | OpenVPN is an open-source commercial software that implements virtual private network (VPN) techn... | `openvpn/openvpn-as` | 2.13.1-d8cdeb9c-Ubuntu22 | 943 |  |  |
 | **Openvscode-server** | Openvscode-server provides a version of VS Code that runs a server on a remote machine and allows... | `linuxserver/openvscode-server` | 1.109.5 | 3000 |  |  |
-| **Opera** | Opera is a multi-platform web browser developed by its namesake company Opera. The browser is bas... | `linuxserver/opera` | 136.0.6008 | 3000 |  |  |
+| **Opera** | Opera is a multi-platform web browser developed by its namesake company Opera. The browser is bas... | `linuxserver/opera` | 137.0.6036 | 3000 |  |  |
 | **Orcaslicer** | Orca Slicer is an open source slicer for FDM printers. OrcaSlicer is fork of Bambu Studio, it was... | `linuxserver/orcaslicer` | 2.4.2 | 3000 |  |  |
 | **OTEL LGTM** | An OpenTelemetry Backend in a Docker Image. | `grafana/otel-lgtm` | 0.35.0 | 3000 |  |  |
 | **ownCloud** | ownCloud offers file sharing and collaboration trusted by 200+ million users worldwide regardless... | `owncloud/server` | 11.0.0 | 8080 |  |  |
@@ -457,7 +457,7 @@ Validate apps against the JSON schema:
 | **Pcsx2** | PCSX2 is an open source PS2 Emulator. | `linuxserver/pcsx2` | 2.8.2 | 3000 |  |  |
 | **PD3F** | pd3f is a PDF text extraction pipeline that is self-hosted, local-first and Docker-based. It reco... | `pd3f/pd3f` | latest | 1616 |  |  |
 | **Pelorus** | Pelorus is an AI navigator for Selkies-powered Linux desktops. Pelorus runs a FastAPI server that... | `linuxserver/pelorus` | 0.2.3 | 3001 |  |  |
-| **Penpot** | Designers and developers can finally work in unison to build beautifully designed software experi... | `penpotapp/frontend` | 2.18.1 | 9001 |  |  |
+| **Penpot** | Designers and developers can finally work in unison to build beautifully designed software experi... | `penpotapp/frontend` | 2.18.2 | 9001 |  |  |
 | **Peppermint** | Peppermint is a central hub for your help desk. A powerfully easy system for tracking, prioritisi... | `pepperlabs/peppermint` | latest | 3000 |  |  |
 | **Photoprism** | PhotoPrism® is an AI-Powered Photos App for the Decentralized Web. It makes use of the latest tec... | `photoprism/photoprism` | 240915 | 2342 |  |  |
 | **phpMyAdmin** | phpMyAdmin - A web interface for MySQL and MariaDB. | `phpmyadmin/phpmyadmin` | 5.2.3 | 8080 |  |  |
@@ -506,7 +506,8 @@ Validate apps against the JSON schema:
 | **Raneto** | Raneto - is an open source Knowledgebase platform that uses static Markdown files to power your K... | `linuxserver/raneto` | 0.18.1 | 3000 |  |  |
 | **Rawtherapee** | RawTherapee is a free, cross-platform raw image processing program! | `linuxserver/rawtherapee` | 5.13.20260927 | 3000 |  |  |
 | **Rdesktop** | Rdesktop - Containers containing full desktop environments in many popular flavors for Alpine, Ub... | `linuxserver/rdesktop` | 0.0.0 | 3389 |  |  |
-| **Reactive Resume** | A free and open-source resume builder that simplifies the process of creating, updating, and shar... | `amruthpillai/reactive-resume` | v5.3.2 | 3000 |  |  |
+| **Reactive Resume (Legacy)** | A free and open-source resume builder that simplifies the process of creating, updating, and shar... | `amruthpillai/reactive-resume` | v5.3.2 | 3000 |  |  |
+| **Reactive Resume v6** | Reactive Resume v6 resume builder. This is a new app, separate from Reactive Resume v5. v6 stores... | `amruthpillai/reactive-resume` | v6.0.0 | 3028 |  | [📖](https://docs.rxresu.me/self-hosting/upgrading-to-v6) |
 | **Readeck** | Readeck is a simple web application that lets you save the precious readable content of web pages... | `codeberg.org/readeck/readeck` | 0.22.3 | 8000 |  |  |
 | **Readme-sync** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/readme-... | `linuxserver/readme-sync` | 0.0.0 | 80 |  |  |
 | **Redis** | Redis is an open source (BSD licensed), in-memory data structure store used as a database, cache,... | `redis` | 8.8.3 | 48110 |  |  |
@@ -540,15 +541,16 @@ Validate apps against the JSON schema:
 | **Snipe-it** | Visit homepage: https://hub.docker.com/r/linuxserver/snipe-it/ | `linuxserver/snipe-it` | 7.1.17 | 8080 |  |  |
 | **Snipe-IT v8** | Snipe-IT is a free, open source IT asset management system. | `snipe/snipe-it` | v8.8.0 | 8086 |  | [📖](https://snipe-it.readme.io/docs/docker) |
 | **Socket-proxy** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/socket-... | `linuxserver/socket-proxy` | 3.4.6 | 80 |  |  |
+| **SolidPing** | SolidPing monitors HTTP(S) endpoints, TCP/UDP ports, DNS records, SSL certificates, ICMP ping, an... | `ghcr.io/fclairamb/solidping` | 0.37.0 | 4000 |  | [📖](https://solidping.io/docs) |
 | **Spacedrive** | Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed files... | `ghcr.io/spacedriveapp/spacedrive/server` | 0.4.2 | 8080 |  |  |
 | **Speedtest Tracker** | A Docker image to check your internet speed using Ookla's Speedtest service. Build using Laravel ... | `linuxserver/speedtest-tracker` | 1.15.0 | 8080 | [▶️](https://youtu.be/TLjS8xNNwis) |  |
 | **Spoolman** | Keep track of your inventory of 3D-printer filament spools. Spoolman is a self-hosted web service... | `ghcr.io/donkie/spoolman` | 0.23.1 | 7912 |  | [📖](https://community.bigbeartechworld.com/t/added-spoolman-to-bigbearuniversal-apps/5108#p-7792-documentation-4) |
 | **Sqlitebrowser** | DB Browser for SQLite is a high quality, visual, open source tool to create, design, and edit dat... | `linuxserver/sqlitebrowser` | 18.04.1 | 3000 |  |  |
-| **Stalwart Mail** | Stalwart Mail Server is an open-source mail server solution with JMAP, IMAP4, POP3, and SMTP supp... | `stalwartlabs/stalwart` | v0.16.24 | 8080 |  |  |
+| **Stalwart Mail** | Stalwart Mail Server is an open-source mail server solution with JMAP, IMAP4, POP3, and SMTP supp... | `stalwartlabs/stalwart` | v0.16.25 | 8080 |  |  |
 | **Statping** | An easy to use Status Page for your websites and applications. Statping will automatically fetch ... | `statping/statping` | v0.90.74 | 48107 |  |  |
 | **Steam** | Steam is the ultimate destination for playing, discussing, and creating games. | `linuxserver/steam` | 0.0.0 | 3000 |  |  |
 | **Steamos** | SteamOS is an Arch based Linux distribution made by Valve Software. This container is a vanilla A... | `linuxserver/steamos` | 0.0.0 | 3000 |  |  |
-| **Stirling-PDF** | Stirling PDF - Local hosted web based PDF editor | `stirlingtools/stirling-pdf` | 3.0.2 | 8080 | [▶️](https://youtu.be/ZoPSPDvOPdo) | [📖](https://community.bigbeartechworld.com/t/added-stirling-pdf-to-bigbearcasaos/2265#p-4248-documentation-3) |
+| **Stirling-PDF** | Stirling PDF - Local hosted web based PDF editor | `stirlingtools/stirling-pdf` | 3.1.0 | 8080 | [▶️](https://youtu.be/ZoPSPDvOPdo) | [📖](https://community.bigbeartechworld.com/t/added-stirling-pdf-to-bigbearcasaos/2265#p-4248-documentation-3) |
 | **Storyteller** | Storyteller is a self-hosted platform for ebook reading and library management. It supports multi... | `registry.gitlab.com/storyteller-platform/storyteller` | web-v2.6.0-experimental.14 | 8015 |  | [📖](https://storyteller-platform.gitlab.io/storyteller/docs/installation/self-hosting) |
 | **Swag** | SWAG - Secure Web Application Gateway (formerly known as letsencrypt, no relation to Let's Encryp... | `linuxserver/swag` | 5.8.0 | 443 |  |  |
 | **Synclounge** | Synclounge is a third party tool that allows you to watch Plex in sync with your friends/family, ... | `linuxserver/synclounge` | 5.2.35 | 8088 |  |  |
