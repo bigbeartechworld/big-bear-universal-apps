@@ -1,0 +1,228 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "opengym",
+    "name": "openGym",
+    "description": "openGym is a self-hosted gym and body-weight tracker. It plans workouts, logs sets, and signs you in with passkeys. The web container proxies the API and serves exercise media.",
+    "tagline": "Self-hosted workout tracker",
+    "version": "1.3.9",
+    "author": "BigBearTechWorld",
+    "developer": "Duarte Santos",
+    "category": "BigBearCasaOS",
+    "license": "AGPL-3.0",
+    "homepage": "https://github.com/DuarteSantos8/openGym",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/DuarteSantos8/openGym@main/frontend/public/icon-512.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/DuarteSantos8/openGym@main/frontend/public/icon-512.png"
+  },
+  "resources": {
+    "documentation": "https://github.com/DuarteSantos8/openGym/blob/main/docs/SELF_HOSTING.md",
+    "repository": "https://github.com/DuarteSantos8/openGym",
+    "issues": "https://github.com/DuarteSantos8/openGym/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "opengym",
+    "default_port": "20808",
+    "main_image": "registry.gitlab.com/duartesantos8/opengym/web",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "NGINX_PORT",
+        "default": "80",
+        "description": "Port nginx listens on inside the web container.",
+        "required": true
+      },
+      {
+        "name": "BACKEND",
+        "default": "api",
+        "description": "API service name that /api is proxied to.",
+        "required": true
+      },
+      {
+        "name": "PORT",
+        "default": "3000",
+        "description": "Port the API listens on. The web container proxies to the same value.",
+        "required": true
+      },
+      {
+        "name": "RESOLVER",
+        "default": "127.0.0.11",
+        "description": "Docker embedded DNS used by nginx.",
+        "required": true
+      },
+      {
+        "name": "CF_CONNECTING_IP",
+        "default": "",
+        "description": "Empty drops CF-Connecting-IP so a direct client cannot forge the logged address.",
+        "required": false
+      },
+      {
+        "name": "BASE_PATH",
+        "default": "",
+        "description": "Empty serves the app at the site root.",
+        "required": false
+      },
+      {
+        "name": "MEDIA_UPLOAD_MAX",
+        "default": "48m",
+        "description": "Largest upload nginx passes to the API.",
+        "required": false
+      },
+      {
+        "name": "DATA_DIR",
+        "default": "/data",
+        "description": "Accounts, passkeys, session secret, and uploads.",
+        "required": true
+      },
+      {
+        "name": "TRUST_PROXY",
+        "default": "1",
+        "description": "Trust forwarded headers from the web container, which overwrites them.",
+        "required": true
+      },
+      {
+        "name": "RP_ID",
+        "default": "localhost",
+        "description": "Hostname passkeys are bound to.",
+        "required": true
+      },
+      {
+        "name": "ORIGIN",
+        "default": "http://localhost:20808",
+        "description": "Full URL the app is served from. Must match the published host port.",
+        "required": true
+      },
+      {
+        "name": "RP_NAME",
+        "default": "openGym",
+        "description": "Name shown in the passkey prompt.",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Accounts, passkeys, per-user state, and the session secret"
+      },
+      {
+        "container": "/coach-auth",
+        "description": "Optional AI Coach provider credential cache"
+      },
+      {
+        "container": "/usr/share/nginx/html/img",
+        "description": "Exercise images downloaded on first start"
+      },
+      {
+        "container": "/usr/share/nginx/html/gif",
+        "description": "Exercise animations downloaded on first start"
+      },
+      {
+        "container": "/out/img",
+        "description": "Same exercise-image volume, written by the one-shot media service"
+      },
+      {
+        "container": "/out/gif",
+        "description": "Same exercise-animation volume, written by the one-shot media service"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "20808",
+        "protocol": "tcp",
+        "description": "Web UI. Official host port is 8080, which is already published by other apps."
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Open http://localhost:20808 and create a profile with a passkey. Passkeys work on localhost over HTTP. Any other hostname needs HTTPS plus matching RP_ID and ORIGIN. The first start downloads about 140 MB of exercise media. Host port 8080 was already in use, so this listing publishes 20808."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "20808",
+      "port": "20808",
+      "category": "Home",
+      "volume_mappings": {
+        "opengym_data": "/DATA/AppData/$AppID/data",
+        "opengym_coach_auth": "/DATA/AppData/$AppID/coach-auth",
+        "opengym_media_img": "/DATA/AppData/$AppID/media/img",
+        "opengym_media_gif": "/DATA/AppData/$AppID/media/gif"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "port": "80",
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "opengym_data": "data",
+        "opengym_coach_auth": "data/coach-auth",
+        "opengym_media_img": "data/media/img",
+        "opengym_media_gif": "data/media/gif"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "80"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "20808",
+      "volume_mappings": {
+        "opengym_data": "data",
+        "opengym_coach_auth": "data/coach-auth",
+        "opengym_media_img": "data/media/img",
+        "opengym_media_gif": "data/media/gif"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "fitness",
+    "health",
+    "workout"
+  ]
+}
