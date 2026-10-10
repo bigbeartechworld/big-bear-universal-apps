@@ -169,7 +169,7 @@ Validate apps against the JSON schema:
 | **Ansible Semaphore** | Ansible Semaphore is a modern UI for Ansible. It lets you easily run Ansible playbooks, get notif... | `semaphoreui/semaphore` | v2.19.14 | 3000 |  |  |
 | **Apprise-api** | Apprise-api Takes advantage of Apprise through your network with a user-friendly API. * Send noti... | `linuxserver/apprise-api` | 2.0.1 | 8000 |  |  |
 | **Appsmith** | Low code project to build admin panels, internal tools, and dashboards, integrating 15+ databases. | `appsmith/appsmith-ce` | v2.4.3 | 1080 |  |  |
-| **Archivebox** | ArchiveBox is a powerful, self-hosted internet archiving solution to collect, save, and view site... | `archivebox/archivebox` | 0.9.71 | 8002 |  |  |
+| **Archivebox** | ArchiveBox is a powerful, self-hosted internet archiving solution to collect, save, and view site... | `archivebox/archivebox` | 0.9.73 | 8002 |  |  |
 | **Ardour** | Ardour is an open source, collaborative effort of a worldwide team including musicians, programme... | `linuxserver/ardour` | 0.0.0 | 3000 |  |  |
 | **Arma 3 Server** | Arma 3 Dedicated Server. Updates to the latest version every time it is restarted. Supports missi... | `ghcr.io/brettmayson/arma3server/arma3server` | 1.0.0 | 2302 |  | [📖](https://community.bistudio.com/wiki/Arma_3_Dedicated_Server) |
 | **Audacity** | Audacity is an easy-to-use, multi-track audio editor and recorder. Developed by a group of volunt... | `linuxserver/audacity` | 4.0.1 | 3000 |  |  |
@@ -197,7 +197,7 @@ Validate apps against the JSON schema:
 | **Budibase** | Low code platform for creating internal tools, workflows, and admin panels in minutes. Supports P... | `budibase/budibase` | v3.48.0 | 8080 |  |  |
 | **Build-agent** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/build-a... | `linuxserver/build-agent` | 0.0.0 | 80 |  |  |
 | **Buzz** | Buzz is a self-hostable workspace for humans and agents from Block. It runs a Nostr relay, a REST... | `ghcr.io/block/buzz` | latest | 3000 |  | [📖](https://engineering.block.xyz/blog/run-your-own-buzz-relay) |
-| **Caddy** | Caddy - The Ultimate Server with Automatic HTTPS. | `caddy` | 2.11.6 | 48100 |  |  |
+| **Caddy** | Caddy - The Ultimate Server with Automatic HTTPS. | `caddy` | 2.11.7 | 48100 |  |  |
 | **cAdvisor** | cAdvisor (Container Advisor) provides container users an understanding of the resource usage and ... | `gcr.io/cadvisor/cadvisor` | v0.55.1 | 8085 |  |  |
 | **Cal.com** | The open source Calendly successor. You are in charge of your own data, workflow, and appearance.... | `calcom/cal.com` | v6.2.0 | 3000 |  |  |
 | **Calibre** | Calibre is a powerful and easy to use e-book manager. Users say it's outstanding and a must-have.... | `linuxserver/calibre` | 9.15.0 | 8080 |  |  |
@@ -214,7 +214,7 @@ Validate apps against the JSON schema:
 | **Ci** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/ci for ... | `linuxserver/ci` | 0.0.0 | 80 |  |  |
 | **Ci-debug** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/ci-debu... | `linuxserver/ci-debug` | 0.0.0 | 80 |  |  |
 | **Citron** | Citron is a feature rich Switch 1 emulator for homebrew. | `linuxserver/citron` | 2026.02.1 | 3000 |  |  |
-| **Cloudflared Web** | Cloudflared-web is a docker image that packages both cloudflared cli and a simple Web UI to easil... | `wisdomsky/cloudflared-web` | 2026.9.3 | 14333 | [▶️](https://youtu.be/JvyyolXJ0-A) | [📖](https://github.com/wisdomsky/cloudflared-web) |
+| **Cloudflared Web** | Cloudflared-web is a docker image that packages both cloudflared cli and a simple Web UI to easil... | `wisdomsky/cloudflared-web` | 2026.10.0 | 14333 | [▶️](https://youtu.be/JvyyolXJ0-A) | [📖](https://github.com/wisdomsky/cloudflared-web) |
 | **Code Server** | Run VS Code on any machine anywhere and access it in the browser. | `linuxserver/code-server` | 4.140.0 | 8080 | [▶️](https://youtu.be/aiYcwXDfgE8) |  |
 | **CodeX Docs** | CodeX Docs is a free docs application. It's based on Editor.js ecosystem which gives all modern o... | `ghcr.io/codex-team/codex.docs` | v2.2 | 3000 | [▶️](https://youtu.be/dKm2VJwam24) |  |
 | **Compose Toolbox** | Self-hosted tool to edit, validate, and get suggestions for docker-compose.yml files. | `ghcr.io/bluegoosemedia/composetoolbox` | latest | 3002 |  | [📖](https://github.com/bluegoosemedia/composetoolbox) |
@@ -251,7 +251,7 @@ Validate apps against the JSON schema:
 | **Dosbox-staging** | DOSBox Staging is a modern continuation of DOSBox a free and open-source emulator that enables th... | `linuxserver/dosbox-staging` | 0.83.0 | 3000 |  |  |
 | **Doublecommander** | Double Commander is a free cross platform open source file manager with two panels side by side. ... | `linuxserver/doublecommander` | 0.0.0 | 3000 |  |  |
 | **Dozzle** | Dozzle is a real-time log viewer for docker containers. | `amir20/dozzle` | v11.3.0 | 8888 | [▶️](https://youtu.be/lLLNDcHNOuM) |  |
-| **Draw.io** | Draw.io is a structured diagram editor for creating flowcharts, network diagrams, and other visua... | `jgraph/drawio` | 32.0.2 | 8080 |  | [📖](https://www.drawio.com/doc/) |
+| **Draw.io** | Draw.io is a structured diagram editor for creating flowcharts, network diagrams, and other visua... | `jgraph/drawio` | 32.2.0 | 8080 |  | [📖](https://www.drawio.com/doc/) |
 | **Duckdns** | Duckdns is a free service which will point a DNS (sub domains of duckdns.org) to an IP of your ch... | `linuxserver/duckdns` | 0.0.0 | 80 |  |  |
 | **Duckstation** | DuckStation is a PS1 Emulator aiming for the best accuracy and game support. | `linuxserver/duckstation` | 0.0.0 | 3000 |  |  |
 | **Duplicati** | Duplicati is a backup client that securely stores encrypted, incremental, compressed backups on l... | `linuxserver/duplicati` | 2.4.0 | 8200 |  |  |
@@ -292,10 +292,10 @@ Validate apps against the JSON schema:
 | **Freshrss** | Freshrss is a free, self-hostable aggregator for rss feeds. | `linuxserver/freshrss` | 1.30.1 | 80 |  |  |
 | **GemDigest Bot** | Simplify your reads, amplify your time! 📚✨ GemDigest is a Telegram bot that summarizes articles ... | `piero24/gemdigest` | 1.0 | 3333 |  |  |
 | **Genmon** | Generac (and other models) Generator Monitoring using a Raspberry Pi and WiFi | `bigbeartechworld/big-bear-genmon` | 2.0.01 | 8000 | [▶️](https://youtu.be/b0_zuVVeIP4) |  |
-| **Ghost** | Ghost is a free and open source blogging platform written in JavaScript and distributed under the... | `ghost` | 6.67.0-alpine | 2368 | [▶️](https://youtu.be/oJZK9vH4W4Y) |  |
-| **Ghostfolio** | Open Source Wealth Management Software. Angular + NestJS + Prisma + Nx + TypeScript 🤍 | `ghostfolio/ghostfolio` | 3.79.0 | 3333 | [▶️](https://youtu.be/CNe4-8Vyhos) |  |
+| **Ghost** | Ghost is a free and open source blogging platform written in JavaScript and distributed under the... | `ghost` | 6.68.0-alpine | 2368 | [▶️](https://youtu.be/oJZK9vH4W4Y) |  |
+| **Ghostfolio** | Open Source Wealth Management Software. Angular + NestJS + Prisma + Nx + TypeScript 🤍 | `ghostfolio/ghostfolio` | 3.80.2 | 3333 | [▶️](https://youtu.be/CNe4-8Vyhos) |  |
 | **Gimp** | GIMP is a free and open-source raster graphics editor used for image manipulation (retouching) an... | `linuxserver/gimp` | 0.0.0 | 3000 |  |  |
-| **Gitea** | Gitea is a painless self-hosted all-in-one software development service. It includes Git hosting,... | `gitea/gitea` | 28.0.0 | 3000 |  | [📖](https://docs.gitea.com/) |
+| **Gitea** | Gitea is a painless self-hosted all-in-one software development service. It includes Git hosting,... | `gitea/gitea` | 28.1.0 | 3000 |  | [📖](https://docs.gitea.com/) |
 | **Gitea Mirror** | Gitea Mirror is a modern web app for automatically mirroring repositories from GitHub to your sel... | `ghcr.io/raylabshq/gitea-mirror` | v3.15.10 | 4321 |  | [📖](https://community.bigbeartechworld.com/t/added-gitea-mirror-to-bigbearcasaos/3515?u=dragonfire1119#p-5962-documentation-6) |
 | **Github-desktop** | Github Desktop is an open source Electron-based GitHub app. It is written in TypeScript and uses ... | `linuxserver/github-desktop` | 3.4.13 | 3000 |  |  |
 | **Gitqlient** | GitQlient is a multi-platform Git client originally forked from QGit. Nowadays it goes beyond of ... | `linuxserver/gitqlient` | 1.6.3 | 3000 |  |  |
@@ -305,7 +305,7 @@ Validate apps against the JSON schema:
 | **Gluetun** | Lightweight swiss-knife-like VPN client to multiple VPN service providers | `qmcgaw/gluetun` | v3.41.3 | N/A |  | [📖](https://community.bigbeartechworld.com/t/added-gluetun-to-big-bear-casaos/175) |
 | **GoAway** | GoAway is a lightweight DNS sinkhole that blocks ads, trackers, and malicious domains at the netw... | `pommee/goaway` | 0.63.17 | 8080 |  | [📖](https://community.bigbeartechworld.com/t/added-goaway-to-bigbearcasaos/4085) |
 | **Gotify** | a simple server for sending and receiving messages | `gotify/server` | 3.1.1 | 8091 |  |  |
-| **Grav** | Grav is a Fast, Simple, and Flexible, file-based Web-platform. | `linuxserver/grav` | 2.2.4 | 80 |  |  |
+| **Grav** | Grav is a Fast, Simple, and Flexible, file-based Web-platform. | `linuxserver/grav` | 2.2.5 | 80 |  |  |
 | **Grocy** | Grocy is an ERP system for your kitchen! Cut down on food waste, and manage your chores with this... | `linuxserver/grocy` | 4.7.1 | 9283 |  |  |
 | **Guacamole** | Apache Guacamole is a free and open-source, cross-platform, clientless remote desktop gateway mai... | `guacamole/guacamole` | 1.6.0 | 8090 | [▶️](https://youtu.be/6cu0kfP50Jg) |  |
 | **Gzdoom** | GZDoom is a feature centric port for all Doom engine games, based on ZDoom, adding an OpenGL rend... | `linuxserver/gzdoom` | 4.14.2 | 3000 |  |  |
@@ -350,7 +350,7 @@ Validate apps against the JSON schema:
 | **Kdenlive** | Kdenlive is a powerful free and open source cross-platform video editing program made by the KDE ... | `linuxserver/kdenlive` | 423.08.5 | 3000 |  |  |
 | **Keepassxc** | KeePassXC is a free and open-source password manager. It started as a community fork of KeePassX ... | `linuxserver/keepassxc` | 2.7.12 | 3000 |  |  |
 | **Kicad** | KiCad - A Cross Platform and Open Source Electronics Design Automation Suite. | `linuxserver/kicad` | 10.0.3 | 3000 |  |  |
-| **Kimai** | Kimai is a professional grade time-tracking application, free and open-source. It handles use-cas... | `linuxserver/kimai` | 2.68.0 | 80 |  |  |
+| **Kimai** | Kimai is a professional grade time-tracking application, free and open-source. It handles use-cas... | `linuxserver/kimai` | 2.69.0 | 80 |  |  |
 | **KitchenOwl** | KitchenOwl is a self-hosted grocery list and recipe manager. Track what you need to buy, add reci... | `tombursch/kitchenowl` | v0.7.10 | 9287 |  | [📖](https://docs.kitchenowl.org/) |
 | **Kiwix Server** | Kiwix Server is a web server for hosting .zim files | `ghcr.io/kiwix/kiwix-serve` | 3.7.0-2 | 8080 |  |  |
 | **Kometa** | Kometa is a powerful tool designed to give you complete control over your media libraries. With K... | `linuxserver/kometa` | 2.5.1 | 80 |  |  |
@@ -393,7 +393,7 @@ Validate apps against the JSON schema:
 | **Minio** | A distributed object storage server built for cloud applications and devops. Default credentials ... | `bigbeartechworld/big-bear-minio` | RELEASE.2025-10-15T17-29-55Z | 9011 |  |  |
 | **Minisatip** | Minisatip is a multi-threaded satip server version 1.2 that runs under Linux and it was tested wi... | `linuxserver/minisatip` | 2.0.103 | 8875 |  |  |
 | **Modmanager** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/modmana... | `linuxserver/modmanager` | 0.0.0 | 80 |  |  |
-| **Modrinth** | Modrinth App is a unique, open source launcher that allows you to play your favorite mods, and ke... | `linuxserver/modrinth` | 0.21.6 | 3000 |  |  |
+| **Modrinth** | Modrinth App is a unique, open source launcher that allows you to play your favorite mods, and ke... | `linuxserver/modrinth` | 0.21.8 | 3000 |  |  |
 | **Monica** | Monica is an open-source web application to organize and record your interactions with your loved... | `monica` | 4.1.2 | 8080 |  |  |
 | **Morphos** | Today we are forced to rely on third party services to convert files to other formats. This is a ... | `ghcr.io/danvergara/morphos-server` | 0.6.0 | 8080 | [▶️](https://youtu.be/dw7AEDbGqZY) |  |
 | **Msedge** | Microsoft Edge is a cross-platform web browser developed by Microsoft and based on Chromium. | `linuxserver/msedge` | 154.0.4258 | 3000 |  |  |
@@ -403,7 +403,7 @@ Validate apps against the JSON schema:
 | **Music Assistant** | Music Assistant is a music library manager for your offline and online music sources which can ea... | `ghcr.io/music-assistant/server` | 2.8.7 | 8095 |  |  |
 | **MySpeed** | MySpeed is a speed test analysis software that records your internet speed for up to 30 days. | `germannewsmaker/myspeed` | 1.0.9 | 5216 | [▶️](https://youtu.be/7roj87Fytz0) |  |
 | **Mysql-workbench** | MySQL Workbench is a unified visual tool for database architects, developers, and DBAs. MySQL Wor... | `linuxserver/mysql-workbench` | 8.0.47 | 3000 |  |  |
-| **n8n** | Free and open fair-code licensed node based Workflow Automation Tool. | `n8nio/n8n` | 2.42.3 | 5678 |  |  |
+| **n8n** | Free and open fair-code licensed node based Workflow Automation Tool. | `n8nio/n8n` | 2.43.0 | 5678 |  |  |
 | **Nano** | Nano is a digital payment protocol designed to be accessible and lightweight, with a focus on rem... | `linuxserver/nano` | 21.2.20220522 | 8075 |  |  |
 | **Nano-wallet** | Nano-wallet is a digital payment protocol designed to be accessible and lightweight, with a focus... | `linuxserver/nano-wallet` | 1.3.2 | 80 |  |  |
 | **Navidrome** | Modern web-based music server and streamer for your personal music collection. | `deluan/navidrome` | 0.64.2 | 4533 |  | [📖](https://www.navidrome.org/docs/) |
@@ -434,9 +434,9 @@ Validate apps against the JSON schema:
 | **Odoo (Legacy)** | Open-source business management software suite designed to streamline various aspects of business... | `odoo` | 19 | 8069 |  | [📖](https://community.bigbeartechworld.com/t/added-odoo-to-bigbearcasaos/1115?u=dragonfire1119) |
 | **Odoo v20** | Open-source business management software suite designed to streamline various aspects of business... | `odoo` | 20.0.0 | 8070 |  | [📖](https://www.odoo.com/documentation/master/administration/upgrade.html) |
 | **Odysseus** | Odysseus is a self-hosted AI workspace. It bundles chat, web search via SearXNG, and a ChromaDB v... | `bigbeartechworld/big-bear-odysseus` | 2026.10.05 | 7000 |  | [📖](https://github.com/pewdiepie-archdaemon/odysseus) |
-| **Ollama - AMD** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.35.1-rocm | 11434 |  |  |
-| **Ollama - CPU** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.35.1 | 11434 |  |  |
-| **Ollama - NVIDIA** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.35.1 | 11434 |  |  |
+| **Ollama - AMD** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.40.0-rocm | 11434 |  |  |
+| **Ollama - CPU** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.40.0 | 11434 |  |  |
+| **Ollama - NVIDIA** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.40.0 | 11434 |  |  |
 | **OneDev** | Self-hosted Git Server with Kanban and CI/CD | `1dev/server` | 16.8.4 | 6610 | [▶️](https://youtu.be/ps3JLYRB3SA) |  |
 | **OnlyOffice** | Feature-rich web-based office suite with a vast range of collaborative capabilities | `onlyoffice/documentserver` | 9.1.0 | 7400 |  |  |
 | **Open WebUI** | Open WebUI is an extensible, feature-rich, and user-friendly self-hosted WebUI designed to operat... | `ghcr.io/open-webui/open-webui` | git-33e54a9 | 8080 |  |  |
@@ -453,11 +453,11 @@ Validate apps against the JSON schema:
 | **Paperclip** | Paperclip is an open-source self-hosted board for managing AI coding agents such as Claude Code, ... | `ghcr.io/paperclipai/paperclip` | latest | 3101 |  | [📖](https://github.com/paperclipai/paperclip/blob/master/doc/DOCKER.md) |
 | **Paperless-ngx** | Paperless-ngx is a community-supported open-source document management system that transforms you... | `ghcr.io/paperless-ngx/paperless-ngx` | 3.2.0 | 8000 |  |  |
 | **Password Pusher (Legacy)** | Password Pusher is an open source application to communicate passwords over the web. Links to pas... | `pglombardo/pwpush` | 1.69.3 | 5100 | [▶️](https://youtu.be/U17LWqXfOmU) |  |
-| **Password Pusher v2** | Password Pusher is an open source application to communicate passwords over the web. Links to pas... | `pglombardo/pwpush` | 2.14.1 | 5101 | [▶️](https://youtu.be/U17LWqXfOmU) | [📖](https://docs.pwpush.com/docs/upgrading/) |
+| **Password Pusher v2** | Password Pusher is an open source application to communicate passwords over the web. Links to pas... | `pglombardo/pwpush` | 2.14.2 | 5101 | [▶️](https://youtu.be/U17LWqXfOmU) | [📖](https://docs.pwpush.com/docs/upgrading/) |
 | **Pcsx2** | PCSX2 is an open source PS2 Emulator. | `linuxserver/pcsx2` | 2.8.2 | 3000 |  |  |
 | **PD3F** | pd3f is a PDF text extraction pipeline that is self-hosted, local-first and Docker-based. It reco... | `pd3f/pd3f` | latest | 1616 |  |  |
 | **Pelorus** | Pelorus is an AI navigator for Selkies-powered Linux desktops. Pelorus runs a FastAPI server that... | `linuxserver/pelorus` | 0.2.3 | 3001 |  |  |
-| **Penpot** | Designers and developers can finally work in unison to build beautifully designed software experi... | `penpotapp/frontend` | 2.18.2 | 9001 |  |  |
+| **Penpot** | Designers and developers can finally work in unison to build beautifully designed software experi... | `penpotapp/frontend` | 2.18.3 | 9001 |  |  |
 | **Peppermint** | Peppermint is a central hub for your help desk. A powerfully easy system for tracking, prioritisi... | `pepperlabs/peppermint` | latest | 3000 |  |  |
 | **Photoprism** | PhotoPrism® is an AI-Powered Photos App for the Decentralized Web. It makes use of the latest tec... | `photoprism/photoprism` | 240915 | 2342 |  |  |
 | **phpMyAdmin** | phpMyAdmin - A web interface for MySQL and MariaDB. | `phpmyadmin/phpmyadmin` | 5.2.3 | 8080 |  |  |
@@ -502,7 +502,7 @@ Validate apps against the JSON schema:
 | **Quassel-core** | Visit homepage: https://hub.docker.com/r/linuxserver/quassel-core/ | `linuxserver/quassel-core` | 0.14.0 | 4242 |  |  |
 | **Quassel-web** | Visit homepage: https://hub.docker.com/r/linuxserver/quassel-web/ | `linuxserver/quassel-web` | 0.0.0 | 64080 |  |  |
 | **RackPeek** | A webui and CLI tool to discover, manage, and document your home lab and small-scale IT infrastru... | `aptacode/rackpeek` | v2.1.0 | 8095 |  | [📖](https://timmoth.github.io/RackPeek/docs/overview) |
-| **Rallly** | Rallly is an open-source scheduling and collaboration tool designed to make organizing events and... | `lukevella/rallly` | 4.15.3 | 3000 | [▶️](https://youtu.be/2MY3S6csrVw) | [📖](https://community.bigbeartechworld.com/t/added-rallly-to-bigbearcasaos/1012#instructions-3) |
+| **Rallly** | Rallly is an open-source scheduling and collaboration tool designed to make organizing events and... | `lukevella/rallly` | 4.15.4 | 3000 | [▶️](https://youtu.be/2MY3S6csrVw) | [📖](https://community.bigbeartechworld.com/t/added-rallly-to-bigbearcasaos/1012#instructions-3) |
 | **Raneto** | Raneto - is an open source Knowledgebase platform that uses static Markdown files to power your K... | `linuxserver/raneto` | 0.18.1 | 3000 |  |  |
 | **Rawtherapee** | RawTherapee is a free, cross-platform raw image processing program! | `linuxserver/rawtherapee` | 5.13.20260927 | 3000 |  |  |
 | **Rdesktop** | Rdesktop - Containers containing full desktop environments in many popular flavors for Alpine, Ub... | `linuxserver/rdesktop` | 0.0.0 | 3389 |  |  |
@@ -515,7 +515,7 @@ Validate apps against the JSON schema:
 | **Retroarch** | RetroArch is a frontend for emulators, game engines and media players. It enables you to run clas... | `linuxserver/retroarch` | 1.22.2 | 3000 |  |  |
 | **RetroArch** | Online retro games emulator.The RetroArch Web Player is RetroArch compiled through Emscripten. | `inglebard/retroarch-web` | latest | 8080 |  |  |
 | **Rocket.Chat (Legacy)** | Rocket.Chat is an open-source fully customizable communications platform [...] | `rocket.chat` | 6.13.1 | 3000 |  |  |
-| **Rocket.Chat v8** | Rocket.Chat v8 is an open-source fully customizable communications platform developed in JavaScri... | `rocket.chat` | 8.8.1 | 3100 |  | [📖](https://docs.rocket.chat/docs/rocketchat-release-notes) |
+| **Rocket.Chat v8** | Rocket.Chat v8 is an open-source fully customizable communications platform developed in JavaScri... | `rocket.chat` | 8.9.0 | 3100 |  | [📖](https://docs.rocket.chat/docs/rocketchat-release-notes) |
 | **RomM** | ROM manager for organizing, enriching, and playing retro games, with support for 400+ platforms. | `rommapp/romm` | 5.3.1 | 1080 |  | [📖](https://github.com/rommapp/romm/wiki) |
 | **Rpcs3** | RPCS3 is a multi-platform open-source Sony PlayStation 3 emulator and debugger written in C++ for... | `linuxserver/rpcs3` | 0.0.0 | 3000 |  |  |
 | **Rsnapshot** | Rsnapshot is a filesystem snapshot utility based on rsync. rsnapshot makes it easy to make period... | `linuxserver/rsnapshot` | 1.4.5 | 80 |  |  |
@@ -587,7 +587,7 @@ Validate apps against the JSON schema:
 | **Viseron** | Viseron is a self-hosted, local only NVR and AI Computer Vision software | `roflcoopter/viseron` | 3.7.0 | 8888 |  |  |
 | **Vivaldi** | Vivaldi is a Norwegian freeware, cross-platform web browser with a built-in email client develope... | `linuxserver/vivaldi` | 8.2.4133 | 3000 |  |  |
 | **Vlc** | VLC Media Player is a free and open source cross-platform multimedia player and framework that de... | `linuxserver/vlc` | 3.0.23 | 3000 |  |  |
-| **Vscode** | VS Code is an integrated development environment developed by Microsoft. This container runs the ... | `linuxserver/vscode` | 1.138.0 | 3000 |  |  |
+| **Vscode** | VS Code is an integrated development environment developed by Microsoft. This container runs the ... | `linuxserver/vscode` | 1.140.0 | 3000 |  |  |
 | **Vscodium** | VSCodium is a community-driven, freely-licensed binary distribution of Microsoft’s editor VS Code. | `linuxserver/vscodium` | 1.135.06055 | 3000 |  |  |
 | **Vscodium-web** | Vscodium-web is a community-driven, freely-licensed binary distribution of the remote host web co... | `linuxserver/vscodium-web` | 1.135.06055 | 8000 |  |  |
 | **Wallabag** | Wallabag is a self-hosted application for saving web pages. Unlike other services, Wallabag is fr... | `wallabag/wallabag` | 2.6.14 | 8080 |  |  |
@@ -598,7 +598,7 @@ Validate apps against the JSON schema:
 | **Webcord** | WebCord can be summarized as a pack of security and privacy hardenings, Discord features reimplem... | `linuxserver/webcord` | 4.14.0 | 3000 |  |  |
 | **WebDAV** | Web-based distributed authoring and versioning (WebDAV) is a set of extensions to the HTTP protoc... | `bytemark/webdav` | latest | 48108 |  |  |
 | **Webgrabplus** | Webgrabplus is a multi-site incremental xmltv epg grabber. It collects tv-program guide data from... | `linuxserver/webgrabplus` | 5.6.1 | 80 |  |  |
-| **Webstation** | Webstation is a web native emulation focused LXQt desktop based on Ubuntu. | `linuxserver/webstation` | 0.14.0-romm | 3000 |  |  |
+| **Webstation** | Webstation is a web native emulation focused LXQt desktop based on Ubuntu. | `linuxserver/webstation` | 0.14.2-romm | 3000 |  |  |
 | **Webtop** | Webtop - Alpine, Ubuntu, Fedora, and Arch based containers containing full desktop environments i... | `linuxserver/webtop` | 0.0.0 | 3000 |  |  |
 | **Weixin** | Weixin (WeChat) is an instant messaging, social media, and mobile payment app developed by Tencent. | `linuxserver/weixin` | 0.0.0 | 3000 |  |  |
 | **What's Up Docker** | Gets you notified when new versions of your Docker containers are available and lets you react th... | `fmartinou/whats-up-docker` | 6.6.1 | 3000 |  |  |
