@@ -48,7 +48,7 @@
       },
       {
         "name": "DATABASE_URL",
-        "default": "postgres://indelible:y_ozew8o0v-qGRTW6oJOFM-njwtQu9s0RPag9lLeyxw@postgres:5432/indelible",
+        "default": "postgres://indelible:1c200d72-b081-4f40-a3c3-cb98d604ad76@postgres:5432/indelible",
         "description": "PostgreSQL connection string for the postgres service. The database must provide pgvector.",
         "required": true
       },
@@ -78,7 +78,7 @@
       },
       {
         "name": "S3_SECRET_KEY",
-        "default": "Xhif_MYq3o5QEaU9UGtmCrDV-TY-gPLn83bPB7iMh5g",
+        "default": "2f32d346-ff03-48cb-bfed-2ead51511aa8",
         "description": "Silo secret. Matches MINIO_ROOT_PASSWORD.",
         "required": true
       },
@@ -186,7 +186,7 @@
       },
       {
         "name": "POSTGRES_PASSWORD",
-        "default": "y_ozew8o0v-qGRTW6oJOFM-njwtQu9s0RPag9lLeyxw",
+        "default": "1c200d72-b081-4f40-a3c3-cb98d604ad76",
         "description": "PostgreSQL password. Must match DATABASE_URL.",
         "required": true
       },
@@ -204,7 +204,7 @@
       },
       {
         "name": "MINIO_ROOT_PASSWORD",
-        "default": "Xhif_MYq3o5QEaU9UGtmCrDV-TY-gPLn83bPB7iMh5g",
+        "default": "2f32d346-ff03-48cb-bfed-2ead51511aa8",
         "description": "Silo root password. Must match S3_SECRET_KEY.",
         "required": true
       }

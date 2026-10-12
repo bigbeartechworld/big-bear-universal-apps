@@ -13,7 +13,7 @@ services:
     environment:
       DB_HOST: gamevault-db
       DB_USERNAME: gamevault
-      DB_PASSWORD: A2PC0dslsE9NOJLYON0w0PFchCxqRUGv
+      DB_PASSWORD: 02386af9-382f-49ad-841b-060735fd14d7
     volumes:
       - gamevault_files:/files
       - gamevault_media:/media
@@ -23,7 +23,7 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER: gamevault
-      POSTGRES_PASSWORD: A2PC0dslsE9NOJLYON0w0PFchCxqRUGv
+      POSTGRES_PASSWORD: 02386af9-382f-49ad-841b-060735fd14d7
       POSTGRES_DB: gamevault
     volumes:
       - gamevault_database:/var/lib/postgresql

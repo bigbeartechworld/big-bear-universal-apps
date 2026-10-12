@@ -41,7 +41,7 @@
     "environment_variables": [
       {
         "name": "ZIMABRAIN_PASSWORD",
-        "default": "a9e3GO5kwUcEDGlGv_JLEGWZ",
+        "default": "79526452-173c-49bc-873f-956f5a9838cb",
         "description": "Login password for the ZimaBrain web UI.",
         "required": true
       },

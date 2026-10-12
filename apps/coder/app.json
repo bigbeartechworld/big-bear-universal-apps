@@ -42,7 +42,7 @@
     "environment_variables": [
       {
         "name": "CODER_PG_CONNECTION_URL",
-        "default": "postgresql://coder:0FahAZNndH79lnkeKDCJkZP1NykgzDfMYLfxCJQOghw@database/coder?sslmode=disable",
+        "default": "postgresql://coder:918063d1-fb62-438f-8cbf-49e01f7364ff@database/coder?sslmode=disable",
         "description": "Postgres connection URL. User, password, host, and database match the database service.",
         "required": false
       },
@@ -66,7 +66,7 @@
       },
       {
         "name": "POSTGRES_PASSWORD",
-        "default": "0FahAZNndH79lnkeKDCJkZP1NykgzDfMYLfxCJQOghw",
+        "default": "918063d1-fb62-438f-8cbf-49e01f7364ff",
         "description": "Postgres password. The same value is embedded in CODER_PG_CONNECTION_URL.",
         "required": true
       },

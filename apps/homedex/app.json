@@ -55,7 +55,7 @@
       },
       {
         "name": "HOMEDEX_ADMIN_PASSWORD",
-        "default": "TA1qfYJ-JufxXFGzQUWmuA",
+        "default": "a2d9edc8-f918-4174-9340-539437e1f775",
         "description": "Admin password stored as an Argon2id hash on first start. Must be at least 12 characters. Ignored after an admin exists.",
         "required": true
       },

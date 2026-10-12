@@ -60,7 +60,7 @@
       },
       {
         "name": "INITIAL_PASSWORD",
-        "default": "PESi-5Y_9dZj5UzCkz1aop62yIdgCJb3",
+        "default": "0efefa3c-54ae-4848-b7bc-295f91483fe7",
         "description": "Dashboard password created on first boot.",
         "required": true
       },

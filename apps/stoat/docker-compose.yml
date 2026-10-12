@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
     environment:
       RABBITMQ_DEFAULT_USER: rabbituser
-      RABBITMQ_DEFAULT_PASS: clQJdDnzWtSAtMVNLs1EJl1H274c5OLC
+      RABBITMQ_DEFAULT_PASS: 3957bd5d-2520-4e23-a28a-e80e2a071d39
     volumes:
       - stoat_rabbit:/var/lib/rabbitmq
     healthcheck:
@@ -40,7 +40,7 @@ services:
       - stoat_minio:/data
     environment:
       MINIO_ROOT_USER: stoatfiles
-      MINIO_ROOT_PASSWORD: vhbfFtvUYm3aAIgoBkAcGwgJUoX0cEJR
+      MINIO_ROOT_PASSWORD: e347aa2e-1555-4b99-81a3-a09ccb6058ec
       MINIO_DOMAIN: minio
     networks:
       default:
@@ -92,12 +92,12 @@ services:
       REVOLT__RABBIT__HOST: rabbit
       REVOLT__RABBIT__PORT: "5672"
       REVOLT__RABBIT__USERNAME: rabbituser
-      REVOLT__RABBIT__PASSWORD: clQJdDnzWtSAtMVNLs1EJl1H274c5OLC
+      REVOLT__RABBIT__PASSWORD: 3957bd5d-2520-4e23-a28a-e80e2a071d39
       REVOLT__FILES__ENCRYPTION_KEY: FY1cZSuVSyKLXmwdbFOp4YnhRiMCWhGvwO-ba9c8XEU
       REVOLT__FILES__S3__ENDPOINT: http://minio:9000
       REVOLT__FILES__S3__REGION: minio
       REVOLT__FILES__S3__ACCESS_KEY_ID: stoatfiles
-      REVOLT__FILES__S3__SECRET_ACCESS_KEY: vhbfFtvUYm3aAIgoBkAcGwgJUoX0cEJR
+      REVOLT__FILES__S3__SECRET_ACCESS_KEY: e347aa2e-1555-4b99-81a3-a09ccb6058ec
       REVOLT__FILES__S3__DEFAULT_BUCKET: revolt-uploads
       REVOLT__PUSHD__VAPID__PRIVATE_KEY: LS0tLS1CRUdJTiBFQyBQUklWQVRFIEtFWS0tLS0tCk1IY0NBUUVFSUNEZ201aEprR2xzbEc0ZlNOekREMTQwQ2drUjkxUFYrcGVBK2I0TmNtNFlvQW9HQ0NxR1NNNDkKQXdFSG9VUURRZ0FFU3A4YmFIUGE1aFVsTHNFaCtjbkUySFZzY1lDVG9aeVhkS1ovckVWajVtcEJWM2o3M3ZHNwpRcXllcHNFNVJYejYvRm9QNmJ2eGlTR0M4dGxWdFphNktBPT0KLS0tLS1FTkQgRUMgUFJJVkFURSBLRVktLS0tLQo
       REVOLT__PUSHD__VAPID__PUBLIC_KEY: BEqfG2hz2uYVJS7BIfnJxNh1bHGAk6Gcl3Smf6xFY-ZqQVd4-97xu0KsnqbBOUV8-vxaD-m78YkhgvLZVbWWuig
@@ -142,7 +142,7 @@ services:
       database:
         condition: service_healthy
       createbuckets:
-        condition: service_started
+        condition: service_completed_successfully
     configs:
       - source: revolt_toml
         target: /Revolt.toml
@@ -204,35 +204,67 @@ services:
       - source: revolt_toml
         target: /Revolt.toml
 
+  livekit-config:
+    image: pgsty/mc:RELEASE.2026-09-16T00-00-00Z@sha256:cfc83108c3abb371f8fb84d99c1fdc88f8c237e022409b0081fb7c0a3be634dd
+    restart: "no"
+    environment:
+      REVOLT__API__LIVEKIT__NODES__WORLDWIDE__KEY: 8011099a9cb9
+      REVOLT__API__LIVEKIT__NODES__WORLDWIDE__SECRET: 58ca27af8342a4b8a14815bd31a810f0985d4f8db2eb6336
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        cat > /out/livekit.yml << EOF
+        rtc:
+          use_external_ip: true
+          port_range_start: 21028
+          port_range_end: 21128
+          tcp_port: 7881
+        redis:
+          address: redis:6379
+        turn:
+          enabled: false
+        keys:
+          "$$REVOLT__API__LIVEKIT__NODES__WORLDWIDE__KEY": "$$REVOLT__API__LIVEKIT__NODES__WORLDWIDE__SECRET"
+        webhook:
+          api_key: "$$REVOLT__API__LIVEKIT__NODES__WORLDWIDE__KEY"
+          urls:
+            - "http://voice-ingress:8500/worldwide"
+        EOF
+    volumes:
+      - stoat_livekit:/out
   livekit:
     image: ghcr.io/stoatchat/livekit-server:v1.9.14@sha256:4de8cdeabcb87a049b93f396c9616cd968bcad013de78e16881bec069e10b710
-    command: --config /etc/livekit.yml
+    command: --config /etc/livekit/livekit.yml
     restart: unless-stopped
     depends_on:
       redis:
         condition: service_started
+      livekit-config:
+        condition: service_completed_successfully
     ports:
       - "7881:7881"
       - "21028-21128:21028-21128/udp"
-    configs:
-      - source: livekit_yml
-        target: /etc/livekit.yml
+    volumes:
+      - stoat_livekit:/etc/livekit
 
   createbuckets:
     image: pgsty/mc:RELEASE.2026-09-16T00-00-00Z@sha256:cfc83108c3abb371f8fb84d99c1fdc88f8c237e022409b0081fb7c0a3be634dd
     restart: "no"
     depends_on:
       - minio
+    environment:
+      MINIO_ROOT_USER: stoatfiles
+      MINIO_ROOT_PASSWORD: e347aa2e-1555-4b99-81a3-a09ccb6058ec
     entrypoint:
       - /bin/sh
       - -c
       - |
-        while ! /usr/bin/mc ready minio; do
-          /usr/bin/mc alias set minio http://minio:9000 stoatfiles vhbfFtvUYm3aAIgoBkAcGwgJUoX0cEJR
-          echo 'Waiting minio...' && sleep 1
+        until /usr/bin/mc alias set minio http://minio:9000 "$$MINIO_ROOT_USER" "$$MINIO_ROOT_PASSWORD" && /usr/bin/mc ready minio; do
+          echo 'Waiting minio...'
+          sleep 1
         done
-        /usr/bin/mc mb minio/revolt-uploads
-        exit 0
+        /usr/bin/mc mb minio/revolt-uploads || /usr/bin/mc stat minio/revolt-uploads
 
 configs:
   caddyfile:
@@ -296,17 +328,6 @@ configs:
       }
   revolt_toml:
     content: |
-      [hosts]
-      app = "https://stoat.localhost"
-      api = "https://stoat.localhost/api"
-      events = "wss://stoat.localhost/ws"
-      autumn = "https://stoat.localhost/autumn"
-      january = "https://stoat.localhost/january"
-      gifbox = "https://stoat.localhost/gifbox"
-
-      [hosts.livekit]
-      worldwide = "wss://stoat.localhost/livekit"
-
       [api.livekit.nodes.worldwide]
       url = "http://livekit:7880"
       lat = 0.0
@@ -320,36 +341,8 @@ configs:
       video_resolution = [1920, 1080]
       video_aspect_ratio = [0.3, 10]
 
-      [rabbit]
-      host = "rabbit"
-      port = 5672
-      username = "rabbituser"
-      password = "clQJdDnzWtSAtMVNLs1EJl1H274c5OLC"
-
       [files.s3]
-      endpoint = "http://minio:9000"
       path_style_buckets = false
-      region = "minio"
-      access_key_id = "stoatfiles"
-      secret_access_key = "vhbfFtvUYm3aAIgoBkAcGwgJUoX0cEJR"
-      default_bucket = "revolt-uploads"
-  livekit_yml:
-    content: |
-      rtc:
-        use_external_ip: true
-        port_range_start: 21028
-        port_range_end: 21128
-        tcp_port: 7881
-      redis:
-        address: redis:6379
-      turn:
-        enabled: false
-      keys:
-        "8011099a9cb9": "58ca27af8342a4b8a14815bd31a810f0985d4f8db2eb6336"
-      webhook:
-        api_key: "8011099a9cb9"
-        urls:
-          - "http://voice-ingress:8500/worldwide"
 
 volumes:
   stoat_db:
@@ -366,4 +359,7 @@ volumes:
     driver: local
   stoat_caddy_config:
     name: stoat_caddy_config
+    driver: local
+  stoat_livekit:
+    name: stoat_livekit
     driver: local

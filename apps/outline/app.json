@@ -72,7 +72,7 @@
       },
       {
         "name": "DATABASE_URL",
-        "default": "postgres://outline:I9jpLBha7QOn8ysyzrNmhEbh-7fBS5El6ou74pz7Ar8@postgres:5432/outline",
+        "default": "postgres://outline:82d982a5-0329-46f7-a098-4e4cce10f3c2@postgres:5432/outline",
         "description": "PostgreSQL connection string. User, password, and database match the postgres service.",
         "required": true
       },
@@ -120,7 +120,7 @@
       },
       {
         "name": "POSTGRES_PASSWORD",
-        "default": "I9jpLBha7QOn8ysyzrNmhEbh-7fBS5El6ou74pz7Ar8",
+        "default": "82d982a5-0329-46f7-a098-4e4cce10f3c2",
         "description": "PostgreSQL password. Must match DATABASE_URL.",
         "required": true
       },

@@ -47,7 +47,7 @@
       },
       {
         "name": "AUTH_PASSWORD",
-        "default": "BpDXu0QIHtDFyg1-ssr-1OAQIZ--doTw8O8h9UIBWrU",
+        "default": "9c93e0aa-ebe4-4737-b222-d6445c64da29",
         "description": "Password for the web terminal and bearer token for the MCP API. The catalog value is public. Replace it in the install form before the first start. CasaOS and ZimaOS edit this literal; they do not substitute Compose variables.",
         "required": true
       },

@@ -71,7 +71,7 @@
       },
       {
         "name": "RABBITMQ_DEFAULT_PASS",
-        "default": "clQJdDnzWtSAtMVNLs1EJl1H274c5OLC",
+        "default": "3957bd5d-2520-4e23-a28a-e80e2a071d39",
         "description": "RabbitMQ password. Must match REVOLT__RABBIT__PASSWORD.",
         "required": true
       },
@@ -83,8 +83,8 @@
       },
       {
         "name": "MINIO_ROOT_PASSWORD",
-        "default": "vhbfFtvUYm3aAIgoBkAcGwgJUoX0cEJR",
-        "description": "Silo root password. Must match the S3 secret. The catalog value is public. Replace it in the install form before the first start, and use the same LiveKit key and secret in livekit.yml. CasaOS and ZimaOS do not substitute Compose variables.",
+        "default": "e347aa2e-1555-4b99-81a3-a09ccb6058ec",
+        "description": "Silo root password. Must match REVOLT__FILES__S3__SECRET_ACCESS_KEY. The catalog value is public. Replace both copies, including the createbuckets service, before the first start. CasaOS and ZimaOS edit these literals; they do not substitute Compose variables.",
         "required": true
       },
       {
@@ -125,14 +125,14 @@
       },
       {
         "name": "REVOLT__RABBIT__PASSWORD",
-        "default": "clQJdDnzWtSAtMVNLs1EJl1H274c5OLC",
-        "description": "RabbitMQ password. The catalog value is public. Replace it in the install form before the first start, and use the same LiveKit key and secret in livekit.yml. CasaOS and ZimaOS do not substitute Compose variables.",
+        "default": "3957bd5d-2520-4e23-a28a-e80e2a071d39",
+        "description": "RabbitMQ password. Must match RABBITMQ_DEFAULT_PASS. The catalog value is public. Replace both before the first start. CasaOS and ZimaOS edit these literals; they do not substitute Compose variables.",
         "required": true
       },
       {
         "name": "REVOLT__FILES__ENCRYPTION_KEY",
         "default": "FY1cZSuVSyKLXmwdbFOp4YnhRiMCWhGvwO-ba9c8XEU",
-        "description": "File encryption key. Losing it loses access to stored files. The catalog value is public. Replace it in the install form before the first start, and use the same LiveKit key and secret in livekit.yml. CasaOS and ZimaOS do not substitute Compose variables.",
+        "description": "File encryption key. Losing it loses access to stored files. The catalog value is public. Replace it before creating data, then keep the replacement. CasaOS and ZimaOS edit this literal; they do not substitute Compose variables.",
         "required": true
       },
       {
@@ -155,7 +155,7 @@
       },
       {
         "name": "REVOLT__FILES__S3__SECRET_ACCESS_KEY",
-        "default": "vhbfFtvUYm3aAIgoBkAcGwgJUoX0cEJR",
+        "default": "e347aa2e-1555-4b99-81a3-a09ccb6058ec",
         "description": "S3 secret key.",
         "required": true
       },
@@ -168,7 +168,7 @@
       {
         "name": "REVOLT__PUSHD__VAPID__PRIVATE_KEY",
         "default": "LS0tLS1CRUdJTiBFQyBQUklWQVRFIEtFWS0tLS0tCk1IY0NBUUVFSUNEZ201aEprR2xzbEc0ZlNOekREMTQwQ2drUjkxUFYrcGVBK2I0TmNtNFlvQW9HQ0NxR1NNNDkKQXdFSG9VUURRZ0FFU3A4YmFIUGE1aFVsTHNFaCtjbkUySFZzY1lDVG9aeVhkS1ovckVWajVtcEJWM2o3M3ZHNwpRcXllcHNFNVJYejYvRm9QNmJ2eGlTR0M4dGxWdFphNktBPT0KLS0tLS1FTkQgRUMgUFJJVkFURSBLRVktLS0tLQo",
-        "description": "Web push VAPID private key. The catalog value is public. Replace it in the install form before the first start, and use the same LiveKit key and secret in livekit.yml. CasaOS and ZimaOS do not substitute Compose variables.",
+        "description": "Web push VAPID private key. The catalog value is public. Replace it before the first start. CasaOS and ZimaOS edit this literal; they do not substitute Compose variables.",
         "required": true
       },
       {
@@ -180,13 +180,13 @@
       {
         "name": "REVOLT__API__LIVEKIT__NODES__WORLDWIDE__KEY",
         "default": "8011099a9cb9",
-        "description": "LiveKit API key. Must match livekit.yml. The catalog value is public. Replace it in the install form before the first start, and use the same LiveKit key and secret in livekit.yml. CasaOS and ZimaOS do not substitute Compose variables.",
+        "description": "LiveKit API key. The catalog value is public. Replace it before exposing voice. livekit-config writes this value into livekit.yml on start, so set the same plaintext on that service. CasaOS and ZimaOS edit these literals; they do not substitute Compose variables.",
         "required": true
       },
       {
         "name": "REVOLT__API__LIVEKIT__NODES__WORLDWIDE__SECRET",
         "default": "58ca27af8342a4b8a14815bd31a810f0985d4f8db2eb6336",
-        "description": "LiveKit API secret. Must match livekit.yml. The catalog value is public. Replace it in the install form before the first start, and use the same LiveKit key and secret in livekit.yml. CasaOS and ZimaOS do not substitute Compose variables.",
+        "description": "LiveKit API secret. The catalog value is public. Replace it before exposing voice. livekit-config writes this value into livekit.yml on start, so set the same plaintext on that service. CasaOS and ZimaOS edit these literals; they do not substitute Compose variables.",
         "required": true
       },
       {
@@ -252,6 +252,14 @@
       {
         "container": "/config",
         "description": "Caddy config"
+      },
+      {
+        "container": "/etc/livekit",
+        "description": "LiveKit config written on start from the LiveKit key and secret"
+      },
+      {
+        "container": "/out",
+        "description": "LiveKit config written on start from the LiveKit key and secret"
       }
     ],
     "ports": [
@@ -286,7 +294,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "The hostname is the literal stoat.localhost. CasaOS and ZimaOS do not substitute Compose variables. Before the first start, replace stoat.localhost in HOSTNAME, the VITE variables, every REVOLT__HOSTS__* value, Revolt.toml, and the Caddy network alias. Point DNS at this machine. Forward external port 80 to host 20001 and external port 443 to host 20002. The shipped RabbitMQ password, Silo password, file encryption key, VAPID key, and LiveKit key pair are public. Replace them before storing data or exposing voice, then keep the file encryption key stable. The LiveKit key and secret in the API environment must match livekit.yml. Forward UDP 21028-21128 and TCP 7881 for voice. The web image publishes amd64 only."
+        "en_us": "The hostname is the literal stoat.localhost. CasaOS and ZimaOS edit environment literals; they do not substitute Compose variables. Before the first start, replace stoat.localhost in HOSTNAME, the VITE variables, and every REVOLT__HOSTS__* value. Caddy reads HOSTNAME. Stoat reads those REVOLT__HOSTS__* values over Revolt.toml. Point DNS at this machine. Forward external port 80 to host 20001 and external port 443 to host 20002. The shipped RabbitMQ password, Silo password, file encryption key, VAPID key, and LiveKit key pair are public. Replace them before storing data or exposing voice, then keep the file encryption key stable. Set the same Silo user and password on minio and createbuckets. Set the same LiveKit key and secret on the API services and on livekit-config, which writes livekit.yml on start. Forward UDP 21028-21128 and TCP 7881 for voice. The web image publishes amd64 only."
       }
     }
   },
@@ -299,7 +307,8 @@
         "stoat_rabbit": "/DATA/AppData/$AppID/rabbit",
         "stoat_minio": "/DATA/AppData/$AppID/minio",
         "stoat_caddy_data": "/DATA/AppData/$AppID/caddy-data",
-        "stoat_caddy_config": "/DATA/AppData/$AppID/caddy-config"
+        "stoat_caddy_config": "/DATA/AppData/$AppID/caddy-config",
+        "stoat_livekit": "/DATA/AppData/$AppID/livekit"
       },
       "port": "20002",
       "category": "Social"
@@ -324,7 +333,8 @@
         "stoat_rabbit": "rabbit",
         "stoat_minio": "minio",
         "stoat_caddy_data": "caddy-data",
-        "stoat_caddy_config": "caddy-config"
+        "stoat_caddy_config": "caddy-config",
+        "stoat_livekit": "livekit"
       },
       "port": "80"
     },
@@ -346,7 +356,8 @@
         "stoat_rabbit": "rabbit",
         "stoat_minio": "minio",
         "stoat_caddy_data": "caddy-data",
-        "stoat_caddy_config": "caddy-config"
+        "stoat_caddy_config": "caddy-config",
+        "stoat_livekit": "livekit"
       },
       "port": "20002",
       "app_port": "80"

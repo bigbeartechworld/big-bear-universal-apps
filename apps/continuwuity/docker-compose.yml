@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     command: /sbin/conduwuit
     ports:
-      - "8008:8008"
+      - "20006:8008"
     volumes:
       - continuwuity_data:/var/lib/continuwuity
     environment:

@@ -78,13 +78,13 @@
       },
       {
         "name": "NEXT_PRIVATE_DATABASE_URL",
-        "default": "postgresql://documenso:GDnYQQ_jrPV7XOwPlYbmd3L9mWi0s_6E@documenso-db:5432/documenso",
+        "default": "postgresql://documenso:68a9a162-7781-4a5e-be4f-3c4256932a98@documenso-db:5432/documenso",
         "description": "PostgreSQL connection string. Must match the database service.",
         "required": true
       },
       {
         "name": "NEXT_PRIVATE_DIRECT_DATABASE_URL",
-        "default": "postgresql://documenso:GDnYQQ_jrPV7XOwPlYbmd3L9mWi0s_6E@documenso-db:5432/documenso",
+        "default": "postgresql://documenso:68a9a162-7781-4a5e-be4f-3c4256932a98@documenso-db:5432/documenso",
         "description": "Direct PostgreSQL connection string used for migrations.",
         "required": true
       },
@@ -120,7 +120,7 @@
       },
       {
         "name": "NEXT_PRIVATE_SMTP_PASSWORD",
-        "default": "_QDGh5oFrd3NgFD21CHkgqG1",
+        "default": "61e22c1d-6f27-4542-a49d-47f36c1b0da6",
         "description": "SMTP password. Replace with the real account password.",
         "required": true
       },
@@ -144,7 +144,7 @@
       },
       {
         "name": "POSTGRES_PASSWORD",
-        "default": "GDnYQQ_jrPV7XOwPlYbmd3L9mWi0s_6E",
+        "default": "68a9a162-7781-4a5e-be4f-3c4256932a98",
         "description": "PostgreSQL password. Must match the database URLs.",
         "required": true
       },

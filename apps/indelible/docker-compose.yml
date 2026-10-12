@@ -7,12 +7,12 @@ services:
     restart: unless-stopped
     environment:
       IND_ENV: development
-      DATABASE_URL: postgres://indelible:y_ozew8o0v-qGRTW6oJOFM-njwtQu9s0RPag9lLeyxw@postgres:5432/indelible
+      DATABASE_URL: postgres://indelible:1c200d72-b081-4f40-a3c3-cb98d604ad76@postgres:5432/indelible
       S3_ENDPOINT: http://silo:9000
       S3_REGION: us-east-1
       S3_BUCKET: indelible
       S3_ACCESS_KEY: indelible
-      S3_SECRET_KEY: Xhif_MYq3o5QEaU9UGtmCrDV-TY-gPLn83bPB7iMh5g
+      S3_SECRET_KEY: 2f32d346-ff03-48cb-bfed-2ead51511aa8
       S3_FORCE_PATH_STYLE: "true"
       AUTH_CREDENTIAL_KEY: "PFy8QhmU0ZU6H1RFu/ZiIYaEZxVBFPMs4JqHWJ840ZI="
       EGRESS_ALLOW_PRIVATE_TARGETS: "false"
@@ -43,7 +43,7 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER: indelible
-      POSTGRES_PASSWORD: y_ozew8o0v-qGRTW6oJOFM-njwtQu9s0RPag9lLeyxw
+      POSTGRES_PASSWORD: 1c200d72-b081-4f40-a3c3-cb98d604ad76
       POSTGRES_DB: indelible
     volumes:
       - indelible_pgdata:/var/lib/postgresql
@@ -59,7 +59,7 @@ services:
     command: ["server", "/data", "--console-address", ":9001"]
     environment:
       MINIO_ROOT_USER: indelible
-      MINIO_ROOT_PASSWORD: Xhif_MYq3o5QEaU9UGtmCrDV-TY-gPLn83bPB7iMh5g
+      MINIO_ROOT_PASSWORD: 2f32d346-ff03-48cb-bfed-2ead51511aa8
     volumes:
       - indelible_silodata:/data
     healthcheck:
@@ -72,11 +72,11 @@ services:
     container_name: indelible-silo-init
     restart: "no"
     environment:
-      MINIO_ROOT_PASSWORD: Xhif_MYq3o5QEaU9UGtmCrDV-TY-gPLn83bPB7iMh5g
+      MINIO_ROOT_PASSWORD: 2f32d346-ff03-48cb-bfed-2ead51511aa8
     depends_on:
       silo:
         condition: service_healthy
-    entrypoint: ["/bin/sh", "-c", "mcli alias set silo http://silo:9000 indelible Xhif_MYq3o5QEaU9UGtmCrDV-TY-gPLn83bPB7iMh5g && mcli mb --ignore-existing silo/indelible"]
+    entrypoint: ["/bin/sh", "-c", "mcli alias set silo http://silo:9000 indelible 2f32d346-ff03-48cb-bfed-2ead51511aa8 && mcli mb --ignore-existing silo/indelible"]
   renderer:
     image: ghcr.io/useindelible/ind-renderer:0.1.1@sha256:f43488ff9bc9c413b248a620ba9eed29e583699752305ed4cfbb63383e1af5cf
     container_name: indelible-renderer
@@ -84,12 +84,12 @@ services:
     restart: unless-stopped
     environment:
       IND_ENV: development
-      DATABASE_URL: postgres://indelible:y_ozew8o0v-qGRTW6oJOFM-njwtQu9s0RPag9lLeyxw@postgres:5432/indelible
+      DATABASE_URL: postgres://indelible:1c200d72-b081-4f40-a3c3-cb98d604ad76@postgres:5432/indelible
       S3_ENDPOINT: http://silo:9000
       S3_REGION: us-east-1
       S3_BUCKET: indelible
       S3_ACCESS_KEY: indelible
-      S3_SECRET_KEY: Xhif_MYq3o5QEaU9UGtmCrDV-TY-gPLn83bPB7iMh5g
+      S3_SECRET_KEY: 2f32d346-ff03-48cb-bfed-2ead51511aa8
       S3_FORCE_PATH_STYLE: "true"
       AUTH_CREDENTIAL_KEY: "PFy8QhmU0ZU6H1RFu/ZiIYaEZxVBFPMs4JqHWJ840ZI="
       EGRESS_ALLOW_PRIVATE_TARGETS: "false"
@@ -108,12 +108,12 @@ services:
     restart: unless-stopped
     environment:
       IND_ENV: development
-      DATABASE_URL: postgres://indelible:y_ozew8o0v-qGRTW6oJOFM-njwtQu9s0RPag9lLeyxw@postgres:5432/indelible
+      DATABASE_URL: postgres://indelible:1c200d72-b081-4f40-a3c3-cb98d604ad76@postgres:5432/indelible
       S3_ENDPOINT: http://silo:9000
       S3_REGION: us-east-1
       S3_BUCKET: indelible
       S3_ACCESS_KEY: indelible
-      S3_SECRET_KEY: Xhif_MYq3o5QEaU9UGtmCrDV-TY-gPLn83bPB7iMh5g
+      S3_SECRET_KEY: 2f32d346-ff03-48cb-bfed-2ead51511aa8
       S3_FORCE_PATH_STYLE: "true"
       AUTH_CREDENTIAL_KEY: "PFy8QhmU0ZU6H1RFu/ZiIYaEZxVBFPMs4JqHWJ840ZI="
       EGRESS_ALLOW_PRIVATE_TARGETS: "false"

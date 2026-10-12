@@ -54,7 +54,7 @@
       },
       {
         "name": "DB_PASSWORD",
-        "default": "A2PC0dslsE9NOJLYON0w0PFchCxqRUGv",
+        "default": "02386af9-382f-49ad-841b-060735fd14d7",
         "description": "PostgreSQL password. Must match POSTGRES_PASSWORD and must not be empty.",
         "required": true
       },
@@ -66,7 +66,7 @@
       },
       {
         "name": "POSTGRES_PASSWORD",
-        "default": "A2PC0dslsE9NOJLYON0w0PFchCxqRUGv",
+        "default": "02386af9-382f-49ad-841b-060735fd14d7",
         "description": "PostgreSQL password for the gamevault-db service.",
         "required": true
       },

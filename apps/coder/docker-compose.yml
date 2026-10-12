@@ -8,7 +8,7 @@ services:
     ports:
       - "7080:7080"
     environment:
-      CODER_PG_CONNECTION_URL: postgresql://coder:0FahAZNndH79lnkeKDCJkZP1NykgzDfMYLfxCJQOghw@database/coder?sslmode=disable
+      CODER_PG_CONNECTION_URL: postgresql://coder:918063d1-fb62-438f-8cbf-49e01f7364ff@database/coder?sslmode=disable
       CODER_HTTP_ADDRESS: 0.0.0.0:7080
       CODER_ACCESS_URL: http://localhost:7080
     volumes:
@@ -24,7 +24,7 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER: coder
-      POSTGRES_PASSWORD: 0FahAZNndH79lnkeKDCJkZP1NykgzDfMYLfxCJQOghw
+      POSTGRES_PASSWORD: 918063d1-fb62-438f-8cbf-49e01f7364ff
       POSTGRES_DB: coder
     volumes:
       - coder_data:/var/lib/postgresql/data

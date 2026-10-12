@@ -9,7 +9,7 @@ services:
       - "20041:9090"
     environment:
       ANTHROPIC_API_KEY: ""
-      AUTH_PASSWORD: "BpDXu0QIHtDFyg1-ssr-1OAQIZ--doTw8O8h9UIBWrU"
+      AUTH_PASSWORD: "9c93e0aa-ebe4-4737-b222-d6445c64da29"
       MCP_ENABLED: "true"
       CLAUDE_SESSION_TTL: "1800"
     volumes:

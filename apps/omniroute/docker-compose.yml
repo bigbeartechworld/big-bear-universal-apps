@@ -10,7 +10,7 @@ services:
       DATA_DIR: /app/data
       REDIS_URL: redis://redis:6379
       REQUIRE_API_KEY: "true"
-      INITIAL_PASSWORD: PESi-5Y_9dZj5UzCkz1aop62yIdgCJb3
+      INITIAL_PASSWORD: 0efefa3c-54ae-4848-b7bc-295f91483fe7
       OMNIROUTE_MEMORY_MB: "2048"
     ports:
       - "20128:20128"
