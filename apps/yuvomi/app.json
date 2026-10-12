@@ -72,8 +72,8 @@
       },
       {
         "name": "SESSION_SECRET",
-        "default": "PtfaK2EYBfghFZZH_zV8spJAnLX-t4cXt-rMFwRn9mVKpdaU0PTD2gpEqheIx7Jk",
-        "description": "Session signing secret. Changing it signs everyone out.",
+        "default": "REPLACE_WITH_A_LONG_RANDOM_STRING",
+        "description": "Session signing secret. Yuvomi 2.73.0 refuses to start while this starts with REPLACE_WITH_. Replace it in the install form before the first start. Changing it later signs everyone out.",
         "required": true
       },
       {
@@ -139,7 +139,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Open host port 20004. Replace SESSION_SECRET and DB_ENCRYPTION_KEY in the install form before creating data. The shipped values are public. A lost DB_ENCRYPTION_KEY cannot reopen the database, so keep the replacement. CasaOS and ZimaOS edit those literals; they do not substitute Compose variables. Optional weather, calendar, and OIDC settings are unset."
+        "en_us": "Open host port 20004. SESSION_SECRET is shipped as REPLACE_WITH_A_LONG_RANDOM_STRING. Yuvomi 2.73.0 exits until you replace that placeholder. Also replace DB_ENCRYPTION_KEY before creating data. The shipped values are public. A lost DB_ENCRYPTION_KEY cannot reopen the database, so keep the replacement. CasaOS and ZimaOS edit those literals; they do not substitute Compose variables. Optional weather, calendar, and OIDC settings are unset."
       }
     }
   },

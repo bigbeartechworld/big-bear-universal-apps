@@ -12,7 +12,7 @@ services:
     environment:
       HOMEDEX_DATA_DIR: /data
       HOMEDEX_LISTEN: ":7377"
-      HOMEDEX_ADMIN_PASSWORD: a2d9edc8-f918-4174-9340-539437e1f775
+      HOMEDEX_ADMIN_PASSWORD: CHANGE_ME
     volumes:
       - homedex_data:/data
     read_only: true

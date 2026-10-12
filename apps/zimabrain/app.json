@@ -42,7 +42,7 @@
       {
         "name": "ZIMABRAIN_PASSWORD",
         "default": "79526452-173c-49bc-873f-956f5a9838cb",
-        "description": "Login password for the ZimaBrain web UI.",
+        "description": "Login password for the ZimaBrain web UI. The container exits while this is empty or still the catalog value. Replace it in the install form before the first start.",
         "required": true
       },
       {
@@ -106,7 +106,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Set ZIMABRAIN_PASSWORD and ZIMABRAIN_SECRET_KEY in the install form before the first start. The catalog values are public. CasaOS and ZimaOS edit those literals; they do not substitute Compose variables. ZIMABRAIN_SECRET_KEY is only a session key. The container is privileged and reads host proc, sysfs, hostname, and the Docker socket so it can diagnose this machine. No download or torrent sidecar is included."
+        "en_us": "Replace ZIMABRAIN_PASSWORD before the first start. The container exits while it is empty or still the catalog value, so the public password cannot be used and first-run setup is not left open on port 8601. Also replace ZIMABRAIN_SECRET_KEY. The catalog values are public. CasaOS and ZimaOS edit those literals; they do not substitute Compose variables. ZIMABRAIN_SECRET_KEY is only a session key. The container is privileged and reads host proc, sysfs, hostname, and the Docker socket so it can diagnose this machine. No download or torrent sidecar is included."
       }
     }
   },

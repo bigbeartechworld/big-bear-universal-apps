@@ -55,8 +55,8 @@
       },
       {
         "name": "HOMEDEX_ADMIN_PASSWORD",
-        "default": "a2d9edc8-f918-4174-9340-539437e1f775",
-        "description": "Admin password stored as an Argon2id hash on first start. Must be at least 12 characters. Ignored after an admin exists.",
+        "default": "CHANGE_ME",
+        "description": "Admin password stored as an Argon2id hash on first start. Homedex 0.2.5 exits while this is shorter than 12 characters, so replace CHANGE_ME before the first start. Ignored after an admin exists.",
         "required": true
       },
       {
@@ -138,7 +138,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Set HOMEDEX_ADMIN_PASSWORD in the install form before the first start. Homedex hashes it on first start and does not replace that hash later. The catalog value is public. CasaOS and ZimaOS edit the literal; they do not substitute Compose variables. Open http://localhost:7377 and sign in as admin. Add the prefilled Docker source tcp://docker-socket-proxy:2375. That proxy mounts the Docker socket read-only and rejects mutating API calls."
+        "en_us": "Replace HOMEDEX_ADMIN_PASSWORD before the first start. The shipped value is CHANGE_ME, and Homedex 0.2.5 exits until the password is at least 12 characters. Homedex hashes the replacement on first start and does not replace that hash later. CasaOS and ZimaOS edit the literal; they do not substitute Compose variables. Open http://localhost:7377 and sign in as admin. Add the prefilled Docker source tcp://docker-socket-proxy:2375. That proxy mounts the Docker socket read-only and rejects mutating API calls."
       }
     }
   },

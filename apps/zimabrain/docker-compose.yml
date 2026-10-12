@@ -21,6 +21,15 @@ services:
       - /sys:/host/sys:ro
       - /etc/hostname:/host/etc/hostname:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        if [ -z "$$ZIMABRAIN_PASSWORD" ] || [ "$$ZIMABRAIN_PASSWORD" = "79526452-173c-49bc-873f-956f5a9838cb" ]; then
+          echo "Set ZIMABRAIN_PASSWORD to your own value before start. The catalog value is public, and an empty value opens first-run setup on port 8601." >&2
+          exit 1
+        fi
+        exec python /app/flask_app.py
     extra_hosts:
       - host.docker.internal:host-gateway
     healthcheck:
