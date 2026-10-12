@@ -1,0 +1,16 @@
+name: docuseal
+
+services:
+  docuseal:
+    image: docuseal/docuseal:3.3.1@sha256:e171808ce8dabb08491a49a6d8c477670a65ddce5e3de4764904b63a4487940f
+    container_name: docuseal
+    restart: unless-stopped
+    ports:
+      - "20031:3000"
+    volumes:
+      - docuseal_data:/data
+
+volumes:
+  docuseal_data:
+    name: docuseal_data
+    driver: local

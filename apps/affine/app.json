@@ -1,0 +1,179 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "affine",
+    "name": "AFFiNE",
+    "description": "AFFiNE 0.27.4 is a self-hosted workspace for docs, whiteboards, and knowledge bases, with Postgres and Redis.",
+    "version": "0.27.4",
+    "author": "BigBearTechWorld",
+    "developer": "toeverything",
+    "category": "BigBearCasaOS",
+    "license": "MIT",
+    "homepage": "https://affine.pro",
+    "source": "big-bear-universal",
+    "created": "2026-10-05T00:00:00Z",
+    "updated": "2026-10-05T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/affine.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/affine.png"
+  },
+  "resources": {
+    "documentation": "https://docs.affine.pro/self-host-affine/install/docker-compose-recommended",
+    "repository": "https://github.com/toeverything/AFFiNE",
+    "issues": "https://github.com/toeverything/AFFiNE/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "affine",
+    "default_port": "3010",
+    "main_image": "ghcr.io/toeverything/affine",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "REDIS_SERVER_HOST",
+        "default": "redis",
+        "description": "Redis hostname on the Compose network.",
+        "required": false
+      },
+      {
+        "name": "DATABASE_URL",
+        "default": "postgresql://affine@postgres:5432/affine",
+        "description": "Postgres URL for the AFFiNE server and migration job. Matches the postgres service, which uses trust authentication.",
+        "required": false
+      },
+      {
+        "name": "AFFINE_INDEXER_ENABLED",
+        "default": "false",
+        "description": "Disable the search indexer, matching the v0.27.4 release Compose file.",
+        "required": false
+      },
+      {
+        "name": "POSTGRES_USER",
+        "default": "affine",
+        "description": "Postgres role created on first start.",
+        "required": false
+      },
+      {
+        "name": "POSTGRES_DB",
+        "default": "affine",
+        "description": "Postgres database created on first start.",
+        "required": false
+      },
+      {
+        "name": "POSTGRES_INITDB_ARGS",
+        "default": "--data-checksums",
+        "description": "Arguments passed to initdb.",
+        "required": false
+      },
+      {
+        "name": "POSTGRES_HOST_AUTH_METHOD",
+        "default": "trust",
+        "description": "Auth method from the official Compose file. Connections on the Compose network do not use a password.",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/root/.affine/storage",
+        "description": "Uploaded AFFiNE files"
+      },
+      {
+        "container": "/root/.affine/config",
+        "description": "AFFiNE config and the generated private key"
+      },
+      {
+        "container": "/var/lib/postgresql/data",
+        "description": "Postgres data"
+      }
+    ],
+    "ports": [
+      {
+        "container": "3010",
+        "host": "3010",
+        "protocol": "tcp",
+        "description": "AFFiNE web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "Open http://localhost:3010 after startup. The official Compose file stores server.externalUrl in config.json. Put that file in the config volume at /root/.affine/config/config.json and set externalUrl to the URL users will open. Postgres uses trust authentication on the internal network."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "3010",
+      "category": "Productivity",
+      "volume_mappings": {
+        "affine_storage": "/DATA/AppData/$AppID/storage",
+        "affine_config": "/DATA/AppData/$AppID/config",
+        "affine_postgres": "/DATA/AppData/$AppID/postgres"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "affine_storage": "storage",
+        "affine_config": "config",
+        "affine_postgres": "postgres"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "affine_storage": "storage",
+        "affine_config": "config",
+        "affine_postgres": "postgres"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "notes",
+    "wiki",
+    "whiteboard",
+    "productivity"
+  ]
+}
