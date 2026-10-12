@@ -1,0 +1,142 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "filebrowser-quantum-v2",
+    "name": "FileBrowser Quantum v2",
+    "description": "FileBrowser Quantum 2.0 file manager. This is a new app, separate from FileBrowser Quantum 1.5.8. v2 stores users and shares in SQLite and refuses to start while a v1 database.db file is still in the data directory. Do not attach the 1.5.8 data volume. A fresh install prints a one-time admin password in the container logs.",
+    "tagline": "FileBrowser Quantum v2",
+    "version": "2.0.0-stable",
+    "author": "BigBearCommunity",
+    "developer": "gtsteffaniak",
+    "category": "BigBearCasaOS",
+    "license": "Apache-2.0",
+    "homepage": "https://hub.docker.com/r/gtstef/filebrowser",
+    "source": "big-bear-universal",
+    "created": "2026-10-12T00:00:00Z",
+    "updated": "2026-10-12T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/filebrowser-quantum.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/filebrowser-quantum.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://filebrowserquantum.com/en/docs/getting-started/v2/migration/",
+    "repository": "https://github.com/gtsteffaniak/filebrowser",
+    "issues": "https://github.com/gtsteffaniak/filebrowser/issues",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "big-bear-filebrowser-quantum-v2",
+    "default_port": "8701",
+    "main_image": "gtstef/filebrowser",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "TZ",
+        "default": "UTC",
+        "description": "Timezone for the application",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/home/filebrowser/data",
+        "description": "SQLite database and configuration. Do not mount a v1 data directory here."
+      },
+      {
+        "container": "/srv",
+        "description": "Served files directory"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "8701",
+        "protocol": "tcp",
+        "description": "Web UI (host port 8701 so it does not collide with FileBrowser Quantum 1.5.8 on 8700)"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "NEW APP - FILEBROWSER QUANTUM V2\n\nThis is a NEW app, separate from 'filebrowser-quantum' (1.5.8-stable). Do not treat the install as an upgrade of an existing 1.5.8 stack.\n\nFOR NEW USERS:\n- Install this app for a new FileBrowser Quantum 2 deployment\n- Web UI is on host port 8701. On Umbrel the published port is 10701\n- The first start generates an admin password and prints it once in the container logs. The username is admin. v2 does not keep the old admin/admin password\n- Change that password at the first login\n- Files you want to browse belong in the filebrowser-quantum-v2_srv volume, mounted at /srv\n\nFOR FILEBROWSER QUANTUM 1.5.8 USERS:\n- Do NOT uninstall the existing 'filebrowser-quantum' app\n- Do NOT point this app at the 1.5.8 data volume. v2 refuses to start while database.db is still named database.db\n- v2 replaces BoltDB with SQLite. Config keys also move, including FILEBROWSER_DATABASE to FILEBROWSER_DATABASE_PATH\n- Stop 1.5.8, copy database.db somewhere safe, rename the copy to database.db.old, convert config.yaml, and set server.database.migrateFrom before starting v2 against that copy\n- Keep 1.5.8 until you have logged in on v2 and checked users, shares, and sidebar links\n\nMigration: https://filebrowserquantum.com/en/docs/getting-started/v2/migration/"
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8701",
+      "volume_mappings": {
+        "filebrowser-quantum-v2_data": "/DATA/AppData/$AppID/data",
+        "filebrowser-quantum-v2_srv": "/DATA/AppData/$AppID/srv"
+      },
+      "port": "8701",
+      "category": "Productivity"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Storage",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8701"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "filebrowser-quantum-v2_data": "data",
+        "filebrowser-quantum-v2_srv": "srv"
+      },
+      "port": "8701"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8701"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8701"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "filebrowser-quantum-v2_data": "data",
+        "filebrowser-quantum-v2_srv": "srv"
+      },
+      "port": "10701"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "storage",
+    "file-manager",
+    "filebrowser"
+  ]
+}

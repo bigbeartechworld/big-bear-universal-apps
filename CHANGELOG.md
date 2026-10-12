@@ -3,6 +3,19 @@
 All notable changes to Big Bear Universal Apps are documented here.
 Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within the month)
 
+## [2026.10.3]
+
+### Added
+- `apps/filebrowser-quantum-v2/` — FileBrowser Quantum 2.0.0-stable on host port 8701. v2 replaces BoltDB with SQLite and refuses to start while `database.db` is still in the data directory. A fresh install prints a one-time admin password in the logs. Do not attach the 1.5.8 data volume. Migration: https://filebrowserquantum.com/en/docs/getting-started/v2/migration/
+
+### Changed
+- `apps/filebrowser-quantum/` — renamed to "FileBrowser Quantum (Legacy)" and pinned in `renovate.json` at 1.5.8-stable. Closed #3996.
+
+### Updated
+- `apps/skysend/` — v2.12.2 → v3.0.1 (#4115). Same port 23001 and `/data` plus `/uploads` volumes. The catalog does not set `DEFAULT_THEME`. An install that still sets it to `dark`, `light`, or `system` will refuse to start until that value moves to `DEFAULT_COLOR_SCHEME`. Update the SkySend CLI with the server.
+- `apps/ungoogled-chromium/` — 154.0.8037 → 155.0.8059 (#4034). Browser tag only. Same ports 3000 and 3001, environment, and `/config` volume.
+- `apps/msedge/` — 154.0.4258 → 155.0.4283 (#3972). Browser tag only. Same ports 3000 and 3001, environment, and `/config` volume.
+
 ## [2026.10.2]
 
 ### Fixed
