@@ -5,7 +5,7 @@
     "name": "Darktable",
     "description": "darktable is an open source photography workflow application and raw developer. A virtual lighttable and darkroom for photographers. It manages your digital negatives in a database, lets you view them through a zoomable lighttable and enables you to develop raw images and enhance them.",
     "tagline": "An open source photography workflow application and raw developer. A virtual lighttable and darkroom for photographers. It manages your digital negatives in a database, lets you view them through a zoomable lighttable and enables you to develop raw images and enhance them.",
-    "version": "25.6.1",
+    "version": "25.6.2",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/darktable",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:57.673Z",
-    "updated": "2026-09-17T18:10:57.673Z"
+    "updated": "2026-10-12T23:13:13.452Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/darktable-logo.png",
