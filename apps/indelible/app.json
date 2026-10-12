@@ -205,7 +205,7 @@
       {
         "name": "MINIO_ROOT_PASSWORD",
         "default": "2f32d346-ff03-48cb-bfed-2ead51511aa8",
-        "description": "Silo root password. Must match S3_SECRET_KEY.",
+        "description": "Silo root password. Must match S3_SECRET_KEY. indelible-silo-init reads this environment value, so change it here rather than in the command.",
         "required": true
       }
     ],
@@ -233,7 +233,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "Open http://localhost:38473 and create the first account. Signups close after that account exists. This is the official localhost trial: plain HTTP, not the production compose. A public hostname needs HTTPS, and production mode refuses to boot without it. Replace JWT_SECRET, CSRF_SECRET, ASSET_COOKIE_SECRET, AUTH_CREDENTIAL_KEY, POSTGRES_PASSWORD, and MINIO_ROOT_PASSWORD before the first start. The catalog values are public. Keep the same Postgres password in DATABASE_URL, and keep S3_SECRET_KEY equal to MINIO_ROOT_PASSWORD. CasaOS and ZimaOS edit those literals; they do not substitute Compose variables."
+        "en_us": "Open http://localhost:38473 and create the first account. Signups close after that account exists. This is the official localhost trial: plain HTTP, not the production compose. A public hostname needs HTTPS, and production mode refuses to boot without it. Replace JWT_SECRET, CSRF_SECRET, ASSET_COOKIE_SECRET, AUTH_CREDENTIAL_KEY, POSTGRES_PASSWORD, and MINIO_ROOT_PASSWORD before the first start. The catalog values are public. Keep the same Postgres password in DATABASE_URL, and keep S3_SECRET_KEY equal to MINIO_ROOT_PASSWORD on silo and on indelible-silo-init. The initializer reads that environment value when it creates the bucket. CasaOS and ZimaOS edit those literals; they do not substitute Compose variables."
       }
     }
   },
