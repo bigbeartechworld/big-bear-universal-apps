@@ -1,7 +1,7 @@
 name: drawio
 services:
   app:
-    image: jgraph/drawio:32.2.0@sha256:eeb90e46cab38daf2b9f7887c9418d9fad219532cb03ad50826ef5a1f68d8a8e
+    image: jgraph/drawio:32.4.1@sha256:1fc183e15611c35ced75a0e990258a46991b70bea250b18385da5d9cdc934262
     container_name: drawio
     ports:
       - "8080:8080"

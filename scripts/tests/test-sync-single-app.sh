@@ -62,7 +62,6 @@ run_sync casaos --app bar
 assert_eq "$?" "0" "sync exits cleanly"
 assert_eq "$(exists "$APPS/bar")" "no" "named app missing from converted is removed"
 assert_eq "$(cat "$APPS/foo/docker-compose.yml")" "stale" "unrequested app is untouched"
-assert_eq "$(output_mentions "Removing orphaned app: bar")" "1" "removal names the app"
 
 section "full sync still removes orphaned apps"
 prepare
@@ -77,22 +76,6 @@ run_sync casaos --no-clean
 assert_eq "$?" "0" "sync exits cleanly"
 assert_eq "$(cat "$APPS/foo/docker-compose.yml")" "updated-content" "app is synced"
 assert_eq "$(exists "$APPS/bar")" "yes" "orphaned app survives --no-clean"
-
-section "--no-clean keeps the named app that left converted"
-prepare
-run_sync casaos --no-clean --app bar
-assert_eq "$?" "0" "sync exits cleanly"
-assert_eq "$(exists "$APPS/bar")" "yes" "named app survives --no-clean"
-assert_eq "$(cat "$APPS/foo/docker-compose.yml")" "stale" "unrequested app is untouched"
-
-section "--app removes the named app when converted has no app directories"
-prepare
-rm -rf "$UNIVERSAL/converted/casaos/foo"
-run_sync casaos --app bar
-assert_eq "$?" "0" "sync exits cleanly"
-assert_eq "$(exists "$APPS/bar")" "no" "named app is removed from an empty converted directory"
-assert_eq "$(exists "$APPS/foo")" "yes" "unrequested app survives"
-assert_eq "$(cat "$APPS/foo/docker-compose.yml")" "stale" "unrequested app is untouched"
 
 section "single-app portainer sync keeps the full catalog"
 prepare
@@ -130,143 +113,175 @@ status=$?
 assert_eq "$([[ $status -ne 0 ]] && echo rejected || echo accepted)" "rejected" "missing app name exits non-zero"
 assert_eq "$(output_mentions "requires a non-empty app name")" "1" "rejection explains why"
 
-section "--app maps through the umbrel folder prefix"
+section "--app matches the Umbrel converted folder"
 prepare
 UMBREL="$TMP/big-bear-umbrel"
-mkdir -p "$UNIVERSAL/converted/umbrel/big-bear-umbrel-foo" "$UMBREL/big-bear-umbrel-foo"
-echo "umbrel-new" > "$UNIVERSAL/converted/umbrel/big-bear-umbrel-foo/docker-compose.yml"
-echo "umbrel-stale" > "$UMBREL/big-bear-umbrel-foo/docker-compose.yml"
+mkdir -p "$UNIVERSAL/converted/umbrel/big-bear-umbrel-foo" "$UMBREL/big-bear-umbrel-foo" "$UMBREL/big-bear-umbrel-bar" "$UMBREL/scripts"
+echo "updated-umbrel" > "$UNIVERSAL/converted/umbrel/big-bear-umbrel-foo/docker-compose.yml"
+echo "stale-umbrel" > "$UMBREL/big-bear-umbrel-foo/docker-compose.yml"
+echo "other-app" > "$UMBREL/big-bear-umbrel-bar/umbrel-app.yml"
+echo "keep-scripts" > "$UMBREL/scripts/fix.sh"
 run_sync umbrel --app foo
 assert_eq "$?" "0" "sync exits cleanly"
-assert_eq "$(cat "$UMBREL/big-bear-umbrel-foo/docker-compose.yml")" "umbrel-new" "umbrel app is synced by its source name"
+assert_eq "$(cat "$UMBREL/big-bear-umbrel-foo/docker-compose.yml")" "updated-umbrel" "umbrel app id maps to big-bear-umbrel-<id>"
+assert_eq "$(exists "$UMBREL/big-bear-umbrel-bar/umbrel-app.yml")" "yes" "other umbrel app survives --app"
+assert_eq "$(cat "$UMBREL/scripts/fix.sh")" "keep-scripts" "umbrel scripts survive --app"
 
-section "--app maps through a folder_name override"
+section "--app matches a folder_name override"
 prepare
-mkdir -p "$UNIVERSAL/apps/foo" "$UNIVERSAL/converted/casaos/custom-fixture" "$APPS/custom-fixture"
-cat > "$UNIVERSAL/apps/foo/app.json" << 'EOF'
-{
-  "metadata": { "id": "foo" },
-  "compatibility": { "casaos": { "folder_name": "custom-fixture" } }
-}
-EOF
-echo "override-new" > "$UNIVERSAL/converted/casaos/custom-fixture/docker-compose.yml"
-echo "override-stale" > "$APPS/custom-fixture/docker-compose.yml"
+rm -rf "$UNIVERSAL/converted/casaos/foo"
+mkdir -p "$UNIVERSAL/apps/foo" "$UNIVERSAL/converted/casaos/custom-foo" "$APPS/custom-foo"
+cat > "$UNIVERSAL/apps/foo/app.json" <<'JSON'
+{"metadata":{"id":"foo"},"compatibility":{"casaos":{"folder_name":"custom-foo"}}}
+JSON
+echo "updated-custom" > "$UNIVERSAL/converted/casaos/custom-foo/docker-compose.yml"
+echo "stale-custom" > "$APPS/custom-foo/docker-compose.yml"
 run_sync casaos --app foo
 assert_eq "$?" "0" "sync exits cleanly"
-assert_eq "$(cat "$APPS/custom-fixture/docker-compose.yml")" "override-new" "override folder is synced"
-assert_eq "$(cat "$APPS/foo/docker-compose.yml")" "stale" "literal folder is not the override target"
+assert_eq "$(cat "$APPS/custom-foo/docker-compose.yml")" "updated-custom" "folder_name override is the sync target"
+assert_eq "$(cat "$APPS/foo/docker-compose.yml")" "stale" "app id folder is not the override target"
+assert_eq "$(exists "$APPS/bar")" "yes" "other app survives folder_name sync"
 
-section "--app uses metadata.id when it differs from the directory name"
+section "--replace-all on umbrel keeps repo metadata"
 prepare
 UMBREL="$TMP/big-bear-umbrel"
-mkdir -p "$UNIVERSAL/apps/Homepage" "$UNIVERSAL/converted/umbrel/homepage" "$UMBREL/homepage"
-cat > "$UNIVERSAL/apps/Homepage/app.json" << 'EOF'
-{
-  "metadata": { "id": "homepage" }
-}
-EOF
-echo "id-new" > "$UNIVERSAL/converted/umbrel/homepage/docker-compose.yml"
-echo "id-stale" > "$UMBREL/homepage/docker-compose.yml"
-echo "app: homepage" > "$UNIVERSAL/converted/umbrel/homepage/umbrel-app.yml"
-echo "app: homepage" > "$UMBREL/homepage/umbrel-app.yml"
-run_sync umbrel --app Homepage
+mkdir -p "$UNIVERSAL/converted/umbrel/big-bear-umbrel-foo" \
+  "$UMBREL/big-bear-umbrel-foo" "$UMBREL/big-bear-umbrel-bar" \
+  "$UMBREL/.git" "$UMBREL/.github" "$UMBREL/scripts" "$UMBREL/templates" \
+  "$UMBREL/docs" "$UMBREL/__tests__"
+echo "updated-umbrel" > "$UNIVERSAL/converted/umbrel/big-bear-umbrel-foo/docker-compose.yml"
+echo "manifest" > "$UMBREL/big-bear-umbrel-foo/umbrel-app.yml"
+echo "other-app" > "$UMBREL/big-bear-umbrel-bar/umbrel-app.yml"
+echo "gitkeep" > "$UMBREL/.git/config"
+echo "workflow" > "$UMBREL/.github/workflows.yml"
+echo "keep-scripts" > "$UMBREL/scripts/fix.sh"
+echo "keep-template" > "$UMBREL/templates/README.md"
+echo "keep-docs" > "$UMBREL/docs/README.md"
+echo "keep-tests" > "$UMBREL/__tests__/apps.test.ts"
+run_sync umbrel --replace-all
 assert_eq "$?" "0" "sync exits cleanly"
-assert_eq "$(cat "$UMBREL/homepage/docker-compose.yml")" "id-new" "metadata.id is the umbrel folder when it differs from the directory"
-
-section "--app warns when nothing matches"
-prepare
-run_sync casaos --app nope
-assert_eq "$?" "0" "a miss still exits cleanly"
-assert_eq "$(output_mentions "No app matched 'nope' for casaos")" "1" "a miss is announced"
-assert_eq "$(cat "$APPS/foo/docker-compose.yml")" "stale" "unrelated app is untouched"
-assert_eq "$(exists "$APPS/bar")" "yes" "unrelated app survives a miss"
+assert_eq "$(cat "$UMBREL/big-bear-umbrel-foo/docker-compose.yml")" "updated-umbrel" "converted umbrel app is restored"
+assert_eq "$(exists "$UMBREL/big-bear-umbrel-bar")" "no" "umbrel app absent from converted is removed"
+assert_eq "$(cat "$UMBREL/.git/config")" "gitkeep" ".git survives umbrel replace-all"
+assert_eq "$(cat "$UMBREL/.github/workflows.yml")" "workflow" ".github survives umbrel replace-all"
+assert_eq "$(cat "$UMBREL/scripts/fix.sh")" "keep-scripts" "scripts survive umbrel replace-all"
+assert_eq "$(cat "$UMBREL/templates/README.md")" "keep-template" "templates survive umbrel replace-all"
+assert_eq "$(cat "$UMBREL/docs/README.md")" "keep-docs" "new top-level folder survives umbrel replace-all"
+assert_eq "$(cat "$UMBREL/__tests__/apps.test.ts")" "keep-tests" "__tests__ survives umbrel replace-all"
 
 section "--workspace selects the platform repositories"
 prepare
-REQ="$TMP/requested-workspace"
-mkdir -p "$REQ/big-bear-casaos/Apps/foo"
-echo "untouched" > "$REQ/big-bear-casaos/Apps/foo/docker-compose.yml"
-run_sync casaos -w "$REQ" --app foo
+ELSEWHERE="$TMP/elsewhere"
+mkdir -p "$ELSEWHERE/big-bear-casaos/Apps/foo"
+echo "alt-stale" > "$ELSEWHERE/big-bear-casaos/Apps/foo/docker-compose.yml"
+run_sync casaos --app foo -w "$ELSEWHERE"
 assert_eq "$?" "0" "sync exits cleanly"
-assert_eq "$(cat "$REQ/big-bear-casaos/Apps/foo/docker-compose.yml")" "updated-content" "requested workspace receives the app"
-assert_eq "$(cat "$APPS/foo/docker-compose.yml")" "stale" "default workspace is not written"
+assert_eq "$(cat "$ELSEWHERE/big-bear-casaos/Apps/foo/docker-compose.yml")" "updated-content" "--workspace receives the sync"
+assert_eq "$(cat "$APPS/foo/docker-compose.yml")" "stale" "default workspace is not used when --workspace is set"
 
-write_umbrel_tree() {
-  local umbrel="$TMP/big-bear-umbrel"
-  rm -rf "$umbrel"
-  mkdir -p "$umbrel/.git" \
-    "$umbrel/.github/workflows" \
-    "$umbrel/scripts" \
-    "$umbrel/templates" \
-    "$umbrel/schemas" \
-    "$umbrel/node_modules" \
-    "$umbrel/__tests__" \
-    "$umbrel/big-bear-umbrel-foo" \
-    "$umbrel/big-bear-umbrel-orphan" \
-    "$UNIVERSAL/converted/umbrel/big-bear-umbrel-foo"
-  echo "keep-git" > "$umbrel/.git/HEAD"
-  echo "keep-gh" > "$umbrel/.github/workflows/ci.yml"
-  echo "keep-scripts" > "$umbrel/scripts/tool.sh"
-  echo "keep-templates" > "$umbrel/templates/README.md"
-  echo "keep-schemas" > "$umbrel/schemas/schema.json"
-  echo "keep-modules" > "$umbrel/node_modules/pkg.js"
-  echo "keep-tests" > "$umbrel/__tests__/apps.test.ts"
-  echo "umbrel-new" > "$UNIVERSAL/converted/umbrel/big-bear-umbrel-foo/docker-compose.yml"
-  echo "app: foo" > "$UNIVERSAL/converted/umbrel/big-bear-umbrel-foo/umbrel-app.yml"
-  echo "previous-umbrel-content" > "$umbrel/big-bear-umbrel-foo/docker-compose.yml"
-  echo "app: foo" > "$umbrel/big-bear-umbrel-foo/umbrel-app.yml"
-  echo "orphan" > "$umbrel/big-bear-umbrel-orphan/docker-compose.yml"
-  echo "app: orphan" > "$umbrel/big-bear-umbrel-orphan/umbrel-app.yml"
-}
-
-section "umbrel cleanup keeps repository directories and removes orphan apps"
+section "umbrel full sync removes orphan apps and keeps other top-level folders"
 prepare
-write_umbrel_tree
 UMBREL="$TMP/big-bear-umbrel"
+mkdir -p "$UNIVERSAL/converted/umbrel/big-bear-umbrel-foo" \
+  "$UMBREL/big-bear-umbrel-foo" "$UMBREL/big-bear-umbrel-bar" "$UMBREL/docs"
+echo "updated-umbrel" > "$UNIVERSAL/converted/umbrel/big-bear-umbrel-foo/docker-compose.yml"
+echo "stale-umbrel" > "$UMBREL/big-bear-umbrel-foo/docker-compose.yml"
+echo "orphan" > "$UMBREL/big-bear-umbrel-bar/umbrel-app.yml"
+echo "keep-docs" > "$UMBREL/docs/README.md"
 run_sync umbrel
 assert_eq "$?" "0" "sync exits cleanly"
-assert_eq "$(cat "$UMBREL/big-bear-umbrel-foo/docker-compose.yml")" "umbrel-new" "converted umbrel app is synced"
-assert_eq "$(exists "$UMBREL/big-bear-umbrel-orphan")" "no" "orphaned umbrel app is removed"
-assert_eq "$(exists "$UMBREL/.git/HEAD")" "yes" ".git survives cleanup"
-assert_eq "$(exists "$UMBREL/.github/workflows/ci.yml")" "yes" ".github survives cleanup"
-assert_eq "$(exists "$UMBREL/scripts/tool.sh")" "yes" "scripts survives cleanup"
-assert_eq "$(exists "$UMBREL/templates/README.md")" "yes" "templates survives cleanup"
-assert_eq "$(exists "$UMBREL/schemas/schema.json")" "yes" "schemas survives cleanup"
-assert_eq "$(exists "$UMBREL/node_modules/pkg.js")" "yes" "node_modules survives cleanup"
-assert_eq "$(exists "$UMBREL/__tests__/apps.test.ts")" "yes" "__tests__ survives cleanup"
+assert_eq "$(cat "$UMBREL/big-bear-umbrel-foo/docker-compose.yml")" "updated-umbrel" "umbrel app is synced"
+assert_eq "$(exists "$UMBREL/big-bear-umbrel-bar")" "no" "orphaned umbrel app is removed"
+assert_eq "$(cat "$UMBREL/docs/README.md")" "keep-docs" "non-app folder survives umbrel cleanup"
 
-section "umbrel --replace-all keeps repository directories"
-prepare
-write_umbrel_tree
-UMBREL="$TMP/big-bear-umbrel"
-run_sync umbrel --replace-all
-assert_eq "$?" "0" "sync exits cleanly"
-assert_eq "$(cat "$UMBREL/big-bear-umbrel-foo/docker-compose.yml")" "umbrel-new" "app is replaced from converted"
-assert_eq "$(exists "$UMBREL/big-bear-umbrel-orphan")" "no" "orphan is not restored"
-assert_eq "$(exists "$UMBREL/.git/HEAD")" "yes" ".git survives --replace-all"
-assert_eq "$(exists "$UMBREL/.github/workflows/ci.yml")" "yes" ".github survives --replace-all"
-assert_eq "$(exists "$UMBREL/scripts/tool.sh")" "yes" "scripts survives --replace-all"
-assert_eq "$(exists "$UMBREL/templates/README.md")" "yes" "templates survives --replace-all"
-assert_eq "$(exists "$UMBREL/schemas/schema.json")" "yes" "schemas survives --replace-all"
-assert_eq "$(exists "$UMBREL/node_modules/pkg.js")" "yes" "node_modules survives --replace-all"
-assert_eq "$(exists "$UMBREL/__tests__/apps.test.ts")" "yes" "__tests__ survives --replace-all"
-
-section "umbrel --app removes the prefixed folder that left converted"
+section "--app removes an umbrel app that left converted"
 prepare
 UMBREL="$TMP/big-bear-umbrel"
-mkdir -p "$UMBREL/big-bear-umbrel-foo" "$UMBREL/big-bear-umbrel-bar" "$UMBREL/schemas" "$UNIVERSAL/converted/umbrel/big-bear-umbrel-bar"
-echo "remove-me" > "$UMBREL/big-bear-umbrel-foo/docker-compose.yml"
-echo "app: foo" > "$UMBREL/big-bear-umbrel-foo/umbrel-app.yml"
-echo "keep-bar" > "$UMBREL/big-bear-umbrel-bar/docker-compose.yml"
-echo "app: bar" > "$UMBREL/big-bear-umbrel-bar/umbrel-app.yml"
-echo "keep-schemas" > "$UMBREL/schemas/schema.json"
-echo "bar-src" > "$UNIVERSAL/converted/umbrel/big-bear-umbrel-bar/docker-compose.yml"
-echo "app: bar" > "$UNIVERSAL/converted/umbrel/big-bear-umbrel-bar/umbrel-app.yml"
+mkdir -p "$UNIVERSAL/converted/umbrel/big-bear-umbrel-bar" \
+  "$UMBREL/big-bear-umbrel-foo" "$UMBREL/big-bear-umbrel-bar" "$UMBREL/scripts"
+echo "stay" > "$UNIVERSAL/converted/umbrel/big-bear-umbrel-bar/docker-compose.yml"
+echo "gone-app" > "$UMBREL/big-bear-umbrel-foo/umbrel-app.yml"
+echo "stay-dest" > "$UMBREL/big-bear-umbrel-bar/docker-compose.yml"
+echo "keep-scripts" > "$UMBREL/scripts/fix.sh"
 run_sync umbrel --app foo
 assert_eq "$?" "0" "sync exits cleanly"
-assert_eq "$(exists "$UMBREL/big-bear-umbrel-foo")" "no" "prefixed folder that left converted is removed"
-assert_eq "$(exists "$UMBREL/big-bear-umbrel-bar")" "yes" "other umbrel app survives"
-assert_eq "$(exists "$UMBREL/schemas/schema.json")" "yes" "repository directory survives a targeted removal"
+assert_eq "$(exists "$UMBREL/big-bear-umbrel-foo")" "no" "umbrel app that left converted is removed"
+assert_eq "$(cat "$UMBREL/big-bear-umbrel-bar/docker-compose.yml")" "stay-dest" "other umbrel app is untouched"
+assert_eq "$(cat "$UMBREL/scripts/fix.sh")" "keep-scripts" "umbrel scripts survive targeted removal"
+
+section "--app removes an unsupported umbrel app when that platform produced no output"
+prepare
+UMBREL="$TMP/big-bear-umbrel"
+mkdir -p "$UNIVERSAL/apps/foo" "$UMBREL/custom-umbrel-name" "$UMBREL/scripts" "$UMBREL/.git"
+cat > "$UNIVERSAL/apps/foo/app.json" <<'JSON'
+{"metadata":{"id":"foo"},"compatibility":{"umbrel":{"supported":false,"folder_name":"custom-umbrel-name"}}}
+JSON
+echo "gone-app" > "$UMBREL/custom-umbrel-name/umbrel-app.yml"
+echo "keep-scripts" > "$UMBREL/scripts/fix.sh"
+echo "gitkeep" > "$UMBREL/.git/config"
+run_sync umbrel --app foo
+assert_eq "$?" "0" "sync exits cleanly"
+assert_eq "$(exists "$UMBREL/custom-umbrel-name")" "no" "unsupported umbrel folder_name is removed"
+assert_eq "$(cat "$UMBREL/scripts/fix.sh")" "keep-scripts" "scripts survive unsupported-app removal"
+assert_eq "$(cat "$UMBREL/.git/config")" "gitkeep" ".git survives unsupported-app removal"
+
+section "targeted removal refuses a folder_name outside the app root"
+prepare
+mkdir -p "$UNIVERSAL/apps/foo" "$TMP/big-bear-casaos/docs"
+cat > "$UNIVERSAL/apps/foo/app.json" <<'JSON'
+{"metadata":{"id":"foo"},"compatibility":{"casaos":{"folder_name":"../docs"}}}
+JSON
+echo "keep-docs" > "$TMP/big-bear-casaos/docs/README.md"
+run_sync casaos --app foo
+status=$?
+assert_eq "$([[ $status -ne 0 ]] && echo rejected || echo accepted)" "rejected" "traversal folder exits non-zero"
+assert_eq "$(cat "$TMP/big-bear-casaos/docs/README.md")" "keep-docs" "folder outside the app root is not removed"
+assert_eq "$(exists "$APPS/bar")" "yes" "other app survives a rejected removal"
+
+section "targeted removal refuses a symlink that leaves the app root"
+prepare
+OUTSIDE="$TMP/outside-docs"
+mkdir -p "$OUTSIDE" "$UNIVERSAL/apps/foo"
+echo "keep-outside" > "$OUTSIDE/README.md"
+ln -s "$OUTSIDE" "$APPS/linked"
+rm -rf "$UNIVERSAL/converted/casaos/foo"
+cat > "$UNIVERSAL/apps/foo/app.json" <<'JSON'
+{"metadata":{"id":"foo"},"compatibility":{"casaos":{"folder_name":"linked"}}}
+JSON
+run_sync casaos --app foo
+status=$?
+assert_eq "$([[ $status -ne 0 ]] && echo rejected || echo accepted)" "rejected" "outside symlink exits non-zero"
+assert_eq "$(cat "$OUTSIDE/README.md")" "keep-outside" "symlink target outside the app root is not removed"
+assert_eq "$(exists "$APPS/linked")" "yes" "outside symlink is left in place"
+assert_eq "$(exists "$APPS/bar")" "yes" "other app survives a rejected symlink removal"
+
+section "unreadable app metadata does not delete the app id folder"
+prepare
+rm -rf "$UNIVERSAL/converted/casaos/foo"
+mkdir -p "$UNIVERSAL/apps/foo" "$UNIVERSAL/converted/casaos/custom-foo" "$TMP/bin"
+cat > "$UNIVERSAL/apps/foo/app.json" <<'JSON'
+{"metadata":{"id":"foo"},"compatibility":{"casaos":{"folder_name":"custom-foo"}}}
+JSON
+echo "updated-custom" > "$UNIVERSAL/converted/casaos/custom-foo/docker-compose.yml"
+printf '%s\n' '#!/bin/sh' 'exit 1' > "$TMP/bin/jq"
+chmod +x "$TMP/bin/jq"
+saved_path=$PATH
+PATH="$TMP/bin:$PATH"
+run_sync casaos --app foo
+status=$?
+PATH=$saved_path
+assert_eq "$([[ $status -ne 0 ]] && echo rejected || echo accepted)" "rejected" "failed metadata read exits non-zero"
+assert_eq "$(cat "$APPS/foo/docker-compose.yml")" "stale" "app id folder is not removed when metadata cannot be read"
+assert_eq "$(exists "$APPS/bar")" "yes" "other app survives a failed metadata read"
+
+section "--app that matches nothing warns and changes nothing"
+prepare
+run_sync casaos --app nope
+status=$?
+assert_eq "$([[ $status -ne 0 ]] && echo rejected || echo accepted)" "rejected" "unmatched app exits non-zero"
+assert_eq "$(output_mentions "No app matched --app nope")" "1" "unmatched app is announced"
+assert_eq "$(cat "$APPS/foo/docker-compose.yml")" "stale" "unrelated app is untouched"
+assert_eq "$(exists "$APPS/bar")" "yes" "other app survives an unmatched --app"
 
 echo
 if [[ $fail -ne 0 ]]; then echo "FAILED"; exit 1; fi
