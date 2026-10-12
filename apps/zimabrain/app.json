@@ -5,7 +5,7 @@
     "name": "ZimaBrain CE",
     "description": "ZimaBrain CE is a local verifier-first diagnostic assistant for ZimaOS. It checks host evidence and keeps monitor history in a local SQLite database.",
     "tagline": "Local ZimaOS diagnostic assistant",
-    "version": "1.6.0-beta",
+    "version": "1.6.2-beta",
     "author": "BigBearTechWorld",
     "developer": "gelbuilding",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://github.com/Jacko88888/zimabrain-ce",
     "source": "big-bear-universal",
     "created": "2026-10-05T00:00:00Z",
-    "updated": "2026-10-05T00:00:00Z"
+    "updated": "2026-10-12T18:09:05.134Z"
   },
   "visual": {
     "icon": "https://raw.githubusercontent.com/Jacko88888/zimabrain-ce/main/app/assets/zimabrain-ce-logo.png",
