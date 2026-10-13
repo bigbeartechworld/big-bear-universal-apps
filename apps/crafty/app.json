@@ -131,6 +131,7 @@
       "port": "8443"
     },
     "runtipi": {
+      "additional_ports": ["19132/udp", "25500-25600/tcp"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [

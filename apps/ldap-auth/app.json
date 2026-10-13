@@ -113,7 +113,7 @@
       "port": "8888"
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "port": "8888"
     },
     "dockge": {

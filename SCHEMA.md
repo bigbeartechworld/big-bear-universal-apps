@@ -198,10 +198,19 @@ The universal format is converted to platform-specific formats:
 - Adds categories and descriptions
 
 ### Runtipi
-- Creates config.json with app metadata
-- Creates docker-compose.json with dynamic configuration
-- Converts volumes to named volumes with app prefix
+- Creates config.json with app metadata and a minimum Runtipi version of 4.7.0
+- Creates native docker-compose.yml with top-level `x-runtipi.schema_version: 2`
+- Sets the main service's `x-runtipi.is_main` and `x-runtipi.internal_port`
+- Removes redundant `network_mode: bridge` so Runtipi can attach its proxy network; preserves host and service networking
+- Keeps secondary main-service ports private unless their `target/protocol` pair is listed in `compatibility.runtipi.additional_ports`, for example `53/udp` or `1194/udp`
+- Keeps sidecar ports private unless their source service name is listed in `compatibility.runtipi.published_services`. Host-networked sidecars require this explicit publication decision because removing port mappings does not isolate them.
+- Removes legacy docker-compose.json
+- Maps named volumes to `${APP_DATA_DIR}/data/<volume-name>`, with overrides via `compatibility.runtipi.volume_mappings`
 - Downloads/converts icon to logo.jpg
+
+Audited sidecar port exceptions are Lancache DNS (TCP/UDP 53), Claude Code's authenticated MCP API, and Odysseus's loopback-only notification endpoint. Database, cache, metrics, and mail-debug ports stay internal.
+
+Reactive Resume, Stoat, and Coolify are unavailable on Runtipi until their required browser storage, voice, and realtime endpoints have secure platform wiring. Their current Compose definitions have public default storage/voice credentials or incomplete realtime credentials and browser hostnames.
 
 ### Dockge
 - Uses clean docker-compose.yml
@@ -319,3 +328,29 @@ Required validations:
 - ✅ Architectures are valid values
 - ✅ docker-compose.yml exists and is valid YAML
 
+
+### Runtipi publication audit
+
+Secondary web, desktop, administration, metrics, and database endpoints stay private. `additional_ports` retains only audited protocol endpoints with their original host bindings, including DNS/DHCP, VPN, Syncthing, SSH/SFTP, mail, device discovery, tracking, and game traffic. Runtipi controls publication of the selected web endpoint.
+
+The following additional templates are unavailable until their required endpoints have secure Runtipi routing:
+
+| Templates | Required endpoint |
+|---|---|
+| Plant-it, Peppermint | Separate browser API |
+| Kasm, EmulatorJS | Workspace or game frontend separate from setup/management |
+| Folding@home, Wireshark | Actual web UI differs from the configured main endpoint |
+| Pterodactyl Wings | Control API separate from SFTP |
+| MinIO, RustFS | Separate storage API and console |
+| LDAP Auth | Separate login page |
+| OmniRoute | Browser dashboard WebSocket on a separate port |
+| Lyrion Music Server | Player CLI and matching web port require platform wiring |
+| OpenTelemetry LGTM | Ingestion endpoints need explicit secure wiring |
+| Traefik | Traffic entrypoints need wiring separate from its dashboard |
+| Ubooquity | Separate administration route required for initial setup |
+| Mumble Server, Syslog-ng, Mosquitto, Quassel Core, Gluetun | Protocol-only endpoints require native protocol routing |
+| Pi.Alert, CasaOS Toolbox, DiscoPanel, ESPHome, RustDesk Server, AirVideoHD | Host-networked main service cannot use Runtipi proxy authentication |
+
+Netboot.xyz retains TFTP for its default remote-asset mode; its optional local HTTP asset mirror stays private. Lancache retains TCP 443 for TLS SNI forwarding, and Neko retains its WebRTC UDP media ports.
+
+UniFi keeps device communication and discovery ports. Optional guest browser portals remain private until separately routed.

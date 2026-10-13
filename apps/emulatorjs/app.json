@@ -110,7 +110,7 @@
       "port": "3000"
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "port": "3000"
     },
     "dockge": {

@@ -125,6 +125,7 @@
       "port": "3000"
     },
     "runtipi": {
+      "additional_ports": ["69/udp"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [

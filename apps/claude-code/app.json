@@ -122,6 +122,7 @@
       "administrator_only": false
     },
     "runtipi": {
+      "published_services": ["claude"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [

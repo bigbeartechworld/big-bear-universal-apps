@@ -1085,65 +1085,13 @@ EOF
     print_success "Converted $app_name for Portainer"
 }
 
-resolve_runtipi_main_image() {
-    local source_compose="$1"
-    local main_image="$2"
-    local app_name="$3"
-    local fallback="$4"
-
-    local images=""
-    if [[ -f "$source_compose" ]]; then
-        images=$(yq eval '.services | to_entries | .[] | select(.value.image != null) | .key + " " + .value.image' "$source_compose" 2>/dev/null || echo "")
-    fi
-
-    local matched=""
-    local matched_service=""
-    local match_count=0
-
-    while IFS= read -r line; do
-        [[ -z "$line" ]] && continue
-        local svc="${line%% *}"
-        local img="${line#* }"
-        [[ -z "$img" ]] && continue
-
-        local repo="${img%%@*}"
-        local last_segment="${repo##*/}"
-        if [[ "$last_segment" == *:* ]]; then
-            repo="${repo%:*}"
-        fi
-
-        if [[ "$repo" == "$main_image" ]]; then
-            matched="${matched}${img}"$'\n'
-            match_count=$((match_count + 1))
-            [[ -z "$matched_service" ]] && matched_service="$svc"
-        fi
-    done <<< "$images"
-
-    local distinct=0
-    if [[ -n "$matched" ]]; then
-        distinct=$(printf '%s' "$matched" | sort -u | grep -c . || true)
-        distinct="${distinct:-0}"
-    fi
-
-    if [[ "$match_count" -ge 1 && "$distinct" -eq 1 ]]; then
-        local resolved="${matched%%$'\n'*}"
-        if [[ "$VERBOSE" == "true" ]]; then
-            echo "  DEBUG: runtipi resolved image='$resolved' (service='$matched_service')" >&2
-        fi
-        echo "$resolved"
-        return 0
-    fi
-
-    print_warning "runtipi: could not resolve main image for $app_name from docker-compose.yml (main_image='$main_image'); falling back to $fallback (no digest pin)" >&2
-    echo "$fallback"
-    return 0
-}
-
 runtipi_follow_service_rename() {
     local compose_file="$1"
     local old_name="$2"
     local new_name="$3"
     [[ -z "$old_name" || "$old_name" == "null" || "$old_name" == "$new_name" ]] && return 0
+
+    old_name="$old_name" new_name="$new_name" yq -i '(.services[] | select(.network_mode == "service:" + strenv(old_name)).network_mode) = "service:" + strenv(new_name)' "$compose_file"
 
     local dep_svcs dep_svc dep_type dep_len di
     dep_svcs=$(yq eval '.services | keys | .[]' "$compose_file")
@@ -1196,6 +1144,18 @@ convert_to_runtipi() {
         return
     fi
     
+    local published_services
+    published_services=$(jq -c '.compatibility.runtipi.published_services // []' "$app_dir/app.json")
+    if ! yq -o=json '.services | keys' "$app_dir/docker-compose.yml" | jq -e --argjson allowed "$published_services" '
+        . as $names |
+        ($allowed | type) == "array" and
+        ($allowed | unique | length) == ($allowed | length) and
+        all($allowed[]; type == "string" and (. as $name | $names | index($name)) != null)
+    ' > /dev/null; then
+        print_error "$app_name: Runtipi published_services must contain unique existing Compose service names"
+        return 1
+    fi
+
     mkdir -p "$output_dir/metadata"
     
     # Copy and modify docker-compose
@@ -1218,77 +1178,25 @@ convert_to_runtipi() {
     # Set container name
     yq eval ".services[\"$app_name\"].container_name = \"$app_name\"" -i "$compose_file"
     
-    # Convert labels from array to object format if needed (some apps use array syntax)
-    # Check if labels exists and is an array
-    local labels_type=$(yq eval ".services[\"$app_name\"].labels | type" "$compose_file" 2>/dev/null || echo "null")
-    if [[ "$labels_type" == "!!seq" ]]; then
-        # Convert array format (- key=value) to object format (key: value)
-        local temp_labels=$(yq eval ".services[\"$app_name\"].labels" "$compose_file" | sed 's/^- //' | awk -F= '{print $1 ": \"" $2 "\""}' 2>/dev/null || echo "")
-        if [[ -n "$temp_labels" ]]; then
-            yq eval ".services[\"$app_name\"].labels = {}" -i "$compose_file"
-            while IFS= read -r label; do
-                if [[ -n "$label" && "$label" =~ : ]]; then
-                    local key=$(echo "$label" | cut -d: -f1 | xargs)
-                    local value=$(echo "$label" | cut -d: -f2- | xargs | sed 's/^"//' | sed 's/"$//')
-                    if [[ -n "$key" ]]; then
-                        yq eval ".services[\"$app_name\"].labels[\"$key\"] = \"$value\"" -i "$compose_file" 2>/dev/null || true
-                    fi
-                fi
-            done <<< "$temp_labels"
+    yq -i 'del(.services[] | select(.network_mode == "bridge").network_mode)' "$compose_file"
+    local runtipi_service runtipi_network_mode
+    while IFS= read -r runtipi_service; do
+        runtipi_network_mode=$(runtipi_service="$runtipi_service" yq '.services[strenv(runtipi_service)].network_mode' "$compose_file")
+        if [[ "$runtipi_service" == "$app_name" && "$runtipi_network_mode" == "host" ]]; then
+            print_error "$app_name: host-networked main services cannot use Runtipi proxy authentication"
+            return 1
         fi
-    fi
-    
-    # Add runtipi.managed label to ALL services
-    local all_services=$(yq eval '.services | keys | .[]' "$compose_file")
-    while IFS= read -r service_name; do
-        [[ -z "$service_name" ]] && continue
-        
-        # Convert labels from array to object format if needed for this service
-        local labels_type=$(yq eval ".services[\"$service_name\"].labels | type" "$compose_file" 2>/dev/null || echo "null")
-        if [[ "$labels_type" == "!!seq" ]]; then
-            # Convert array format (- key=value) to object format (key: value)
-            local temp_labels=$(yq eval ".services[\"$service_name\"].labels[]" "$compose_file" 2>/dev/null || echo "")
-            if [[ -n "$temp_labels" ]]; then
-                yq eval ".services[\"$service_name\"].labels = {}" -i "$compose_file"
-                while IFS= read -r label; do
-                    if [[ -n "$label" && "$label" =~ = ]]; then
-                        local key=$(echo "$label" | cut -d= -f1)
-                        local value=$(echo "$label" | cut -d= -f2-)
-                        if [[ -n "$key" ]]; then
-                            yq eval ".services[\"$service_name\"].labels[\"$key\"] = \"$value\"" -i "$compose_file" 2>/dev/null || true
-                        fi
-                    fi
-                done <<< "$temp_labels"
-            fi
+        [[ "$runtipi_service" == "$app_name" ]] && continue
+        if jq -e --arg service "$runtipi_service" 'contains([$service])' <<< "$published_services" > /dev/null; then
+            continue
         fi
-        
-        # Now add the runtipi.managed label
-        yq eval ".services[\"$service_name\"].labels[\"runtipi.managed\"] = \"true\"" -i "$compose_file" 2>/dev/null || true
-    done <<< "$all_services"
-    
-    # Replace all networks with tipi_main_network only (skip for certain apps)
-    local network_exceptions=("pihole" "tailscale" "homeassistant" "plex")
-    local skip_network=false
-    for exception in "${network_exceptions[@]}"; do
-        if [[ "$app_name" == "$exception" ]]; then
-            skip_network=true
-            break
+        if [[ "$runtipi_network_mode" == "host" ]]; then
+            print_error "$app_name: host-networked sidecar $runtipi_service must be explicitly allowed in Runtipi published_services"
+            return 1
         fi
-    done
-    
-    if [[ "$skip_network" == "false" ]]; then
-        # Remove all custom networks from services and set only tipi_main_network
-        all_services=$(yq eval '.services | keys | .[]' "$compose_file")
-        while IFS= read -r service_name; do
-            [[ -z "$service_name" ]] && continue
-            # Replace networks with only tipi_main_network
-            yq eval ".services[\"$service_name\"].networks = [\"tipi_main_network\"]" -i "$compose_file"
-        done <<< "$all_services"
-        
-        # Remove all custom networks and add only tipi_main_network
-        yq eval 'del(.networks) | .networks.tipi_main_network.external = true' -i "$compose_file"
-    fi
-    
+        runtipi_service="$runtipi_service" yq -i 'del(.services[strenv(runtipi_service)].ports)' "$compose_file"
+    done < <(yq '.services | keys | .[]' "$compose_file")
+
     # Convert named volumes to ${APP_DATA_DIR} bind mounts for Runtipi
     local volume_names=$(yq eval '.volumes | keys | .[]' "$compose_file" 2>/dev/null || echo "")
     
@@ -1330,7 +1238,7 @@ convert_to_runtipi() {
                             fi
                             
                             # This is a named volume reference, convert to ${APP_DATA_DIR}
-                            yq eval ".services.$service_name.volumes[$j].source = \"$runtipi_source\"" -i "$compose_file"
+                            yq eval ".services.$service_name.volumes[$j].source = \"$runtipi_source\" | .services.$service_name.volumes[$j].type = \"bind\"" -i "$compose_file"
                         fi
                     else
                         # Short-form syntax
@@ -1410,52 +1318,52 @@ convert_to_runtipi() {
         done
     done <<< "$all_services"
     
-    # Convert ports to use ${APP_PORT} for the main service
-    # Get all service names
-    local all_services=$(yq eval '.services | keys | .[]' "$compose_file")
-    while IFS= read -r service_name; do
-        [[ -z "$service_name" ]] && continue
-        
-        # Only convert ports for the main service (app_name)
-        if [[ "$service_name" == "$app_name" ]]; then
-            local port_count=$(yq eval ".services.$service_name.ports | length" "$compose_file" 2>/dev/null || echo "0")
-            
-            for ((p=0; p<port_count; p++)); do
-                # Check if this is long-form syntax (has a 'target' key)
-                local port_target=$(yq eval ".services.$service_name.ports[$p].target" "$compose_file" 2>/dev/null)
-                
-                if [[ -n "$port_target" && "$port_target" != "null" ]]; then
-                    # Long-form syntax - update the published port to use ${APP_PORT}
-                    yq eval ".services.$service_name.ports[$p].published = \"\${APP_PORT}\"" -i "$compose_file"
-                else
-                    # Short-form syntax
-                    local port_entry=$(yq eval ".services.$service_name.ports[$p]" "$compose_file")
-                    
-                    # Extract container port from port entry (after the colon)
-                    local container_port="${port_entry#*:}"
-                    # Remove any protocol suffix (e.g., /tcp, /udp)
-                    local protocol=""
-                    if [[ "$container_port" == *"/tcp" ]]; then
-                        protocol="/tcp"
-                        container_port="${container_port%/tcp}"
-                    elif [[ "$container_port" == *"/udp" ]]; then
-                        protocol="/udp"
-                        container_port="${container_port%/udp}"
-                    fi
-                    
-                    # Convert to ${APP_PORT}:container_port format
-                    local runtipi_port="\${APP_PORT}:${container_port}${protocol}"
-                    
-                    # Replace the port entry
-                    yq eval ".services.$service_name.ports[$p] = \"$runtipi_port\"" -i "$compose_file"
-                fi
-                
-                # Only convert the first port mapping to use ${APP_PORT}
-                break
-            done
-        fi
-    done <<< "$all_services"
-    
+    local source_main_ports
+    source_main_ports=$(service_name="$app_name" yq -o=json '.services[strenv(service_name)].ports // []' "$compose_file")
+    local main_port
+    main_port=$(jq -c --arg default_port "$APP_DEFAULT_PORT" 'to_entries | map(select(
+            if (.value | type) == "object" then (.value.protocol // "tcp") == "tcp"
+            else (.value | tostring | endswith("/udp") | not)
+            end
+        )) as $tcp_ports |
+        ($tcp_ports | map(select(
+            (.value | if type == "object" then .published | tostring
+             else tostring | split("/")[0] | split(":") | .[-2]
+             end) == $default_port
+        )) | .[0]) // $tcp_ports[0] // null' <<< "$source_main_ports")
+    local internal_port="${APP_DEFAULT_PORT:-8080}"
+    if [[ "$main_port" != "null" ]]; then
+        internal_port=$(jq -r '.value | if type == "object" then .target else tostring | split(":") | last | split("/")[0] end' <<< "$main_port")
+    fi
+    local additional_ports
+    additional_ports=$(jq -c '.compatibility.runtipi.additional_ports // []' "$app_dir/app.json")
+    local remaining_ports
+    if ! remaining_ports=$(jq -c --argjson selected "$main_port" --argjson allowed "$additional_ports" '
+        def port_key:
+            if type == "object" then (.target | tostring) + "/" + (.protocol // "tcp")
+            else split("/") as $parts | ($parts[0] | split(":") | last) + "/" + ($parts[1] // "tcp")
+            end;
+        (if $selected == null then . else del(.[$selected.key]) end) as $ports |
+        ($ports | map(port_key)) as $keys |
+        if ($allowed | type) != "array" or
+           ($allowed | unique | length) != ($allowed | length) or
+           any($allowed[]; type != "string" or (. as $key | $keys | index($key)) == null)
+        then error("additional_ports must contain unique existing secondary target/protocol pairs")
+        else $ports | map(select(port_key as $key | $allowed | index($key)))
+        end
+    ' <<< "$source_main_ports"); then
+        print_error "$app_name: invalid Runtipi additional_ports"
+        return 1
+    fi
+    service_name="$app_name" remaining_ports="$remaining_ports" yq -i '.services[strenv(service_name)].ports = env(remaining_ports) | del(.services[strenv(service_name)].ports | select(length == 0))' "$compose_file"
+    service_name="$app_name" yq -i '."x-runtipi".schema_version = 2 | .services[strenv(service_name)]."x-runtipi".is_main = true' "$compose_file"
+    if [[ "$internal_port" =~ ^[0-9]+$ ]]; then
+        service_name="$app_name" internal_port="$internal_port" yq -i '.services[strenv(service_name)]."x-runtipi".internal_port = env(internal_port)' "$compose_file"
+    else
+        service_name="$app_name" internal_port="$internal_port" yq -i '.services[strenv(service_name)]."x-runtipi".internal_port = strenv(internal_port)' "$compose_file"
+    fi
+    rm -f "$output_dir/docker-compose.json"
+
     # Determine port - use platform-specific port if defined, otherwise use default
     local runtipi_port="${PORT_RUNTIPI:-${APP_DEFAULT_PORT:-8080}}"
     # Only process port if it's a valid number and no platform-specific port is set
@@ -1466,26 +1374,6 @@ convert_to_runtipi() {
             *) runtipi_port=$((runtipi_port + 8000)) ;;
         esac
     fi
-    
-    # Create docker-compose.json using jq
-    local runtipi_main_image
-    runtipi_main_image=$(resolve_runtipi_main_image "$app_dir/docker-compose.yml" "$APP_MAIN_IMAGE" "$app_name" "$APP_MAIN_IMAGE:$APP_VERSION")
-
-    jq -n \
-        --arg name "$app_name" \
-        --arg image "$runtipi_main_image" \
-        --argjson port "$runtipi_port" \
-        '{
-            schemaVersion: 2,
-            services: [
-                {
-                    name: $name,
-                    image: $image,
-                    internalPort: $port,
-                    isMain: true
-                }
-            ]
-        }' > "$output_dir/docker-compose.json"
     
     # Create config.json using jq
     local current_timestamp=$(($(date +%s) * 1000))
@@ -1512,7 +1400,7 @@ convert_to_runtipi() {
             dynamic_config: true,
             id: $id,
             description: $description,
-            tipi_version: 1,
+            tipi_version: 2,
             version: $version,
             categories: [$category],
             short_desc: $short_desc,
@@ -1523,7 +1411,7 @@ convert_to_runtipi() {
             created_at: $created_at,
             updated_at: $updated_at,
             "$schema": "../app-info-schema.json",
-            min_tipi_version: "4.5.0"
+            min_tipi_version: "4.7.0"
         }' > "$output_dir/config.json"
     
     # Create description
@@ -1552,14 +1440,6 @@ convert_to_runtipi() {
         print_error "Generated docker-compose.yml for $app_name (Runtipi) has invalid YAML!"
         print_error "File: $compose_file"
         yq eval '.' "$compose_file" 2>&1 | head -10
-        TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
-        return 1
-    fi
-    
-    if ! jq empty "$output_dir/docker-compose.json" 2>/dev/null; then
-        print_error "Generated docker-compose.json for $app_name (Runtipi) has invalid JSON!"
-        print_error "Validation error:"
-        jq empty "$output_dir/docker-compose.json" 2>&1
         TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
         return 1
     fi

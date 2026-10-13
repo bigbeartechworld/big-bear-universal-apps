@@ -92,6 +92,8 @@
       "port": "8080\n53"
     },
     "runtipi": {
+      "additional_ports": ["443/tcp"],
+      "published_services": ["dns"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [

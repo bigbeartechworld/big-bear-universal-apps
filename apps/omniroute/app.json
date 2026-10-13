@@ -132,7 +132,7 @@
       "administrator_only": false
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "tipi_version": 1,
       "port": "20128",
       "supported_architectures": [

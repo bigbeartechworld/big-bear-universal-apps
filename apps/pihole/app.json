@@ -105,6 +105,7 @@
       "port": "8080"
     },
     "runtipi": {
+      "additional_ports": ["53/tcp", "53/udp", "67/udp"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [

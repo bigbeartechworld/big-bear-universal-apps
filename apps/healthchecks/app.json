@@ -221,6 +221,7 @@
       "port": "8000"
     },
     "runtipi": {
+      "additional_ports": ["2525/tcp"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [

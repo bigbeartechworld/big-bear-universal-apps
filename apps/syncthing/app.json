@@ -87,6 +87,7 @@
       "port": "8384"
     },
     "runtipi": {
+      "additional_ports": ["22000/tcp", "22000/udp", "21027/udp"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [

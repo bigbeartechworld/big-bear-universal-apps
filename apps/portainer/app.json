@@ -98,6 +98,7 @@
       "port": "8000"
     },
     "runtipi": {
+      "additional_ports": ["8000/tcp"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [

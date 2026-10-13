@@ -93,6 +93,7 @@
       "port": "6610"
     },
     "runtipi": {
+      "additional_ports": ["6611/tcp"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [

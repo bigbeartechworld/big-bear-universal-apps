@@ -98,6 +98,7 @@
       "port": "53"
     },
     "runtipi": {
+      "additional_ports": ["53/tcp", "53/udp"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [

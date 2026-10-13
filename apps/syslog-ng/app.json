@@ -110,7 +110,7 @@
       "port": "514"
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "port": "514"
     },
     "dockge": {

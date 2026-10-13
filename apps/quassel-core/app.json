@@ -101,7 +101,7 @@
       "port": "4242"
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "port": "4242"
     },
     "dockge": {

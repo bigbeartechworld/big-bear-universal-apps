@@ -100,6 +100,7 @@
       "port": "3000"
     },
     "runtipi": {
+      "additional_ports": ["8333/tcp"],
       "supported": true,
       "port": "3000"
     },

@@ -92,6 +92,7 @@
       "port": "51820"
     },
     "runtipi": {
+      "additional_ports": ["51820/udp"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [

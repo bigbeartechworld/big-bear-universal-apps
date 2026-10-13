@@ -124,6 +124,7 @@
       "port": "8080"
     },
     "runtipi": {
+      "additional_ports": ["25/tcp", "143/tcp", "465/tcp", "587/tcp", "993/tcp", "4190/tcp"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
