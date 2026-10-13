@@ -10,7 +10,7 @@ services:
     # Name of the container
     container_name: big-bear-seafile
     # Image to be used for the container
-    image: seafileltd/seafile-mc:11.0.13@sha256:1239b087aa4bdf1b60a3802e80855f230736ac5d5fa3325a40b15d4c598f422c
+    image: seafileltd/seafile-mc:14.0.9@sha256:75d8b88e8bfaa54099082aec0e99ff1a962bd364bfc21da34125fa66998f0861
     # Container restart policy
     restart: unless-stopped
     # Service dependencies
