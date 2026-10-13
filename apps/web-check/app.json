@@ -5,7 +5,7 @@
     "name": "Web-Check",
     "description": "Web-Check is an on-demand OSINT tool for analysing any website: server, security headers, technologies, DNS, and related public signals.",
     "tagline": "OSINT for any website",
-    "version": "2.3.2",
+    "version": "2.3.4",
     "author": "BigBearTechWorld",
     "developer": "Alicia Sykes",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://web-check.xyz",
     "source": "big-bear-universal",
     "created": "2026-10-05T00:00:00Z",
-    "updated": "2026-10-05T00:00:00Z"
+    "updated": "2026-10-13T10:33:54.761Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/web-check.png",
