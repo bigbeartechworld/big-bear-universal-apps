@@ -347,6 +347,8 @@ The following additional templates are unavailable until their required endpoint
 | Lyrion Music Server | Player CLI and matching web port require platform wiring |
 | OpenTelemetry LGTM | Ingestion endpoints need explicit secure wiring |
 | Traefik | Traffic entrypoints need wiring separate from its dashboard |
+| Ubooquity | Separate administration route required for initial setup |
+| Mumble Server, Syslog-ng, Mosquitto, Quassel Core, Gluetun | Protocol-only endpoints require native protocol routing |
 | Pi.Alert, CasaOS Toolbox, DiscoPanel, ESPHome, RustDesk Server, AirVideoHD | Host-networked main service cannot use Runtipi proxy authentication |
 
 Netboot.xyz retains TFTP for its default remote-asset mode; its optional local HTTP asset mirror stays private. Lancache retains TCP 443 for TLS SNI forwarding, and Neko retains its WebRTC UDP media ports.

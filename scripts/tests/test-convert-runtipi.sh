@@ -116,7 +116,7 @@ for app in firefox webtop; do
   assert_eq "$(main="$app" yq '.services[strenv(main)].ports // [] | length' "$OUT")" "0" "$app unauthenticated secondary desktop endpoint remains private"
 done
 
-for app in reactive-resume stoat coolify plant-it peppermint kasm emulatorjs foldingathome wireshark pterodactyl-wings minio rustfs ldap-auth omniroute lyrionmusicserver otel-lgtm traefik pi-alert casaos-toolbox discopanel esphome rustdesk-server airvideohd; do
+for app in reactive-resume stoat coolify plant-it peppermint kasm emulatorjs foldingathome wireshark pterodactyl-wings minio rustfs ldap-auth omniroute lyrionmusicserver otel-lgtm traefik pi-alert casaos-toolbox discopanel esphome rustdesk-server airvideohd ubooquity mumble-server syslog-ng mosquitto quassel-core gluetun; do
   mkdir -p "$TMP/out/runtipi/$app"
   printf '{}' > "$TMP/out/runtipi/$app/docker-compose.yml"
   bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a "$app" -o "$TMP/out" > "$TMP/$app.log" 2>&1

@@ -113,7 +113,7 @@
       "port": "2202"
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "port": "2202"
     },
     "dockge": {

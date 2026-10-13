@@ -110,8 +110,7 @@
       "port": "514"
     },
     "runtipi": {
-      "additional_ports": ["514/udp", "6514/tcp"],
-      "supported": true,
+      "supported": false,
       "port": "514"
     },
     "dockge": {
