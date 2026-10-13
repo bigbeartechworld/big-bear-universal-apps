@@ -357,6 +357,12 @@
         "runtipi": {
           "type": "object",
           "properties": {
+            "published_services": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": { "type": "string", "minLength": 1 },
+              "description": "Sidecar service names allowed to publish their source Compose ports in Runtipi. Other sidecars stay internal."
+            },
             "supported": {
               "type": "boolean"
             },

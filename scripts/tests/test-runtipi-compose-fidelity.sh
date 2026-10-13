@@ -11,6 +11,8 @@ services:
   db:
     image: postgres:14@sha256:bbbb
     user: "1000:1000"
+    ports: ["5432:5432"]
+    network_mode: bridge
     environment:
       POSTGRES_PASSWORD: "quoted=value"
       EMPTY: ""
@@ -25,6 +27,7 @@ services:
   app:
     image: example/app:1@sha256:aaaa
     user: root
+    network_mode: bridge
     environment:
       - KEY=value=with=equals
       - EMPTY=
@@ -59,6 +62,7 @@ services:
   worker:
     image: example/app:2@sha256:cccc
     depends_on: [app]
+    network_mode: service:db
     environment:
       APP_URL: http://app
 networks:
@@ -80,9 +84,13 @@ jq -e --slurpfile source "$TMP/source.json" '
   .["x-runtipi"].schema_version == 2 and
   (.services | keys) == ["db", "fidelity", "worker"] and
   .services.fidelity["x-runtipi"] == {is_main: true, internal_port: 3001} and
+  (.services.db | has("ports") | not) and
+  (.services.db | has("network_mode") | not) and
+  (.services.fidelity | has("network_mode") | not) and
   .services.db.image == $source[0].services.db.image and
   .services.db.environment == $source[0].services.db.environment and
   .services.fidelity.environment == $source[0].services.app.environment and
+  .services.worker.network_mode == "service:db" and
   .services.worker.image == $source[0].services.worker.image and
   .services.fidelity.image == $source[0].services.app.image and
   .services.fidelity.volumes == ["${APP_DATA_DIR}/persist:/data:ro", "${APP_DATA_DIR}/config:/config:rw"] and
@@ -94,7 +102,7 @@ jq -e --slurpfile source "$TMP/source.json" '
 for pair in app:fidelity db:db worker:worker; do
   jq -e --arg old "${pair%%:*}" --arg new "${pair#*:}" --slurpfile source "$TMP/source.json" '
     .services[$new] as $generated |
-    ["container_name", "volumes", "ports", "depends_on", "environment", "x-runtipi"] as $transformed |
+    ["container_name", "volumes", "ports", "depends_on", "environment", "network_mode", "x-runtipi"] as $transformed |
     all($source[0].services[$old] | keys[]; . as $key |
       ($transformed | index($key)) != null or $generated[$key] == $source[0].services[$old][$key])
   ' "$TMP/generated.json" > /dev/null
@@ -129,3 +137,24 @@ test ! -f "$TMP/workspace/big-bear-runtipi/apps/fidelity/docker-compose.json"
 cmp "$OUT/docker-compose.yml" "$TMP/workspace/big-bear-runtipi/apps/fidelity/docker-compose.yml"
 test "$(cat "$TMP/workspace/big-bear-runtipi/apps/unrelated/keep.txt")" = "keep"
 echo "ok: targeted platform sync removes legacy JSON and keeps unrelated apps"
+
+yq -i '.services.worker.network_mode = "host"' "$TMP/apps/fidelity/docker-compose.yml"
+jq '.compatibility.runtipi.published_services = ["db"]' "$TMP/apps/fidelity/app.json" > "$TMP/metadata.json"
+mv "$TMP/metadata.json" "$TMP/apps/fidelity/app.json"
+bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a fidelity -i "$TMP/apps" -o "$TMP/out" > "$TMP/run.log" 2>&1
+yq -o=json '.' "$OUT/docker-compose.yml" | jq -e '
+  .services.db.ports == ["5432:5432"] and
+  .services.worker.network_mode == "host" and
+  (.services.fidelity | has("network_mode") | not)
+' > /dev/null
+echo "ok: sidecar publications require explicit opt-in and meaningful host networking survives"
+
+for invalid in '["missing"]' '["db", "db"]'; do
+  jq --argjson services "$invalid" '.compatibility.runtipi.published_services = $services' "$TMP/apps/fidelity/app.json" > "$TMP/metadata.json"
+  mv "$TMP/metadata.json" "$TMP/apps/fidelity/app.json"
+  if bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a fidelity -i "$TMP/apps" -o "$TMP/out" > "$TMP/run.log" 2>&1; then
+    echo "FAIL: invalid publication names accepted"
+    exit 1
+  fi
+done
+echo "ok: missing and duplicate publication names fail closed"

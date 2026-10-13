@@ -109,6 +109,7 @@
       "port": "7000"
     },
     "runtipi": {
+      "published_services": ["ntfy"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [

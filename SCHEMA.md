@@ -201,9 +201,15 @@ The universal format is converted to platform-specific formats:
 - Creates config.json with app metadata and a minimum Runtipi version of 4.7.0
 - Creates native docker-compose.yml with top-level `x-runtipi.schema_version: 2`
 - Sets the main service's `x-runtipi.is_main` and `x-runtipi.internal_port`
+- Removes redundant `network_mode: bridge` so Runtipi can attach its proxy network; preserves host and service networking
+- Keeps sidecar ports private unless their source service name is listed in `compatibility.runtipi.published_services`
 - Removes legacy docker-compose.json
 - Maps named volumes to `${APP_DATA_DIR}/data/<volume-name>`, with overrides via `compatibility.runtipi.volume_mappings`
 - Downloads/converts icon to logo.jpg
+
+Audited sidecar port exceptions are Lancache DNS (TCP/UDP 53), Claude Code's authenticated MCP API, and Odysseus's loopback-only notification endpoint. Database, cache, metrics, and mail-debug ports stay internal.
+
+Reactive Resume, Stoat, and Coolify are unavailable on Runtipi until their required browser storage, voice, and realtime endpoints have secure platform wiring. Their current Compose definitions have public default storage/voice credentials or incomplete realtime credentials and browser hostnames.
 
 ### Dockge
 - Uses clean docker-compose.yml

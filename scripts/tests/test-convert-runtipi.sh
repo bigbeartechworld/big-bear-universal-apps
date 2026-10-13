@@ -85,6 +85,31 @@ convert authentik
 assert_eq "$(yq '.services."big-bear-authentik-worker".image' "$OUT")" "ghcr.io/goauthentik/server:2026.2.2@sha256:dddd" "differing worker digest stays distinct"
 assert_eq "$(yq '.services.authentik.image' "$OUT")" "$(yq '.services."big-bear-authentik".image' "$REPO/apps/authentik/docker-compose.yml")" "differing worker digest does not change main image"
 
+for app in libredesk jellyseerr pocketid openvpn-as lancache claude-code odysseus; do
+  convert "$app" || continue
+  yq -o=json '.' "$OUT" | jq -e --slurpfile metadata "$REPO/apps/$app/app.json" '
+    ($metadata[0].compatibility.runtipi.published_services // []) as $allowed |
+    all(.services | to_entries[];
+      . as $service |
+      $service.value.network_mode != "bridge" and
+      ($service.value["x-runtipi"].is_main == true or
+       ($allowed | index($service.key)) != null or
+       ($service.value.ports // [] | length) == 0))
+  ' > /dev/null
+  assert_eq "$?" "0" "$app only publishes audited sidecars and normalizes bridge networking"
+  for service in $(jq -r '.compatibility.runtipi.published_services[]?' "$REPO/apps/$app/app.json"); do
+    assert_eq "$(service="$service" yq -o=json -I=0 '.services[strenv(service)].ports' "$OUT")" "$(service="$service" yq -o=json -I=0 '.services[strenv(service)].ports' "$REPO/apps/$app/docker-compose.yml")" "$app/$service retains required ports and host binding"
+  done
+done
+
+for app in reactive-resume stoat coolify; do
+  mkdir -p "$TMP/out/runtipi/$app"
+  printf '{}' > "$TMP/out/runtipi/$app/docker-compose.yml"
+  bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a "$app" -o "$TMP/out" > "$TMP/$app.log" 2>&1
+  assert_eq "$?" "0" "$app unsupported conversion exits cleanly"
+  assert_eq "$([[ -d "$TMP/out/runtipi/$app" ]] && echo yes || echo no)" "no" "$app unsafe or incomplete Runtipi template is unavailable"
+done
+
 jq 'del(.technical.main_service)' "$TMP/apps/uptime-kuma/app.json" > "$TMP/metadata.json"
 mv "$TMP/metadata.json" "$TMP/apps/uptime-kuma/app.json"
 convert uptime-kuma

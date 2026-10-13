@@ -1142,6 +1142,18 @@ convert_to_runtipi() {
         return
     fi
     
+    local published_services
+    published_services=$(jq -c '.compatibility.runtipi.published_services // []' "$app_dir/app.json")
+    if ! yq -o=json '.services | keys' "$app_dir/docker-compose.yml" | jq -e --argjson allowed "$published_services" '
+        . as $names |
+        ($allowed | type) == "array" and
+        ($allowed | unique | length) == ($allowed | length) and
+        all($allowed[]; type == "string" and (. as $name | $names | index($name)) != null)
+    ' > /dev/null; then
+        print_error "$app_name: Runtipi published_services must contain unique existing Compose service names"
+        return 1
+    fi
+
     mkdir -p "$output_dir/metadata"
     
     # Copy and modify docker-compose
@@ -1164,6 +1176,16 @@ convert_to_runtipi() {
     # Set container name
     yq eval ".services[\"$app_name\"].container_name = \"$app_name\"" -i "$compose_file"
     
+    yq -i 'del(.services[] | select(.network_mode == "bridge").network_mode)' "$compose_file"
+    local runtipi_service
+    while IFS= read -r runtipi_service; do
+        [[ "$runtipi_service" == "$app_name" ]] && continue
+        if jq -e --arg service "$runtipi_service" 'contains([$service])' <<< "$published_services" > /dev/null; then
+            continue
+        fi
+        runtipi_service="$runtipi_service" yq -i 'del(.services[strenv(runtipi_service)].ports)' "$compose_file"
+    done < <(yq '.services | keys | .[]' "$compose_file")
+
     # Convert named volumes to ${APP_DATA_DIR} bind mounts for Runtipi
     local volume_names=$(yq eval '.volumes | keys | .[]' "$compose_file" 2>/dev/null || echo "")
     
