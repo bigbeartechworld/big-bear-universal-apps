@@ -1287,11 +1287,16 @@ convert_to_runtipi() {
     
     local main_port
     main_port=$(service_name="$app_name" yq -o=json '.services[strenv(service_name)].ports // []' "$compose_file" |
-        jq -c 'to_entries | map(select(
+        jq -c --arg default_port "$APP_DEFAULT_PORT" 'to_entries | map(select(
             if (.value | type) == "object" then (.value.protocol // "tcp") == "tcp"
             else (.value | tostring | endswith("/udp") | not)
             end
-        )) | .[0] // null')
+        )) as $tcp_ports |
+        ($tcp_ports | map(select(
+            (.value | if type == "object" then .published | tostring
+             else tostring | split("/")[0] | split(":") | .[-2]
+             end) == $default_port
+        )) | .[0]) // $tcp_ports[0] // null')
     local internal_port="${APP_DEFAULT_PORT:-8080}"
     if [[ "$main_port" != "null" ]]; then
         internal_port=$(jq -r '.value | if type == "object" then .target else tostring | split(":") | last | split("/")[0] end' <<< "$main_port")

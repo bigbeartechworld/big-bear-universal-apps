@@ -198,9 +198,11 @@ The universal format is converted to platform-specific formats:
 - Adds categories and descriptions
 
 ### Runtipi
-- Creates config.json with app metadata
-- Creates docker-compose.json with dynamic configuration
-- Converts volumes to named volumes with app prefix
+- Creates config.json with app metadata and a minimum Runtipi version of 4.7.0
+- Creates native docker-compose.yml with top-level `x-runtipi.schema_version: 2`
+- Sets the main service's `x-runtipi.is_main` and `x-runtipi.internal_port`
+- Removes legacy docker-compose.json
+- Maps named volumes to `${APP_DATA_DIR}/data/<volume-name>`, with overrides via `compatibility.runtipi.volume_mappings`
 - Downloads/converts icon to logo.jpg
 
 ### Dockge

@@ -36,7 +36,7 @@ convert() {
   assert_eq "$(jq -r '.min_tipi_version' "$TMP/out/runtipi/$app/config.json")" "4.7.0" "$app minimum version supports YAML"
 }
 
-for app in uptime-kuma authentik bookstack immich-aio-alpine libretranslate odoo domainlocker invoice-ninja; do
+for app in uptime-kuma authentik bookstack immich-aio-alpine libretranslate odoo domainlocker invoice-ninja adguard-home; do
   convert "$app" || continue
   main=$(jq -r '.technical.main_service' "$REPO/apps/$app/app.json")
   expected=$(main="$main" yq '.services[strenv(main)].image' "$REPO/apps/$app/docker-compose.yml")
@@ -52,6 +52,10 @@ for app in uptime-kuma authentik bookstack immich-aio-alpine libretranslate odoo
     ' > /dev/null
   assert_eq "$?" "0" "$app preserves all service keys outside explicit platform transformations"
 done
+
+OUT="$TMP/out/runtipi/adguard-home/docker-compose.yml"
+assert_eq "$(yq '.services."adguard-home"."x-runtipi".internal_port' "$OUT")" "80" "AdGuard routing uses the web container port"
+assert_eq "$(yq -o=json -I=0 '.services."adguard-home".ports' "$OUT")" '["53:53/tcp","53:53/udp"]' "AdGuard retains both DNS mappings and removes the web mapping"
 
 OUT="$TMP/out/runtipi/libretranslate/docker-compose.yml"
 assert_eq "$(yq '.services.libretranslate.user' "$OUT")" "root" "LibreTranslate user reaches installer"
