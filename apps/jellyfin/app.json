@@ -119,6 +119,7 @@
       "port": "8096"
     },
     "runtipi": {
+      "additional_ports": ["7359/udp", "1900/udp"],
       "supported": true,
       "port": "8096"
     },

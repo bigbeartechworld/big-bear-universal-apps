@@ -106,6 +106,7 @@
       "port": "8875"
     },
     "runtipi": {
+      "additional_ports": ["554/tcp", "1900/udp"],
       "supported": true,
       "port": "8875"
     },

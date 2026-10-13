@@ -101,6 +101,7 @@
       "port": "8080"
     },
     "runtipi": {
+      "additional_ports": ["50000/tcp"],
       "supported": true,
       "port": "8080"
     },

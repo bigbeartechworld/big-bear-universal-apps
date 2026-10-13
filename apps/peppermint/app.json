@@ -73,7 +73,7 @@
       "port": "3000\n5432"
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "tipi_version": 1,
       "supported_architectures": [
         "amd64"

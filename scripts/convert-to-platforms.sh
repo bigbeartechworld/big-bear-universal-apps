@@ -1091,6 +1091,8 @@ runtipi_follow_service_rename() {
     local new_name="$3"
     [[ -z "$old_name" || "$old_name" == "null" || "$old_name" == "$new_name" ]] && return 0
 
+    old_name="$old_name" new_name="$new_name" yq -i '(.services[] | select(.network_mode == "service:" + strenv(old_name)).network_mode) = "service:" + strenv(new_name)' "$compose_file"
+
     local dep_svcs dep_svc dep_type dep_len di
     dep_svcs=$(yq eval '.services | keys | .[]' "$compose_file")
     while IFS= read -r dep_svc; do
@@ -1177,11 +1179,20 @@ convert_to_runtipi() {
     yq eval ".services[\"$app_name\"].container_name = \"$app_name\"" -i "$compose_file"
     
     yq -i 'del(.services[] | select(.network_mode == "bridge").network_mode)' "$compose_file"
-    local runtipi_service
+    local runtipi_service runtipi_network_mode
     while IFS= read -r runtipi_service; do
+        runtipi_network_mode=$(runtipi_service="$runtipi_service" yq '.services[strenv(runtipi_service)].network_mode' "$compose_file")
+        if [[ "$runtipi_service" == "$app_name" && "$runtipi_network_mode" == "host" ]]; then
+            print_error "$app_name: host-networked main services cannot use Runtipi proxy authentication"
+            return 1
+        fi
         [[ "$runtipi_service" == "$app_name" ]] && continue
         if jq -e --arg service "$runtipi_service" 'contains([$service])' <<< "$published_services" > /dev/null; then
             continue
+        fi
+        if [[ "$runtipi_network_mode" == "host" ]]; then
+            print_error "$app_name: host-networked sidecar $runtipi_service must be explicitly allowed in Runtipi published_services"
+            return 1
         fi
         runtipi_service="$runtipi_service" yq -i 'del(.services[strenv(runtipi_service)].ports)' "$compose_file"
     done < <(yq '.services | keys | .[]' "$compose_file")
@@ -1307,9 +1318,10 @@ convert_to_runtipi() {
         done
     done <<< "$all_services"
     
+    local source_main_ports
+    source_main_ports=$(service_name="$app_name" yq -o=json '.services[strenv(service_name)].ports // []' "$compose_file")
     local main_port
-    main_port=$(service_name="$app_name" yq -o=json '.services[strenv(service_name)].ports // []' "$compose_file" |
-        jq -c --arg default_port "$APP_DEFAULT_PORT" 'to_entries | map(select(
+    main_port=$(jq -c --arg default_port "$APP_DEFAULT_PORT" 'to_entries | map(select(
             if (.value | type) == "object" then (.value.protocol // "tcp") == "tcp"
             else (.value | tostring | endswith("/udp") | not)
             end
@@ -1318,14 +1330,32 @@ convert_to_runtipi() {
             (.value | if type == "object" then .published | tostring
              else tostring | split("/")[0] | split(":") | .[-2]
              end) == $default_port
-        )) | .[0]) // $tcp_ports[0] // null')
+        )) | .[0]) // $tcp_ports[0] // null' <<< "$source_main_ports")
     local internal_port="${APP_DEFAULT_PORT:-8080}"
     if [[ "$main_port" != "null" ]]; then
         internal_port=$(jq -r '.value | if type == "object" then .target else tostring | split(":") | last | split("/")[0] end' <<< "$main_port")
-        local port_index
-        port_index=$(jq -r '.key' <<< "$main_port")
-        service_name="$app_name" port_index="$port_index" yq -i 'del(.services[strenv(service_name)].ports[env(port_index)]) | del(.services[strenv(service_name)].ports | select(length == 0))' "$compose_file"
     fi
+    local additional_ports
+    additional_ports=$(jq -c '.compatibility.runtipi.additional_ports // []' "$app_dir/app.json")
+    local remaining_ports
+    if ! remaining_ports=$(jq -c --argjson selected "$main_port" --argjson allowed "$additional_ports" '
+        def port_key:
+            if type == "object" then (.target | tostring) + "/" + (.protocol // "tcp")
+            else split("/") as $parts | ($parts[0] | split(":") | last) + "/" + ($parts[1] // "tcp")
+            end;
+        (if $selected == null then . else del(.[$selected.key]) end) as $ports |
+        ($ports | map(port_key)) as $keys |
+        if ($allowed | type) != "array" or
+           ($allowed | unique | length) != ($allowed | length) or
+           any($allowed[]; type != "string" or (. as $key | $keys | index($key)) == null)
+        then error("additional_ports must contain unique existing secondary target/protocol pairs")
+        else $ports | map(select(port_key as $key | $allowed | index($key)))
+        end
+    ' <<< "$source_main_ports"); then
+        print_error "$app_name: invalid Runtipi additional_ports"
+        return 1
+    fi
+    service_name="$app_name" remaining_ports="$remaining_ports" yq -i '.services[strenv(service_name)].ports = env(remaining_ports) | del(.services[strenv(service_name)].ports | select(length == 0))' "$compose_file"
     service_name="$app_name" yq -i '."x-runtipi".schema_version = 2 | .services[strenv(service_name)]."x-runtipi".is_main = true' "$compose_file"
     if [[ "$internal_port" =~ ^[0-9]+$ ]]; then
         service_name="$app_name" internal_port="$internal_port" yq -i '.services[strenv(service_name)]."x-runtipi".internal_port = env(internal_port)' "$compose_file"

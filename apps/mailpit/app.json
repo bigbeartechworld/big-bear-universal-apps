@@ -89,6 +89,7 @@
       "port": "8025"
     },
     "runtipi": {
+      "additional_ports": ["1025/tcp"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [

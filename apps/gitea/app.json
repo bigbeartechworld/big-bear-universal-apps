@@ -131,6 +131,7 @@
       "port": "3000"
     },
     "runtipi": {
+      "additional_ports": ["22/tcp"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [

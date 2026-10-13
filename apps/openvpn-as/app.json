@@ -95,6 +95,7 @@
       "port": "943"
     },
     "runtipi": {
+      "additional_ports": ["443/tcp", "1194/udp"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [

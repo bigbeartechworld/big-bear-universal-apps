@@ -202,7 +202,8 @@ The universal format is converted to platform-specific formats:
 - Creates native docker-compose.yml with top-level `x-runtipi.schema_version: 2`
 - Sets the main service's `x-runtipi.is_main` and `x-runtipi.internal_port`
 - Removes redundant `network_mode: bridge` so Runtipi can attach its proxy network; preserves host and service networking
-- Keeps sidecar ports private unless their source service name is listed in `compatibility.runtipi.published_services`
+- Keeps secondary main-service ports private unless their `target/protocol` pair is listed in `compatibility.runtipi.additional_ports`, for example `53/udp` or `1194/udp`
+- Keeps sidecar ports private unless their source service name is listed in `compatibility.runtipi.published_services`. Host-networked sidecars require this explicit publication decision because removing port mappings does not isolate them.
 - Removes legacy docker-compose.json
 - Maps named volumes to `${APP_DATA_DIR}/data/<volume-name>`, with overrides via `compatibility.runtipi.volume_mappings`
 - Downloads/converts icon to logo.jpg
@@ -327,3 +328,27 @@ Required validations:
 - ✅ Architectures are valid values
 - ✅ docker-compose.yml exists and is valid YAML
 
+
+### Runtipi publication audit
+
+Secondary web, desktop, administration, metrics, and database endpoints stay private. `additional_ports` retains only audited protocol endpoints with their original host bindings, including DNS/DHCP, VPN, Syncthing, SSH/SFTP, mail, device discovery, tracking, and game traffic. Runtipi controls publication of the selected web endpoint.
+
+The following additional templates are unavailable until their required endpoints have secure Runtipi routing:
+
+| Templates | Required endpoint |
+|---|---|
+| Plant-it, Peppermint | Separate browser API |
+| Kasm, EmulatorJS | Workspace or game frontend separate from setup/management |
+| Folding@home, Wireshark | Actual web UI differs from the configured main endpoint |
+| Pterodactyl Wings | Control API separate from SFTP |
+| MinIO, RustFS | Separate storage API and console |
+| LDAP Auth | Separate login page |
+| OmniRoute | Browser dashboard WebSocket on a separate port |
+| Lyrion Music Server | Player CLI and matching web port require platform wiring |
+| OpenTelemetry LGTM | Ingestion endpoints need explicit secure wiring |
+| Traefik | Traffic entrypoints need wiring separate from its dashboard |
+| Pi.Alert, CasaOS Toolbox, DiscoPanel, ESPHome, RustDesk Server, AirVideoHD | Host-networked main service cannot use Runtipi proxy authentication |
+
+Netboot.xyz retains TFTP for its default remote-asset mode; its optional local HTTP asset mirror stays private. Lancache retains TCP 443 for TLS SNI forwarding, and Neko retains its WebRTC UDP media ports.
+
+UniFi keeps device communication and discovery ports. Optional guest browser portals remain private until separately routed.

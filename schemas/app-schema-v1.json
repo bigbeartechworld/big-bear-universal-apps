@@ -357,11 +357,17 @@
         "runtipi": {
           "type": "object",
           "properties": {
+            "additional_ports": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": { "type": "string", "pattern": "^[0-9]+(-[0-9]+)?/(tcp|udp)$" },
+              "description": "Audited secondary main-service target/protocol pairs allowed to retain their source host bindings. Alternate web endpoints stay private by default."
+            },
             "published_services": {
               "type": "array",
               "uniqueItems": true,
               "items": { "type": "string", "minLength": 1 },
-              "description": "Sidecar service names allowed to publish their source Compose ports in Runtipi. Other sidecars stay internal."
+              "description": "Sidecar service names explicitly allowed to publish their source ports or retain host networking in Runtipi. Unlisted host-networked sidecars are rejected; other unlisted sidecars keep their ports private."
             },
             "supported": {
               "type": "boolean"

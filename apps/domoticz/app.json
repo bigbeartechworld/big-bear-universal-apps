@@ -112,6 +112,7 @@
       "port": "8080"
     },
     "runtipi": {
+      "additional_ports": ["6144/tcp"],
       "supported": true,
       "port": "8080"
     },

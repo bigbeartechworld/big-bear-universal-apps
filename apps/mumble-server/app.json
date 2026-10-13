@@ -73,6 +73,7 @@
       "port": "64738"
     },
     "runtipi": {
+      "additional_ports": ["64738/udp"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [

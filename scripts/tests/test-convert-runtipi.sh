@@ -85,7 +85,7 @@ convert authentik
 assert_eq "$(yq '.services."big-bear-authentik-worker".image' "$OUT")" "ghcr.io/goauthentik/server:2026.2.2@sha256:dddd" "differing worker digest stays distinct"
 assert_eq "$(yq '.services.authentik.image' "$OUT")" "$(yq '.services."big-bear-authentik".image' "$REPO/apps/authentik/docker-compose.yml")" "differing worker digest does not change main image"
 
-for app in libredesk jellyseerr pocketid openvpn-as lancache claude-code odysseus; do
+for app in libredesk jellyseerr pocketid openvpn-as lancache claude-code odysseus syncthing traccar jellyfin gitea; do
   convert "$app" || continue
   yq -o=json '.' "$OUT" | jq -e --slurpfile metadata "$REPO/apps/$app/app.json" '
     ($metadata[0].compatibility.runtipi.published_services // []) as $allowed |
@@ -97,12 +97,26 @@ for app in libredesk jellyseerr pocketid openvpn-as lancache claude-code odysseu
        ($service.value.ports // [] | length) == 0))
   ' > /dev/null
   assert_eq "$?" "0" "$app only publishes audited sidecars and normalizes bridge networking"
+  yq -o=json '.' "$OUT" | jq -e --arg app "$app" --slurpfile metadata "$REPO/apps/$app/app.json" '
+    def port_key:
+      if type == "object" then (.target | tostring) + "/" + (.protocol // "tcp")
+      else split("/") as $parts | ($parts[0] | split(":") | last) + "/" + ($parts[1] // "tcp")
+      end;
+    (.services[$app].ports // [] | map(port_key) | sort) ==
+    ($metadata[0].compatibility.runtipi.additional_ports // [] | sort)
+  ' > /dev/null
+  assert_eq "$?" "0" "$app retains exactly the audited secondary main endpoints"
   for service in $(jq -r '.compatibility.runtipi.published_services[]?' "$REPO/apps/$app/app.json"); do
     assert_eq "$(service="$service" yq -o=json -I=0 '.services[strenv(service)].ports' "$OUT")" "$(service="$service" yq -o=json -I=0 '.services[strenv(service)].ports' "$REPO/apps/$app/docker-compose.yml")" "$app/$service retains required ports and host binding"
   done
 done
 
-for app in reactive-resume stoat coolify; do
+for app in firefox webtop; do
+  convert "$app" || continue
+  assert_eq "$(main="$app" yq '.services[strenv(main)].ports // [] | length' "$OUT")" "0" "$app unauthenticated secondary desktop endpoint remains private"
+done
+
+for app in reactive-resume stoat coolify plant-it peppermint kasm emulatorjs foldingathome wireshark pterodactyl-wings minio rustfs ldap-auth omniroute lyrionmusicserver otel-lgtm traefik pi-alert casaos-toolbox discopanel esphome rustdesk-server airvideohd; do
   mkdir -p "$TMP/out/runtipi/$app"
   printf '{}' > "$TMP/out/runtipi/$app/docker-compose.yml"
   bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a "$app" -o "$TMP/out" > "$TMP/$app.log" 2>&1

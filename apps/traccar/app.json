@@ -93,6 +93,7 @@
       "port": "8080"
     },
     "runtipi": {
+      "additional_ports": ["5000-5150/tcp", "5000-5150/udp"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [

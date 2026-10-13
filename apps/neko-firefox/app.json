@@ -110,6 +110,7 @@
       "port": "8080"
     },
     "runtipi": {
+      "additional_ports": ["52000/udp", "52001/udp", "52002/udp", "52003/udp", "52004/udp", "52005/udp", "52006/udp", "52007/udp", "52008/udp", "52009/udp", "52010/udp"],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [

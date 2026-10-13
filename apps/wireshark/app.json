@@ -100,7 +100,7 @@
       "port": "80"
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "port": "80"
     },
     "dockge": {

@@ -62,9 +62,12 @@ services:
   worker:
     image: example/app:2@sha256:cccc
     depends_on: [app]
-    network_mode: service:db
+    network_mode: service:app
     environment:
       APP_URL: http://app
+  observer:
+    image: example/observer:1
+    network_mode: service:db
 networks:
   internal:
     internal: true
@@ -82,7 +85,7 @@ yq -o=json '.' "$OUT/docker-compose.yml" > "$TMP/generated.json"
 yq -o=json '.' "$TMP/apps/fidelity/docker-compose.yml" > "$TMP/source.json"
 jq -e --slurpfile source "$TMP/source.json" '
   .["x-runtipi"].schema_version == 2 and
-  (.services | keys) == ["db", "fidelity", "worker"] and
+  (.services | keys) == ["db", "fidelity", "observer", "worker"] and
   .services.fidelity["x-runtipi"] == {is_main: true, internal_port: 3001} and
   (.services.db | has("ports") | not) and
   (.services.db | has("network_mode") | not) and
@@ -90,16 +93,17 @@ jq -e --slurpfile source "$TMP/source.json" '
   .services.db.image == $source[0].services.db.image and
   .services.db.environment == $source[0].services.db.environment and
   .services.fidelity.environment == $source[0].services.app.environment and
-  .services.worker.network_mode == "service:db" and
+  .services.worker.network_mode == "service:fidelity" and
+  .services.observer.network_mode == "service:db" and
   .services.worker.image == $source[0].services.worker.image and
   .services.fidelity.image == $source[0].services.app.image and
   .services.fidelity.volumes == ["${APP_DATA_DIR}/persist:/data:ro", "${APP_DATA_DIR}/config:/config:rw"] and
   .services.db.volumes[0] == {type: "bind", source: "${APP_DATA_DIR}/persist", target: "/var/lib/postgresql/data", read_only: true} and
-  .services.fidelity.ports == ["9199:3101/udp"] and
+  (.services.fidelity.ports // [] | length) == 0 and
   .services.worker.depends_on == ["fidelity"] and
   .services.worker.environment.APP_URL == "http://fidelity"
 ' "$TMP/generated.json" > /dev/null
-for pair in app:fidelity db:db worker:worker; do
+for pair in app:fidelity db:db worker:worker observer:observer; do
   jq -e --arg old "${pair%%:*}" --arg new "${pair#*:}" --slurpfile source "$TMP/source.json" '
     .services[$new] as $generated |
     ["container_name", "volumes", "ports", "depends_on", "environment", "network_mode", "x-runtipi"] as $transformed |
@@ -110,7 +114,7 @@ done
 jq -e '.min_tipi_version == "4.7.0" and .tipi_version == 2' "$OUT/config.json" > /dev/null
 echo "ok: native Runtipi Compose preserves all service fields and sidecars"
 
-jq '.technical.default_port = "9099" | .compatibility.runtipi.port = "9999"' "$TMP/apps/fidelity/app.json" > "$TMP/metadata.json"
+jq '.technical.default_port = "9099" | .compatibility.runtipi.port = "9999" | .compatibility.runtipi.additional_ports = ["53/tcp", "3101/udp"]' "$TMP/apps/fidelity/app.json" > "$TMP/metadata.json"
 mv "$TMP/metadata.json" "$TMP/apps/fidelity/app.json"
 yq -i '.services.app.ports = ["53:53/tcp", "127.0.0.1:9099:3001/tcp", "9199:3101/udp"]' "$TMP/apps/fidelity/docker-compose.yml"
 bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a fidelity -i "$TMP/apps" -o "$TMP/out" > "$TMP/run.log" 2>&1
@@ -138,8 +142,22 @@ cmp "$OUT/docker-compose.yml" "$TMP/workspace/big-bear-runtipi/apps/fidelity/doc
 test "$(cat "$TMP/workspace/big-bear-runtipi/apps/unrelated/keep.txt")" = "keep"
 echo "ok: targeted platform sync removes legacy JSON and keeps unrelated apps"
 
+yq -i '.services.app.network_mode = "host"' "$TMP/apps/fidelity/docker-compose.yml"
+if bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a fidelity -i "$TMP/apps" -o "$TMP/out" > "$TMP/run.log" 2>&1; then
+  echo "FAIL: host-networked main service accepted as proxy-protected"
+  exit 1
+fi
+yq -i '.services.app.network_mode = "bridge"' "$TMP/apps/fidelity/docker-compose.yml"
+echo "ok: host-networked main services are rejected"
+
 yq -i '.services.worker.network_mode = "host"' "$TMP/apps/fidelity/docker-compose.yml"
 jq '.compatibility.runtipi.published_services = ["db"]' "$TMP/apps/fidelity/app.json" > "$TMP/metadata.json"
+mv "$TMP/metadata.json" "$TMP/apps/fidelity/app.json"
+if bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a fidelity -i "$TMP/apps" -o "$TMP/out" > "$TMP/run.log" 2>&1; then
+  echo "FAIL: unpublished host-networked sidecar accepted"
+  exit 1
+fi
+jq '.compatibility.runtipi.published_services += ["worker"]' "$TMP/apps/fidelity/app.json" > "$TMP/metadata.json"
 mv "$TMP/metadata.json" "$TMP/apps/fidelity/app.json"
 bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a fidelity -i "$TMP/apps" -o "$TMP/out" > "$TMP/run.log" 2>&1
 yq -o=json '.' "$OUT/docker-compose.yml" | jq -e '
@@ -147,7 +165,8 @@ yq -o=json '.' "$OUT/docker-compose.yml" | jq -e '
   .services.worker.network_mode == "host" and
   (.services.fidelity | has("network_mode") | not)
 ' > /dev/null
-echo "ok: sidecar publications require explicit opt-in and meaningful host networking survives"
+echo "ok: host-networked sidecars require an explicit publication decision"
+yq -i '.services.worker.network_mode = "service:app"' "$TMP/apps/fidelity/docker-compose.yml"
 
 for invalid in '["missing"]' '["db", "db"]'; do
   jq --argjson services "$invalid" '.compatibility.runtipi.published_services = $services' "$TMP/apps/fidelity/app.json" > "$TMP/metadata.json"
@@ -158,3 +177,20 @@ for invalid in '["missing"]' '["db", "db"]'; do
   fi
 done
 echo "ok: missing and duplicate publication names fail closed"
+
+jq '.compatibility.runtipi.published_services = [] | .compatibility.runtipi.additional_ports += ["3310-3320/udp"]' "$TMP/apps/fidelity/app.json" > "$TMP/metadata.json"
+mv "$TMP/metadata.json" "$TMP/apps/fidelity/app.json"
+yq -i '.services.app.ports += [{"target": "3310-3320", "published": "4310-4320", "protocol": "udp"}]' "$TMP/apps/fidelity/docker-compose.yml"
+bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a fidelity -i "$TMP/apps" -o "$TMP/out" > "$TMP/run.log" 2>&1
+yq -o=json '.' "$OUT/docker-compose.yml" | jq -e '
+  .services.fidelity.ports[-1] == {target: "3310-3320", published: "4310-4320", protocol: "udp"}
+' > /dev/null
+echo "ok: audited long-form port ranges preserve their original host bindings"
+
+jq '.compatibility.runtipi.published_services = [] | .compatibility.runtipi.additional_ports = ["9999/tcp"]' "$TMP/apps/fidelity/app.json" > "$TMP/metadata.json"
+mv "$TMP/metadata.json" "$TMP/apps/fidelity/app.json"
+if bash "$REPO/scripts/convert-to-platforms.sh" -p runtipi -a fidelity -i "$TMP/apps" -o "$TMP/out" > "$TMP/run.log" 2>&1; then
+  echo "FAIL: nonexistent additional main port accepted"
+  exit 1
+fi
+echo "ok: nonexistent additional main port fails closed"
