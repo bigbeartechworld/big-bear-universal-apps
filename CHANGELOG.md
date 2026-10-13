@@ -3,6 +3,17 @@
 All notable changes to Big Bear Universal Apps are documented here.
 Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within the month)
 
+## [2026.10.4]
+
+### Added
+- `apps/seafile-v14/` — Seafile 14.0.9 on host port 8146. 12 and 13 replaced the 11.x setup variables with `SEAFILE_MYSQL_DB_*`, `INIT_SEAFILE_*` and a mandatory `JWT_PRIVATE_KEY`, made Redis the default cache, and the database upgrade cannot be undone. Majors must be upgraded one at a time (11 → 12 → 13 → 14). SeaDoc, the notification server and Seafile AI are off. Do not attach the 11.0.13 volumes. Migration: https://manual.seafile.com/latest/upgrade/upgrade_notes_for_13.0.x/
+
+### Changed
+- `apps/seafile/` — renamed to "Seafile (Legacy)" and pinned in `renovate.json` at 11.0.13. Closed #4132.
+
+### Updated
+- `apps/ffmpeg/` — 8.1.2 → 9.0.2 (#4150). Tag bump only. FFmpeg 9 verifies TLS certificates by default, so commands that read from self-signed or expired HTTPS sources need `-tls_verify 0` or `-ca_file`.
+
 ## [2026.10.3]
 
 ### Added
