@@ -259,7 +259,7 @@ Validate apps against the JSON schema:
 | **Domoticz** | Visit homepage: https://hub.docker.com/r/linuxserver/domoticz/ | `linuxserver/domoticz` | 2023.2.20231129 | 8080 |  |  |
 | **Dosbox-staging** | DOSBox Staging is a modern continuation of DOSBox a free and open-source emulator that enables th... | `linuxserver/dosbox-staging` | 0.83.0 | 3000 |  |  |
 | **Doublecommander** | Double Commander is a free cross platform open source file manager with two panels side by side. ... | `linuxserver/doublecommander` | 0.0.0 | 3000 |  |  |
-| **Dozzle** | Dozzle is a real-time log viewer for docker containers. | `amir20/dozzle` | v11.3.0 | 8888 | [▶️](https://youtu.be/lLLNDcHNOuM) |  |
+| **Dozzle** | Dozzle is a real-time log viewer for docker containers. | `amir20/dozzle` | v11.3.1 | 8888 | [▶️](https://youtu.be/lLLNDcHNOuM) |  |
 | **Draw.io** | Draw.io is a structured diagram editor for creating flowcharts, network diagrams, and other visua... | `jgraph/drawio` | 32.4.1 | 8080 |  | [📖](https://www.drawio.com/doc/) |
 | **Duckdns** | Duckdns is a free service which will point a DNS (sub domains of duckdns.org) to an IP of your ch... | `linuxserver/duckdns` | 0.0.0 | 80 |  |  |
 | **Duckstation** | DuckStation is a PS1 Emulator aiming for the best accuracy and game support. | `linuxserver/duckstation` | 0.0.0 | 3000 |  |  |
@@ -283,7 +283,7 @@ Validate apps against the JSON schema:
 | **Fastfetch** | Fastfetch is a neofetch-like tool for fetching system information and displaying it prettily. It ... | `bigbeartechworld/big-bear-fastfetch` | 0.0.5 | 7681 | [▶️](https://youtu.be/pVBMvIMzfpw) |  |
 | **Feed2toot** | Feed2toot automatically parses rss feeds, identifies new posts and posts them on the Mastodon soc... | `linuxserver/feed2toot` | 0.17.20251115 | 8080 |  |  |
 | **Ferdium** | Ferdium is a desktop app that helps you organize how you use your favourite apps by combining the... | `linuxserver/ferdium` | 7.2.3 | 3000 |  |  |
-| **Ffmpeg** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/ffmpeg ... | `linuxserver/ffmpeg` | 8.1.2 | 80 |  |  |
+| **Ffmpeg** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/ffmpeg ... | `linuxserver/ffmpeg` | 9.0.2 | 80 |  |  |
 | **Filebrowser** | Reliable and Performant File Management Desktop Sync and File Sharing Tool. | `filebrowser/filebrowser` | v2.63.23-s6 | 8080 |  |  |
 | **FileBrowser Quantum (Legacy)** | A self-hosted web file manager forked from FileBrowser with advanced features including OIDC auth... | `gtstef/filebrowser` | 1.5.8-stable | 8700 |  |  |
 | **FileBrowser Quantum v2** | FileBrowser Quantum 2.0 file manager. This is a new app, separate from FileBrowser Quantum 1.5.8.... | `gtstef/filebrowser` | 2.0.0-stable | 8701 |  | [📖](https://filebrowserquantum.com/en/docs/getting-started/v2/migration/) |
@@ -304,7 +304,7 @@ Validate apps against the JSON schema:
 | **GemDigest Bot** | Simplify your reads, amplify your time! 📚✨ GemDigest is a Telegram bot that summarizes articles ... | `piero24/gemdigest` | 1.0 | 3333 |  |  |
 | **Genmon** | Generac (and other models) Generator Monitoring using a Raspberry Pi and WiFi | `bigbeartechworld/big-bear-genmon` | 2.0.01 | 8000 | [▶️](https://youtu.be/b0_zuVVeIP4) |  |
 | **Ghost** | Ghost is a free and open source blogging platform written in JavaScript and distributed under the... | `ghost` | 6.69.0-alpine | 2368 | [▶️](https://youtu.be/oJZK9vH4W4Y) |  |
-| **Ghostfolio** | Open Source Wealth Management Software. Angular + NestJS + Prisma + Nx + TypeScript 🤍 | `ghostfolio/ghostfolio` | 3.82.0 | 3333 | [▶️](https://youtu.be/CNe4-8Vyhos) |  |
+| **Ghostfolio** | Open Source Wealth Management Software. Angular + NestJS + Prisma + Nx + TypeScript 🤍 | `ghostfolio/ghostfolio` | 3.83.0 | 3333 | [▶️](https://youtu.be/CNe4-8Vyhos) |  |
 | **Gimp** | GIMP is a free and open-source raster graphics editor used for image manipulation (retouching) an... | `linuxserver/gimp` | 0.0.0 | 3000 |  |  |
 | **Gitea** | Gitea is a painless self-hosted all-in-one software development service. It includes Git hosting,... | `gitea/gitea` | 28.1.0 | 3000 |  | [📖](https://docs.gitea.com/) |
 | **Gitea Mirror** | Gitea Mirror is a modern web app for automatically mirroring repositories from GitHub to your sel... | `ghcr.io/raylabshq/gitea-mirror` | v3.15.10 | 4321 |  | [📖](https://community.bigbeartechworld.com/t/added-gitea-mirror-to-bigbearcasaos/3515?u=dragonfire1119#p-5962-documentation-6) |
@@ -316,7 +316,7 @@ Validate apps against the JSON schema:
 | **Gluetun** | Lightweight swiss-knife-like VPN client to multiple VPN service providers | `qmcgaw/gluetun` | v3.41.3 | N/A |  | [📖](https://community.bigbeartechworld.com/t/added-gluetun-to-big-bear-casaos/175) |
 | **GoAway** | GoAway is a lightweight DNS sinkhole that blocks ads, trackers, and malicious domains at the netw... | `pommee/goaway` | 0.63.17 | 8080 |  | [📖](https://community.bigbeartechworld.com/t/added-goaway-to-bigbearcasaos/4085) |
 | **Gotify** | a simple server for sending and receiving messages | `gotify/server` | 3.1.1 | 8091 |  |  |
-| **Grav** | Grav is a Fast, Simple, and Flexible, file-based Web-platform. | `linuxserver/grav` | 2.2.5 | 80 |  |  |
+| **Grav** | Grav is a Fast, Simple, and Flexible, file-based Web-platform. | `linuxserver/grav` | 2.2.6 | 80 |  |  |
 | **Grocy** | Grocy is an ERP system for your kitchen! Cut down on food waste, and manage your chores with this... | `linuxserver/grocy` | 4.7.1 | 9283 |  |  |
 | **Guacamole** | Apache Guacamole is a free and open-source, cross-platform, clientless remote desktop gateway mai... | `guacamole/guacamole` | 1.6.0 | 8090 | [▶️](https://youtu.be/6cu0kfP50Jg) |  |
 | **Gzdoom** | GZDoom is a feature centric port for all Doom engine games, based on ZDoom, adding an OpenGL rend... | `linuxserver/gzdoom` | 4.14.2 | 3000 |  |  |
@@ -347,7 +347,7 @@ Validate apps against the JSON schema:
 | **Indelible** | Indelible is a self-hosted read-it-later and knowledge library. It stores articles, newsletters, ... | `ghcr.io/useindelible/ind-api` | 0.1.1 | 38473 |  | [📖](https://useindelible.com/docs/self-hosting/install/) |
 | **Inkscape** | Inkscape is professional quality vector graphics software which runs on Linux, Mac OS X and Windo... | `linuxserver/inkscape` | 1.4.2 | 3000 |  |  |
 | **Intellij-idea** | IntelliJ IDEA helps you write code faster with tools that eliminate tedious tasks and let you foc... | `linuxserver/intellij-idea` | 42026.2.3 | 3000 |  |  |
-| **Invoice Ninja** | Invoice Ninja is a free and open-source invoice and expense management system. It is a web-based ... | `invoiceninja/invoiceninja` | 5.13.45 | 8080 |  |  |
+| **Invoice Ninja** | Invoice Ninja is a free and open-source invoice and expense management system. It is a web-based ... | `invoiceninja/invoiceninja` | 5.13.47 | 8080 |  |  |
 | **IT Tools** | Collection of handy online tools for developers, with great UX as a web app. | `corentinth/it-tools` | 2023.11.2-7d94e11 | 8080 | [▶️](https://youtu.be/MlGypCrUJug) |  |
 | **Jellyfin** | Jellyfin is a Free Software Media System that puts you in control of managing and streaming your ... | `linuxserver/jellyfin` | 0.0.0 | 8096 |  |  |
 | **Jellyseerr (Legacy)** | Jellyseerr is a free and open source software application for managing requests for your media li... | `fallenbagel/jellyseerr` | 2.7.3 | 5055 |  |  |
@@ -402,7 +402,7 @@ Validate apps against the JSON schema:
 | **Melonds** | melonDS aims at providing fast and accurate Nintendo DS emulation. | `linuxserver/melonds` | 1.1.20261229 | 3000 |  |  |
 | **Microbin** | Self-hosted, encrypted pastebin alternative with configurable features. | `danielszabo99/microbin` | 2.1.4 | 8888 |  | [📖](https://github.com/szabodanika/microbin) |
 | **MIND** | A simple self hosted reminder application that can send push notifications to your device. Set th... | `mrcas/mind` | v1.4.1 | 8080 |  |  |
-| **Minecraft Server** | This docker image provides a Minecraft Server that will automatically download the latest stable ... | `itzg/minecraft-server` | 2026.9.2 | 25565 |  |  |
+| **Minecraft Server** | This docker image provides a Minecraft Server that will automatically download the latest stable ... | `itzg/minecraft-server` | 2026.10.0 | 25565 |  |  |
 | **Minetest** | Visit homepage: https://hub.docker.com/r/linuxserver/minetest/ | `linuxserver/minetest` | 5.10.0 | 30000 |  |  |
 | **Minio** | A distributed object storage server built for cloud applications and devops. Default credentials ... | `bigbeartechworld/big-bear-minio` | RELEASE.2025-10-15T17-29-55Z | 9011 |  |  |
 | **Minisatip** | Minisatip is a multi-threaded satip server version 1.2 that runs under Linux and it was tested wi... | `linuxserver/minisatip` | 2.0.103 | 8875 |  |  |
@@ -533,7 +533,7 @@ Validate apps against the JSON schema:
 | **RetroArch** | Online retro games emulator.The RetroArch Web Player is RetroArch compiled through Emscripten. | `inglebard/retroarch-web` | latest | 8080 |  |  |
 | **Rocket.Chat (Legacy)** | Rocket.Chat is an open-source fully customizable communications platform [...] | `rocket.chat` | 6.13.1 | 3000 |  |  |
 | **Rocket.Chat v8** | Rocket.Chat v8 is an open-source fully customizable communications platform developed in JavaScri... | `rocket.chat` | 8.9.0 | 3100 |  | [📖](https://docs.rocket.chat/docs/rocketchat-release-notes) |
-| **RomM** | ROM manager for organizing, enriching, and playing retro games, with support for 400+ platforms. | `rommapp/romm` | 5.3.1 | 1080 |  | [📖](https://github.com/rommapp/romm/wiki) |
+| **RomM** | ROM manager for organizing, enriching, and playing retro games, with support for 400+ platforms. | `rommapp/romm` | 5.4.0 | 1080 |  | [📖](https://github.com/rommapp/romm/wiki) |
 | **Rpcs3** | RPCS3 is a multi-platform open-source Sony PlayStation 3 emulator and debugger written in C++ for... | `linuxserver/rpcs3` | 0.0.0 | 3000 |  |  |
 | **Rsnapshot** | Rsnapshot is a filesystem snapshot utility based on rsync. rsnapshot makes it easy to make period... | `linuxserver/rsnapshot` | 1.4.5 | 80 |  |  |
 | **RSShub** | RSSHub is an open source, easy to use, and extensible RSS feed generator. It's capable of generat... | `diygod/rsshub` | 2026-09-24 | 1200 |  |  |
@@ -551,7 +551,7 @@ Validate apps against the JSON schema:
 | **SFTPGO** | Full-featured and highly configurable SFTP, HTTP/S, FTP/S and WebDAV server - S3, Google Cloud St... | `drakkan/sftpgo` | v2.7 | 8080 |  |  |
 | **Shadps4** | shadPS4 is an early PlayStation 4 emulator for Windows, Linux and macOS written in C++. | `linuxserver/shadps4` | 0.0.0 | 3000 |  |  |
 | **Shotcut** | Shotcut is a free, open source, cross-platform video editor. | `linuxserver/shotcut` | 26.8.1 | 3000 |  |  |
-| **Signal** | Signal is a messaging app with privacy at its core. It is free and easy to use, with strong end-t... | `linuxserver/signal` | 8.29.0 | 3000 |  |  |
+| **Signal** | Signal is a messaging app with privacy at its core. It is free and easy to use, with strong end-t... | `linuxserver/signal` | 8.30.0 | 3000 |  |  |
 | **SkySend** | SkySend is a self-hosted file and note sharing service. Files and notes are encrypted in the brow... | `skyfay/skysend` | v3.0.1 | 23001 |  | [📖](https://docs.skysend.ch/user-guide/installation) |
 | **Smokeping** | Smokeping keeps track of your network latency. For a full example of what this application is cap... | `linuxserver/smokeping` | 2.9.0 | 80 |  |  |
 | **Snapdrop** | Visit homepage: https://hub.docker.com/r/linuxserver/snapdrop/ | `linuxserver/snapdrop` | 0.0.0 | 80 |  |  |
@@ -615,15 +615,15 @@ Validate apps against the JSON schema:
 | **Warracker** | A self-hosted warranty tracker | `ghcr.io/sassanix/warracker/main` | 1.0.2 | 8005 |  |  |
 | **WatchYourLAN** | Lightweight network IP scanner. Can be used to notify about new hosts and monitor host online/off... | `aceberg/watchyourlan` | 2.1.4 | 8840 | [▶️](https://youtu.be/LaYZjvUJ9U8) |  |
 | **Web Sync (RSync)** | Websync is intended to be an rsync task manager, where rsync tasks can be added, scheduled and ma... | `furier/websync` | latest | 48109 |  |  |
-| **Web-Check** | Web-Check is an on-demand OSINT tool for analysing any website: server, security headers, technol... | `lissy93/web-check` | 2.3.2 | 20003 |  | [📖](https://github.com/lissy93/web-check/blob/master/README.md) |
+| **Web-Check** | Web-Check is an on-demand OSINT tool for analysing any website: server, security headers, technol... | `lissy93/web-check` | 2.3.4 | 20003 |  | [📖](https://github.com/lissy93/web-check/blob/master/README.md) |
 | **Webcord** | WebCord can be summarized as a pack of security and privacy hardenings, Discord features reimplem... | `linuxserver/webcord` | 4.14.0 | 3000 |  |  |
 | **WebDAV** | Web-based distributed authoring and versioning (WebDAV) is a set of extensions to the HTTP protoc... | `bytemark/webdav` | latest | 48108 |  |  |
 | **Webgrabplus** | Webgrabplus is a multi-site incremental xmltv epg grabber. It collects tv-program guide data from... | `linuxserver/webgrabplus` | 5.6.1 | 80 |  |  |
-| **Webstation** | Webstation is a web native emulation focused LXQt desktop based on Ubuntu. | `linuxserver/webstation` | 0.14.2-romm | 3000 |  |  |
+| **Webstation** | Webstation is a web native emulation focused LXQt desktop based on Ubuntu. | `linuxserver/webstation` | 0.15.0-romm | 3000 |  |  |
 | **Webtop** | Webtop - Alpine, Ubuntu, Fedora, and Arch based containers containing full desktop environments i... | `linuxserver/webtop` | 0.0.0 | 3000 |  |  |
 | **Weixin** | Weixin (WeChat) is an instant messaging, social media, and mobile payment app developed by Tencent. | `linuxserver/weixin` | 0.0.0 | 3000 |  |  |
 | **What's Up Docker** | Gets you notified when new versions of your Docker containers are available and lets you react th... | `fmartinou/whats-up-docker` | 6.6.1 | 3000 |  |  |
-| **Wikijs** | Wikijs A modern, lightweight and powerful wiki app built on NodeJS. | `linuxserver/wikijs` | 2.5.315 | 3000 |  |  |
+| **Wikijs** | Wikijs A modern, lightweight and powerful wiki app built on NodeJS. | `linuxserver/wikijs` | 2.5.316 | 3000 |  |  |
 | **Winegui** | WineGUI is a user-interface friendly Wine manager that provides a graphical frontend for creating... | `linuxserver/winegui` | 4.5.1 | 3000 |  |  |
 | **Wireguard** | WireGuard® is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptogr... | `linuxserver/wireguard` | 1.0.20260223 | 51820 |  |  |
 | **Wireguard Easy 14 (Legacy)** | Access your homeserver from anywhere even on your mobile device. Wireguard-easy is a simple tool ... | `ghcr.io/wg-easy/wg-easy` | 15 | 51821 |  |  |
@@ -637,11 +637,11 @@ Validate apps against the JSON schema:
 | **Xbackbone** | Xbackbone is a simple, self-hosted, lightweight PHP file manager that support the instant sharing... | `linuxserver/xbackbone` | 3.8.2 | 80 |  |  |
 | **Xemu** | xemu is a free and open-source application that emulates the original Microsoft Xbox game console... | `linuxserver/xemu` | 0.8.134 | 3000 |  |  |
 | **Xvfb** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/xvfb fo... | `linuxserver/xvfb` | 0.0.0 | 80 |  |  |
-| **Yaak** | Yaak is a desktop API client for organizing and executing REST, GraphQL, and gRPC requests. It's ... | `linuxserver/yaak` | 2026.8.1 | 3000 |  |  |
+| **Yaak** | Yaak is a desktop API client for organizing and executing REST, GraphQL, and gRPC requests. It's ... | `linuxserver/yaak` | 2026.9.0 | 3000 |  |  |
 | **Your_spotify** | Your_spotify is a self-hosted application that tracks what you listen and offers you a dashboard ... | `linuxserver/your_spotify` | 1.20.0 | 80 |  |  |
-| **Yq** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/yq for ... | `linuxserver/yq` | 4.4.0 | 80 |  |  |
+| **Yq** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/yq for ... | `linuxserver/yq` | 4.4.2 | 80 |  |  |
 | **Yuvomi** | Yuvomi is a self-hosted family planner for tasks, calendar, meals, shopping, budget, and document... | `ghcr.io/ulsklyc/yuvomi` | 2.73.0 | 20004 |  | [📖](https://github.com/ulsklyc/yuvomi/blob/main/README.md) |
-| **Zen** | Zen Browser is a free and open-source fork of Mozilla Firefox with a focus on privacy, customizab... | `linuxserver/zen` | 1.23.1 | 3000 |  |  |
+| **Zen** | Zen Browser is a free and open-source fork of Mozilla Firefox with a focus on privacy, customizab... | `linuxserver/zen` | 1.23.2 | 3000 |  |  |
 | **Zigbee to MQTT bridge** | Zigbee to MQTT bridge, get rid of your proprietary Zigbee bridges | `koenkk/zigbee2mqtt` | 2.14.2 | 8080 |  |  |
 | **ZimaBrain CE** | ZimaBrain CE is a local verifier-first diagnostic assistant for ZimaOS. It checks host evidence a... | `gelbuilding/zimabrain-ce` | 1.6.2-beta | 8601 |  | [📖](https://github.com/Jacko88888/zimabrain-ce/blob/main/README.md) |
 | **zipline** | A ShareX/file upload server that is easy to use, packed with features, and with an easy setup! | `ghcr.io/diced/zipline` | 3.7.13 | 3000 |  |  |
