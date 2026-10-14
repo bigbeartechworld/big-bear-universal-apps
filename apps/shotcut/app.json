@@ -5,7 +5,7 @@
     "name": "Shotcut",
     "description": "Shotcut is a free, open source, cross-platform video editor.",
     "tagline": "A free, open source, cross-platform video editor.",
-    "version": "26.8.1",
+    "version": "26.9.27",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/shotcut",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:58.386Z",
-    "updated": "2026-09-17T18:10:58.386Z"
+    "updated": "2026-10-14T08:29:38.310Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/shotcut-logo.png",
