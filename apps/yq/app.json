@@ -5,7 +5,7 @@
     "name": "Yq",
     "description": "This container needs special attention. Please check https://hub.docker.com/r/linuxserver/yq for details.",
     "tagline": "This container needs special attention. Please check https://hub. Docker. Com/r/linuxserver/yq for details. ",
-    "version": "4.4.4",
+    "version": "4.4.5",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Other",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/yq",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:58.680Z",
-    "updated": "2026-10-14T04:14:07.600Z"
+    "updated": "2026-10-14T15:35:58.039Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/WisdomSky/CasaOS-LinuxServer-AppStore@main/default-icon.svg",
