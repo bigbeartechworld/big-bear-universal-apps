@@ -1,0 +1,58 @@
+name: big-bear-cashpilot
+
+services:
+  cashpilot-ui:
+    image: drumsergio/cashpilot:1.42.0@sha256:6452e960f8eae636c5d421127e34cc7a35e4687476eede941f98749edb2f41ba
+    # The worker finds the UI by this container name when it updates itself.
+    container_name: cashpilot-ui
+    restart: unless-stopped
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:size=64M
+    ports:
+      - "8080:8080"
+    volumes:
+      - cashpilot_data:/data
+      - cashpilot_fleet:/fleet
+    environment:
+      - TZ=UTC
+      # Empty on purpose: CashPilot generates the session key on first start
+      # and keeps it in /data.
+      - CASHPILOT_SECRET_KEY=
+
+  cashpilot-worker:
+    image: drumsergio/cashpilot-worker:1.42.0@sha256:7c2af8fc7e014b7c7887a6670265c9d95c98837a8583e62fb914c407f7e1780a
+    container_name: cashpilot-worker
+    restart: unless-stopped
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:size=64M
+    expose:
+      - "8081"
+    volumes:
+      # The worker starts and stops the earning containers, so it needs the
+      # Docker socket read-write. It is the only container that gets it.
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Kept apart from the UI's /data on purpose: the container with the
+      # Docker socket must not be able to read the credential store.
+      - cashpilot_worker_data:/data
+      - cashpilot_fleet:/fleet
+    environment:
+      - TZ=UTC
+      - CASHPILOT_UI_URL=http://cashpilot-ui:8080
+      - CASHPILOT_WORKER_NAME=local
+
+volumes:
+  cashpilot_data:
+    name: cashpilot_data
+    driver: local
+  cashpilot_worker_data:
+    name: cashpilot_worker_data
+    driver: local
+  cashpilot_fleet:
+    name: cashpilot_fleet
+    driver: local

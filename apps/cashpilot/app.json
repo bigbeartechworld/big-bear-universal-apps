@@ -1,0 +1,150 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "cashpilot",
+    "name": "CashPilot",
+    "description": "CashPilot runs passive income services on your own server and shows what they earn in one web dashboard. It starts the services that run in Docker with one click from its catalog, keeps track of the ones that run as a browser extension, a desktop app or a GPU node, and reads the providers' balances into one earnings history. A balance drop is offered to you as a probable payout to confirm, and stored credentials are encrypted at rest. Two containers: the web UI and a worker, which is the only one with the Docker socket.",
+    "tagline": "Run passive income services and see what they earn",
+    "version": "1.42.0",
+    "author": "GeiserX",
+    "developer": "GeiserX",
+    "category": "Finance",
+    "license": "GPL-3.0",
+    "homepage": "https://geiserx.github.io/CashPilot/",
+    "source": "big-bear-universal",
+    "created": "2026-10-15T00:00:00Z",
+    "updated": "2026-10-15T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/GeiserX/CashPilot@main/docs/images/icon.svg",
+    "thumbnail": "",
+    "screenshots": [
+      "https://cdn.jsdelivr.net/gh/GeiserX/CashPilot@main/docs/images/screenshots/dashboard.png",
+      "https://cdn.jsdelivr.net/gh/GeiserX/CashPilot@main/docs/images/screenshots/catalog.png",
+      "https://cdn.jsdelivr.net/gh/GeiserX/CashPilot@main/docs/images/screenshots/fleet.png"
+    ],
+    "logo": "https://cdn.jsdelivr.net/gh/GeiserX/CashPilot@main/docs/images/icon.svg"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://geiserx.github.io/CashPilot/",
+    "repository": "https://github.com/GeiserX/CashPilot",
+    "issues": "https://github.com/GeiserX/CashPilot/issues",
+    "support": "https://github.com/GeiserX/CashPilot/issues"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "cashpilot-ui",
+    "default_port": "8080",
+    "main_image": "drumsergio/cashpilot",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "TZ",
+        "default": "UTC",
+        "description": "Timezone",
+        "required": false
+      },
+      {
+        "name": "CASHPILOT_SECRET_KEY",
+        "default": "",
+        "description": "Signs login sessions. Leave empty and CashPilot generates one on first start and keeps it in /data.",
+        "required": false
+      },
+      {
+        "name": "CASHPILOT_UI_URL",
+        "default": "http://cashpilot-ui:8080",
+        "description": "URL the worker uses to reach the CashPilot UI",
+        "required": false
+      },
+      {
+        "name": "CASHPILOT_WORKER_NAME",
+        "default": "local",
+        "description": "Name of this worker in the dashboard",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "UI database and the key that decrypts stored credentials (/data/.fernet_key). Back it up."
+      },
+      {
+        "container": "/fleet",
+        "description": "Enrolment key shared between the UI and the worker"
+      },
+      {
+        "container": "/var/run/docker.sock",
+        "description": "Docker socket, which the worker needs to start and stop the earning containers"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8080",
+        "host": "8080",
+        "protocol": "tcp",
+        "description": "Web UI"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "/",
+    "tips": {
+      "before_install": {
+        "en_us": "The dashboard can command the worker, and the worker holds the Docker socket, so keep port 8080 on your LAN and never forward it to the internet.\n\nOn the first visit CashPilot asks for a setup token. Find it in the logs of the cashpilot-ui container, in the line that says \"setup token\". It then creates the owner account and opens the setup wizard.\n\nBack up /data/.fernet_key from the cashpilot-ui container: without it the stored credentials cannot be decrypted."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8080",
+      "port": "8080",
+      "category": "Finance",
+      "volume_mappings": {
+        "cashpilot_data": "/DATA/AppData/$AppID/data",
+        "cashpilot_worker_data": "/DATA/AppData/$AppID/worker-data",
+        "cashpilot_fleet": "/DATA/AppData/$AppID/fleet"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Finance",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8080"
+    },
+    "runtipi": {
+      "supported": false
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8080"
+    },
+    "cosmos": {
+      "supported": false
+    },
+    "umbrel": {
+      "supported": false
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "finance",
+    "passive-income",
+    "bandwidth-sharing"
+  ]
+}
