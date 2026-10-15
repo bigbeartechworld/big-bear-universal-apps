@@ -42,12 +42,6 @@
   "deployment": {
     "environment_variables": [
       {
-        "name": "SEAFILE_SERVER_HOSTNAME",
-        "default": "127.0.0.1:8146",
-        "description": "IP or domain plus port that clients use to reach Seafile",
-        "required": true
-      },
-      {
         "name": "INIT_SEAFILE_ADMIN_EMAIL",
         "default": "admin@example.com",
         "description": "Initial admin email (first start only)",
