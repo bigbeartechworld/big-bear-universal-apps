@@ -105,6 +105,15 @@
     },
     {
       "matchPackageNames": [
+        "seafileltd/seafile-mc"
+      ],
+      "matchFileNames": [
+        "apps/seafile/docker-compose.yml"
+      ],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": [
         "rocket.chat"
       ],
       "matchFileNames": [

@@ -1,0 +1,178 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "seafile-v14",
+    "name": "Seafile v14",
+    "description": "Seafile is an open source file sync and share platform, focusing on reliability and performance.",
+    "tagline": "Seafile is an open source file sync and share platform, focusing on reliability and performance.",
+    "version": "14.0.9",
+    "author": "BigBearTechWorld",
+    "developer": "seafile",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/seafileltd/seafile-mc",
+    "source": "big-bear-universal",
+    "created": "2026-10-13T00:00:00Z",
+    "updated": "2026-10-13T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/seafile.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/seafile.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://manual.seafile.com/latest/upgrade/upgrade_docker/",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "big-bear-seafile-v14",
+    "default_port": "8146",
+    "main_image": "seafileltd/seafile-mc",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "INIT_SEAFILE_ADMIN_EMAIL",
+        "default": "admin@example.com",
+        "description": "Initial admin email (first start only)",
+        "required": true
+      },
+      {
+        "name": "INIT_SEAFILE_ADMIN_PASSWORD",
+        "default": "e1c68646-4097-4781-bb87-7e92e7f851cb",
+        "description": "Initial admin password (first start only)",
+        "required": true
+      },
+      {
+        "name": "JWT_PRIVATE_KEY",
+        "default": "667dc128-2d73-4d3b-a02a-2f1ac1ce78df",
+        "description": "Random key, 32+ characters",
+        "required": true
+      },
+      {
+        "name": "SEAFILE_MYSQL_DB_PASSWORD",
+        "default": "7201efed-a8a4-4b77-9e04-08a33d01c2ad",
+        "description": "Seafile database user password",
+        "required": true
+      },
+      {
+        "name": "INIT_SEAFILE_MYSQL_ROOT_PASSWORD",
+        "default": "175fa483-c07b-4172-b065-5076bb526f45",
+        "description": "Database root password",
+        "required": true
+      },
+      {
+        "name": "REDIS_PASSWORD",
+        "default": "82587955-1f5f-40bd-9e5f-aba55571a8ae",
+        "description": "Redis password",
+        "required": true
+      },
+      {
+        "name": "TIME_ZONE",
+        "default": "Etc/UTC",
+        "description": "Timezone",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/shared",
+        "description": "Container Path: /shared"
+      },
+      {
+        "container": "/var/lib/mysql",
+        "description": "Container Path: /var/lib/mysql"
+      }
+    ],
+    "ports": [
+      {
+        "container": "80",
+        "host": "8146",
+        "protocol": "tcp",
+        "description": "Container Port: 80"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "NEW APP - SEAFILE V14\n\nThis is a NEW app, separate from 'seafile' (11.0.13, Legacy). Do not treat the install as an upgrade of an existing 11.x stack.\n\nFOR NEW USERS:\n- Install this app for a new Seafile 14 deployment\n- Web UI is on host port 8146\n- Log in with admin@example.com and the password committed in INIT_SEAFILE_ADMIN_PASSWORD, then change it\n- Set SEAFILE_SERVER_HOSTNAME to the IP or domain plus port you browse with (for example 192.168.1.10:8146). The value must contain a dot. Seafile builds every download and upload link from it, so the default 127.0.0.1:8146 only works on the host itself\n- Change the committed database, Redis and JWT_PRIVATE_KEY values at install time, before the first start: the database ignores later changes to its passwords and logins fail. REDIS_PASSWORD and the root password appear on two services, change both copies. JWT_PRIVATE_KEY must stay 32+ characters\n- SeaDoc, the notification server and Seafile AI are not enabled\n\nFOR SEAFILE 11.0.13 USERS:\n- Do NOT uninstall the existing 'seafile' app\n- Do NOT point this app at the seafile_mysql or seafile_shared volumes\n- Major versions must be upgraded one at a time (11 to 12 to 13 to 14). The database upgrade cannot be undone, so back up both volumes first\n- Redis replaces memcached, and DB settings move from seafile.conf and seahub_settings.py into environment variables\n\nMigration: https://manual.seafile.com/latest/upgrade/upgrade_docker/"
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8146",
+      "volume_mappings": {
+        "seafile-v14_mysql": "/DATA/AppData/$AppID/mysql",
+        "seafile-v14_shared": "/DATA/AppData/$AppID/shared"
+      },
+      "port": "8146",
+      "category": "Productivity"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8146"
+    },
+    "runtipi": {
+      "supported": false,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "seafile-v14_mysql": "mysql",
+        "seafile-v14_shared": "shared"
+      },
+      "port": "8147"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8146"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8146"
+    },
+    "umbrel": {
+      "supported": false,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "seafile-v14_mysql": "mysql",
+        "seafile-v14_shared": "shared"
+      },
+      "port": "10169",
+      "app_port": "80"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}
