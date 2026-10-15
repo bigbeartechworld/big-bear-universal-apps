@@ -37,8 +37,9 @@ services:
       # The worker starts and stops the earning containers, so it needs the
       # Docker socket read-write. It is the only container that gets it.
       - /var/run/docker.sock:/var/run/docker.sock
-      # Kept apart from the UI's /data on purpose: the container with the
-      # Docker socket must not be able to read the credential store.
+      # Kept apart from the UI's /data so the worker never has the credential
+      # store mounted. This is not a hard boundary: the Docker socket is root
+      # on the host, so treat the worker as trusted.
       - cashpilot_worker_data:/data
       - cashpilot_fleet:/fleet
     environment:

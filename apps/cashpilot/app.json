@@ -3,7 +3,7 @@
   "metadata": {
     "id": "cashpilot",
     "name": "CashPilot",
-    "description": "CashPilot runs passive income services on your own server and shows what they earn in one web dashboard. It starts the services that run in Docker with one click from its catalog, keeps track of the ones that run as a browser extension, a desktop app or a GPU node, and reads the providers' balances into one earnings history. A balance drop is offered to you as a probable payout to confirm, and stored credentials are encrypted at rest. Two containers: the web UI and a worker, which is the only one with the Docker socket.",
+    "description": "CashPilot runs passive income services on your own server and shows what they earn in one web dashboard. It starts the services that run in Docker with one click from its catalog, keeps track of the ones that run as a browser extension, a desktop app or a GPU node, and reads the providers' balances into one earnings history. A balance drop is offered to you as a probable payout to confirm, and stored credentials are encrypted at rest. Two containers: the web UI and a worker, which is the only one with the Docker socket. On the first visit, enter the one-time setup token printed in the cashpilot-ui container log to create the owner account. Keep port 8080 on your LAN: the dashboard can command the worker, and the worker holds the Docker socket.",
     "tagline": "Run passive income services and see what they earn",
     "version": "1.42.0",
     "author": "GeiserX",
