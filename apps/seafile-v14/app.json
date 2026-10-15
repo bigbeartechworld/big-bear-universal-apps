@@ -114,7 +114,7 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "NEW APP - SEAFILE V14\n\nThis is a NEW app, separate from 'seafile' (11.0.13, Legacy). Do not treat the install as an upgrade of an existing 11.x stack.\n\nFOR NEW USERS:\n- Install this app for a new Seafile 14 deployment\n- Web UI is on host port 8146\n- Log in with admin@example.com and the password committed in INIT_SEAFILE_ADMIN_PASSWORD, then change it\n- Set SEAFILE_SERVER_HOSTNAME to the IP or domain plus port you browse with (for example 192.168.1.10:8146). The value must contain a dot. Seafile builds every download and upload link from it, so the default 127.0.0.1:8146 only works on the host itself\n- Change the committed database, Redis and JWT_PRIVATE_KEY values before exposing the app. REDIS_PASSWORD and the root password appear on two services, change both copies. JWT_PRIVATE_KEY must stay 32+ characters\n- SeaDoc, the notification server and Seafile AI are not enabled\n\nFOR SEAFILE 11.0.13 USERS:\n- Do NOT uninstall the existing 'seafile' app\n- Do NOT point this app at the seafile_mysql or seafile_shared volumes\n- Major versions must be upgraded one at a time (11 to 12 to 13 to 14). The database upgrade cannot be undone, so back up both volumes first\n- Redis replaces memcached, and DB settings move from seafile.conf and seahub_settings.py into environment variables\n\nMigration: https://manual.seafile.com/latest/upgrade/upgrade_docker/"
+        "en_us": "NEW APP - SEAFILE V14\n\nThis is a NEW app, separate from 'seafile' (11.0.13, Legacy). Do not treat the install as an upgrade of an existing 11.x stack.\n\nFOR NEW USERS:\n- Install this app for a new Seafile 14 deployment\n- Web UI is on host port 8146\n- Log in with admin@example.com and the password committed in INIT_SEAFILE_ADMIN_PASSWORD, then change it\n- Set SEAFILE_SERVER_HOSTNAME to the IP or domain plus port you browse with (for example 192.168.1.10:8146). The value must contain a dot. Seafile builds every download and upload link from it, so the default 127.0.0.1:8146 only works on the host itself\n- Change the committed database, Redis and JWT_PRIVATE_KEY values at install time, before the first start: the database ignores later changes to its passwords and logins fail. REDIS_PASSWORD and the root password appear on two services, change both copies. JWT_PRIVATE_KEY must stay 32+ characters\n- SeaDoc, the notification server and Seafile AI are not enabled\n\nFOR SEAFILE 11.0.13 USERS:\n- Do NOT uninstall the existing 'seafile' app\n- Do NOT point this app at the seafile_mysql or seafile_shared volumes\n- Major versions must be upgraded one at a time (11 to 12 to 13 to 14). The database upgrade cannot be undone, so back up both volumes first\n- Redis replaces memcached, and DB settings move from seafile.conf and seahub_settings.py into environment variables\n\nMigration: https://manual.seafile.com/latest/upgrade/upgrade_docker/"
       }
     }
   },
@@ -140,7 +140,7 @@
       "port": "8146"
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "tipi_version": 1,
       "supported_architectures": [
         "amd64",
@@ -164,7 +164,7 @@
       "port": "8146"
     },
     "umbrel": {
-      "supported": true,
+      "supported": false,
       "manifest_version": 1,
       "volume_mappings": {
         "seafile-v14_mysql": "mysql",

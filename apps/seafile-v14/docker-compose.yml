@@ -96,7 +96,7 @@ services:
     command:
       - /bin/sh
       - -c
-      - exec redis-server --requirepass "$$REDIS_PASSWORD" --save "" --appendonly no
+      - exec docker-entrypoint.sh redis-server --requirepass "$$REDIS_PASSWORD" --save "" --appendonly no
     environment:
       - REDIS_PASSWORD=82587955-1f5f-40bd-9e5f-aba55571a8ae
     networks:
