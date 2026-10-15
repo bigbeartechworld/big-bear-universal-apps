@@ -15,6 +15,7 @@
 # - Deploy this app for a new Seafile 14 instance
 # - Web UI is on host port 8146 on CasaOS, Portainer, Dockge and Cosmos (8080 stays with the 11.0.13 app)
 # - Set SEAFILE_SERVER_HOSTNAME to the IP or domain plus port that clients use (for example 192.168.1.10:8146)
+# - On Portainer, edit it in the stack editor after deploying and update the stack. If the editor is read-only, detach the stack from Git first
 # - The value must contain a dot, so localhost is rejected. Seafile builds every download and upload link from it
 # - Change the committed passwords and JWT_PRIVATE_KEY before exposing the app. REDIS_PASSWORD and the root password appear on two services, change both
 #
