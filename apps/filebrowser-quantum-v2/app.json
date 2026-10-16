@@ -5,7 +5,7 @@
     "name": "FileBrowser Quantum v2",
     "description": "FileBrowser Quantum 2.0 file manager. This is a new app, separate from FileBrowser Quantum 1.5.8. v2 stores users and shares in SQLite and refuses to start while a v1 database.db file is still in the data directory. Do not attach the 1.5.8 data volume. A fresh install prints a one-time admin password in the container logs.",
     "tagline": "FileBrowser Quantum v2",
-    "version": "2.0.0-stable",
+    "version": "2.0.1-stable",
     "author": "BigBearCommunity",
     "developer": "gtsteffaniak",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/gtstef/filebrowser",
     "source": "big-bear-universal",
     "created": "2026-10-12T00:00:00Z",
-    "updated": "2026-10-12T00:00:00Z"
+    "updated": "2026-10-16T17:55:54.403Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/filebrowser-quantum.png",
