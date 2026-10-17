@@ -18,7 +18,7 @@ services:
     restart: unless-stopped
 
   rabbit:
-    image: rabbitmq:4.3.6@sha256:25736a5d515fe5dcf4c7eec2125b09a0e2043cc934ac0a7aca198c1058564620
+    image: rabbitmq:4.3.6@sha256:720afe694c407b3d4747d719cb917b1a9114b7d019ca7315fb92277057b4aa7c
     restart: unless-stopped
     environment:
       RABBITMQ_DEFAULT_USER: rabbituser
