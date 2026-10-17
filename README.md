@@ -181,7 +181,7 @@ Validate apps against the JSON schema:
 | **Azahar** | Azahar is an open-source 3DS emulator based on Citra. | `linuxserver/azahar` | 12126.1.2 | 3000 |  |  |
 | **Babybuddy** | Babybuddy is a buddy for babies! Helps caregivers track sleep, feedings, diaper changes, tummy ti... | `linuxserver/babybuddy` | 2.11.0 | 8000 |  |  |
 | **Bambustudio** | Bambu Studio is an open-source, cutting-edge, feature-rich slicing software. It contains project-... | `linuxserver/bambustudio` | 02.08.04 | 3000 |  |  |
-| **Baserow** | Create your own online database without technical experience. Our user-friendly no-code tool give... | `baserow/baserow` | 2.4.0 | 7350 | [▶️](https://youtu.be/Xej7sH5bNFs) |  |
+| **Baserow** | Create your own online database without technical experience. Our user-friendly no-code tool give... | `baserow/baserow` | 2.4.1 | 7350 | [▶️](https://youtu.be/Xej7sH5bNFs) |  |
 | **Beaver Habit Tracker** | A self-hosted habit tracking app without Goals | `daya0576/beaverhabits` | 0.10.0 | 8080 |  |  |
 | **Beets** | Beets is a music library manager and not, for the most part, a music player. It does include a si... | `linuxserver/beets` | 2.14.1 | 8337 |  |  |
 | **Beszel** | A lightweight server resource monitoring hub with historical data, docker stats, and alerts. | `henrygd/beszel` | 0.21.0 | 8090 | [▶️](https://youtu.be/BUVVG-9RCbg) |  |
@@ -259,7 +259,7 @@ Validate apps against the JSON schema:
 | **Domoticz** | Visit homepage: https://hub.docker.com/r/linuxserver/domoticz/ | `linuxserver/domoticz` | 2023.2.20231129 | 8080 |  |  |
 | **Dosbox-staging** | DOSBox Staging is a modern continuation of DOSBox a free and open-source emulator that enables th... | `linuxserver/dosbox-staging` | 0.83.0 | 3000 |  |  |
 | **Doublecommander** | Double Commander is a free cross platform open source file manager with two panels side by side. ... | `linuxserver/doublecommander` | 0.0.0 | 3000 |  |  |
-| **Dozzle** | Dozzle is a real-time log viewer for docker containers. | `amir20/dozzle` | v11.3.1 | 8888 | [▶️](https://youtu.be/lLLNDcHNOuM) |  |
+| **Dozzle** | Dozzle is a real-time log viewer for docker containers. | `amir20/dozzle` | v11.3.2 | 8888 | [▶️](https://youtu.be/lLLNDcHNOuM) |  |
 | **Draw.io** | Draw.io is a structured diagram editor for creating flowcharts, network diagrams, and other visua... | `jgraph/drawio` | 32.4.1 | 8080 |  | [📖](https://www.drawio.com/doc/) |
 | **Duckdns** | Duckdns is a free service which will point a DNS (sub domains of duckdns.org) to an IP of your ch... | `linuxserver/duckdns` | 0.0.0 | 80 |  |  |
 | **Duckstation** | DuckStation is a PS1 Emulator aiming for the best accuracy and game support. | `linuxserver/duckstation` | 0.0.0 | 3000 |  |  |
@@ -286,7 +286,7 @@ Validate apps against the JSON schema:
 | **Ffmpeg** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/ffmpeg ... | `linuxserver/ffmpeg` | 9.0.2 | 80 |  |  |
 | **Filebrowser** | Reliable and Performant File Management Desktop Sync and File Sharing Tool. | `filebrowser/filebrowser` | v2.63.23-s6 | 8080 |  |  |
 | **FileBrowser Quantum (Legacy)** | A self-hosted web file manager forked from FileBrowser with advanced features including OIDC auth... | `gtstef/filebrowser` | 1.5.8-stable | 8700 |  |  |
-| **FileBrowser Quantum v2** | FileBrowser Quantum 2.0 file manager. This is a new app, separate from FileBrowser Quantum 1.5.8.... | `gtstef/filebrowser` | 2.0.0-stable | 8701 |  | [📖](https://filebrowserquantum.com/en/docs/getting-started/v2/migration/) |
+| **FileBrowser Quantum v2** | FileBrowser Quantum 2.0 file manager. This is a new app, separate from FileBrowser Quantum 1.5.8.... | `gtstef/filebrowser` | 2.0.1-stable | 8701 |  | [📖](https://filebrowserquantum.com/en/docs/getting-started/v2/migration/) |
 | **Filezilla** | FIleZilla Client is a fast and reliable cross-platform FTP, FTPS and SFTP client with lots of use... | `linuxserver/filezilla` | 3.69.6 | 3000 |  |  |
 | **Financial Freedom** | Keep investors and their buyers out of your financial data. Own 100% of your data and start build... | `serversideup/financial-freedom` | v0.2.0-alpha1 | 8443 |  |  |
 | **Firefox** | This Image contains a browser-accessible version of Firefox. | `linuxserver/firefox` | 1155.0.1 | 3000 | [▶️](https://youtu.be/RPBshN5hGWQ) |  |
@@ -303,20 +303,20 @@ Validate apps against the JSON schema:
 | **GameVault** | GameVault 17.0.1 is a self-hosted library for DRM-free games, with a web UI and PostgreSQL. | `phalcode/gamevault-backend` | 17.0.1 | 20032 |  | [📖](https://gamevau.lt/docs/server-docs/setup/docker-compose/) |
 | **GemDigest Bot** | Simplify your reads, amplify your time! 📚✨ GemDigest is a Telegram bot that summarizes articles ... | `piero24/gemdigest` | 1.0 | 3333 |  |  |
 | **Genmon** | Generac (and other models) Generator Monitoring using a Raspberry Pi and WiFi | `bigbeartechworld/big-bear-genmon` | 2.0.03 | 8000 | [▶️](https://youtu.be/b0_zuVVeIP4) |  |
-| **Ghost** | Ghost is a free and open source blogging platform written in JavaScript and distributed under the... | `ghost` | 6.69.0-alpine | 2368 | [▶️](https://youtu.be/oJZK9vH4W4Y) |  |
-| **Ghostfolio** | Open Source Wealth Management Software. Angular + NestJS + Prisma + Nx + TypeScript 🤍 | `ghostfolio/ghostfolio` | 3.85.0 | 3333 | [▶️](https://youtu.be/CNe4-8Vyhos) |  |
+| **Ghost** | Ghost is a free and open source blogging platform written in JavaScript and distributed under the... | `ghost` | 6.70.0-alpine | 2368 | [▶️](https://youtu.be/oJZK9vH4W4Y) |  |
+| **Ghostfolio** | Open Source Wealth Management Software. Angular + NestJS + Prisma + Nx + TypeScript 🤍 | `ghostfolio/ghostfolio` | 3.86.0 | 3333 | [▶️](https://youtu.be/CNe4-8Vyhos) |  |
 | **Gimp** | GIMP is a free and open-source raster graphics editor used for image manipulation (retouching) an... | `linuxserver/gimp` | 0.0.0 | 3000 |  |  |
 | **Gitea** | Gitea is a painless self-hosted all-in-one software development service. It includes Git hosting,... | `gitea/gitea` | 28.1.0 | 3000 |  | [📖](https://docs.gitea.com/) |
 | **Gitea Mirror** | Gitea Mirror is a modern web app for automatically mirroring repositories from GitHub to your sel... | `ghcr.io/raylabshq/gitea-mirror` | v3.15.10 | 4321 |  | [📖](https://community.bigbeartechworld.com/t/added-gitea-mirror-to-bigbearcasaos/3515?u=dragonfire1119#p-5962-documentation-6) |
 | **Github-desktop** | Github Desktop is an open source Electron-based GitHub app. It is written in TypeScript and uses ... | `linuxserver/github-desktop` | 3.4.13 | 3000 |  |  |
 | **Gitqlient** | GitQlient is a multi-platform Git client originally forked from QGit. Nowadays it goes beyond of ... | `linuxserver/gitqlient` | 1.6.3 | 3000 |  |  |
-| **Gladys Assistant** | Gladys Assistant is a modern, privacy-first & open-source home automation software that runs anyw... | `gladysassistant/gladys` | v5.2.0 | 1080 | [▶️](https://youtu.be/l4GPomJMIT0) |  |
+| **Gladys Assistant** | Gladys Assistant is a modern, privacy-first & open-source home automation software that runs anyw... | `gladysassistant/gladys` | v5.2.1 | 1080 | [▶️](https://youtu.be/l4GPomJMIT0) |  |
 | **Glance** | Glance is a self-hosted dashboard that puts all your feeds in one place. | `glanceapp/glance` | v0.8.6 | 8280 |  | [📖](https://github.com/glanceapp/glance/blob/main/docs/configuration.md) |
 | **Glances** | Glances is an open-source system cross-platform monitoring tool. It allows real-time monitoring o... | `nicolargo/glances` | 4.5.3.2-full | 61208 | [▶️](https://youtu.be/nwsVJ0QB0sM) |  |
 | **Gluetun** | Lightweight swiss-knife-like VPN client to multiple VPN service providers | `qmcgaw/gluetun` | v3.41.3 | N/A |  | [📖](https://community.bigbeartechworld.com/t/added-gluetun-to-big-bear-casaos/175) |
 | **GoAway** | GoAway is a lightweight DNS sinkhole that blocks ads, trackers, and malicious domains at the netw... | `pommee/goaway` | 0.63.17 | 8080 |  | [📖](https://community.bigbeartechworld.com/t/added-goaway-to-bigbearcasaos/4085) |
 | **Gotify** | a simple server for sending and receiving messages | `gotify/server` | 3.1.1 | 8091 |  |  |
-| **Grav** | Grav is a Fast, Simple, and Flexible, file-based Web-platform. | `linuxserver/grav` | 2.2.6 | 80 |  |  |
+| **Grav** | Grav is a Fast, Simple, and Flexible, file-based Web-platform. | `linuxserver/grav` | 2.2.8 | 80 |  |  |
 | **Grocy** | Grocy is an ERP system for your kitchen! Cut down on food waste, and manage your chores with this... | `linuxserver/grocy` | 4.7.1 | 9283 |  |  |
 | **Guacamole** | Apache Guacamole is a free and open-source, cross-platform, clientless remote desktop gateway mai... | `guacamole/guacamole` | 1.6.0 | 8090 | [▶️](https://youtu.be/6cu0kfP50Jg) |  |
 | **Gzdoom** | GZDoom is a feature centric port for all Doom engine games, based on ZDoom, adding an OpenGL rend... | `linuxserver/gzdoom` | 4.14.2 | 3000 |  |  |
@@ -417,7 +417,7 @@ Validate apps against the JSON schema:
 | **Music Assistant** | Music Assistant is a music library manager for your offline and online music sources which can ea... | `ghcr.io/music-assistant/server` | 2.8.7 | 8095 |  |  |
 | **MySpeed** | MySpeed is a speed test analysis software that records your internet speed for up to 30 days. | `germannewsmaker/myspeed` | 1.0.9 | 5216 | [▶️](https://youtu.be/7roj87Fytz0) |  |
 | **Mysql-workbench** | MySQL Workbench is a unified visual tool for database architects, developers, and DBAs. MySQL Wor... | `linuxserver/mysql-workbench` | 8.0.47 | 3000 |  |  |
-| **n8n** | Free and open fair-code licensed node based Workflow Automation Tool. | `n8nio/n8n` | 2.43.4 | 5678 |  |  |
+| **n8n** | Free and open fair-code licensed node based Workflow Automation Tool. | `n8nio/n8n` | 2.44.0 | 5678 |  |  |
 | **Nano** | Nano is a digital payment protocol designed to be accessible and lightweight, with a focus on rem... | `linuxserver/nano` | 21.2.20220522 | 8075 |  |  |
 | **Nano-wallet** | Nano-wallet is a digital payment protocol designed to be accessible and lightweight, with a focus... | `linuxserver/nano-wallet` | 1.3.2 | 80 |  |  |
 | **Navidrome** | Modern web-based music server and streamer for your personal music collection. | `deluan/navidrome` | 0.64.2 | 4533 |  | [📖](https://www.navidrome.org/docs/) |
@@ -576,7 +576,7 @@ Validate apps against the JSON schema:
 | **Synclounge** | Synclounge is a third party tool that allows you to watch Plex in sync with your friends/family, ... | `linuxserver/synclounge` | 5.2.35 | 8088 |  |  |
 | **Syncthing** | Syncthing is a continuous file synchronization program. It synchronizes files between two or more... | `syncthing/syncthing` | 2.1 | 8384 |  |  |
 | **Syslog-ng** | syslog-ng allows you to flexibly collect, parse, classify, rewrite and correlate logs from across... | `linuxserver/syslog-ng` | 4.11.0 | 514 |  |  |
-| **Tailscale** | Zero config VPN. Installs on any device in minutes, manages firewall rules for you, and works fro... | `tailscale/tailscale` | v1.102.5 | N/A |  |  |
+| **Tailscale** | Zero config VPN. Installs on any device in minutes, manages firewall rules for you, and works fro... | `tailscale/tailscale` | v1.104.1 | N/A |  |  |
 | **Tandoor** | Drop your collection of links and notes. Get Tandoor and never look back onto a time without reci... | `ghcr.io/tandoorrecipes/recipes` | 2.6.9 | 8080 | [▶️](https://youtu.be/f4-op1UOaWc) |  |
 | **Tautulli** | Tautulli is a python based web application for monitoring, analytics and notifications for Plex M... | `linuxserver/tautulli` | 2.18.2 | 8181 |  |  |
 | **Telegram** | Telegram is a cloud-based mobile and desktop messaging app. | `linuxserver/telegram` | 7.2.9 | 3000 |  |  |
@@ -607,10 +607,10 @@ Validate apps against the JSON schema:
 | **Vikunja v2** | The open-source, self-hostable to-do app. Organize everything, on all platforms. | `vikunja/vikunja` | 2.7.0 | 8082 | [▶️](https://youtu.be/T-dNbdIttoI) | [📖](https://vikunja.io/docs/api-login-session-migration/) |
 | **Viseron** | Viseron is a self-hosted, local only NVR and AI Computer Vision software | `roflcoopter/viseron` | 3.7.0 | 8888 |  |  |
 | **Vivaldi** | Vivaldi is a Norwegian freeware, cross-platform web browser with a built-in email client develope... | `linuxserver/vivaldi` | 8.2.4133 | 3000 |  |  |
-| **Vlc** | VLC Media Player is a free and open source cross-platform multimedia player and framework that de... | `linuxserver/vlc` | 3.0.23 | 3000 |  |  |
-| **Vscode** | VS Code is an integrated development environment developed by Microsoft. This container runs the ... | `linuxserver/vscode` | 1.140.0 | 3000 |  |  |
-| **Vscodium** | VSCodium is a community-driven, freely-licensed binary distribution of Microsoft’s editor VS Code. | `linuxserver/vscodium` | 1.135.06055 | 3000 |  |  |
-| **Vscodium-web** | Vscodium-web is a community-driven, freely-licensed binary distribution of the remote host web co... | `linuxserver/vscodium-web` | 1.135.06055 | 8000 |  |  |
+| **Vlc** | VLC Media Player is a free and open source cross-platform multimedia player and framework that de... | `linuxserver/vlc` | 3.0.24 | 3000 |  |  |
+| **Vscode** | VS Code is an integrated development environment developed by Microsoft. This container runs the ... | `linuxserver/vscode` | 1.141.1 | 3000 |  |  |
+| **Vscodium** | VSCodium is a community-driven, freely-licensed binary distribution of Microsoft’s editor VS Code. | `linuxserver/vscodium` | 1.140.06880 | 3000 |  |  |
+| **Vscodium-web** | Vscodium-web is a community-driven, freely-licensed binary distribution of the remote host web co... | `linuxserver/vscodium-web` | 1.140.06880 | 8000 |  |  |
 | **Wallabag** | Wallabag is a self-hosted application for saving web pages. Unlike other services, Wallabag is fr... | `wallabag/wallabag` | 2.6.14 | 8080 |  |  |
 | **Wallos** | Wallos: Open-Source Personal Subscription Tracker | `bellamy/wallos` | 5.8.3 | 8282 | [▶️](https://youtu.be/feYTW02YDb8) |  |
 | **Warracker** | A self-hosted warranty tracker | `ghcr.io/sassanix/warracker/main` | 1.0.2 | 8005 |  |  |
