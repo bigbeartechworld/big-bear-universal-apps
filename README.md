@@ -209,7 +209,7 @@ Validate apps against the JSON schema:
 | **CasaOS Toolbox** | CasaOS Toolbox is an extension application that provides additional features to CasaOS. | `wisdomsky/casaos-toolbox` | 0.2 | 8088 |  |  |
 | **Celestory & Voltask** | The all-in-one no-code platform for interactive storytelling and Voltask automation engine. Paid ... | `celestory/gateway` | 1.1.2 | 1500 |  |  |
 | **Change Detection** | The best and simplest free open source website change detection, restock monitor and notification... | `ghcr.io/dgtlmoon/changedetection.io` | 0.55.3 | 5000 |  |  |
-| **Changedetection.io** | Changedetection.io provides free, open-source web page monitoring, notification and change detect... | `linuxserver/changedetection.io` | 0.60.8 | 5000 |  |  |
+| **Changedetection.io** | Changedetection.io provides free, open-source web page monitoring, notification and change detect... | `linuxserver/changedetection.io` | 0.60.9 | 5000 |  |  |
 | **Chatpad** | Recently, there has been a surge of UIs for ChatGPT, making it the new to-do app that everyone wa... | `ghcr.io/deiucanta/chatpad` | f45cd53bc410412610c1ba1cbd84cd137d8e167d | 8080 |  |  |
 | **chrome** | This Image contains a browser-accessible version of chrome. | `kasmweb/chrome` | 1.15.0-rolling | 6902 | [▶️](https://youtu.be/jYm_Ih8VHAs) |  |
 | **chromium** | This Image contains a browser-accessible version of chromium. | `linuxserver/chromium` | version-6ae43f81 | 3000 | [▶️](https://youtu.be/ziy4c4n7KnU) |  |
@@ -278,7 +278,7 @@ Validate apps against the JSON schema:
 | **Excalidraw** | Virtual whiteboard for sketching hand-drawn like diagrams | `excalidraw/excalidraw` | latest | 8000 | [▶️](https://youtu.be/T4K6RDhieIA) |  |
 | **Fail2ban** | Fail2ban is a daemon to ban hosts that cause multiple authentication errors. | `linuxserver/fail2ban` | 1.1.0 | 80 |  |  |
 | **FarmOS (Legacy)** | farmOS is a web-based application for farm management, planning, and record keeping. It is develo... | `farmos/farmos` | 3.5.1 | 8080 |  |  |
-| **FarmOS v4** | farmOS is a web-based application for farm management, planning, and record keeping. It is develo... | `farmos/farmos` | 4.0.7 | 8083 |  | [📖](https://farmos.org/hosting/install/) |
+| **FarmOS v4** | farmOS is a web-based application for farm management, planning, and record keeping. It is develo... | `farmos/farmos` | 4.0.8 | 8083 |  | [📖](https://farmos.org/hosting/install/) |
 | **Faster-whisper** | Faster-whisper is a reimplementation of OpenAI's Whisper model using CTranslate2, which is a fast... | `linuxserver/faster-whisper` | 3.8.1 | 7575 |  |  |
 | **Fastfetch** | Fastfetch is a neofetch-like tool for fetching system information and displaying it prettily. It ... | `bigbeartechworld/big-bear-fastfetch` | 0.0.5 | 7681 | [▶️](https://youtu.be/pVBMvIMzfpw) |  |
 | **Feed2toot** | Feed2toot automatically parses rss feeds, identifies new posts and posts them on the Mastodon soc... | `linuxserver/feed2toot` | 0.17.20251115 | 8080 |  |  |
@@ -417,7 +417,7 @@ Validate apps against the JSON schema:
 | **Music Assistant** | Music Assistant is a music library manager for your offline and online music sources which can ea... | `ghcr.io/music-assistant/server` | 2.8.7 | 8095 |  |  |
 | **MySpeed** | MySpeed is a speed test analysis software that records your internet speed for up to 30 days. | `germannewsmaker/myspeed` | 1.0.9 | 5216 | [▶️](https://youtu.be/7roj87Fytz0) |  |
 | **Mysql-workbench** | MySQL Workbench is a unified visual tool for database architects, developers, and DBAs. MySQL Wor... | `linuxserver/mysql-workbench` | 8.0.47 | 3000 |  |  |
-| **n8n** | Free and open fair-code licensed node based Workflow Automation Tool. | `n8nio/n8n` | 2.44.0 | 5678 |  |  |
+| **n8n** | Free and open fair-code licensed node based Workflow Automation Tool. | `n8nio/n8n` | 2.44.1 | 5678 |  |  |
 | **Nano** | Nano is a digital payment protocol designed to be accessible and lightweight, with a focus on rem... | `linuxserver/nano` | 21.2.20220522 | 8075 |  |  |
 | **Nano-wallet** | Nano-wallet is a digital payment protocol designed to be accessible and lightweight, with a focus... | `linuxserver/nano-wallet` | 1.3.2 | 80 |  |  |
 | **Navidrome** | Modern web-based music server and streamer for your personal music collection. | `deluan/navidrome` | 0.64.2 | 4533 |  | [📖](https://www.navidrome.org/docs/) |
@@ -448,11 +448,11 @@ Validate apps against the JSON schema:
 | **Odoo (Legacy)** | Open-source business management software suite designed to streamline various aspects of business... | `odoo` | 19 | 8069 |  | [📖](https://community.bigbeartechworld.com/t/added-odoo-to-bigbearcasaos/1115?u=dragonfire1119) |
 | **Odoo v20** | Open-source business management software suite designed to streamline various aspects of business... | `odoo` | 20 | 8070 |  | [📖](https://www.odoo.com/documentation/master/administration/upgrade.html) |
 | **Odysseus** | Odysseus is a self-hosted AI workspace. It bundles chat, web search via SearXNG, and a ChromaDB v... | `bigbeartechworld/big-bear-odysseus` | 2026.10.12 | 7000 |  | [📖](https://github.com/pewdiepie-archdaemon/odysseus) |
-| **Ollama - AMD** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.40.3-rocm | 11434 |  |  |
-| **Ollama - CPU** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.40.3 | 11434 |  |  |
-| **Ollama - NVIDIA** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.40.3 | 11434 |  |  |
+| **Ollama - AMD** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.40.4-rocm | 11434 |  |  |
+| **Ollama - CPU** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.40.4 | 11434 |  |  |
+| **Ollama - NVIDIA** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.40.4 | 11434 |  |  |
 | **OmniRoute** | OmniRoute is a self-hosted LLM router. The dashboard and an OpenAI-compatible endpoint on one por... | `diegosouzapw/omniroute` | 3.8.51 | 20128 |  | [📖](https://github.com/diegosouzapw/OmniRoute/blob/main/docs/getting-started/SELF_HOST_GUIDE.md) |
-| **OneDev** | Self-hosted Git Server with Kanban and CI/CD | `1dev/server` | 16.8.8 | 6610 | [▶️](https://youtu.be/ps3JLYRB3SA) |  |
+| **OneDev** | Self-hosted Git Server with Kanban and CI/CD | `1dev/server` | 16.9.0 | 6610 | [▶️](https://youtu.be/ps3JLYRB3SA) |  |
 | **OnlyOffice** | Feature-rich web-based office suite with a vast range of collaborative capabilities | `onlyoffice/documentserver` | 9.1.0 | 7400 |  |  |
 | **Open WebUI** | Open WebUI is an extensible, feature-rich, and user-friendly self-hosted WebUI designed to operat... | `ghcr.io/open-webui/open-webui` | git-33e54a9 | 8080 |  |  |
 | **OpenClaw** | OpenClaw is a self-hosted AI agent platform that provides Claude AI integration through a local g... | `ghcr.io/openclaw/openclaw` | 2026.5.3-1 | 18789 |  | [📖](https://docs.openclaw.ai/install/docker) |
@@ -553,7 +553,7 @@ Validate apps against the JSON schema:
 | **Shadps4** | shadPS4 is an early PlayStation 4 emulator for Windows, Linux and macOS written in C++. | `linuxserver/shadps4` | 0.0.0 | 3000 |  |  |
 | **Shotcut** | Shotcut is a free, open source, cross-platform video editor. | `linuxserver/shotcut` | 26.9.27 | 3000 |  |  |
 | **Signal** | Signal is a messaging app with privacy at its core. It is free and easy to use, with strong end-t... | `linuxserver/signal` | 8.30.0 | 3000 |  |  |
-| **SkySend** | SkySend is a self-hosted file and note sharing service. Files and notes are encrypted in the brow... | `skyfay/skysend` | v3.0.1 | 23001 |  | [📖](https://docs.skysend.ch/user-guide/installation) |
+| **SkySend** | SkySend is a self-hosted file and note sharing service. Files and notes are encrypted in the brow... | `skyfay/skysend` | v3.1.0 | 23001 |  | [📖](https://docs.skysend.ch/user-guide/installation) |
 | **Smokeping** | Smokeping keeps track of your network latency. For a full example of what this application is cap... | `linuxserver/smokeping` | 2.9.0 | 80 |  |  |
 | **Snapdrop** | Visit homepage: https://hub.docker.com/r/linuxserver/snapdrop/ | `linuxserver/snapdrop` | 0.0.0 | 80 |  |  |
 | **SnapOtter** | SnapOtter is an open-source, self-hosted file manipulation suite with 200+ tools across images, v... | `snapotter/snapotter` | 2.2.0 | 1349 |  | [📖](https://docs.snapotter.com/guide/getting-started) |
@@ -579,7 +579,7 @@ Validate apps against the JSON schema:
 | **Tailscale** | Zero config VPN. Installs on any device in minutes, manages firewall rules for you, and works fro... | `tailscale/tailscale` | v1.104.1 | N/A |  |  |
 | **Tandoor** | Drop your collection of links and notes. Get Tandoor and never look back onto a time without reci... | `ghcr.io/tandoorrecipes/recipes` | 2.6.9 | 8080 | [▶️](https://youtu.be/f4-op1UOaWc) |  |
 | **Tautulli** | Tautulli is a python based web application for monitoring, analytics and notifications for Plex M... | `linuxserver/tautulli` | 2.18.2 | 8181 |  |  |
-| **Telegram** | Telegram is a cloud-based mobile and desktop messaging app. | `linuxserver/telegram` | 7.2.9 | 3000 |  |  |
+| **Telegram** | Telegram is a cloud-based mobile and desktop messaging app. | `linuxserver/telegram` | 7.3.1 | 3000 |  |  |
 | **Tester** | This internal tool is used as a desktop sandbox in our CI process to grab a screenshot of a hopef... | `linuxserver/tester` | 0.0.0 | 3000 |  |  |
 | **Thelounge** | Thelounge (a fork of shoutIRC) is a web IRC client that you host on your own server. | `linuxserver/thelounge` | 4.5.2 | 9000 |  |  |
 | **Thunderbird** | Thunderbird is a free and open-source personal information manager primarily used as an e-mail cl... | `linuxserver/thunderbird` | 1140.16.0 | 3000 |  |  |
@@ -616,7 +616,7 @@ Validate apps against the JSON schema:
 | **Warracker** | A self-hosted warranty tracker | `ghcr.io/sassanix/warracker/main` | 1.0.2 | 8005 |  |  |
 | **WatchYourLAN** | Lightweight network IP scanner. Can be used to notify about new hosts and monitor host online/off... | `aceberg/watchyourlan` | 2.1.4 | 8840 | [▶️](https://youtu.be/LaYZjvUJ9U8) |  |
 | **Web Sync (RSync)** | Websync is intended to be an rsync task manager, where rsync tasks can be added, scheduled and ma... | `furier/websync` | latest | 48109 |  |  |
-| **Web-Check** | Web-Check is an on-demand OSINT tool for analysing any website: server, security headers, technol... | `lissy93/web-check` | 2.3.4 | 20003 |  | [📖](https://github.com/lissy93/web-check/blob/master/README.md) |
+| **Web-Check** | Web-Check is an on-demand OSINT tool for analysing any website: server, security headers, technol... | `lissy93/web-check` | 2.3.5 | 20003 |  | [📖](https://github.com/lissy93/web-check/blob/master/README.md) |
 | **Webcord** | WebCord can be summarized as a pack of security and privacy hardenings, Discord features reimplem... | `linuxserver/webcord` | 4.14.0 | 3000 |  |  |
 | **WebDAV** | Web-based distributed authoring and versioning (WebDAV) is a set of extensions to the HTTP protoc... | `bytemark/webdav` | latest | 48108 |  |  |
 | **Webgrabplus** | Webgrabplus is a multi-site incremental xmltv epg grabber. It collects tv-program guide data from... | `linuxserver/webgrabplus` | 5.6.1 | 80 |  |  |
@@ -632,7 +632,7 @@ Validate apps against the JSON schema:
 | **Wireshark** | Wireshark is the world’s foremost and widely-used network protocol analyzer. It lets you see what... | `linuxserver/wireshark` | 4.6.6 | 80 |  |  |
 | **Wishlist** | Wishlist is a self-hosted wishlist application that you can share with your friends and family. Y... | `ghcr.io/cmintey/wishlist` | v0.64.0 | 3280 |  |  |
 | **WordPress (Legacy)** | Initially started as a blogging tool in 2003, it has evolved into a highly flexible CMS that powe... | `wordpress` | 6.9.4 | 8080 | [▶️](https://youtu.be/j5M4qlRCbYs) |  |
-| **WordPress v7** | Initially started as a blogging tool in 2003, it has evolved into a highly flexible CMS that powe... | `wordpress` | 7.1.0 | 8084 | [▶️](https://youtu.be/j5M4qlRCbYs) |  |
+| **WordPress v7** | Initially started as a blogging tool in 2003, it has evolved into a highly flexible CMS that powe... | `wordpress` | 7.1.3 | 8084 | [▶️](https://youtu.be/j5M4qlRCbYs) |  |
 | **Wps-office** | WPS Office is a lightweight, feature-rich comprehensive office suite with high compatibility. As ... | `linuxserver/wps-office` | 11.1.0 | 3000 |  |  |
 | **Write Freely** | WriteFreely is a clean, minimalist publishing platform made for writers. Start a blog, share know... | `nephatrine/write-freely` | 0.17 | 8080 |  |  |
 | **Xbackbone** | Xbackbone is a simple, self-hosted, lightweight PHP file manager that support the instant sharing... | `linuxserver/xbackbone` | 3.8.2 | 80 |  |  |
