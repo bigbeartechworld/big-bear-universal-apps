@@ -5,7 +5,7 @@
     "name": "Luanti",
     "description": "Luanti (formerly Minetest) is an open source voxel game-creation platform with easy modding and game creation",
     "tagline": "(formerly Minetest) is an open source voxel game-creation platform with easy modding and game creation",
-    "version": "5.17.0",
+    "version": "5.18.0",
     "author": "WisdomSky",
     "developer": "LinuxServer.io",
     "category": "Smart Home",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/luanti",
     "source": "linuxserver-appstore",
     "created": "2026-09-17T18:10:57.807Z",
-    "updated": "2026-09-17T18:10:57.807Z"
+    "updated": "2026-10-21T20:41:38.661Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/linuxserver/docker-templates@master/linuxserver.io/img/minetest-icon.png",
