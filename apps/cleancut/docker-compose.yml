@@ -14,9 +14,7 @@ services:
       - PGID=1000 # The group that owns your movie and show files
       - TZ=${TZ:-UTC} # Sets the timezone, defaulting to UTC
     cap_add:
-      - NET_ADMIN # Only used by the optional VPN and its kill switch, inside the container
-    devices:
-      - /dev/net/tun:/dev/net/tun # Tunnel device for the optional VPN
+      - NET_ADMIN # Only used by the optional VPN and its kill switch, inside the container (the VPN creates its own tunnel device when it starts)
     stop_grace_period: 60s # Give CleanCut time to finish writing a file before it stops
     restart: unless-stopped # Service will restart unless it is explicitly stopped
     network_mode: bridge # Uses bridge network mode
