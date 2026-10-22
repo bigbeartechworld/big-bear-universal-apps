@@ -1,7 +1,7 @@
 name: big-bear-cleancut # Name of the compose project
 services:
   app:
-    image: ghcr.io/lumblehamb/clean-media-stack:1.2.0@sha256:640f3c5e70742b537d8ec2e24bc86df701005f75109e8eca2952cf40a634197a # Profanity filter and media manager for Plex (amd64 + arm64)
+    image: ghcr.io/lumblehamb/clean-media-stack:1.2.1@sha256:955fd885f4e0d4904687f0433d5c9c4ad5cb4a63b854247eee1868deedadae74 # Profanity filter and media manager for Plex (amd64 + arm64)
     container_name: big-bear-cleancut # Name of the container
     ports:
       - "8585:8585" # CleanCut dashboard
