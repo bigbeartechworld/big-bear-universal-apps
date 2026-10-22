@@ -12,7 +12,7 @@ services:
     environment:
       - PUID=1000 # The user that owns your movie and show files
       - PGID=1000 # The group that owns your movie and show files
-      - TZ=$TZ # Sets the timezone, using host's timezone variable
+      - TZ=${TZ:-UTC} # Sets the timezone, defaulting to UTC
     cap_add:
       - NET_ADMIN # Only used by the optional VPN and its kill switch, inside the container
     devices:
