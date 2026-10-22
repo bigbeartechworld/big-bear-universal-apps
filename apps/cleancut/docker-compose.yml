@@ -1,0 +1,32 @@
+name: big-bear-cleancut # Name of the compose project
+services:
+  app:
+    image: ghcr.io/lumblehamb/clean-media-stack:1.2.0@sha256:640f3c5e70742b537d8ec2e24bc86df701005f75109e8eca2952cf40a634197a # Profanity filter and media manager for Plex (amd64 + arm64)
+    container_name: big-bear-cleancut # Name of the container
+    ports:
+      - "8585:8585" # CleanCut dashboard
+    volumes:
+      - cleancut_config:/config # Settings, word list, history and backups
+      - cleancut_media:/media # Your movie and show folders
+      - cleancut_data:/data # Optional: where new titles are saved
+    environment:
+      - PUID=1000 # The user that owns your movie and show files
+      - PGID=1000 # The group that owns your movie and show files
+      - TZ=$TZ # Sets the timezone, using host's timezone variable
+    cap_add:
+      - NET_ADMIN # Only used by the optional VPN and its kill switch, inside the container
+    devices:
+      - /dev/net/tun:/dev/net/tun # Tunnel device for the optional VPN
+    stop_grace_period: 60s # Give CleanCut time to finish writing a file before it stops
+    restart: unless-stopped # Service will restart unless it is explicitly stopped
+    network_mode: bridge # Uses bridge network mode
+volumes:
+  cleancut_config:
+    name: cleancut_config
+    driver: local
+  cleancut_media:
+    name: cleancut_media
+    driver: local
+  cleancut_data:
+    name: cleancut_data
+    driver: local
