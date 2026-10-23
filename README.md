@@ -167,7 +167,7 @@ Validate apps against the JSON schema:
 | **Airsonic-advanced** | Airsonic-advanced is a free, web-based media streamer, providing ubiquitious access to your music... | `linuxserver/airsonic-advanced` | 11.1.4 | 4040 |  |  |
 | **Altus** | Altus is an Electron-based WhatsApp client with themes and multiple account support. | `linuxserver/altus` | 5.8.1 | 3000 |  |  |
 | **Anse** | Anse is a fully optimized UI for AI Chats. Supercharged experience for multiple models such as Ch... | `ddiu8081/anse` | v1.1.11 | 8014 |  |  |
-| **Ansible Semaphore** | Ansible Semaphore is a modern UI for Ansible. It lets you easily run Ansible playbooks, get notif... | `semaphoreui/semaphore` | v2.19.16 | 3000 |  |  |
+| **Ansible Semaphore** | Ansible Semaphore is a modern UI for Ansible. It lets you easily run Ansible playbooks, get notif... | `semaphoreui/semaphore` | v2.19.17 | 3000 |  |  |
 | **Apprise-api** | Apprise-api Takes advantage of Apprise through your network with a user-friendly API. * Send noti... | `linuxserver/apprise-api` | 2.0.1 | 8000 |  |  |
 | **Appsmith** | Low code project to build admin panels, internal tools, and dashboards, integrating 15+ databases. | `appsmith/appsmith-ce` | v2.5.0 | 1080 |  |  |
 | **Archivebox** | ArchiveBox is a powerful, self-hosted internet archiving solution to collect, save, and view site... | `archivebox/archivebox` | 0.9.73 | 8002 |  |  |
@@ -196,7 +196,7 @@ Validate apps against the JSON schema:
 | **Brave** | This Image contains a browser-accessible version of Brave. | `kasmweb/brave` | 1.15.0-rolling | 6901 | [▶️](https://youtu.be/CJ2x-yCW-co) |  |
 | **btop** | A monitor of resources. Software made by Aristocratos at https://github.com/aristocratos/btop | `bigbeartechworld/big-bear-btop` | 0.1.11 | 7681 | [▶️](https://youtu.be/mD52bujMt68) |  |
 | **Budge** | Budge is an open source 'budgeting with envelopes' personal finance app. | `linuxserver/budge` | 0.0.9 | 80 |  |  |
-| **Budibase** | Low code platform for creating internal tools, workflows, and admin panels in minutes. Supports P... | `budibase/budibase` | v3.49.0 | 8080 |  |  |
+| **Budibase** | Low code platform for creating internal tools, workflows, and admin panels in minutes. Supports P... | `budibase/budibase` | v3.50.0 | 8080 |  |  |
 | **Build-agent** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/build-a... | `linuxserver/build-agent` | 0.0.0 | 80 |  |  |
 | **Buzz** | Buzz is a self-hostable workspace for humans and agents from Block. It runs a Nostr relay, a REST... | `ghcr.io/block/buzz` | latest | 3000 |  | [📖](https://engineering.block.xyz/blog/run-your-own-buzz-relay) |
 | **Caddy** | Caddy - The Ultimate Server with Automatic HTTPS. | `caddy` | 2.11.7 | 48100 |  |  |
@@ -249,10 +249,10 @@ Validate apps against the JSON schema:
 | **Docker Cron Restart Notifier** | This Docker image is designed to automatically restart specified Docker containers and send notif... | `deduard/tools` | restart-notifier-latest | N/A |  |  |
 | **Dockge** | A fancy, easy-to-use and reactive docker `compose.yaml` stack-oriented manager | `louislam/dockge` | 1.5.0 | 5001 | [▶️](https://youtu.be/8Z6psh-t5iU) |  |
 | **Dockhand** | Modern, efficient Docker management application providing real-time container management, Compose... | `fnsys/dockhand` | latest | 3003 |  | [📖](https://dockhand.pro/manual/) |
-| **Dockpeek** | A lightweight, self-hosted Docker dashboard that provides quick access to all running containers ... | `ghcr.io/dockpeek/dockpeek` | v1.7.2 | 3420 |  |  |
+| **Dockpeek** | A lightweight, self-hosted Docker dashboard that provides quick access to all running containers ... | `ghcr.io/dockpeek/dockpeek` | v1.7.3 | 3420 |  |  |
 | **Docmost** | Docmost is an open-source alternative to the likes of Notion and Confluence. Whether you're manag... | `docmost/docmost` | 0.96.0 | 3000 |  |  |
 | **Documenso** | Documenso v2.19.0 is an open-source document signing platform backed by PostgreSQL. | `documenso/documenso` | v2.21.0 | 20030 |  | [📖](https://docs.documenso.com/docs/self-hosting/deployment/docker-compose) |
-| **DocuSeal** | DocuSeal 3.3.1 is an open-source platform to create, fill, and sign PDF documents. | `docuseal/docuseal` | 3.3.2 | 20031 |  | [📖](https://github.com/docusealco/docuseal) |
+| **DocuSeal** | DocuSeal 3.3.1 is an open-source platform to create, fill, and sign PDF documents. | `docuseal/docuseal` | 3.3.3 | 20031 |  | [📖](https://github.com/docusealco/docuseal) |
 | **Dogwalk** | DOGWALK is Blender Studio's long awaited second game project, focused on creating a bite-sized in... | `linuxserver/dogwalk` | 0.0.0 | 3000 |  |  |
 | **Dokuwiki** | Dokuwiki is a simple to use and highly versatile Open Source wiki software that doesn't require a... | `linuxserver/dokuwiki` | 0.0.0 | 80 |  |  |
 | **Dolphin** | Dolphin Emulator lets you play GameCube and Wii games with various graphical enhancements and oth... | `linuxserver/dolphin` | 0.0.0 | 3000 |  |  |
@@ -260,8 +260,8 @@ Validate apps against the JSON schema:
 | **Domoticz** | Visit homepage: https://hub.docker.com/r/linuxserver/domoticz/ | `linuxserver/domoticz` | 2023.2.20231129 | 8080 |  |  |
 | **Dosbox-staging** | DOSBox Staging is a modern continuation of DOSBox a free and open-source emulator that enables th... | `linuxserver/dosbox-staging` | 0.83.0 | 3000 |  |  |
 | **Doublecommander** | Double Commander is a free cross platform open source file manager with two panels side by side. ... | `linuxserver/doublecommander` | 0.0.0 | 3000 |  |  |
-| **Dozzle** | Dozzle is a real-time log viewer for docker containers. | `amir20/dozzle` | v11.3.2 | 8888 | [▶️](https://youtu.be/lLLNDcHNOuM) |  |
-| **Draw.io** | Draw.io is a structured diagram editor for creating flowcharts, network diagrams, and other visua... | `jgraph/drawio` | 32.4.1 | 8080 |  | [📖](https://www.drawio.com/doc/) |
+| **Dozzle** | Dozzle is a real-time log viewer for docker containers. | `amir20/dozzle` | v11.3.3 | 8888 | [▶️](https://youtu.be/lLLNDcHNOuM) |  |
+| **Draw.io** | Draw.io is a structured diagram editor for creating flowcharts, network diagrams, and other visua... | `jgraph/drawio` | 32.5.5 | 8080 |  | [📖](https://www.drawio.com/doc/) |
 | **Duckdns** | Duckdns is a free service which will point a DNS (sub domains of duckdns.org) to an IP of your ch... | `linuxserver/duckdns` | 0.0.0 | 80 |  |  |
 | **Duckstation** | DuckStation is a PS1 Emulator aiming for the best accuracy and game support. | `linuxserver/duckstation` | 0.0.0 | 3000 |  |  |
 | **Duplicati** | Duplicati is a backup client that securely stores encrypted, incremental, compressed backups on l... | `linuxserver/duplicati` | 2.4.0 | 8200 |  |  |
@@ -278,7 +278,7 @@ Validate apps against the JSON schema:
 | **Eufy Security WS** | eufy-security-ws is a small server wrapper around the eufy-security-client library to access it v... | `bropat/eufy-security-ws` | 3.1.0 | 3000 |  |  |
 | **Excalidraw** | Virtual whiteboard for sketching hand-drawn like diagrams | `excalidraw/excalidraw` | latest | 8000 | [▶️](https://youtu.be/T4K6RDhieIA) |  |
 | **Fail2ban** | Fail2ban is a daemon to ban hosts that cause multiple authentication errors. | `linuxserver/fail2ban` | 1.1.0 | 80 |  |  |
-| **FarmOS (Legacy)** | farmOS is a web-based application for farm management, planning, and record keeping. It is develo... | `farmos/farmos` | 3.5.1 | 8080 |  |  |
+| **FarmOS (Legacy)** | farmOS is a web-based application for farm management, planning, and record keeping. It is develo... | `farmos/farmos` | 3.5.9 | 8080 |  |  |
 | **FarmOS v4** | farmOS is a web-based application for farm management, planning, and record keeping. It is develo... | `farmos/farmos` | 4.0.8 | 8083 |  | [📖](https://farmos.org/hosting/install/) |
 | **Faster-whisper** | Faster-whisper is a reimplementation of OpenAI's Whisper model using CTranslate2, which is a fast... | `linuxserver/faster-whisper` | 3.8.1 | 7575 |  |  |
 | **Fastfetch** | Fastfetch is a neofetch-like tool for fetching system information and displaying it prettily. It ... | `bigbeartechworld/big-bear-fastfetch` | 0.0.5 | 7681 | [▶️](https://youtu.be/pVBMvIMzfpw) |  |
@@ -300,7 +300,7 @@ Validate apps against the JSON schema:
 | **Focalboard** | Focalboard is an open source, multilingual, self-hosted project management tool that's an alterna... | `mattermost/focalboard` | 7.11.4 | 8000 | [▶️](https://youtu.be/fBDpqpN8sks) |  |
 | **Foldingathome** | Folding@home is a distributed computing project for simulating protein dynamics, including the pr... | `linuxserver/foldingathome` | 8.5.6 | 80 |  |  |
 | **Freecad** | FreeCAD is a general-purpose parametric 3D computer-aided design (CAD) modeler and a building inf... | `linuxserver/freecad` | 1.1.4 | 3000 |  |  |
-| **Freshrss** | Freshrss is a free, self-hostable aggregator for rss feeds. | `linuxserver/freshrss` | 1.30.1 | 80 |  |  |
+| **Freshrss** | Freshrss is a free, self-hostable aggregator for rss feeds. | `linuxserver/freshrss` | 1.30.2 | 80 |  |  |
 | **GameVault** | GameVault 17.0.1 is a self-hosted library for DRM-free games, with a web UI and PostgreSQL. | `phalcode/gamevault-backend` | 17.0.1 | 20032 |  | [📖](https://gamevau.lt/docs/server-docs/setup/docker-compose/) |
 | **GemDigest Bot** | Simplify your reads, amplify your time! 📚✨ GemDigest is a Telegram bot that summarizes articles ... | `piero24/gemdigest` | 1.0 | 3333 |  |  |
 | **Genmon** | Generac (and other models) Generator Monitoring using a Raspberry Pi and WiFi | `bigbeartechworld/big-bear-genmon` | 2.0.03 | 8000 | [▶️](https://youtu.be/b0_zuVVeIP4) |  |
@@ -348,7 +348,7 @@ Validate apps against the JSON schema:
 | **Indelible** | Indelible is a self-hosted read-it-later and knowledge library. It stores articles, newsletters, ... | `ghcr.io/useindelible/ind-api` | 0.1.1 | 38473 |  | [📖](https://useindelible.com/docs/self-hosting/install/) |
 | **Inkscape** | Inkscape is professional quality vector graphics software which runs on Linux, Mac OS X and Windo... | `linuxserver/inkscape` | 1.4.2 | 3000 |  |  |
 | **Intellij-idea** | IntelliJ IDEA helps you write code faster with tools that eliminate tedious tasks and let you foc... | `linuxserver/intellij-idea` | 42026.2.3 | 3000 |  |  |
-| **Invoice Ninja** | Invoice Ninja is a free and open-source invoice and expense management system. It is a web-based ... | `invoiceninja/invoiceninja` | 5.13.49 | 8080 |  |  |
+| **Invoice Ninja** | Invoice Ninja is a free and open-source invoice and expense management system. It is a web-based ... | `invoiceninja/invoiceninja` | 5.13.50 | 8080 |  |  |
 | **IT Tools** | Collection of handy online tools for developers, with great UX as a web app. | `corentinth/it-tools` | 2023.11.2-7d94e11 | 8080 | [▶️](https://youtu.be/MlGypCrUJug) |  |
 | **Jellyfin** | Jellyfin is a Free Software Media System that puts you in control of managing and streaming your ... | `linuxserver/jellyfin` | 0.0.0 | 8096 |  |  |
 | **Jellyseerr (Legacy)** | Jellyseerr is a free and open source software application for managing requests for your media li... | `fallenbagel/jellyseerr` | 2.7.3 | 5055 |  |  |
@@ -418,7 +418,7 @@ Validate apps against the JSON schema:
 | **Music Assistant** | Music Assistant is a music library manager for your offline and online music sources which can ea... | `ghcr.io/music-assistant/server` | 2.8.7 | 8095 |  |  |
 | **MySpeed** | MySpeed is a speed test analysis software that records your internet speed for up to 30 days. | `germannewsmaker/myspeed` | 1.0.9 | 5216 | [▶️](https://youtu.be/7roj87Fytz0) |  |
 | **Mysql-workbench** | MySQL Workbench is a unified visual tool for database architects, developers, and DBAs. MySQL Wor... | `linuxserver/mysql-workbench` | 8.0.47 | 3000 |  |  |
-| **n8n** | Free and open fair-code licensed node based Workflow Automation Tool. | `n8nio/n8n` | 2.44.3 | 5678 |  |  |
+| **n8n** | Free and open fair-code licensed node based Workflow Automation Tool. | `n8nio/n8n` | 2.44.4 | 5678 |  |  |
 | **Nano** | Nano is a digital payment protocol designed to be accessible and lightweight, with a focus on rem... | `linuxserver/nano` | 21.2.20220522 | 8075 |  |  |
 | **Nano-wallet** | Nano-wallet is a digital payment protocol designed to be accessible and lightweight, with a focus... | `linuxserver/nano-wallet` | 1.3.2 | 80 |  |  |
 | **Navidrome** | Modern web-based music server and streamer for your personal music collection. | `deluan/navidrome` | 0.64.2 | 4533 |  | [📖](https://www.navidrome.org/docs/) |
@@ -448,12 +448,12 @@ Validate apps against the JSON schema:
 | **OctoPrint** | OctoPrint is the snappy web interface for your 3D printer! | `octoprint/octoprint` | 1.11.8 | 1080 | [▶️](https://youtu.be/gQ0J9y8w2wE) |  |
 | **Odoo (Legacy)** | Open-source business management software suite designed to streamline various aspects of business... | `odoo` | 19 | 8069 |  | [📖](https://community.bigbeartechworld.com/t/added-odoo-to-bigbearcasaos/1115?u=dragonfire1119) |
 | **Odoo v20** | Open-source business management software suite designed to streamline various aspects of business... | `odoo` | 20 | 8070 |  | [📖](https://www.odoo.com/documentation/master/administration/upgrade.html) |
-| **Odysseus** | Odysseus is a self-hosted AI workspace. It bundles chat, web search via SearXNG, and a ChromaDB v... | `bigbeartechworld/big-bear-odysseus` | 2026.10.12 | 7000 |  | [📖](https://github.com/pewdiepie-archdaemon/odysseus) |
+| **Odysseus** | Odysseus is a self-hosted AI workspace. It bundles chat, web search via SearXNG, and a ChromaDB v... | `bigbeartechworld/big-bear-odysseus` | 2026.10.19 | 7000 |  | [📖](https://github.com/pewdiepie-archdaemon/odysseus) |
 | **Ollama - AMD** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.40.6-rocm | 11434 |  |  |
 | **Ollama - CPU** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.40.6 | 11434 |  |  |
 | **Ollama - NVIDIA** | Get up and running with Llama 3, Mistral, Gemma, and other large language models. | `ollama/ollama` | 0.40.6 | 11434 |  |  |
-| **OmniRoute** | OmniRoute is a self-hosted LLM router. The dashboard and an OpenAI-compatible endpoint on one por... | `diegosouzapw/omniroute` | 3.8.51 | 20128 |  | [📖](https://github.com/diegosouzapw/OmniRoute/blob/main/docs/getting-started/SELF_HOST_GUIDE.md) |
-| **OneDev** | Self-hosted Git Server with Kanban and CI/CD | `1dev/server` | 16.9.3 | 6610 | [▶️](https://youtu.be/ps3JLYRB3SA) |  |
+| **OmniRoute** | OmniRoute is a self-hosted LLM router. The dashboard and an OpenAI-compatible endpoint on one por... | `diegosouzapw/omniroute` | 3.8.52 | 20128 |  | [📖](https://github.com/diegosouzapw/OmniRoute/blob/main/docs/getting-started/SELF_HOST_GUIDE.md) |
+| **OneDev** | Self-hosted Git Server with Kanban and CI/CD | `1dev/server` | 16.9.4 | 6610 | [▶️](https://youtu.be/ps3JLYRB3SA) |  |
 | **OnlyOffice** | Feature-rich web-based office suite with a vast range of collaborative capabilities | `onlyoffice/documentserver` | 9.1.0 | 7400 |  |  |
 | **Open WebUI** | Open WebUI is an extensible, feature-rich, and user-friendly self-hosted WebUI designed to operat... | `ghcr.io/open-webui/open-webui` | git-33e54a9 | 8080 |  |  |
 | **OpenClaw** | OpenClaw is a self-hosted AI agent platform that provides Claude AI integration through a local g... | `ghcr.io/openclaw/openclaw` | 2026.5.3-1 | 18789 |  | [📖](https://docs.openclaw.ai/install/docker) |
@@ -520,7 +520,7 @@ Validate apps against the JSON schema:
 | **Quassel-core** | Visit homepage: https://hub.docker.com/r/linuxserver/quassel-core/ | `linuxserver/quassel-core` | 0.14.0 | 4242 |  |  |
 | **Quassel-web** | Visit homepage: https://hub.docker.com/r/linuxserver/quassel-web/ | `linuxserver/quassel-web` | 0.0.0 | 64080 |  |  |
 | **RackPeek** | A webui and CLI tool to discover, manage, and document your home lab and small-scale IT infrastru... | `aptacode/rackpeek` | v2.1.0 | 8095 |  | [📖](https://timmoth.github.io/RackPeek/docs/overview) |
-| **Rallly** | Rallly is an open-source scheduling and collaboration tool designed to make organizing events and... | `lukevella/rallly` | 4.15.5 | 3000 | [▶️](https://youtu.be/2MY3S6csrVw) | [📖](https://community.bigbeartechworld.com/t/added-rallly-to-bigbearcasaos/1012#instructions-3) |
+| **Rallly** | Rallly is an open-source scheduling and collaboration tool designed to make organizing events and... | `lukevella/rallly` | 4.16.0 | 3000 | [▶️](https://youtu.be/2MY3S6csrVw) | [📖](https://community.bigbeartechworld.com/t/added-rallly-to-bigbearcasaos/1012#instructions-3) |
 | **Raneto** | Raneto - is an open source Knowledgebase platform that uses static Markdown files to power your K... | `linuxserver/raneto` | 0.18.1 | 3000 |  |  |
 | **Rawtherapee** | RawTherapee is a free, cross-platform raw image processing program! | `linuxserver/rawtherapee` | 5.13.20261018 | 3000 |  |  |
 | **Rdesktop** | Rdesktop - Containers containing full desktop environments in many popular flavors for Alpine, Ub... | `linuxserver/rdesktop` | 0.0.0 | 3389 |  |  |
@@ -559,7 +559,7 @@ Validate apps against the JSON schema:
 | **Snapdrop** | Visit homepage: https://hub.docker.com/r/linuxserver/snapdrop/ | `linuxserver/snapdrop` | 0.0.0 | 80 |  |  |
 | **SnapOtter** | SnapOtter is an open-source, self-hosted file manipulation suite with 200+ tools across images, v... | `snapotter/snapotter` | 2.2.0 | 1349 |  | [📖](https://docs.snapotter.com/guide/getting-started) |
 | **Snipe-it** | Visit homepage: https://hub.docker.com/r/linuxserver/snipe-it/ | `linuxserver/snipe-it` | 7.1.17 | 8080 |  |  |
-| **Snipe-IT v8** | Snipe-IT is a free, open source IT asset management system. | `snipe/snipe-it` | v8.8.0 | 8086 |  | [📖](https://snipe-it.readme.io/docs/docker) |
+| **Snipe-IT v8** | Snipe-IT is a free, open source IT asset management system. | `snipe/snipe-it` | v8.8.1 | 8086 |  | [📖](https://snipe-it.readme.io/docs/docker) |
 | **Socket-proxy** | This container needs special attention. Please check https://hub.docker.com/r/linuxserver/socket-... | `linuxserver/socket-proxy` | 3.4.7 | 80 |  |  |
 | **SolidPing** | SolidPing monitors HTTP(S) endpoints, TCP/UDP ports, DNS records, SSL certificates, ICMP ping, an... | `ghcr.io/fclairamb/solidping` | 0.37.0 | 4000 |  | [📖](https://solidping.io/docs) |
 | **Spacedrive** | Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed files... | `ghcr.io/spacedriveapp/spacedrive/server` | 0.4.2 | 8080 |  |  |
@@ -583,7 +583,7 @@ Validate apps against the JSON schema:
 | **Telegram** | Telegram is a cloud-based mobile and desktop messaging app. | `linuxserver/telegram` | 7.3.1 | 3000 |  |  |
 | **Tester** | This internal tool is used as a desktop sandbox in our CI process to grab a screenshot of a hopef... | `linuxserver/tester` | 0.0.0 | 3000 |  |  |
 | **Thelounge** | Thelounge (a fork of shoutIRC) is a web IRC client that you host on your own server. | `linuxserver/thelounge` | 4.5.2 | 9000 |  |  |
-| **Thunderbird** | Thunderbird is a free and open-source personal information manager primarily used as an e-mail cl... | `linuxserver/thunderbird` | 1140.16.0 | 3000 |  |  |
+| **Thunderbird** | Thunderbird is a free and open-source personal information manager primarily used as an e-mail cl... | `linuxserver/thunderbird` | 1140.17.0 | 3000 |  |  |
 | **Tianji** | During our observations of the website. We often need to use multiple applications together. For ... | `moonrailgun/tianji` | 1.33.11 | 12345 |  |  |
 | **TP-Link Omada Controller** | Docker image for TP-Link Omada Controller to control TP-Link Omada Hardware | `mbentley/omada-controller` | 6.3 | 8088 | [▶️](https://youtu.be/aECteVrkt6s) |  |
 | **Traccar** | Traccar GPS Tracking System in Docker image. | `traccar/traccar` | 6.15-ubuntu | 8080 | [▶️](https://youtu.be/zn_tu9r6g-w) |  |
