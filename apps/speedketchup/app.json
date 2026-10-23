@@ -1,0 +1,202 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "speedketchup",
+    "name": "SpeedKetchup",
+    "description": "SpeedKetchup runs an internet speed test every 10 minutes against the nearest speedtest.net server, stores the results in a csv file and shows them in a builtin web page. The web page has speed and latency charts with distributions of the displayed results, daily, monthly, time of day and time of week averages, and a sortable table of every result. Every result can also go to Prometheus (the last test is served at /metrics), to InfluxDB over the line protocol, and to an MQTT broker with Home Assistant discovery. A single statically linked binary of a few hundred kilobytes, the image has nothing else in it.",
+    "tagline": "Periodic internet speed tests with charts in a builtin web page",
+    "version": "0.4.0",
+    "author": "gatispei",
+    "developer": "Gatis Peisenieks",
+    "category": "Network",
+    "license": "GPL-2.0",
+    "homepage": "https://speedketchup.com",
+    "source": "big-bear-universal",
+    "created": "2026-10-23T00:00:00Z",
+    "updated": "2026-10-23T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/gatispei/speedketchup-files@main/img/icon.png",
+    "thumbnail": "",
+    "screenshots": [
+      "https://cdn.jsdelivr.net/gh/gatispei/speedketchup-files@main/img/ketchup.png"
+    ],
+    "logo": "https://cdn.jsdelivr.net/gh/gatispei/speedketchup-files@main/img/icon.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://github.com/gatispei/speedketchup#readme",
+    "repository": "https://github.com/gatispei/speedketchup",
+    "issues": "https://github.com/gatispei/speedketchup/issues",
+    "support": "https://github.com/gatispei/speedketchup/issues"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64",
+      "armv7"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8067",
+    "main_image": "gatispei/speedketchup",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "SPEEDKETCHUP_INTERVAL",
+        "default": "10",
+        "description": "Minutes between the speed tests.",
+        "required": true
+      },
+      {
+        "name": "SPEEDKETCHUP_SERVER",
+        "default": "",
+        "description": "Speedtest server host[:port] to always test against. Empty picks the server with the lowest latency for every test.",
+        "required": false
+      },
+      {
+        "name": "SPEEDKETCHUP_DOWNLOAD_DURATION",
+        "default": "10",
+        "description": "Seconds to test the download speed, 0 skips the download test.",
+        "required": false
+      },
+      {
+        "name": "SPEEDKETCHUP_UPLOAD_DURATION",
+        "default": "10",
+        "description": "Seconds to test the upload speed, 0 skips the upload test.",
+        "required": false
+      },
+      {
+        "name": "SPEEDKETCHUP_DOWNLOAD_CONNECTIONS",
+        "default": "8",
+        "description": "Parallel connections for the download test.",
+        "required": false
+      },
+      {
+        "name": "SPEEDKETCHUP_UPLOAD_CONNECTIONS",
+        "default": "8",
+        "description": "Parallel connections for the upload test.",
+        "required": false
+      },
+      {
+        "name": "SPEEDKETCHUP_INFLUX_URL",
+        "default": "",
+        "description": "InfluxDB line protocol write url to also write every result to, http only, eg http://influxdb:8086/api/v2/write?org=home&bucket=speedketchup. Empty writes nowhere.",
+        "required": false
+      },
+      {
+        "name": "SPEEDKETCHUP_INFLUX_TOKEN",
+        "default": "",
+        "description": "Token for the InfluxDB write url.",
+        "required": false
+      },
+      {
+        "name": "SPEEDKETCHUP_MQTT",
+        "default": "",
+        "description": "MQTT broker host[:port] to also publish every result to, with Home Assistant discovery, plain mqtt only, port 1883 by default. Empty publishes nowhere.",
+        "required": false
+      },
+      {
+        "name": "SPEEDKETCHUP_MQTT_USER",
+        "default": "",
+        "description": "User name for the MQTT broker.",
+        "required": false
+      },
+      {
+        "name": "SPEEDKETCHUP_MQTT_PASSWORD",
+        "default": "",
+        "description": "Password for the MQTT broker.",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/data",
+        "description": "Where the test results csv file is stored."
+      }
+    ],
+    "ports": [
+      {
+        "container": "8080",
+        "host": "8067",
+        "protocol": "tcp",
+        "description": "Web page with the test results, Prometheus metrics at /metrics"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "/",
+    "tips": {
+      "before_install": {
+        "en_us": "The first test runs right after the start, the next ones every 10 minutes. Every test downloads and uploads for 10 seconds at full speed, so on a metered connection raise the interval or shorten the durations in the settings."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8067",
+      "port": "8067",
+      "category": "Networking",
+      "volume_mappings": {
+        "speedketchup_data": "/DATA/AppData/$AppID/data"
+      }
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Network",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8067"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "port": "8067",
+      "volume_mappings": {
+        "speedketchup_data": "data"
+      }
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8067"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8067"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "port": "18067",
+      "app_port": "8080",
+      "volume_mappings": {
+        "speedketchup_data": "data"
+      }
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "network",
+    "speedtest",
+    "internet",
+    "bandwidth",
+    "latency",
+    "monitoring"
+  ]
+}
