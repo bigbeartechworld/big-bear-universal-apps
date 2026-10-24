@@ -1,0 +1,28 @@
+name: big-bear-speedketchup
+
+services:
+  app:
+    image: gatispei/speedketchup:0.4.0@sha256:bef465ed91103b62c66b1e605be6cdc1de66d4c909cf889132af99038a197dba
+    container_name: big-bear-speedketchup
+    restart: unless-stopped
+    ports:
+      - "8067:8080"
+    volumes:
+      - speedketchup_data:/data
+    environment:
+      - SPEEDKETCHUP_INTERVAL=${SPEEDKETCHUP_INTERVAL:-10}
+      - SPEEDKETCHUP_SERVER=${SPEEDKETCHUP_SERVER:-}
+      - SPEEDKETCHUP_DOWNLOAD_DURATION=${SPEEDKETCHUP_DOWNLOAD_DURATION:-10}
+      - SPEEDKETCHUP_UPLOAD_DURATION=${SPEEDKETCHUP_UPLOAD_DURATION:-10}
+      - SPEEDKETCHUP_DOWNLOAD_CONNECTIONS=${SPEEDKETCHUP_DOWNLOAD_CONNECTIONS:-8}
+      - SPEEDKETCHUP_UPLOAD_CONNECTIONS=${SPEEDKETCHUP_UPLOAD_CONNECTIONS:-8}
+      - SPEEDKETCHUP_INFLUX_URL=${SPEEDKETCHUP_INFLUX_URL:-}
+      - SPEEDKETCHUP_INFLUX_TOKEN=${SPEEDKETCHUP_INFLUX_TOKEN:-}
+      - SPEEDKETCHUP_MQTT=${SPEEDKETCHUP_MQTT:-}
+      - SPEEDKETCHUP_MQTT_USER=${SPEEDKETCHUP_MQTT_USER:-}
+      - SPEEDKETCHUP_MQTT_PASSWORD=${SPEEDKETCHUP_MQTT_PASSWORD:-}
+
+volumes:
+  speedketchup_data:
+    name: speedketchup_data
+    driver: local
