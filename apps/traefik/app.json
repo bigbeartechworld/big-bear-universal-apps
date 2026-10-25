@@ -5,7 +5,7 @@
     "name": "Traefik",
     "description": "Cloud-Native Networking Stack That Just Works.",
     "tagline": "Cloud-native Networking Stack That Just Works.",
-    "version": "v3.7.15",
+    "version": "v3.7.16",
     "author": "WisdomSky",
     "developer": "",
     "category": "Other",
@@ -13,7 +13,7 @@
     "homepage": "https://github.com/WisdomSky/CasaOS-Coolstore/tree/main/Apps/traefik",
     "source": "casaos-coolstore",
     "created": "2026-09-24T18:00:00Z",
-    "updated": "2026-10-19T09:59:12.195Z"
+    "updated": "2026-10-25T17:27:47.142Z"
   },
   "visual": {
     "icon": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/traefik.png",
