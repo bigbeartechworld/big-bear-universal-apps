@@ -5,7 +5,7 @@
     "name": "cairn",
     "description": "cairn is the page you hand to the people you host services for: family, a club, whoever ends up using your server. One YAML file in, a static multilingual directory out, with no account to create, no database and no outbound requests. It shows your services and nothing else: no widgets, no Docker socket, no metrics. Each service can show a live status pill pulled from Gatus or Uptime Kuma, so visitors see what is up before they click, and cairn serves its own legal and privacy pages. It ships as a single static Go binary in a FROM scratch image, around 4 MB to pull, and it writes nothing at runtime, so it runs read-only with every Linux capability dropped.",
     "tagline": "The directory page for the people you host services for",
-    "version": "1.25.0",
+    "version": "1.25.1",
     "author": "MorganKryze",
     "developer": "MorganKryze",
     "category": "Productivity",
@@ -13,7 +13,7 @@
     "homepage": "https://cairn.libresoftware.cloud",
     "source": "big-bear-universal",
     "created": "2026-08-19T00:00:00Z",
-    "updated": "2026-10-18T00:00:00Z"
+    "updated": "2026-10-25T17:27:39.051Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/cairn.png",
