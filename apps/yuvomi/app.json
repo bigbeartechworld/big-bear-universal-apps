@@ -80,7 +80,7 @@
         "name": "DB_ENCRYPTION_KEY",
         "default": "REPLACE_WITH_A_STRONG_ENCRYPTION_KEY",
         "description": "AES-256 key for the database at rest. Fresh installs refuse to start with REPLACE_WITH_A_STRONG_ENCRYPTION_KEY. Generate a key with openssl rand -hex 32, or clear this variable to run unencrypted. Save the key securely. Existing installs must keep their current key; changing this value does not rotate encryption and prevents the database from opening.",
-        "required": true
+        "required": false
       },
       {
         "name": "SESSION_SECURE",
