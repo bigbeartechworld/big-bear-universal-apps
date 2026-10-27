@@ -58,7 +58,7 @@
     "path": "/",
     "tips": {
       "before_install": {
-        "en_us": "Use a trusted LAN or private VPN. Authentication is optional: empty settings leave the shared clipboard open. Set both CLIPBOARD_PASSWORD and CLIPBOARD_TOKEN to protect the general web page and API separately, or configure isolated accounts. URL credentials are readable; HTTP is not encrypted. Do not forward port 5088 on your router. Keep the /data volume when updating."
+        "en_us": "Use a trusted LAN or private VPN. Authentication is optional: empty settings leave the general shared clipboard open. Isolated accounts protect only their own spaces; adding accounts does not protect the general shared clipboard. To protect the general web page and API, set both CLIPBOARD_PASSWORD and CLIPBOARD_TOKEN. The web password alone does not protect the general API. URL credentials are readable; HTTP is not encrypted. Do not forward port 5088 on your router. Keep the /data volume when updating."
       }
     }
   },

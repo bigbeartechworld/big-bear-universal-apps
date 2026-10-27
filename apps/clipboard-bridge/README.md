@@ -6,9 +6,13 @@ access, persistent history, grouped files and optional isolated accounts.
 
 - Web/API: TCP `5088`, browser path `/`, health check `/health`.
 - Preserve the `/data` volume for history, files and the persistent session key.
-- Default auth settings are empty: configure the optional general web password
-  and API token separately, or add isolated accounts. URL values remain readable;
-  HTTP is unencrypted. Do not publish the port directly to the internet.
+- Authentication is optional; empty settings leave the general shared clipboard open.
+- Isolated accounts protect only their own spaces. Adding accounts does not protect
+  the general shared clipboard, which remains available independently.
+- To protect the general web page and API, set **both** `CLIPBOARD_PASSWORD` and
+  `CLIPBOARD_TOKEN`. The web password alone does not protect the general API.
+- URL credentials remain readable and HTTP is unencrypted. Do not publish the port
+  directly to the internet.
 - Linux `amd64` / `arm64`; no database or privileged host integration required.
 - The image does not implement LinuxServer.io's PUID/PGID initialization.
 
