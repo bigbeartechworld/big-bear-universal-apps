@@ -5,7 +5,7 @@
     "name": "Unifi Network Application",
     "description": "Supports Zimaboards and PI's. The Unifi-network-application software is a powerful, enterprise wireless software engine ideal for high-density client deployments requiring low latency and high uptime performance.",
     "tagline": "The Unifi-network-application MongoDB 4",
-    "version": "10.6.106",
+    "version": "10.6.109",
     "author": "BigBearTechWorld",
     "developer": "Ubiquiti",
     "category": "BigBearCasaOS",
@@ -13,7 +13,7 @@
     "homepage": "https://hub.docker.com/r/linuxserver/unifi-network-application",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:23Z",
-    "updated": "2026-09-19T04:20:54.488Z"
+    "updated": "2026-10-27T01:59:18.515Z"
   },
   "visual": {
     "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/ubiquiti-unifi.png",
@@ -208,7 +208,14 @@
       "port": "27017\n8443"
     },
     "runtipi": {
-      "additional_ports": ["3478/udp", "10001/udp", "8080/tcp", "1900/udp", "6789/tcp", "5514/udp"],
+      "additional_ports": [
+        "3478/udp",
+        "10001/udp",
+        "8080/tcp",
+        "1900/udp",
+        "6789/tcp",
+        "5514/udp"
+      ],
       "supported": true,
       "tipi_version": 1,
       "supported_architectures": [
