@@ -111,7 +111,7 @@
       "port": "8840"
     },
     "cosmos": {
-      "supported": true,
+      "supported": false,
       "servapp": true,
       "routes_required": true,
       "port": "8840"
