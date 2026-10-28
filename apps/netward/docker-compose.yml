@@ -20,8 +20,8 @@ services:
       - no-new-privileges:true
     read_only: true
     environment:
-      TZ: UTC
-      NETWARD_PORT: "8840"
+      TZ: ${TZ:-UTC}
+      NETWARD_PORT: "${NETWARD_PORT:-8840}"
     volumes:
       - netward_data:/data
     deploy:
