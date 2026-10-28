@@ -1,0 +1,35 @@
+name: big-bear-netward
+
+services:
+  app:
+    container_name: big-bear-netward
+    image: ghcr.io/pyzyi/netward:0.4.1
+    restart: unless-stopped
+    # Layer-2 discovery (ARP, DHCP, mDNS) only works on the host network.
+    network_mode: host
+    # Netward opens its raw sockets, hands /data to UID 10001 and then drops
+    # every capability; at runtime it has none.
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETUID
+      - SETGID
+      - NET_RAW
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    environment:
+      TZ: UTC
+      NETWARD_PORT: "8840"
+    volumes:
+      - netward_data:/data
+    deploy:
+      resources:
+        reservations:
+          memory: 64M
+
+volumes:
+  netward_data:
+    name: netward_data
+    driver: local
