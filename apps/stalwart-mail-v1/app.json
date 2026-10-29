@@ -99,7 +99,7 @@
     ]
   },
   "ui": {
-    "scheme": "http",
+    "scheme": "https",
     "path": "/admin",
     "tips": {
       "before_install": {
@@ -110,12 +110,12 @@
   "compatibility": {
     "casaos": {
       "supported": true,
-      "port_map": "8081",
+      "port_map": "443",
       "volume_mappings": {
         "stalwart-mail-v1_config": "/DATA/AppData/$AppID/config",
         "stalwart-mail-v1_data": "/DATA/AppData/$AppID/data"
       },
-      "port": "8081",
+      "port": "443",
       "category": "Others"
     },
     "portainer": {
@@ -126,7 +126,7 @@
         "selfhosted"
       ],
       "administrator_only": false,
-      "port": "8081"
+      "port": "443"
     },
     "runtipi": {
       "additional_ports": [
@@ -152,7 +152,7 @@
     "dockge": {
       "supported": true,
       "file_based": true,
-      "port": "8081"
+      "port": "443"
     },
     "cosmos": {
       "supported": false,

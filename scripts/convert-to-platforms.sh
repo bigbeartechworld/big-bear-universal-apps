@@ -648,6 +648,7 @@ convert_to_casaos() {
     # Use platform-specific port if defined, otherwise use default
     local casaos_port="${PORT_CASAOS:-$APP_DEFAULT_PORT}"
     casaos_port="$casaos_port" yq eval '.x-casaos.port_map = strenv(casaos_port)' -i "$compose_file"
+    ui_scheme="$APP_UI_SCHEME" ui_path="${APP_UI_PATH:-/}" yq eval '.x-casaos.scheme = strenv(ui_scheme) | .x-casaos.index = strenv(ui_path)' -i "$compose_file"
     
     # Add descriptive comments to x-casaos section using perl (works on both macOS and Linux)
     # Add comment before architectures

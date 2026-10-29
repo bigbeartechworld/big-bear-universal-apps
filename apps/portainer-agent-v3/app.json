@@ -40,7 +40,14 @@
     "compose_file": "docker-compose.yml"
   },
   "deployment": {
-    "environment_variables": [],
+    "environment_variables": [
+      {
+        "name": "AGENT_SECRET",
+        "default": "",
+        "description": "Required Agent secret. Configure the identical strong secret on Portainer Server v3 before deployment.",
+        "required": true
+      }
+    ],
     "volumes": [
       {
         "container": "/var/run/docker.sock",
@@ -65,13 +72,13 @@
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "This is a separate Portainer Agent v3 installation for a matching Portainer Server v3. Do not replace an agent connected to a 2.x server. Coordinate server and agent upgrades and configure the server endpoint to use host port 9002. If the server uses AGENT_SECRET, add the identical environment variable to this agent before starting it. The Docker socket grants control of the host; restrict access to the trusted Portainer Server. Migration: https://docs.portainer.io/start/upgrade Cosmos is unsupported because its converter creates an HTTP route for the TLS Agent API. Runtipi and Umbrel are unsupported because their UI proxies remove the direct TLS agent endpoint required by Portainer Server."
+        "en_us": "This is a separate Portainer Agent v3 installation for a matching Portainer Server v3. Do not replace an agent connected to a 2.x server. Coordinate server and agent upgrades and configure the server endpoint to use host port 9002. Set AGENT_SECRET on both Portainer Server and this agent before deployment. They must match; an empty secret prevents deployment. The Docker socket grants control of the host; restrict access to the trusted Portainer Server. Migration: https://docs.portainer.io/start/upgrade Cosmos is unsupported because its converter creates an HTTP route for the TLS Agent API. Runtipi and Umbrel are unsupported because their UI proxies remove the direct TLS agent endpoint required by Portainer Server. CasaOS is unsupported because its converter does not supply the required Compose secret variable; Portainer and Dockge support configuring it."
       }
     }
   },
   "compatibility": {
     "casaos": {
-      "supported": true,
+      "supported": false,
       "port_map": "9002",
       "category": "Productivity"
     },

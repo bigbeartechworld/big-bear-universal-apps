@@ -6,11 +6,12 @@ Format: [CalVer](https://calver.org/) — `YYYY.MM.N` (N = release number within
 ## [2026.10.5]
 
 ### Added
-- `apps/n8n-v3/` provides n8n 3.0.1 on host port 5679 with separate PostgreSQL and application volumes. v3 removes legacy nodes and expression helpers, changes security defaults, and renames binary data storage. Review Settings > Migration Report on v2 and migrate tested copies or exported workflows and credentials. Migration: https://docs.n8n.io/changelog/v30-breaking-changes
+- `apps/n8n-v3/` provides n8n 3.0.1 behind a required HTTPS reverse proxy, with its backend bound to 127.0.0.1:5679 and separate PostgreSQL and application volumes. Set N8N_PUBLIC_URL for editor and webhook URLs; secure cookies remain enabled. Only Portainer and Dockge support the required install-time configuration. v3 removes legacy nodes and expression helpers, changes security defaults, and renames binary data storage. Review Settings > Migration Report on v2 and migrate tested copies or exported workflows and credentials. Migration: https://docs.n8n.io/changelog/v30-breaking-changes
 - `apps/stalwart-mail-v1/` provides Stalwart 1.0.1 with persistent `/etc/stalwart` and `/var/lib/stalwart` volumes. Setup is loopback-only on port 8081; after setup and restart, use HTTPS on port 443. Standard mail ports require stopping the legacy server on the same host. Runtipi, Umbrel and Cosmos are unsupported because their proxies cannot preserve the private bootstrap listener. Migration from 0.16.27 requires `stalwart-migrate` into a new store: https://stalw.art/docs/migration/upgrade-0-16/
-- `apps/portainer-agent-v3/` provides Agent 3.0.0 on host port 9002 for a matching Portainer Server v3. Upgrade both ends together and preserve any server `AGENT_SECRET`. Upgrade guide: https://docs.portainer.io/start/upgrade
+- `apps/portainer-agent-v3/` provides Agent 3.0.0 on host port 9002 for a matching Portainer Server v3. A matching `AGENT_SECRET` is required on both ends before deployment. Only Portainer and Dockge support that required configuration. Upgrade guide: https://docs.portainer.io/start/upgrade
 
 ### Changed
+- CasaOS conversion now preserves the configured UI scheme and path, so the Stalwart launcher opens HTTPS on port 443 at `/admin` after setup while the setup listener remains loopback-only on port 8081.
 - Renamed n8n, Stalwart Mail and Portainer Agent to "(Legacy)" and disabled Renovate only for their legacy Compose files, preserving updates for the new entries. Replaces image-only upgrades #4811, #4769 and #4877.
 
 ### Updated

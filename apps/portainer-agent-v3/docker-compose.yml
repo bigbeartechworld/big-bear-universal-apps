@@ -7,6 +7,8 @@ services:
   app-v3:
     container_name: portainer-agent-v3
     image: portainer/agent:3.0.0@sha256:cd22e4f904ff0e957a1421d1e9e9b8ca0523ed6b5f79f4d12b2ed0809ef3d734
+    environment:
+      - AGENT_SECRET=${AGENT_SECRET:?Set AGENT_SECRET to the identical secret configured on Portainer Server}
     network_mode: bridge
     ports:
       - 9002:9001

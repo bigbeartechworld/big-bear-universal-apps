@@ -42,10 +42,10 @@
   "deployment": {
     "environment_variables": [
       {
-        "name": "DB_TYPE",
+        "name": "N8N_PUBLIC_URL",
         "default": "",
-        "description": "Database type: postgresdb",
-        "required": false
+        "description": "Required public HTTPS editor URL, for example https://n8n.example.com. Configure an HTTPS reverse proxy on this host to forward to 127.0.0.1:5679.",
+        "required": true
       }
     ],
     "volumes": [
@@ -64,17 +64,17 @@
     ]
   },
   "ui": {
-    "scheme": "http",
+    "scheme": "https",
     "path": "",
     "tips": {
       "before_install": {
-        "en_us": "n8n v3 removes legacy nodes, disables unverified community packages by default, shortens task runner timeouts and renames binaryData to storage. Run Settings > Migration Report on v2 first, replace removed nodes, and back up PostgreSQL plus /home/node/.n8n including its encryption key. This is a separate installation, not an automatic upgrade. Never attach the v2 volumes directly; migrate tested copies or export/import workflows and credentials. Use HTTPS for the editor. Migration: https://docs.n8n.io/changelog/v30-breaking-changes"
+        "en_us": "n8n v3 removes legacy nodes, disables unverified community packages by default, shortens task runner timeouts and renames binaryData to storage. Run Settings > Migration Report on v2 first, replace removed nodes, and back up PostgreSQL plus /home/node/.n8n including its encryption key. This is a separate installation, not an automatic upgrade. Never attach the v2 volumes directly; migrate tested copies or export/import workflows and credentials. Use HTTPS for the editor. Migration: https://docs.n8n.io/changelog/v30-breaking-changes Before deploying, configure one HTTPS reverse proxy on this host to forward to http://127.0.0.1:5679 and set N8N_PUBLIC_URL to the public HTTPS URL. Open that configured URL, not the backend port. Set X-Forwarded-For, X-Forwarded-Host and X-Forwarded-Proto on the proxy. Secure cookies stay enabled. Only Portainer and Dockge are supported because the other converters do not provide the required configuration input."
       }
     }
   },
   "compatibility": {
     "casaos": {
-      "supported": true,
+      "supported": false,
       "port_map": "5679",
       "volume_mappings": {
         "n8n-v3_data": "/DATA/AppData/$AppID/.n8n",
@@ -94,7 +94,7 @@
       "port": "5679"
     },
     "runtipi": {
-      "supported": true,
+      "supported": false,
       "tipi_version": 1,
       "supported_architectures": [
         "amd64",
@@ -112,13 +112,13 @@
       "port": "5679"
     },
     "cosmos": {
-      "supported": true,
+      "supported": false,
       "servapp": true,
       "routes_required": true,
       "port": "5678"
     },
     "umbrel": {
-      "supported": true,
+      "supported": false,
       "manifest_version": 1,
       "volume_mappings": {
         "n8n-v3_data": ".n8n",
