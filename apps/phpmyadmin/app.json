@@ -10,7 +10,7 @@
     "developer": "phpMyAdmin",
     "category": "BigBearCasaOS",
     "license": "",
-    "homepage": "https://hub.docker.com/r/phpmyadmin/phpmyadmin",
+    "homepage": "https://hub.docker.com/_/phpmyadmin",
     "source": "big-bear-universal",
     "created": "2025-10-27T02:42:11Z",
     "updated": "2025-10-27T02:42:11Z"
@@ -36,7 +36,7 @@
     "platform": "linux",
     "main_service": "phpmyadmin",
     "default_port": "8080",
-    "main_image": "phpmyadmin/phpmyadmin",
+    "main_image": "phpmyadmin",
     "compose_file": "docker-compose.yml"
   },
   "deployment": {

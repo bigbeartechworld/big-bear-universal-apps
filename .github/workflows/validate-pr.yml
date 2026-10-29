@@ -47,6 +47,9 @@ jobs:
       - name: Run converter test suite
         run: bash scripts/tests/test-convert-casaos.sh
 
+      - name: Run phpMyAdmin image regression test
+        run: bash scripts/tests/test-phpmyadmin-image.sh
+
       - name: Run Umbrel converter test suite
         run: bash scripts/tests/test-convert-umbrel.sh
 
