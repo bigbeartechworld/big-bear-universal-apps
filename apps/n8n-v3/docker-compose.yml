@@ -1,0 +1,55 @@
+# N8N-V3 - SEPARATE INSTALLATION
+# n8n v3 removes legacy nodes, disables unverified community packages by default, shortens task runner timeouts and renames binaryData to storage. Run Settings > Migration Report on v2 first, replace removed nodes, and back up PostgreSQL plus /home/node/.n8n including its encryption key. This is a separate installation, not an automatic upgrade. Never attach the v2 volumes directly; migrate tested copies or export/import workflows and credentials. Use HTTPS for the editor.
+# Migration: https://docs.n8n.io/changelog/v30-breaking-changes
+
+name: n8n-v3
+services:
+  app-v3:
+    container_name: n8n-v3
+    image: n8nio/n8n:3.0.1@sha256:4ebd866ae91d222ffa6dd3731eade80ba71b4d13f7470172a7e66a81fe31faa0
+    restart: unless-stopped
+    ports:
+      - 5679:5678
+    volumes:
+      - n8n-v3_data:/home/node/.n8n
+    environment:
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_DATABASE=n8n
+      - DB_POSTGRESDB_HOST=db-n8n-v3
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_USER=bigbearcasaos
+      - DB_POSTGRESDB_PASSWORD=bigbearcasaos
+    depends_on:
+      db-n8n-v3:
+        condition: service_healthy
+    networks:
+      - n8n-v3-network
+  db-n8n-v3:
+    container_name: db-n8n-v3
+    image: postgres:14.2@sha256:2c954f8c5d03da58f8b82645b783b56c1135df17e650b186b296fa1bb71f9cfd
+    restart: on-failure
+    volumes:
+      - n8n-v3_pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=bigbearcasaos
+      - POSTGRES_USER=bigbearcasaos
+      - POSTGRES_DB=n8n
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -h localhost -U bigbearcasaos -d n8n
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - n8n-v3-network
+volumes:
+  n8n-v3_data:
+    name: n8n-v3_data
+    driver: local
+  n8n-v3_pgdata:
+    name: n8n-v3_pgdata
+    driver: local
+networks:
+  n8n-v3-network:
+    driver: bridge

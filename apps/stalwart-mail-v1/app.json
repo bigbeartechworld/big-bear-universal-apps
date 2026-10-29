@@ -1,0 +1,179 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "stalwart-mail-v1",
+    "name": "Stalwart Mail v1",
+    "description": "Stalwart Mail Server is an open-source mail server solution with JMAP, IMAP4, POP3, and SMTP support and a wide range of modern features. It is written in Rust and designed to be secure, fast, robust and scalable.",
+    "tagline": "Secure & Modern All-in-One Mail Server (IMAP, JMAP, POP3, SMTP) 🛡️",
+    "version": "v1.0.1",
+    "author": "BigBearTechWorld",
+    "developer": "stalwartlabs",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/stalwartlabs/stalwart",
+    "source": "big-bear-universal",
+    "created": "2026-10-28T00:00:00Z",
+    "updated": "2026-10-28T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/stalwart.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/stalwart-mail/thumbnail.gif",
+    "screenshots": [
+      "https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/stalwart-mail/thumbnail.gif"
+    ],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/stalwart.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://stalw.art/docs/migration/upgrade-0-16/",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "big-bear-stalwart-mail-v1",
+    "default_port": "8081",
+    "main_image": "stalwartlabs/stalwart",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [],
+    "volumes": [
+      {
+        "container": "/etc/stalwart",
+        "description": "Persistent server configuration"
+      },
+      {
+        "container": "/var/lib/stalwart",
+        "description": "Persistent mail and account data"
+      }
+    ],
+    "ports": [
+      {
+        "container": "8080",
+        "host": "8081",
+        "protocol": "tcp",
+        "description": "Loopback-only setup wizard; use an SSH tunnel"
+      },
+      {
+        "container": "25",
+        "host": "25",
+        "protocol": "tcp",
+        "description": "SMTP"
+      },
+      {
+        "container": "465",
+        "host": "465",
+        "protocol": "tcp",
+        "description": "TLS SMTP submission"
+      },
+      {
+        "container": "993",
+        "host": "993",
+        "protocol": "tcp",
+        "description": "TLS IMAP"
+      },
+      {
+        "container": "995",
+        "host": "995",
+        "protocol": "tcp",
+        "description": "TLS POP3"
+      },
+      {
+        "container": "4190",
+        "host": "4190",
+        "protocol": "tcp",
+        "description": "ManageSieve"
+      },
+      {
+        "container": "443",
+        "host": "443",
+        "protocol": "tcp",
+        "description": "HTTPS WebUI and JMAP after setup"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "/admin",
+    "tips": {
+      "before_install": {
+        "en_us": "Stalwart v1 cannot open a 0.16 data store. This is a separate installation, not an automatic upgrade. Start with an empty volume. For migration, use stalwart-migrate from 0.16.27 into a new empty store, review settings with prepare, stop every 0.16 node for run --final, and verify the result before starting v1. Never attach the legacy data volume. Standard mail ports are retained; stop the legacy server before starting v1 on the same host. Migration: https://stalw.art/docs/migration/upgrade-0-16/ The setup wizard is loopback-only at http://127.0.0.1:8081/admin. From another machine use ssh -L 8081:127.0.0.1:8081 <host>. Retrieve the temporary admin password from container logs. In the wizard select Console logging, finish setup, restart the container, then use https://<mail-hostname>/admin on port 443. The two persistent volumes replace the old /opt/stalwart mount. Runtipi and Umbrel are unsupported because their app proxies expose the unprotected setup listener and cannot preserve its loopback-only binding. Cosmos is unsupported because its converter always adds an HTTP app route instead of preserving private bootstrap access."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8081",
+      "volume_mappings": {
+        "stalwart-mail-v1_config": "/DATA/AppData/$AppID/config",
+        "stalwart-mail-v1_data": "/DATA/AppData/$AppID/data"
+      },
+      "port": "8081",
+      "category": "Others"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8081"
+    },
+    "runtipi": {
+      "additional_ports": [
+        "25/tcp",
+        "465/tcp",
+        "993/tcp",
+        "995/tcp",
+        "4190/tcp",
+        "443/tcp"
+      ],
+      "supported": false,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "stalwart-mail-v1_config": "config",
+        "stalwart-mail-v1_data": "data"
+      },
+      "port": "8146"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8081"
+    },
+    "cosmos": {
+      "supported": false,
+      "servapp": true,
+      "routes_required": false
+    },
+    "umbrel": {
+      "supported": false,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "stalwart-mail-v1_config": "config",
+        "stalwart-mail-v1_data": "data"
+      },
+      "port": "10184"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}
