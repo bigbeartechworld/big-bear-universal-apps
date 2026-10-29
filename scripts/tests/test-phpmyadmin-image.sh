@@ -8,7 +8,7 @@ APP="$REPO/apps/phpmyadmin"
 jq -e '.technical.main_image == "phpmyadmin" and .metadata.homepage == "https://hub.docker.com/_/phpmyadmin"' "$APP/app.json" >/dev/null
 IMAGE="$(yq eval '.services.phpmyadmin.image' "$APP/docker-compose.yml")"
 VERSION="$(jq -r '.metadata.version' "$APP/app.json")"
-[[ "$IMAGE" =~ ^phpmyadmin:${VERSION}@sha256:[a-f0-9]{64}$ ]]
+[[ "$IMAGE" =~ ^phpmyadmin:"${VERSION}"@sha256:[a-f0-9]{64}$ ]]
 
 OUTPUT="$(mktemp -d)"
 trap 'rm -rf "$OUTPUT"' EXIT
