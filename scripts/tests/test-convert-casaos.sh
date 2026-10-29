@@ -25,6 +25,8 @@ assert_eq "$(map_casaos_category Nonsense)"       "Others"     "unknown->Others"
 TMP_OUT="$(mktemp -d)"
 bash "$REPO/scripts/convert-to-platforms.sh" -p casaos -a uptime-kuma -o "$TMP_OUT" >/dev/null 2>&1
 CF="$TMP_OUT/casaos/uptime-kuma/docker-compose.yml"
+assert_eq "$(yq eval '.x-casaos.scheme' "$CF")" "http" "default HTTP launcher preserved"
+assert_eq "$(yq eval '.x-casaos.index' "$CF")" "/" "default launcher root path"
 assert_eq "$([[ -f "$CF" ]] && echo yes)" "yes" "casaos compose produced"
 assert_eq "$(yq eval '.x-casaos.id' "$CF")" "com.bigbeartechworld.uptime-kuma" "x-casaos.id"
 assert_eq "$(yq eval '.x-casaos.title | has("en_US")' "$CF")" "true" "title en_US"
@@ -163,5 +165,14 @@ bash "$REPO/scripts/convert-to-platforms.sh" -p casaos -a uptime-kuma -i "$TMP_V
 VOL_CF="$TMP_VOL/out/casaos/uptime-kuma/docker-compose.yml"
 assert_eq "$(yq eval ".services[\"$VOL_SVC\"].volumes[0]" "$VOL_CF" 2>/dev/null)" '/DATA/Media/Music:/media:ro' "custom mapping: read-only mount preserved"
 rm -rf "$TMP_VOL"
+
+TMP_TLS="$(mktemp -d)"
+bash "$REPO/scripts/convert-to-platforms.sh" -p casaos -a stalwart-mail-v1 -o "$TMP_TLS" >/dev/null 2>&1
+TLS="$TMP_TLS/casaos/stalwart-mail-v1/docker-compose.yml"
+assert_eq "$(yq eval '.x-casaos.scheme' "$TLS")" "https" "Stalwart HTTPS launcher"
+assert_eq "$(yq eval '.x-casaos.index' "$TLS")" "/admin" "Stalwart admin launcher path"
+assert_eq "$(yq eval '.x-casaos.port_map' "$TLS")" "443" "Stalwart post-setup launcher port"
+assert_eq "$(yq eval '.services["big-bear-stalwart-mail-v1"].ports[0]' "$TLS")" "127.0.0.1:8081:8080" "Stalwart setup remains private"
+rm -rf "$TMP_TLS"
 
 exit $fail

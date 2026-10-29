@@ -1,0 +1,128 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "portainer-agent-v3",
+    "name": "Portainer Agent v3",
+    "description": "Portainer uses the Portainer Agent container to communicate with the Portainer Server instance and provide access to the node's resources. This document will outline how to install the Portainer Agent on your node and how to connect to it from your Portainer Server instance. If you do not have a working Portainer Server instance yet, please refer to the Portainer Server installation guide first.",
+    "tagline": "Portainer Agent",
+    "version": "3.0.0",
+    "author": "BigBearTechWorld",
+    "developer": "portainer",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/portainer/agent",
+    "source": "big-bear-universal",
+    "created": "2026-10-28T00:00:00Z",
+    "updated": "2026-10-28T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/portainer.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/portainer.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://docs.portainer.io/start/upgrade",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app-v3",
+    "default_port": "9002",
+    "main_image": "portainer/agent",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "AGENT_SECRET",
+        "default": "",
+        "description": "Required Agent secret. Configure the identical strong secret on Portainer Server v3 before deployment.",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/var/run/docker.sock",
+        "description": "Access to Docker socket"
+      },
+      {
+        "container": "/var/lib/docker/volumes",
+        "description": "Access to Docker volumes"
+      }
+    ],
+    "ports": [
+      {
+        "container": "9001",
+        "host": "9002",
+        "protocol": "tcp",
+        "description": "The Portainer Agent Port"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "This is a separate Portainer Agent v3 installation for a matching Portainer Server v3. Do not replace an agent connected to a 2.x server. Coordinate server and agent upgrades and configure the server endpoint to use host port 9002. Set AGENT_SECRET on both Portainer Server and this agent before deployment. They must match; an empty secret prevents deployment. The Docker socket grants control of the host; restrict access to the trusted Portainer Server. Migration: https://docs.portainer.io/start/upgrade Cosmos is unsupported because its converter creates an HTTP route for the TLS Agent API. Runtipi and Umbrel are unsupported because their UI proxies remove the direct TLS agent endpoint required by Portainer Server. CasaOS is unsupported because its converter does not supply the required Compose secret variable; Portainer and Dockge support configuring it."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": false,
+      "port_map": "9002",
+      "category": "Productivity"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "9002"
+    },
+    "runtipi": {
+      "supported": false,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "port": "8148"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "9002"
+    },
+    "cosmos": {
+      "supported": false,
+      "servapp": true,
+      "routes_required": false,
+      "port": "9001"
+    },
+    "umbrel": {
+      "supported": false,
+      "manifest_version": 1,
+      "port": "10147"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

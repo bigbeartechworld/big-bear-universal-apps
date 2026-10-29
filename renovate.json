@@ -210,6 +210,33 @@
       "matchPackageNames": ["gtstef/filebrowser"],
       "matchFileNames": ["apps/filebrowser-quantum/docker-compose.yml"],
       "enabled": false
+    },
+    {
+      "matchPackageNames": [
+        "n8nio/n8n"
+      ],
+      "matchFileNames": [
+        "apps/n8n/docker-compose.yml"
+      ],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": [
+        "stalwartlabs/stalwart"
+      ],
+      "matchFileNames": [
+        "apps/stalwart-mail/docker-compose.yml"
+      ],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": [
+        "portainer/agent"
+      ],
+      "matchFileNames": [
+        "apps/portainer-agent/docker-compose.yml"
+      ],
+      "enabled": false
     }
   ],
   "customManagers": []

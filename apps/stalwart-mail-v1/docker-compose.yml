@@ -1,0 +1,29 @@
+# STALWART-MAIL-V1 - SEPARATE INSTALLATION
+# Stalwart v1 cannot open a 0.16 data store. This is a separate installation, not an automatic upgrade. Start with an empty volume. For migration, use stalwart-migrate from 0.16.27 into a new empty store, review settings with prepare, stop every 0.16 node for run --final, and verify the result before starting v1. Never attach the legacy data volume. Standard mail ports are retained; stop the legacy server before starting v1 on the same host.
+# Migration: https://stalw.art/docs/migration/upgrade-0-16/
+
+name: stalwart-mail-v1
+services:
+  big-bear-stalwart-mail-v1:
+    container_name: big-bear-stalwart-mail-v1
+    image: stalwartlabs/stalwart:v1.0.1@sha256:b9da4df8b4efc06bc926dd6e990bdeb0ad7b9261a7c3893d74b0461a00bb389b
+    restart: unless-stopped
+    volumes:
+      - stalwart-mail-v1_config:/etc/stalwart
+      - stalwart-mail-v1_data:/var/lib/stalwart
+    ports:
+      - 127.0.0.1:8081:8080
+      - 25:25/tcp
+      - 465:465/tcp
+      - 993:993/tcp
+      - 995:995/tcp
+      - 4190:4190/tcp
+      - 443:443/tcp
+    init: true
+volumes:
+  stalwart-mail-v1_config:
+    name: stalwart-mail-v1_config
+    driver: local
+  stalwart-mail-v1_data:
+    name: stalwart-mail-v1_data
+    driver: local

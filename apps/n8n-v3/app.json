@@ -1,0 +1,137 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "n8n-v3",
+    "name": "n8n v3",
+    "description": "Free and open fair-code licensed node based Workflow Automation Tool.",
+    "tagline": "Workflow automation tool",
+    "version": "3.0.1",
+    "author": "BigBearTechWorld",
+    "developer": "n8n",
+    "category": "BigBearCasaOS",
+    "license": "",
+    "homepage": "https://hub.docker.com/r/n8nio/n8n",
+    "source": "big-bear-universal",
+    "created": "2026-10-28T00:00:00Z",
+    "updated": "2026-10-28T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/n8n.png",
+    "thumbnail": "",
+    "screenshots": [],
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/png/n8n.png"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://docs.n8n.io/changelog/v30-breaking-changes",
+    "repository": "",
+    "issues": "",
+    "support": "https://community.bigbeartechworld.com/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app-v3",
+    "default_port": "5679",
+    "main_image": "n8nio/n8n",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "N8N_PUBLIC_URL",
+        "default": "",
+        "description": "Required public HTTPS editor URL, for example https://n8n.example.com. Configure an HTTPS reverse proxy on this host to forward to 127.0.0.1:5679.",
+        "required": true
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/home/node/.n8n",
+        "description": "Container Path: /home/node/.n8n"
+      }
+    ],
+    "ports": [
+      {
+        "container": "5678",
+        "host": "5679",
+        "protocol": "tcp",
+        "description": "Container Port: 5678"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "https",
+    "path": "",
+    "tips": {
+      "before_install": {
+        "en_us": "n8n v3 removes legacy nodes, disables unverified community packages by default, shortens task runner timeouts and renames binaryData to storage. Run Settings > Migration Report on v2 first, replace removed nodes, and back up PostgreSQL plus /home/node/.n8n including its encryption key. This is a separate installation, not an automatic upgrade. Never attach the v2 volumes directly; migrate tested copies or export/import workflows and credentials. Use HTTPS for the editor. Migration: https://docs.n8n.io/changelog/v30-breaking-changes Before deploying, configure one HTTPS reverse proxy on this host to forward to http://127.0.0.1:5679 and set N8N_PUBLIC_URL to the public HTTPS URL. Open that configured URL, not the backend port. Set X-Forwarded-For, X-Forwarded-Host and X-Forwarded-Proto on the proxy. Secure cookies stay enabled. Only Portainer and Dockge are supported because the other converters do not provide the required configuration input."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": false,
+      "port_map": "5679",
+      "volume_mappings": {
+        "n8n-v3_data": "/DATA/AppData/$AppID/.n8n",
+        "n8n-v3_pgdata": "/DATA/AppData/$AppID/pgdata"
+      },
+      "port": "5679",
+      "category": "Developer"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "BigBearCasaOS",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "5679"
+    },
+    "runtipi": {
+      "supported": false,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "n8n-v3_data": ".n8n",
+        "n8n-v3_pgdata": "pgdata"
+      },
+      "port": "5679"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "5679"
+    },
+    "cosmos": {
+      "supported": false,
+      "servapp": true,
+      "routes_required": true,
+      "port": "5678"
+    },
+    "umbrel": {
+      "supported": false,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "n8n-v3_data": ".n8n",
+        "n8n-v3_pgdata": "pgdata"
+      },
+      "port": "10107"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "bigbearcasaos",
+    "container"
+  ]
+}

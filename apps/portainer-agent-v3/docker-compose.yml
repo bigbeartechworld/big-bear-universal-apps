@@ -1,0 +1,17 @@
+# PORTAINER-AGENT-V3 - SEPARATE INSTALLATION
+# This is a separate Portainer Agent v3 installation for a matching Portainer Server v3. Do not replace an agent connected to a 2.x server. Coordinate server and agent upgrades and configure the server endpoint to use host port 9002. If the server uses AGENT_SECRET, add the identical environment variable to this agent before starting it. The Docker socket grants control of the host; restrict access to the trusted Portainer Server.
+# Migration: https://docs.portainer.io/start/upgrade
+
+name: portainer-agent-v3
+services:
+  app-v3:
+    container_name: portainer-agent-v3
+    image: portainer/agent:3.0.0@sha256:cd22e4f904ff0e957a1421d1e9e9b8ca0523ed6b5f79f4d12b2ed0809ef3d734
+    environment:
+      - AGENT_SECRET=${AGENT_SECRET:?Set AGENT_SECRET to the identical secret configured on Portainer Server}
+    network_mode: bridge
+    ports:
+      - 9002:9001
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/volumes:/var/lib/docker/volumes
