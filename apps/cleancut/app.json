@@ -1,0 +1,166 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "cleancut",
+    "name": "CleanCut",
+    "description": "CleanCut mutes the swearing in the movies and shows on your Plex server. It mutes just the bad word in the audio (not the whole line), stars it out in the subtitles, and listens to the audio itself when subtitles are missing, all locally. The picture is never re-encoded and the original audio stays inside each file as a backup track. Clean titles get a Kid Safe label in Plex so kid profiles only see cleaned titles within your age limit (limiting Plex profiles by label needs Plex Pass). CleanCut Suite also includes a built-in media manager (like Radarr and Sonarr in one app) that finds and adds titles from sources you add yourself, with an optional VPN and kill switch. No sources are included or enabled by default. LICENSE FEE (paid app): every feature is free for 3 movies and 10 TV episodes, no card needed. After that a one-time license is required: CleanCut Cleaner $2.99 (language cleaning only) or CleanCut Suite $5.99 (everything, including the media manager). Upgrade from Cleaner to Suite for $3. No subscription, and a license you buy never expires. These are launch prices: the price for new buyers will go up as major features are added. 30-day money-back guarantee.",
+    "tagline": "All-in-one media manager and profanity filter for Plex",
+    "version": "1.3.0",
+    "author": "BigBearTechWorld",
+    "developer": "CleanCut Suite",
+    "category": "Media",
+    "license": "Proprietary, paid: free trial, then a one-time license ($2.99 Cleaner / $5.99 Suite)",
+    "homepage": "https://shop.harrelsons.org/cleancut/",
+    "source": "big-bear-universal",
+    "created": "2026-10-22T00:00:00Z",
+    "updated": "2026-10-24T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://cdn.jsdelivr.net/gh/LumbleHamb/cleancut-store@main/Apps/CleanCut/icon.svg",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/LumbleHamb/cleancut-store@main/Apps/CleanCut/thumbnail.png",
+    "screenshots": [
+      "https://cdn.jsdelivr.net/gh/LumbleHamb/cleancut-store@main/Apps/CleanCut/screenshot-1.png",
+      "https://cdn.jsdelivr.net/gh/LumbleHamb/cleancut-store@main/Apps/CleanCut/screenshot-2.png",
+      "https://cdn.jsdelivr.net/gh/LumbleHamb/cleancut-store@main/Apps/CleanCut/screenshot-3.png",
+      "https://cdn.jsdelivr.net/gh/LumbleHamb/cleancut-store@main/Apps/CleanCut/screenshot-4.png"
+    ],
+    "logo": "https://cdn.jsdelivr.net/gh/LumbleHamb/cleancut-store@main/Apps/CleanCut/icon.svg"
+  },
+  "resources": {
+    "youtube": "",
+    "documentation": "https://shop.harrelsons.org/cleancut/install/",
+    "repository": "https://github.com/LumbleHamb/cleancut-store",
+    "issues": "https://shop.harrelsons.org/cleancut/help/",
+    "support": "https://shop.harrelsons.org/cleancut/help/"
+  },
+  "technical": {
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "8585",
+    "main_image": "ghcr.io/lumblehamb/clean-media-stack",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {
+        "name": "PUID",
+        "default": "1000",
+        "description": "The user that owns your movie and show files",
+        "required": false
+      },
+      {
+        "name": "PGID",
+        "default": "1000",
+        "description": "The group that owns your movie and show files",
+        "required": false
+      },
+      {
+        "name": "TZ",
+        "default": "UTC",
+        "description": "Your time zone, for schedules and logs",
+        "required": false
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/config",
+        "description": "CleanCut settings, word list, history and backups"
+      },
+      {
+        "container": "/media",
+        "description": "Your movie and show folders. CleanCut adds a clean audio track to each file and keeps the original audio inside it as a backup track."
+      },
+      {
+        "container": "/data",
+        "description": "Optional. Where new titles from sources you add yourself are saved."
+      }
+    ],
+    "ports": [
+      {
+        "container": "8585",
+        "host": "8585",
+        "protocol": "tcp",
+        "description": "CleanCut dashboard"
+      }
+    ]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "",
+    "tips": {
+      "before_install": "You need Plex Media Server (Plex Pass is needed to limit kid profiles to Kid Safe titles) and at least 4 GB of RAM (Raspberry Pi 5 or a 64-bit mini-PC). Point /media at your movie and show folders before installing. CleanCut rewrites those files to add the clean audio track, so back up anything irreplaceable first. NET_ADMIN is only used by the optional VPN. After installing, open port 8585 and follow the setup guide: https://shop.harrelsons.org/cleancut/install/"
+    }
+  },
+  "compatibility": {
+    "casaos": {
+      "supported": true,
+      "port_map": "8585",
+      "volume_mappings": {
+        "cleancut_config": "/DATA/AppData/$AppID/config",
+        "cleancut_media": "/DATA/Media",
+        "cleancut_data": "/DATA/Media/data"
+      },
+      "port": "8585",
+      "category": "Media"
+    },
+    "portainer": {
+      "supported": true,
+      "template_type": 2,
+      "categories": [
+        "Media",
+        "selfhosted"
+      ],
+      "administrator_only": false,
+      "port": "8585"
+    },
+    "runtipi": {
+      "supported": true,
+      "tipi_version": 1,
+      "supported_architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "volume_mappings": {
+        "cleancut_config": "config",
+        "cleancut_media": "media",
+        "cleancut_data": "data"
+      },
+      "port": "8585"
+    },
+    "dockge": {
+      "supported": true,
+      "file_based": true,
+      "port": "8585"
+    },
+    "cosmos": {
+      "supported": true,
+      "servapp": true,
+      "routes_required": true,
+      "port": "8585"
+    },
+    "umbrel": {
+      "supported": true,
+      "manifest_version": 1,
+      "volume_mappings": {
+        "cleancut_config": "config",
+        "cleancut_media": "media",
+        "cleancut_data": "data"
+      },
+      "port": "8585"
+    }
+  },
+  "tags": [
+    "selfhosted",
+    "docker",
+    "bigbear",
+    "plex",
+    "profanity-filter",
+    "family",
+    "parental-controls",
+    "media"
+  ]
+}
