@@ -16,13 +16,13 @@
     "updated": "2026-10-08T15:41:54.829Z"
   },
   "visual": {
-    "icon": "https://raw.githubusercontent.com/windoze95/cantinarr/main/app/web/icons/Icon-512.png",
+    "icon": "https://cantinarr.com/static/symbol-transparent-v1.png",
     "screenshots": [
       "https://raw.githubusercontent.com/windoze95/cantinarr-unraid/main/screenshots/01-discover.jpg",
       "https://raw.githubusercontent.com/windoze95/cantinarr-unraid/main/screenshots/05-phone-discover.jpg",
       "https://raw.githubusercontent.com/windoze95/cantinarr-unraid/main/screenshots/04-request.png"
     ],
-    "logo": "https://raw.githubusercontent.com/windoze95/cantinarr/main/app/web/icons/Icon-512.png"
+    "logo": "https://cantinarr.com/static/symbol-transparent-v1.png"
   },
   "resources": {
     "youtube": "",
