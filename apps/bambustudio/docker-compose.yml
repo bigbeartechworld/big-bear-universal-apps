@@ -1,7 +1,7 @@
 name: linuxserver-bambustudio
 services:
   app:
-    image: linuxserver/bambustudio:02.08.04@sha256:857e937fe1c3451244cb178952e0e7a00241ab48c32cb1ce9ea6b27e4fd729e5
+    image: linuxserver/bambustudio:02.08.04@sha256:82552dbc2654c38f2f4ed5bc8e6fad0528357c3ab8c66a8254c10e286cbdf14e
     restart: unless-stopped
     environment:
       PUID: $PUID
