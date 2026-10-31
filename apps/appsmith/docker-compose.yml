@@ -7,7 +7,7 @@ services:
   # Service name: app
   # The `app` service definition
   app:
-    image: appsmith/appsmith-ce:v2.5.1@sha256:34c0e17ba97cc4c85e1c54ce1fa02c1031d0e6c4aecbe19f8f6daca5a3df53b2 # Docker image to use
+    image: appsmith/appsmith-ce:v2.6.0@sha256:30587f97f617a0d086b7c878dff618c530033e6239ed84bf8fc9565db661503b # Docker image to use
     container_name: appsmith # Name of the container
     ports:
       - "1080:80" # Port mapping host:container for HTTP
