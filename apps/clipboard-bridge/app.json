@@ -1,0 +1,74 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "clipboard-bridge",
+    "name": "Clipboard Bridge",
+    "description": "Share text, photos and files between Windows, Android and Apple Shortcuts over a trusted local network or private VPN. The standalone server provides a browser interface, persistent shared history, grouped files and optional isolated accounts. No mandatory cloud account is required. Optional token/account URL values are readable and HTTP is not encrypted; do not publish this service directly to the internet.",
+    "tagline": "A private clipboard and file bridge across your devices",
+    "version": "1.0.11",
+    "author": "Mattboxx",
+    "developer": "Mattboxx",
+    "category": "Productivity",
+    "license": "MIT",
+    "homepage": "https://mattboxx.github.io/Clipboard-Bridge/",
+    "source": "big-bear-universal",
+    "created": "2026-10-27T00:00:00Z",
+    "updated": "2026-10-27T00:00:00Z"
+  },
+  "visual": {
+    "icon": "https://mattboxx.github.io/Clipboard-Bridge/icon.svg",
+    "thumbnail": "https://mattboxx.github.io/Clipboard-Bridge/assets/clipboard-bridge-cover.png",
+    "logo": "https://mattboxx.github.io/Clipboard-Bridge/icon.svg",
+    "screenshots": [
+      "https://mattboxx.github.io/Clipboard-Bridge/assets/server-web.png",
+      "https://mattboxx.github.io/Clipboard-Bridge/assets/server-history.png"
+    ]
+  },
+  "resources": {
+    "documentation": "https://github.com/Mattboxx/Clipboard-Bridge/blob/main/DOCKER.md",
+    "repository": "https://github.com/Mattboxx/Clipboard-Bridge",
+    "issues": "https://github.com/Mattboxx/Clipboard-Bridge/issues",
+    "support": "https://github.com/Mattboxx/Clipboard-Bridge/issues"
+  },
+  "technical": {
+    "architectures": ["amd64", "arm64"],
+    "platform": "linux",
+    "main_service": "app",
+    "default_port": "5088",
+    "main_image": "ghcr.io/mattboxx/clipboard-bridge-server",
+    "compose_file": "docker-compose.yml"
+  },
+  "deployment": {
+    "environment_variables": [
+      {"name": "CLIPBOARD_PORT", "default": "5088", "description": "Internal web/API port; keep consistent with the container port and healthcheck", "required": true},
+      {"name": "CLIPBOARD_DATA_DIR", "default": "/data", "description": "Persistent data directory inside the container", "required": true},
+      {"name": "CLIPBOARD_MAX_HISTORY", "default": "200", "description": "Retained entries per clipboard space", "required": false},
+      {"name": "CLIPBOARD_MAX_UPLOAD_MB", "default": "64", "description": "Maximum size of a complete upload request in MB", "required": false},
+      {"name": "CLIPBOARD_TOKEN", "default": "", "description": "Optional shared API token; empty leaves the general API open", "required": false},
+      {"name": "CLIPBOARD_PASSWORD", "default": "", "description": "Optional general web password; does not by itself protect the API", "required": false},
+      {"name": "CLIPBOARD_ACCOUNTS", "default": "", "description": "Optional isolated accounts: user:password pairs separated by commas", "required": false},
+      {"name": "CLIPBOARD_ACCOUNTS_FILE", "default": "", "description": "Optional container path, e.g. /data/accounts.txt", "required": false},
+      {"name": "CLIPBOARD_SESSION_DAYS", "default": "3650", "description": "Remembered browser login duration, 1 to 3650 days", "required": false}
+    ],
+    "volumes": [{"container": "/data", "description": "History, uploaded files, accounts file if used, and persistent session key"}],
+    "ports": [{"container": "5088", "host": "5088", "protocol": "tcp", "description": "Web interface and clipboard API"}]
+  },
+  "ui": {
+    "scheme": "http",
+    "path": "/",
+    "tips": {
+      "before_install": {
+        "en_us": "Use a trusted LAN or private VPN. Authentication is optional: empty settings leave the general shared clipboard open. Isolated accounts protect only their own spaces; adding accounts does not protect the general shared clipboard. To protect the general web page and API, set both CLIPBOARD_PASSWORD and CLIPBOARD_TOKEN. The web password alone does not protect the general API. URL credentials are readable; HTTP is not encrypted. Do not forward port 5088 on your router. Keep the /data volume when updating."
+      }
+    }
+  },
+  "compatibility": {
+    "casaos": {"supported": true, "port_map": "5088", "volume_mappings": {"clipboard_data": "/DATA/AppData/$AppID/data"}},
+    "portainer": {"supported": false},
+    "runtipi": {"supported": false},
+    "dockge": {"supported": false},
+    "cosmos": {"supported": false},
+    "umbrel": {"supported": false}
+  },
+  "tags": ["clipboard", "file-sharing", "self-hosted", "windows", "android", "apple-shortcuts"]
+}
