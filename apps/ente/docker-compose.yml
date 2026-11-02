@@ -79,7 +79,7 @@ services:
       - ente_network
 
   minio:
-    image: minio/minio@sha256:14cea493d9a34af32f524e538b8346cf79f3321eff8e708c1e2960462bd8936e
+    image: bigbeartechworld/big-bear-minio:RELEASE.2025-10-15T17-29-55Z@sha256:f68a80211db71027c2ce5d0e55201210b393932de32b7fa58a38667984572802
     container_name: ente-minio
     ports:
       - "3200:3200"
@@ -94,17 +94,16 @@ services:
       - ente_network
 
   minio-init:
-    image: minio/mc@sha256:a7fe349ef4bd8521fb8497f55c6042871b2ae640607cf99d9bede5e9bdf11727
+    image: pgsty/silo@sha256:7bb2aff6b89efe1cb1303c10fc21d579447434ed06649ac9ec05a5e2dbf30ad7
     container_name: ente-minio-init
     depends_on:
       - minio
     entrypoint: >
-      /bin/sh -c "
+      /bin/sh -ec "
       until mc alias set ente http://minio:3200 ente-minio-access change-me-minio-vH3pL8xC0zN5; do sleep 1; done;
       mc mb --ignore-existing ente/b2-eu-cen;
       mc mb --ignore-existing ente/wasabi-eu-central-2-v3;
       mc mb --ignore-existing ente/scw-eu-fr-v3;
-      exit 0;
       "
     networks:
       - ente_network
