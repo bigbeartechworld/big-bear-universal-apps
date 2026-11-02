@@ -47,6 +47,12 @@ jobs:
       - name: Run converter test suite
         run: bash scripts/tests/test-convert-casaos.sh
 
+      - name: Run CasaOS inline command regression tests
+        run: bash scripts/tests/test-casaos-inline-commands.sh
+
+      - name: Run openGym command regression test
+        run: bash scripts/tests/test-opengym-command.sh
+
       - name: Run phpMyAdmin image regression test
         run: bash scripts/tests/test-phpmyadmin-image.sh
 
