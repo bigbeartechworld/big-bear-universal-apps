@@ -98,13 +98,7 @@ services:
     container_name: ente-minio-init
     depends_on:
       - minio
-    entrypoint: >
-      /bin/sh -ec "
-      until mc alias set ente http://minio:3200 ente-minio-access change-me-minio-vH3pL8xC0zN5; do sleep 1; done;
-      mc mb --ignore-existing ente/b2-eu-cen;
-      mc mb --ignore-existing ente/wasabi-eu-central-2-v3;
-      mc mb --ignore-existing ente/scw-eu-fr-v3;
-      "
+    entrypoint: ["/bin/sh", "-ec", "until mc alias set ente http://minio:3200 ente-minio-access change-me-minio-vH3pL8xC0zN5; do sleep 1; done; mc mb --ignore-existing ente/b2-eu-cen; mc mb --ignore-existing ente/wasabi-eu-central-2-v3; mc mb --ignore-existing ente/scw-eu-fr-v3;"]
     networks:
       - ente_network
 

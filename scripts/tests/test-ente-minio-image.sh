@@ -8,7 +8,7 @@ IMAGE="$(yq eval '.services.minio.image' "$COMPOSE")"
 [[ "$IMAGE" =~ ^bigbeartechworld/big-bear-minio:RELEASE\.[0-9T:Z-]+@sha256:[a-f0-9]{64}$ ]]
 INIT_IMAGE="$(yq eval '.services.minio-init.image' "$COMPOSE")"
 [[ "$INIT_IMAGE" =~ ^pgsty/silo@sha256:[a-f0-9]{64}$ ]]
-[[ "$(yq eval '.services.minio-init.entrypoint' "$COMPOSE")" == /bin/sh\ -ec* ]]
+[[ "$(yq eval '.services.minio-init.entrypoint | .[0:2] | join(" ")' "$COMPOSE")" == /bin/sh\ -ec* ]]
 
 OUTPUT="$(mktemp -d)"
 trap 'rm -rf "$OUTPUT"' EXIT
