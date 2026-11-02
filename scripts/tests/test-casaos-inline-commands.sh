@@ -19,6 +19,15 @@ for APP in ente buzz ghostfolio; do
     [[ "$(yq eval "$FIELD | length" "$COMPOSE")" == 3 ]]
     SCRIPT=$(yq eval "$FIELD[2]" "$COMPOSE")
     printf '%s\n' "${SCRIPT//\$\$/\$}" | sh -n
+    if [[ "$APP" == buzz ]]; then
+      [[ "$SCRIPT" == *'mc mb --ignore-existing "local/$${BUZZ_S3_BUCKET}"'* ]]
+      [[ "$SCRIPT" == *'mc anonymous set none "local/$${BUZZ_S3_BUCKET}"'* ]]
+    fi
+    if [[ "$APP" == ente ]]; then
+      for BUCKET in b2-eu-cen wasabi-eu-central-2-v3 scw-eu-fr-v3; do
+        [[ "$SCRIPT" == *"mc mb --ignore-existing ente/$BUCKET;"* ]]
+      done
+    fi
   else
     [[ "$SOURCE" == '["--requirepass","casaosredispassword"]' ]]
   fi

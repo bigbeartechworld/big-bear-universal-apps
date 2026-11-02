@@ -8,6 +8,8 @@ MEDIA_COMMAND=$(yq eval '.services.media.command[0]' "$COMPOSE")
 
 [[ "$(yq eval '.services.media.command | length' "$COMPOSE")" == "1" ]]
 [[ "$MEDIA_COMMAND" != *$'\n'* ]]
+[[ "$MEDIA_COMMAND" == *'cp /tmp/ds/images/*.jpg /out/img/'* ]]
+[[ "$MEDIA_COMMAND" == *'cp /tmp/ds/videos/*.gif /out/gif/'* ]]
 [[ "$(yq eval '.services.media.entrypoint | join(" ")' "$COMPOSE")" == "/bin/sh -c" ]]
 printf '%s\n' "${MEDIA_COMMAND//\$\$/\$}" | sh -n
 
