@@ -1,7 +1,7 @@
 name: linuxserver-blade-of-agony
 services:
   app:
-    image: linuxserver/blade-of-agony:3.1.20261022@sha256:5fbf2a71441ce3ced9d2a1f02c8ede1b20dcd80e6157773146bde1a381675f40
+    image: linuxserver/blade-of-agony:3.1.20261029@sha256:4e7a93d531bdb9f9d2467084174a44363092cbbc32951538aa0967d23e82a893
     restart: unless-stopped
     environment:
       PUID: $PUID
